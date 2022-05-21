@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "target": "es5",
     "lib": [
       "dom",
@@ -19,8 +20,8 @@
     "jsx": "preserve",
     "incremental": true,
     "paths": {
-      "~": [
-        "src"
+      "~/*": [
+        "src/*"
       ]
     }
   },
