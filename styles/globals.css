@@ -1,0 +1,3 @@
+html {
+    @apply bg-background-light-10 smooth-scroll;
+}
