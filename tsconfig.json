@@ -22,6 +22,12 @@
     "paths": {
       "~/*": [
         "src/*"
+      ],
+      "assets/*": [
+        "assets/*"
+      ],
+      "styles/*": [
+        "styles/*"
       ]
     }
   },
