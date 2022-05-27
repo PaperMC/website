@@ -1,10 +1,11 @@
 import type { NextPage } from "next";
 import Button from "~/components/input/Button";
+import SoftwarePreview from "~/components/data/SoftwarePreview";
 
 const Home: NextPage = () => {
   return (
-    <div>
-      <header className="container flex flex-row mx-auto px-4 py-32 lg:py-40 gap-16">
+    <>
+      <header className="container flex flex-row mx-auto px-4 py-32 lg:py-48 gap-16">
         <div className="flex-1">
           <h1 className="font-medium leading-normal lg:(text-5xl leading-normal) text-4xl">
             Modern technology. <br />
@@ -25,7 +26,31 @@ const Home: NextPage = () => {
         </div>
         <div className="flex-1 lg:block hidden" />
       </header>
-    </div>
+      <section id="software" className="w-full py-16 bg-primary-200">
+        <div className="container mx-auto">
+          <h2 className="font-medium text-2xl px-4">
+            Your server deserves the best
+          </h2>
+          <div className="grid md:grid-cols-3 mt-8 gap-4 xl:gap-16">
+            <SoftwarePreview
+              id="paper"
+              name="Paper"
+              description="Paper is the next generation of Minecraft servers, offering uncompromising performance."
+            />
+            <SoftwarePreview
+              id="velocity"
+              name="Velocity"
+              description="Velocity is the modern, next-generation Minecraft server proxy."
+            />
+            <SoftwarePreview
+              id="waterfall"
+              name="Waterfall"
+              description="Waterfall is a BungeeCord proxy fork that aims to improve performance and stability."
+            />
+          </div>
+        </div>
+      </section>
+    </>
   );
 };
 
