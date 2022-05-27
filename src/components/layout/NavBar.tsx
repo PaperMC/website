@@ -6,45 +6,66 @@ import TwitterIcon from "assets/icons/fontawesome/twitter-brands.svg";
 import NextLink from "next/link";
 import NavLink from "~/components/layout/NavLink";
 import IconButton from "~/components/input/IconButton";
+import { useEffect, useState } from "react";
+import clsx from "clsx";
 
-const NavBar = () => (
-  <nav>
-    <div className="container flex flex-row items-center mx-auto px-4 py-2 gap-2">
-      <Logo className="w-10 h-10" />
-      <NextLink href="/" passHref>
-        <a className="leading-0 mr-4">
-          <span className="font-semibold text-lg">PaperMC</span>
-        </a>
-      </NextLink>
-      {/* TODO: Responsive drawer */}
-      <div className="md:block hidden">
-        <NavLink href="/software">Software</NavLink>
-        <NavLink href="https://forums.papermc.io/" target="_blank">
-          Forums
-        </NavLink>
-        <NavLink href="/team">Team</NavLink>
+const NavBar = () => {
+  const [scroll, setScroll] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScroll(window.scrollY > 64);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [setScroll]);
+
+  return (
+    <nav
+      className={clsx(
+        "fixed top-0 left-0 right-0 z-50 transition-shadow",
+        scroll && "bg-background shadow-xl"
+      )}
+    >
+      <div className="container flex flex-row items-center mx-auto px-4 py-2 gap-2">
+        <Logo className="w-10 h-10" />
+        <NextLink href="/" passHref>
+          <a className="leading-0 mr-4">
+            <span className="font-semibold text-lg">PaperMC</span>
+          </a>
+        </NextLink>
+        {/* TODO: Responsive drawer */}
+        <div className="md:block hidden">
+          <NavLink href="/software">Software</NavLink>
+          <NavLink href="https://forums.papermc.io/" target="_blank">
+            Forums
+          </NavLink>
+          <NavLink href="/team">Team</NavLink>
+        </div>
+        <div className="flex-grow" />
+        <IconButton
+          icon={TwitterIcon}
+          label="Twitter"
+          href="https://twitter.com/PaperPowered"
+          external
+        />
+        <IconButton
+          icon={GitHubIcon}
+          label="GitHub"
+          href="https://github.com/PaperMC"
+          external
+        />
+        <IconButton
+          icon={DiscordIcon}
+          label="Discord"
+          href="https://discord.gg/papermc"
+          external
+        />
       </div>
-      <div className="flex-grow" />
-      <IconButton
-        icon={TwitterIcon}
-        label="Twitter"
-        href="https://twitter.com/PaperPowered"
-        external
-      />
-      <IconButton
-        icon={GitHubIcon}
-        label="GitHub"
-        href="https://github.com/PaperMC"
-        external
-      />
-      <IconButton
-        icon={DiscordIcon}
-        label="Discord"
-        href="https://discord.gg/papermc"
-        external
-      />
-    </div>
-  </nav>
-);
+    </nav>
+  );
+};
 
 export default NavBar;
