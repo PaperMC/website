@@ -4,16 +4,18 @@ import Link from "next/link";
 
 export interface ButtonProps {
   variant: "outlined" | "filled";
+  dense?: boolean;
   href?: string;
   external?: boolean;
   children: ReactNode;
 }
 
-const Button = ({ variant, href, external, children }: ButtonProps) => {
+const Button = ({ variant, dense, href, external, children }: ButtonProps) => {
   const button = (
     <button
       className={clsx(
-        "font-medium px-6 py-1.5 text-sm rounded-md hover:shadow-md transition-shadow",
+        "font-medium px-6 py-1.5 rounded-md hover:shadow-md transition-shadow",
+        dense ? "text-sm" : "text-md",
         variant === "outlined"
           ? "border-1 border-gray-400"
           : "bg-blue-500 text-white"
