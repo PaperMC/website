@@ -5,10 +5,10 @@ import SoftwarePreview from "~/components/data/SoftwarePreview";
 const Home: NextPage = () => {
   return (
     <>
-      <header className="container flex flex-row mx-auto px-4 py-32 lg:py-48 gap-16">
+      <header className="container flex flex-row mx-auto px-4 pt-32 pb-26 lg:(pt-48 pb-46) gap-16">
         <div className="flex-1">
           <h1 className="font-medium leading-normal lg:(text-5xl leading-normal) text-4xl">
-            Modern technology. <br />
+            Modern software. <br />
             <span className="text-blue-500">Built to perform.</span>
           </h1>
           <p className="text-xl mt-4">
@@ -26,12 +26,12 @@ const Home: NextPage = () => {
         </div>
         <div className="flex-1 lg:block hidden" />
       </header>
-      <section id="software" className="w-full py-16 bg-primary-200">
+      <section id="software" className="w-full pt-16 pb-8 bg-primary-200">
         <div className="container mx-auto">
-          <h2 className="font-medium text-2xl px-4">
+          <h2 className="font-medium text-xl md:text-2xl px-4">
             Your server deserves the best
           </h2>
-          <div className="grid md:grid-cols-3 mt-8 gap-4 xl:gap-16">
+          <div className="grid md:grid-cols-3 mt-6 gap-2 px-2 xl:(gap-16 gap-4)">
             <SoftwarePreview
               id="paper"
               name="Paper"
