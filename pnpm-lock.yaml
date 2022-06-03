@@ -14,6 +14,7 @@ specifiers:
   prettier: ^2.6.2
   react: 18.1.0
   react-dom: 18.1.0
+  swr: ^1.3.0
   typescript: 4.6.4
   windicss: ^3.5.4
   windicss-webpack-plugin: ^1.7.2
@@ -24,6 +25,7 @@ dependencies:
   next: 12.1.6_react-dom@18.1.0+react@18.1.0
   react: 18.1.0
   react-dom: 18.1.0_react@18.1.0
+  swr: 1.3.0_react@18.1.0
 
 devDependencies:
   '@svgr/webpack': 6.2.1
@@ -3615,6 +3617,14 @@ packages:
       picocolors: 1.0.0
       stable: 0.1.8
     dev: true
+
+  /swr/1.3.0_react@18.1.0:
+    resolution: {integrity: sha512-dkghQrOl2ORX9HYrMDtPa7LTVHJjCTeZoB1dqTbnnEDlSvN8JEKpYIYurDfvbQFUUS8Cg8PceFVZNkW0KNNYPw==}
+    peerDependencies:
+      react: ^16.11.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.1.0
+    dev: false
 
   /text-table/0.2.0:
     resolution: {integrity: sha1-f17oI66AUgfACvLfSoTsP8+lcLQ=}
