@@ -1,3 +1,5 @@
+import TerminalIllustration from "assets/illustrations/terminal.svg";
+
 import type { NextPage } from "next";
 import Button from "~/components/input/Button";
 import SoftwarePreview from "~/components/data/SoftwarePreview";
@@ -24,7 +26,9 @@ const Home: NextPage = () => {
             </Button>
           </div>
         </div>
-        <div className="flex-1 lg:block hidden" />
+        <div className="flex-1 lg:flex hidden justify-end">
+          <TerminalIllustration className="max-h-82 rounded-md"/>
+        </div>
       </header>
       <section id="software" className="w-full pt-16 pb-8 bg-primary-200">
         <div className="container mx-auto">
