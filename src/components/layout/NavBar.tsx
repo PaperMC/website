@@ -46,9 +46,9 @@ const NavBar = () => {
         </div>
         <div className="flex-grow" />
         <IconButton
-          icon={TwitterIcon}
-          label="Twitter"
-          href="https://twitter.com/PaperPowered"
+          icon={DiscordIcon}
+          label="Discord"
+          href="https://discord.gg/papermc"
           external
         />
         <IconButton
@@ -58,9 +58,9 @@ const NavBar = () => {
           external
         />
         <IconButton
-          icon={DiscordIcon}
-          label="Discord"
-          href="https://discord.gg/papermc"
+          icon={TwitterIcon}
+          label="Twitter"
+          href="https://twitter.com/PaperPowered"
           external
         />
       </div>
