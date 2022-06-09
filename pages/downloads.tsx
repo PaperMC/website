@@ -1,9 +1,9 @@
 import { GetStaticProps, NextPage } from "next";
 import { DownloadsContext, ProjectDescriptor } from "~/context/downloads";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import SoftwareDownloadButton from "~/components/input/SoftwareDownloadButton";
 import SoftwareDownloadSelector from "~/components/input/SoftwareDownloadSelector";
-import { getProject, getVersionBuilds, useProject, useVersionBuilds } from "~/service/v2";
+import { getProject, getVersionBuilds, useVersionBuilds } from "~/service/v2";
 
 interface DownloadsProps {
   projects: Record<string, ProjectDescriptor>;
@@ -11,15 +11,20 @@ interface DownloadsProps {
 
 const Downloads: NextPage<DownloadsProps> = ({ projects }) => {
   const [selectedProject, setSelectedProject] = useState("paper");
-  const { data: builds } = useVersionBuilds(selectedProject, projects[selectedProject].latestVersion);
+  const { data: builds } = useVersionBuilds(
+    selectedProject,
+    projects[selectedProject].latestVersion
+  );
 
   return (
-    <DownloadsContext.Provider value={{
-      selectedProject,
-      project: projects[selectedProject],
-      setSelectedProject,
-      builds: builds?.builds
-    }}>
+    <DownloadsContext.Provider
+      value={{
+        selectedProject,
+        project: projects[selectedProject],
+        setSelectedProject,
+        builds: builds?.builds,
+      }}
+    >
       <header className="container flex flex-col items-center mx-auto px-4 pt-32 pb-16 lg:(pt-48 pb-26) gap-2">
         <h1 className="font-medium leading-normal lg:(text-5xl leading-normal) text-4xl">
           Downloads
@@ -36,14 +41,13 @@ const Downloads: NextPage<DownloadsProps> = ({ projects }) => {
               Get the latest and greatest.
             </h3>
             <p className="md:text-xl mt-4 text-gray-800 mb-8">
-              Get the latest, supported build of {projects[selectedProject].name}. Please note that we only support servers running our latest
-              build.
+              Get the latest, supported build of{" "}
+              {projects[selectedProject].name}. Please note that we only support
+              servers running our latest build.
             </p>
             <SoftwareDownloadButton />
           </div>
-          <div className="md:flex-1 px-4">
-
-          </div>
+          <div className="md:flex-1 px-4"></div>
         </div>
       </section>
     </DownloadsContext.Provider>
@@ -52,7 +56,10 @@ const Downloads: NextPage<DownloadsProps> = ({ projects }) => {
 
 export default Downloads;
 
-const isVersionStable = async (project: string, version: string): Promise<boolean> => {
+const isVersionStable = async (
+  project: string,
+  version: string
+): Promise<boolean> => {
   const { builds } = await getVersionBuilds(project, version);
   for (let i = builds.length - 1; i >= 0; i--) {
     if (builds[i].channel === "default") return true;
@@ -78,14 +85,14 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 
     projects[id] = {
       name: project_name,
-      latestVersion
+      latestVersion,
     };
   }
 
   return {
     props: {
-      projects
+      projects,
     },
-    revalidate: 600 // 10 minutes
+    revalidate: 600, // 10 minutes
   };
 };

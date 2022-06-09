@@ -6,7 +6,7 @@ import SegmentedControlItem from "~/components/input/SegmentedControlIem";
 const projects = [
   { id: "paper", name: "Paper" },
   { id: "velocity", name: "Velocity" },
-  { id: "waterfall", name: "Waterfall" }
+  { id: "waterfall", name: "Waterfall" },
 ];
 
 const SoftwareDownloadSelector = () => {
@@ -14,7 +14,9 @@ const SoftwareDownloadSelector = () => {
 
   return (
     <div className="w-full md:w-100">
-      <SegmentedControls selectedIndex={projects.findIndex(({ id }) => id === selectedProject)}>
+      <SegmentedControls
+        selectedIndex={projects.findIndex(({ id }) => id === selectedProject)}
+      >
         <SegmentedControlItem onClick={() => setSelectedProject("paper")}>
           Paper
         </SegmentedControlItem>
