@@ -30,10 +30,10 @@ export interface VersionFamilyBuilds {
 export interface VersionFamilyBuild extends Build {
   project_id: string;
   project_name: string;
+  version: string;
 }
 
 export interface Build {
-  version: string;
   build: number;
   time: string;
   channel: "default" | "experimental";

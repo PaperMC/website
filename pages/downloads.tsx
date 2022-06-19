@@ -4,6 +4,7 @@ import { useState } from "react";
 import SoftwareDownloadButton from "~/components/input/SoftwareDownloadButton";
 import SoftwareDownloadSelector from "~/components/input/SoftwareDownloadSelector";
 import { getProject, getVersionBuilds, useVersionBuilds } from "~/service/v2";
+import SoftwareBuilds from "~/components/data/SoftwareBuilds";
 
 interface DownloadsProps {
   projects: Record<string, ProjectDescriptor>;
@@ -35,11 +36,11 @@ const Downloads: NextPage<DownloadsProps> = ({ projects }) => {
         <SoftwareDownloadSelector />
       </header>
       <section id="software" className="w-full py-16 bg-primary-200">
-        <div className="container mx-auto flex flex-col md:flex-row">
+        <div className="container mx-auto flex flex-col md:flex-row gap-8">
           <div className="text-center px-4 md:(flex-1 text-left)">
-            <h3 className="font-medium text-xl md:text-2xl">
+            <h2 className="font-medium text-xl md:text-2xl">
               Get the latest and greatest.
-            </h3>
+            </h2>
             <p className="md:text-xl mt-4 text-gray-800 mb-8">
               Get the latest, supported build of{" "}
               {projects[selectedProject].name}. Please note that we only support
@@ -47,7 +48,16 @@ const Downloads: NextPage<DownloadsProps> = ({ projects }) => {
             </p>
             <SoftwareDownloadButton />
           </div>
-          <div className="md:flex-1 px-4"></div>
+          <div className="md:flex-1 px-4">
+            <h2 className="text-lg font-medium mb-4">Older builds</h2>
+            {
+              <SoftwareBuilds
+                project={selectedProject}
+                version={projects[selectedProject].latestVersion}
+                builds={builds?.builds}
+              />
+            }
+          </div>
         </div>
       </section>
     </DownloadsContext.Provider>
