@@ -44,14 +44,12 @@ const SoftwareBuilds = ({
           </div>
         ))}
     {!builds &&
-      [...Array(5)].map((k) => (
-        <div className="flex flex-row items-start" key={k}>
-          <a className="bg-gray-800 rounded-full p-2 min-w-16 mr-4 ">
+      [...Array(5)].map((_, k) => (
+        <div className="flex flex-row items-start w-full" key={k}>
+          <div className="bg-gray-800 rounded-full p-2 min-w-16 mr-4 ">
             <Skeleton className="h-5" />
-          </a>
-          <div className="flex flex-col mt-1">
-            <Skeleton className="w-100" />
           </div>
+          <Skeleton className="mt-1 flex-grow" />
         </div>
       ))}
   </div>
