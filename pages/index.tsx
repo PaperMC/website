@@ -15,7 +15,9 @@ const Home: NextPage = () => {
           </h1>
           <p className="text-xl mt-4">
             PaperMC is a Minecraft software organization focusing on improving
-            the Minecraft ecosystem with faster and more secure software.
+            the game’s ecosystem with faster and more secure software. Our
+            server, Paper, is leading the competition as the most performant and
+            stable available.
           </p>
           <div className="flex flex-row gap-4 mt-8">
             <Button variant="filled" href="/downloads">
@@ -27,7 +29,7 @@ const Home: NextPage = () => {
           </div>
         </div>
         <div className="flex-1 lg:flex hidden justify-end">
-          <TerminalIllustration className="max-h-82 rounded-md"/>
+          <TerminalIllustration className="max-h-82 rounded-md" />
         </div>
       </header>
       <section id="software" className="w-full pt-16 pb-8 bg-primary-200">
@@ -44,12 +46,12 @@ const Home: NextPage = () => {
             <SoftwarePreview
               id="velocity"
               name="Velocity"
-              description="Velocity is the modern, next-generation Minecraft server proxy."
+              description="Velocity is the modern, high performance Minecraft server proxy."
             />
             <SoftwarePreview
               id="waterfall"
               name="Waterfall"
-              description="Waterfall is a BungeeCord proxy fork that aims to improve performance and stability."
+              description="Waterfall is a BungeeCord-replacing proxy that aims to improve performance and stability."
             />
           </div>
         </div>
