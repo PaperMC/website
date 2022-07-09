@@ -2,17 +2,31 @@ import PaperIcon from "assets/brand/paper.svg";
 
 import { ReactElement } from "react";
 import SoftwareHeader from "~/components/layout/SoftwareHeader";
+import SEO from "~/components/util/SEO";
 
 const PaperHome = (): ReactElement => {
   return (
     <>
+      <SEO
+        title="Paper"
+        description="Paper is the next generation Minecraft server, compatible with Spigot plugins and offering uncompromising performance."
+        keywords={[
+          "papermc",
+          "paper",
+          "server",
+          "minecraft",
+          "performance",
+          "spigot",
+          "fork",
+        ]}
+      />
       <SoftwareHeader
         name="Paper"
         icon={PaperIcon}
         header={
           <>
             A blazing fast
-            <br/>
+            <br />
             <span className="text-blue-500">Minecraft server</span>
           </>
         }

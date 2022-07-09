@@ -5,10 +5,17 @@ import TerminalIllustration from "assets/illustrations/terminal.svg";
 import type { NextPage } from "next";
 import Button from "~/components/input/Button";
 import SoftwarePreview from "~/components/data/SoftwarePreview";
+import SEO from "~/components/util/SEO";
 
 const Home: NextPage = () => {
   return (
     <>
+      <SEO
+        title="Home"
+        description="PaperMC is a Minecraft software organization focusing on improving
+            the game’s ecosystem with faster and more secure software."
+        keywords={["papermc", "paper", "minecraft", "performance"]}
+      />
       <header className="container flex flex-row mx-auto px-4 pt-32 pb-26 lg:(pt-48 pb-46) gap-16">
         <div className="flex-1">
           <h1 className="font-medium leading-normal lg:(text-5xl leading-normal) text-4xl">

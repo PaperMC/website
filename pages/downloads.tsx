@@ -5,6 +5,7 @@ import SoftwareDownloadButton from "~/components/input/SoftwareDownloadButton";
 import SoftwareDownloadSelector from "~/components/input/SoftwareDownloadSelector";
 import { getProject, getVersionBuilds, useVersionBuilds } from "~/service/v2";
 import SoftwareBuilds from "~/components/data/SoftwareBuilds";
+import SEO from "~/components/util/SEO";
 
 interface DownloadsProps {
   projects: Record<string, ProjectDescriptor>;
@@ -26,6 +27,19 @@ const Downloads: NextPage<DownloadsProps> = ({ projects }) => {
         builds: builds?.builds,
       }}
     >
+      <SEO
+        title="Downloads"
+        description="Find downloads for our software – including Paper, Velocity, and Waterfall."
+        keywords={[
+          "papermc",
+          "minecraft",
+          "performance",
+          "paper",
+          "velocity",
+          "waterfall",
+          "downloads",
+        ]}
+      />
       <header className="container flex flex-col items-center mx-auto px-4 pt-32 pb-16 lg:(pt-48 pb-26) gap-2">
         <h1 className="font-medium leading-normal lg:(text-5xl leading-normal) text-4xl">
           Downloads
