@@ -1,3 +1,5 @@
+import PaperIcon from "assets/brand/paper.svg";
+import VelocityIcon from "assets/brand/velocity.svg";
 import TerminalIllustration from "assets/illustrations/terminal.svg";
 
 import type { NextPage } from "next";
@@ -41,16 +43,19 @@ const Home: NextPage = () => {
             <SoftwarePreview
               id="paper"
               name="Paper"
+              icon={PaperIcon}
               description="Paper is the next generation of Minecraft servers, offering uncompromising performance."
             />
             <SoftwarePreview
               id="velocity"
               name="Velocity"
+              icon={VelocityIcon}
               description="Velocity is the modern, high performance Minecraft server proxy."
             />
             <SoftwarePreview
               id="waterfall"
               name="Waterfall"
+              icon={PaperIcon}
               description="Waterfall is a BungeeCord-replacing proxy that aims to improve performance and stability."
             />
           </div>

@@ -1,0 +1,19 @@
+import PaperIcon from "assets/brand/paper.svg";
+
+import { ReactElement } from "react";
+import SoftwareHeader from "~/components/layout/SoftwareHeader";
+
+const WaterfallHome = (): ReactElement => {
+  return (
+    <>
+      <SoftwareHeader
+        name="Waterfall"
+        icon={PaperIcon}
+        header={<>The bungee-compatible upgrade</>}
+        description="Waterfall is an upgraded BungeeCord, offering better performance and full compatibility."
+      />
+    </>
+  );
+};
+
+export default WaterfallHome;
