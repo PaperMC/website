@@ -6,7 +6,7 @@ export default defineConfig({
     exclude: ["node_modules", ".git", ".next/**/*"],
   },
   attributify: true,
-  plugins: [],
+  plugins: [require("windicss/plugin/aspect-ratio")],
   theme: {
     extend: {
       fontFamily: {

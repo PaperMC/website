@@ -40,7 +40,7 @@ const Downloads: NextPage<DownloadsProps> = ({ projects }) => {
           "downloads",
         ]}
       />
-      <header className="container flex flex-col items-center mx-auto px-4 pt-32 pb-16 lg:(pt-48 pb-26) gap-2">
+      <header className="max-w-7xl flex flex-col items-center mx-auto px-4 pt-32 pb-16 lg:(pt-48 pb-26) gap-2">
         <h1 className="font-medium leading-normal lg:(text-5xl leading-normal) text-4xl">
           Downloads
         </h1>
@@ -50,7 +50,7 @@ const Downloads: NextPage<DownloadsProps> = ({ projects }) => {
         <SoftwareDownloadSelector />
       </header>
       <section id="software" className="w-full py-16 bg-primary-200">
-        <div className="container mx-auto flex flex-col md:flex-row gap-8">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-8">
           <div className="text-center px-4 md:(flex-1 text-left)">
             <h2 className="font-medium text-xl md:text-2xl">
               Get the latest and greatest.

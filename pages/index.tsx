@@ -6,8 +6,12 @@ import type { NextPage } from "next";
 import Button from "~/components/input/Button";
 import SoftwarePreview from "~/components/data/SoftwarePreview";
 import SEO from "~/components/util/SEO";
+import { useBstatsPlayers } from "~/service/bstats";
+import Skeleton from "~/components/data/Skeleton";
 
 const Home: NextPage = () => {
+  const { data: playerData } = useBstatsPlayers();
+
   return (
     <>
       <SEO
@@ -16,7 +20,7 @@ const Home: NextPage = () => {
             the game’s ecosystem with faster and more secure software."
         keywords={["papermc", "paper", "minecraft", "performance"]}
       />
-      <header className="container flex flex-row mx-auto px-4 pt-32 pb-26 lg:(pt-48 pb-46) gap-16">
+      <header className="max-w-7xl flex flex-row mx-auto px-4 pt-32 pb-26 lg:(pt-48 pb-46) gap-16">
         <div className="flex-1">
           <h1 className="font-medium leading-normal lg:(text-5xl leading-normal) text-4xl">
             Modern software. <br />
@@ -42,9 +46,10 @@ const Home: NextPage = () => {
         </div>
       </header>
       <section id="software" className="w-full pt-16 pb-8 bg-primary-200">
-        <div className="container mx-auto">
-          <h2 className="font-medium text-xl md:text-2xl px-4">
-            Your server deserves the best
+        <div className="max-w-7xl mx-auto">
+          <h2 className="font-semibold text-xl md:text-2xl px-4">
+            Your server deserves the&nbsp;
+            <span className="text-blue-500">best.</span>
           </h2>
           <div className="grid md:grid-cols-3 mt-6 gap-2 px-2 xl:(gap-16 gap-4)">
             <SoftwarePreview
@@ -65,6 +70,41 @@ const Home: NextPage = () => {
               icon={PaperIcon}
               description="Waterfall is a BungeeCord-replacing proxy that aims to improve performance and stability."
             />
+          </div>
+        </div>
+      </section>
+      <section
+        id="facts"
+        className="flex flex-col max-w-7xl mx-auto px-4 py-8 md:py-20 gap-16"
+      >
+        <div className="flex flex-col gap-6 md:(flex-row gap-8) xl:gap-24 items-center">
+          <div className="w-full flex-1 rounded-xl bg-gray-900 aspect-video" />
+          <div className="flex-1">
+            <h2 className="font-semibold text-2xl md:text-4xl break-all">
+              Powering&nbsp;
+              {playerData ? (
+                <span className="text-blue-500">{playerData[0][1]}+</span>
+              ) : (
+                <Skeleton className="w-30 h-6 inline-block" />
+              )}
+              &nbsp;players
+            </h2>
+            <p className="md:(mt-6 text-xl) text-gray-900 mt-3">
+              PaperMC powers thousands of Minecraft servers on a daily basis.
+              From small SMPs to ground-breaking Minecraft networks.
+            </p>
+          </div>
+        </div>
+        <div className="flex flex-col gap-6 md:(flex-row-reverse gap-8) xl:gap-24 items-center">
+          <div className="w-full flex-1 rounded-xl bg-gray-900 aspect-video" />
+          <div className="flex-1">
+            <h2 className="font-semibold text-2xl md:text-4xl">
+              Security-first approach
+            </h2>
+            <p className="md:(mt-6 text-xl) text-gray-900 mt-3">
+              Our software is designed to work seamlessly, providing a high
+              level of security and stability.
+            </p>
           </div>
         </div>
       </section>
