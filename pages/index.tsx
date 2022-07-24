@@ -75,7 +75,7 @@ const Home: NextPage = () => {
       </section>
       <section
         id="facts"
-        className="flex flex-col max-w-7xl mx-auto px-4 py-8 md:py-20 gap-16"
+        className="flex flex-col max-w-7xl mx-auto px-4 py-8 gap-8 md:(gap-12 py-20)"
       >
         <div className="flex flex-col gap-6 md:(flex-row gap-8) xl:gap-24 items-center">
           <div className="w-full flex-1 rounded-xl bg-gray-900 aspect-video" />
@@ -90,8 +90,10 @@ const Home: NextPage = () => {
               &nbsp;players
             </h2>
             <p className="md:(mt-6 text-xl) text-gray-900 mt-3">
-              PaperMC powers thousands of Minecraft servers on a daily basis.
-              From small SMPs to ground-breaking Minecraft networks.
+              PaperMC’s software powers thousands of Minecraft servers on a
+              daily basis. From small SMPs to ground-breaking Minecraft
+              networks. Designed with utility and performance in mind, it can
+              handle whatever you need to throw at it.
             </p>
           </div>
         </div>
@@ -102,8 +104,11 @@ const Home: NextPage = () => {
               Security-first approach
             </h2>
             <p className="md:(mt-6 text-xl) text-gray-900 mt-3">
-              Our software is designed to work seamlessly, providing a high
-              level of security and stability.
+              Our software is designed to work seamlessly, and it is focused on
+              providing a high level of security and stability. With a
+              consistently short time from vulnerability identification to
+              security fix, you can rest assured that PaperMC software is a good
+              choice.
             </p>
           </div>
         </div>
