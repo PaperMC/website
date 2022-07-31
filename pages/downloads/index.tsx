@@ -51,7 +51,7 @@ const Downloads: NextPage = () => {
             download
           />
         </div>
-        <Link href="/downloads/legacy">
+        <Link href="/downloads/all">
           <a className="text-gray-700 underline">Build explorer</a>
         </Link>
       </header>
