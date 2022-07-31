@@ -1,32 +1,15 @@
 import { GetStaticProps, NextPage } from "next";
-import { DownloadsContext, ProjectDescriptor } from "~/context/downloads";
+import { ProjectDescriptor } from "~/context/downloads";
 import { useState } from "react";
-import SoftwareDownloadButton from "~/components/input/SoftwareDownloadButton";
-import SoftwareDownloadSelector from "~/components/input/SoftwareDownloadSelector";
 import { getProject, getVersionBuilds, useVersionBuilds } from "~/service/v2";
-import SoftwareBuilds from "~/components/data/SoftwareBuilds";
 import SEO from "~/components/util/SEO";
+import SoftwarePreview from "~/components/data/SoftwarePreview";
+import PaperIcon from "assets/brand/paper.svg";
+import VelocityIcon from "assets/brand/velocity.svg";
 
-interface DownloadsProps {
-  projects: Record<string, ProjectDescriptor>;
-}
-
-const Downloads: NextPage<DownloadsProps> = ({ projects }) => {
-  const [selectedProject, setSelectedProject] = useState("paper");
-  const { data: builds } = useVersionBuilds(
-    selectedProject,
-    projects[selectedProject].latestVersion
-  );
-
+const Downloads: NextPage = () => {
   return (
-    <DownloadsContext.Provider
-      value={{
-        selectedProject,
-        project: projects[selectedProject],
-        setSelectedProject,
-        builds: builds?.builds,
-      }}
-    >
+    <>
       <SEO
         title="Downloads"
         description="Find downloads for our software – including Paper, Velocity, and Waterfall."
@@ -47,76 +30,32 @@ const Downloads: NextPage<DownloadsProps> = ({ projects }) => {
         <p className="text-xl text-center mb-6">
           {"It's time! Get started by downloading our software."}
         </p>
-        <SoftwareDownloadSelector />
-      </header>
-      <section id="software" className="w-full py-16 bg-primary-200">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-8">
-          <div className="text-center px-4 md:(flex-1 text-left)">
-            <h2 className="font-medium text-xl md:text-2xl">
-              Get the latest and greatest.
-            </h2>
-            <p className="md:text-xl mt-4 text-gray-800 mb-8">
-              Get the latest, supported build of{" "}
-              {projects[selectedProject].name}. Please note that we only support
-              servers running our latest build.
-            </p>
-            <SoftwareDownloadButton />
-          </div>
-          <div className="md:flex-1 px-4">
-            <h2 className="text-lg font-medium mb-4">Older builds</h2>
-            {
-              <SoftwareBuilds
-                project={selectedProject}
-                version={projects[selectedProject].latestVersion}
-                builds={builds?.builds}
-              />
-            }
-          </div>
+        <div className="grid md:grid-cols-3 mt-6 gap-2 px-2 xl:gap-4">
+          <SoftwarePreview
+            id="paper"
+            name="Paper"
+            icon={PaperIcon}
+            description="Paper is the next generation of Minecraft servers, offering uncompromising performance."
+            download
+          />
+          <SoftwarePreview
+            id="velocity"
+            name="Velocity"
+            icon={VelocityIcon}
+            description="Velocity is the modern, high performance Minecraft server proxy."
+            download
+          />
+          <SoftwarePreview
+            id="waterfall"
+            name="Waterfall"
+            icon={PaperIcon}
+            description="Waterfall is a BungeeCord-replacing proxy that aims to improve performance and stability."
+            download
+          />
         </div>
-      </section>
-    </DownloadsContext.Provider>
+      </header>
+    </>
   );
 };
 
 export default Downloads;
-
-const isVersionStable = async (
-  project: string,
-  version: string
-): Promise<boolean> => {
-  const { builds } = await getVersionBuilds(project, version);
-  for (let i = builds.length - 1; i >= 0; i--) {
-    if (builds[i].channel === "default") return true;
-  }
-
-  return false;
-};
-
-export const getStaticProps: GetStaticProps = async (ctx) => {
-  const projectIds = ["paper", "velocity", "waterfall"];
-  const projects: Record<string, ProjectDescriptor> = {};
-
-  for (const id of projectIds) {
-    const { project_name, versions } = await getProject(id);
-
-    let latestVersion = versions[versions.length - 1];
-    for (let i = versions.length - 1; i >= 0; i--) {
-      if (await isVersionStable(id, versions[i])) {
-        latestVersion = versions[i];
-        break;
-      }
-    }
-
-    projects[id] = {
-      name: project_name,
-      latestVersion,
-    };
-  }
-
-  return {
-    props: {
-      projects,
-    },
-    revalidate: 600, // 10 minutes
-  };
-};

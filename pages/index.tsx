@@ -51,7 +51,7 @@ const Home: NextPage = () => {
             Your server deserves the&nbsp;
             <span className="text-blue-500">best.</span>
           </h2>
-          <div className="grid md:grid-cols-3 mt-6 gap-2 px-2 xl:(gap-16 gap-4)">
+          <div className="grid md:grid-cols-3 mt-6 gap-2 px-2 xl:gap-4">
             <SoftwarePreview
               id="paper"
               name="Paper"

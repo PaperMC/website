@@ -2,6 +2,7 @@ import { ReactElement } from "react";
 import { Build } from "~/service/types";
 import Skeleton from "~/components/data/Skeleton";
 import { getVersionBuildDownloadURL } from "~/service/v2";
+import { formatRelativeDate } from "~/util/time";
 
 export interface SoftwareBuildsProps {
   project: string;
@@ -14,14 +15,17 @@ const SoftwareBuilds = ({
   version,
   builds,
 }: SoftwareBuildsProps): ReactElement => (
-  <div className="flex flex-col gap-4">
+  <div className="flex flex-col gap-1">
     {builds &&
       builds
         .slice()
         .reverse()
-        .slice(1, 6)
+        .slice(0, 10)
         .map((build) => (
-          <div className="flex flex-row items-start" key={build.build}>
+          <div
+            className="flex flex-row items-start hover:bg-blue-100 px-4 py-2 rounded-lg transition-colors"
+            key={build.build}
+          >
             <a
               role="button"
               href={getVersionBuildDownloadURL(
@@ -36,10 +40,13 @@ const SoftwareBuilds = ({
             >
               #{build.build}
             </a>
-            <div className="flex flex-col mt-1 text-gray-900">
+            <div className="flex-1 flex flex-col mt-1 text-gray-900">
               {build.changes.map((change) => (
                 <p key={change.commit}>{change.summary}</p>
               ))}
+            </div>
+            <div className="hidden md:block text-gray-500 mt-1 ml-2">
+              {formatRelativeDate(new Date(build.time))}
             </div>
           </div>
         ))}

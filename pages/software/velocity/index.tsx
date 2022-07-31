@@ -19,6 +19,7 @@ const VelocityHome = (): ReactElement => {
         ]}
       />
       <SoftwareHeader
+        id="velocity"
         name="Velocity"
         icon={VelocityIcon}
         header={<>Next generation speed and capability</>}

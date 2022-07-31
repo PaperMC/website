@@ -2,6 +2,7 @@ import { FunctionComponent, ReactElement } from "react";
 import Button from "~/components/input/Button";
 
 export interface SoftwareHeaderProps {
+  id: string;
   name: string;
   icon?: FunctionComponent<any>;
   header: ReactElement;
@@ -9,6 +10,7 @@ export interface SoftwareHeaderProps {
 }
 
 const SoftwareHeader = ({
+  id,
   name,
   icon: Icon,
   header,
@@ -27,7 +29,7 @@ const SoftwareHeader = ({
       </h2>
       <p className="text-xl mt-4">{description}</p>
       <div className="flex flex-row gap-4 mt-8">
-        <Button variant="filled" href="/downloads">
+        <Button variant="filled" href={`/downloads/${id}`}>
           Downloads
         </Button>
         <Button variant="outlined" href="https://docs.papermc.io" external>

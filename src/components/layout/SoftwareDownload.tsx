@@ -1,0 +1,63 @@
+import { FunctionComponent, ReactElement } from "react";
+import SoftwareDownloadButton from "~/components/input/SoftwareDownloadButton";
+import SoftwareBuilds from "~/components/data/SoftwareBuilds";
+import { DownloadsContext, ProjectProps } from "~/context/downloads";
+import { useVersionBuilds } from "~/service/v2";
+
+export interface SoftwareDownloadProps {
+  id: string;
+  icon?: FunctionComponent<any>;
+  description: string;
+}
+
+const SoftwareDownload = ({
+  id,
+  project,
+  icon: Icon,
+  description,
+}: SoftwareDownloadProps & ProjectProps): ReactElement => {
+  const { data: builds } = useVersionBuilds(id, project.latestVersion);
+
+  return (
+    <DownloadsContext.Provider
+      value={{
+        projectId: id,
+        project,
+        builds: builds?.builds,
+      }}
+    >
+      <header className="max-w-7xl flex flex-row mx-auto px-4 pt-32 pb-26 lg:(pt-48 pb-46) gap-16">
+        <div className="flex-1">
+          <div className="flex flex-row mb-6 gap-4 items-center">
+            <div className="w-12 h-12 rounded-lg bg-gray-800 p-3">
+              {Icon && <Icon />}
+            </div>
+            <h1 className="font-medium text-xl">Downloads</h1>
+          </div>
+          <h2 className="font-medium leading-normal lg:(text-5xl leading-normal) text-4xl">
+            Get {project.name}&nbsp;
+            <span className="text-blue-600">{project.latestVersion}</span>
+          </h2>
+          <p className="text-xl mt-4">{description}</p>
+          <div className="flex flex-row gap-4 mt-8">
+            <SoftwareDownloadButton />
+          </div>
+        </div>
+        <div className="flex-1 lg:flex hidden justify-end"></div>
+      </header>
+      <div className="max-w-7xl mx-auto py-8">
+        <h2 className="text-center text-xl font-medium">Recent builds</h2>
+        <p className="text-center text-gray-800 text-lg mt-2 mb-8 px-4">
+          Looking for recent builds- or changelog? We got you!
+        </p>
+        <SoftwareBuilds
+          project={id}
+          version={project.latestVersion}
+          builds={builds?.builds}
+        />
+      </div>
+    </DownloadsContext.Provider>
+  );
+};
+
+export default SoftwareDownload;

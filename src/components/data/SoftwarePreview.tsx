@@ -6,6 +6,7 @@ export interface SoftwarePreviewProps {
   name: string;
   icon: FunctionComponent<any>;
   description: string;
+  download?: boolean;
 }
 
 const SoftwarePreview = ({
@@ -13,8 +14,9 @@ const SoftwarePreview = ({
   name,
   icon: Icon,
   description,
+  download,
 }: SoftwarePreviewProps) => (
-  <Link href={`/software/${id}`} passHref>
+  <Link href={download ? `/downloads/${id}` : `/software/${id}`} passHref>
     <a>
       <article className="rounded-xl transition-shadow transition-color p-4 md:p-8 hover:(shadow-lg bg-primary-300)">
         <div className="flex flex-row items-center gap-4 mb-4">

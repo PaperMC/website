@@ -21,6 +21,7 @@ const PaperHome = (): ReactElement => {
         ]}
       />
       <SoftwareHeader
+        id="paper"
         name="Paper"
         icon={PaperIcon}
         header={

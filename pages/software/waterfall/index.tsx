@@ -20,6 +20,7 @@ const WaterfallHome = (): ReactElement => {
         ]}
       />
       <SoftwareHeader
+        id="waterfall"
         name="Waterfall"
         icon={PaperIcon}
         header={<>The bungee-compatible upgrade</>}
