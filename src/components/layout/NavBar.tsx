@@ -30,7 +30,9 @@ const NavBar = () => {
       )}
     >
       <div className="max-w-7xl flex flex-row items-center mx-auto px-4 py-2 gap-2">
-        <Logo className="w-10 h-10" />
+        <NextLink href="/">
+          <Logo className="w-10 h-10 cursor-pointer" />
+        </NextLink>
         <NextLink href="/" passHref>
           <a className="leading-0 mr-4">
             <span className="font-semibold text-lg">PaperMC</span>
