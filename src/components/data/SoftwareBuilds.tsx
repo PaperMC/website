@@ -3,6 +3,7 @@ import { Build } from "~/service/types";
 import Skeleton from "~/components/data/Skeleton";
 import { getVersionBuildDownloadURL } from "~/service/v2";
 import { formatRelativeDate } from "~/util/time";
+import SoftwareBuildChanges from "~/components/data/SoftwareBuildChanges";
 
 export interface SoftwareBuildsProps {
   project: string;
@@ -41,9 +42,7 @@ const SoftwareBuilds = ({
               #{build.build}
             </a>
             <div className="flex-1 flex flex-col mt-1 text-gray-900">
-              {build.changes.map((change) => (
-                <p key={change.commit}>{change.summary}</p>
-              ))}
+              <SoftwareBuildChanges build={build} />
             </div>
             <div className="hidden md:block text-gray-500 mt-1 ml-2">
               {formatRelativeDate(new Date(build.time))}

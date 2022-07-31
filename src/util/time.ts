@@ -8,7 +8,10 @@ export const formatRelativeDate = (date: Date): string => {
   if (secondsPast < 86400)
     return formatRelativeUnit(secondsPast / 3600, "hour");
 
-  return formatRelativeUnit(secondsPast / 86400, "day");
+  const days = secondsPast / 86400;
+  if (days > 7) return formatISODate(date);
+
+  return formatRelativeUnit(days, "day");
 };
 
 const formatRelativeUnit = (count: number, unit: string): string => {
@@ -21,5 +24,7 @@ const formatRelativeUnit = (count: number, unit: string): string => {
 };
 
 export const formatISODate = (date: Date): string => {
-  return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${date.getFullYear()}-${month}-${day}`;
 };

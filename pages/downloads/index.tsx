@@ -1,11 +1,9 @@
-import { GetStaticProps, NextPage } from "next";
-import { ProjectDescriptor } from "~/context/downloads";
-import { useState } from "react";
-import { getProject, getVersionBuilds, useVersionBuilds } from "~/service/v2";
+import { NextPage } from "next";
 import SEO from "~/components/util/SEO";
 import SoftwarePreview from "~/components/data/SoftwarePreview";
 import PaperIcon from "assets/brand/paper.svg";
 import VelocityIcon from "assets/brand/velocity.svg";
+import Link from "next/link";
 
 const Downloads: NextPage = () => {
   return (
@@ -53,6 +51,9 @@ const Downloads: NextPage = () => {
             download
           />
         </div>
+        <Link href="/downloads/legacy">
+          <a className="text-gray-700 underline">Build explorer</a>
+        </Link>
       </header>
     </>
   );
