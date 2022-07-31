@@ -3,6 +3,7 @@ import SoftwareDownloadButton from "~/components/input/SoftwareDownloadButton";
 import SoftwareBuilds from "~/components/data/SoftwareBuilds";
 import { DownloadsContext, ProjectProps } from "~/context/downloads";
 import { useVersionBuilds } from "~/service/v2";
+import Link from "next/link";
 
 export interface SoftwareDownloadProps {
   id: string;
@@ -45,17 +46,23 @@ const SoftwareDownload = ({
         </div>
         <div className="flex-1 lg:flex hidden justify-end"></div>
       </header>
-      <div className="max-w-7xl mx-auto py-8">
+      <section id="builds" className="max-w-7xl mx-auto py-8">
         <h2 className="text-center text-xl font-medium">Recent builds</h2>
         <p className="text-center text-gray-800 text-lg mt-2 mb-8 px-4">
-          Looking for recent builds- or changelog? We got you!
+          Looking for recent builds - or changelog? We got you!
         </p>
         <SoftwareBuilds
           project={id}
           version={project.latestVersion}
           builds={builds?.builds}
         />
-      </div>
+        <p className="mt-2 text-center text-gray-700">
+          Looking for older builds? Try out our&nbsp;
+          <Link href="/downloads/all" passHref>
+            <a className="text-gray-700 underline">build explorer</a>
+          </Link>
+        </p>
+      </section>
     </DownloadsContext.Provider>
   );
 };
