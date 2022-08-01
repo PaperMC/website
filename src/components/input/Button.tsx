@@ -12,7 +12,8 @@ export interface ButtonProps {
 
 const Button = ({ variant, dense, href, external, children }: ButtonProps) => {
   const button = (
-    <button
+    <a
+      role="button"
       className={clsx(
         "font-medium px-6 py-1.5 rounded-md hover:shadow-md transition-shadow",
         dense ? "text-sm" : "text-md",
@@ -20,19 +21,16 @@ const Button = ({ variant, dense, href, external, children }: ButtonProps) => {
           ? "border-1 border-gray-400"
           : "bg-blue-500 text-white"
       )}
+      rel="noreferrer"
+      target={external ? "_blank" : "_self"}
     >
       {children}
-    </button>
+    </a>
   );
 
   if (href) {
     return (
-      <Link
-        href={href}
-        rel="noreferrer"
-        target={external ? "_blank" : "_self"}
-        passHref
-      >
+      <Link href={href} passHref>
         {button}
       </Link>
     );
