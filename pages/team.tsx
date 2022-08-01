@@ -68,6 +68,7 @@ const Team: NextPage = () => {
                   <div className="w-20 h-20 relative bg-gray-600 rounded-md overflow-clip ">
                     {member.avatar && (
                       <Image
+                        alt={`${member.name}'s avatar`}
                         src={member.avatar}
                         unoptimized
                         objectFit="cover"
@@ -124,7 +125,7 @@ const Team: NextPage = () => {
               >
                 {contributor.login[0]}
                 <Image
-                  alt={contributor.login}
+                  alt={`${contributor.login}'s avatar`}
                   src={contributor.avatar_url}
                   objectFit="cover"
                   layout="fill"
