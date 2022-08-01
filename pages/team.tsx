@@ -70,9 +70,9 @@ const Team: NextPage = () => {
                       <Image
                         alt={`${member.name}'s avatar`}
                         src={member.avatar}
-                        unoptimized
                         objectFit="cover"
                         layout="fill"
+                        unoptimized
                       />
                     )}
                   </div>
