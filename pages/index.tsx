@@ -2,12 +2,15 @@ import PaperIcon from "assets/brand/paper.svg";
 import VelocityIcon from "assets/brand/velocity.svg";
 import TerminalIllustration from "assets/illustrations/terminal.svg";
 
+import HomeImage1 from "assets/images/home-1.png";
+
 import type { NextPage } from "next";
 import Button from "~/components/input/Button";
 import SoftwarePreview from "~/components/data/SoftwarePreview";
 import SEO from "~/components/util/SEO";
 import { useBstatsPlayers } from "~/service/bstats";
 import Skeleton from "~/components/data/Skeleton";
+import Image from "next/image";
 
 const Home: NextPage = () => {
   const { data: playerData } = useBstatsPlayers();
@@ -78,7 +81,14 @@ const Home: NextPage = () => {
         className="flex flex-col max-w-7xl mx-auto px-4 py-8 gap-8 md:(gap-12 py-20)"
       >
         <div className="flex flex-col gap-6 md:(flex-row gap-8) xl:gap-24 items-center">
-          <div className="w-full flex-1 rounded-xl bg-gray-900 aspect-video" />
+          <div className="w-full flex-1 rounded-xl bg-gray-900 aspect-video relative overflow-clip">
+            <Image
+              src={HomeImage1}
+              objectFit="cover"
+              layout="fill"
+              placeholder="blur"
+            />
+          </div>
           <div className="flex-1">
             <h2 className="font-semibold text-2xl md:text-4xl break-all">
               Powering&nbsp;
