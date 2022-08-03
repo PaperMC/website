@@ -11,5 +11,5 @@
 }
 
 .download {
-    @apply text-blue-600 mr-4;
+    @apply text-blue-600 mr-4 inline-block;
 }
