@@ -34,7 +34,7 @@ const SoftwareBuildsTable = ({
             <tr key={build.build}>
               <td>#{build.build}</td>
               <td>
-                <SoftwareBuildChanges build={build} />
+                <SoftwareBuildChanges project={project} build={build} />
               </td>
               <td>{formatRelativeDate(new Date(build.time))}</td>
               <td>

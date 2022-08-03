@@ -7,7 +7,7 @@ import SEO from "~/components/util/SEO";
 
 const LegacyDownloads: NextPage = () => {
   const [selectedProject, setSelectedProject] = useState("paper");
-  const [selectedVersion, setSelectedVersion] = useState("");
+  const [selectedVersion, setSelectedVersion] = useState("1.19.1");
   const { data: builds } = useVersionBuilds(selectedProject, selectedVersion);
 
   return (
