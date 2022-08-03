@@ -123,7 +123,6 @@ const Team: NextPage = () => {
                 target="_blank"
                 key={contributor.id}
               >
-                {contributor.login[0]}
                 <Image
                   alt={`${contributor.login}'s avatar`}
                   src={contributor.avatar_url}
