@@ -42,7 +42,7 @@ const SoftwareBuilds = ({
               #{build.build}
             </a>
             <div className="flex-1 flex flex-col mt-1 text-gray-900">
-              <SoftwareBuildChanges build={build} />
+              <SoftwareBuildChanges project={project} build={build} />
             </div>
             <div className="hidden md:block text-gray-500 mt-1 ml-2">
               {formatRelativeDate(new Date(build.time))}
