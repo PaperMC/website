@@ -52,11 +52,7 @@ const Team: NextPage = () => {
         >
           <h2 className="text-2xl font-medium mb-2">{team.name}</h2>
           <p>
-            Illum facilis pariatur quia vel doloremque ab ipsum officia. Illum
-            voluptatibus ut laudantium illum asperiores consequatur consequatur
-            inventore. Non et molestiae inventore. Quisquam itaque aperiam quia
-            sit. Expedita necessitatibus ut officia. Ipsum non fugiat id dolorem
-            laudantium laborum magnam quo.
+            {team.description}
           </p>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
             {team.members.map((member) => (
@@ -105,11 +101,10 @@ const Team: NextPage = () => {
       <section id="contributors" className="px-4 py-8 max-w-7xl mx-auto">
         <h2 className="text-2xl font-medium mb-2">Contributors</h2>
         <p>
-          Illum facilis pariatur quia vel doloremque ab ipsum officia. Illum
-          voluptatibus ut laudantium illum asperiores consequatur consequatur
-          inventore. Non et molestiae inventore. Quisquam itaque aperiam quia
-          sit. Expedita necessitatibus ut officia. Ipsum non fugiat id dolorem
-          laudantium laborum magnam quo.
+          Contributors are those people who have helped the organization by
+          making important contributions to our codebases. From adding a new
+          redstone engine to PRing a fix for a nasty bug, our contributors have
+          helped us to provide the best software we possibly can.
         </p>
         <div className="grid grid-cols-8 md:grid-cols-16 lg:grid-cols-18 xl:grid-cols-20 mt-8 gap-2">
           {contributors
