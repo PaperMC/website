@@ -1,13 +1,32 @@
-import { NextPage } from "next";
+import { GetStaticProps, NextPage } from "next";
 import DownloadsTree from "~/components/layout/DownloadsTree";
 import SoftwareBuildsTable from "~/components/data/SoftwareBuildsTable";
-import { useVersionBuilds } from "~/service/v2";
+import { useVersionBuilds, getProject } from "~/service/v2";
 import { useState } from "react";
 import SEO from "~/components/util/SEO";
+import { Project } from "~/service/types";
 
-const LegacyDownloads: NextPage = () => {
-  const [selectedProject, setSelectedProject] = useState("paper");
-  const [selectedVersion, setSelectedVersion] = useState("");
+const INITIAL_PROJECT = "paper"
+
+interface LegacyDownloadProps {
+  initialProjectId: string,
+  initialProjectVersion: string
+}
+
+export const getStaticProps: GetStaticProps<LegacyDownloadProps> = async () => {
+  const project: Project = await getProject(INITIAL_PROJECT);
+  const versions = project.versions;
+  return {
+    props: {
+      initialProjectId: project.project_id,
+      initialProjectVersion: versions[versions.length - 1],
+    }
+  }
+}
+
+const LegacyDownloads: NextPage<LegacyDownloadProps> = ({ initialProjectId, initialProjectVersion }) => {
+  const [selectedProject, setSelectedProject] = useState(initialProjectId);
+  const [selectedVersion, setSelectedVersion] = useState(initialProjectVersion);
   const { data: builds } = useVersionBuilds(selectedProject, selectedVersion);
 
   return (
