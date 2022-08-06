@@ -8,6 +8,8 @@ import NavLink from "~/components/layout/NavLink";
 import IconButton from "~/components/input/IconButton";
 import { useEffect, useState } from "react";
 import clsx from "clsx";
+import NavDropDown from "~/components/layout/NavDropDown";
+import NavDropDownLink from "~/components/layout/NavDropDownLink";
 
 const NavBar = () => {
   const [scroll, setScroll] = useState(false);
@@ -40,7 +42,15 @@ const NavBar = () => {
         </NextLink>
         {/* TODO: Responsive drawer */}
         <div className="md:block hidden">
-          <NavLink href="/software">Software</NavLink>
+          <NavDropDown label="Software">
+            <NavDropDownLink href="/software/paper">Paper</NavDropDownLink>
+            <NavDropDownLink href="/software/velocity">
+              Velocity
+            </NavDropDownLink>
+            <NavDropDownLink href="/software/waterfall">
+              Waterfall
+            </NavDropDownLink>
+          </NavDropDown>
           <NavLink href="https://forums.papermc.io/" target="_blank">
             Forums
           </NavLink>
