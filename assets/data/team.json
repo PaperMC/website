@@ -2,6 +2,7 @@
   {
     "id": "core-team",
     "name": "Core Team",
+    "description": "Core team are responsible for the direction of the project, and for making the big decisions. Whether they focus on the code or the community, they're essential to making everything run and have final say in just about anything.",
     "members": [
       {
         "name": "Aikar",
@@ -38,6 +39,7 @@
   {
     "id": "community-managers",
     "name": "Community Managers",
+    "description": "Community Managers help guide and support the direction that the community goes in. They can help with just about anything, and focus on communications and moderation within PaperMC's community spaces.",
     "members": [
       {
         "name": "aurora",
@@ -56,6 +58,7 @@
   {
     "id": "paper-maintainers",
     "name": "Paper Maintainers",
+    "description": "Maintainers help decide and implement major codebase decisions, and are often around to guide major version updates. By contributing their time and talents, they ensure that our codebases are nice and shiny, and our performance is outmatched.",
     "members": [
       {
         "name": "jmp",
@@ -86,6 +89,7 @@
   {
     "id": "paper-developers",
     "name": "Paper Developers",
+    "description": "Paper Developers help with writing code, reviewing PRs, and keeping the project lively. By contributing new features and helping to polish off old code, they make Paper run.",
     "members": [
       {
         "name": "JRoy",
@@ -104,6 +108,7 @@
   {
     "id": "velocity-developers",
     "name": "Velocity Developers",
+    "description": "Velocity Developers manage and write the Velocity proxy. From handling PRs and issues to writing the fastest production proxy code there is, they do whatever Velocity needs.",
     "members": [
       {
         "name": "Five",
@@ -122,6 +127,7 @@
   {
     "id": "triage-team",
     "name": "Triage Team",
+    "description": "The triage team helps the project by reviewing, testing, and organizing our GitHub's endless issues and pull requests. With their efforts, developers and maintainers are able to most efficiently handle the most important tasks.",
     "members": [
       {
         "name": "sulu",
@@ -170,6 +176,7 @@
   {
     "id": "moderators",
     "name": "Moderators",
+    "description": "The moderation team keeps our community a safe and vibrant space. By watching chat, helping newcomers with questions, and making sure everyone follows the community guidelines, PaperMC's community spaces are able to be as fantastic as they are!",
     "members": [
       {
         "name": "aberdeener",
