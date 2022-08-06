@@ -52,6 +52,13 @@ export default defineConfig({
         "background-dark-80": "#181a1b",
         "background-light-10": "#f8faff",
         "background-light-0": "#ffffff",
+        "core-team": "#1FABF2",
+        "paper-maintainers": "#7289DA",
+        "paper-developers": "#28C9C7",
+        "velocity-developers": "#0AB85E",
+        "community-managers": "#A05FD5",
+        "triage-team": "#00AA85",
+        "moderators": "#F55771",
       },
       listStyleType: {
         alpha: "lower-alpha",
