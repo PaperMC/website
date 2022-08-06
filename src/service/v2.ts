@@ -3,7 +3,7 @@ import { Project, ProjectsResponse, VersionBuilds, VersionFamilyBuilds } from "~
 
 const API_ENDPOINT = "https://api.papermc.io/v2";
 
-export const fetcher = (path: string) =>
+const fetcher = (path: string) =>
   fetch(API_ENDPOINT + path).then(res => res.json());
 
 export const useProjects = (): SWRResponse<ProjectsResponse> =>
