@@ -9,7 +9,7 @@ const Contributing: NextPage = () => (
   <>
     <SEO
       title="Contributing"
-      description="Without contributors our projects wouldn't be possible. Find out how you can help out."
+      description="Without contributors our projects wouldn't be possible. Find out how you can help."
       keywords={["papermc", "paper", "minecraft", "sponsor", "contributing"]}
     />
     <header className="max-w-7xl flex flex-row mx-auto px-4 pt-32 pb-16 lg:(pt-48 pb-32) gap-16">
