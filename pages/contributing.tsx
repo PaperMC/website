@@ -4,6 +4,8 @@ import Button from "~/components/input/Button";
 
 import SavingsIllustration from "assets/illustrations/undraw/savings.svg";
 import CodeReviewIllustration from "assets/illustrations/undraw/code-review.svg";
+import ChattingIllustration from "assets/illustrations/undraw/chatting.svg";
+import KnowledgeIllustration from "assets/illustrations/undraw/knowledge.svg";
 
 const Contributing: NextPage = () => (
   <>
@@ -28,7 +30,7 @@ const Contributing: NextPage = () => (
     </header>
     <section
       id="donate"
-      className="px-4 py-8 max-w-7xl mx-auto flex flex-row items-center"
+      className="px-4 py-8 max-w-7xl mx-auto flex flex-col-reverse items-center gap-8 lg:flex-row"
     >
       <div className="flex-1">
         <h2 className="font-medium text-2xl md:text-4xl">...Financially</h2>
@@ -57,13 +59,13 @@ const Contributing: NextPage = () => (
           </Button>
         </div>
       </div>
-      <div className="flex-1 lg:flex hidden justify-end">
-        <SavingsIllustration className="max-w-72" />
+      <div className="justify-start flex w-full lg:(flex-1 justify-end)">
+        <SavingsIllustration className="max-h-32 lg:(max-w-72 max-h-none)" />
       </div>
     </section>
     <section
       id="code"
-      className="px-4 py-8 max-w-7xl mx-auto flex flex-row items-center mt-12"
+      className="px-4 py-8 max-w-7xl mx-auto flex flex-col-reverse items-center mt-12 gap-8 lg:flex-row"
     >
       <div className="flex-1">
         <h2 className="font-medium text-2xl md:text-4xl">...Code</h2>
@@ -83,15 +85,15 @@ const Contributing: NextPage = () => (
           </Button>
         </div>
       </div>
-      <div className="flex-1 lg:flex hidden justify-end">
-        <CodeReviewIllustration className="max-w-72" />
+      <div className="justify-start flex w-full lg:(flex-1 justify-end)">
+        <CodeReviewIllustration className="max-h-32 lg:(max-w-72 max-h-none)" />
       </div>
     </section>
     <section
       id="support"
-      className="px-4 py-8 max-w-7xl mx-auto flex flex-row items-center mt-12"
+      className="px-4 py-8 max-w-7xl mx-auto flex flex-col-reverse items-center mt-12 gap-8 lg:flex-row"
     >
-      <div className="flex-1">
+      <div className="lg:flex-1">
         <h2 className="font-medium text-2xl md:text-4xl">...Support</h2>
         <p className="md:(mt-6 text-lg) text-gray-900 mt-3">
           A lot of users result in a lot of questions. Everyone is welcome to
@@ -104,11 +106,13 @@ const Contributing: NextPage = () => (
           </Button>
         </div>
       </div>
-      <div className="flex-1 lg:flex hidden justify-end"></div>
+      <div className="justify-start flex w-full lg:(flex-1 justify-end)">
+        <ChattingIllustration className="max-h-32 lg:(max-w-72 max-h-none)" />
+      </div>
     </section>
     <section
       id="documentation"
-      className="px-4 py-8 max-w-7xl mx-auto flex flex-row items-center mt-12"
+      className="px-4 py-8 max-w-7xl mx-auto flex flex-col-reverse items-center mt-12 gap-8 lg:flex-row"
     >
       <div className="flex-1">
         <h2 className="font-medium text-2xl md:text-4xl">...Documentation</h2>
@@ -128,7 +132,9 @@ const Contributing: NextPage = () => (
           </Button>
         </div>
       </div>
-      <div className="flex-1 lg:flex hidden justify-end"></div>
+      <div className="justify-start flex w-full lg:(flex-1 justify-end)">
+        <KnowledgeIllustration className="max-h-32 lg:(max-w-72 max-h-none)" />
+      </div>
     </section>
   </>
 );
