@@ -1,17 +1,17 @@
+import clsx from "clsx";
+import NextLink from "next/link";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+
 import Logo from "assets/brand/logo.svg";
 import DiscordIcon from "assets/icons/fontawesome/discord-brands.svg";
 import GitHubIcon from "assets/icons/fontawesome/github-brands.svg";
 import TwitterIcon from "assets/icons/fontawesome/twitter-brands.svg";
 import MenuIcon from "assets/icons/heroicons/menu.svg";
-
-import NextLink from "next/link";
-import NavLink from "~/components/layout/NavLink";
 import IconButton from "~/components/input/IconButton";
-import { useEffect, useState } from "react";
-import clsx from "clsx";
 import NavDropDown from "~/components/layout/NavDropDown";
 import NavDropDownLink from "~/components/layout/NavDropDownLink";
-import { useRouter } from "next/router";
+import NavLink from "~/components/layout/NavLink";
 
 const NavBar = () => {
   const [scroll, setScroll] = useState(false);

@@ -1,6 +1,7 @@
 import { ReactElement } from "react";
-import { Build } from "~/service/types";
+
 import styles from "styles/components/data/SoftwareBuildChanges.module.css";
+import { Build } from "~/service/types";
 
 export interface SoftwareBuildChangesProps {
   project: string;
@@ -15,10 +16,10 @@ const SoftwareBuildChanges = ({
     {build.changes.map((change) => (
       <p key={change.commit}>
         <a
-            href={`https://github.com/PaperMC/${project}/commit/${change.commit}`}
-            className={styles.commit}
-            rel="noreferrer"
-            target="_blank"
+          href={`https://github.com/PaperMC/${project}/commit/${change.commit}`}
+          className={styles.commit}
+          rel="noreferrer"
+          target="_blank"
         >
           {change.commit.slice(0, 7)}
         </a>

@@ -1,9 +1,8 @@
 import styles from "styles/components/data/SoftwareBuildsTable.module.css";
-
-import { Build } from "~/service/types";
-import { formatRelativeDate } from "~/util/time";
-import { getVersionBuildDownloadURL } from "~/service/v2";
 import SoftwareBuildChanges from "~/components/data/SoftwareBuildChanges";
+import { Build } from "~/service/types";
+import { getVersionBuildDownloadURL } from "~/service/v2";
+import { formatRelativeDate } from "~/util/time";
 
 export interface SoftwareBuildsTableProps {
   project: string;

@@ -1,6 +1,6 @@
-import React, { ReactElement, ReactNode } from "react";
-import NextLink from "next/link";
 import clsx from "clsx";
+import NextLink from "next/link";
+import React, { ReactElement, ReactNode } from "react";
 
 export interface NavDropDownLinkProps {
   href: string;

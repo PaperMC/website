@@ -1,6 +1,6 @@
-import PaperIcon from "assets/brand/paper.svg";
-
 import { ReactElement } from "react";
+
+import PaperIcon from "assets/brand/paper.svg";
 import SoftwareHeader from "~/components/layout/SoftwareHeader";
 import SEO from "~/components/util/SEO";
 

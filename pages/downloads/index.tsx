@@ -1,9 +1,10 @@
 import { NextPage } from "next";
-import SEO from "~/components/util/SEO";
-import SoftwarePreview from "~/components/data/SoftwarePreview";
+import Link from "next/link";
+
 import PaperIcon from "assets/brand/paper.svg";
 import VelocityIcon from "assets/brand/velocity.svg";
-import Link from "next/link";
+import SoftwarePreview from "~/components/data/SoftwarePreview";
+import SEO from "~/components/util/SEO";
 
 const Downloads: NextPage = () => {
   return (

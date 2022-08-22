@@ -1,5 +1,5 @@
-import { ReactElement } from "react";
 import clsx from "clsx";
+import { ReactElement } from "react";
 
 export interface SkeletonProps {
   className?: string;

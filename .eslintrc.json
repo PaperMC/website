@@ -1,6 +1,17 @@
 {
   "extends": [
     "next/core-web-vitals",
-    "prettier"
-  ]
+    "plugin:prettier/recommended"
+  ],
+  "rules": {
+    "import/order": [
+      "warn",
+      {
+        "alphabetize": {
+          "order": "asc"
+        },
+        "newlines-between": "always"
+      }
+    ]
+  }
 }

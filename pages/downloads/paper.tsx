@@ -1,9 +1,9 @@
-import PaperIcon from "assets/brand/paper.svg";
-
 import { ReactElement } from "react";
+
+import PaperIcon from "assets/brand/paper.svg";
 import SoftwareDownload from "~/components/layout/SoftwareDownload";
-import { getProjectProps, ProjectProps } from "~/context/downloads";
 import SEO from "~/components/util/SEO";
+import { getProjectProps, ProjectProps } from "~/context/downloads";
 
 const PaperDownloads = ({ project }: ProjectProps): ReactElement => {
   return (

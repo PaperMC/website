@@ -1,6 +1,6 @@
-import { ReactNode } from "react";
 import clsx from "clsx";
 import Link from "next/link";
+import { ReactNode } from "react";
 
 export interface ButtonProps {
   variant: "outlined" | "filled";

@@ -1,4 +1,5 @@
 import clsx from "clsx";
+
 import { useProject } from "~/service/v2";
 
 export interface SoftwareDownloadCardProps {
@@ -8,8 +9,13 @@ export interface SoftwareDownloadCardProps {
   onSelect: () => void;
 }
 
-const SoftwareDownloadCard = ({ id, name, selected, onSelect }: SoftwareDownloadCardProps) => {
-  const {data} = useProject(id);
+const SoftwareDownloadCard = ({
+  id,
+  name,
+  selected,
+  onSelect,
+}: SoftwareDownloadCardProps) => {
+  const { data } = useProject(id);
 
   return (
     <article
@@ -23,12 +29,8 @@ const SoftwareDownloadCard = ({ id, name, selected, onSelect }: SoftwareDownload
       <div className="flex flex-row items-center gap-4">
         <div className="rounded-lg w-12 h-12 bg-gray-800" />
         <div>
-          <h3 className="font-medium">
-            {name}
-          </h3>
-          <p className="text-gray-800">
-            {data?.versions.length}
-          </p>
+          <h3 className="font-medium">{name}</h3>
+          <p className="text-gray-800">{data?.versions.length}</p>
         </div>
       </div>
     </article>

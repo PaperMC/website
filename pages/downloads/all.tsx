@@ -1,16 +1,17 @@
 import { GetStaticProps, NextPage } from "next";
-import DownloadsTree from "~/components/layout/DownloadsTree";
-import SoftwareBuildsTable from "~/components/data/SoftwareBuildsTable";
-import { useVersionBuilds, getProject } from "~/service/v2";
 import { useState } from "react";
+
+import SoftwareBuildsTable from "~/components/data/SoftwareBuildsTable";
+import DownloadsTree from "~/components/layout/DownloadsTree";
 import SEO from "~/components/util/SEO";
 import { Project } from "~/service/types";
+import { useVersionBuilds, getProject } from "~/service/v2";
 
-const INITIAL_PROJECT = "paper"
+const INITIAL_PROJECT = "paper";
 
 interface LegacyDownloadProps {
-  initialProjectId: string,
-  initialProjectVersion: string
+  initialProjectId: string;
+  initialProjectVersion: string;
 }
 
 export const getStaticProps: GetStaticProps<LegacyDownloadProps> = async () => {
@@ -20,11 +21,14 @@ export const getStaticProps: GetStaticProps<LegacyDownloadProps> = async () => {
     props: {
       initialProjectId: project.project_id,
       initialProjectVersion: versions[versions.length - 1],
-    }
-  }
-}
+    },
+  };
+};
 
-const LegacyDownloads: NextPage<LegacyDownloadProps> = ({ initialProjectId, initialProjectVersion }) => {
+const LegacyDownloads: NextPage<LegacyDownloadProps> = ({
+  initialProjectId,
+  initialProjectVersion,
+}) => {
   const [selectedProject, setSelectedProject] = useState(initialProjectId);
   const [selectedVersion, setSelectedVersion] = useState(initialProjectVersion);
   const { data: builds } = useVersionBuilds(selectedProject, selectedVersion);

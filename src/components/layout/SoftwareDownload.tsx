@@ -1,9 +1,10 @@
+import Link from "next/link";
 import { FunctionComponent, ReactElement } from "react";
-import SoftwareDownloadButton from "~/components/input/SoftwareDownloadButton";
+
 import SoftwareBuilds from "~/components/data/SoftwareBuilds";
+import SoftwareDownloadButton from "~/components/input/SoftwareDownloadButton";
 import { DownloadsContext, ProjectProps } from "~/context/downloads";
 import { useVersionBuilds } from "~/service/v2";
-import Link from "next/link";
 
 export interface SoftwareDownloadProps {
   id: string;

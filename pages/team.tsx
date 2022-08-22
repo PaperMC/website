@@ -1,9 +1,9 @@
-import DiscordIcon from "assets/icons/fontawesome/discord-brands.svg";
-import GitHubIcon from "assets/icons/fontawesome/github-brands.svg";
-import teams from "assets/data/team.json";
-
 import type { NextPage } from "next";
 import Image from "next/image";
+
+import teams from "assets/data/team.json";
+import DiscordIcon from "assets/icons/fontawesome/discord-brands.svg";
+import GitHubIcon from "assets/icons/fontawesome/github-brands.svg";
 import Button from "~/components/input/Button";
 import SEO from "~/components/util/SEO";
 import { useGitHubContributors } from "~/service/github";
@@ -51,9 +51,7 @@ const Team: NextPage = () => {
           className="px-4 py-8 max-w-7xl mx-auto"
         >
           <h2 className="text-2xl font-medium mb-2">{team.name}</h2>
-          <p>
-            {team.description}
-          </p>
+          <p>{team.description}</p>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
             {team.members.map((member) => (
               <article

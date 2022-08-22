@@ -1,6 +1,6 @@
-import VelocityIcon from "assets/brand/velocity.svg";
-
 import { ReactElement } from "react";
+
+import VelocityIcon from "assets/brand/velocity.svg";
 import SoftwareHeader from "~/components/layout/SoftwareHeader";
 import SEO from "~/components/util/SEO";
 
