@@ -71,8 +71,7 @@ const Contributing: NextPage = () => (
         <h2 className="font-medium text-2xl md:text-4xl">...Code</h2>
         <p className="md:(mt-6 text-lg) text-gray-900 mt-3">
           A big chunk of the code in our projects is written by community
-          members, and we are always happy about Pull Requests to our
-          repositories.
+          members, and we welcome your contributions!
         </p>
         <div className="flex flex-row gap-4 mt-8">
           <Button
