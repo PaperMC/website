@@ -2,6 +2,7 @@ import Logo from "assets/brand/logo.svg";
 import DiscordIcon from "assets/icons/fontawesome/discord-brands.svg";
 import GitHubIcon from "assets/icons/fontawesome/github-brands.svg";
 import TwitterIcon from "assets/icons/fontawesome/twitter-brands.svg";
+import MenuIcon from "assets/icons/heroicons/menu.svg";
 
 import NextLink from "next/link";
 import NavLink from "~/components/layout/NavLink";
@@ -10,9 +11,12 @@ import { useEffect, useState } from "react";
 import clsx from "clsx";
 import NavDropDown from "~/components/layout/NavDropDown";
 import NavDropDownLink from "~/components/layout/NavDropDownLink";
+import { useRouter } from "next/router";
 
 const NavBar = () => {
   const [scroll, setScroll] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,6 +28,10 @@ const NavBar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [setScroll]);
 
+  useEffect(() => {
+    setShowMenu(false);
+  }, [router.route]);
+
   return (
     <nav
       className={clsx(
@@ -32,6 +40,12 @@ const NavBar = () => {
       )}
     >
       <div className="max-w-7xl flex flex-row items-center mx-auto px-4 py-2 gap-2">
+        <button
+          className="leading-0 mr-2 md:hidden"
+          onClick={() => setShowMenu((show) => !show)}
+        >
+          <MenuIcon className="w-6 h-6 fill-gray-500" />
+        </button>
         <NextLink href="/">
           <Logo className="w-10 h-10 cursor-pointer" />
         </NextLink>
@@ -40,8 +54,12 @@ const NavBar = () => {
             <span className="font-semibold text-lg">PaperMC</span>
           </a>
         </NextLink>
-        {/* TODO: Responsive drawer */}
-        <div className="md:block hidden">
+        <div
+          className={clsx(
+            "absolute top-full left-0 right-0 flex flex-col bg-background-light-10 gap-4 p-4 shadow-xl w-full md:(block relative w-auto shadow-none bg-transparent p-0)",
+            !showMenu && "hidden"
+          )}
+        >
           <NavDropDown label="Software">
             <NavDropDownLink href="/software/paper">Paper</NavDropDownLink>
             <NavDropDownLink href="/software/velocity">
@@ -56,6 +74,7 @@ const NavBar = () => {
           </NavLink>
           <NavLink href="/team">Team</NavLink>
         </div>
+
         <div className="flex-grow" />
         <IconButton
           icon={DiscordIcon}

@@ -2,13 +2,19 @@ import ChevronDownIcon from "assets/icons/heroicons/chevron-down.svg";
 
 import { Fragment, ReactElement, ReactNode, useState } from "react";
 import { Transition } from "@headlessui/react";
+import clsx from "clsx";
 
 export interface NavDropDownProps {
   label: string;
+  className?: string;
   children: ReactNode;
 }
 
-const NavDropDown = ({ label, children }: NavDropDownProps): ReactElement => {
+const NavDropDown = ({
+  label,
+  className,
+  children,
+}: NavDropDownProps): ReactElement => {
   const [hover, setHover] = useState(false);
 
   const handleEnter = () => {
@@ -21,7 +27,10 @@ const NavDropDown = ({ label, children }: NavDropDownProps): ReactElement => {
 
   return (
     <div
-      className="color-gray-200 hover:text-blue-600 text-sm transition-colors px-2.5 relative inline-block h-full"
+      className={clsx(
+        "color-gray-200 hover:text-blue-600 text-sm transition-colors px-2.5 relative inline-block h-full",
+        className
+      )}
       onMouseEnter={handleEnter}
       onMouseLeave={handleLeave}
     >
@@ -41,7 +50,7 @@ const NavDropDown = ({ label, children }: NavDropDownProps): ReactElement => {
         show={hover}
         unmount
       >
-        <ul className="absolute top-full  flex flex-col z-50 p-2 gap-4 bg-background-light-10 border border-gray-200 rounded-lg shadow-md transition-all">
+        <ul className="mt-2 flex flex-col z-50 p-2 gap-4 bg-background-light-10 transition-all md:(absolute border border-gray-200 rounded-lg shadow-md mt-0)">
           {children}
         </ul>
       </Transition>
