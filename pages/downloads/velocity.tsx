@@ -1,9 +1,9 @@
 import { ReactElement } from "react";
 
-import VelocityIcon from "assets/brand/velocity.svg";
-import SoftwareDownload from "~/components/layout/SoftwareDownload";
-import SEO from "~/components/util/SEO";
-import { getProjectProps, ProjectProps } from "~/context/downloads";
+import VelocityIcon from "@/assets/brand/velocity.svg";
+import SoftwareDownload from "@/components/layout/SoftwareDownload";
+import SEO from "@/components/util/SEO";
+import { getProjectProps, ProjectProps } from "@/lib/context/downloads";
 
 const VelocityDownloads = ({ project }: ProjectProps): ReactElement => {
   return (

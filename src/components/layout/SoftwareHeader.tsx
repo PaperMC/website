@@ -1,6 +1,6 @@
 import { FunctionComponent, ReactElement } from "react";
 
-import Button from "~/components/input/Button";
+import Button from "@/components/input/Button";
 
 export interface SoftwareHeaderProps {
   id: string;

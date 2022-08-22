@@ -1,7 +1,8 @@
-import { createContext } from "react";
-import { Build } from "~/service/types";
 import { GetStaticProps } from "next";
-import { getProject, getVersionBuilds } from "~/service/v2";
+import { createContext } from "react";
+
+import { Build } from "@/lib/service/types";
+import { getProject, getVersionBuilds } from "@/lib/service/v2";
 
 export interface DownloadsContextProps {
   projectId: string;

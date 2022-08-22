@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 
-import styles from "styles/components/data/SoftwareBuildChanges.module.css";
-import { Build } from "~/service/types";
+import { Build } from "@/lib/service/types";
+import styles from "@/styles/components/data/SoftwareBuildChanges.module.css";
 
 export interface SoftwareBuildChangesProps {
   project: string;

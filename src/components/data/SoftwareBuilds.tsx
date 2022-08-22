@@ -1,10 +1,10 @@
 import { ReactElement } from "react";
 
-import Skeleton from "~/components/data/Skeleton";
-import SoftwareBuildChanges from "~/components/data/SoftwareBuildChanges";
-import { Build } from "~/service/types";
-import { getVersionBuildDownloadURL } from "~/service/v2";
-import { formatRelativeDate } from "~/util/time";
+import Skeleton from "@/components/data/Skeleton";
+import SoftwareBuildChanges from "@/components/data/SoftwareBuildChanges";
+import { Build } from "@/lib/service/types";
+import { getVersionBuildDownloadURL } from "@/lib/service/v2";
+import { formatRelativeDate } from "@/lib/util/time";
 
 export interface SoftwareBuildsProps {
   project: string;

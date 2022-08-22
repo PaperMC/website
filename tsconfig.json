@@ -20,13 +20,16 @@
     "jsx": "preserve",
     "incremental": true,
     "paths": {
-      "~/*": [
-        "src/*"
+      "@/components/*": [
+        "src/components/*"
       ],
-      "assets/*": [
+      "@/lib/*": [
+        "src/lib/*"
+      ],
+      "@/assets/*": [
         "assets/*"
       ],
-      "styles/*": [
+      "@/styles/*": [
         "styles/*"
       ]
     }

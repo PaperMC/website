@@ -1,15 +1,15 @@
 import type { NextPage } from "next";
 import Image from "next/image";
 
-import PaperIcon from "assets/brand/paper.svg";
-import VelocityIcon from "assets/brand/velocity.svg";
-import TerminalIllustration from "assets/illustrations/terminal.svg";
-import HomeImage1 from "assets/images/home-1.png";
-import Skeleton from "~/components/data/Skeleton";
-import SoftwarePreview from "~/components/data/SoftwarePreview";
-import Button from "~/components/input/Button";
-import SEO from "~/components/util/SEO";
-import { useBstatsPlayers } from "~/service/bstats";
+import PaperIcon from "@/assets/brand/paper.svg";
+import VelocityIcon from "@/assets/brand/velocity.svg";
+import TerminalIllustration from "@/assets/illustrations/terminal.svg";
+import HomeImage1 from "@/assets/images/home-1.png";
+import Skeleton from "@/components/data/Skeleton";
+import SoftwarePreview from "@/components/data/SoftwarePreview";
+import Button from "@/components/input/Button";
+import SEO from "@/components/util/SEO";
+import { useBstatsPlayers } from "@/lib/service/bstats";
 
 const Home: NextPage = () => {
   const { data: playerData } = useBstatsPlayers();

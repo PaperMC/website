@@ -1,11 +1,11 @@
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment, useContext } from "react";
 
-import ChevronDownIcon from "assets/icons/heroicons/chevron-down.svg";
-import DocumentDownloadIcon from "assets/icons/heroicons/document-download.svg";
-import Skeleton from "~/components/data/Skeleton";
-import { DownloadsContext } from "~/context/downloads";
-import { getVersionBuildDownloadURL } from "~/service/v2";
+import ChevronDownIcon from "@/assets/icons/heroicons/chevron-down.svg";
+import DocumentDownloadIcon from "@/assets/icons/heroicons/document-download.svg";
+import Skeleton from "@/components/data/Skeleton";
+import { DownloadsContext } from "@/lib/context/downloads";
+import { getVersionBuildDownloadURL } from "@/lib/service/v2";
 
 const SoftwareDownloadButton = () => {
   const { projectId, project, builds } = useContext(DownloadsContext);

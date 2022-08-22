@@ -1,11 +1,11 @@
 import { NextPage } from "next";
 
-import ChattingIllustration from "assets/illustrations/undraw/chatting.svg";
-import CodeReviewIllustration from "assets/illustrations/undraw/code-review.svg";
-import KnowledgeIllustration from "assets/illustrations/undraw/knowledge.svg";
-import SavingsIllustration from "assets/illustrations/undraw/savings.svg";
-import Button from "~/components/input/Button";
-import SEO from "~/components/util/SEO";
+import ChattingIllustration from "@/assets/illustrations/undraw/chatting.svg";
+import CodeReviewIllustration from "@/assets/illustrations/undraw/code-review.svg";
+import KnowledgeIllustration from "@/assets/illustrations/undraw/knowledge.svg";
+import SavingsIllustration from "@/assets/illustrations/undraw/savings.svg";
+import Button from "@/components/input/Button";
+import SEO from "@/components/util/SEO";
 
 const Contributing: NextPage = () => (
   <>

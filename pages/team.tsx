@@ -1,12 +1,12 @@
 import type { NextPage } from "next";
 import Image from "next/image";
 
-import teams from "assets/data/team.json";
-import DiscordIcon from "assets/icons/fontawesome/discord-brands.svg";
-import GitHubIcon from "assets/icons/fontawesome/github-brands.svg";
-import Button from "~/components/input/Button";
-import SEO from "~/components/util/SEO";
-import { useGitHubContributors } from "~/service/github";
+import teams from "@/assets/data/team.json";
+import DiscordIcon from "@/assets/icons/fontawesome/discord-brands.svg";
+import GitHubIcon from "@/assets/icons/fontawesome/github-brands.svg";
+import Button from "@/components/input/Button";
+import SEO from "@/components/util/SEO";
+import { useGitHubContributors } from "@/lib/service/github";
 
 const Team: NextPage = () => {
   const { data: contributors } = useGitHubContributors();

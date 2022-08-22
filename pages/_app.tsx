@@ -4,11 +4,11 @@ import "@fontsource/poppins/600.css";
 import "@fontsource/poppins/700.css";
 
 import "windi.css";
-import "styles/globals.css";
+import "@/styles/globals.css";
 
 import type { AppProps } from "next/app";
 
-import NavBar from "~/components/layout/NavBar";
+import NavBar from "@/components/layout/NavBar";
 
 const MyApp = ({ Component, pageProps }: AppProps) => (
   <>
