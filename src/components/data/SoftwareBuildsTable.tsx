@@ -1,7 +1,7 @@
 import SoftwareBuildChanges from "@/components/data/SoftwareBuildChanges";
 import { Build } from "@/lib/service/types";
 import { getVersionBuildDownloadURL } from "@/lib/service/v2";
-import { formatRelativeDate } from "@/lib/util/time";
+import { formatRelativeDate, formatISODateTime } from "@/lib/util/time";
 import styles from "@/styles/components/data/SoftwareBuildsTable.module.css";
 
 export interface SoftwareBuildsTableProps {
@@ -35,7 +35,9 @@ const SoftwareBuildsTable = ({
               <td>
                 <SoftwareBuildChanges project={project} build={build} />
               </td>
-              <td>{formatRelativeDate(new Date(build.time))}</td>
+              <td title={formatISODateTime(new Date(build.time))}>
+                {formatRelativeDate(new Date(build.time))}
+              </td>
               <td>
                 {Object.entries(build.downloads).map(([name, download]) => (
                   <a
