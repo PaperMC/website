@@ -4,7 +4,7 @@ import Skeleton from "@/components/data/Skeleton";
 import SoftwareBuildChanges from "@/components/data/SoftwareBuildChanges";
 import { Build } from "@/lib/service/types";
 import { getVersionBuildDownloadURL } from "@/lib/service/v2";
-import { formatRelativeDate } from "@/lib/util/time";
+import { formatRelativeDate, formatISODateTime } from "@/lib/util/time";
 
 export interface SoftwareBuildsProps {
   project: string;
@@ -45,7 +45,10 @@ const SoftwareBuilds = ({
             <div className="flex-1 flex flex-col mt-1 text-gray-900">
               <SoftwareBuildChanges project={project} build={build} />
             </div>
-            <div className="hidden md:block text-gray-500 mt-1 ml-2">
+            <div
+              className="hidden md:block text-gray-500 mt-1 ml-2"
+              title={formatISODateTime(new Date(build.time))}
+            >
               {formatRelativeDate(new Date(build.time))}
             </div>
           </div>
