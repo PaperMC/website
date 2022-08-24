@@ -58,7 +58,7 @@ const Home: NextPage = () => {
               id="paper"
               name="Paper"
               icon={PaperIcon}
-              description="Paper is the next generation of Minecraft servers, offering uncompromising performance."
+              description="Paper is the next generation of Minecraft server software, offering uncompromising performance."
             />
             <SoftwarePreview
               id="velocity"
@@ -103,7 +103,7 @@ const Home: NextPage = () => {
             </h2>
             <p className="md:(mt-6 text-xl) text-gray-900 mt-3">
               PaperMC’s software powers tens of thousands of Minecraft servers
-              on a daily basis. From small SMPs to ground-breaking Minecraft
+              on a daily basis, from small SMPs to ground-breaking Minecraft
               networks. Designed with utility and performance in mind, it can
               handle whatever you throw at it.
             </p>

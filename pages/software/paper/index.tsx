@@ -9,7 +9,7 @@ const PaperHome = (): ReactElement => {
     <>
       <SEO
         title="Paper"
-        description="Paper is the next generation Minecraft server, compatible with Spigot plugins and offering uncompromising performance."
+        description="Paper is the next generation Minecraft server software, compatible with Spigot plugins and offering uncompromising performance."
         keywords={[
           "papermc",
           "paper",
@@ -31,7 +31,7 @@ const PaperHome = (): ReactElement => {
             <span className="text-blue-500">Minecraft server</span>
           </>
         }
-        description="Paper is the next generation Minecraft server, compatible with Spigot plugins and offering uncompromising performance."
+        description="Paper is the next generation Minecraft server software, compatible with Spigot plugins and offering uncompromising performance."
       />
     </>
   );

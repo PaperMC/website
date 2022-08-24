@@ -2,7 +2,7 @@
   {
     "id": "core-team",
     "name": "Core Team",
-    "description": "Core team members are responsible for the direction of the project, and for making the big decisions. Whether they focus on the code or the community, they're essential to making everything run and have final say in just about anything.",
+    "description": "Core Team members are responsible for the direction of the project, and for making the big decisions. Whether they focus on the code or the community, they're essential to making everything run and have final say in just about anything.",
     "members": [
       {
         "name": "Aikar",
@@ -108,7 +108,7 @@
   {
     "id": "velocity-developers",
     "name": "Velocity Developers",
-    "description": "Velocity Developers manage and write the Velocity proxy. From handling PRs and issues to writing the fastest production proxy code there is, they do whatever Velocity needs.",
+    "description": "Velocity Developers manage and develop the Velocity proxy. From handling PRs and issues to writing the fastest production proxy code there is, they do whatever Velocity needs.",
     "members": [
       {
         "name": "Five",
@@ -127,7 +127,7 @@
   {
     "id": "triage-team",
     "name": "Triage Team",
-    "description": "The triage team helps the project by reviewing, testing, and organizing our GitHub's endless issues and pull requests. With their efforts, developers and maintainers are able to most efficiently handle the most important tasks.",
+    "description": "The Triage Team helps the project by reviewing, testing, and organizing our GitHub's endless issues and pull requests. With their efforts, developers and maintainers are able to most efficiently handle the most important tasks.",
     "members": [
       {
         "name": "sulu",
@@ -176,7 +176,7 @@
   {
     "id": "moderators",
     "name": "Moderators",
-    "description": "The moderation team keeps our community a safe and vibrant space. By watching chat, helping newcomers with questions, and making sure everyone follows the community guidelines, PaperMC's community spaces are able to be as fantastic as they are!",
+    "description": "Moderators keeps our community a safe and vibrant space. By watching chat, helping newcomers with questions, and making sure everyone follows the community guidelines, PaperMC's community spaces are able to be as fantastic as they are!",
     "members": [
       {
         "name": "aberdeener",
