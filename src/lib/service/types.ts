@@ -56,4 +56,3 @@ export interface BuildDownload {
 export interface ProjectsResponse {
   projects: string[];
 }
-
