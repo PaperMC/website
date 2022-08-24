@@ -9,7 +9,7 @@ const WaterfallHome = (): ReactElement => {
     <>
       <SEO
         title="Waterfall"
-        description="Waterfall is an upgraded BungeeCord, offering better performance and full compatibility."
+        description="Waterfall is an upgraded BungeeCord, offering full compatibility with better performance."
         keywords={[
           "waterfall",
           "proxy",
@@ -24,7 +24,7 @@ const WaterfallHome = (): ReactElement => {
         name="Waterfall"
         icon={PaperIcon}
         header={<>The bungee-compatible upgrade</>}
-        description="Waterfall is an upgraded BungeeCord, offering better performance and full compatibility."
+        description="Waterfall is an upgraded BungeeCord, offering full compatibility with better performance."
       />
     </>
   );

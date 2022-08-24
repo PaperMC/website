@@ -102,10 +102,10 @@ const Home: NextPage = () => {
               &nbsp;players
             </h2>
             <p className="md:(mt-6 text-xl) text-gray-900 mt-3">
-              PaperMC’s software powers thousands of Minecraft servers on a
-              daily basis. From small SMPs to ground-breaking Minecraft
+              PaperMC’s software powers tens of thousands of Minecraft servers
+              on a daily basis. From small SMPs to ground-breaking Minecraft
               networks. Designed with utility and performance in mind, it can
-              handle whatever you need to throw at it.
+              handle whatever you throw at it.
             </p>
           </div>
         </div>
@@ -116,11 +116,10 @@ const Home: NextPage = () => {
               Security-first approach
             </h2>
             <p className="md:(mt-6 text-xl) text-gray-900 mt-3">
-              Our software is designed to work seamlessly, and it is focused on
-              providing a high level of security and stability. With a
-              consistently short time from vulnerability identification to
-              security fix, you can rest assured that PaperMC software is a good
-              choice.
+              Our software is designed with security and stability in mind. We
+              have consistently been among the first to fix vulnerability in the
+              minecraft space for years so you can rest assured that PaperMC
+              software is a good choice.
             </p>
           </div>
         </div>

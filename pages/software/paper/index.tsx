@@ -26,7 +26,7 @@ const PaperHome = (): ReactElement => {
         icon={PaperIcon}
         header={
           <>
-            A blazing fast
+            The blazing fast
             <br />
             <span className="text-blue-500">Minecraft server</span>
           </>
