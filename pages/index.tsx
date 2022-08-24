@@ -93,7 +93,9 @@ const Home: NextPage = () => {
             <h2 className="font-semibold text-2xl md:text-4xl break-all">
               Powering&nbsp;
               {playerData ? (
-                <span className="text-blue-500">{playerData[0][1]}+</span>
+                <span className="text-blue-500">
+                  {Math.round(playerData[0][1] / 1000)}k+
+                </span>
               ) : (
                 <Skeleton className="w-30 h-6 inline-block" />
               )}
