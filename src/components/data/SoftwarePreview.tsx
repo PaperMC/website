@@ -23,7 +23,7 @@ const SoftwarePreview = ({
           <div className="rounded-lg w-12 h-12 bg-gray-800 p-3">
             <Icon />
           </div>
-          <h3 className="font-medium">{name}</h3>
+          <h3 className="font-medium flex-1">{name}</h3>
         </div>
 
         <p className="text-gray-800">{description}</p>
