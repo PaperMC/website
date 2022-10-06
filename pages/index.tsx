@@ -47,7 +47,10 @@ const Home: NextPage = () => {
           <TerminalIllustration className="max-h-82 rounded-md" />
         </div>
       </header>
-      <section id="software" className="w-full pt-16 pb-8 bg-primary-200">
+      <section
+        id="software"
+        className="w-full pt-16 pb-8 bg-primary-200 dark:bg-background-dark-80"
+      >
         <div className="max-w-7xl mx-auto">
           <h2 className="font-semibold text-xl md:text-2xl px-4">
             Your server deserves the&nbsp;
@@ -101,7 +104,7 @@ const Home: NextPage = () => {
               )}
               &nbsp;players
             </h2>
-            <p className="md:(mt-6 text-xl) text-gray-900 mt-3">
+            <p className="md:(mt-6 text-xl) text-gray-900 dark:text-gray-100 mt-3">
               PaperMC’s software powers tens of thousands of Minecraft servers
               on a daily basis, from small SMPs to ground-breaking Minecraft
               networks. Designed with utility and performance in mind, it can
@@ -115,7 +118,7 @@ const Home: NextPage = () => {
             <h2 className="font-semibold text-2xl md:text-4xl">
               Security-first approach
             </h2>
-            <p className="md:(mt-6 text-xl) text-gray-900 mt-3">
+            <p className="md:(mt-6 text-xl) text-gray-900 dark:text-gray-100 mt-3">
               Our software is designed with security and stability in mind. We
               have consistently been among the first to fix vulnerability in the
               minecraft space for years so you can rest assured that PaperMC

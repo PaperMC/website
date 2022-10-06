@@ -25,7 +25,7 @@ const SoftwareBuilds = ({
         .slice(0, 10)
         .map((build) => (
           <div
-            className="flex flex-row items-start hover:bg-blue-100 px-4 py-2 rounded-lg transition-colors"
+            className="flex flex-row items-start hover:bg-blue-100 dark:hover:bg-gray-900 px-4 py-2 rounded-lg transition-colors"
             key={build.build}
           >
             <a
@@ -42,11 +42,11 @@ const SoftwareBuilds = ({
             >
               #{build.build}
             </a>
-            <div className="flex-1 flex flex-col mt-1 text-gray-900">
+            <div className="flex-1 flex flex-col mt-1 text-gray-900 dark:text-gray-300">
               <SoftwareBuildChanges project={project} build={build} />
             </div>
             <div
-              className="hidden md:block text-gray-500 mt-1 ml-2"
+              className="hidden md:block text-gray-500 dark:text-gray-300 mt-1 ml-2"
               title={formatISODateTime(new Date(build.time))}
             >
               {formatRelativeDate(new Date(build.time))}

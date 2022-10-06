@@ -28,7 +28,7 @@ const NavDropDown = ({
   return (
     <div
       className={clsx(
-        "color-gray-200 hover:text-blue-600 text-sm transition-colors px-2.5 relative inline-block h-full",
+        "color-gray-200 hover:text-blue-600 dark:hover:text-blue-400 text-sm transition-colors px-2.5 relative inline-block h-full",
         className
       )}
       onMouseEnter={handleEnter}
@@ -36,7 +36,7 @@ const NavDropDown = ({
     >
       <span className="flex flex-row items-center gap-1" role="button">
         {label}
-        <ChevronDownIcon className="w-4 h-4 fill-gray-700" />
+        <ChevronDownIcon className="w-4 h-4 fill-gray-700 dark:fill-gray-300" />
       </span>
 
       <Transition
@@ -50,7 +50,7 @@ const NavDropDown = ({
         show={hover}
         unmount
       >
-        <ul className="mt-2 flex flex-col z-50 p-2 gap-4 bg-background-light-10 transition-all md:(absolute border border-gray-200 rounded-lg shadow-md mt-0)">
+        <ul className="mt-2 flex flex-col z-50 p-2 gap-4 bg-background-light-10 dark:bg-background-dark-90 transition-all md:(absolute border border-gray-200 dark:border-gray-800 rounded-lg shadow-md mt-0)">
           {children}
         </ul>
       </Transition>

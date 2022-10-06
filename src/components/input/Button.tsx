@@ -18,7 +18,7 @@ const Button = ({ variant, dense, href, external, children }: ButtonProps) => {
         "font-medium px-6 py-1.5 rounded-md hover:shadow-md transition-shadow",
         dense ? "text-sm" : "text-md",
         variant === "outlined"
-          ? "border-1 border-gray-400"
+          ? "border-1 border-gray-400 dark:border-gray-600"
           : "bg-blue-500 text-white"
       )}
       rel="noreferrer"

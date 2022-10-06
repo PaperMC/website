@@ -64,12 +64,12 @@ const SoftwareDownloadButton = () => {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="absolute left-0 mt-2 origin-top-left rounded-md bg-background-light-10 shadow-lg divide-y divide-gray-200 border border-gray-200 w-full md:w-auto">
+        <Menu.Items className="absolute left-0 mt-2 origin-top-left rounded-md bg-background-light-10 shadow-lg divide-y divide-gray-200 border border-gray-200 w-full md:w-auto dark:(bg-background-dark-80 divide-gray-800 border-gray-800)">
           {latestBuild &&
             Object.entries(latestBuild.downloads).map(([name, download]) => (
               <Menu.Item key={name}>
                 {() => (
-                  <div className="hover:bg-blue-100 transition-colors">
+                  <div className="hover:bg-blue-100 dark:hover:bg-gray-800 transition-colors">
                     <a
                       href={
                         project &&
@@ -93,7 +93,7 @@ const SoftwareDownloadButton = () => {
                             </span>
                           )}
                         </div>
-                        <div className="text-gray-700 text-xs mt-1 truncate">
+                        <div className="text-gray-700 dark:text-gray-300 text-xs mt-1 truncate">
                           {download.sha256}
                         </div>
                       </div>

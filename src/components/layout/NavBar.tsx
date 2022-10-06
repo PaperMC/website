@@ -36,7 +36,7 @@ const NavBar = () => {
     <nav
       className={clsx(
         "fixed top-0 left-0 right-0 z-50 transition-shadow",
-        scroll && "bg-background-light-10 shadow-xl"
+        scroll && "bg-background-light-10 dark:bg-background-dark-90 shadow-xl"
       )}
     >
       <div className="max-w-7xl flex flex-row items-center mx-auto px-4 py-2 gap-2">
@@ -56,7 +56,7 @@ const NavBar = () => {
         </NextLink>
         <div
           className={clsx(
-            "absolute top-full left-0 right-0 flex flex-col bg-background-light-10 gap-4 p-4 shadow-xl w-full md:(block relative w-auto shadow-none bg-transparent p-0)",
+            "absolute top-full left-0 right-0 flex flex-col bg-background-light-10 dark:bg-background-dark-90 gap-4 p-4 shadow-xl w-full md:(block relative w-auto shadow-none bg-transparent p-0)",
             !showMenu && "hidden"
           )}
         >

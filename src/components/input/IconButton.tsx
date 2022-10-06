@@ -22,7 +22,7 @@ const IconButton = (props: IconButtonProps) => {
         onClick={onClick}
         aria-label={label}
       >
-        <Icon className="h-6 w-6 fill-gray-700" />
+        <Icon className="h-6 w-6 fill-gray-700 dark:fill-gray-300" />
       </a>
     );
 

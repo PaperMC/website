@@ -17,7 +17,7 @@ const NavDropDownLink = ({
 }: NavDropDownLinkProps): ReactElement => (
   <li
     className={clsx(
-      "color-gray-200 text-gray-800 hover:text-blue-600 text-sm transition-colors px-2.5",
+      "color-gray-200 text-gray-800 hover:text-blue-600 text-sm transition-colors px-2.5 dark:(text-gray-200 hover:text-blue-400)",
       className
     )}
   >

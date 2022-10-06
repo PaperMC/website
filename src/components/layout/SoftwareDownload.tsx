@@ -49,7 +49,7 @@ const SoftwareDownload = ({
       </header>
       <section id="builds" className="max-w-7xl mx-auto py-8">
         <h2 className="text-center text-xl font-medium">Recent builds</h2>
-        <p className="text-center text-gray-800 text-lg mt-2 mb-8 px-4">
+        <p className="text-center text-gray-800 dark:text-gray-200 text-lg mt-2 mb-8 px-4">
           Looking for recent builds - or changelog? We got you!
         </p>
         <SoftwareBuilds
@@ -57,10 +57,12 @@ const SoftwareDownload = ({
           version={project.latestVersion}
           builds={builds?.builds}
         />
-        <p className="mt-2 text-center text-gray-700">
+        <p className="mt-2 text-center text-gray-700 dark:text-gray-400">
           Looking for older builds? Try out our&nbsp;
           <Link href="/downloads/all" passHref>
-            <a className="text-gray-700 underline">build explorer</a>
+            <a className="text-gray-700 dark:text-gray-400 underline">
+              build explorer
+            </a>
           </Link>
         </p>
       </section>
