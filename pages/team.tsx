@@ -56,7 +56,7 @@ const Team: NextPage = () => {
             {team.members.map((member) => (
               <article
                 key={member.name}
-                className="border border-gray-300 rounded-md hover:shadow-md transition-shadow p-4"
+                className="border border-gray-300 dark:border-gray-700 rounded-md hover:shadow-md transition-shadow p-4"
               >
                 <div className="flex flex-row gap-6">
                   <div className="w-20 h-20 relative bg-gray-600 rounded-md overflow-clip ">
@@ -75,17 +75,17 @@ const Team: NextPage = () => {
                     {member.github && (
                       <a
                         href={`https://github.com/${member.github}`}
-                        className="flex flex-row items-center gap-2 mt-2 text-blue-800 text-sm font-medium"
+                        className="flex flex-row items-center gap-2 mt-2 text-blue-800 dark:text-blue-300 text-sm font-medium"
                         rel="noreferrer"
                         target="_blank"
                       >
-                        <GitHubIcon className="w-4 h-4 fill-gray-700" />
+                        <GitHubIcon className="w-4 h-4 fill-gray-700 dark:fill-gray-300" />
                         {member.github}
                       </a>
                     )}
                     {member.discord && (
-                      <div className="flex flex-row items-center gap-2 mt-1 text-blue-800 text-sm font-medium">
-                        <DiscordIcon className="w-4 h-4 fill-gray-700" />
+                      <div className="flex flex-row items-center gap-2 mt-1 text-blue-800 dark:text-blue-300 text-sm font-medium">
+                        <DiscordIcon className="w-4 h-4 fill-gray-700 dark:fill-gray-300" />
                         {member.discord}
                       </div>
                     )}
