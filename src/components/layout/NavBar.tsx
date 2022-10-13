@@ -48,7 +48,7 @@ const NavBar = () => {
         </button>
         <NextLink href="/" passHref>
           <a className="leading-0">
-            <Logo className="w-10 h-10 cursor-pointer" />
+            <Logo className="w-10 h-10 cursor-pointer" alt="" />
           </a>
         </NextLink>
         <NextLink href="/" passHref>
