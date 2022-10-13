@@ -42,7 +42,7 @@ const SoftwareBuilds = ({
             >
               #{build.build}
             </a>
-            <div className="flex-1 flex flex-col mt-1 text-gray-900 dark:text-gray-300">
+            <div className="flex-1 flex flex-col mt-1 text-gray-900 dark:text-gray-200">
               <SoftwareBuildChanges project={project} build={build} />
             </div>
             <div

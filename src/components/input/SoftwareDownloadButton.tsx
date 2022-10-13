@@ -51,7 +51,7 @@ const SoftwareDownloadButton = () => {
             )}
           </div>
         </a>
-        <Menu.Button>
+        <Menu.Button aria-label="Other download variants">
           <ChevronDownIcon className="w-6 h-6 text-gray-200" />
         </Menu.Button>
       </div>
