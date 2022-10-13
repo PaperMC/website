@@ -23,10 +23,6 @@ const nextConfig = {
     loader: "imgix",
     path: "https://face-lift.pages.dev/",
   },
-  i18n: {
-    locales: ["en"],
-    defaultLocale: "en",
-  },
 };
 
 module.exports = nextConfig;
