@@ -46,8 +46,10 @@ const NavBar = () => {
         >
           <MenuIcon className="w-6 h-6 fill-gray-500" />
         </button>
-        <NextLink href="/">
-          <Logo className="w-10 h-10 cursor-pointer" />
+        <NextLink href="/" passHref>
+          <a className="leading-0">
+            <Logo className="w-10 h-10 cursor-pointer" />
+          </a>
         </NextLink>
         <NextLink href="/" passHref>
           <a className="leading-0 mr-4">

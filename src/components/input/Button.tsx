@@ -19,7 +19,7 @@ const Button = ({ variant, dense, href, external, children }: ButtonProps) => {
         dense ? "text-sm" : "text-md",
         variant === "outlined"
           ? "border-1 border-gray-400 dark:border-gray-600"
-          : "bg-blue-500 text-white"
+          : "bg-blue-600 text-white"
       )}
       rel="noreferrer"
       target={external ? "_blank" : "_self"}

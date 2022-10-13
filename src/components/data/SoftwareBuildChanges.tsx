@@ -1,4 +1,4 @@
-import { ReactElement } from "react";
+import React, { Fragment, ReactElement } from "react";
 
 import { Build } from "@/lib/service/types";
 import styles from "@/styles/components/data/SoftwareBuildChanges.module.css";
@@ -38,7 +38,10 @@ const highlightIssues = (
   highlightClass: string
 ): JSX.Element[] => {
   return summary.split(/([^&])(#[0-9]+)/gm).map((part: string, i: number) => {
-    if (!part.match(/#[0-9]+/)) return <>{part}</>;
+    if (!part.match(/#[0-9]+/)) {
+      return <Fragment key={i}>{part}</Fragment>;
+    }
+
     return (
       <a
         key={i}
