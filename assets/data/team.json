@@ -5,18 +5,6 @@
     "description": "Core Team members are responsible for the direction of the project, and for making the big decisions. Whether they focus on the code or the community, they're essential to making everything run and have final say in just about anything.",
     "members": [
       {
-        "name": "Aikar",
-        "avatar": "https://avatars.githubusercontent.com/u/58008?v=4",
-        "discord": "Aikar#0001",
-        "github": "aikar"
-      },
-      {
-        "name": "DenWav",
-        "avatar": "https://avatars.githubusercontent.com/u/1332104?v=4",
-        "discord": "DenWav#1989",
-        "github": "DenWav"
-      },
-      {
         "name": "electronicboy",
         "avatar": "https://avatars.githubusercontent.com/u/1228900?v=4",
         "discord": "electronicboy#8869",
@@ -27,6 +15,12 @@
         "avatar": "https://avatars.githubusercontent.com/u/5474071?v=4",
         "discord": "kashike#0370",
         "github": "kashike"
+      },
+      {
+        "name": "kennytv",
+        "avatar": "https://avatars.githubusercontent.com/u/28825609?v=4",
+        "discord": "kennytv#9656",
+        "github": "kennytv"
       },
       {
         "name": "MiniDigger",
@@ -59,12 +53,6 @@
         "avatar": "https://avatars.githubusercontent.com/u/11360596?v=4",
         "discord": "jmp#3822",
         "github": "jpenilla"
-      },
-      {
-        "name": "kennytv",
-        "avatar": "https://avatars.githubusercontent.com/u/28825609?v=4",
-        "discord": "kennytv#9656",
-        "github": "kennytv"
       },
       {
         "name": "Me4502",
