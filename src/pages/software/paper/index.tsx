@@ -66,4 +66,8 @@ const PaperHome = (): ReactElement => {
   );
 };
 
+PaperHome.softwareProps = {
+  github: "https://github.com/PaperMC/Paper",
+};
+
 export default PaperHome;

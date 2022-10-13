@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import { NextComponentType, NextPageContext } from "next";
 import NextLink from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -12,11 +13,20 @@ import IconButton from "@/components/input/IconButton";
 import NavDropDown from "@/components/layout/NavDropDown";
 import NavDropDownLink from "@/components/layout/NavDropDownLink";
 import NavLink from "@/components/layout/NavLink";
+import { PageSoftwareProps } from "@/lib/util/types";
 
-const NavBar = () => {
+export interface NavBarProps {
+  component: NextComponentType<NextPageContext, any, any>;
+}
+
+const NavBar = ({ component }: NavBarProps) => {
   const [scroll, setScroll] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const router = useRouter();
+
+  const softwareProps: PageSoftwareProps | undefined = (component as any)[
+    "softwareProps"
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -87,7 +97,7 @@ const NavBar = () => {
         <IconButton
           icon={GitHubIcon}
           label="GitHub"
-          href="https://github.com/PaperMC"
+          href={softwareProps?.github || "https://github.com/PaperMC"}
           external
         />
         <IconButton

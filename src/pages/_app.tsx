@@ -12,8 +12,10 @@ import NavBar from "@/components/layout/NavBar";
 
 const MyApp = ({ Component, pageProps }: AppProps) => (
   <>
-    <NavBar />
-    <Component {...pageProps} />
+    <NavBar component={Component} />
+    <main>
+      <Component {...pageProps} />
+    </main>
   </>
 );
 

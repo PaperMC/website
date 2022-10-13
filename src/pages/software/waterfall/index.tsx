@@ -61,4 +61,8 @@ const WaterfallHome = (): ReactElement => {
   );
 };
 
+WaterfallHome.softwareProps = {
+  github: "https://github.com/PaperMC/Waterfall",
+};
+
 export default WaterfallHome;

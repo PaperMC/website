@@ -60,4 +60,8 @@ const VelocityHome = (): ReactElement => {
   );
 };
 
+VelocityHome.softwareProps = {
+  github: "https://github.com/PaperMC/Velocity",
+};
+
 export default VelocityHome;
