@@ -33,7 +33,11 @@ const SoftwareHeader = ({
         <Button variant="filled" href={`/downloads/${id}`}>
           Downloads
         </Button>
-        <Button variant="outlined" href="https://docs.papermc.io" external>
+        <Button
+          variant="outlined"
+          href={`https://docs.papermc.io/${id}`}
+          external
+        >
           Documentation
         </Button>
       </div>
