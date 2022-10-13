@@ -4,10 +4,9 @@ import PaperIcon from "@/assets/brand/paper.svg";
 import BoltIcon from "@/assets/icons/heroicons/bolt.svg";
 import ChatBubbleLeftRightIcon from "@/assets/icons/heroicons/chat-bubble-left-right.svg";
 import CodeBracketIcon from "@/assets/icons/heroicons/code-bracket.svg";
-
+import FeatureCard from "@/components/data/FeatureCard";
 import SoftwareHeader from "@/components/layout/SoftwareHeader";
 import SEO from "@/components/util/SEO";
-import FeatureCard from "@/components/data/FeatureCard";
 
 const PaperHome = (): ReactElement => {
   return (
