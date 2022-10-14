@@ -9,6 +9,7 @@ import DiscordIcon from "@/assets/icons/fontawesome/discord-brands.svg";
 import GitHubIcon from "@/assets/icons/fontawesome/github-brands.svg";
 import TwitterIcon from "@/assets/icons/fontawesome/twitter-brands.svg";
 import MenuIcon from "@/assets/icons/heroicons/menu.svg";
+import ExternalUrlIcon from "@/assets/icons/heroicons/arrow-top-right-on-square.svg"
 import IconButton from "@/components/input/IconButton";
 import NavDropDown from "@/components/layout/NavDropDown";
 import NavDropDownLink from "@/components/layout/NavDropDownLink";
@@ -83,6 +84,7 @@ const NavBar = ({ component }: NavBarProps) => {
           </NavDropDown>
           <NavLink href="https://forums.papermc.io/" target="_blank">
             Forums
+            <ExternalUrlIcon className="h-1rem ml-0.5 align-sub" />
           </NavLink>
           <NavLink href="/team">Team</NavLink>
         </div>
