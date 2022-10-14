@@ -108,9 +108,7 @@ const Team: NextPage = () => {
         </p>
         <div className="grid grid-cols-8 md:grid-cols-16 lg:grid-cols-18 xl:grid-cols-20 mt-8 gap-2">
           {contributors
-            ?.filter(
-              (contributor) => HIDDEN_USERS.indexOf(contributor.id) === -1
-            )
+            ?.filter((contributor) => !HIDDEN_USERS.includes(contributor.id))
             ?.map((contributor) => (
               <a
                 role="button"
