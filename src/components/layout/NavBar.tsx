@@ -84,7 +84,7 @@ const NavBar = ({ component }: NavBarProps) => {
           </NavDropDown>
           <NavLink href="https://forums.papermc.io/" target="_blank">
             Forums
-            <ExternalUrlIcon className="h-1rem ml-0.5 align-sub" />
+            <ExternalUrlIcon className="h-4 w-4 ml-1 align-sub" />
           </NavLink>
           <NavLink href="/team">Team</NavLink>
         </div>
