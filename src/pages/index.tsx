@@ -29,10 +29,10 @@ const Home: NextPage = () => {
             <span className="text-blue-500">Built to perform.</span>
           </h1>
           <p className="text-xl mt-4">
-            PaperMC is a Minecraft software organization focusing on improving
+            PaperMC is a Minecraft software organization focused on improving
             the game’s ecosystem with faster and more secure software. Our
             server, Paper, is leading the competition as the most performant and
-            stable available.
+            stable one available.
           </p>
           <div className="flex flex-row gap-4 mt-8">
             <Button variant="filled" href="/downloads">
@@ -121,7 +121,7 @@ const Home: NextPage = () => {
             <p className="md:(mt-6 text-xl) text-gray-900 dark:text-gray-100 mt-3">
               Our software is designed with security and stability in mind. We
               have consistently been among the first to fix vulnerability in the
-              minecraft space for years so you can rest assured that PaperMC
+              Minecraft space for years, so you can rest assured that PaperMC
               software is a good choice.
             </p>
           </div>
