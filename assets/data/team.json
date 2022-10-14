@@ -118,12 +118,6 @@
     "description": "The Triage Team helps the project by reviewing, testing, and organizing our GitHub's endless issues and pull requests. With their efforts, developers and maintainers are able to most efficiently handle the most important tasks.",
     "members": [
       {
-        "name": "sulu",
-        "avatar": "https://avatars.githubusercontent.com/u/76139600?v=4",
-        "discord": "sulu#9747",
-        "github": "e-im"
-      },
-      {
         "name": "chew",
         "avatar": "https://avatars.githubusercontent.com/u/8278263?v=4",
         "discord": "olivia // chew#0579",
