@@ -120,9 +120,9 @@ const Home: NextPage = () => {
             </h2>
             <p className="md:(mt-6 text-xl) text-gray-900 dark:text-gray-100 mt-3">
               Our software is designed with security and stability in mind. We
-              have consistently been among the first to fix vulnerabilities in the
-              Minecraft space for years, so you can rest assured that PaperMC
-              software is a good choice.
+              have consistently been among the first to fix vulnerabilities in
+              the Minecraft space for years, so you can rest assured that
+              PaperMC software is a good choice.
             </p>
           </div>
         </div>
