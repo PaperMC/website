@@ -8,6 +8,8 @@ import Button from "@/components/input/Button";
 import SEO from "@/components/util/SEO";
 import { useGitHubContributors } from "@/lib/service/github";
 
+const HIDDEN_USERS = [1007849, 23557539, 49699333]; // md_5, EcoCityCraftCI, dependabot
+
 const Team: NextPage = () => {
   const { data: contributors } = useGitHubContributors();
 
@@ -105,27 +107,29 @@ const Team: NextPage = () => {
           helped us to provide the best software we possibly can.
         </p>
         <div className="grid grid-cols-8 md:grid-cols-16 lg:grid-cols-18 xl:grid-cols-20 mt-8 gap-2">
-          {contributors
-            ?.filter((contributor) => contributor.id !== 1007849)
-            ?.map((contributor) => (
-              <a
-                role="button"
-                className="relative rounded-full aspect-square bg-gray-600 flex items-center justify-center text-white font-bold uppercase overflow-auto transition-transform transform hover:(scale-120 shadow-lg)"
-                href={`https://github.com/${contributor.login}`}
-                rel="noreferrer"
-                target="_blank"
-                key={contributor.id}
-              >
-                {contributor.login[0]}
-                <Image
-                  alt={`${contributor.login}'s avatar`}
-                  src={contributor.avatar_url}
-                  objectFit="cover"
-                  layout="fill"
-                  unoptimized
-                />
-              </a>
-            ))}
+          {contributors?.map((page) =>
+            page
+              .filter((contributor) => !HIDDEN_USERS.includes(contributor.id))
+              .map((contributor) => (
+                <a
+                  role="button"
+                  className="relative rounded-full aspect-square bg-gray-600 flex items-center justify-center text-white font-bold uppercase overflow-auto transition-transform transform hover:(scale-120 shadow-lg)"
+                  href={`https://github.com/${contributor.login}`}
+                  rel="noreferrer"
+                  target="_blank"
+                  key={contributor.id}
+                >
+                  {contributor.login[0]}
+                  <Image
+                    alt={`${contributor.login}'s avatar`}
+                    src={contributor.avatar_url}
+                    objectFit="cover"
+                    layout="fill"
+                    unoptimized
+                  />
+                </a>
+              ))
+          )}
         </div>
       </section>
     </>
