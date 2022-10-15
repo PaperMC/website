@@ -1,4 +1,4 @@
-import { NextPage } from "next";
+import type { NextPage } from "next";
 
 import ChattingIllustration from "@/assets/illustrations/undraw/chatting.svg";
 import CodeReviewIllustration from "@/assets/illustrations/undraw/code-review.svg";

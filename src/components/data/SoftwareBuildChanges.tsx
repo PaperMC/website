@@ -1,6 +1,7 @@
-import React, { Fragment, ReactElement } from "react";
+import type { ReactElement } from "react";
+import { Fragment } from "react";
 
-import { Build } from "@/lib/service/types";
+import type { Build } from "@/lib/service/types";
 import styles from "@/styles/components/data/SoftwareBuildChanges.module.css";
 
 export interface SoftwareBuildChangesProps {

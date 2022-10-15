@@ -1,4 +1,5 @@
-import useSWRInfinite, { SWRInfiniteResponse } from "swr/infinite";
+import type { SWRInfiniteResponse } from "swr/infinite";
+import useSWRInfinite from "swr/infinite";
 
 export interface Contributor {
   login: string;

@@ -1,10 +1,11 @@
-import { FunctionComponent, ReactElement } from "react";
+import type { FunctionComponent, ReactElement } from "react";
 
 import Button from "@/components/input/Button";
 
 export interface SoftwareHeaderProps {
   id: string;
   name: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   icon?: FunctionComponent<any>;
   header: ReactElement;
   description: string;

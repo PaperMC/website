@@ -1,8 +1,8 @@
-import { ReactElement } from "react";
+import type { ReactElement } from "react";
 
 import Skeleton from "@/components/data/Skeleton";
 import SoftwareBuildChanges from "@/components/data/SoftwareBuildChanges";
-import { Build } from "@/lib/service/types";
+import type { Build } from "@/lib/service/types";
 import { getVersionBuildDownloadURL } from "@/lib/service/v2";
 import { formatRelativeDate, formatISODateTime } from "@/lib/util/time";
 

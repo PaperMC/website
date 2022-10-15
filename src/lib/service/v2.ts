@@ -1,6 +1,7 @@
-import useSWR, { SWRResponse } from "swr";
+import type { SWRResponse } from "swr";
+import useSWR from "swr";
 
-import {
+import type {
   Project,
   ProjectsResponse,
   VersionBuilds,

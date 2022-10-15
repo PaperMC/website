@@ -1,9 +1,10 @@
-import { ReactElement } from "react";
+import type { ReactElement } from "react";
 
 import PaperIcon from "@/assets/brand/paper.svg";
 import SoftwareDownload from "@/components/layout/SoftwareDownload";
 import SEO from "@/components/util/SEO";
-import { getProjectProps, ProjectProps } from "@/lib/context/downloads";
+import type { ProjectProps } from "@/lib/context/downloads";
+import { getProjectProps } from "@/lib/context/downloads";
 
 const WaterfallDownloads = ({ project }: ProjectProps): ReactElement => {
   return (

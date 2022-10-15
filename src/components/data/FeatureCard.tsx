@@ -1,6 +1,7 @@
-import { FunctionComponent } from "react";
+import type { FunctionComponent } from "react";
 
 export interface FeatureCardProps {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   icon: FunctionComponent<any>;
   label: string;
   description: string;
