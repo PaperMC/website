@@ -1,4 +1,4 @@
-import { ReactElement } from "react";
+import type { ReactElement } from "react";
 
 import VelocityIcon from "@/assets/brand/velocity.svg";
 import BoltIcon from "@/assets/icons/heroicons/bolt.svg";

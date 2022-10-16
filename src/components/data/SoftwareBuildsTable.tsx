@@ -1,5 +1,5 @@
 import SoftwareBuildChanges from "@/components/data/SoftwareBuildChanges";
-import { Build } from "@/lib/service/types";
+import type { Build } from "@/lib/service/types";
 import { getVersionBuildDownloadURL } from "@/lib/service/v2";
 import { formatRelativeDate, formatISODateTime } from "@/lib/util/time";
 import styles from "@/styles/components/data/SoftwareBuildsTable.module.css";

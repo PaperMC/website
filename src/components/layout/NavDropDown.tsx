@@ -1,6 +1,7 @@
 import { Transition } from "@headlessui/react";
 import clsx from "clsx";
-import { Fragment, ReactElement, ReactNode, useState } from "react";
+import type { ReactElement, ReactNode } from "react";
+import { Fragment, useState } from "react";
 
 import ChevronDownIcon from "@/assets/icons/heroicons/chevron-down.svg";
 

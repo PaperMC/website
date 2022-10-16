@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import NextLink from "next/link";
-import React, { ReactNode } from "react";
+import type { ReactNode } from "react";
 
 export interface LinkProps {
   href: string;

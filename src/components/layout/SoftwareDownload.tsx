@@ -1,13 +1,15 @@
 import Link from "next/link";
-import { FunctionComponent, ReactElement } from "react";
+import type { FunctionComponent, ReactElement } from "react";
 
 import SoftwareBuilds from "@/components/data/SoftwareBuilds";
 import SoftwareDownloadButton from "@/components/input/SoftwareDownloadButton";
-import { DownloadsContext, ProjectProps } from "@/lib/context/downloads";
+import type { ProjectProps } from "@/lib/context/downloads";
+import { DownloadsContext } from "@/lib/context/downloads";
 import { useVersionBuilds } from "@/lib/service/v2";
 
 export interface SoftwareDownloadProps {
   id: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   icon?: FunctionComponent<any>;
   description: string;
 }

@@ -1,10 +1,10 @@
-import { GetStaticProps, NextPage } from "next";
+import type { GetStaticProps, NextPage } from "next";
 import { useState } from "react";
 
 import SoftwareBuildsTable from "@/components/data/SoftwareBuildsTable";
 import DownloadsTree from "@/components/layout/DownloadsTree";
 import SEO from "@/components/util/SEO";
-import { Project } from "@/lib/service/types";
+import type { Project } from "@/lib/service/types";
 import { useVersionBuilds, getProject } from "@/lib/service/v2";
 
 const INITIAL_PROJECT = "paper";

@@ -1,9 +1,10 @@
 import Link from "next/link";
-import { FunctionComponent } from "react";
+import type { FunctionComponent } from "react";
 
 export interface SoftwarePreviewProps {
   id: string;
   name: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   icon: FunctionComponent<any>;
   description: string;
   download?: boolean;

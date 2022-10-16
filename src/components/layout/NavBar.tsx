@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { NextComponentType, NextPageContext } from "next";
+import type { NextComponentType, NextPageContext } from "next";
 import NextLink from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -14,9 +14,10 @@ import IconButton from "@/components/input/IconButton";
 import NavDropDown from "@/components/layout/NavDropDown";
 import NavDropDownLink from "@/components/layout/NavDropDownLink";
 import NavLink from "@/components/layout/NavLink";
-import { PageSoftwareProps } from "@/lib/util/types";
+import type { PageSoftwareProps } from "@/lib/util/types";
 
 export interface NavBarProps {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   component: NextComponentType<NextPageContext, any, any>;
 }
 
@@ -25,6 +26,7 @@ const NavBar = ({ component }: NavBarProps) => {
   const [showMenu, setShowMenu] = useState(false);
   const router = useRouter();
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const softwareProps: PageSoftwareProps | undefined = (component as any)[
     "softwareProps"
   ];
