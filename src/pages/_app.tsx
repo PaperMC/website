@@ -8,14 +8,16 @@ import "@/styles/globals.css";
 
 import type { AppProps } from "next/app";
 
+import Footer from "@/components/layout/Footer";
 import NavBar from "@/components/layout/NavBar";
 
 const MyApp = ({ Component, pageProps }: AppProps) => (
   <>
     <NavBar component={Component} />
-    <main>
+    <main className="flex-1">
       <Component {...pageProps} />
     </main>
+    <Footer />
   </>
 );
 
