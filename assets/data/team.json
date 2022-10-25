@@ -61,12 +61,6 @@
         "github": "jpenilla"
       },
       {
-        "name": "Me4502",
-        "avatar": "https://avatars.githubusercontent.com/u/546754?v=4",
-        "discord": "Me4502#4502",
-        "github": "me4502"
-      },
-      {
         "name": "Spottedleaf",
         "avatar": "https://avatars.githubusercontent.com/u/6100722?v=4",
         "discord": "Spottedleaf#0001",
@@ -80,16 +74,22 @@
     "description": "Paper Developers help with writing code, reviewing PRs, and keeping the project lively. By contributing new features and helping to polish off old code, they make Paper run.",
     "members": [
       {
-        "name": "JRoy",
-        "avatar": "https://avatars.githubusercontent.com/u/10731363?v=4",
-        "discord": "Joshie#0001",
-        "github": "JRoy"
+        "name": "lynxplay",
+        "avatar": "https://avatars.githubusercontent.com/u/32834385?v=4",
+        "discord": "lynxplay#0001",
+        "github": "lynxplay"
       },
       {
         "name": "Machine Maker",
         "avatar": "https://avatars.githubusercontent.com/u/15055071?v=4",
         "discord": "Machine Maker#3443",
         "github": "Machine-Maker"
+      },
+      {
+        "name": "Owen",
+        "avatar": "https://avatars.githubusercontent.com/u/23108066?v=4",
+        "discord": "Owen#1212",
+        "github": "Owen1212055"
       }
     ]
   },
@@ -130,22 +130,10 @@
         "github": "chickeneer"
       },
       {
-        "name": "lynxplay",
-        "avatar": "https://avatars.githubusercontent.com/u/32834385?v=4",
-        "discord": "lynxplay#0001",
-        "github": "lynxplay"
-      },
-      {
         "name": "Noah",
         "avatar": "https://avatars.githubusercontent.com/u/44026893?v=4",
         "discord": "NoahvdAa#0001",
         "github": "NoahvdAa"
-      },
-      {
-        "name": "Owen",
-        "avatar": "https://avatars.githubusercontent.com/u/23108066?v=4",
-        "discord": "Owen#1212",
-        "github": "Owen1212055"
       },
       {
         "name": "Prof-Bloodstone",
@@ -189,6 +177,18 @@
         "avatar": "https://avatars.githubusercontent.com/u/1694336?v=4",
         "discord": "gsand#8386",
         "github": "gsand"
+      },
+      {
+        "name": "JRoy",
+        "avatar": "https://avatars.githubusercontent.com/u/10731363?v=4",
+        "discord": "Joshie#0001",
+        "github": "JRoy"
+      },
+      {
+        "name": "Me4502",
+        "avatar": "https://avatars.githubusercontent.com/u/546754?v=4",
+        "discord": "Me4502#4502",
+        "github": "me4502"
       },
       {
         "name": "Michael",
