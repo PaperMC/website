@@ -21,10 +21,14 @@ const NavDropDownLink = ({
       className
     )}
   >
-    <NextLink href={href} passHref>
-      <a role="button" rel="noreferrer" target={target}>
-        {children}
-      </a>
+    <NextLink
+      href={href}
+      passHref
+      role="button"
+      rel="noreferrer"
+      target={target}
+    >
+      {children}
     </NextLink>
   </li>
 );

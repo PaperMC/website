@@ -52,10 +52,12 @@ const Downloads: NextPage = () => {
             download
           />
         </div>
-        <Link href="/downloads/all" passHref>
-          <a className="text-gray-700 underline dark:text-gray-400">
-            Build explorer
-          </a>
+        <Link
+          href="/downloads/all"
+          passHref
+          className="text-gray-700 underline dark:text-gray-400"
+        >
+          Build explorer
         </Link>
       </header>
     </>

@@ -61,10 +61,12 @@ const SoftwareDownload = ({
         />
         <p className="mt-2 text-center text-gray-700 dark:text-gray-400">
           Looking for older builds? Try out our&nbsp;
-          <Link href="/downloads/all" passHref>
-            <a className="text-gray-700 dark:text-gray-400 underline">
-              build explorer
-            </a>
+          <Link
+            href="/downloads/all"
+            passHref
+            className="text-gray-700 dark:text-gray-400 underline"
+          >
+            build explorer
           </Link>
         </p>
       </section>

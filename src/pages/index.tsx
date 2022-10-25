@@ -85,11 +85,11 @@ const Home: NextPage = () => {
         <div className="flex flex-col gap-6 md:(flex-row gap-8) xl:gap-24 items-center">
           <div className="w-full flex-1 rounded-xl bg-gray-900 aspect-video relative overflow-clip">
             <Image
+              className="object-cover"
               alt=""
               src={HomeImage1}
-              objectFit="cover"
-              layout="fill"
               placeholder="blur"
+              fill
             />
           </div>
           <div className="flex-1">

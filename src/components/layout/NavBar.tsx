@@ -59,15 +59,17 @@ const NavBar = ({ component }: NavBarProps) => {
         >
           <MenuIcon className="w-6 h-6 fill-gray-500" />
         </button>
-        <NextLink href="/" passHref>
-          <a className="leading-0" tabIndex={-1} aria-hidden={true}>
-            <Logo className="w-10 h-10 cursor-pointer" />
-          </a>
+        <NextLink
+          href="/"
+          passHref
+          className="leading-0"
+          tabIndex={-1}
+          aria-hidden={true}
+        >
+          <Logo className="w-10 h-10 cursor-pointer" />
         </NextLink>
-        <NextLink href="/" passHref>
-          <a className="leading-0 mr-4">
-            <span className="font-semibold text-lg">PaperMC</span>
-          </a>
+        <NextLink href="/" passHref className="leading-0 mr-4">
+          <span className="font-semibold text-lg">PaperMC</span>
         </NextLink>
         <div
           className={clsx(

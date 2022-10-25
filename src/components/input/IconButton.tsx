@@ -11,31 +11,21 @@ export interface IconButtonProps {
 }
 
 const IconButton = (props: IconButtonProps) => {
-  const { icon: Icon, label, href, external, onClick } = props;
+  const { icon: Icon, label, href, onClick } = props;
 
   if (href) {
-    const anchor = (
-      <a
+    return (
+      <Link
         href={href}
         rel="noreferrer"
         target="_blank"
-        className="inline-block h-min w-min rounded-full p-2 transition-colors hover:bg-gray-800/20 leading-0"
+        className="gray-700 inline-block h-min w-min rounded-full p-2 transition-colors hover:bg-gray-800/20 leading-0"
         onClick={onClick}
         aria-label={label}
       >
         <Icon className="h-6 w-6 fill-gray-700 dark:fill-gray-300" />
-      </a>
+      </Link>
     );
-
-    if (external) {
-      return anchor;
-    } else {
-      return (
-        <Link className="gray-700" href={href} passHref>
-          {anchor}
-        </Link>
-      );
-    }
   }
 
   return (
