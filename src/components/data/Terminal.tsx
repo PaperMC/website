@@ -68,14 +68,18 @@ export function Terminal({ project }: ProjectProps) {
       }
 
       setSuccess(
-        <InfoLog>Done (2.274s)! For help, type &quot;help&quot;</InfoLog>
+        <InfoLog>
+          <span className="text-green-400">
+            Done (2.274s)! For help, type &quot;help&quot;
+          </span>
+        </InfoLog>
       );
     })();
   }, [project.latestVersion]);
 
   return (
     <div className="max-h-82 w-120 h-283 rounded-lg bg-gray-800">
-      <div className="w-full bg-gray-900 flex p-2 gap-2">
+      <div className="w-full bg-gray-900 rounded-lg flex p-2 gap-2">
         <div className="w-2.5 h-2.5 bg-red-500 rounded-full" />
         <div className="w-2.5 h-2.5 bg-yellow-500 rounded-full" />
         <div className="w-2.5 h-2.5 bg-green-500 rounded-full" />
@@ -90,9 +94,7 @@ export function Terminal({ project }: ProjectProps) {
           <span className="text-gray-400">{loading}</span>
         </div>
         <div>{output}</div>
-        <div>
-          <span className="text-green-400">{success}</span>
-        </div>
+        <div>{success}</div>
       </div>
     </div>
   );
