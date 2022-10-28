@@ -1,13 +1,15 @@
-import React, { ReactNode, useEffect, useRef, useState } from "react";
+import { type ReactNode, useEffect, useState } from "react";
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 const getNaturalDelay = () => Math.floor(Math.random() * 80) + 40;
-const formatDate = (d: Date) => `${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`;
+const formatDate = (d: Date) =>
+  `${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`;
 
 function InfoLog({ children }: { children: ReactNode }) {
   return (
     <div>
-      <span className="text-amber-400">[{formatDate(new Date())} INFO]</span>: {children}
+      <span className="text-amber-400">[{formatDate(new Date())} INFO]</span>:{" "}
+      {children}
     </div>
   );
 }
@@ -28,8 +30,8 @@ export function Terminal() {
   const [cmd, setCmd] = useState("");
   const [args, setArgs] = useState("");
   const [loading, setLoading] = useState("");
-  const [output, setOutput] = useState<React.ReactNode>(null);
-  const [success, setSuccess] = useState<React.ReactNode>(null);
+  const [output, setOutput] = useState<ReactNode>(null);
+  const [success, setSuccess] = useState<ReactNode>(null);
 
   useEffect(() => {
     (async () => {
@@ -55,13 +57,18 @@ export function Terminal() {
 
       let currentOutput: ReactNode[] = [];
       for (let i = 0; i < outputLines.length; i++) {
-        currentOutput = [...currentOutput, <InfoLog>{outputLines[i]}</InfoLog>];
+        currentOutput = [
+          ...currentOutput,
+          <InfoLog key={i}>{outputLines[i]}</InfoLog>,
+        ];
         setOutput(currentOutput);
 
         await sleep(getNaturalDelay());
       }
 
-      setSuccess(<InfoLog>Done (2.274s)! For help, type "help"</InfoLog>);
+      setSuccess(
+        <InfoLog>Done (2.274s)! For help, type &quot;help&quot;</InfoLog>
+      );
     })();
   }, []);
 
