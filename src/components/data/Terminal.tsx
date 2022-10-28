@@ -1,5 +1,6 @@
 import { useEffect, useState, type ReactNode } from "react";
-import { getProjectProps, ProjectProps } from "@/lib/context/downloads";
+
+import type { ProjectProps } from "@/lib/context/downloads";
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 const getNaturalDelay = () => Math.floor(Math.random() * 80) + 40;
@@ -16,18 +17,6 @@ function InfoLog({ children }: { children: ReactNode }) {
 }
 
 export function Terminal({ project }: ProjectProps) {
-  const outputLines = [
-    `Starting minecraft server version ${project.latestVersion}`,
-    'Preparing level "world"',
-    "Preparing start region for dimension minecraft:overworld",
-    "Time elapsed: 363 ms",
-    "Preparing start region for dimension minecraft:the_nether",
-    "Time elapsed: 147 ms",
-    "Preparing start region for dimension minecraft:the_end",
-    "Time elapsed: 366 ms",
-    "Running delayed init tasks",
-  ];
-
   const [cmd, setCmd] = useState("");
   const [args, setArgs] = useState("");
   const [loading, setLoading] = useState("");
@@ -35,6 +24,18 @@ export function Terminal({ project }: ProjectProps) {
   const [success, setSuccess] = useState<ReactNode>(null);
 
   useEffect(() => {
+    const outputLines = [
+      `Starting minecraft server version ${project.latestVersion}`,
+      'Preparing level "world"',
+      "Preparing start region for dimension minecraft:overworld",
+      "Time elapsed: 363 ms",
+      "Preparing start region for dimension minecraft:the_nether",
+      "Time elapsed: 147 ms",
+      "Preparing start region for dimension minecraft:the_end",
+      "Time elapsed: 366 ms",
+      "Running delayed init tasks",
+    ];
+
     (async () => {
       let currentCmd = "";
       for (const char of "java") {
@@ -70,7 +71,7 @@ export function Terminal({ project }: ProjectProps) {
         <InfoLog>Done (2.274s)! For help, type &quot;help&quot;</InfoLog>
       );
     })();
-  }, []);
+  }, [project.latestVersion]);
 
   return (
     <div className="max-h-82 w-120 h-283 rounded-lg bg-gray-800">

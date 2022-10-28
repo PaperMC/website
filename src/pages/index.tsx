@@ -9,8 +9,8 @@ import SoftwarePreview from "@/components/data/SoftwarePreview";
 import { Terminal } from "@/components/data/Terminal";
 import Button from "@/components/input/Button";
 import SEO from "@/components/util/SEO";
-import { useBstatsPlayers } from "@/lib/service/bstats";
 import { getProjectProps, type ProjectProps } from "@/lib/context/downloads";
+import { useBstatsPlayers } from "@/lib/service/bstats";
 
 const Home: NextPage<ProjectProps> = ({ project }) => {
   const { data: playerData } = useBstatsPlayers();
