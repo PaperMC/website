@@ -1,4 +1,5 @@
-import { type ReactNode, useEffect, useState } from "react";
+import { useEffect, useState, type ReactNode } from "react";
+import { getProjectProps, ProjectProps } from "@/lib/context/downloads";
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 const getNaturalDelay = () => Math.floor(Math.random() * 80) + 40;
@@ -14,19 +15,19 @@ function InfoLog({ children }: { children: ReactNode }) {
   );
 }
 
-const outputLines = [
-  "Starting minecraft server version 1.18.2",
-  'Preparing level "world"',
-  "Preparing start region for dimension minecraft:overworld",
-  "Time elapsed: 363 ms",
-  "Preparing start region for dimension minecraft:the_nether",
-  "Time elapsed: 147 ms",
-  "Preparing start region for dimension minecraft:the_end",
-  "Time elapsed: 366 ms",
-  "Running delayed init tasks",
-];
+export function Terminal({ project }: ProjectProps) {
+  const outputLines = [
+    `Starting minecraft server version ${project.latestVersion}`,
+    'Preparing level "world"',
+    "Preparing start region for dimension minecraft:overworld",
+    "Time elapsed: 363 ms",
+    "Preparing start region for dimension minecraft:the_nether",
+    "Time elapsed: 147 ms",
+    "Preparing start region for dimension minecraft:the_end",
+    "Time elapsed: 366 ms",
+    "Running delayed init tasks",
+  ];
 
-export function Terminal() {
   const [cmd, setCmd] = useState("");
   const [args, setArgs] = useState("");
   const [loading, setLoading] = useState("");
@@ -35,7 +36,6 @@ export function Terminal() {
 
   useEffect(() => {
     (async () => {
-      console.log("walking");
       let currentCmd = "";
       for (const char of "java") {
         currentCmd += char;
@@ -79,7 +79,7 @@ export function Terminal() {
         <div className="w-2.5 h-2.5 bg-yellow-500 rounded-full" />
         <div className="w-2.5 h-2.5 bg-green-500 rounded-full" />
       </div>
-      <div className="p-4 font-mono text-xs">
+      <div className="p-4 font-mono text-xs text-white">
         <div>
           <span className="text-green-400">$ </span>
           <span className="text-blue-400">{cmd}</span>

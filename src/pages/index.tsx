@@ -10,8 +10,9 @@ import { Terminal } from "@/components/data/Terminal";
 import Button from "@/components/input/Button";
 import SEO from "@/components/util/SEO";
 import { useBstatsPlayers } from "@/lib/service/bstats";
+import { getProjectProps, type ProjectProps } from "@/lib/context/downloads";
 
-const Home: NextPage = () => {
+const Home: NextPage<ProjectProps> = ({ project }) => {
   const { data: playerData } = useBstatsPlayers();
 
   return (
@@ -44,7 +45,7 @@ const Home: NextPage = () => {
           </div>
         </div>
         <div className="flex-1 lg:flex hidden justify-end">
-          <Terminal />
+          <Terminal project={project} />
         </div>
       </header>
       <section
@@ -132,3 +133,5 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+export const getStaticProps = getProjectProps("paper");
