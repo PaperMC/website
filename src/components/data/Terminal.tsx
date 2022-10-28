@@ -79,7 +79,7 @@ export function Terminal({ project }: ProjectProps) {
 
   return (
     <div className="max-h-82 w-120 h-283 rounded-lg bg-gray-800">
-      <div className="w-full bg-gray-900 rounded-lg flex p-2 gap-2">
+      <div className="w-full bg-gray-900 rounded-t-lg flex p-2 gap-2">
         <div className="w-2.5 h-2.5 bg-red-500 rounded-full" />
         <div className="w-2.5 h-2.5 bg-yellow-500 rounded-full" />
         <div className="w-2.5 h-2.5 bg-green-500 rounded-full" />
