@@ -3,15 +3,16 @@ import Image from "next/image";
 
 import PaperIcon from "@/assets/brand/paper.svg";
 import VelocityIcon from "@/assets/brand/velocity.svg";
-import TerminalIllustration from "@/assets/illustrations/terminal.svg";
 import HomeImage1 from "@/assets/images/home-1.png";
 import Skeleton from "@/components/data/Skeleton";
 import SoftwarePreview from "@/components/data/SoftwarePreview";
+import { Terminal } from "@/components/data/Terminal";
 import Button from "@/components/input/Button";
 import SEO from "@/components/util/SEO";
+import { getProjectProps, type ProjectProps } from "@/lib/context/downloads";
 import { useBstatsPlayers } from "@/lib/service/bstats";
 
-const Home: NextPage = () => {
+const Home: NextPage<ProjectProps> = ({ project }) => {
   const { data: playerData } = useBstatsPlayers();
 
   return (
@@ -44,7 +45,7 @@ const Home: NextPage = () => {
           </div>
         </div>
         <div className="flex-1 lg:flex hidden justify-end">
-          <TerminalIllustration className="max-h-82 rounded-md" />
+          <Terminal project={project} />
         </div>
       </header>
       <section
@@ -132,3 +133,5 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+export const getStaticProps = getProjectProps("paper");
