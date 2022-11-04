@@ -9,8 +9,10 @@ const getNaturalDelay = () => Math.floor(Math.random() * 80) + 40;
 function InfoLog({ children }: { children: ReactNode }) {
   return (
     <div>
-      <span className="text-amber-400">[{formatISOFullTime(new Date())} INFO]</span>:{" "}
-      {children}
+      <span className="text-amber-400">
+        [{formatISOFullTime(new Date())} INFO]
+      </span>
+      : {children}
     </div>
   );
 }
