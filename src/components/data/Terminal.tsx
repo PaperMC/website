@@ -1,17 +1,18 @@
 import { useEffect, useState, type ReactNode } from "react";
 
 import type { ProjectProps } from "@/lib/context/downloads";
+import { formatISOFullTime } from "@/lib/util/time";
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 const getNaturalDelay = () => Math.floor(Math.random() * 80) + 40;
-const formatDate = (d: Date) =>
-  `${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`;
 
 function InfoLog({ children }: { children: ReactNode }) {
   return (
     <div>
-      <span className="text-amber-400">[{formatDate(new Date())} INFO]</span>:{" "}
-      {children}
+      <span className="text-amber-400">
+        [{formatISOFullTime(new Date())} INFO]
+      </span>
+      : {children}
     </div>
   );
 }
