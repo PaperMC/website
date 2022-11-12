@@ -1,5 +1,6 @@
 import type { SWRInfiniteResponse } from "swr/infinite";
 import useSWRInfinite from "swr/infinite";
+import { swrNoAutoUpdateSettings } from "./api";
 
 export interface Contributor {
   login: string;
@@ -19,12 +20,4 @@ const getURL = (pageIndex: number, previousPageData: any): string | null => {
 };
 
 export const useGitHubContributors = (): SWRInfiniteResponse<Contributor[]> =>
-  useSWRInfinite(getURL, fetcher, {
-    revalidateOnFocus: false,
-    revalidateOnMount: true,
-    revalidateOnReconnect: false,
-    refreshWhenOffline: false,
-    refreshWhenHidden: false,
-    refreshInterval: 0,
-    initialSize: 100,
-  });
+  useSWRInfinite(getURL, fetcher, swrNoAutoUpdateSettings);
