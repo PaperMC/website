@@ -1,5 +1,6 @@
 import type { SWRInfiniteResponse } from "swr/infinite";
 import useSWRInfinite from "swr/infinite";
+
 import { swrNoAutoUpdateSettings } from "./api";
 
 export interface Contributor {

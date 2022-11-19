@@ -1,4 +1,5 @@
 import useSWR from "swr";
+
 import { swrNoAutoUpdateSettings } from "./api";
 
 const CHARTS_URL =
@@ -6,4 +7,5 @@ const CHARTS_URL =
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
-export const useBstatsPlayers = () => useSWR(CHARTS_URL, fetcher, swrNoAutoUpdateSettings);
+export const useBstatsPlayers = () =>
+  useSWR(CHARTS_URL, fetcher, swrNoAutoUpdateSettings);

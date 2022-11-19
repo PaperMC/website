@@ -1,13 +1,14 @@
 import type { SWRResponse } from "swr";
 import useSWR from "swr";
 
+import { swrNoAutoUpdateSettings } from "./api";
+
 import type {
   Project,
   ProjectsResponse,
   VersionBuilds,
   VersionFamilyBuilds,
 } from "@/lib/service/types";
-import { swrNoAutoUpdateSettings } from "./api";
 
 const API_ENDPOINT = "https://api.papermc.io/v2";
 
@@ -24,13 +25,21 @@ export const useVersionBuilds = (
   project: string,
   version: string
 ): SWRResponse<VersionBuilds> =>
-  useSWR(`/projects/${project}/versions/${version}/builds`, fetcher, swrNoAutoUpdateSettings);
+  useSWR(
+    `/projects/${project}/versions/${version}/builds`,
+    fetcher,
+    swrNoAutoUpdateSettings
+  );
 
 export const useVersionFamilyBuilds = (
   project: string,
   family: string
 ): SWRResponse<VersionFamilyBuilds> =>
-  useSWR(`/projects/${project}/version_group/${family}/builds`, fetcher, swrNoAutoUpdateSettings);
+  useSWR(
+    `/projects/${project}/version_group/${family}/builds`,
+    fetcher,
+    swrNoAutoUpdateSettings
+  );
 
 // TODO: Better error handling?
 const getJSON = <T>(path: string): Promise<T> => fetcher(path);
