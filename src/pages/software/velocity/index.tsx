@@ -7,8 +7,9 @@ import CodeBracketIcon from "@/assets/icons/heroicons/code-bracket.svg";
 import FeatureCard from "@/components/data/FeatureCard";
 import SoftwareHeader from "@/components/layout/SoftwareHeader";
 import SEO from "@/components/util/SEO";
+import {getProjectProps, ProjectProps} from "@/lib/context/downloads";
 
-const VelocityHome = (): ReactElement => {
+const VelocityHome = ({ project }: ProjectProps): ReactElement => {
   return (
     <>
       <SEO
@@ -25,6 +26,7 @@ const VelocityHome = (): ReactElement => {
       <SoftwareHeader
         id="velocity"
         name="Velocity"
+        versionGroup={project.latestVersionGroup}
         icon={VelocityIcon}
         header={<>Next generation speed and capability</>}
         description="Velocity is the modern, high-performance proxy, in every sense. Boasting unparalleled speed and next-level design, it’s a full alternative to Waterfall with its own plugin ecosystem."
@@ -65,3 +67,5 @@ VelocityHome.softwareProps = {
 };
 
 export default VelocityHome;
+
+export const getStaticProps = getProjectProps("velocity");

@@ -7,8 +7,9 @@ import CodeBracketIcon from "@/assets/icons/heroicons/code-bracket.svg";
 import FeatureCard from "@/components/data/FeatureCard";
 import SoftwareHeader from "@/components/layout/SoftwareHeader";
 import SEO from "@/components/util/SEO";
+import {getProjectProps, ProjectProps} from "@/lib/context/downloads";
 
-const WaterfallHome = (): ReactElement => {
+const WaterfallHome = ({ project }: ProjectProps): ReactElement => {
   return (
     <>
       <SEO
@@ -26,6 +27,7 @@ const WaterfallHome = (): ReactElement => {
       <SoftwareHeader
         id="waterfall"
         name="Waterfall"
+        versionGroup={project.latestVersionGroup}
         icon={PaperIcon}
         header={<>The Bungee-compatible upgrade</>}
         description="Waterfall is an upgraded BungeeCord, offering full compatibility with better performance."
@@ -66,3 +68,5 @@ WaterfallHome.softwareProps = {
 };
 
 export default WaterfallHome;
+
+export const getStaticProps = getProjectProps("waterfall");

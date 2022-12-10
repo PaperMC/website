@@ -13,6 +13,7 @@ export interface DownloadsContextProps {
 export interface ProjectDescriptor {
   name: string;
   latestVersion: string;
+  latestVersionGroup: string;
 }
 
 export interface ProjectProps {
@@ -39,7 +40,7 @@ const isVersionStable = async (
 
 export const getProjectProps = (id: string): GetStaticProps => {
   return async () => {
-    const { project_name, versions } = await getProject(id);
+    const { project_name, versions, version_groups } = await getProject(id);
 
     let latestVersion = versions[versions.length - 1];
     for (let i = versions.length - 1; i >= 0; i--) {
@@ -52,6 +53,7 @@ export const getProjectProps = (id: string): GetStaticProps => {
     const project = {
       name: project_name,
       latestVersion,
+      latestVersionGroup: version_groups[version_groups.length - 1],
     };
 
     return {

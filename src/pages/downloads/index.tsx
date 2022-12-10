@@ -1,5 +1,4 @@
 import type { NextPage } from "next";
-import Link from "next/link";
 
 import PaperIcon from "@/assets/brand/paper.svg";
 import VelocityIcon from "@/assets/brand/velocity.svg";
@@ -52,11 +51,6 @@ const Downloads: NextPage = () => {
             download
           />
         </div>
-        <Link href="/downloads/all" passHref>
-          <a className="text-gray-700 underline dark:text-gray-400">
-            Build explorer
-          </a>
-        </Link>
       </header>
     </>
   );

@@ -5,6 +5,7 @@ import Button from "@/components/input/Button";
 export interface SoftwareHeaderProps {
   id: string;
   name: string;
+  versionGroup: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   icon?: FunctionComponent<any>;
   header: ReactElement;
@@ -14,6 +15,7 @@ export interface SoftwareHeaderProps {
 const SoftwareHeader = ({
   id,
   name,
+  versionGroup,
   icon: Icon,
   header,
   description,
@@ -40,6 +42,13 @@ const SoftwareHeader = ({
           external
         >
           Documentation
+        </Button>
+        <Button
+          variant="outlined"
+          href={`https://jd.papermc.io/${id}/${versionGroup}`}
+          external
+        >
+          Javadoc
         </Button>
       </div>
     </div>

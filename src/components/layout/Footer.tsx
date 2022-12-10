@@ -21,6 +21,15 @@ const Footer = () => (
                 Documentation
               </a>
             </li>
+            <li>
+              <a
+                href="https://docs.papermc.io/misc/guidelines"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Community Guidelines
+              </a>
+            </li>
           </ul>
         </div>
         <div>

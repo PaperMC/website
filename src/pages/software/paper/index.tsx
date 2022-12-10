@@ -7,8 +7,9 @@ import CodeBracketIcon from "@/assets/icons/heroicons/code-bracket.svg";
 import FeatureCard from "@/components/data/FeatureCard";
 import SoftwareHeader from "@/components/layout/SoftwareHeader";
 import SEO from "@/components/util/SEO";
+import {getProjectProps, ProjectProps} from "@/lib/context/downloads";
 
-const PaperHome = (): ReactElement => {
+const PaperHome = ({ project }: ProjectProps): ReactElement => {
   return (
     <>
       <SEO
@@ -27,6 +28,7 @@ const PaperHome = (): ReactElement => {
       <SoftwareHeader
         id="paper"
         name="Paper"
+        versionGroup={project.latestVersionGroup}
         icon={PaperIcon}
         header={
           <>
@@ -73,3 +75,5 @@ PaperHome.softwareProps = {
 };
 
 export default PaperHome;
+
+export const getStaticProps = getProjectProps("paper");
