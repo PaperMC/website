@@ -30,7 +30,7 @@ const SoftwareDownload = ({
         builds: builds?.builds,
       }}
     >
-      <header className="max-w-7xl flex flex-row mx-auto px-4 pt-32 pb-26 lg:(pt-48 pb-46) gap-16">
+      <header className="max-w-7xl flex flex-row mx-auto px-6 pt-20 pb-12 lg:(px-4 pt-24 pb-16) gap-16">
         <div className="flex-1">
           <div className="flex flex-row mb-6 gap-4 items-center">
             <div className="w-12 h-12 rounded-lg bg-gray-800 p-3">
@@ -50,17 +50,17 @@ const SoftwareDownload = ({
         <div className="flex-1 lg:flex hidden justify-end"></div>
       </header>
       <section id="builds" className="max-w-7xl mx-auto py-8">
-        <h2 className="text-center text-xl font-medium">Recent builds</h2>
+        <h2 className="text-center text-xl font-medium">Older builds</h2>
         <p className="text-center text-gray-800 dark:text-gray-200 text-lg mt-2 mb-8 px-4">
-          Looking for recent builds - or changelog? We got you!
+          Looking for older builds - or changelog? We got you!
         </p>
         <SoftwareBuilds
           project={id}
           version={project.latestVersion}
           builds={builds?.builds}
         />
-        <p className="mt-2 text-center text-gray-700 dark:text-gray-400">
-          Looking for older builds? Try out our&nbsp;
+        <p className="mt-10 text-center text-gray-700 dark:text-gray-400">
+          Looking for even older builds? Try out our&nbsp;
           <Link href="/downloads/all" passHref>
             <a className="text-gray-700 dark:text-gray-400 underline">
               build explorer

@@ -32,10 +32,10 @@ const WaterfallHome = (): ReactElement => {
       />
       <section
         id="why"
-        className="w-full pt-16 pb-8 bg-primary-200 dark:bg-background-dark-80"
+        className="w-full pt-10 pb-5 bg-primary-200 dark:bg-background-dark-80"
       >
         <div className="max-w-7xl mx-auto">
-          <h2 className="font-semibold text-xl md:text-2xl px-4">
+          <h2 className="font-semibold text-xl md:text-2xl px-6 lg:px-4">
             Why Waterfall?
           </h2>
           <div className="grid md:grid-cols-3 mt-6 gap-2 px-2 xl:gap-4">

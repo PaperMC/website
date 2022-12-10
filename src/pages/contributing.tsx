@@ -14,7 +14,7 @@ const Contributing: NextPage = () => (
       description="Without contributors our projects wouldn't be possible. Find out how you can help."
       keywords={["papermc", "paper", "minecraft", "sponsor", "contributing"]}
     />
-    <header className="max-w-7xl flex flex-row mx-auto px-4 pt-32 pb-16 lg:(pt-48 pb-32) gap-16">
+    <header className="max-w-7xl flex flex-row mx-auto px-6 pt-20 pb-4 lg:(px-4 pt-24 pb-8) gap-16">
       <div className="flex-1">
         <h1 className="font-medium leading-normal lg:(text-5xl leading-normal) text-4xl">
           Contributing
@@ -30,7 +30,7 @@ const Contributing: NextPage = () => (
     </header>
     <section
       id="donate"
-      className="px-4 py-8 max-w-7xl mx-auto flex flex-col-reverse items-center gap-8 lg:flex-row"
+      className="px-4 py-4 max-w-7xl mx-auto flex flex-col-reverse items-center gap-8 lg:flex-row"
     >
       <div className="flex-1">
         <h2 className="font-medium text-2xl md:text-4xl">...Financially</h2>
@@ -65,7 +65,7 @@ const Contributing: NextPage = () => (
     </section>
     <section
       id="code"
-      className="px-4 py-8 max-w-7xl mx-auto flex flex-col-reverse items-center mt-12 gap-8 lg:flex-row"
+      className="px-4 py-4 max-w-7xl mx-auto flex flex-col-reverse items-center mt-12 gap-8 lg:flex-row"
     >
       <div className="flex-1">
         <h2 className="font-medium text-2xl md:text-4xl">...Code</h2>
@@ -90,7 +90,7 @@ const Contributing: NextPage = () => (
     </section>
     <section
       id="support"
-      className="px-4 py-8 max-w-7xl mx-auto flex flex-col-reverse items-center mt-12 gap-8 lg:flex-row"
+      className="px-4 py-4 max-w-7xl mx-auto flex flex-col-reverse items-center mt-12 gap-8 lg:flex-row"
     >
       <div className="lg:flex-1">
         <h2 className="font-medium text-2xl md:text-4xl">...Support</h2>
@@ -111,7 +111,7 @@ const Contributing: NextPage = () => (
     </section>
     <section
       id="documentation"
-      className="px-4 py-8 max-w-7xl mx-auto flex flex-col-reverse items-center mt-12 gap-8 lg:flex-row"
+      className="px-4 py-4 max-w-7xl mx-auto flex flex-col-reverse items-center mt-12 gap-8 lg:flex-row"
     >
       <div className="flex-1">
         <h2 className="font-medium text-2xl md:text-4xl">...Documentation</h2>

@@ -21,9 +21,9 @@ const Home: NextPage<ProjectProps> = ({ project }) => {
         title="Home"
         description="PaperMC is a Minecraft software organization focusing on improving
             the game’s ecosystem with faster and more secure software."
-        keywords={["papermc", "paper", "minecraft", "performance"]}
+        keywords={["papermc", "paper", "velocity", "minecraft", "performance"]}
       />
-      <header className="max-w-7xl flex flex-row mx-auto px-4 pt-32 pb-26 lg:(pt-48 pb-46) gap-16">
+      <header className="max-w-7xl flex flex-row mx-auto px-6 pt-20 pb-12 lg:(px-4 pt-24 pb-16) gap-16">
         <div className="flex-1">
           <h1 className="font-medium leading-normal lg:(text-5xl leading-normal) text-4xl">
             Modern software. <br />
@@ -50,10 +50,10 @@ const Home: NextPage<ProjectProps> = ({ project }) => {
       </header>
       <section
         id="software"
-        className="w-full pt-16 pb-8 bg-primary-200 dark:bg-background-dark-80"
+        className="w-full pt-10 pb-5 bg-primary-200 dark:bg-background-dark-80"
       >
         <div className="max-w-7xl mx-auto">
-          <h2 className="font-semibold text-xl md:text-2xl px-4">
+          <h2 className="font-semibold text-xl md:text-2xl px-6 lg:px-4">
             Your server deserves the&nbsp;
             <span className="text-blue-500">best.</span>
           </h2>
@@ -81,7 +81,7 @@ const Home: NextPage<ProjectProps> = ({ project }) => {
       </section>
       <section
         id="facts"
-        className="flex flex-col max-w-7xl mx-auto px-4 py-8 gap-8 md:(gap-12 py-20)"
+        className="flex flex-col max-w-7xl mx-auto px-4 py-8 gap-8 md:(gap-12 py-16)"
       >
         <div className="flex flex-col gap-6 md:(flex-row gap-8) xl:gap-24 items-center">
           <div className="w-full flex-1 rounded-xl bg-gray-900 aspect-video relative overflow-clip">

@@ -10,9 +10,6 @@ const Footer = () => (
           <span className="font-semibold">Getting Started</span>
           <ul className="mt-4 leading-5 text-gray-400 space-y-2">
             <li>
-              <Link href="/software">Software</Link>
-            </li>
-            <li>
               <Link href="/downloads">Downloads</Link>
             </li>
             <li>
@@ -65,15 +62,6 @@ const Footer = () => (
                 Twitter
               </a>
             </li>
-            <li>
-              <a
-                href="https://twitch.tv/PaperPowered"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Twitch
-              </a>
-            </li>
           </ul>
         </div>
         <div>
@@ -83,10 +71,7 @@ const Footer = () => (
               <Link href="/team">Our Team</Link>
             </li>
             <li>
-              <Link href="/sponsors">Sponsors</Link>
-            </li>
-            <li>
-              <Link href="/contributing">Contribute</Link>
+              <Link href="/contributing">Support Us</Link>
             </li>
           </ul>
         </div>
