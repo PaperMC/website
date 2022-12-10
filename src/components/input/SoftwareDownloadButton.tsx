@@ -14,9 +14,9 @@ const SoftwareDownloadButton = () => {
 
   return (
     <Menu as="div" className="relative w-full">
-      <div className="rounded-lg px-5 py-3 flex flex-row w-full md:w-100 bg-blue-600 transition-shadow text-white transition-color gap-4 hover:shadow-lg">
+      <div className="rounded-lg flex flex-row w-full md:w-100 bg-blue-600 transition-shadow text-white transition-color hover:shadow-lg">
         <a
-          className="flex flex-row flex-1 items-center gap-8"
+          className="flex flex-row flex-1 items-center gap-8 pl-5 py-3"
           href={
             project &&
             latestBuild &&
@@ -52,7 +52,7 @@ const SoftwareDownloadButton = () => {
           </div>
         </a>
         <Menu.Button aria-label="Other download variants">
-          <ChevronDownIcon className="w-6 h-6 text-gray-200" />
+          <ChevronDownIcon className="w-6 h-6 text-gray-200 mx-5" />
         </Menu.Button>
       </div>
       <Transition
