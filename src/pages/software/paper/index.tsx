@@ -7,7 +7,8 @@ import CodeBracketIcon from "@/assets/icons/heroicons/code-bracket.svg";
 import FeatureCard from "@/components/data/FeatureCard";
 import SoftwareHeader from "@/components/layout/SoftwareHeader";
 import SEO from "@/components/util/SEO";
-import {getProjectProps, ProjectProps} from "@/lib/context/downloads";
+import type { ProjectProps } from "@/lib/context/downloads";
+import { getProjectProps } from "@/lib/context/downloads";
 
 const PaperHome = ({ project }: ProjectProps): ReactElement => {
   return (
