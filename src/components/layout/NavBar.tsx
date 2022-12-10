@@ -89,7 +89,7 @@ const NavBar = ({ component }: NavBarProps) => {
             <ExternalUrlIcon className="h-4 w-4 ml-1 align-sub" />
           </NavLink>
           <NavLink href="/team">Team</NavLink>
-          <NavLink href="/contributing">Support Us</NavLink>
+          <NavLink href="/contribute">Contribute</NavLink>
         </div>
 
         <div className="flex-grow" />

@@ -7,7 +7,7 @@ import SavingsIllustration from "@/assets/illustrations/undraw/savings.svg";
 import Button from "@/components/input/Button";
 import SEO from "@/components/util/SEO";
 
-const Contributing: NextPage = () => (
+const Contribute: NextPage = () => (
   <>
     <SEO
       title="Contributing"
@@ -17,7 +17,7 @@ const Contributing: NextPage = () => (
     <header className="max-w-7xl flex flex-row mx-auto px-6 pt-20 pb-4 lg:(px-4 pt-24 pb-8) gap-16">
       <div className="flex-1">
         <h1 className="font-medium leading-normal lg:(text-5xl leading-normal) text-4xl">
-          Contributing
+          You can contribute
         </h1>
         <p className="text-xl mt-4">
           {
@@ -138,4 +138,4 @@ const Contributing: NextPage = () => (
   </>
 );
 
-export default Contributing;
+export default Contribute;
