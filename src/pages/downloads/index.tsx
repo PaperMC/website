@@ -21,7 +21,7 @@ const Downloads: NextPage = () => {
           "downloads",
         ]}
       />
-      <header className="max-w-7xl flex flex-col items-center mx-auto px-6 pt-20 pb-4 lg:(px-4 pt-30 pb-8) gap-2">
+      <header className="max-w-7xl flex flex-col items-center mx-auto px-4 pt-32 pb-16 lg:(pt-48 pb-26) gap-2">
         <h1 className="font-medium leading-normal lg:(text-5xl leading-normal) text-4xl">
           Downloads
         </h1>

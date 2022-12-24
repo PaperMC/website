@@ -23,7 +23,7 @@ const Home: NextPage<ProjectProps> = ({ project }) => {
             the game’s ecosystem with faster and more secure software."
         keywords={["papermc", "paper", "velocity", "minecraft", "performance"]}
       />
-      <header className="max-w-7xl flex flex-row mx-auto px-6 pt-20 pb-12 lg:(px-4 pt-24 pb-16) gap-16">
+      <header className="max-w-7xl flex flex-row mx-auto px-4 pt-32 pb-26 lg:(pt-48 pb-46) gap-16">
         <div className="flex-1">
           <h1 className="font-medium leading-normal lg:(text-5xl leading-normal) text-4xl">
             Modern software. <br />
@@ -50,10 +50,10 @@ const Home: NextPage<ProjectProps> = ({ project }) => {
       </header>
       <section
         id="software"
-        className="w-full pt-10 pb-5 bg-primary-200 dark:bg-background-dark-80"
+        className="w-full pt-16 pb-8 bg-primary-200 dark:bg-background-dark-80"
       >
         <div className="max-w-7xl mx-auto">
-          <h2 className="font-semibold text-xl md:text-2xl px-6 lg:px-4">
+          <h2 className="font-semibold text-xl md:text-2xl px-6 lg:px-4 mb-4">
             Your server deserves the&nbsp;
             <span className="text-blue-500">best.</span>
           </h2>

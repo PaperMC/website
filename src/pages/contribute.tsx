@@ -14,7 +14,7 @@ const Contribute: NextPage = () => (
       description="Without contributors our projects wouldn't be possible. Find out how you can help."
       keywords={["papermc", "paper", "minecraft", "sponsor", "contributing"]}
     />
-    <header className="max-w-7xl flex flex-row mx-auto px-6 pt-20 pb-4 lg:(px-4 pt-24 pb-8) gap-16">
+    <header className="max-w-7xl flex flex-row mx-auto px-4 pt-32 pb-16 lg:(pt-48 pb-32) gap-16">
       <div className="flex-1">
         <h1 className="font-medium leading-normal lg:(text-5xl leading-normal) text-4xl">
           You can contribute

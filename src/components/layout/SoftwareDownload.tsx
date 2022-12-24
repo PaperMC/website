@@ -30,7 +30,7 @@ const SoftwareDownload = ({
         builds: builds?.builds,
       }}
     >
-      <header className="max-w-7xl flex flex-row mx-auto px-6 pt-20 pb-12 lg:(px-4 pt-24 pb-16) gap-16">
+      <header className="max-w-7xl flex flex-row mx-auto px-4 pt-32 pb-16 lg:(pt-48 pb-26) gap-16">
         <div className="flex-1">
           <div className="flex flex-row mb-6 gap-4 items-center">
             <div className="w-12 h-12 rounded-lg bg-gray-800 p-3">
