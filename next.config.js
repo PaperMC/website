@@ -17,12 +17,6 @@ const nextConfig = {
 
     return config;
   },
-  // Workaround for next/image and 'next export' to work with Cloudflare Pages
-  // TODO: Remove when using our own infra
-  images: {
-    loader: "imgix",
-    path: "https://face-lift.pages.dev/",
-  },
 };
 
 module.exports = nextConfig;
