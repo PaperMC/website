@@ -7,10 +7,18 @@ export interface ButtonProps {
   dense?: boolean;
   href?: string;
   external?: boolean;
+  className?: string;
   children: ReactNode;
 }
 
-const Button = ({ variant, dense, href, external, children }: ButtonProps) => {
+const Button = ({
+  variant,
+  dense,
+  href,
+  external,
+  className,
+  children,
+}: ButtonProps) => {
   const button = (
     <a
       role="button"
@@ -19,7 +27,8 @@ const Button = ({ variant, dense, href, external, children }: ButtonProps) => {
         dense ? "text-sm" : "text-md",
         variant === "outlined"
           ? "border-1 border-gray-400 dark:border-gray-600"
-          : "bg-blue-600 text-white"
+          : "bg-blue-600 text-white",
+        className
       )}
       rel="noreferrer"
       target={external ? "_blank" : "_self"}

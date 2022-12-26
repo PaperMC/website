@@ -46,6 +46,7 @@ const SoftwareHeader = ({
         <Button
           variant="outlined"
           href={`https://jd.papermc.io/${id}/${versionGroup}`}
+          className="hidden md:block"
           external
         >
           Javadoc
