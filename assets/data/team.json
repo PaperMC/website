@@ -99,6 +99,12 @@
     "description": "Velocity Developers manage and develop the Velocity proxy. From handling PRs and issues to writing the fastest production proxy code there is, they do whatever Velocity needs.",
     "members": [
       {
+        "name": "CoreyShupe",
+        "avatar": "https://avatars.githubusercontent.com/u/37425956?v=4",
+        "discord": "FiXed#7088",
+        "github": "CoreyShupe"
+      },
+      {
         "name": "Five",
         "avatar": "https://avatars.githubusercontent.com/u/10787350?v=4",
         "discord": "Five#0001",
