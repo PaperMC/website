@@ -1,10 +1,14 @@
+import Image from "next/image";
 import type { ReactElement } from "react";
 
 import PaperIcon from "@/assets/brand/paper.svg";
 import BoltIcon from "@/assets/icons/heroicons/bolt.svg";
 import ChatBubbleLeftRightIcon from "@/assets/icons/heroicons/chat-bubble-left-right.svg";
 import CodeBracketIcon from "@/assets/icons/heroicons/code-bracket.svg";
+import CommunityImage from "@/assets/images/community.png";
+import HomeImage1 from "@/assets/images/home-1.png";
 import FeatureCard from "@/components/data/FeatureCard";
+import Button from "@/components/input/Button";
 import SoftwareHeader from "@/components/layout/SoftwareHeader";
 import SEO from "@/components/util/SEO";
 import type { ProjectProps } from "@/lib/context/downloads";
@@ -57,6 +61,98 @@ const WaterfallHome = ({ project }: ProjectProps): ReactElement => {
               label="Compatible with Bungee."
               description="Everything that works with BungeeCord works with Waterfall. With no compromises, the switch is seamless and easy. Simply swap out the relevant downloads and you’re good to go."
             />
+          </div>
+        </div>
+      </section>
+      <section
+        id="facts"
+        className="flex flex-col max-w-7xl mx-auto px-4 py-8 gap-8 md:(gap-12 py-16)"
+      >
+        <div className="flex flex-col gap-6 md:(flex-row-reverse gap-8) xl:gap-24 items-center">
+          <div className="w-full flex-1 rounded-xl bg-gray-900 aspect-video relative overflow-clip">
+            <Image
+              alt=""
+              src={HomeImage1}
+              objectFit="cover"
+              layout="fill"
+              placeholder="blur"
+            />
+          </div>
+          <div className="flex-1">
+            <h2 className="font-semibold text-2xl md:text-4xl">
+              Getting Started
+            </h2>
+            <p className="md:(mt-6 text-xl) text-gray-900 dark:text-gray-100 mt-3">
+              To get started with Waterfall, you will need to download and
+              install the latest version of the server software. Once
+              you&apos;re ready, take a look at our extensive documentation to
+              get started!
+            </p>
+            <div className="flex flex-row gap-4 mt-8">
+              <Button variant="filled" href="/downloads/waterfall" dense>
+                Downloads
+              </Button>
+              <Button
+                variant="outlined"
+                href="https://docs.papermc.io/waterfall/getting-started"
+                external
+                dense
+              >
+                Documentation
+              </Button>
+            </div>
+          </div>
+        </div>
+        <div className="flex flex-col gap-6 md:(flex-row gap-8) xl:gap-24 items-center">
+          <div className="w-full flex-1 rounded-xl bg-gray-900 aspect-video relative overflow-clip" />
+          <div className="flex-1">
+            <h2 className="font-semibold text-2xl md:text-4xl">
+              Don&apos;t need BungeeCord compatibility?
+            </h2>
+            <p className="md:(mt-6 text-xl) text-gray-900 dark:text-gray-100 mt-3">
+              If you don’t desperately need BungeeCord plugins on your proxy,
+              Velocity is the very best software available. Boasting much
+              expanded capabilities due to next-level technical design, it runs
+              laps around BungeeCord.
+            </p>
+            <div className="flex flex-row gap-4 mt-8">
+              <Button variant="filled" href="/software/velocity" dense>
+                Learn more
+              </Button>
+            </div>
+          </div>
+        </div>
+        <div className="flex flex-col gap-6 md:(flex-row-reverse gap-8) xl:gap-24 items-center">
+          <div className="w-full flex-1 rounded-xl aspect-video relative overflow-clip">
+            <Image
+              alt=""
+              src={CommunityImage}
+              objectFit="cover"
+              layout="fill"
+              placeholder="blur"
+            />
+          </div>
+          <div className="flex-1">
+            <h2 className="font-semibold text-2xl md:text-4xl">
+              Together with a community of server owners
+            </h2>
+            <p className="md:(mt-6 text-xl) text-gray-900 dark:text-gray-100 mt-3">
+              Whether you need help with your settings, have to fix lag, or need
+              a guide for formatting your chat, our knowledgeable staff and
+              friendly community are always around to lend a hand. With
+              Waterfall, everyone has been in your position before and they’re
+              all happy to help.
+            </p>
+            <div className="flex flex-row gap-4 mt-8">
+              <Button
+                variant="filled"
+                href="https://discord.gg/papermc"
+                external
+                dense
+              >
+                Join our Discord
+              </Button>
+            </div>
           </div>
         </div>
       </section>

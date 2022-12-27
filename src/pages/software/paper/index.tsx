@@ -90,7 +90,7 @@ const PaperHome = ({ project }: ProjectProps): ReactElement => {
               Getting Started
             </h2>
             <p className="md:(mt-6 text-xl) text-gray-900 dark:text-gray-100 mt-3">
-              To get started with PaperMC, you will need to download and install
+              To get started with Paper, you will need to download and install
               the latest version of the server software. Once you&apos;re ready,
               take a look at our extensive documentation to get started!
             </p>
