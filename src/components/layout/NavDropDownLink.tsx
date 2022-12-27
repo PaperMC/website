@@ -17,12 +17,17 @@ const NavDropDownLink = ({
 }: NavDropDownLinkProps): ReactElement => (
   <li
     className={clsx(
-      "color-gray-200 text-gray-800 hover:text-blue-600 text-sm transition-colors px-2.5 dark:(text-gray-200 hover:text-blue-400)",
+      "color-gray-200 text-gray-800 hover:text-blue-600 text-sm transition-colors dark:(text-gray-200 hover:text-blue-400)",
       className
     )}
   >
     <NextLink href={href} passHref>
-      <a role="button" rel="noreferrer" target={target}>
+      <a
+        className="px-4 py-2 w-full block"
+        role="button"
+        rel="noreferrer"
+        target={target}
+      >
         {children}
       </a>
     </NextLink>
