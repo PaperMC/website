@@ -11,13 +11,13 @@ import type { AppProps } from "next/app";
 import Footer from "@/components/layout/Footer";
 import NavBar from "@/components/layout/NavBar";
 
-const MyApp = ({ Component, pageProps }: AppProps) => (
+const MyApp = ({ Component, pageProps, router }: AppProps) => (
   <>
     <NavBar component={Component} />
     <main className="flex-1">
       <Component {...pageProps} />
     </main>
-    <Footer />
+    {router.route !== "/downloads/all" && <Footer />}
   </>
 );
 
