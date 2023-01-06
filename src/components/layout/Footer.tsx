@@ -82,6 +82,18 @@ const Footer = () => (
             <li>
               <Link href="/contribute">Contribute</Link>
             </li>
+            <li>
+              <Link href="/sponsors">Sponsors</Link>
+            </li>
+            <li>
+              <a
+                href="https://hangar.papermc.io"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Hangar
+              </a>
+            </li>
           </ul>
         </div>
       </div>
