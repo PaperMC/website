@@ -79,13 +79,23 @@ const Sponsors: NextPage = () => {
       <section id="sponsors" className="px-4 py-8 max-w-7xl mx-auto">
         <h2 className="font-semibold text-xl md:text-2xl">Our Sponsors</h2>
         <p className="text-lg text-gray-900 dark:text-gray-100 mt-3">
-          Our current balance is $
-          {sponsorData &&
-            sponsorData.ocData.collective.stats.balance?.valueInCents / 100}
-          , our estimated expenses are $
-          {sponsorData &&
-            sponsorData.ocData.collective.stats.monthlySpending?.valueInCents /
-              100}{" "}
+          Our current balance is{" "}
+          <b>
+            $
+            {sponsorData &&
+              (
+                sponsorData.ocData.collective.stats.balance.valueInCents / 100
+              )?.toLocaleString("en")}
+          </b>
+          , our estimated expenses are{" "}
+          <b>
+            $
+            {sponsorData &&
+              (
+                sponsorData.ocData.collective.stats.monthlySpending
+                  .valueInCents / 100
+              )?.toLocaleString("en")}
+          </b>{" "}
           per month.
         </p>
         <div className="grid grid-cols-8 md:grid-cols-16 lg:grid-cols-18 xl:grid-cols-20 mt-8 gap-2">
