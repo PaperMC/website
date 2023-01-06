@@ -41,21 +41,8 @@ const Contribute: NextPage = () => (
           used.
         </p>
         <div className="flex flex-row gap-4 mt-8">
-          <Button
-            variant="filled"
-            href="https://opencollective.com/papermc"
-            external
-            dense
-          >
-            Open Collective
-          </Button>
-          <Button
-            variant="outlined"
-            href="https://github.com/sponsors/PaperMC"
-            external
-            dense
-          >
-            GitHub Sponsors
+          <Button variant="filled" href="/sponsors" dense>
+            Learn More
           </Button>
         </div>
       </div>
