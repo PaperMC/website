@@ -9,7 +9,7 @@ import Button from "@/components/input/Button";
 import SEO from "@/components/util/SEO";
 import { useSponsors } from "@/lib/service/sponsors";
 
-const Contribute: NextPage = () => {
+const Sponsors: NextPage = () => {
   const { data: sponsorData } = useSponsors();
 
   return (
@@ -130,4 +130,4 @@ const Contribute: NextPage = () => {
   );
 };
 
-export default Contribute;
+export default Sponsors;
