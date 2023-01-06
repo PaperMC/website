@@ -27,6 +27,9 @@ const Footer = () => (
           <span className="font-semibold">Community</span>
           <ul className="mt-4 leading-5 text-gray-400 space-y-2">
             <li>
+              <Link href="/community">Our Community</Link>
+            </li>
+            <li>
               <a
                 href="https://github.com/PaperMC"
                 target="_blank"
@@ -60,15 +63,6 @@ const Footer = () => (
                 rel="noreferrer"
               >
                 Twitter
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://docs.papermc.io/misc/guidelines"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Guidelines
               </a>
             </li>
           </ul>
