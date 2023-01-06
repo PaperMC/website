@@ -25,11 +25,10 @@ const Contribute: NextPage = () => {
             Sponsors
           </h1>
           <p className="text-xl mt-4">
-            First of all, thank you for considering helping out, we really
-            appreciate that! PaperMC is an open community, and part of managing
-            the community involves paying for services, servers, and
-            infrastructure. We do what we can to keep our costs reasonable and
-            sustainable, but still some costs are unavoidable.
+            PaperMC is an open community, and part of managing the community
+            involves paying for services, servers, and infrastructure. We do
+            what we can to keep our costs reasonable and sustainable, but still
+            some costs are unavoidable.
           </p>
           <div className="flex flex-row gap-4 mt-8">
             <Button
