@@ -48,17 +48,17 @@ const WaterfallHome = ({ project }: ProjectProps): ReactElement => {
           <div className="grid md:grid-cols-3 mt-6 gap-2 px-2 xl:gap-4">
             <FeatureCard
               icon={BoltIcon}
-              label="Fast, smooth, and easy."
+              label="Fast, smooth, and easy"
               description="Whatever you need, Waterfall delivers. It doesn’t skip out on the essentials and provides an uncompromising and fully supported platform for your proxy."
             />
             <FeatureCard
               icon={ChatBubbleLeftRightIcon}
-              label="An active and growing community."
+              label="An active and growing community"
               description="Waterfall has an active and growing community of server administrators and developers. Got problems? Come talk with us on Discord and get real time support."
             />
             <FeatureCard
               icon={CodeBracketIcon}
-              label="Compatible with Bungee."
+              label="Compatible with Bungee"
               description="Everything that works with BungeeCord works with Waterfall. With no compromises, the switch is seamless and easy. Simply swap out the relevant downloads and you’re good to go."
             />
           </div>

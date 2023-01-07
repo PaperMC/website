@@ -55,17 +55,17 @@ const PaperHome = ({ project }: ProjectProps): ReactElement => {
           <div className="grid md:grid-cols-3 mt-6 gap-2 px-2 xl:gap-4">
             <FeatureCard
               icon={BoltIcon}
-              label="It's stupidly fast."
+              label="It's stupidly fast"
               description="Paper contains numerous improvements and optimizations resulting in a significant increase in performance."
             />
             <FeatureCard
               icon={ChatBubbleLeftRightIcon}
-              label="An active and growing community."
+              label="An active and growing community"
               description="Paper has an active and growing community of server administrators and developers. Got problems? Come talk with us on Discord and get real time support."
             />
             <FeatureCard
               icon={CodeBracketIcon}
-              label="An expanded API."
+              label="An expanded API"
               description="Paper extends and improves the Bukkit and Spigot APIs so that you and your developers have more features and functionality at your fingertips."
             />
           </div>

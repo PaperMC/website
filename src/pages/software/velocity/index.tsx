@@ -47,17 +47,17 @@ const VelocityHome = ({ project }: ProjectProps): ReactElement => {
           <div className="grid md:grid-cols-3 mt-6 gap-2 px-2 xl:gap-4">
             <FeatureCard
               icon={BoltIcon}
-              label="Out with the old, in with the new."
+              label="Out with the old, in with the new"
               description="Velocity is the very best proxy software available. Boasting much expanded capabilities due to next-level technical design, it runs laps around BungeeCord."
             />
             <FeatureCard
               icon={ChatBubbleLeftRightIcon}
-              label="An active and growing community."
+              label="An active and growing community"
               description="Velocity has an active and growing community of server administrators and developers. Got problems? Come talk with us on Discord and get real time support."
             />
             <FeatureCard
               icon={CodeBracketIcon}
-              label="Plenty of plugins to choose from."
+              label="Plenty of plugins to choose from"
               description="While BungeeCord has more third-party software due to its longer life so far, Velocity isn’t lacking in the essentials. With enough to get going and more added every day, Velocity’s got what you need."
             />
           </div>
