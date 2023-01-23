@@ -94,7 +94,9 @@ const Footer = () => (
       <div className="flex flex-row items-center gap-2 border-t border-gray-600/50 mt-8 pt-10">
         <Logo className="w-10 h-10 cursor-pointer inline" />
         <div className="font-semibold text-xl text-white flex-1">PaperMC</div>
-        <span className="text-gray-300 text-sm">© 2022 The PaperMC Team</span>
+        <span className="text-gray-300 text-sm">
+          © {new Date().getFullYear()} The PaperMC Team
+        </span>
       </div>
     </div>
   </footer>
