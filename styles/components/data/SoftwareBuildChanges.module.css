@@ -1,5 +1,5 @@
 .commit {
-    @apply text-blue-600 dark:text-blue-500 mr-1;
+    @apply text-blue-600 dark:text-blue-500 mr-1 font-mono;
 }
 
 .issue {
