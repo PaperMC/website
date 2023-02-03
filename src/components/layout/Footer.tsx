@@ -4,7 +4,7 @@ import Logo from "@/assets/brand/logo.svg";
 
 const Footer = () => (
   <footer className="bg-background-dark-80 py-12 mt-8">
-    <div className="max-w-6xl m-auto px-4">
+    <div className="max-w-7xl m-auto px-4">
       <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 text-sm text-white">
         <div>
           <span className="font-semibold">Getting Started</span>
