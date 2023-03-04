@@ -46,17 +46,17 @@ const CommunityGuidelines: NextPage = () => (
         includes every forum of communication that is officially part of the
         PaperMC project. To be abundantly clear, these PaperMC Community
         Guidelines apply to all of the following:
-        <ul className="list-disc list-inside my-4">
-          <li>The PaperMC Discord server</li>
-          <li>The PaperMC IRC channels</li>
-          <li>The PaperMC GitHub organization</li>
-          <li>
-            This includes issues, pull requests, and any discussion inside
-            issues or pull requests
-          </li>
-          <li>The PaperMC forums</li>
-        </ul>
       </p>
+      <ul className="list-disc list-inside my-4">
+        <li>The PaperMC Discord server</li>
+        <li>The PaperMC IRC channels</li>
+        <li>The PaperMC GitHub organization</li>
+        <li>
+          This includes issues, pull requests, and any discussion inside issues
+          or pull requests
+        </li>
+        <li>The PaperMC forums</li>
+      </ul>
     </section>
     <section
       id="the-paper-community"
@@ -399,7 +399,7 @@ const CommunityGuidelines: NextPage = () => (
         <a
           href="https://creativecommons.org/licenses/by-sa/4.0/?ref=chooser-v1"
           target="_blank"
-          rel="license noopener noreferrer"
+          rel="noreferrer"
           className="text-blue-800 dark:text-blue-300"
         >
           CC BY-SA 4.0
