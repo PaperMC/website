@@ -89,7 +89,12 @@ const CommunityGuidelines: NextPage = () => (
             <li>
               Most of the language banned here should be obvious, but will be
               listed in more detail below in{" "}
-              <a href="#zero-tolerance-items">Zero Tolerance Items.</a>
+              <a
+                href="#zero-tolerance-items"
+                className="text-blue-800 dark:text-blue-300"
+              >
+                Zero Tolerance Items.
+              </a>
             </li>
           </ol>
         </li>
