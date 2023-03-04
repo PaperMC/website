@@ -14,46 +14,47 @@ const CommunityGuidelines: NextPage = () => (
     />
     <header className="max-w-7xl mx-auto px-4 pt-32 pb-16">
       <h1 className="font-medium leading-normal lg:(text-5xl leading-normal) text-4xl">
-        Paper Community Guidelines
+        PaperMC Community Guidelines
       </h1>
     </header>
     <section id="overview" className="px-4 py-4 max-w-7xl mx-auto leading-7">
       <h2 className="text-2xl font-medium mb-4">Overview</h2>
       <p>
-        Paper has grown significantly past what it was originally created to be
-        — a small group of tightly-knit developers having fun on a side project,
-        never really intending it to go anywhere. With this fact in mind, we
-        need to be proactive and explicit about how we intend to combat
-        negativity and toxicity in the Paper community. We want Paper to be a
-        welcoming community to all, where new members feel safe to hang out and
-        ask questions, and where old members are happy to hang out, chat, and
-        help others too. We want Paper to be an inclusive environment. Paper is,
-        at its core, a development community. We want to continue staying
-        focused on being a development community rather than letting toxic
-        behavior take over. This document is the definitive list of guidelines
-        everyone in the community must follow to participate in this community.
+        PaperMC has grown significantly past what it was originally created to
+        be — a small group of tightly-knit developers having fun on a side
+        project, never really intending it to go anywhere. With this fact in
+        mind, we need to be proactive and explicit about how we intend to combat
+        negativity and toxicity in the PaperMC community. We want PaperMC to be
+        a welcoming community to all, where new members feel safe to hang out
+        and ask questions, and where old members are happy to hang out, chat,
+        and help others too. We want PaperMC to be an inclusive environment.
+        PaperMC is, at its core, a development community. We want to continue
+        staying focused on being a development community rather than letting
+        toxic behavior take over. This document is the definitive list of
+        guidelines everyone in the community must follow to participate in this
+        community.
       </p>
     </section>
     <section
       id="the-paper-community"
       className="px-4 py-4 max-w-7xl mx-auto leading-7"
     >
-      <h2 className="text-2xl font-medium mb-4">The Paper Community</h2>
+      <h2 className="text-2xl font-medium mb-4">The PaperMC Community</h2>
       <p>
-        This document uses the phrase &quot;Paper community&quot; to refer to
-        all communication which happens within the Paper ecosystem. This
+        This document uses the phrase &quot;PaperMC community&quot; to refer to
+        all communication which happens within the PaperMC ecosystem. This
         includes every forum of communication that is officially part of the
-        Paper project. To be abundantly clear, these Paper Community Guidelines
-        apply to all of the following:
+        PaperMC project. To be abundantly clear, these PaperMC Community
+        Guidelines apply to all of the following:
         <ul className="list-disc list-inside my-4">
-          <li>The Paper Discord server</li>
-          <li>The Paper IRC channels</li>
-          <li>The Paper GitHub organization</li>
+          <li>The PaperMC Discord server</li>
+          <li>The PaperMC IRC channels</li>
+          <li>The PaperMC GitHub organization</li>
           <li>
             This includes issues, pull requests, and any discussion inside
             issues or pull requests
           </li>
-          <li>The Paper forums</li>
+          <li>The PaperMC forums</li>
         </ul>
       </p>
     </section>
@@ -63,8 +64,8 @@ const CommunityGuidelines: NextPage = () => (
     >
       <h2 className="text-2xl font-medium mb-4">Guidelines</h2>
       <p>
-        Paper has a fairly short and sweet set of rules. It generally comes down
-        to:
+        PaperMC has a fairly short and sweet set of rules. It generally comes
+        down to:
       </p>
       <ol className="list-decimal list-inside my-4 ml-4">
         <li>Don&apos;t be a jerk</li>
@@ -78,7 +79,7 @@ const CommunityGuidelines: NextPage = () => (
         <br />
         <br />
         However, there are specific behaviors we want to avoid in our community.
-        The following behaviors are not permitted in the Paper community:
+        The following behaviors are not permitted in the PaperMC community:
       </p>
       <ol className="list-decimal list-inside my-4 ml-4 space-y-2 py-1">
         <li>
@@ -250,7 +251,7 @@ const CommunityGuidelines: NextPage = () => (
       <h2 className="text-2xl font-medium mb-4">Zero Tolerance Items</h2>
       <p>
         Particularly severe issues represent a behavior and a kind of person we
-        don&apos;t want associated with Paper in any way. These behaviors will
+        don&apos;t want associated with PaperMC in any way. These behaviors will
         result in an immediate ban without warning:
       </p>
       <ul className="list-disc list-inside my-4 ml-4">
@@ -294,7 +295,7 @@ const CommunityGuidelines: NextPage = () => (
         Topic Specific Channels on Discord
       </h2>
       <p>
-        Paper has channels dedicated to specific topics, and conversations in
+        PaperMC has channels dedicated to specific topics, and conversations in
         these channels should stay on-topic. This can help newer members in
         particular to feel more comfortable asking questions in the help
         channels if other members aren&apos;t also talking over them about
@@ -355,7 +356,7 @@ const CommunityGuidelines: NextPage = () => (
           and let someone else answer.
         </li>
         <li>
-          Please be polite even when turning down help. Paper does not
+          Please be polite even when turning down help. PaperMC does not
           officially support older versions of our software, and that is not
           likely to change. We generally discourage people from using our older
           software, and we stipulate that it comes with no support. This does
@@ -386,7 +387,7 @@ const CommunityGuidelines: NextPage = () => (
       className="px-4 py-4 max-w-7xl mx-auto leading-7"
     >
       <h2 className="text-2xl font-medium mb-4">
-        Last Updated <code>2021-12-31</code>
+        Last Updated <code>2023-03-04</code>
       </h2>
       <p>
         This document is licensed under{" "}
