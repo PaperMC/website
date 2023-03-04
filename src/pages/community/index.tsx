@@ -3,7 +3,7 @@ import type { NextPage } from "next";
 import Button from "@/components/input/Button";
 import SEO from "@/components/util/SEO";
 
-const Community: NextPage = () => (
+const CommunityIndex: NextPage = () => (
   <>
     <SEO
       title="Community"
@@ -20,7 +20,7 @@ const Community: NextPage = () => (
           Please read our community guidelines before participating.
         </p>
         <div className="flex flex-row gap-4 mt-8">
-          <Button variant="filled" href="/community-guidelines" dense>
+          <Button variant="filled" href="/community/guidelines" dense>
             Community Guidelines
           </Button>
         </div>
@@ -92,4 +92,4 @@ const Community: NextPage = () => (
   </>
 );
 
-export default Community;
+export default CommunityIndex;
