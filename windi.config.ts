@@ -53,6 +53,9 @@ export default defineConfig({
         "background-light-10": "#f8faff",
         "background-light-0": "#ffffff",
       },
+      listStyleType: {
+        alpha: "lower-alpha",
+      },
     },
   },
   shortcuts: {},

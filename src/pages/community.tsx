@@ -20,12 +20,7 @@ const Community: NextPage = () => (
           Please read our community guidelines before participating.
         </p>
         <div className="flex flex-row gap-4 mt-8">
-          <Button
-            variant="filled"
-            href="https://docs.papermc.io/misc/guidelines"
-            external
-            dense
-          >
+          <Button variant="filled" href="/community-guidelines" dense>
             Community Guidelines
           </Button>
         </div>
