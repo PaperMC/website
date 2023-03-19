@@ -2,6 +2,7 @@ import type { NextPage } from "next";
 
 import PaperIcon from "@/assets/brand/paper.svg";
 import VelocityIcon from "@/assets/brand/velocity.svg";
+import WaterfallIcon from "@/assets/brand/waterfall.svg";
 import SoftwarePreview from "@/components/data/SoftwarePreview";
 import SEO from "@/components/util/SEO";
 
@@ -26,7 +27,7 @@ const Downloads: NextPage = () => {
           Downloads
         </h1>
         <p className="text-xl text-center mb-6">
-          {"It's time! Get started by downloading our software."}
+          {"Select the software you want to download."}
         </p>
         <div className="grid md:grid-cols-3 lg:mt-6 gap-2 px-2 xl:gap-4">
           <SoftwarePreview
@@ -46,7 +47,7 @@ const Downloads: NextPage = () => {
           <SoftwarePreview
             id="waterfall"
             name="Waterfall"
-            icon={PaperIcon}
+            icon={WaterfallIcon}
             description="Waterfall is a drop-in BungeeCord replacement that aims to improve performance and stability."
             download
           />

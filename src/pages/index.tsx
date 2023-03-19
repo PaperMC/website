@@ -3,6 +3,7 @@ import Image from "next/image";
 
 import PaperIcon from "@/assets/brand/paper.svg";
 import VelocityIcon from "@/assets/brand/velocity.svg";
+import WaterfallIcon from "@/assets/brand/waterfall.svg";
 import HomeImage1 from "@/assets/images/home-1.png";
 import Skeleton from "@/components/data/Skeleton";
 import SoftwarePreview from "@/components/data/SoftwarePreview";
@@ -69,7 +70,7 @@ const Home: NextPage<ProjectProps> = ({ project }) => {
             <SoftwarePreview
               id="waterfall"
               name="Waterfall"
-              icon={PaperIcon}
+              icon={WaterfallIcon}
               description="Waterfall is a drop-in BungeeCord replacement that aims to improve performance and stability."
             />
           </div>

@@ -1,6 +1,6 @@
 import type { ReactElement } from "react";
 
-import PaperIcon from "@/assets/brand/paper.svg";
+import WaterfallIcon from "@/assets/brand/waterfall.svg";
 import SoftwareDownload from "@/components/layout/SoftwareDownload";
 import SEO from "@/components/util/SEO";
 import type { ProjectProps } from "@/lib/context/downloads";
@@ -25,7 +25,7 @@ const WaterfallDownloads = ({ project }: ProjectProps): ReactElement => {
       <SoftwareDownload
         id="waterfall"
         project={project}
-        icon={PaperIcon}
+        icon={WaterfallIcon}
         description="Download Waterfall, our Bungee-compatible upgrade, offering better performance and full compatibility."
       />
     </>
