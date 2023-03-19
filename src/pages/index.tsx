@@ -5,6 +5,7 @@ import PaperIcon from "@/assets/brand/paper.svg";
 import VelocityIcon from "@/assets/brand/velocity.svg";
 import WaterfallIcon from "@/assets/brand/waterfall.svg";
 import HomeImage1 from "@/assets/images/home-1.png";
+import HomeImage2 from "@/assets/images/home-2.png";
 import Skeleton from "@/components/data/Skeleton";
 import SoftwarePreview from "@/components/data/SoftwarePreview";
 import { Terminal } from "@/components/data/Terminal";
@@ -115,7 +116,15 @@ const Home: NextPage<ProjectProps> = ({ project }) => {
           </div>
         </div>
         <div className="flex flex-col gap-6 md:(flex-row-reverse gap-8) xl:gap-24 items-center">
-          <div className="w-full flex-1 rounded-xl bg-gray-900 aspect-video" />
+          <div className="w-full flex-1 rounded-xl bg-gray-900 aspect-video relative overflow-clip">
+            <Image
+                alt=""
+                src={HomeImage2}
+                objectFit="cover"
+                layout="fill"
+                placeholder="blur"
+            />
+          </div>
           <div className="flex-1">
             <h2 className="font-semibold text-2xl md:text-4xl">
               Security-first approach
