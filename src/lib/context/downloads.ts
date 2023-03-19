@@ -15,7 +15,7 @@ export interface DownloadsContextProps {
 export interface ProjectDescriptor {
   name: string;
   latestStableVersion: string;
-  latestExperimentalVersion: string | undefined;
+  latestExperimentalVersion: string | null;
   latestVersionGroup: string;
 }
 
@@ -58,7 +58,7 @@ export const getProjectProps = (id: string): GetStaticProps => {
     const latestExperimentalVersion =
       latestStableVersion !== versions[versions.length - 1]
         ? versions[versions.length - 1]
-        : undefined;
+        : null;
 
     const project: ProjectDescriptor = {
       name: project_name,
