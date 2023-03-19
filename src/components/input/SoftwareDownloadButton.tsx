@@ -9,7 +9,7 @@ import { DownloadsContext } from "@/lib/context/downloads";
 import { getVersionBuildDownloadURL } from "@/lib/service/v2";
 
 const SoftwareDownloadButton = () => {
-  const { projectId, project, builds } = useContext(DownloadsContext);
+  const { projectId, project, builds, version } = useContext(DownloadsContext);
 
   const latestBuild = builds && builds[builds.length - 1];
   const [copied, setCopied] = useState("");
@@ -35,7 +35,7 @@ const SoftwareDownloadButton = () => {
             latestBuild &&
             getVersionBuildDownloadURL(
               projectId,
-              project.latestVersion,
+              project.latestStableVersion,
               latestBuild.build,
               latestBuild.downloads["application"].name
             )
@@ -50,7 +50,7 @@ const SoftwareDownloadButton = () => {
             {project && builds && latestBuild ? (
               <>
                 <span className="font-medium text-lg">
-                  {project.name} {project.latestVersion}
+                  {project.name} {version}
                 </span>
                 <p className="text-gray-100">
                   {latestBuild && `Build #${latestBuild.build}`}
@@ -89,7 +89,7 @@ const SoftwareDownloadButton = () => {
                         latestBuild &&
                         getVersionBuildDownloadURL(
                           projectId,
-                          project.latestVersion,
+                          version,
                           latestBuild.build,
                           download.name
                         )

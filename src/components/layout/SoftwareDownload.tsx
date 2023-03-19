@@ -20,7 +20,20 @@ const SoftwareDownload = ({
   icon: Icon,
   description,
 }: SoftwareDownloadProps & ProjectProps): ReactElement => {
-  const { data: builds } = useVersionBuilds(id, project.latestVersion);
+  const { data: stableBuilds } = useVersionBuilds(
+    id,
+    project.latestStableVersion
+  );
+  const { data: experimentalBuilds } = useVersionBuilds(
+    id,
+    project.latestExperimentalVersion
+  );
+
+  const stable = false;
+  const builds = stable ? stableBuilds : experimentalBuilds;
+  const version = stable
+    ? project.latestStableVersion
+    : project.latestExperimentalVersion;
 
   return (
     <DownloadsContext.Provider
@@ -28,6 +41,7 @@ const SoftwareDownload = ({
         projectId: id,
         project,
         builds: builds?.builds,
+        version,
       }}
     >
       <header className="max-w-7xl flex flex-row mx-auto px-4 pt-32 pb-16 lg:(pt-48 pb-26) gap-16">
@@ -40,11 +54,28 @@ const SoftwareDownload = ({
           </div>
           <h2 className="font-medium leading-normal lg:(text-5xl leading-normal) text-4xl">
             Get {project.name}&nbsp;
-            <span className="text-blue-600">{project.latestVersion}</span>
+            <span className="text-blue-600">{version}</span>
           </h2>
           <p className="text-xl mt-4">{description}</p>
-          <div className="flex flex-row gap-4 mt-8">
+          <div className="flex flex-col gap-4 mt-8">
             <SoftwareDownloadButton />
+            {(() => {
+              if (stable && project.latestExperimentalVersion) {
+                return (
+                  <div className="rounded-lg flex flex-row w-full md:w-100 bg-red-500 transition-shadow text-white transition-color hover:shadow-lg pl-5 py-3 cursor-pointer">
+                    Toggle experimental builds for&nbsp;
+                    {project.latestExperimentalVersion}
+                  </div>
+                );
+              } else {
+                return (
+                  <div className="rounded-lg flex flex-row w-full md:w-100 bg-blue-600  transition-shadow text-white transition-color hover:shadow-lg pl-5 py-3 cursor-pointer">
+                    Back to stable builds for&nbsp;
+                    {project.latestStableVersion}
+                  </div>
+                );
+              }
+            })()}
           </div>
         </div>
         <div className="flex-1 lg:flex hidden justify-end"></div>
@@ -56,7 +87,7 @@ const SoftwareDownload = ({
         </p>
         <SoftwareBuilds
           project={id}
-          version={project.latestVersion}
+          version={project.latestStableVersion}
           builds={builds?.builds}
         />
         <p className="mt-10 text-center text-gray-700 dark:text-gray-400">
