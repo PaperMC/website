@@ -121,7 +121,7 @@
   {
     "id": "triage-team",
     "name": "Triage Team",
-    "description": "The Triage Team helps the project by reviewing, testing, and organizing our GitHub's endless issues and pull requests. With their efforts, developers and maintainers are able to most efficiently handle the most important tasks.",
+    "description": "The Triage Team helps the project by reviewing, testing, and organizing our GitHub's issues and pull requests. With their efforts, developers and maintainers are able to most efficiently handle the most important tasks.",
     "members": [
       {
         "name": "chew",
