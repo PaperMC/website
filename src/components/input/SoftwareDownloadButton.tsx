@@ -99,31 +99,29 @@ const SoftwareDownloadButton = () => {
                             </span>
                           )}
                         </div>
-                        <div className="text-gray-700 dark:text-gray-300 text-xs mt-1 truncate">
+                        <div className="text-gray-700 dark:text-gray-300 text-xs mt-1">
                           {download.sha256}
-                          <span className={"ml-1"}>
-                            <button
-                              className="bg-gray-200 dark:bg-gray-800"
-                              onClick={(evt) => {
-                                evt.preventDefault();
-                                navigator.clipboard.writeText(download.sha256);
-                                setCopied(download.sha256);
-                                setTimeout(() => setCopied(""), 2000);
-                              }}
+                          <span
+                            className={"ml-1 h-4 w-4 inline-flex"}
+                            onClick={(evt) => {
+                              evt.preventDefault();
+                              navigator.clipboard.writeText(download.sha256);
+                              setCopied(download.sha256);
+                              setTimeout(() => setCopied(""), 2000);
+                            }}
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              className={"w-4 h-4"}
+                              viewBox="0 0 512 512"
+                              fill="#fefefe"
                             >
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                className="h-4 w-4"
-                                viewBox="0 0 512 512"
-                                fill="#fefefe"
-                              >
-                                <path
-                                  fillRule="evenodd"
-                                  d="M464 0H144c-26.51 0-48 21.49-48 48v48H48c-26.51 0-48 21.49-48 48v320c0 26.51 21.49 48 48 48h320c26.51 0 48-21.49 48-48v-48h48c26.51 0 48-21.49 48-48V48c0-26.51-21.49-48-48-48zM362 464H54a6 6 0 0 1-6-6V150a6 6 0 0 1 6-6h42v224c0 26.51 21.49 48 48 48h224v42a6 6 0 0 1-6 6zm96-96H150a6 6 0 0 1-6-6V54a6 6 0 0 1 6-6h308a6 6 0 0 1 6 6v308a6 6 0 0 1-6 6z"
-                                  clipRule="evenodd"
-                                />
-                              </svg>
-                            </button>
+                              <path
+                                fillRule="evenodd"
+                                d="M464 0H144c-26.51 0-48 21.49-48 48v48H48c-26.51 0-48 21.49-48 48v320c0 26.51 21.49 48 48 48h320c26.51 0 48-21.49 48-48v-48h48c26.51 0 48-21.49 48-48V48c0-26.51-21.49-48-48-48zM362 464H54a6 6 0 0 1-6-6V150a6 6 0 0 1 6-6h42v224c0 26.51 21.49 48 48 48h224v42a6 6 0 0 1-6 6zm96-96H150a6 6 0 0 1-6-6V54a6 6 0 0 1 6-6h308a6 6 0 0 1 6 6v308a6 6 0 0 1-6 6z"
+                                clipRule="evenodd"
+                              />
+                            </svg>
                           </span>
                         </div>
                       </div>
