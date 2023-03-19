@@ -30,10 +30,10 @@ const Home: NextPage<ProjectProps> = ({ project }) => {
             <span className="text-blue-500">Built to perform.</span>
           </h1>
           <p className="text-xl mt-4">
-            PaperMC improves Minecraft's ecosystem with fast, secure
-            software and an expanding plugin API, providing quick
-            releases and helpful support as the most widely used, performant,
-            and stable software available.
+            PaperMC improves Minecraft’s ecosystem with fast, secure software
+            and an expanding plugin API, providing quick releases and helpful
+            support as the most widely used, performant, and stable software
+            available.
           </p>
           <div className="flex flex-row gap-4 mt-8">
             <Button variant="filled" href="/downloads">
@@ -102,10 +102,10 @@ const Home: NextPage<ProjectProps> = ({ project }) => {
               &nbsp;players
             </h2>
             <p className="md:(mt-6 text-xl) text-gray-900 dark:text-gray-100 mt-3">
-              PaperMC’s software powers hundreds of thousands of Minecraft servers
-              on a daily basis, from small single-servers setups to massive Minecraft
-              server networks. Designed with utility and performance in mind, it can
-              handle whatever you throw at it.
+              PaperMC’s software powers hundreds of thousands of Minecraft
+              servers on a daily basis, from small single-servers setups to
+              massive Minecraft server networks. Designed with utility and
+              performance in mind, it can handle whatever you throw at it.
             </p>
           </div>
         </div>

@@ -116,8 +116,8 @@ const VelocityHome = ({ project }: ProjectProps): ReactElement => {
               Together with a community of server owners
             </h2>
             <p className="md:(mt-6 text-xl) text-gray-900 dark:text-gray-100 mt-3">
-              Whether you need help with your settings, server lag, or need
-              a guide for formatting your chat, our knowledgeable staff and
+              Whether you need help with your settings, server lag, or need a
+              guide for formatting your chat, our knowledgeable staff and
               friendly community are always around to lend a hand.
             </p>
             <div className="flex flex-row gap-4 mt-8">
