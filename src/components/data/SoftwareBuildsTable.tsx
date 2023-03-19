@@ -1,3 +1,5 @@
+import clsx from "clsx";
+
 import SoftwareBuildChanges from "@/components/data/SoftwareBuildChanges";
 import type { Build } from "@/lib/service/types";
 import { getVersionBuildDownloadURL } from "@/lib/service/v2";
@@ -33,12 +35,12 @@ const SoftwareBuildsTable = ({
             <tr key={build.build}>
               <td>
                 <span
-                  className={
-                    "rounded-full py-2 px-3 min-w-16 " +
-                    (build.channel === "experimental"
+                  className={clsx(
+                    "rounded-full py-2 px-3 min-w-16",
+                    build.channel === "experimental"
                       ? "bg-red-500"
-                      : "bg-gray-800")
-                  }
+                      : "bg-gray-800"
+                  )}
                 >
                   #{build.build}
                 </span>

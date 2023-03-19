@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import Link from "next/link";
 import type { FunctionComponent, ReactElement } from "react";
 import { useState } from "react";
@@ -23,21 +24,11 @@ const SoftwareDownload = ({
   description,
   experimentalWarning,
 }: SoftwareDownloadProps & ProjectProps): ReactElement => {
-  const { data: stableBuilds } = useVersionBuilds(
-    id,
-    project.latestStableVersion
-  );
-  // todo how do I avoid this call when latestExperimentalVersion is null?
-  const { data: experimentalBuilds } = useVersionBuilds(
-    id,
-    project.latestExperimentalVersion
-  );
-
   const [isStable, setStable] = useState(true);
-  const builds = isStable ? stableBuilds : experimentalBuilds;
   const version = isStable
     ? project.latestStableVersion
-    : project.latestExperimentalVersion;
+    : project.latestExperimentalVersion ?? project.latestStableVersion;
+  const { data: builds } = useVersionBuilds(id, version);
 
   const toggleStable = () => {
     setStable(!isStable);
@@ -68,26 +59,26 @@ const SoftwareDownload = ({
             </span>
           </h2>
           <p className="text-xl mt-4">
-            {isStable ? description : experimentalWarning}
+            {isStable ? description : experimentalWarning ?? description}
           </p>
           <div className="flex flex-col gap-4 mt-8">
             <SoftwareDownloadButton />
-            {isStable && project.latestExperimentalVersion && (
+            {project.latestExperimentalVersion && (
               <button
-                className="rounded-lg flex flex-row w-full md:w-100 bg-red-500 transition-shadow text-white transition-color hover:shadow-lg pl-5 py-3"
+                className={clsx(
+                  "rounded-lg flex flex-row w-full md:w-100 border text-white transition-border pl-5 py-3",
+                  isStable
+                    ? "dark:border-red-500 dark:text-red-200 border-red-900 text-red-700"
+                    : "dark:border-blue-600 dark:text-blue-400 border-blue-900 text-blue-700"
+                )}
                 onClick={toggleStable}
               >
-                Toggle experimental builds for&nbsp;
-                {project.latestExperimentalVersion}
-              </button>
-            )}
-            {!isStable && project.latestExperimentalVersion && (
-              <button
-                className="rounded-lg flex flex-row w-full md:w-100 bg-blue-600 transition-shadow text-white transition-color hover:shadow-lg pl-5 py-3"
-                onClick={toggleStable}
-              >
-                Back to stable builds for&nbsp;
-                {project.latestStableVersion}
+                {isStable
+                  ? "Toggle experimental builds for "
+                  : "Back to stable builds for "}
+                {isStable
+                  ? project.latestExperimentalVersion
+                  : project.latestStableVersion}
               </button>
             )}
           </div>

@@ -1,4 +1,5 @@
 import { Menu, Transition } from "@headlessui/react";
+import clsx from "clsx";
 import { Fragment, useContext, useState } from "react";
 
 import CloneIcon from "@/assets/icons/fontawesome/clone-icon.svg";
@@ -29,10 +30,10 @@ const SoftwareDownloadButton = () => {
   return (
     <Menu as="div" className="relative w-full">
       <div
-        className={
-          "rounded-lg flex flex-row w-full md:w-100 transition-shadow text-white transition-color hover:(shadow-lg bg-blue-500) " +
-          (stable ? "bg-blue-600" : "bg-red-500")
-        }
+        className={clsx(
+          "rounded-lg flex flex-row w-full md:w-100 transition-shadow text-white transition-color hover:(shadow-lg bg-blue-500)",
+          stable ? "bg-blue-600" : "bg-red-500"
+        )}
       >
         <a
           className="flex flex-row flex-1 items-center gap-8 pl-5 py-3"
