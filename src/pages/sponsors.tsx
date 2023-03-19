@@ -99,22 +99,24 @@ const Sponsors: NextPage = () => {
           per month.
         </p>
         <div className="grid grid-cols-8 md:grid-cols-16 lg:grid-cols-18 xl:grid-cols-20 mt-8 gap-2">
-          {sponsorData?.ocData?.collective?.contributors?.nodes?.map((node) => (
-            <div
-              role="button"
-              className="relative rounded-full aspect-square bg-gray-600 flex items-center justify-center text-white font-bold uppercase overflow-auto transition-transform transform hover:(scale-120 shadow-lg)"
-              key={node.name}
-            >
-              {node.name[0]}
-              <Image
-                alt={`${node.name}'s avatar`}
-                src={node.image}
-                objectFit="cover"
-                layout="fill"
-                unoptimized
-              />
-            </div>
-          ))}
+          {sponsorData?.ocData?.collective?.contributors?.nodes
+            ?.filter((n) => n.name !== "Guest")
+            .map((node) => (
+              <div
+                role="button"
+                className="relative rounded-full aspect-square bg-gray-600 flex items-center justify-center text-white font-bold uppercase overflow-auto transition-transform transform hover:(scale-120 shadow-lg)"
+                key={node.name}
+              >
+                {node.name[0]}
+                <Image
+                  alt={`${node.name}'s avatar`}
+                  src={node.image}
+                  objectFit="cover"
+                  layout="fill"
+                  unoptimized
+                />
+              </div>
+            ))}
           {sponsorData?.ghData?.organization?.sponsors?.nodes?.map((node) => (
             <a
               role="button"
