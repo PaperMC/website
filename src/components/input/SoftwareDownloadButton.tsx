@@ -3,6 +3,7 @@ import { Fragment, useContext, useState } from "react";
 
 import ChevronDownIcon from "@/assets/icons/heroicons/chevron-down.svg";
 import DocumentDownloadIcon from "@/assets/icons/heroicons/document-download.svg";
+import CloneIcon from "@/assets/icons/fontawesome/clone-icon.svg";
 import Skeleton from "@/components/data/Skeleton";
 import { DownloadsContext } from "@/lib/context/downloads";
 import { getVersionBuildDownloadURL } from "@/lib/service/v2";
@@ -110,18 +111,7 @@ const SoftwareDownloadButton = () => {
                               setTimeout(() => setCopied(""), 2000);
                             }}
                           >
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              className={"w-4 h-4"}
-                              viewBox="0 0 512 512"
-                              fill="#fefefe"
-                            >
-                              <path
-                                fillRule="evenodd"
-                                d="M464 0H144c-26.51 0-48 21.49-48 48v48H48c-26.51 0-48 21.49-48 48v320c0 26.51 21.49 48 48 48h320c26.51 0 48-21.49 48-48v-48h48c26.51 0 48-21.49 48-48V48c0-26.51-21.49-48-48-48zM362 464H54a6 6 0 0 1-6-6V150a6 6 0 0 1 6-6h42v224c0 26.51 21.49 48 48 48h224v42a6 6 0 0 1-6 6zm96-96H150a6 6 0 0 1-6-6V54a6 6 0 0 1 6-6h308a6 6 0 0 1 6 6v308a6 6 0 0 1-6 6z"
-                                clipRule="evenodd"
-                              />
-                            </svg>
+                            <CloneIcon className={"h-4 w-4"} />
                           </span>
                         </div>
                       </div>
