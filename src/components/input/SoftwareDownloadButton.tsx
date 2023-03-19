@@ -117,6 +117,7 @@ const SoftwareDownloadButton = () => {
                             className="ml-2 h-4 w-4 inline-flex"
                             onClick={(evt) => {
                               evt.preventDefault();
+                              navigator.clipboard.writeText(download.sha256);
                               updateCopied(download.sha256);
                             }}
                           >
