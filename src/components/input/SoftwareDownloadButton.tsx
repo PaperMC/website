@@ -111,10 +111,10 @@ const SoftwareDownloadButton = () => {
                             </span>
                           )}
                         </div>
-                        <div className="text-gray-700 dark:text-gray-300 text-xs mt-1">
+                        <div className="text-gray-700 dark:text-gray-300 text-xs">
                           {download.sha256}
                           <span
-                            className="ml-2 h-4 w-4 inline-flex"
+                            className="ml-2 h-6 w-6 inline-flex items-center justify-center"
                             onClick={(evt) => {
                               evt.preventDefault();
                               navigator.clipboard.writeText(download.sha256);
