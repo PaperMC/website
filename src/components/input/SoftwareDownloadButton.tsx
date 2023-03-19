@@ -103,7 +103,7 @@ const SoftwareDownloadButton = () => {
                         <div className="text-gray-700 dark:text-gray-300 text-xs mt-1">
                           {download.sha256}
                           <span
-                            className={"ml-1 h-4 w-4 inline-flex"}
+                            className={"ml-2 h-4 w-4 inline-flex"}
                             onClick={(evt) => {
                               evt.preventDefault();
                               navigator.clipboard.writeText(download.sha256);
@@ -111,7 +111,11 @@ const SoftwareDownloadButton = () => {
                               setTimeout(() => setCopied(""), 2000);
                             }}
                           >
-                            <CloneIcon className={"h-4 w-4"} />
+                            <CloneIcon
+                              className={
+                                "h-4 w-4 text-gray-700 dark:text-gray-300"
+                              }
+                            />
                           </span>
                         </div>
                       </div>
