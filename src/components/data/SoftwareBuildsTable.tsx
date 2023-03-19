@@ -31,7 +31,18 @@ const SoftwareBuildsTable = ({
           .reverse()
           .map((build) => (
             <tr key={build.build}>
-              <td>#{build.build}</td>
+              <td>
+                <span
+                  className={
+                    "rounded-full py-2 px-3 min-w-16 " +
+                    (build.channel === "experimental"
+                      ? "bg-red-500"
+                      : "bg-gray-800")
+                  }
+                >
+                  #{build.build}
+                </span>
+              </td>
               <td>
                 <SoftwareBuildChanges project={project} build={build} />
               </td>
