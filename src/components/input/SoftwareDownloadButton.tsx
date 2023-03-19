@@ -1,9 +1,9 @@
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment, useContext, useState } from "react";
 
+import CloneIcon from "@/assets/icons/fontawesome/clone-icon.svg";
 import ChevronDownIcon from "@/assets/icons/heroicons/chevron-down.svg";
 import DocumentDownloadIcon from "@/assets/icons/heroicons/document-download.svg";
-import CloneIcon from "@/assets/icons/fontawesome/clone-icon.svg";
 import Skeleton from "@/components/data/Skeleton";
 import { DownloadsContext } from "@/lib/context/downloads";
 import { getVersionBuildDownloadURL } from "@/lib/service/v2";
@@ -13,6 +13,17 @@ const SoftwareDownloadButton = () => {
 
   const latestBuild = builds && builds[builds.length - 1];
   const [copied, setCopied] = useState("");
+  const [timeoutHandler, setTimeoutHandler] = useState<NodeJS.Timeout | null>(
+    null
+  );
+
+  const updateCopied = (text: string) => {
+    if (timeoutHandler) {
+      clearTimeout(timeoutHandler);
+    }
+    setCopied(text);
+    setTimeoutHandler(setTimeout(() => setCopied(""), 2000));
+  };
 
   return (
     <Menu as="div" className="relative w-full">
@@ -106,9 +117,7 @@ const SoftwareDownloadButton = () => {
                             className="ml-2 h-4 w-4 inline-flex"
                             onClick={(evt) => {
                               evt.preventDefault();
-                              navigator.clipboard.writeText(download.sha256);
-                              setCopied(download.sha256);
-                              setTimeout(() => setCopied(""), 2000);
+                              updateCopied(download.sha256);
                             }}
                           >
                             <CloneIcon className="h-4 w-4 text-gray-700 dark:text-gray-300" />
