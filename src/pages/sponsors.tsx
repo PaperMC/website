@@ -113,6 +113,10 @@ const Sponsors: NextPage = () => {
                   src={node.image}
                   objectFit="cover"
                   layout="fill"
+                  onError={(e) => (e.currentTarget.style.display = "none")}
+                  onLoad={(e) =>
+                    (e.currentTarget.style.backgroundColor = "white")
+                  }
                   unoptimized
                 />
               </div>
@@ -132,6 +136,10 @@ const Sponsors: NextPage = () => {
                 src={node.avatarUrl}
                 objectFit="cover"
                 layout="fill"
+                onError={(e) => (e.currentTarget.style.display = "none")}
+                onLoad={(e) =>
+                  (e.currentTarget.style.backgroundColor = "white")
+                }
                 unoptimized
               />
             </a>

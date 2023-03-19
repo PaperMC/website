@@ -125,6 +125,10 @@ const Team: NextPage = () => {
                     src={contributor.avatar_url}
                     objectFit="cover"
                     layout="fill"
+                    onError={(e) => (e.currentTarget.style.display = "none")}
+                    onLoad={(e) => {
+                      e.currentTarget.style.backgroundColor = "white";
+                    }}
                     unoptimized
                   />
                 </a>
