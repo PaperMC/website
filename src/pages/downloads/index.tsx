@@ -33,7 +33,7 @@ const Downloads: NextPage = () => {
             id="paper"
             name="Paper"
             icon={PaperIcon}
-            description="Paper is the next generation of Minecraft servers, offering uncompromising performance."
+            description="Paper is a Minecraft server, designed to improve performance and offer more advanced features and API."
             download
           />
           <SoftwarePreview
@@ -47,7 +47,7 @@ const Downloads: NextPage = () => {
             id="waterfall"
             name="Waterfall"
             icon={PaperIcon}
-            description="Waterfall is a BungeeCord-replacing proxy that aims to improve performance and stability."
+            description="Waterfall is a drop-in BungeeCord replacement that aims to improve performance and stability."
             download
           />
         </div>

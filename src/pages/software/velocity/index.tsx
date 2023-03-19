@@ -19,7 +19,7 @@ const VelocityHome = ({ project }: ProjectProps): ReactElement => {
     <>
       <SEO
         title="Velocity"
-        description="Velocity is the modern, high-performance proxy, in every sense. Boasting unparalleled speed and next-level design, it’s a full alternative to Waterfall with its own plugin ecosystem."
+        description="Velocity is the modern, high-performance proxy. Boasting unparalleled speed and next-level design, it’s a full alternative to Waterfall with its own plugin ecosystem."
         keywords={[
           "velocity",
           "proxy",
@@ -34,7 +34,7 @@ const VelocityHome = ({ project }: ProjectProps): ReactElement => {
         versionGroup={project.latestVersionGroup}
         icon={VelocityIcon}
         header={<>Next generation speed and capability</>}
-        description="Velocity is the modern, high-performance proxy, in every sense. Boasting unparalleled speed and next-level design, it’s a full alternative to Waterfall with its own plugin ecosystem."
+        description="Velocity is the modern, high-performance proxy. Boasting unparalleled speed and next-level design, it’s a full alternative to Waterfall with its own plugin ecosystem."
       />
       <section
         id="why"
@@ -48,17 +48,17 @@ const VelocityHome = ({ project }: ProjectProps): ReactElement => {
             <FeatureCard
               icon={BoltIcon}
               label="Out with the old, in with the new"
-              description="Velocity is the very best proxy software available. Boasting much expanded capabilities due to next-level technical design, it runs laps around BungeeCord."
+              description="Velocity is the best proxy software available. Boasting much expanded capabilities due to next-level technical design, it runs laps around BungeeCord."
             />
             <FeatureCard
               icon={ChatBubbleLeftRightIcon}
               label="An active and growing community"
-              description="Velocity has an active and growing community of server administrators and developers. Got problems? Come talk with us on Discord and get real time support."
+              description="Velocity has an active and growing community of server administrators and developers. If you encounter any problems, you can come talk with us on Discord and get real time support."
             />
             <FeatureCard
               icon={CodeBracketIcon}
               label="Plenty of plugins to choose from"
-              description="While BungeeCord has more third-party software due to its longer life so far, Velocity isn’t lacking in the essentials. With enough to get going and more added every day, Velocity’s got what you need."
+              description="While BungeeCord has more third-party software due to its longer life so far, Velocity isn’t lacking in the essentials. With enough to get going and more added every day, Velocity has what you need."
             />
           </div>
         </div>
@@ -84,8 +84,7 @@ const VelocityHome = ({ project }: ProjectProps): ReactElement => {
             <p className="md:(mt-6 text-xl) text-gray-900 dark:text-gray-100 mt-3">
               To get started with Velocity, you will need to download and
               install the latest version of the server software. Once
-              you&apos;re ready, take a look at our extensive documentation to
-              get started!
+              you&apos;re ready, take a look at our extensive documentation!
             </p>
             <div className="flex flex-row gap-4 mt-8">
               <Button variant="filled" href="/downloads/velocity" dense>
@@ -117,11 +116,9 @@ const VelocityHome = ({ project }: ProjectProps): ReactElement => {
               Together with a community of server owners
             </h2>
             <p className="md:(mt-6 text-xl) text-gray-900 dark:text-gray-100 mt-3">
-              Whether you need help with your settings, have to fix lag, or need
+              Whether you need help with your settings, server lag, or need
               a guide for formatting your chat, our knowledgeable staff and
-              friendly community are always around to lend a hand. With
-              Velocity, everyone has been in your position before and they’re
-              all happy to help.
+              friendly community are always around to lend a hand.
             </p>
             <div className="flex flex-row gap-4 mt-8">
               <Button

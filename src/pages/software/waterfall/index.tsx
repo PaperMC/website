@@ -49,17 +49,17 @@ const WaterfallHome = ({ project }: ProjectProps): ReactElement => {
             <FeatureCard
               icon={BoltIcon}
               label="Fast, smooth, and easy"
-              description="Whatever you need, Waterfall delivers. It doesn’t skip out on the essentials and provides an uncompromising and fully supported platform for your proxy."
+              description="Waterfall is a simple BungeeCord fork with additional improvements to stability and performance."
             />
             <FeatureCard
               icon={ChatBubbleLeftRightIcon}
               label="An active and growing community"
-              description="Waterfall has an active and growing community of server administrators and developers. Got problems? Come talk with us on Discord and get real time support."
+              description="If you encounter any problems, you can come talk with us on Discord and get real time support."
             />
             <FeatureCard
               icon={CodeBracketIcon}
               label="Compatible with Bungee"
-              description="Everything that works with BungeeCord works with Waterfall. With no compromises, the switch is seamless and easy. Simply swap out the relevant downloads and you’re good to go."
+              description="Everything that works with BungeeCord works with Waterfall. The switch is seamless and easy: Simply swap out the relevant downloads and you’re good to go."
             />
           </div>
         </div>
@@ -85,8 +85,7 @@ const WaterfallHome = ({ project }: ProjectProps): ReactElement => {
             <p className="md:(mt-6 text-xl) text-gray-900 dark:text-gray-100 mt-3">
               To get started with Waterfall, you will need to download and
               install the latest version of the server software. Once
-              you&apos;re ready, take a look at our extensive documentation to
-              get started!
+              you&apos;re ready, take a look at our extensive documentation!
             </p>
             <div className="flex flex-row gap-4 mt-8">
               <Button variant="filled" href="/downloads/waterfall" dense>
@@ -137,11 +136,9 @@ const WaterfallHome = ({ project }: ProjectProps): ReactElement => {
               Together with a community of server owners
             </h2>
             <p className="md:(mt-6 text-xl) text-gray-900 dark:text-gray-100 mt-3">
-              Whether you need help with your settings, have to fix lag, or need
+              Whether you need help with your settings, server lag, or need
               a guide for formatting your chat, our knowledgeable staff and
-              friendly community are always around to lend a hand. With
-              Waterfall, everyone has been in your position before and they’re
-              all happy to help.
+              friendly community are always around to lend a hand.
             </p>
             <div className="flex flex-row gap-4 mt-8">
               <Button

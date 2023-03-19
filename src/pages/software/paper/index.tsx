@@ -19,7 +19,7 @@ const PaperHome = ({ project }: ProjectProps): ReactElement => {
     <>
       <SEO
         title="Paper"
-        description="Paper is the next generation Minecraft server software, compatible with Spigot plugins and offering uncompromising performance."
+        description="Paper is a Minecraft game server based on Spigot, designed to improve performance and offer more advanced features and API."
         keywords={[
           "papermc",
           "paper",
@@ -42,7 +42,7 @@ const PaperHome = ({ project }: ProjectProps): ReactElement => {
             <span className="text-blue-500">Minecraft server</span>
           </>
         }
-        description="Paper is the next generation Minecraft server software, compatible with Spigot plugins and offering uncompromising performance."
+        description="Paper is a Minecraft game server based on Spigot, designed to improve performance and offer more advanced features and API."
       />
       <section
         id="why"
@@ -56,12 +56,12 @@ const PaperHome = ({ project }: ProjectProps): ReactElement => {
             <FeatureCard
               icon={BoltIcon}
               label="It's stupidly fast"
-              description="Paper contains numerous improvements and optimizations resulting in a significant increase in performance."
+              description="Paper contains numerous improvements and optimizations resulting in a significant increase in performance. This includes asynchronous chunk loading, as well ass major optimizations to the light engine, hoppers, entities, and more."
             />
             <FeatureCard
               icon={ChatBubbleLeftRightIcon}
               label="An active and growing community"
-              description="Paper has an active and growing community of server administrators and developers. Got problems? Come talk with us on Discord and get real time support."
+              description="Paper has an active and growing community of server administrators and developers. If you encounter any problems, you can come talk with us on Discord and get real time support."
             />
             <FeatureCard
               icon={CodeBracketIcon}
@@ -92,7 +92,7 @@ const PaperHome = ({ project }: ProjectProps): ReactElement => {
             <p className="md:(mt-6 text-xl) text-gray-900 dark:text-gray-100 mt-3">
               To get started with Paper, you will need to download and install
               the latest version of the server software. Once you&apos;re ready,
-              take a look at our extensive documentation to get started!
+              take a look at our extensive documentation!
             </p>
             <div className="flex flex-row gap-4 mt-8">
               <Button variant="filled" href="/downloads/paper" dense>
@@ -124,11 +124,9 @@ const PaperHome = ({ project }: ProjectProps): ReactElement => {
               Together with a community of server owners
             </h2>
             <p className="md:(mt-6 text-xl) text-gray-900 dark:text-gray-100 mt-3">
-              Whether you need help with your settings, have to fix lag, or need
+              Whether you need help with your settings, server lag, or need
               a guide for formatting your chat, our knowledgeable staff and
-              friendly community are always around to lend a hand. With Paper,
-              everyone has been in your position before and they’re all happy to
-              help.
+              friendly community are always around to lend a hand.
             </p>
             <div className="flex flex-row gap-4 mt-8">
               <Button

@@ -23,17 +23,17 @@ const Home: NextPage<ProjectProps> = ({ project }) => {
             the game’s ecosystem with faster and more secure software."
         keywords={["papermc", "paper", "velocity", "minecraft", "performance"]}
       />
-      <header className="max-w-7xl flex flex-row mx-auto px-4 pt-32 pb-26 lg:(pt-48 pb-46) gap-16">
+      <header className="max-w-7xl flex flex-row mx-auto px-4 pt-32 pb-26 lg:(pt-48 pb-46)">
         <div className="flex-1">
           <h1 className="font-medium leading-normal lg:(text-5xl leading-normal) text-4xl">
             Modern software. <br />
             <span className="text-blue-500">Built to perform.</span>
           </h1>
           <p className="text-xl mt-4">
-            PaperMC is a Minecraft software organization focused on improving
-            the game’s ecosystem with faster and more secure software. Our
-            server, Paper, is leading the competition as the most performant and
-            stable one available.
+            PaperMC improves Minecraft's ecosystem with fast, secure
+            software and an expanding plugin API, providing quick
+            releases and helpful support as the most widely used, performant,
+            and stable software available.
           </p>
           <div className="flex flex-row gap-4 mt-8">
             <Button variant="filled" href="/downloads">
@@ -50,31 +50,27 @@ const Home: NextPage<ProjectProps> = ({ project }) => {
       </header>
       <section
         id="software"
-        className="w-full pt-16 pb-8 bg-primary-200 dark:bg-background-dark-80"
+        className="w-full pt-10 pb-10 bg-primary-200 dark:bg-background-dark-80"
       >
         <div className="max-w-7xl mx-auto">
-          <h2 className="font-semibold text-xl md:text-2xl px-6 lg:px-4 mb-4">
-            Your server deserves the&nbsp;
-            <span className="text-blue-500">best.</span>
-          </h2>
           <div className="grid md:(grid-cols-3 -ml-4) gap-2 px-2 xl:gap-4">
             <SoftwarePreview
               id="paper"
               name="Paper"
               icon={PaperIcon}
-              description="Paper is the next generation of Minecraft server software, offering uncompromising performance."
+              description="Paper is a Minecraft game server based on Spigot, designed to improve performance and offer more advanced features and API."
             />
             <SoftwarePreview
               id="velocity"
               name="Velocity"
               icon={VelocityIcon}
-              description="Velocity is the modern, high performance Minecraft server proxy."
+              description="Velocity is a high-performance, scalable Minecraft proxy server that allows players to connect to multiple Minecraft servers under the proxy."
             />
             <SoftwarePreview
               id="waterfall"
               name="Waterfall"
               icon={PaperIcon}
-              description="Waterfall is a BungeeCord-replacing proxy that aims to improve performance and stability."
+              description="Waterfall is a drop-in BungeeCord replacement that aims to improve performance and stability."
             />
           </div>
         </div>
@@ -106,9 +102,9 @@ const Home: NextPage<ProjectProps> = ({ project }) => {
               &nbsp;players
             </h2>
             <p className="md:(mt-6 text-xl) text-gray-900 dark:text-gray-100 mt-3">
-              PaperMC’s software powers tens of thousands of Minecraft servers
-              on a daily basis, from small SMPs to ground-breaking Minecraft
-              networks. Designed with utility and performance in mind, it can
+              PaperMC’s software powers hundreds of thousands of Minecraft servers
+              on a daily basis, from small single-servers setups to massive Minecraft
+              server networks. Designed with utility and performance in mind, it can
               handle whatever you throw at it.
             </p>
           </div>
