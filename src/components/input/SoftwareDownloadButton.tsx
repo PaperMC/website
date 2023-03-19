@@ -94,16 +94,16 @@ const SoftwareDownloadButton = () => {
                             </span>
                           )}
                           {copied === download.sha256 && (
-                            <span className="ml-2 text-xs rounded-full py-0.5 px-2 bg-green-200/80 text-green-800 transition ease-in-out duration-1000">
+                            <span className="ml-2 text-xs rounded-full py-0.5 px-2 bg-green-200/80 text-green-800">
                               Copied
                             </span>
                           )}
                         </div>
                         <div className="text-gray-700 dark:text-gray-300 text-xs mt-1 truncate">
                           {download.sha256}
-                          <span className={"justify-right ml-1 cursor-pointer"}>
+                          <span className={"ml-1"}>
                             <button
-                              className="bg-gray-200 dark:bg-gray-800 rounded-full"
+                              className="bg-gray-200 dark:bg-gray-800"
                               onClick={(evt) => {
                                 evt.preventDefault();
                                 navigator.clipboard.writeText(download.sha256);
