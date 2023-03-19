@@ -4,7 +4,8 @@ import NextLink from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
-import Logo from "@/assets/brand/logo.svg";
+import LogoMarkerDark from "@/assets/brand/logo-marker-dark.svg";
+import LogoMarkerLight from "@/assets/brand/logo-marker-light.svg";
 import DiscordIcon from "@/assets/icons/fontawesome/discord-brands.svg";
 import GitHubIcon from "@/assets/icons/fontawesome/github-brands.svg";
 import TwitterIcon from "@/assets/icons/fontawesome/twitter-brands.svg";
@@ -61,12 +62,14 @@ const NavBar = ({ component }: NavBarProps) => {
         </button>
         <NextLink href="/" passHref>
           <a className="leading-0" tabIndex={-1} aria-hidden={true}>
-            <Logo className="w-10 h-10 cursor-pointer" />
-          </a>
-        </NextLink>
-        <NextLink href="/" passHref>
-          <a className="leading-0 mr-4">
-            <span className="font-semibold text-lg">PaperMC</span>
+            <LogoMarkerLight
+              className="block dark:hidden h-12 cursor-pointer"
+              alt="PaperMC"
+            />
+            <LogoMarkerDark
+              className="hidden dark:block h-12 cursor-pointer"
+              alt="PaperMC"
+            />
           </a>
         </NextLink>
         <div
