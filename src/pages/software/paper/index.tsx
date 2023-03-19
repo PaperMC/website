@@ -56,7 +56,7 @@ const PaperHome = ({ project }: ProjectProps): ReactElement => {
             <FeatureCard
               icon={BoltIcon}
               label="It's stupidly fast"
-              description="Paper contains numerous improvements and optimizations resulting in a significant increase in performance. This includes asynchronous chunk loading, as well ass major optimizations to the light engine, hoppers, entities, and more."
+              description="Paper contains numerous improvements and optimizations resulting in a significant increase in performance. This includes asynchronous chunk loading, as well as major optimizations to the light engine, hoppers, entities, and more."
             />
             <FeatureCard
               icon={ChatBubbleLeftRightIcon}
