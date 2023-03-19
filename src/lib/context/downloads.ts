@@ -9,6 +9,7 @@ export interface DownloadsContextProps {
   project?: ProjectDescriptor;
   builds?: Build[];
   version: string;
+  stable: boolean;
 }
 
 export interface ProjectDescriptor {
@@ -27,6 +28,7 @@ export const DownloadsContext = createContext<DownloadsContextProps>({
   project: undefined,
   builds: undefined,
   version: "",
+  stable: true,
 });
 
 const isVersionStable = async (
@@ -41,36 +43,22 @@ const isVersionStable = async (
   return false;
 };
 
-const isVersionExperimentalStable = async (
-  project: string,
-  version: string
-): Promise<boolean> => {
-  const { builds } = await getVersionBuilds(project, version);
-  for (let i = builds.length - 1; i >= 0; i--) {
-    if (builds[i].channel === "experimental") return true;
-  }
-
-  return false;
-};
-
 export const getProjectProps = (id: string): GetStaticProps => {
   return async () => {
     const { project_name, versions, version_groups } = await getProject(id);
 
     let latestStableVersion = versions[versions.length - 1];
-    let latestExperimentalVersion = null;
     for (let i = versions.length - 1; i >= 0; i--) {
       if (await isVersionStable(id, versions[i])) {
         latestStableVersion = versions[i];
         break;
       }
-      if (
-        !latestExperimentalVersion &&
-        (await isVersionExperimentalStable(id, versions[i]))
-      ) {
-        latestExperimentalVersion = versions[i];
-      }
     }
+
+    const latestExperimentalVersion =
+      latestStableVersion !== versions[versions.length - 1]
+        ? versions[versions.length - 1]
+        : null;
 
     const project = {
       name: project_name,

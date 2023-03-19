@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { FunctionComponent, ReactElement } from "react";
+import { useState } from "react";
 
 import SoftwareBuilds from "@/components/data/SoftwareBuilds";
 import SoftwareDownloadButton from "@/components/input/SoftwareDownloadButton";
@@ -12,6 +13,7 @@ export interface SoftwareDownloadProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   icon?: FunctionComponent<any>;
   description: string;
+  experimentalWarning?: string;
 }
 
 const SoftwareDownload = ({
@@ -19,21 +21,27 @@ const SoftwareDownload = ({
   project,
   icon: Icon,
   description,
+  experimentalWarning,
 }: SoftwareDownloadProps & ProjectProps): ReactElement => {
   const { data: stableBuilds } = useVersionBuilds(
     id,
     project.latestStableVersion
   );
+  // todo how do I avoid this call when latestExperimentalVersion is null?
   const { data: experimentalBuilds } = useVersionBuilds(
     id,
     project.latestExperimentalVersion
   );
 
-  const stable = false;
-  const builds = stable ? stableBuilds : experimentalBuilds;
-  const version = stable
+  const [isStable, setStable] = useState(true);
+  const builds = isStable ? stableBuilds : experimentalBuilds;
+  const version = isStable
     ? project.latestStableVersion
     : project.latestExperimentalVersion;
+
+  const toggleStable = () => {
+    setStable(!isStable);
+  };
 
   return (
     <DownloadsContext.Provider
@@ -42,6 +50,7 @@ const SoftwareDownload = ({
         project,
         builds: builds?.builds,
         version,
+        stable: isStable,
       }}
     >
       <header className="max-w-7xl flex flex-row mx-auto px-4 pt-32 pb-16 lg:(pt-48 pb-26) gap-16">
@@ -54,28 +63,33 @@ const SoftwareDownload = ({
           </div>
           <h2 className="font-medium leading-normal lg:(text-5xl leading-normal) text-4xl">
             Get {project.name}&nbsp;
-            <span className="text-blue-600">{version}</span>
+            <span className={isStable ? "text-blue-600" : "text-red-500"}>
+              {version}
+            </span>
           </h2>
-          <p className="text-xl mt-4">{description}</p>
+          <p className="text-xl mt-4">
+            {isStable ? description : experimentalWarning}
+          </p>
           <div className="flex flex-col gap-4 mt-8">
             <SoftwareDownloadButton />
-            {(() => {
-              if (stable && project.latestExperimentalVersion) {
-                return (
-                  <div className="rounded-lg flex flex-row w-full md:w-100 bg-red-500 transition-shadow text-white transition-color hover:shadow-lg pl-5 py-3 cursor-pointer">
-                    Toggle experimental builds for&nbsp;
-                    {project.latestExperimentalVersion}
-                  </div>
-                );
-              } else {
-                return (
-                  <div className="rounded-lg flex flex-row w-full md:w-100 bg-blue-600  transition-shadow text-white transition-color hover:shadow-lg pl-5 py-3 cursor-pointer">
-                    Back to stable builds for&nbsp;
-                    {project.latestStableVersion}
-                  </div>
-                );
-              }
-            })()}
+            {isStable && project.latestExperimentalVersion && (
+              <button
+                className="rounded-lg flex flex-row w-full md:w-100 bg-red-500 transition-shadow text-white transition-color hover:shadow-lg pl-5 py-3"
+                onClick={toggleStable}
+              >
+                Toggle experimental builds for&nbsp;
+                {project.latestExperimentalVersion}
+              </button>
+            )}
+            {!isStable && project.latestExperimentalVersion && (
+              <button
+                className="rounded-lg flex flex-row w-full md:w-100 bg-blue-600 transition-shadow text-white transition-color hover:shadow-lg pl-5 py-3"
+                onClick={toggleStable}
+              >
+                Back to stable builds for&nbsp;
+                {project.latestStableVersion}
+              </button>
+            )}
           </div>
         </div>
         <div className="flex-1 lg:flex hidden justify-end"></div>
@@ -87,7 +101,7 @@ const SoftwareDownload = ({
         </p>
         <SoftwareBuilds
           project={id}
-          version={project.latestStableVersion}
+          version={version}
           builds={builds?.builds}
         />
         <p className="mt-10 text-center text-gray-700 dark:text-gray-400">

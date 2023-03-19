@@ -38,7 +38,10 @@ const SoftwareBuilds = ({
               )}
               rel="noreferrer"
               target="_blank"
-              className="bg-gray-800 text-gray-100 text-sm text-center font-medium rounded-full p-2 min-w-16 mr-4"
+              className={
+                "text-gray-100 text-sm text-center font-medium rounded-full p-2 min-w-16 mr-4 " +
+                (build.channel === "default" ? "bg-gray-800" : "bg-red-500")
+              }
             >
               #{build.build}
             </a>
