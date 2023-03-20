@@ -64,7 +64,7 @@ const Home: NextPage<ProjectProps> = ({ project }) => {
               id="paper"
               name="Paper"
               icon={PaperIcon}
-              description="Paper is a Minecraft game server based on Spigot, designed to improve performance and offer more advanced features and API."
+              description="Paper is a Minecraft game server based on Spigot, designed to greatly improve performance and offer more advanced features and API."
             />
             <SoftwarePreview
               id="velocity"
@@ -76,7 +76,7 @@ const Home: NextPage<ProjectProps> = ({ project }) => {
               id="waterfall"
               name="Waterfall"
               icon={WaterfallIcon}
-              description="Waterfall is a drop-in BungeeCord replacement that aims to improve performance and stability."
+              description="Waterfall is a legacy drop-in BungeeCord replacement with some additional improvements to performance and stability."
             />
           </div>
         </div>
@@ -127,7 +127,7 @@ const Home: NextPage<ProjectProps> = ({ project }) => {
           </div>
           <div className="flex-1">
             <h2 className="font-semibold text-2xl md:text-4xl">
-              Security-first approach
+              The promise of stability
             </h2>
             <p className="md:(mt-6 text-xl) text-gray-900 dark:text-gray-100 mt-3">
               Our software is designed with security and stability in mind. We

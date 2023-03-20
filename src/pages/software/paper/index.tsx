@@ -19,7 +19,7 @@ const PaperHome = ({ project }: ProjectProps): ReactElement => {
     <>
       <SEO
         title="Paper"
-        description="Paper is a Minecraft game server based on Spigot, designed to improve performance and offer more advanced features and API."
+        description="Paper is a Minecraft game server based on Spigot, designed to greatly improve performance and offer more advanced features and API."
         keywords={[
           "papermc",
           "paper",
@@ -42,7 +42,7 @@ const PaperHome = ({ project }: ProjectProps): ReactElement => {
             <span className="text-blue-500">Minecraft server</span>
           </>
         }
-        description="Paper is a Minecraft game server based on Spigot, designed to improve performance and offer more advanced features and API."
+        description="Paper is a Minecraft game server based on Spigot, designed to greatly improve performance and offer more advanced features and API."
       />
       <section
         id="why"
@@ -92,7 +92,7 @@ const PaperHome = ({ project }: ProjectProps): ReactElement => {
             <p className="md:(mt-6 text-xl) text-gray-900 dark:text-gray-100 mt-3">
               To get started with Paper, you will need to download and install
               the latest version of the server software. Once you&apos;re ready,
-              take a look at our extensive documentation!
+              take a look at our extensive documentation.
             </p>
             <div className="flex flex-row gap-4 mt-8">
               <Button variant="filled" href="/downloads/paper" dense>
@@ -124,8 +124,8 @@ const PaperHome = ({ project }: ProjectProps): ReactElement => {
               Together with a community of server owners
             </h2>
             <p className="md:(mt-6 text-xl) text-gray-900 dark:text-gray-100 mt-3">
-              Whether you need help with your settings, server lag, or need a
-              guide for formatting your chat, our knowledgeable staff and
+              Whether you need help with your server settings, server lag, or
+              need a guide for formatting your chat, our knowledgeable staff and
               friendly community are always around to lend a hand.
             </p>
             <div className="flex flex-row gap-4 mt-8">

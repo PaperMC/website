@@ -7,6 +7,7 @@ import ChatBubbleLeftRightIcon from "@/assets/icons/heroicons/chat-bubble-left-r
 import CodeBracketIcon from "@/assets/icons/heroicons/code-bracket.svg";
 import CommunityImage from "@/assets/images/community.png";
 import HomeImage1 from "@/assets/images/home-1.png";
+import VelocityImage from "@/assets/images/velocity.png";
 import FeatureCard from "@/components/data/FeatureCard";
 import Button from "@/components/input/Button";
 import SoftwareHeader from "@/components/layout/SoftwareHeader";
@@ -19,7 +20,7 @@ const WaterfallHome = ({ project }: ProjectProps): ReactElement => {
     <>
       <SEO
         title="Waterfall"
-        description="Waterfall is an upgraded BungeeCord, offering full compatibility with better performance."
+        description="Waterfall is an upgraded BungeeCord, offering full compatibility with improvements to performance and stability."
         keywords={[
           "waterfall",
           "proxy",
@@ -35,7 +36,7 @@ const WaterfallHome = ({ project }: ProjectProps): ReactElement => {
         versionGroup={project.latestVersionGroup}
         icon={WaterfallIcon}
         header={<>The Bungee-compatible upgrade</>}
-        description="Waterfall is an upgraded BungeeCord, offering full compatibility with better performance."
+        description="Waterfall is an upgraded BungeeCord, offering full compatibility with improvements to performance and stability."
       />
       <section
         id="why"
@@ -68,6 +69,33 @@ const WaterfallHome = ({ project }: ProjectProps): ReactElement => {
         id="facts"
         className="flex flex-col max-w-7xl mx-auto px-4 py-8 gap-8 md:(gap-12 py-16)"
       >
+        <div className="flex flex-col gap-6 md:(flex-row gap-8) xl:gap-24 items-center">
+          <div className="w-full flex-1 rounded-xl bg-gray-900 aspect-video relative overflow-clip">
+            <Image
+              alt=""
+              src={VelocityImage}
+              objectFit="cover"
+              layout="fill"
+              placeholder="blur"
+            />
+          </div>
+          <div className="flex-1">
+            <h2 className="font-semibold text-2xl md:text-4xl">
+              Don&apos;t need BungeeCord compatibility?
+            </h2>
+            <p className="md:(mt-6 text-xl) text-gray-900 dark:text-gray-100 mt-3">
+              If you don’t desperately need BungeeCord plugins on your proxy,
+              Velocity is the best proxy software available. Designed with
+              performance and scalability in mind, Velocity is a lot faster and
+              much more stable than BungeeCord.
+            </p>
+            <div className="flex flex-row gap-4 mt-8">
+              <Button variant="filled" href="/software/velocity" dense>
+                Learn more
+              </Button>
+            </div>
+          </div>
+        </div>
         <div className="flex flex-col gap-6 md:(flex-row-reverse gap-8) xl:gap-24 items-center">
           <div className="w-full flex-1 rounded-xl bg-gray-900 aspect-video relative overflow-clip">
             <Image
@@ -84,8 +112,8 @@ const WaterfallHome = ({ project }: ProjectProps): ReactElement => {
             </h2>
             <p className="md:(mt-6 text-xl) text-gray-900 dark:text-gray-100 mt-3">
               To get started with Waterfall, you will need to download and
-              install the latest version of the server software. Once
-              you&apos;re ready, take a look at our extensive documentation!
+              install the latest version of the proxy software. Once you&apos;re
+              ready, take a look at our documentation.
             </p>
             <div className="flex flex-row gap-4 mt-8">
               <Button variant="filled" href="/downloads/waterfall" dense>
@@ -102,42 +130,14 @@ const WaterfallHome = ({ project }: ProjectProps): ReactElement => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col gap-6 md:(flex-row gap-8) xl:gap-24 items-center">
-          <div className="w-full flex-1 rounded-xl bg-gray-900 aspect-video relative overflow-clip" />
-          <div className="flex-1">
-            <h2 className="font-semibold text-2xl md:text-4xl">
-              Don&apos;t need BungeeCord compatibility?
-            </h2>
-            <p className="md:(mt-6 text-xl) text-gray-900 dark:text-gray-100 mt-3">
-              If you don’t desperately need BungeeCord plugins on your proxy,
-              Velocity is the very best software available. Boasting much
-              expanded capabilities due to next-level technical design, it runs
-              laps around BungeeCord.
-            </p>
-            <div className="flex flex-row gap-4 mt-8">
-              <Button variant="filled" href="/software/velocity" dense>
-                Learn more
-              </Button>
-            </div>
-          </div>
-        </div>
         <div className="flex flex-col gap-6 md:(flex-row-reverse gap-8) xl:gap-24 items-center">
-          <div className="w-full flex-1 rounded-xl aspect-video relative overflow-clip">
-            <Image
-              alt=""
-              src={CommunityImage}
-              objectFit="cover"
-              layout="fill"
-              placeholder="blur"
-            />
-          </div>
           <div className="flex-1">
             <h2 className="font-semibold text-2xl md:text-4xl">
               Together with a community of server owners
             </h2>
             <p className="md:(mt-6 text-xl) text-gray-900 dark:text-gray-100 mt-3">
-              Whether you need help with your settings, server lag, or need a
-              guide for formatting your chat, our knowledgeable staff and
+              Whether you need help with your proxy settings, server lag, or
+              need a guide for formatting your chat, our knowledgeable staff and
               friendly community are always around to lend a hand.
             </p>
             <div className="flex flex-row gap-4 mt-8">
@@ -150,6 +150,15 @@ const WaterfallHome = ({ project }: ProjectProps): ReactElement => {
                 Join our Discord
               </Button>
             </div>
+          </div>
+          <div className="w-full flex-1 rounded-xl aspect-video relative overflow-clip">
+            <Image
+              alt=""
+              src={CommunityImage}
+              objectFit="cover"
+              layout="fill"
+              placeholder="blur"
+            />
           </div>
         </div>
       </section>

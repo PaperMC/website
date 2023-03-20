@@ -19,7 +19,7 @@ const VelocityHome = ({ project }: ProjectProps): ReactElement => {
     <>
       <SEO
         title="Velocity"
-        description="Velocity is the modern, high-performance proxy. Boasting unparalleled speed and next-level design, it’s a full alternative to Waterfall with its own plugin ecosystem."
+        description="Velocity is the modern, high-performance Minecraft server proxy. Designed with performance and stability in mind, it’s a full alternative to Waterfall with its own plugin ecosystem."
         keywords={[
           "velocity",
           "proxy",
@@ -34,7 +34,7 @@ const VelocityHome = ({ project }: ProjectProps): ReactElement => {
         versionGroup={project.latestVersionGroup}
         icon={VelocityIcon}
         header={<>Next generation speed and capability</>}
-        description="Velocity is the modern, high-performance proxy. Boasting unparalleled speed and next-level design, it’s a full alternative to Waterfall with its own plugin ecosystem."
+        description="Velocity is the modern, high-performance proxy. Designed with performance and stability in mind, it’s a full alternative to Waterfall with its own plugin ecosystem."
       />
       <section
         id="why"
@@ -48,7 +48,7 @@ const VelocityHome = ({ project }: ProjectProps): ReactElement => {
             <FeatureCard
               icon={BoltIcon}
               label="Out with the old, in with the new"
-              description="Velocity is the best proxy software available. Boasting much expanded capabilities due to next-level technical design, it runs laps around BungeeCord."
+              description="Velocity is the best proxy software available. Designed with performance and scalability in mind, Velocity is a lot faster and much more stable than BungeeCord."
             />
             <FeatureCard
               icon={ChatBubbleLeftRightIcon}
@@ -83,8 +83,8 @@ const VelocityHome = ({ project }: ProjectProps): ReactElement => {
             </h2>
             <p className="md:(mt-6 text-xl) text-gray-900 dark:text-gray-100 mt-3">
               To get started with Velocity, you will need to download and
-              install the latest version of the server software. Once
-              you&apos;re ready, take a look at our extensive documentation!
+              install the latest version of the proxy software. Once you&apos;re
+              ready, take a look at our extensive documentation.
             </p>
             <div className="flex flex-row gap-4 mt-8">
               <Button variant="filled" href="/downloads/velocity" dense>
@@ -116,8 +116,8 @@ const VelocityHome = ({ project }: ProjectProps): ReactElement => {
               Together with a community of server owners
             </h2>
             <p className="md:(mt-6 text-xl) text-gray-900 dark:text-gray-100 mt-3">
-              Whether you need help with your settings, server lag, or need a
-              guide for formatting your chat, our knowledgeable staff and
+              Whether you need help with your proxy settings, server lag, or
+              need a guide for formatting your chat, our knowledgeable staff and
               friendly community are always around to lend a hand.
             </p>
             <div className="flex flex-row gap-4 mt-8">
