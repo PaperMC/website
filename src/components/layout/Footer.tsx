@@ -21,6 +21,9 @@ const Footer = () => (
                 Documentation
               </a>
             </li>
+            <li>
+              <Link href="/javadocs">Javadocs</Link>
+            </li>
           </ul>
         </div>
         <div>
