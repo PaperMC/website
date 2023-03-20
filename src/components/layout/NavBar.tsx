@@ -87,7 +87,11 @@ const NavBar = ({ component }: NavBarProps) => {
               Waterfall
             </NavDropDownLink>
           </NavDropDown>
-          <NavLink href="https://forums.papermc.io/" target="_blank" className="inline-flex items-center">
+          <NavLink
+            href="https://forums.papermc.io/"
+            target="_blank"
+            className="inline-flex items-center"
+          >
             Forums
             <ExternalUrlIcon className="h-4 w-4 ml-1 align-sub" />
           </NavLink>
