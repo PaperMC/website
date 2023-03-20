@@ -1,24 +1,22 @@
-import type { NextPage } from "next";
-import type { GetStaticProps } from "next";
+import type { NextPage, GetStaticProps } from "next";
 
 import PaperIcon from "@/assets/brand/paper.svg";
 import VelocityIcon from "@/assets/brand/velocity.svg";
 import WaterfallIcon from "@/assets/brand/waterfall.svg";
 import SoftwarePreview from "@/components/data/SoftwarePreview";
 import SEO from "@/components/util/SEO";
-import type { ProjectDescriptor } from "@/lib/context/downloads";
-import { getProjectDescriptor } from "@/lib/context/downloads";
+import { getProject } from "@/lib/service/v2";
 
 interface JavadocProps {
-  paper: ProjectDescriptor;
-  velocity: ProjectDescriptor;
-  waterfall: ProjectDescriptor;
+  paperVersion: string;
+  velocityVersion: string;
+  waterfallVersion: string;
 }
 
 const Javadocs: NextPage<JavadocProps> = ({
-  paper,
-  velocity,
-  waterfall,
+  paperVersion,
+  velocityVersion,
+  waterfallVersion,
 }: JavadocProps) => {
   return (
     <>
@@ -39,19 +37,19 @@ const Javadocs: NextPage<JavadocProps> = ({
             id="paper"
             name="Paper"
             icon={PaperIcon}
-            javadocs={paper.latestVersionGroup}
+            javadocs={paperVersion}
           />
           <SoftwarePreview
             id="velocity"
             name="Velocity"
             icon={VelocityIcon}
-            javadocs={velocity.latestVersionGroup}
+            javadocs={velocityVersion}
           />
           <SoftwarePreview
             id="waterfall"
             name="Waterfall"
             icon={WaterfallIcon}
-            javadocs={waterfall.latestVersionGroup}
+            javadocs={waterfallVersion}
           />
         </div>
       </header>
@@ -62,11 +60,14 @@ const Javadocs: NextPage<JavadocProps> = ({
 export default Javadocs;
 
 export const getStaticProps: GetStaticProps<JavadocProps> = async () => {
+  const { version_groups: paper_groups } = await getProject("paper");
+  const { version_groups: velocity_groups } = await getProject("velocity");
+  const { version_groups: waterfall_groups } = await getProject("waterfall");
   return {
     props: {
-      paper: await getProjectDescriptor("paper"),
-      velocity: await getProjectDescriptor("velocity"),
-      waterfall: await getProjectDescriptor("waterfall"),
+      paperVersion: paper_groups[paper_groups.length - 1],
+      velocityVersion: velocity_groups[velocity_groups.length - 1],
+      waterfallVersion: waterfall_groups[waterfall_groups.length - 1],
     },
     revalidate: 3600, // 1 hour
   };

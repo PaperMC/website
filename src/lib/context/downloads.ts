@@ -38,29 +38,23 @@ const isVersionStable = async (
   return false;
 };
 
-export const getProjectDescriptor = async (
-  id: string
-): Promise<ProjectDescriptor> => {
-  const { project_name, versions, version_groups } = await getProject(id);
-
-  let latestVersion = versions[versions.length - 1];
-  for (let i = versions.length - 1; i >= 0; i--) {
-    if (await isVersionStable(id, versions[i])) {
-      latestVersion = versions[i];
-      break;
-    }
-  }
-
-  return {
-    name: project_name,
-    latestVersion,
-    latestVersionGroup: version_groups[version_groups.length - 1],
-  };
-};
-
-export const getProjectProps = (id: string): GetStaticProps<ProjectProps> => {
+export const getProjectProps = (id: string): GetStaticProps => {
   return async () => {
-    const project = await getProjectDescriptor(id);
+    const { project_name, versions, version_groups } = await getProject(id);
+
+    let latestVersion = versions[versions.length - 1];
+    for (let i = versions.length - 1; i >= 0; i--) {
+      if (await isVersionStable(id, versions[i])) {
+        latestVersion = versions[i];
+        break;
+      }
+    }
+
+    const project = {
+      name: project_name,
+      latestVersion,
+      latestVersionGroup: version_groups[version_groups.length - 1],
+    };
 
     return {
       props: {
