@@ -35,6 +35,7 @@ const SoftwareDownloadButton = () => {
           stable ? "bg-blue-600" : "bg-red-500"
         )}
       >
+        {/* eslint-disable-next-line react/jsx-no-target-blank */}
         <a
           className="flex flex-row flex-1 items-center gap-8 pl-5 py-3"
           href={
@@ -47,7 +48,6 @@ const SoftwareDownloadButton = () => {
               latestBuild.downloads["application"].name
             )
           }
-          rel="noreferrer"
           target="_blank"
         >
           <div className="w-8 h-8">
@@ -90,6 +90,7 @@ const SoftwareDownloadButton = () => {
               <Menu.Item key={name}>
                 {() => (
                   <div className="hover:bg-blue-100 dark:hover:bg-gray-800 transition-colors">
+                    {/* eslint-disable-next-line react/jsx-no-target-blank */}
                     <a
                       href={
                         project &&
@@ -101,7 +102,6 @@ const SoftwareDownloadButton = () => {
                           download.name
                         )
                       }
-                      rel="noreferrer"
                       target="_blank"
                     >
                       <div className="px-4 py-3">

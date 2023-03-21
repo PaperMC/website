@@ -15,11 +15,8 @@ const Footer = () => (
               <Link href="/downloads">Downloads</Link>
             </li>
             <li>
-              <a
-                href="https://docs.papermc.io"
-                target="_blank"
-                rel="noreferrer"
-              >
+              {/* eslint-disable-next-line react/jsx-no-target-blank */}
+              <a href="https://docs.papermc.io" target="_blank">
                 Documentation
               </a>
             </li>
@@ -53,11 +50,8 @@ const Footer = () => (
               </a>
             </li>
             <li>
-              <a
-                href="https://forums.papermc.io/"
-                target="_blank"
-                rel="noreferrer"
-              >
+              {/* eslint-disable-next-line react/jsx-no-target-blank */}
+              <a href="https://forums.papermc.io/" target="_blank">
                 Forums
               </a>
             </li>
@@ -85,11 +79,8 @@ const Footer = () => (
               <Link href="/sponsors">Sponsors</Link>
             </li>
             <li>
-              <a
-                href="https://hangar.papermc.io"
-                target="_blank"
-                rel="noreferrer"
-              >
+              {/* eslint-disable-next-line react/jsx-no-target-blank */}
+              <a href="https://hangar.papermc.io" target="_blank">
                 Hangar
               </a>
             </li>

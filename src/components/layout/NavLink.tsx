@@ -12,7 +12,6 @@ export interface LinkProps {
 const NavLink = ({ href, target, className, children }: LinkProps) => (
   <NextLink href={href} passHref>
     <a
-      rel="noreferrer"
       target={target}
       className={clsx(
         "color-gray-200 hover:text-blue-600 dark:hover:text-blue-400 text-sm transition-colors px-2.5",
