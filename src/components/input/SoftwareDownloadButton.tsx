@@ -31,8 +31,10 @@ const SoftwareDownloadButton = () => {
     <Menu as="div" className="relative w-full">
       <div
         className={clsx(
-          "rounded-lg flex flex-row w-full md:w-100 transition-shadow text-white transition-color hover:(shadow-lg bg-blue-500)",
-          stable ? "bg-blue-600" : "bg-red-500"
+          "rounded-lg flex flex-row w-full md:w-100 transition-shadow text-white transition-color hover:shadow-lg",
+          stable
+            ? "bg-blue-600 hover:bg-blue-500"
+            : "bg-red-500 hover:bg-red-400"
         )}
       >
         <a
