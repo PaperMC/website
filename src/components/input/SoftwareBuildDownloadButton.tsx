@@ -43,6 +43,7 @@ const SoftwareBuildDownloadButton = ({
           stable ? "bg-blue-600" : "bg-red-500"
         )}
       >
+        {/* eslint-disable-next-line react/jsx-no-target-blank */}
         <a
           className="flex flex-row flex-1 items-center gap-1 pl-1 py-1"
           href={getVersionBuildDownloadURL(
@@ -51,7 +52,6 @@ const SoftwareBuildDownloadButton = ({
             build,
             downloads["application"].name
           )}
-          rel="noreferrer"
           target="_blank"
         >
           <div className="w-5 h-5">
@@ -79,6 +79,7 @@ const SoftwareBuildDownloadButton = ({
             <Menu.Item key={name}>
               {() => (
                 <div className="hover:bg-blue-100 dark:hover:bg-gray-800 transition-colors">
+                  {/* eslint-disable-next-line react/jsx-no-target-blank */}
                   <a
                     href={getVersionBuildDownloadURL(
                       project,
@@ -86,7 +87,6 @@ const SoftwareBuildDownloadButton = ({
                       build,
                       download.name
                     )}
-                    rel="noreferrer"
                     target="_blank"
                   >
                     <div className="px-2 py-1">
