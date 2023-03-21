@@ -29,6 +29,7 @@ const SoftwareBuilds = ({
             className="flex flex-row items-start hover:bg-blue-100 dark:hover:bg-gray-900 px-4 py-2 rounded-lg transition-colors"
             key={build.build}
           >
+            {/* eslint-disable-next-line react/jsx-no-target-blank */}
             <a
               role="button"
               href={getVersionBuildDownloadURL(
@@ -37,7 +38,6 @@ const SoftwareBuilds = ({
                 build.build,
                 build.downloads["application"].name
               )}
-              rel="noreferrer"
               target="_blank"
               className={clsx(
                 "text-gray-100 text-sm text-center font-medium rounded-full p-2 min-w-16 mr-4",
