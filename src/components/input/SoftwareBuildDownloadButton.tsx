@@ -76,7 +76,7 @@ const SoftwareBuildDownloadButton = ({
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="absolute right-0 z-1 mt-2 origin-top-left rounded-md bg-background-light-10 shadow-lg divide-y divide-gray-200 border border-gray-200 w-full md:w-max dark:(bg-background-dark-80 divide-gray-800 border-gray-800)">
+        <Menu.Items className="absolute right-0 z-1 mt-2 origin-top-left rounded-md bg-background-light-10 shadow-xl divide-y divide-gray-300 border border-gray-300 w-full md:w-max dark:(bg-background-dark-80 divide-gray-600 border-gray-600)">
           {Object.entries(downloads).map(([name, download]) => (
             <Menu.Item key={name}>
               {() => (
