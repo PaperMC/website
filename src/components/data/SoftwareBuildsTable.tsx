@@ -1,8 +1,8 @@
 import clsx from "clsx";
 
 import SoftwareBuildChanges from "@/components/data/SoftwareBuildChanges";
+import SoftwareBuildDownloadButton from "@/components/input/SoftwareBuildDownloadButton";
 import type { Build } from "@/lib/service/types";
-import { getVersionBuildDownloadURL } from "@/lib/service/v2";
 import { formatRelativeDate, formatISODateTime } from "@/lib/util/time";
 import styles from "@/styles/components/data/SoftwareBuildsTable.module.css";
 
@@ -36,7 +36,7 @@ const SoftwareBuildsTable = ({
               <td>
                 <span
                   className={clsx(
-                    "rounded-full py-2 px-3 min-w-16",
+                    "rounded-full py-1 px-2 min-w-16 text-sm",
                     build.channel === "experimental"
                       ? "bg-red-500"
                       : "bg-gray-800"
@@ -51,23 +51,14 @@ const SoftwareBuildsTable = ({
               <td title={formatISODateTime(new Date(build.time))}>
                 {formatRelativeDate(new Date(build.time))}
               </td>
-              <td>
-                {Object.entries(build.downloads).map(([name, download]) => (
-                  <a
-                    key={name}
-                    href={getVersionBuildDownloadURL(
-                      project,
-                      version,
-                      build.build,
-                      download.name
-                    )}
-                    rel="noreferrer"
-                    target="_blank"
-                    className={styles.download}
-                  >
-                    {name}
-                  </a>
-                ))}
+              <td className={"flex gap-1"}>
+                <SoftwareBuildDownloadButton
+                  project={project}
+                  version={version}
+                  build={build.build}
+                  downloads={build.downloads}
+                  stable={build.channel === "default"}
+                />
               </td>
             </tr>
           ))}

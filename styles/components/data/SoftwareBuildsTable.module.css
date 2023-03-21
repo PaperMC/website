@@ -9,7 +9,3 @@
 .body td {
     @apply px-6 py-2;
 }
-
-.download {
-    @apply text-blue-600 dark:text-blue-500 mr-4 inline-block;
-}
