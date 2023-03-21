@@ -1,5 +1,7 @@
+import clsx from "clsx";
 import Link from "next/link";
 import type { FunctionComponent, ReactElement } from "react";
+import { useState } from "react";
 
 import SoftwareBuilds from "@/components/data/SoftwareBuilds";
 import SoftwareDownloadButton from "@/components/input/SoftwareDownloadButton";
@@ -12,6 +14,7 @@ export interface SoftwareDownloadProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   icon?: FunctionComponent<any>;
   description: string;
+  experimentalWarning?: string;
 }
 
 const SoftwareDownload = ({
@@ -19,8 +22,17 @@ const SoftwareDownload = ({
   project,
   icon: Icon,
   description,
+  experimentalWarning,
 }: SoftwareDownloadProps & ProjectProps): ReactElement => {
-  const { data: builds } = useVersionBuilds(id, project.latestVersion);
+  const [isStable, setStable] = useState(true);
+  const version = isStable
+    ? project.latestStableVersion
+    : project.latestExperimentalVersion ?? project.latestStableVersion;
+  const { data: builds } = useVersionBuilds(id, version);
+
+  const toggleStable = () => {
+    setStable(!isStable);
+  };
 
   return (
     <DownloadsContext.Provider
@@ -28,6 +40,8 @@ const SoftwareDownload = ({
         projectId: id,
         project,
         builds: builds?.builds,
+        version,
+        stable: isStable,
       }}
     >
       <header className="max-w-7xl flex flex-row mx-auto px-4 pt-32 pb-16 lg:(pt-48 pb-26) gap-16">
@@ -40,11 +54,33 @@ const SoftwareDownload = ({
           </div>
           <h2 className="font-medium leading-normal lg:(text-5xl leading-normal) text-4xl">
             Get {project.name}&nbsp;
-            <span className="text-blue-600">{project.latestVersion}</span>
+            <span className={isStable ? "text-blue-600" : "text-red-500"}>
+              {version}
+            </span>
           </h2>
-          <p className="text-xl mt-4">{description}</p>
-          <div className="flex flex-row gap-4 mt-8">
+          <p className="text-xl mt-4">
+            {isStable ? description : experimentalWarning ?? description}
+          </p>
+          <div className="flex flex-col gap-4 mt-8">
             <SoftwareDownloadButton />
+            {project.latestExperimentalVersion && (
+              <button
+                className={clsx(
+                  "rounded-lg flex flex-row w-full md:w-100 border text-white transition-border pl-5 py-3",
+                  isStable
+                    ? "dark:border-red-500 dark:text-red-400 border-red-900 text-red-700"
+                    : "dark:border-blue-600 dark:text-blue-400 border-blue-900 text-blue-700"
+                )}
+                onClick={toggleStable}
+              >
+                {isStable
+                  ? "Toggle experimental builds for "
+                  : "Back to stable builds for "}
+                {isStable
+                  ? project.latestExperimentalVersion
+                  : project.latestStableVersion}
+              </button>
+            )}
           </div>
         </div>
         <div className="flex-1 lg:flex hidden justify-end"></div>
@@ -56,7 +92,7 @@ const SoftwareDownload = ({
         </p>
         <SoftwareBuilds
           project={id}
-          version={project.latestVersion}
+          version={version}
           builds={builds?.builds}
         />
         <p className="mt-10 text-center text-gray-700 dark:text-gray-400">

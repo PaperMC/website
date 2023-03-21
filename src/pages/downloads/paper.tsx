@@ -26,6 +26,7 @@ const PaperDownloads = ({ project }: ProjectProps): ReactElement => {
         project={project}
         icon={PaperIcon}
         description="Download Paper, our Minecraft server software offering unrivaled performance and stability."
+        experimentalWarning="Download experimental builds of Paper, our Minecraft server software offering unrivaled performance and stability. Proceed with caution!"
       />
     </>
   );

@@ -1,4 +1,5 @@
 import { Menu, Transition } from "@headlessui/react";
+import clsx from "clsx";
 import { Fragment, useContext, useState } from "react";
 
 import CloneIcon from "@/assets/icons/fontawesome/clone-icon.svg";
@@ -9,7 +10,8 @@ import { DownloadsContext } from "@/lib/context/downloads";
 import { getVersionBuildDownloadURL } from "@/lib/service/v2";
 
 const SoftwareDownloadButton = () => {
-  const { projectId, project, builds } = useContext(DownloadsContext);
+  const { projectId, project, builds, version, stable } =
+    useContext(DownloadsContext);
 
   const latestBuild = builds && builds[builds.length - 1];
   const [copied, setCopied] = useState("");
@@ -27,7 +29,12 @@ const SoftwareDownloadButton = () => {
 
   return (
     <Menu as="div" className="relative w-full">
-      <div className="rounded-lg flex flex-row w-full md:w-100 bg-blue-600 transition-shadow text-white transition hover:(shadow-lg bg-blue-500)">
+      <div
+        className={clsx(
+          "rounded-lg flex flex-row w-full md:w-100 transition-shadow text-white transition-color hover:(shadow-lg bg-blue-500)",
+          stable ? "bg-blue-600" : "bg-red-500"
+        )}
+      >
         <a
           className="flex flex-row flex-1 items-center gap-8 pl-5 py-3"
           href={
@@ -35,7 +42,7 @@ const SoftwareDownloadButton = () => {
             latestBuild &&
             getVersionBuildDownloadURL(
               projectId,
-              project.latestVersion,
+              project.latestStableVersion,
               latestBuild.build,
               latestBuild.downloads["application"].name
             )
@@ -50,7 +57,7 @@ const SoftwareDownloadButton = () => {
             {project && builds && latestBuild ? (
               <>
                 <span className="font-medium text-lg">
-                  {project.name} {project.latestVersion}
+                  {project.name} {version}
                 </span>
                 <p className="text-gray-100">
                   {latestBuild && `Build #${latestBuild.build}`}
@@ -89,7 +96,7 @@ const SoftwareDownloadButton = () => {
                         latestBuild &&
                         getVersionBuildDownloadURL(
                           projectId,
-                          project.latestVersion,
+                          version,
                           latestBuild.build,
                           download.name
                         )

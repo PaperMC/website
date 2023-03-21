@@ -26,7 +26,7 @@ export function Terminal({ project }: ProjectProps) {
 
   useEffect(() => {
     const outputLines = [
-      `Starting minecraft server version ${project.latestVersion}`,
+      `Starting minecraft server version ${project.latestStableVersion}`,
       'Preparing level "world"',
       "Preparing start region for dimension minecraft:overworld",
       "Time elapsed: 363 ms",
@@ -76,7 +76,7 @@ export function Terminal({ project }: ProjectProps) {
         </InfoLog>
       );
     })();
-  }, [project.latestVersion]);
+  }, [project.latestStableVersion]);
 
   return (
     <div className="max-h-82 w-120 h-283 rounded-lg bg-gray-800">
