@@ -27,7 +27,7 @@ const SoftwareDownloadButton = () => {
 
   return (
     <Menu as="div" className="relative w-full">
-      <div className="rounded-lg flex flex-row w-full md:w-100 bg-blue-600 transition-shadow text-white transition-color hover:shadow-lg">
+      <div className="rounded-lg flex flex-row w-full md:w-100 bg-blue-600 transition-shadow text-white transition hover:(shadow-lg bg-blue-500)">
         <a
           className="flex flex-row flex-1 items-center gap-8 pl-5 py-3"
           href={

@@ -19,7 +19,7 @@ const IconButton = (props: IconButtonProps) => {
         href={href}
         rel="noreferrer"
         target="_blank"
-        className="inline-block h-min w-min rounded-full p-2 transition-colors hover:bg-gray-800/20 leading-0"
+        className="inline-block h-min w-min rounded-full p-2 transition-colors hover:bg-gray-800/20 dark:hover:bg-gray-400/20 leading-0"
         onClick={onClick}
         aria-label={label}
       >

@@ -1,9 +1,11 @@
+import clsx from "clsx";
 import Link from "next/link";
 
 import LogoMarkerDark from "@/assets/brand/logo-marker-dark.svg";
+import classes from "@/styles/components/layout/Footer.module.css";
 
 const Footer = () => (
-  <footer className="bg-background-dark-80 py-12 mt-8">
+  <footer className={clsx("bg-background-dark-80 py-12 mt-8", classes.footer)}>
     <div className="max-w-7xl m-auto px-4">
       <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 text-sm text-white">
         <div>

@@ -23,11 +23,11 @@ const Button = ({
     <a
       role="button"
       className={clsx(
-        "font-medium px-6 py-1.5 rounded-md hover:shadow-md transition-shadow",
+        "font-medium px-6 py-1.5 rounded-md hover:shadow-md transition",
         dense ? "text-sm" : "text-md",
         variant === "outlined"
-          ? "border-1 border-gray-400 dark:border-gray-600"
-          : "bg-blue-600 text-white",
+          ? "border-1 border-gray-400 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-800"
+          : "bg-blue-600 hover:bg-blue-500 text-white",
         className
       )}
       rel="noreferrer"
