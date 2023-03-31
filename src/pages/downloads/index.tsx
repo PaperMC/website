@@ -22,14 +22,17 @@ const Downloads: NextPage = () => {
           "downloads",
         ]}
       />
-      <header className="max-w-7xl flex flex-col items-center mx-auto px-4 pt-32 pb-16 lg:(pt-48 pb-26) gap-2">
+      <header className="max-w-4xl flex flex-col items-center mx-auto px-4 pt-32 pb-16 lg:(pt-48 pb-26) gap-2">
         <h1 className="font-medium leading-normal lg:(text-5xl leading-normal) text-4xl">
           Downloads
         </h1>
         <p className="text-xl text-center mb-6">
           {"Select the software you want to download."}
         </p>
-        <div className="grid md:grid-cols-3 lg:mt-6 gap-2 px-2 xl:gap-4">
+        <h2 className="text-2xl text-center font-medium mt-4">
+          Server Software
+        </h2>
+        <div className="grid md:grid-cols-2 gap-2 px-2 xl:gap-4">
           <SoftwarePreview
             id="paper"
             name="Paper"
@@ -37,6 +40,17 @@ const Downloads: NextPage = () => {
             description="Paper is a Minecraft game server, designed to greatly improve performance and offer more advanced features and API."
             download
           />
+          <SoftwarePreview
+            id="folia"
+            name="Folia"
+            icon={PaperIcon}
+            description="Folia is a new fork of Paper that adds regionized multithreading to the server. Access to Folia builds isn't currently available."
+          />
+        </div>
+        <h2 className="text-2xl text-center font-medium mt-4">
+          Proxy Software
+        </h2>
+        <div className="grid md:grid-cols-2 gap-2 px-2 xl:gap-4">
           <SoftwarePreview
             id="velocity"
             name="Velocity"
