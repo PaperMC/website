@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import type { ReactElement } from "react";
+import { useState } from "react";
 
 import DownloadIcon from "@/assets/icons/heroicons/document-download.svg";
 import Skeleton from "@/components/data/Skeleton";
@@ -26,37 +27,8 @@ const SoftwareBuilds = ({
         .reverse()
         .slice(0, 10)
         .map((build) => (
-          <div
-            className="flex flex-row items-start hover:bg-blue-100 dark:hover:bg-gray-900 px-4 py-2 rounded-lg transition-colors"
-            key={build.build}
-          >
-            {/* eslint-disable-next-line react/jsx-no-target-blank */}
-            <a
-              role="button"
-              href={getVersionBuildDownloadURL(
-                project,
-                version,
-                build.build,
-                build.downloads["application"].name
-              )}
-              target="_blank"
-              className={clsx(
-                "text-gray-100 text-sm text-center font-medium rounded-full p-2 min-w-16 mr-4 inline-flex items-center gap-1",
-                build.channel === "default" ? "bg-gray-800" : "bg-red-500"
-              )}
-            >
-              <DownloadIcon className="w-4 h-4" />#{build.build}
-            </a>
-            <div className="flex-1 flex flex-col mt-1.5 text-gray-900 dark:text-gray-200">
-              <SoftwareBuildChanges project={project} build={build} />
-            </div>
-            <div
-              className="hidden md:block text-gray-500 dark:text-gray-300 mt-1 ml-2"
-              title={formatISODateTime(new Date(build.time))}
-            >
-              {formatRelativeDate(new Date(build.time))}
-            </div>
-          </div>
+          // eslint-disable-next-line react/jsx-key
+          <SoftwareBuild build={build} project={project} version={version} />
         ))}
     {!builds &&
       [...Array(5)].map((_, k) => (
@@ -69,5 +41,70 @@ const SoftwareBuilds = ({
       ))}
   </div>
 );
+
+interface SoftwareBuildProps {
+  project: string;
+  version: string;
+  build: Build;
+}
+
+const SoftwareBuild = ({
+  project,
+  version,
+  build,
+}: SoftwareBuildProps): ReactElement => {
+  const [isCopied, setCopied] = useState(false);
+  const copy = (text: string) => {
+    navigator.clipboard.writeText(text);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  return (
+    <div
+      className="flex flex-row items-start hover:bg-blue-100 dark:hover:bg-gray-900 px-4 py-2 rounded-lg transition-colors"
+      key={build.build}
+    >
+      {/* eslint-disable-next-line react/jsx-no-target-blank */}
+      <a
+        role="button"
+        onClick={() => copy(build.downloads["application"].sha256)}
+        target="_blank"
+        className={clsx(
+          "text-gray-100 text-sm text-center font-medium rounded-full p-2 min-w-17.5 mr-1 inline-flex items-center gap-1",
+          build.channel === "default" ? "bg-gray-800" : "bg-red-500"
+        )}
+      >
+        {isCopied ? "Copied" : "SHA256"}
+      </a>
+      {/* eslint-disable-next-line react/jsx-no-target-blank */}
+      <a
+        role="button"
+        href={getVersionBuildDownloadURL(
+          project,
+          version,
+          build.build,
+          build.downloads["application"].name
+        )}
+        target="_blank"
+        className={clsx(
+          "text-gray-100 text-sm text-center font-medium rounded-full p-2 min-w-16 mr-4 inline-flex items-center gap-1",
+          build.channel === "default" ? "bg-gray-800" : "bg-red-500"
+        )}
+      >
+        <DownloadIcon className="w-4 h-4" />#{build.build}
+      </a>
+      <div className="flex-1 flex flex-col mt-1.5 text-gray-900 dark:text-gray-200">
+        <SoftwareBuildChanges project={project} build={build} />
+      </div>
+      <div
+        className="hidden md:block text-gray-500 dark:text-gray-300 mt-1 ml-2"
+        title={formatISODateTime(new Date(build.time))}
+      >
+        {formatRelativeDate(new Date(build.time))}
+      </div>
+    </div>
+  );
+};
 
 export default SoftwareBuilds;
