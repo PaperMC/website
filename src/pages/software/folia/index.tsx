@@ -33,7 +33,7 @@ const FoliaHome = ({ project }: ProjectProps): ReactElement => {
         versionGroup={project.latestVersionGroup}
         icon={PaperIcon}
         header={<>What is Folia?</>}
-        description="Folia is a new fork of Paper that adds regionized multithreading to the server. Access to folia builds isn't currently available. To build Folia, you need to compile from source following Paper's standard compilation guide."
+        description="Folia is a new fork of Paper that adds regionized multithreading to the server. Access to Folia builds isn't currently available. To build Folia, you need to compile from source following Paper's standard compilation guide."
         github="https://github.com/PaperMC/Folia"
       />
       <section
@@ -53,7 +53,7 @@ const FoliaHome = ({ project }: ProjectProps): ReactElement => {
             <FeatureCard
               icon={ChatBubbleLeftRightIcon}
               label="Is Folia for me?"
-              description="Folia won't be useful for the majority of servers out there and will break most public plugins. It's ideal for servers with very high players counts, that offer gamemodes tha naturally spread players out, such as SkyBlock or SMP."
+              description="Folia won't be useful for the majority of servers out there and will break most public plugins. It's ideal for servers with very high players counts, that offer gamemodes that naturally spread players out, such as SkyBlock or SMP."
             />
             <FeatureCard
               icon={CodeBracketIcon}
