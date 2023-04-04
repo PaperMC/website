@@ -1,19 +1,33 @@
 import { Menu, Transition } from "@headlessui/react";
 import clsx from "clsx";
-import { Fragment, useContext, useState } from "react";
+import { Fragment, useState } from "react";
 
 import CloneIcon from "@/assets/icons/fontawesome/clone-icon.svg";
 import ChevronDownIcon from "@/assets/icons/heroicons/chevron-down.svg";
 import DocumentDownloadIcon from "@/assets/icons/heroicons/document-download.svg";
 import Skeleton from "@/components/data/Skeleton";
-import { DownloadsContext } from "@/lib/context/downloads";
+import type { ProjectDescriptor } from "@/lib/context/downloads";
+import type { Build } from "@/lib/service/types";
 import { getVersionBuildDownloadURL } from "@/lib/service/v2";
+import styles from "@/styles/components/input/SoftwareDownloadButton.module.css";
 
-const SoftwareDownloadButton = () => {
-  const { projectId, project, builds, version, stable } =
-    useContext(DownloadsContext);
+export interface SoftwareDownloadButtonProps {
+  projectId: string;
+  project?: ProjectDescriptor;
+  build?: Build;
+  version: string;
+  stable: boolean;
+  compact?: boolean;
+}
 
-  const latestBuild = builds && builds[builds.length - 1];
+const SoftwareDownloadButton = ({
+  projectId,
+  project,
+  build,
+  version,
+  stable,
+  compact,
+}: SoftwareDownloadButtonProps) => {
   const [copied, setCopied] = useState("");
   const [timeoutHandler, setTimeoutHandler] = useState<NodeJS.Timeout | null>(
     null
@@ -28,39 +42,47 @@ const SoftwareDownloadButton = () => {
   };
 
   return (
-    <Menu as="div" className="relative w-full">
+    <Menu as="div" className="relative">
       <div
         className={clsx(
-          "rounded-lg flex flex-row w-full md:w-100 transition-shadow text-white transition-color hover:(shadow-lg bg-blue-500)",
-          stable ? "bg-blue-600" : "bg-red-500"
+          "rounded-lg flex flex-row ransition-shadow text-white transition-color hover:shadow-lg",
+          !compact && "w-full md:w-100",
+          stable
+            ? "bg-blue-600 hover:bg-blue-500"
+            : "bg-red-500 hover:bg-red-400"
         )}
       >
         {/* eslint-disable-next-line react/jsx-no-target-blank */}
         <a
-          className="flex flex-row flex-1 items-center gap-8 pl-5 py-3"
+          className={clsx(
+            "flex flex-row flex-1 items-center",
+            compact ? "gap-2 pl-2 leading-0 py-1" : "gap-8 pl-5 py-3"
+          )}
           href={
-            project &&
-            latestBuild &&
+            projectId &&
+            build &&
             getVersionBuildDownloadURL(
               projectId,
-              project.latestStableVersion,
-              latestBuild.build,
-              latestBuild.downloads["application"].name
+              version,
+              build.build,
+              build.downloads["application"].name
             )
           }
           target="_blank"
         >
-          <div className="w-8 h-8">
+          <div className={compact ? "w-4 h-4" : "w-8 h-8"}>
             <DocumentDownloadIcon />
           </div>
-          <div className="text-left flex-1 border-r border-gray-300/50">
-            {project && builds && latestBuild ? (
+          <div className="text-left flex-1 border-r border-gray-300/50 pr-3">
+            {compact ? (
+              <span className="font-medium text-sm">Download</span>
+            ) : projectId && build ? (
               <>
                 <span className="font-medium text-lg">
-                  {project.name} {version}
+                  {project?.name ?? projectId} {version}
                 </span>
                 <p className="text-gray-100">
-                  {latestBuild && `Build #${latestBuild.build}`}
+                  {build && `Build #${build.build}`}
                 </p>
               </>
             ) : (
@@ -71,8 +93,13 @@ const SoftwareDownloadButton = () => {
             )}
           </div>
         </a>
-        <Menu.Button aria-label="Other download variants">
-          <ChevronDownIcon className="w-6 h-6 text-gray-200 mx-5" />
+        <Menu.Button aria-label="Other download variants" className="leading-0">
+          <ChevronDownIcon
+            className={clsx(
+              "text-gray-200",
+              compact ? "w-4 h-4 mx-3" : "w-6 h-6 mx-5"
+            )}
+          />
         </Menu.Button>
       </div>
       <Transition
@@ -84,21 +111,28 @@ const SoftwareDownloadButton = () => {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="absolute left-0 mt-2 origin-top-left rounded-md bg-background-light-10 shadow-lg divide-y divide-gray-200 border border-gray-200 w-full md:w-auto dark:(bg-background-dark-80 divide-gray-800 border-gray-800)">
-          {latestBuild &&
-            Object.entries(latestBuild.downloads).map(([name, download]) => (
+        <Menu.Items
+          className={clsx(
+            styles.menu,
+            compact
+              ? "origin-top-right right-0"
+              : "origin-top-left left-0 w-full md:w-auto"
+          )}
+        >
+          {build &&
+            Object.entries(build.downloads).map(([name, download]) => (
               <Menu.Item key={name}>
                 {() => (
                   <div className="hover:bg-blue-100 dark:hover:bg-gray-800 transition-colors">
                     {/* eslint-disable-next-line react/jsx-no-target-blank */}
                     <a
                       href={
-                        project &&
-                        latestBuild &&
+                        projectId &&
+                        build &&
                         getVersionBuildDownloadURL(
                           projectId,
                           version,
-                          latestBuild.build,
+                          build.build,
                           download.name
                         )
                       }
@@ -118,18 +152,18 @@ const SoftwareDownloadButton = () => {
                             </span>
                           )}
                         </div>
-                        <div className="text-gray-700 dark:text-gray-300 text-xs">
-                          {download.sha256}
-                          <span
-                            className="ml-2 h-6 w-6 inline-flex items-center justify-center"
+                        <div className="text-gray-700 dark:text-gray-300 text-xs inline-flex items-center w-full">
+                          <span className="truncate">{download.sha256}</span>
+                          <button
+                            className="ml-2 h-6 w-6"
                             onClick={(evt) => {
                               evt.preventDefault();
                               navigator.clipboard.writeText(download.sha256);
                               updateCopied(download.sha256);
                             }}
                           >
-                            <CloneIcon className="h-4 w-4 text-gray-700 dark:text-gray-300" />
-                          </span>
+                            <CloneIcon className="h-4 w-4" />
+                          </button>
                         </div>
                       </div>
                     </a>
