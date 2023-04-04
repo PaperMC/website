@@ -1,7 +1,8 @@
 import clsx from "clsx";
 
+import SoftwareDownloadButton from "../input/SoftwareDownloadButton";
+
 import SoftwareBuildChanges from "@/components/data/SoftwareBuildChanges";
-import SoftwareBuildDownloadButton from "@/components/input/SoftwareBuildDownloadButton";
 import type { Build } from "@/lib/service/types";
 import { formatRelativeDate, formatISODateTime } from "@/lib/util/time";
 import styles from "@/styles/components/data/SoftwareBuildsTable.module.css";
@@ -19,7 +20,7 @@ const SoftwareBuildsTable = ({
 }: SoftwareBuildsTableProps) => {
   return (
     <table className="w-full relative">
-      <thead className="sticky top-0 bg-background-light-10 dark:bg-background-dark-90 shadow-sm">
+      <thead className="sticky top-0 z-50 bg-background-light-10 dark:bg-background-dark-90 shadow-sm">
         <tr className={styles.header}>
           <th>Build</th>
           <th>Changelog</th>
@@ -52,12 +53,12 @@ const SoftwareBuildsTable = ({
                 {formatRelativeDate(new Date(build.time))}
               </td>
               <td className={"flex gap-1"}>
-                <SoftwareBuildDownloadButton
-                  project={project}
+                <SoftwareDownloadButton
+                  projectId={project}
                   version={version}
-                  build={build.build}
-                  downloads={build.downloads}
+                  build={build}
                   stable={build.channel === "default"}
+                  compact
                 />
               </td>
             </tr>

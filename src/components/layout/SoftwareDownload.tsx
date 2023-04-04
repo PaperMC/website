@@ -6,7 +6,6 @@ import { useState } from "react";
 import SoftwareBuilds from "@/components/data/SoftwareBuilds";
 import SoftwareDownloadButton from "@/components/input/SoftwareDownloadButton";
 import type { ProjectProps } from "@/lib/context/downloads";
-import { DownloadsContext } from "@/lib/context/downloads";
 import { useVersionBuilds } from "@/lib/service/v2";
 
 export interface SoftwareDownloadProps {
@@ -29,21 +28,14 @@ const SoftwareDownload = ({
     ? project.latestStableVersion
     : project.latestExperimentalVersion ?? project.latestStableVersion;
   const { data: builds } = useVersionBuilds(id, version);
+  const latestBuild = builds && builds.builds[builds.builds.length - 1];
 
   const toggleStable = () => {
     setStable(!isStable);
   };
 
   return (
-    <DownloadsContext.Provider
-      value={{
-        projectId: id,
-        project,
-        builds: builds?.builds,
-        version,
-        stable: isStable,
-      }}
-    >
+    <>
       <header className="max-w-7xl flex flex-row mx-auto px-4 pt-32 pb-16 lg:(pt-48 pb-26) gap-16">
         <div className="flex-1">
           <div className="flex flex-row mb-6 gap-4 items-center">
@@ -62,7 +54,13 @@ const SoftwareDownload = ({
             {isStable ? description : experimentalWarning ?? description}
           </p>
           <div className="flex flex-col gap-4 mt-8">
-            <SoftwareDownloadButton />
+            <SoftwareDownloadButton
+              projectId={id}
+              project={project}
+              build={latestBuild}
+              version={version}
+              stable={!latestBuild || latestBuild?.channel === "default"}
+            />
             {project.latestExperimentalVersion && (
               <button
                 className={clsx(
@@ -104,7 +102,7 @@ const SoftwareDownload = ({
           </Link>
         </p>
       </section>
-    </DownloadsContext.Provider>
+    </>
   );
 };
 
