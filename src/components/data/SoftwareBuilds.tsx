@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import type { ReactElement } from "react";
 
+import DownloadIcon from "@/assets/icons/heroicons/document-download.svg";
 import Skeleton from "@/components/data/Skeleton";
 import SoftwareBuildChanges from "@/components/data/SoftwareBuildChanges";
 import type { Build } from "@/lib/service/types";
@@ -29,6 +30,7 @@ const SoftwareBuilds = ({
             className="flex flex-row items-start hover:bg-blue-100 dark:hover:bg-gray-900 px-4 py-2 rounded-lg transition-colors"
             key={build.build}
           >
+            {/* eslint-disable-next-line react/jsx-no-target-blank */}
             <a
               role="button"
               href={getVersionBuildDownloadURL(
@@ -37,16 +39,15 @@ const SoftwareBuilds = ({
                 build.build,
                 build.downloads["application"].name
               )}
-              rel="noreferrer"
               target="_blank"
               className={clsx(
-                "text-gray-100 text-sm text-center font-medium rounded-full p-2 min-w-16 mr-4",
+                "text-gray-100 text-sm text-center font-medium rounded-full p-2 min-w-16 mr-4 inline-flex items-center gap-1",
                 build.channel === "default" ? "bg-gray-800" : "bg-red-500"
               )}
             >
-              #{build.build}
+              <DownloadIcon className="w-4 h-4" />#{build.build}
             </a>
-            <div className="flex-1 flex flex-col mt-1 text-gray-900 dark:text-gray-200">
+            <div className="flex-1 flex flex-col mt-1.5 text-gray-900 dark:text-gray-200">
               <SoftwareBuildChanges project={project} build={build} />
             </div>
             <div

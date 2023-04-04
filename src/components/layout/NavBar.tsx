@@ -55,6 +55,7 @@ const NavBar = ({ component }: NavBarProps) => {
     >
       <div className="max-w-7xl flex flex-row items-center mx-auto px-4 py-2 gap-2">
         <button
+          title={"Toggle nav"}
           className="leading-0 mr-2 md:hidden"
           onClick={() => setShowMenu((show) => !show)}
         >
@@ -80,6 +81,7 @@ const NavBar = ({ component }: NavBarProps) => {
         >
           <NavDropDown label="Software">
             <NavDropDownLink href="/software/paper">Paper</NavDropDownLink>
+            <NavDropDownLink href="/software/folia">Folia</NavDropDownLink>
             <NavDropDownLink href="/software/velocity">
               Velocity
             </NavDropDownLink>

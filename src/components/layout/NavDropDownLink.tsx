@@ -22,12 +22,7 @@ const NavDropDownLink = ({
     )}
   >
     <NextLink href={href} passHref>
-      <a
-        className="px-4 py-2 w-full block"
-        role="button"
-        rel="noreferrer"
-        target={target}
-      >
+      <a className="px-4 py-2 w-full block" role="button" target={target}>
         {children}
       </a>
     </NextLink>
