@@ -21,7 +21,7 @@ const Contribute: NextPage = () => (
         </h1>
         <p className="text-xl mt-4">
           {
-            "Our projects are based on community contributions and wouldn't be possible workout them. There are a lot of ways to contribute, even without programming knowledge."
+            "Our projects are based on community contributions and wouldn't be possible without them. There are a lot of ways to contribute, even without programming knowledge."
           }
         </p>
         <div className="flex flex-row gap-4 mt-8"></div>
