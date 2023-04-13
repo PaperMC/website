@@ -111,6 +111,12 @@
         "github": "Xernium"
       },
       {
+        "name": "Gero",
+        "avatar": "https://avatars.githubusercontent.com/u/11089941?v=4",
+        "discord": "Gero#5782",
+        "github": "Gerrygames"
+      },
+      {
         "name": "Tux",
         "avatar": "https://avatars.githubusercontent.com/u/16436212?v=4",
         "discord": "Tux#1337",
@@ -124,22 +130,34 @@
     "description": "The Triage Team helps the project by reviewing, testing, and organizing our GitHub's issues and pull requests. With their efforts, developers and maintainers are able to most efficiently handle the most important tasks.",
     "members": [
       {
-        "name": "chew",
-        "avatar": "https://avatars.githubusercontent.com/u/8278263?v=4",
-        "discord": "olivia // chew#0579",
-        "github": "Chew"
+        "name": "Camotoy",
+        "avatar": "https://avatars.githubusercontent.com/u/20743703?v=4",
+        "discord": "Camotoy#5533",
+        "github": "camotoy"
       },
       {
-        "name": "chickeneer",
-        "avatar": "https://avatars.githubusercontent.com/u/5341259?v=4",
-        "discord": "chickeneer#0001",
-        "github": "chickeneer"
+        "name": "Emily",
+        "avatar": "https://avatars.githubusercontent.com/u/35617540?v=4",
+        "discord": "Emily#6789",
+        "github": "emilyy-dev"
       },
       {
         "name": "Noah",
         "avatar": "https://avatars.githubusercontent.com/u/44026893?v=4",
         "discord": "NoahvdAa#0001",
         "github": "NoahvdAa"
+      },
+      {
+        "name": "NotMyFault",
+        "avatar": "https://avatars.githubusercontent.com/u/13383509?v=4",
+        "discord": "NotMyFault#3732",
+        "github": "NotMyFault"
+      },
+      {
+        "name": "Pop",
+        "avatar": "https://avatars.githubusercontent.com/u/17698576?v=4",
+        "discord": "pop4959#1781",
+        "github": "pop4959"
       }
     ]
   },
@@ -195,12 +213,6 @@
         "avatar": "https://avatars.githubusercontent.com/u/28601081?v=4",
         "discord": "Michael#9600",
         "github": "clrxbl"
-      },
-      {
-        "name": "NotMyFault",
-        "avatar": "https://avatars.githubusercontent.com/u/13383509?v=4",
-        "discord": "NotMyFault#3732",
-        "github": "NotMyFault"
       },
       {
         "name": "ocelotpotpie",
