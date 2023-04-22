@@ -90,6 +90,14 @@ const NavBar = ({ component }: NavBarProps) => {
             </NavDropDownLink>
           </NavDropDown>
           <NavLink
+            href="https://hangar.papermc.io/"
+            target="_blank"
+            className="inline-flex items-center"
+          >
+            Hangar
+            <ExternalUrlIcon className="h-4 w-4 ml-1 align-sub" />
+          </NavLink>
+          <NavLink
             href="https://forums.papermc.io/"
             target="_blank"
             className="inline-flex items-center"
