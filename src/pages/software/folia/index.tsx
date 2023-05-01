@@ -68,7 +68,7 @@ const FoliaHome = ({ project }: ProjectProps): ReactElement => {
 };
 
 FoliaHome.softwareProps = {
-  github: "https://github.com/FoliaMC/Folia",
+  github: "https://github.com/PaperMC/Folia",
 };
 
 export default FoliaHome;
