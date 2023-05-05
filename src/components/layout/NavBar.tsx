@@ -94,7 +94,7 @@ const NavBar = ({ component }: NavBarProps) => {
             target="_blank"
             className="inline-flex items-center"
           >
-            Hangar
+            Plugins
             <ExternalUrlIcon className="h-4 w-4 ml-1 align-sub" />
           </NavLink>
           <NavLink
