@@ -381,7 +381,7 @@ const CommunityGuidelines: NextPage = () => (
           rel="noreferrer"
           target="_blank"
         >
-          this server
+          this server{" "}
         </a>
         to start the appeal process. Please make sure to follow the
         instructions. You only get one chance to appeal a ban.
