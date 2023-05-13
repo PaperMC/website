@@ -374,17 +374,17 @@ const CommunityGuidelines: NextPage = () => (
       <h2 className="text-2xl font-medium mb-4">Ban Appeal</h2>
       <p>
         If you have been banned on our Discord server, we offer a way to appeal
-        that ban. To do that, simply fill out{" "}
+        that ban. To do that, simply join{" "}
         <a
           className="text-blue-800 dark:text-blue-300"
-          href="https://forms.gle/UzQcDUMTZF9vUf7P8"
+          href="https://discord.gg/cTKAXWy5eP"
           rel="noreferrer"
           target="_blank"
         >
-          this form
+          this server
         </a>
-        . Please make sure to follow the instructions. You only get one chance
-        to appeal a ban.
+        to start the appeal process. Please make sure to follow the
+        instructions. You only get one chance to appeal a ban.
       </p>
     </section>
     <section
@@ -392,7 +392,7 @@ const CommunityGuidelines: NextPage = () => (
       className="px-4 py-4 max-w-7xl mx-auto leading-7"
     >
       <h2 className="text-2xl font-medium mb-4">
-        Last Updated <code>2023-03-04</code>
+        Last Updated <code>2023-05-13</code>
       </h2>
       <p>
         This document is licensed under{" "}
