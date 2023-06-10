@@ -14,7 +14,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@fontsource/poppins": "4.5.10",
+    "@fontsource/poppins": "5.0.3",
     "@headlessui/react": "1.7.14",
     "clsx": "1.2.1",
     "next": "12.3.4",
