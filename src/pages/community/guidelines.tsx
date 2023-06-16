@@ -330,6 +330,12 @@ const CommunityGuidelines: NextPage = () => (
         <li>
           <code>#waterfall-dev</code>
         </li>
+        <li>
+          <code>#folia-help</code>
+        </li>
+        <li>
+          <code>#folia-dev</code>
+        </li>
       </ul>
     </section>
     <section
