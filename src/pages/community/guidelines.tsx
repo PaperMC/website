@@ -398,7 +398,7 @@ const CommunityGuidelines: NextPage = () => (
       className="px-4 py-4 max-w-7xl mx-auto leading-7"
     >
       <h2 className="text-2xl font-medium mb-4">
-        Last Updated <code>2023-05-13</code>
+        Last Updated <code>2023-06-16</code>
       </h2>
       <p>
         This document is licensed under{" "}
