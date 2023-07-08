@@ -87,6 +87,7 @@ const SoftwareDownload = ({
         <h2 className="text-center text-xl font-medium">Older builds</h2>
         <p className="text-center text-gray-800 dark:text-gray-200 text-lg mt-2 mb-8 px-4">
           Looking for older builds - or changelogs? We got you!&nbsp;
+          <br />
           <span className="text-gray-700 dark:text-gray-400">
             Even older builds are available in our&nbsp;
             <Link
@@ -95,6 +96,7 @@ const SoftwareDownload = ({
             >
               build explorer
             </Link>
+            .
           </span>
         </p>
         <SoftwareBuilds
@@ -102,9 +104,6 @@ const SoftwareDownload = ({
           version={version}
           builds={builds?.builds}
         />
-        <p className="mt-10 text-center text-gray-700 dark:text-gray-400">
-          Looking for even older builds? Try out our&nbsp;
-        </p>
       </section>
     </>
   );
