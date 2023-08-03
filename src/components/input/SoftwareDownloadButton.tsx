@@ -30,7 +30,7 @@ const SoftwareDownloadButton = ({
 }: SoftwareDownloadButtonProps) => {
   const [copied, setCopied] = useState("");
   const [timeoutHandler, setTimeoutHandler] = useState<NodeJS.Timeout | null>(
-    null
+    null,
   );
 
   const updateCopied = (text: string) => {
@@ -49,14 +49,14 @@ const SoftwareDownloadButton = ({
           !compact && "w-full md:w-100",
           stable
             ? "bg-blue-600 hover:bg-blue-500"
-            : "bg-red-500 hover:bg-red-400"
+            : "bg-red-500 hover:bg-red-400",
         )}
       >
         {/* eslint-disable-next-line react/jsx-no-target-blank */}
         <a
           className={clsx(
             "flex flex-row flex-1 items-center",
-            compact ? "gap-2 pl-2 leading-0 py-1" : "gap-8 pl-5 py-3"
+            compact ? "gap-2 pl-2 leading-0 py-1" : "gap-8 pl-5 py-3",
           )}
           href={
             projectId &&
@@ -65,7 +65,7 @@ const SoftwareDownloadButton = ({
               projectId,
               version,
               build.build,
-              build.downloads["application"].name
+              build.downloads["application"].name,
             )
           }
           target="_blank"
@@ -97,7 +97,7 @@ const SoftwareDownloadButton = ({
           <ChevronDownIcon
             className={clsx(
               "text-gray-200",
-              compact ? "w-4 h-4 mx-3" : "w-6 h-6 mx-5"
+              compact ? "w-4 h-4 mx-3" : "w-6 h-6 mx-5",
             )}
           />
         </Menu.Button>
@@ -116,7 +116,7 @@ const SoftwareDownloadButton = ({
             styles.menu,
             compact
               ? "origin-top-right right-0"
-              : "origin-top-left left-0 w-full md:w-auto"
+              : "origin-top-left left-0 w-full md:w-auto",
           )}
         >
           {build &&
@@ -133,7 +133,7 @@ const SoftwareDownloadButton = ({
                           projectId,
                           version,
                           build.build,
-                          download.name
+                          download.name,
                         )
                       }
                       target="_blank"

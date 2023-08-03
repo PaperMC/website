@@ -33,7 +33,7 @@ export const DownloadsContext = createContext<DownloadsContextProps>({
 
 const isVersionStable = async (
   project: string,
-  version: string
+  version: string,
 ): Promise<boolean> => {
   const { builds } = await getVersionBuilds(project, version);
   for (let i = builds.length - 1; i >= 0; i--) {

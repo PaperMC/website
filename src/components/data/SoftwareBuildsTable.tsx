@@ -40,7 +40,7 @@ const SoftwareBuildsTable = ({
                     "text-sm font-medium text-gray-100 rounded-full py-2 px-3 min-w-16",
                     build.channel === "experimental"
                       ? "bg-red-500"
-                      : "bg-gray-800"
+                      : "bg-gray-800",
                   )}
                 >
                   #{build.build}

@@ -37,12 +37,12 @@ const SoftwareBuilds = ({
                 project,
                 version,
                 build.build,
-                build.downloads["application"].name
+                build.downloads["application"].name,
               )}
               target="_blank"
               className={clsx(
                 "text-gray-100 text-sm text-center font-medium rounded-full p-2 min-w-16 mr-4 inline-flex items-center gap-1",
-                build.channel === "default" ? "bg-gray-800" : "bg-red-500"
+                build.channel === "default" ? "bg-gray-800" : "bg-red-500",
               )}
             >
               <DownloadIcon className="w-4 h-4" />#{build.build}

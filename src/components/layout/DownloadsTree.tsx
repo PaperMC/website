@@ -31,7 +31,7 @@ const ProjectSubTree = ({
               "pl-6 py-1 rounded-md hover:bg-blue-100 hover:dark:bg-gray-900 transition-colors text-gray-800 dark:text-gray-200 block w-full text-left",
               selectedProject === id &&
                 selectedVersion === version &&
-                "bg-blue-100 dark:bg-blue-900"
+                "bg-blue-100 dark:bg-blue-900",
             )}
             onClick={() => onSelect(id, version)}
           >

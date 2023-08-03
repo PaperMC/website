@@ -23,22 +23,22 @@ export const useProject = (project: string): SWRResponse<Project> =>
 
 export const useVersionBuilds = (
   project: string,
-  version: string
+  version: string,
 ): SWRResponse<VersionBuilds> =>
   useSWR(
     `/projects/${project}/versions/${version}/builds`,
     fetcher,
-    swrNoAutoUpdateSettings
+    swrNoAutoUpdateSettings,
   );
 
 export const useVersionFamilyBuilds = (
   project: string,
-  family: string
+  family: string,
 ): SWRResponse<VersionFamilyBuilds> =>
   useSWR(
     `/projects/${project}/version_group/${family}/builds`,
     fetcher,
-    swrNoAutoUpdateSettings
+    swrNoAutoUpdateSettings,
   );
 
 // TODO: Better error handling?
@@ -49,7 +49,7 @@ export const getProject = (project: string): Promise<Project> =>
 
 export const getVersionBuilds = (
   project: string,
-  version: string
+  version: string,
 ): Promise<VersionBuilds> =>
   getJSON(`/projects/${project}/versions/${version}/builds`);
 
@@ -57,6 +57,6 @@ export const getVersionBuildDownloadURL = (
   project: string,
   version: string,
   build: number,
-  file: string
+  file: string,
 ): string =>
   `${API_ENDPOINT}/projects/${project}/versions/${version}/builds/${build}/downloads/${file}`;

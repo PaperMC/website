@@ -73,7 +73,7 @@ export function Terminal({ project }: ProjectProps) {
           <span className="text-green-400">
             Done (2.274s)! For help, type &quot;help&quot;
           </span>
-        </InfoLog>
+        </InfoLog>,
       );
     })();
   }, [project.latestStableVersion]);

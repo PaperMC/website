@@ -132,7 +132,7 @@ const Team: NextPage = () => {
                     unoptimized
                   />
                 </a>
-              ))
+              )),
           )}
         </div>
       </section>

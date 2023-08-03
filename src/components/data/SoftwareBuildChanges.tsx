@@ -36,7 +36,7 @@ export default SoftwareBuildChanges;
 const highlightIssues = (
   summary: string,
   project: string,
-  highlightClass: string
+  highlightClass: string,
 ): JSX.Element[] => {
   return summary.split(/([^&])(#[0-9]+)/gm).map((part: string, i: number) => {
     if (!part.match(/#[0-9]+/)) {

@@ -30,7 +30,7 @@ const NavDropDown = ({
     <div
       className={clsx(
         "color-gray-200 hover:text-blue-600 dark:hover:text-blue-400 text-sm transition-colors px-2.5 relative inline-block h-full",
-        className
+        className,
       )}
       onMouseEnter={handleEnter}
       onMouseLeave={handleLeave}
@@ -51,7 +51,7 @@ const NavDropDown = ({
         show={hover}
         unmount
       >
-        <ul className="mt-2 flex flex-col py-1 z-50 bg-background-light-10 dark:bg-background-dark-90 transition-all md:(absolute border border-gray-200 dark:border-gray-800 rounded-lg shadow-md mt-0)">
+        <ul className="mt-2 flex flex-col py-1 z-100 bg-background-light-10 dark:bg-background-dark-90 transition-all md:(absolute border border-gray-200 dark:border-gray-800 rounded-lg shadow-md mt-0)">
           {children}
         </ul>
       </Transition>

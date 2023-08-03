@@ -53,5 +53,5 @@ export const useSponsors = (): SWRResponse<SponsorData> =>
   useSWR(
     "https://raw.githubusercontent.com/PaperMC/papermc.io/data/sponsors.json",
     fetcher,
-    swrNoAutoUpdateSettings
+    swrNoAutoUpdateSettings,
   );

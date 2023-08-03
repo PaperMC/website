@@ -18,7 +18,7 @@ const NavDropDownLink = ({
   <li
     className={clsx(
       "color-gray-200 text-gray-800 hover:text-blue-600 text-sm transition-colors dark:(text-gray-200 hover:text-blue-400)",
-      className
+      className,
     )}
   >
     <NextLink href={href} passHref>
