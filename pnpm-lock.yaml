@@ -1,9 +1,13 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 dependencies:
   '@fontsource/poppins':
-    specifier: 4.5.10
-    version: 4.5.10
+    specifier: 5.0.7
+    version: 5.0.7
   '@headlessui/react':
     specifier: 1.7.14
     version: 1.7.14(react-dom@18.2.0)(react@18.2.0)
@@ -1363,8 +1367,8 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
 
-  /@fontsource/poppins@4.5.10:
-    resolution: {integrity: sha512-oYZVHsnlwV3VWM1SE/m6SUxVh0QLk5+2wB+lBiXcI7N/0KVQWmV9YykaPqfJHBLvmdya+MAOnv+BQHeLU1vOOw==}
+  /@fontsource/poppins@5.0.7:
+    resolution: {integrity: sha512-IYFKAY63agukU8y8POfiutQJe95czWNSgZ4sY/CQDcGXzEtrTr3vwKg2Z/1v/PQnd7RoGvLK6ufjoXUayvSK4w==}
     dev: false
 
   /@headlessui/react@1.7.14(react-dom@18.2.0)(react@18.2.0):
