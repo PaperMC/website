@@ -85,7 +85,9 @@ export const getProjectProps = (
     return {
       props: {
         project,
-        pagination: hangarProjectList ? hangarProjectList.pagination : null,
+        hangarProjectListPagination: hangarProjectList
+          ? hangarProjectList.pagination
+          : null,
       },
       revalidate: 600, // 10 minutes
     };
