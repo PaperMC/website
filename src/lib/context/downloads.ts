@@ -1,7 +1,10 @@
 import type { GetStaticProps } from "next";
 import { createContext } from "react";
 
-import type { Pagination, HangarProjectList } from "@/lib/service/hangar";
+import type {
+  HangarProjectListPagination,
+  HangarProjectList,
+} from "@/lib/service/hangar";
 import { getHangarProjects } from "@/lib/service/hangar";
 import type { Build } from "@/lib/service/types";
 import { getProject, getVersionBuilds } from "@/lib/service/v2";
@@ -26,8 +29,7 @@ export interface ProjectProps {
 }
 
 export interface HangarProjectProps extends ProjectProps {
-  project: ProjectDescriptor;
-  pagination: Pagination;
+  hangarProjectListPagination: HangarProjectListPagination;
 }
 
 export const DownloadsContext = createContext<DownloadsContextProps>({

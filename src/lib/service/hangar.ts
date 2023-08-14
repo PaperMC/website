@@ -1,8 +1,8 @@
 export interface HangarProjectList {
-  pagination: Pagination;
+  pagination: HangarProjectListPagination;
 }
 
-export interface Pagination {
+export interface HangarProjectListPagination {
   limit: number;
   offset: number;
   count: number;
