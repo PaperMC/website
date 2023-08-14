@@ -1,8 +1,8 @@
 import type { GetStaticProps } from "next";
 import { createContext } from "react";
 
-import type { Pagination, Result } from "@/lib/service/hangar";
-import { useHangarProjects } from "@/lib/service/hangar";
+import type { Pagination, HangarProjectList } from "@/lib/service/hangar";
+import { getHangarProjects } from "@/lib/service/hangar";
 import type { Build } from "@/lib/service/types";
 import { getProject, getVersionBuilds } from "@/lib/service/v2";
 
@@ -56,8 +56,8 @@ export const getProjectProps = (
 ): GetStaticProps => {
   return async () => {
     const { project_name, versions, version_groups } = await getProject(id);
-    const result: Result | null = hangarProject
-      ? await useHangarProjects(id)
+    const result: HangarProjectList | null = hangarProject
+      ? await getHangarProjects(id)
       : null;
 
     let latestStableVersion = versions[versions.length - 1];

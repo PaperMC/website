@@ -1,4 +1,4 @@
-export interface Result {
+export interface HangarProjectList {
   pagination: Pagination;
 }
 
@@ -8,10 +8,9 @@ export interface Pagination {
   count: number;
 }
 
-const fetcher = (url: string) => fetch(url).then((res) => res.json());
-const getJSON = <T>(path: string): Promise<T> => fetcher(path);
-
-export const useHangarProjects = (platform: string): Promise<Result> =>
-  getJSON(
+export const getHangarProjects = (
+  platform: string,
+): Promise<HangarProjectList> =>
+  fetch(
     `https://hangar.papermc.io/api/v1/projects?orderWithRelevance=true&limit=1&offset=0&platform=${platform.toUpperCase()}`,
-  );
+  ).then((res) => res.json());

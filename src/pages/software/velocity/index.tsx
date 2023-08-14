@@ -89,8 +89,8 @@ const VelocityHome = ({
               Crafted by the PaperMC team & contributors, Hangar is our own
               dedicated plugin repository, now in open beta! View over&nbsp;
               <span className={"text-blue-500"}>{pagination.count}</span>
-              &nbsp;different plugins that are specific to Velocity, or list your own
-              with a very streamlined creation process.
+              &nbsp;different plugins that are specific to Velocity, or list
+              your own with a very streamlined creation process.
             </p>
             <div className="flex flex-row gap-4 mt-8">
               <Button
