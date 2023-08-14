@@ -56,7 +56,7 @@ export const getProjectProps = (
 ): GetStaticProps => {
   return async () => {
     const { project_name, versions, version_groups } = await getProject(id);
-    const result: HangarProjectList | null = hangarProject
+    const hangarProjectList: HangarProjectList | null = hangarProject
       ? await getHangarProjects(id)
       : null;
 
@@ -83,7 +83,7 @@ export const getProjectProps = (
     return {
       props: {
         project,
-        pagination: result ? result.pagination : null,
+        pagination: hangarProjectList ? hangarProjectList.pagination : null,
       },
       revalidate: 600, // 10 minutes
     };
