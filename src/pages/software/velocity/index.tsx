@@ -87,9 +87,9 @@ const VelocityHome = ({
             </h2>
             <p className="md:(mt-6 text-xl) text-gray-900 dark:text-gray-100 mt-3">
               Crafted by the PaperMC team & contributors, Hangar is our own
-              dedicated plugin repository, now in open beta! View over
+              dedicated plugin repository, now in open beta! View over&nbsp;
               <span className={"text-blue-500"}>{pagination.count}</span>
-              different plugins that are specific to Velocity, or list your own
+              &nbsp;different plugins that are specific to Velocity, or list your own
               with a very streamlined creation process.
             </p>
             <div className="flex flex-row gap-4 mt-8">
