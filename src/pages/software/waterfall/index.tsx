@@ -12,10 +12,10 @@ import FeatureCard from "@/components/data/FeatureCard";
 import Button from "@/components/input/Button";
 import SoftwareHeader from "@/components/layout/SoftwareHeader";
 import SEO from "@/components/util/SEO";
-import type { ProjectProps } from "@/lib/context/downloads";
+import type { HangarProjectProps } from "@/lib/context/downloads";
 import { getProjectProps } from "@/lib/context/downloads";
 
-const WaterfallHome = ({ project }: ProjectProps): ReactElement => {
+const WaterfallHome = ({ project }: HangarProjectProps): ReactElement => {
   return (
     <>
       <SEO
