@@ -114,20 +114,17 @@ const CommunityGuidelines: NextPage = () => (
               warning.
             </li>
             <li>
-              Users who are looking for help and are incessantly repeating
-              questions because they aren&apos;t receiving any answers should be
-              asked to stop repeating their question so often and be patient
-              instead. They should also be directed to <code>#paper-help</code>{" "}
-              if they aren&apos;t there already.
+              Incessantly repeating questions because they&apos;re not being
+              answered isn&apos;t allowed. Please be patient in waiting for a reply.
               <ol className="list-roman list-inside ml-6 space-y-2 py-1">
                 <li>
-                  Repeating a question after some time has passed and the
+                  Repeating a question after some time has passed because the
                   question is no longer current and the conversation has changed
                   is fine, as long as it&apos;s not too repetitive.
                 </li>
                 <li>
-                  Repeating a question because the user is receiving help but
-                  doesn&apos;t like the answer they received is not fine.
+                  Repeating a question because the answer given isn&apos;t
+                  satisfying is not fine.
                 </li>
               </ol>
             </li>
@@ -143,23 +140,18 @@ const CommunityGuidelines: NextPage = () => (
           <ol className="list-alpha list-inside ml-6 space-y-2 py-1">
             <li>
               Non-hateful and non-bigoted cursing is fine for the most part, but
-              not in usernames. If someone is cursing in every message, they
-              should be asked to calm down and stop using those words so much.
-              If a curse word is in their username, that&apos;s basically the
-              same as saying that word every time they send a message &mdash; so
-              it&apos;s the same problem.
+              not in usernames. Constant cursing in every message isn&apos;t
+              allowed. Usernames containing curse words are basically the same as
+              saying that word every time a message is sent, so it&apos;s the same
+              problem.
             </li>
             <li>
               Impersonating people includes anyone in or out of the server, not
               just staff and not just those in Paper.
             </li>
             <li>
-              People often try to put their servers or plugins in their
-              usernames, which seems a little distasteful. Users can put their
-              server or plugins in their Discord status and it will appear if
-              anyone clicks on their names. Including server or plugin names in
-              their username also potentially makes their name ridiculously
-              long.
+              Putting servers or plugins in usernames isn&apos;t allowed. However,
+              this is allowed in less visible fields, such as a Discord status.
             </li>
             <li>
               Usernames that are nothing but a bunch of symbols that are
@@ -176,19 +168,16 @@ const CommunityGuidelines: NextPage = () => (
           reason.
           <ol className="list-alpha list-inside ml-6 space-y-2 py-1">
             <li>
-              Valid reasons include when normal users may not be able to help,
-              or when reporting dupe glitches or critical bugs.
-            </li>
-            <li>
-              Anyone with a role is a target for pinging, and the larger Paper
-              gets, the more of an issue this becomes.
+              For reporting dupe glitches or critical bugs, please make use of the
+              &quot;paper-exploit-report&quot; channel on Discord. This notifies the
+              developers and keeps the issue confidential. This channel isn&apos;t 
+              for regular support.
             </li>
             <li>
               Someone pinging a particular person because they are responding to
-              that person is not a problem and not even warranting of a warning.
-              Someone pinging a project developer or contributor just because
-              they want an answer in <code>#paper-help</code> is what is
-              addressed here.
+              that person isn&apos;t a problem. Someone pinging a project developer
+              or contributor just because they want an answer is what is addressed
+              here.
             </li>
             <li>
               There are some users who don&apos;t want to be pinged, so please
@@ -201,40 +190,39 @@ const CommunityGuidelines: NextPage = () => (
           order to prevent the degeneration of our chat channels.
           <ol className="list-alpha list-inside ml-6 space-y-2 py-1">
             <li>
-              This does not apply to instances where people are speaking about
-              their everyday lives or current events - only when discussion
-              devolves to the point of being solely about some political scandal
-              or controversy.
+              This does not apply to speaking about everyday lives or current events -
+              only when discussion devolves to the point of being solely about some
+              political scandal or controversy.
             </li>
           </ol>
         </li>
         <li>
           Discussing piracy or pirated software. This explicitly applies to
-          &quot;offline-mode&quot; (not authenticating users against Mojang) as
-          well.
+          &quot;offline-mode&quot; (not authenticating users against their Microsoft
+          accounts) as well.
           <ol className="list-alpha list-inside ml-6 space-y-2 py-1">
             <li>
               This does not apply to legitimate uses of offline mode, like with
               certain proxies, as long as the users get authenticated with
-              Mojang another way.
+              Microsoft another way.
             </li>
           </ol>
         </li>
         <li>
           Discussing the bypassing or exploiting of Minecraft&apos;s player
           safety features in any way that is malicious or harmful. This applies
-          to discussion around how to bypass chat reporting specifically, as
-          well as any other features that make Minecraft a safer place for its
-          users.
+          to discussion around how to bypass chat, username, and skin reporting
+          specifically, as well as any other features that make Minecraft a safer
+          place for its users.
           <ol className="list-alpha list-inside ml-6 space-y-2 py-1">
             <li>
               This does not apply to general discussion of the safety features
               themselves, nor does it apply to discussion of these
               features&apos; potential downsides. Further we will not forbid
               general discussion of &apos;proper&apos; ways to disable safety
-              features for legitimate reasons. Only those meaning to bypass them
-              for the sake of avoiding accountability or otherwise being
-              malicious will be punished.
+              features for legitimate reasons. Only trying to bypass them for the
+              sake of avoiding accountability or otherwise being malicious
+              isn&ampos;t allowed.
             </li>
           </ol>
         </li>
@@ -398,7 +386,7 @@ const CommunityGuidelines: NextPage = () => (
       className="px-4 py-4 max-w-7xl mx-auto leading-7"
     >
       <h2 className="text-2xl font-medium mb-4">
-        Last Updated <code>2023-06-16</code>
+        Last Updated <code>2023-08-19</code>
       </h2>
       <p>
         This document is licensed under{" "}
