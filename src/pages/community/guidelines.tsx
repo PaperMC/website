@@ -115,7 +115,8 @@ const CommunityGuidelines: NextPage = () => (
             </li>
             <li>
               Incessantly repeating questions because they&apos;re not being
-              answered isn&apos;t allowed. Please be patient in waiting for a reply.
+              answered isn&apos;t allowed. Please be patient in waiting for a
+              reply.
               <ol className="list-roman list-inside ml-6 space-y-2 py-1">
                 <li>
                   Repeating a question after some time has passed because the
@@ -141,17 +142,18 @@ const CommunityGuidelines: NextPage = () => (
             <li>
               Non-hateful and non-bigoted cursing is fine for the most part, but
               not in usernames. Constant cursing in every message isn&apos;t
-              allowed. Usernames containing curse words are basically the same as
-              saying that word every time a message is sent, so it&apos;s the same
-              problem.
+              allowed. Usernames containing curse words are basically the same
+              as saying that word every time a message is sent, so it&apos;s the
+              same problem.
             </li>
             <li>
               Impersonating people includes anyone in or out of the server, not
               just staff and not just those in Paper.
             </li>
             <li>
-              Putting servers or plugins in usernames isn&apos;t allowed. However,
-              this is allowed in less visible fields, such as a Discord status.
+              Putting servers or plugins in usernames isn&apos;t allowed.
+              However, this is allowed in less visible fields, such as a Discord
+              status.
             </li>
             <li>
               Usernames that are nothing but a bunch of symbols that are
@@ -168,16 +170,16 @@ const CommunityGuidelines: NextPage = () => (
           reason.
           <ol className="list-alpha list-inside ml-6 space-y-2 py-1">
             <li>
-              For reporting dupe glitches or critical bugs, please make use of the
-              &quot;paper-exploit-report&quot; channel on Discord. This notifies the
-              developers and keeps the issue confidential. This channel isn&apos;t 
-              for regular support.
+              For reporting dupe glitches or critical bugs, please make use of
+              the &quot;paper-exploit-report&quot; channel on Discord. This
+              notifies the developers and keeps the issue confidential. This
+              channel isn&apos;t for regular support.
             </li>
             <li>
               Someone pinging a particular person because they are responding to
-              that person isn&apos;t a problem. Someone pinging a project developer
-              or contributor just because they want an answer is what is addressed
-              here.
+              that person isn&apos;t a problem. Someone pinging a project
+              developer or contributor just because they want an answer is what
+              is addressed here.
             </li>
             <li>
               There are some users who don&apos;t want to be pinged, so please
@@ -190,16 +192,16 @@ const CommunityGuidelines: NextPage = () => (
           order to prevent the degeneration of our chat channels.
           <ol className="list-alpha list-inside ml-6 space-y-2 py-1">
             <li>
-              This does not apply to speaking about everyday lives or current events -
-              only when discussion devolves to the point of being solely about some
-              political scandal or controversy.
+              This does not apply to speaking about everyday lives or current
+              events - only when discussion devolves to the point of being
+              solely about some political scandal or controversy.
             </li>
           </ol>
         </li>
         <li>
           Discussing piracy or pirated software. This explicitly applies to
-          &quot;offline-mode&quot; (not authenticating users against their Microsoft
-          accounts) as well.
+          &quot;offline-mode&quot; (not authenticating users against their
+          Microsoft accounts) as well.
           <ol className="list-alpha list-inside ml-6 space-y-2 py-1">
             <li>
               This does not apply to legitimate uses of offline mode, like with
@@ -212,16 +214,16 @@ const CommunityGuidelines: NextPage = () => (
           Discussing the bypassing or exploiting of Minecraft&apos;s player
           safety features in any way that is malicious or harmful. This applies
           to discussion around how to bypass chat, username, and skin reporting
-          specifically, as well as any other features that make Minecraft a safer
-          place for its users.
+          specifically, as well as any other features that make Minecraft a
+          safer place for its users.
           <ol className="list-alpha list-inside ml-6 space-y-2 py-1">
             <li>
               This does not apply to general discussion of the safety features
               themselves, nor does it apply to discussion of these
               features&apos; potential downsides. Further we will not forbid
               general discussion of &apos;proper&apos; ways to disable safety
-              features for legitimate reasons. Only trying to bypass them for the
-              sake of avoiding accountability or otherwise being malicious
+              features for legitimate reasons. Only trying to bypass them for
+              the sake of avoiding accountability or otherwise being malicious
               isn&ampos;t allowed.
             </li>
           </ol>
