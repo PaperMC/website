@@ -12,5 +12,5 @@ export const getHangarProjects = (
   platform: string,
 ): Promise<HangarProjectList> =>
   fetch(
-    `https://hangar.papermc.io/api/v1/projects?orderWithRelevance=true&limit=1&offset=0&platform=${platform.toUpperCase()}`,
+    `https://hangar.papermc.io/api/v1/projects?limit=1&offset=0&sort=-stars&platform=${platform.toUpperCase()}`,
   ).then((res) => res.json());
