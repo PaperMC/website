@@ -86,6 +86,35 @@ const Footer = () => (
             </li>
           </ul>
         </div>
+        <div>
+          <span className="font-semibold">Terms</span>
+          <ul className="mt-4 leading-5 text-gray-400 space-y-2">
+            <li>
+              <Link href="https://forums.papermc.io/help/terms/">Terms</Link>
+            </li>
+            <li>
+              <Link href="https://forums.papermc.io/help/privacy-policy/">
+                Privacy Policy
+              </Link>
+            </li>
+            <li>
+              <Link href="https://forums.papermc.io/help/legal-notice/">
+                Legal Notice
+              </Link>
+            </li>
+            <li>
+              <Link href="https://hangar.papermc.io/terms">Hangar Terms</Link>
+            </li>
+            <li>
+              <Link href="https://hangar.papermc.io/privacy">
+                Hangar Privacy Policy
+              </Link>
+            </li>
+            <li>
+              <Link href="/community/guidelines">Community Guidelines</Link>
+            </li>
+          </ul>
+        </div>
       </div>
       <div className="flex flex-row items-center gap-2 border-t border-gray-600/50 mt-8 pt-10">
         <LogoMarkerDark className="h-12 cursor-pointer" alt="PaperMC" />
