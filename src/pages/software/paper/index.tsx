@@ -84,9 +84,12 @@ const PaperHome = ({
             <Image
               alt=""
               src={HomeImage3}
-              objectFit="cover"
-              layout="fill"
               placeholder="blur"
+              fill
+              sizes="100vw"
+              style={{
+                objectFit: "cover",
+              }}
             />
           </div>
           <div className="flex-1">
@@ -119,9 +122,12 @@ const PaperHome = ({
             <Image
               alt=""
               src={HomeImage1}
-              objectFit="cover"
-              layout="fill"
               placeholder="blur"
+              fill
+              sizes="100vw"
+              style={{
+                objectFit: "cover",
+              }}
             />
           </div>
           <div className="flex-1">
@@ -153,9 +159,12 @@ const PaperHome = ({
             <Image
               alt=""
               src={CommunityImage}
-              objectFit="cover"
-              layout="fill"
               placeholder="blur"
+              fill
+              sizes="100vw"
+              style={{
+                objectFit: "cover",
+              }}
             />
           </div>
           <div className="flex-1">

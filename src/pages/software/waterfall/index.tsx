@@ -74,9 +74,12 @@ const WaterfallHome = ({ project }: HangarProjectProps): ReactElement => {
             <Image
               alt=""
               src={VelocityImage}
-              objectFit="cover"
-              layout="fill"
               placeholder="blur"
+              fill
+              sizes="100vw"
+              style={{
+                objectFit: "cover",
+              }}
             />
           </div>
           <div className="flex-1">
@@ -101,9 +104,12 @@ const WaterfallHome = ({ project }: HangarProjectProps): ReactElement => {
             <Image
               alt=""
               src={HomeImage1}
-              objectFit="cover"
-              layout="fill"
               placeholder="blur"
+              fill
+              sizes="100vw"
+              style={{
+                objectFit: "cover",
+              }}
             />
           </div>
           <div className="flex-1">
@@ -155,9 +161,12 @@ const WaterfallHome = ({ project }: HangarProjectProps): ReactElement => {
             <Image
               alt=""
               src={CommunityImage}
-              objectFit="cover"
-              layout="fill"
               placeholder="blur"
+              fill
+              sizes="100vw"
+              style={{
+                objectFit: "cover",
+              }}
             />
           </div>
         </div>

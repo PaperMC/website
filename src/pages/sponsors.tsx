@@ -111,13 +111,16 @@ const Sponsors: NextPage = () => {
                 <Image
                   alt={`${node.name}'s avatar`}
                   src={node.image}
-                  objectFit="cover"
-                  layout="fill"
                   onError={(e) => (e.currentTarget.style.display = "none")}
                   onLoad={(e) =>
                     (e.currentTarget.style.backgroundColor = "white")
                   }
                   unoptimized
+                  fill
+                  sizes="100vw"
+                  style={{
+                    objectFit: "cover",
+                  }}
                 />
               </div>
             ))}
@@ -134,13 +137,16 @@ const Sponsors: NextPage = () => {
               <Image
                 alt={`${node.login}'s avatar`}
                 src={node.avatarUrl}
-                objectFit="cover"
-                layout="fill"
                 onError={(e) => (e.currentTarget.style.display = "none")}
                 onLoad={(e) =>
                   (e.currentTarget.style.backgroundColor = "white")
                 }
                 unoptimized
+                fill
+                sizes="100vw"
+                style={{
+                  objectFit: "cover",
+                }}
               />
             </a>
           ))}
