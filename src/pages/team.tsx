@@ -18,7 +18,7 @@ const Team: NextPage = () => {
       <SEO
         title="Team"
         description="Meet the team behind PaperMC, a Minecraft software organization focusing on improving
-            the game’s ecosystem with faster and more secure software."
+          the game’s ecosystem with faster and more secure software."
         keywords={["papermc", "paper", "minecraft", "team"]}
       />
       <header className="max-w-7xl flex flex-row mx-auto px-4 pt-32 pb-26 lg:(pt-48 pb-46) gap-16">
@@ -66,9 +66,12 @@ const Team: NextPage = () => {
                       <Image
                         alt={`${member.name}'s avatar`}
                         src={member.avatar}
-                        objectFit="cover"
-                        layout="fill"
                         unoptimized
+                        fill
+                        sizes="100vw"
+                        style={{
+                          objectFit: "cover",
+                        }}
                       />
                     )}
                   </div>
@@ -123,13 +126,16 @@ const Team: NextPage = () => {
                   <Image
                     alt={`${contributor.login}'s avatar`}
                     src={contributor.avatar_url}
-                    objectFit="cover"
-                    layout="fill"
                     onError={(e) => (e.currentTarget.style.display = "none")}
                     onLoad={(e) => {
                       e.currentTarget.style.backgroundColor = "white";
                     }}
                     unoptimized
+                    fill
+                    sizes="100vw"
+                    style={{
+                      objectFit: "cover",
+                    }}
                   />
                 </a>
               )),

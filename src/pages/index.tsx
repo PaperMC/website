@@ -23,7 +23,7 @@ const Home: NextPage<ProjectProps> = ({ project }) => {
       <SEO
         title="Home"
         description="PaperMC is a Minecraft software organization focusing on improving
-            the game’s ecosystem with faster and more secure software."
+          the game’s ecosystem with faster and more secure software."
         keywords={["papermc", "paper", "velocity", "minecraft", "performance"]}
       />
       <header className="max-w-7xl flex flex-row mx-auto px-4 pt-32 pb-26 lg:(pt-48 pb-46)">
@@ -91,9 +91,12 @@ const Home: NextPage<ProjectProps> = ({ project }) => {
             <Image
               alt=""
               src={HomeImage3}
-              objectFit="cover"
-              layout="fill"
               placeholder="blur"
+              fill
+              sizes="100vw"
+              style={{
+                objectFit: "cover",
+              }}
             />
           </div>
           <div className="flex-1">
@@ -123,9 +126,12 @@ const Home: NextPage<ProjectProps> = ({ project }) => {
             <Image
               alt=""
               src={HomeImage1}
-              objectFit="cover"
-              layout="fill"
               placeholder="blur"
+              fill
+              sizes="100vw"
+              style={{
+                objectFit: "cover",
+              }}
             />
           </div>
           <div className="flex-1">
@@ -153,9 +159,12 @@ const Home: NextPage<ProjectProps> = ({ project }) => {
             <Image
               alt=""
               src={HomeImage2}
-              objectFit="cover"
-              layout="fill"
               placeholder="blur"
+              fill
+              sizes="100vw"
+              style={{
+                objectFit: "cover",
+              }}
             />
           </div>
           <div className="flex-1">

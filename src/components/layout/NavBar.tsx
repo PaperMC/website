@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import type { NextComponentType, NextPageContext } from "next";
-import NextLink from "next/link";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
@@ -61,18 +61,16 @@ const NavBar = ({ component }: NavBarProps) => {
         >
           <MenuIcon className="w-6 h-6 fill-gray-500" />
         </button>
-        <NextLink href="/" passHref>
-          <a className="leading-0" tabIndex={-1} aria-hidden={true}>
-            <LogoMarkerLight
-              className="block dark:hidden h-12 cursor-pointer"
-              alt="PaperMC"
-            />
-            <LogoMarkerDark
-              className="hidden dark:block h-12 cursor-pointer"
-              alt="PaperMC"
-            />
-          </a>
-        </NextLink>
+        <Link href="/" className="leading-0" tabIndex={-1} aria-hidden={true}>
+          <LogoMarkerLight
+            className="block dark:hidden h-12 cursor-pointer"
+            alt="PaperMC"
+          />
+          <LogoMarkerDark
+            className="hidden dark:block h-12 cursor-pointer"
+            alt="PaperMC"
+          />
+        </Link>
         <div
           className={clsx(
             "absolute top-full left-0 right-0 flex flex-col bg-background-light-10 dark:bg-background-dark-90 gap-4 p-4 shadow-xl w-full md:(block relative w-auto shadow-none bg-transparent p-0)",

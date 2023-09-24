@@ -75,9 +75,12 @@ const FoliaHome = ({ project }: HangarProjectProps): ReactElement => {
             <Image
               alt=""
               src={HomeImage3}
-              objectFit="cover"
-              layout="fill"
               placeholder="blur"
+              fill
+              sizes="100vw"
+              style={{
+                objectFit: "cover",
+              }}
             />
           </div>
           <div className="flex-1">

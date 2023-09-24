@@ -14,29 +14,30 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@fontsource/poppins": "5.0.7",
-    "@headlessui/react": "1.7.16",
+    "@fontsource/poppins": "5.0.8",
+    "@headlessui/react": "1.7.17",
     "clsx": "2.0.0",
-    "next": "12.3.4",
+    "next": "13.5.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "swr": "2.2.0"
+    "sharp": "^0.32.6",
+    "swr": "2.2.2"
   },
   "devDependencies": {
-    "@svgr/webpack": "8.0.1",
-    "@types/node": "20.4.6",
-    "@types/react": "18.2.18",
+    "@svgr/webpack": "8.1.0",
+    "@types/node": "20.6.5",
+    "@types/react": "18.2.22",
     "@types/react-dom": "18.2.7",
-    "@typescript-eslint/eslint-plugin": "6.2.1",
-    "@typescript-eslint/parser": "6.2.1",
-    "eslint": "8.46.0",
-    "eslint-config-next": "13.4.12",
-    "eslint-config-prettier": "8.10.0",
+    "@typescript-eslint/eslint-plugin": "6.7.2",
+    "@typescript-eslint/parser": "6.7.2",
+    "eslint": "8.50.0",
+    "eslint-config-next": "13.5.2",
+    "eslint-config-prettier": "9.0.0",
     "eslint-plugin-prettier": "5.0.0",
-    "prettier": "3.0.1",
-    "typescript": "5.1.6",
+    "prettier": "3.0.3",
+    "typescript": "5.2.2",
     "windicss": "3.5.6",
-    "windicss-webpack-plugin": "1.7.8"
+    "windicss-webpack-plugin": "1.8.0"
   },
   "sideEffects": false
 }

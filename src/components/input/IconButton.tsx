@@ -11,11 +11,11 @@ export interface IconButtonProps {
 }
 
 const IconButton = (props: IconButtonProps) => {
-  const { icon: Icon, label, href, external, onClick } = props;
+  const { icon: Icon, label, href, onClick } = props;
 
   if (href) {
-    const anchor = (
-      <a
+    return (
+      <Link
         href={href}
         rel="noreferrer"
         target="_blank"
@@ -24,18 +24,8 @@ const IconButton = (props: IconButtonProps) => {
         aria-label={label}
       >
         <Icon className="h-6 w-6 fill-gray-700 dark:fill-gray-300" />
-      </a>
+      </Link>
     );
-
-    if (external) {
-      return anchor;
-    } else {
-      return (
-        <Link className="gray-700" href={href} passHref>
-          {anchor}
-        </Link>
-      );
-    }
   }
 
   return (
