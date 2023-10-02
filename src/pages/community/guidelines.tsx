@@ -224,7 +224,7 @@ const CommunityGuidelines: NextPage = () => (
               general discussion of &apos;proper&apos; ways to disable safety
               features for legitimate reasons. Only trying to bypass them for
               the sake of avoiding accountability or otherwise being malicious
-              isn&ampos;t allowed.
+              isn&apos;t allowed.
             </li>
           </ol>
         </li>
