@@ -20,7 +20,7 @@ const SoftwareBuildsTable = ({
 }: SoftwareBuildsTableProps) => {
   return (
     <table className="w-full relative">
-      <thead className="sticky top-0 z-50 bg-background-light-10 dark:bg-background-dark-90 shadow-sm">
+      <thead className="sticky top-0 z-40 bg-background-light-10 dark:bg-background-dark-90 shadow-sm">
         <tr className={styles.header}>
           <th>Build</th>
           <th>Changelog</th>
