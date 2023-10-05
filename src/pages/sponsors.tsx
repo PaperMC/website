@@ -117,10 +117,7 @@ const Sponsors: NextPage = () => {
                   }
                   unoptimized
                   fill
-                  sizes="100vw"
-                  style={{
-                    objectFit: "cover",
-                  }}
+                  className="object-cover"
                 />
               </div>
             ))}
@@ -143,10 +140,7 @@ const Sponsors: NextPage = () => {
                 }
                 unoptimized
                 fill
-                sizes="100vw"
-                style={{
-                  objectFit: "cover",
-                }}
+                className="object-cover"
               />
             </a>
           ))}
