@@ -68,10 +68,7 @@ const Team: NextPage = () => {
                         src={member.avatar}
                         unoptimized
                         fill
-                        sizes="100vw"
-                        style={{
-                          objectFit: "cover",
-                        }}
+                        className="object-cover"
                       />
                     )}
                   </div>
@@ -132,10 +129,7 @@ const Team: NextPage = () => {
                     }}
                     unoptimized
                     fill
-                    sizes="100vw"
-                    style={{
-                      objectFit: "cover",
-                    }}
+                    className="object-cover"
                   />
                 </a>
               )),
