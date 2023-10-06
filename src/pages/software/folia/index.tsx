@@ -1,7 +1,7 @@
 import Image from "next/image";
 import type { ReactElement } from "react";
 
-import PaperIcon from "@/assets/brand/paper.svg";
+import FoliaIcon from "@/assets/brand/folia.svg";
 import BoltIcon from "@/assets/icons/heroicons/bolt.svg";
 import ChatBubbleLeftRightIcon from "@/assets/icons/heroicons/chat-bubble-left-right.svg";
 import CodeBracketIcon from "@/assets/icons/heroicons/code-bracket.svg";
@@ -34,7 +34,7 @@ const FoliaHome = ({ project }: HangarProjectProps): ReactElement => {
         id="folia"
         name="Folia"
         versionGroup={project.latestVersionGroup}
-        icon={PaperIcon}
+        icon={FoliaIcon}
         header={<>What is Folia?</>}
         description="Folia is a new fork of Paper that adds regionized multithreading to the server. Access to Folia builds isn't currently available. To build Folia, you need to compile from source following Paper's standard compilation guide."
         github="https://github.com/PaperMC/Folia"

@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
 
+import FoliaIcon from "@/assets/brand/folia.svg";
 import PaperIcon from "@/assets/brand/paper.svg";
 import VelocityIcon from "@/assets/brand/velocity.svg";
 import WaterfallIcon from "@/assets/brand/waterfall.svg";
@@ -43,7 +44,7 @@ const Downloads: NextPage = () => {
           <SoftwarePreview
             id="folia"
             name="Folia"
-            icon={PaperIcon}
+            icon={FoliaIcon}
             description="Folia is a new fork of Paper that adds regionized multithreading to the server. Access to Folia builds isn't currently available."
           />
         </div>
