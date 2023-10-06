@@ -1,0 +1,55 @@
+.core-team {
+    @apply bg-core-team/20
+}
+
+.core-team-text {
+    @apply text-core-team
+}
+
+.paper-maintainers {
+    @apply bg-paper-maintainers/20
+}
+
+.paper-maintainers-text {
+    @apply text-paper-maintainers
+}
+
+.paper-developers {
+    @apply bg-paper-developers/20
+}
+
+.paper-developers-text {
+    @apply text-paper-developers
+}
+
+.velocity-developers {
+    @apply bg-velocity-developers/20
+}
+
+.velocity-developers-text {
+    @apply text-velocity-developers
+}
+
+.community-managers {
+    @apply bg-community-managers/20
+}
+
+.community-managers-text {
+    @apply text-community-managers
+}
+
+.triage-team {
+    @apply bg-triage-team/20
+}
+
+.triage-team-text {
+    @apply text-triage-team
+}
+
+.moderators {
+    @apply bg-moderators/20
+}
+
+.moderators-text {
+    @apply text-moderators
+}

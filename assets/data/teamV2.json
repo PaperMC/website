@@ -1,0 +1,277 @@
+[
+  {
+    "id": "core",
+    "name": "Core Team",
+    "groups": [
+      {
+        "id": "core-team",
+        "description": "Core team members are responsible for the direction of the project, and for making the big decisions. Whether they focus on the code or the community, they're essential to making everything run and have final say in just about anything.",
+        "members": [
+          {
+            "name": "Aikar",
+            "avatar": "https://avatars.githubusercontent.com/u/58008?v=4",
+            "discord": "Aikar#0001",
+            "github": "aikar"
+          },
+          {
+            "name": "DenWav",
+            "avatar": "https://avatars.githubusercontent.com/u/1332104?v=4",
+            "discord": "DenWav#1989",
+            "github": "DenWav"
+          },
+          {
+            "name": "electronicboy",
+            "avatar": "https://avatars.githubusercontent.com/u/1228900?v=4",
+            "discord": "electronicboy#8869",
+            "github": "electronicboy"
+          },
+          {
+            "name": "kashike",
+            "avatar": "https://avatars.githubusercontent.com/u/5474071?v=4",
+            "discord": "kashike#0370",
+            "github": "kashike"
+          },
+          {
+            "name": "MiniDigger",
+            "avatar": "https://avatars.githubusercontent.com/u/2185527?v=4",
+            "discord": "MiniDigger#3086",
+            "github": "MiniDigger"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "development",
+    "name": "Development Team",
+    "groups": [
+      {
+        "id": "paper-maintainers",
+        "name": "Paper Maintainers",
+        "description": "Maintainers help decide and implement major codebase decisions, and are often around to guide major version updates. By contributing their time and talents, they ensure that our codebases are nice and shiny, and our performance is outmatched.",
+        "members": [
+          {
+            "name": "jmp",
+            "avatar": "https://avatars.githubusercontent.com/u/11360596?v=4",
+            "discord": "jmp#3822",
+            "github": "jpenilla"
+          },
+          {
+            "name": "kennytv",
+            "avatar": "https://avatars.githubusercontent.com/u/28825609?v=4",
+            "discord": "kennytv#9656",
+            "github": "kennytv"
+          },
+          {
+            "name": "Me4502",
+            "avatar": "https://avatars.githubusercontent.com/u/546754?v=4",
+            "discord": "Me4502#4502",
+            "github": "me4502"
+          },
+          {
+            "name": "Spottedleaf",
+            "avatar": "https://avatars.githubusercontent.com/u/6100722?v=4",
+            "discord": "Spottedleaf#0001",
+            "github": "Spottedleaf"
+          }
+        ]
+      },
+      {
+        "id": "paper-developers",
+        "name": "Paper Developers",
+        "description": "Paper Developers help with writing code, reviewing PRs, and keeping the project lively. By contributing new features and helping to polish off old code, they make Paper run.",
+        "members": [
+          {
+            "name": "JRoy",
+            "avatar": "https://avatars.githubusercontent.com/u/10731363?v=4",
+            "discord": "Joshie#0001",
+            "github": "JRoy"
+          },
+          {
+            "name": "Machine Maker",
+            "avatar": "https://avatars.githubusercontent.com/u/15055071?v=4",
+            "discord": "Machine Maker#3443",
+            "github": "Machine-Maker"
+          }
+        ]
+      },
+      {
+        "id": "velocity-developers",
+        "name": "Velocity Developers",
+        "description": "Velocity Developers manage and write the Velocity proxy. From handling PRs and issues to writing the fastest production proxy code there is, they do whatever Velocity needs.",
+        "members": [
+          {
+            "name": "Five",
+            "avatar": "https://avatars.githubusercontent.com/u/10787350?v=4",
+            "discord": "Five#0001",
+            "github": "Xernium"
+          },
+          {
+            "name": "Tux",
+            "avatar": "https://avatars.githubusercontent.com/u/16436212?v=4",
+            "discord": "Tux#1337",
+            "github": "astei"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "community",
+    "name": "Community Team",
+    "groups": [
+      {
+        "id": "community-managers",
+        "name": "Community Managers",
+        "description": "Community Managers help guide and support the direction that the community goes in. They can help with just about anything, and focus on communications and moderation within PaperMC's community spaces.",
+        "members": [
+          {
+            "name": "aurora",
+            "avatar": "https://avatars.githubusercontent.com/u/21148213?v=4",
+            "discord": "aurora#4484",
+            "github": "aurorasmiles"
+          },
+          {
+            "name": "Larry",
+            "avatar": "https://avatars.githubusercontent.com/u/58414982?v=4",
+            "discord": "Larry#6086",
+            "github": "Laarryy"
+          }
+        ]
+      },
+      {
+        "id": "triage-team",
+        "name": "Triage Team",
+        "description": "The triage team helps the project by reviewing, testing, and organizing our GitHub's endless issues and pull requests. With their efforts, developers and maintainers are able to most efficiently handle the most important tasks.",
+        "members": [
+          {
+            "name": "sulu",
+            "avatar": "https://avatars.githubusercontent.com/u/76139600?v=4",
+            "discord": "sulu#9747",
+            "github": "e-im"
+          },
+          {
+            "name": "chew",
+            "avatar": "https://avatars.githubusercontent.com/u/8278263?v=4",
+            "discord": "olivia // chew#0579",
+            "github": "Chew"
+          },
+          {
+            "name": "chickeneer",
+            "avatar": "https://avatars.githubusercontent.com/u/5341259?v=4",
+            "discord": "chickeneer#0001",
+            "github": "chickeneer"
+          },
+          {
+            "name": "lynxplay",
+            "avatar": "https://avatars.githubusercontent.com/u/32834385?v=4",
+            "discord": "lynxplay#0001",
+            "github": "lynxplay"
+          },
+          {
+            "name": "Noah",
+            "avatar": "https://avatars.githubusercontent.com/u/44026893?v=4",
+            "discord": "NoahvdAa#0001",
+            "github": "NoahvdAa"
+          },
+          {
+            "name": "Owen",
+            "avatar": "https://avatars.githubusercontent.com/u/23108066?v=4",
+            "discord": "Owen#1212",
+            "github": "Owen1212055"
+          },
+          {
+            "name": "Prof-Bloodstone",
+            "avatar": "https://avatars.githubusercontent.com/u/46570876?v=4",
+            "discord": "Prof_Bloodstone#0123",
+            "github": "Prof-Bloodstone"
+          }
+        ]
+      },
+      {
+        "id": "moderators",
+        "name": "Moderators",
+        "description": "The moderation team keeps our community a safe and vibrant space. By watching chat, helping newcomers with questions, and making sure everyone follows the community guidelines, PaperMC's community spaces are able to be as fantastic as they are!",
+        "members": [
+          {
+            "name": "aberdeener",
+            "avatar": "https://avatars.githubusercontent.com/u/26070412?v=4",
+            "discord": "aberdeener#0001",
+            "github": "Aberdeener"
+          },
+          {
+            "name": "Amaranth",
+            "avatar": "https://avatars.githubusercontent.com/u/341418?v=4",
+            "discord": "Amaranth#2954",
+            "github": "amaranth"
+          },
+          {
+            "name": "EterNity",
+            "avatar": "https://cdn.discordapp.com/avatars/177150983258767360/a_7666e2a0e8510dae51271bab3d7d2966.gif?size=240",
+            "discord": "EterNity#0001",
+            "github": "EterNityCH"
+          },
+          {
+            "name": "Glare",
+            "avatar": "https://avatars.githubusercontent.com/u/21014720?v=4",
+            "discord": "Glare#8499",
+            "github": "darbyjack"
+          },
+          {
+            "name": "gsand",
+            "avatar": "https://avatars.githubusercontent.com/u/1694336?v=4",
+            "discord": "gsand#8386",
+            "github": "gsand"
+          },
+          {
+            "name": "mbaxter",
+            "avatar": "https://avatars.githubusercontent.com/u/181668?v=4",
+            "discord": "mbaxter#1592",
+            "github": "mbax"
+          },
+          {
+            "name": "Michael",
+            "avatar": "https://avatars.githubusercontent.com/u/28601081?v=4",
+            "discord": "Michael#9600",
+            "github": "clrxbl"
+          },
+          {
+            "name": "nossr50",
+            "avatar": "https://avatars.githubusercontent.com/u/407458?v=4",
+            "discord": "nossr50#1337",
+            "github": "nossr50"
+          },
+          {
+            "name": "NotMyFault",
+            "avatar": "https://avatars.githubusercontent.com/u/13383509?v=4",
+            "discord": "NotMyFault#3732",
+            "github": "NotMyFault"
+          },
+          {
+            "name": "ocelotpotpie",
+            "avatar": "https://avatars.githubusercontent.com/u/482353?v=4",
+            "discord": "ocelotpotpie#5943",
+            "github": "ocelotpotpie"
+          },
+          {
+            "name": "Puremin0rez",
+            "avatar": "https://avatars.githubusercontent.com/u/734478?v=4",
+            "discord": "Puremin0rez#1337",
+            "github": "Puremin0rez"
+          },
+          {
+            "name": "stefvanschie",
+            "discord": "stefvanschie#7609",
+            "github": "stefvanschie"
+          },
+          {
+            "name": "STG-Allen",
+            "avatar": "https://avatars.githubusercontent.com/u/26695048?v=4",
+            "discord": "STG-Allen#4013",
+            "github": "STG-Allen"
+          }
+        ]
+      }
+    ]
+  }
+]

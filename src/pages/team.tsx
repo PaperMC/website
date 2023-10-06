@@ -1,12 +1,13 @@
 import type { NextPage } from "next";
 import Image from "next/image";
 
-import teams from "@/assets/data/team.json";
 import DiscordIcon from "@/assets/icons/fontawesome/discord-brands.svg";
 import GitHubIcon from "@/assets/icons/fontawesome/github-brands.svg";
 import Button from "@/components/input/Button";
 import SEO from "@/components/util/SEO";
 import { useGitHubContributors } from "@/lib/service/github";
+import teams from "assets/data/teamV2.json";
+import styles from "styles/pages/team.module.css";
 
 const HIDDEN_USERS = [1007849, 23557539, 49699333]; // md_5, EcoCityCraftCI, dependabot
 
@@ -46,55 +47,78 @@ const Team: NextPage = () => {
         </div>
         <div className="flex-1 lg:flex hidden justify-end"></div>
       </header>
-      {teams.map((team) => (
+      {teams.map((teamGroup) => (
         <section
-          id={team.id}
-          key={team.id}
+          id={teamGroup.id}
+          key={teamGroup.id}
           className="px-4 py-8 max-w-7xl mx-auto"
         >
-          <h2 className="text-2xl font-medium mb-2">{team.name}</h2>
-          <p>{team.description}</p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
-            {team.members.map((member) => (
-              <article
-                key={member.name}
-                className="border border-gray-300 dark:border-gray-700 rounded-md hover:shadow-md transition-shadow p-4"
+          <h2 className="text-2xl font-medium mb-2">{teamGroup.name}</h2>
+          {teamGroup.groups.length > 1 ? (
+            teamGroup.groups.map((group) => (
+              <div
+                key={group.id}
+                className={`text-sm p-2 m-2 ${styles[group.id]} rounded-1xl`}
               >
-                <div className="flex flex-row gap-6">
-                  <div className="w-20 h-20 relative bg-gray-600 rounded-md overflow-clip ">
-                    {member.avatar && (
-                      <Image
-                        alt={`${member.name}'s avatar`}
-                        src={member.avatar}
-                        objectFit="cover"
-                        layout="fill"
-                        unoptimized
-                      />
-                    )}
+                {group.description}
+              </div>
+            ))
+          ) : (
+            <div key={teamGroup.groups[0].id}>
+              {teamGroup.groups[0].description}
+            </div>
+          )}
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mt-8 bg-opacity-50">
+            {teamGroup.groups
+              .flatMap((group) =>
+                group.members.map((member) => ({
+                  ...member,
+                  color: `${group.id}-text`,
+                }))
+              )
+              .map((member) => (
+                <article
+                  key={member.name}
+                  className={`border border-gray-300 dark:border-gray-700 rounded-md hover:shadow-md transition-shadow p-4`}
+                >
+                  <div className="flex flex-row gap-6">
+                    <div className="w-20 h-20 relative bg-gray-600 rounded-md overflow-clip ">
+                      {member.avatar && (
+                        <Image
+                          alt={`${member.name}'s avatar`}
+                          src={member.avatar}
+                          objectFit="cover"
+                          layout="fill"
+                          unoptimized
+                        />
+                      )}
+                    </div>
+                    <div className="min-w-0 flex-1 break-all">
+                      <span className={`font-semibold ${styles[member.color]}`}>
+                        {member.name}
+                      </span>
+                      {member.github && (
+                        <a
+                          href={`https://github.com/${member.github}`}
+                          className="flex flex-row items-center gap-2 mt-2 text-blue-800 dark:text-blue-300 text-sm font-medium"
+                          rel="noreferrer"
+                          target="_blank"
+                        >
+                          <GitHubIcon className="w-4 h-4 fill-gray-700 dark:fill-gray-300" />
+                          {member.github}
+                        </a>
+                      )}
+                      {member.discord && (
+                        <div className="flex flex-row items-center gap-2 mt-1 text-blue-800 dark:text-blue-300 text-sm font-medium">
+                          <DiscordIcon className="w-4 h-4 fill-gray-700 dark:fill-gray-300" />
+                          {member.discord}
+                        </div>
+                      )}
+                    </div>
                   </div>
-                  <div className="min-w-0 flex-1 break-all">
-                    <span className="font-semibold">{member.name}</span>
-                    {member.github && (
-                      <a
-                        href={`https://github.com/${member.github}`}
-                        className="flex flex-row items-center gap-2 mt-2 text-blue-800 dark:text-blue-300 text-sm font-medium"
-                        rel="noreferrer"
-                        target="_blank"
-                      >
-                        <GitHubIcon className="w-4 h-4 fill-gray-700 dark:fill-gray-300" />
-                        {member.github}
-                      </a>
-                    )}
-                    {member.discord && (
-                      <div className="flex flex-row items-center gap-2 mt-1 text-blue-800 dark:text-blue-300 text-sm font-medium">
-                        <DiscordIcon className="w-4 h-4 fill-gray-700 dark:fill-gray-300" />
-                        {member.discord}
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </article>
-            ))}
+                </article>
+              ))}
           </div>
         </section>
       ))}
