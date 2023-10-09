@@ -98,9 +98,9 @@ const NavBar = ({ component }: NavBarProps) => {
             <ExternalUrlIcon className="h-4 w-4 ml-1 align-sub" />
           </NavLink>
           <NavLink
-              href="https://docs.papermc.io/"
-              target="_blank"
-              className="inline-flex items-center"
+            href="https://docs.papermc.io/"
+            target="_blank"
+            className="inline-flex items-center"
           >
             Docs
             <ExternalUrlIcon className="h-4 w-4 ml-1 align-sub" />
