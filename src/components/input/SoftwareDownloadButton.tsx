@@ -42,7 +42,7 @@ const SoftwareDownloadButton = ({
   };
 
   return (
-    <Menu as="div" className="relative">
+    <Menu as="div" className="relative w-max">
       <div
         className={clsx(
           "rounded-lg flex flex-row ransition-shadow text-white transition-color hover:shadow-lg",
