@@ -27,7 +27,7 @@ const SoftwareBuilds = ({
         .slice(0, 10)
         .map((build) => (
           <div
-            className="flex flex-row items-start hover:bg-blue-100 dark:hover:bg-gray-900 px-4 py-2 rounded-lg transition-colors"
+            className="flex flex-row items-center hover:bg-blue-100 dark:hover:bg-gray-900 px-4 py-2 rounded-lg transition-colors"
             key={build.build}
           >
             {/* eslint-disable-next-line react/jsx-no-target-blank */}
@@ -47,7 +47,7 @@ const SoftwareBuilds = ({
             >
               <DownloadIcon className="w-4 h-4" />#{build.build}
             </a>
-            <div className="flex-1 flex flex-col mt-1.5 text-gray-900 dark:text-gray-200">
+            <div className="flex-1 flex flex-col text-gray-900 dark:text-gray-200">
               <SoftwareBuildChanges project={project} build={build} />
             </div>
             <div
