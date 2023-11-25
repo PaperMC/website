@@ -24,8 +24,8 @@ const SoftwarePreview = ({
       download
         ? `/downloads/${id}`
         : javadocs
-        ? `https://jd.papermc.io/${id}/${javadocs}`
-        : `/software/${id}`
+          ? `https://jd.papermc.io/${id}/${javadocs}`
+          : `/software/${id}`
     }
   >
     <article className="rounded-xl transition-all h-full p-4 md:p-8 hover:(shadow-lg bg-primary-300 dark:bg-gray-800)">
