@@ -80,10 +80,22 @@
     "description": "Paper Developers help with writing code, reviewing PRs, and keeping the project lively. By contributing new features and helping to polish off old code, they make Paper run.",
     "members": [
       {
+        "name": "Lulu",
+        "avatar": "https://avatars.githubusercontent.com/u/41980282?v=4",
+        "discord": "lulu13022002",
+        "github": "Lulu13022002"
+      },
+      {
         "name": "lynxplay",
         "avatar": "https://avatars.githubusercontent.com/u/32834385?v=4",
         "discord": "lynxplay",
         "github": "lynxplay"
+      },
+      {
+        "name": "Noah",
+        "avatar": "https://avatars.githubusercontent.com/u/44026893?v=4",
+        "discord": "noah.pm",
+        "github": "NoahvdAa"
       },
       {
         "name": "Owen",
@@ -130,6 +142,12 @@
     "description": "The Triage Team helps the project by reviewing, testing, and organizing our GitHub's issues and pull requests. With their efforts, developers and maintainers are able to most efficiently handle the most important tasks.",
     "members": [
       {
+        "name": "Camm",
+        "avatar": "https://avatars.githubusercontent.com/u/41496198?v=4",
+        "discord": "_camm",
+        "github": "CodeByCam"
+      },
+      {
         "name": "Camotoy",
         "avatar": "https://avatars.githubusercontent.com/u/20743703?v=4",
         "discord": "camotoy",
@@ -142,10 +160,16 @@
         "github": "emilyy-dev"
       },
       {
-        "name": "Noah",
-        "avatar": "https://avatars.githubusercontent.com/u/44026893?v=4",
-        "discord": "noah.pm",
-        "github": "NoahvdAa"
+        "name": "Malfrador",
+        "avatar": "https://avatars.githubusercontent.com/u/6106558?v=4",
+        "discord": "malfrador",
+        "github": "Malfrador"
+      },
+      {
+        "name": "Nacio",
+        "avatar": "https://avatars.githubusercontent.com/u/41339226?v=4",
+        "discord": "nacio.",
+        "github": "Nacioszeczek"
       },
       {
         "name": "NotMyFault",
@@ -158,6 +182,18 @@
         "avatar": "https://avatars.githubusercontent.com/u/17698576?v=4",
         "discord": "pop4959",
         "github": "pop4959"
+      },
+      {
+        "name": "Warrior",
+        "avatar": "https://avatars.githubusercontent.com/u/50800980?v=4",
+        "discord": "warriorrr.",
+        "github": "Warriorrrr"
+      },
+      {
+        "name": "_11",
+        "avatar": "https://avatars.githubusercontent.com/u/55677189?v=4",
+        "discord": "_11",
+        "github": "underscore11code"
       }
     ]
   },
