@@ -86,7 +86,7 @@ const SoftwareDownload = ({
       <section id="builds" className="max-w-7xl mx-auto py-8">
         <h2 className="text-center text-xl font-medium">Older builds</h2>
         <p className="text-center text-gray-800 dark:text-gray-200 text-lg mt-2 mb-8 px-4">
-          Looking for older builds - or changelog? We got you!
+          Looking for older builds - or changelogs? We got you!
         </p>
         <SoftwareBuilds
           project={id}
