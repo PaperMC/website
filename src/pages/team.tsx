@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Image from "next/image";
 
-import teams from "@/assets/data/team.json";
+import teamData from "@/assets/data/team.json";
 import DiscordIcon from "@/assets/icons/fontawesome/discord-brands.svg";
 import GitHubIcon from "@/assets/icons/fontawesome/github-brands.svg";
 import Button from "@/components/input/Button";
@@ -10,8 +10,30 @@ import { useGitHubContributors } from "@/lib/service/github";
 
 const HIDDEN_USERS = [1007849, 23557539, 49699333]; // md_5, EcoCityCraftCI, dependabot
 
+interface Tag {
+  name: string;
+  color: string;
+  description?: string;
+}
+
+interface Member {
+  name: string;
+  github?: string;
+  discord?: string;
+  avatar?: string;
+  tags?: Tag[];
+}
+
+interface Team {
+  id: string;
+  name: string;
+  description: string;
+  members: Member[];
+}
+
 const Team: NextPage = () => {
   const { data: contributors } = useGitHubContributors();
+  const teams: Team[] = teamData;
 
   return (
     <>
@@ -75,16 +97,19 @@ const Team: NextPage = () => {
                   <div className="min-w-0 flex-1 break-all">
                     <div className="flex-1">
                       <span className="font-semibold">{member.name}</span>
-                      {member.tags && member.tags.map((tag) => (
-                        <span
+                      {member.tags &&
+                        member.tags.map((tag) => (
+                          <span
                             key={tag.name}
                             className="ml-2 px-2 py-1 rounded-md text-xs font-medium"
                             style={{ backgroundColor: tag.color }}
-                            title={`${tag.name} ${tag.description ? `- ${tag.description}` : ""}`}
-                        >
-                          {tag.name}
-                        </span>
-                      ))}
+                            title={`${tag.name} ${
+                              tag.description ? `- ${tag.description}` : ""
+                            }`}
+                          >
+                            {tag.name}
+                          </span>
+                        ))}
                     </div>
                     {member.github && (
                       <a
