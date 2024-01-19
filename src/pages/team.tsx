@@ -97,19 +97,18 @@ const Team: NextPage = () => {
                   <div className="min-w-0 flex-1 break-all">
                     <div className="flex-1 flex items-center">
                       <span className="font-semibold">{member.name}</span>
-                      {member.tags &&
-                        member.tags.map((tag) => (
-                          <span
-                            key={tag.name}
-                            className="ml-2 px-2 py-1 rounded-md text-xs font-medium"
-                            style={{ backgroundColor: tag.color }}
-                            title={`${tag.name} ${
-                              tag.description ? `- ${tag.description}` : ""
-                            }`}
-                          >
-                            {tag.name}
-                          </span>
-                        ))}
+                      {member.tags?.map((tag) => (
+                        <span
+                          key={tag.name}
+                          className="ml-2 px-2 py-1 rounded-md text-xs font-medium"
+                          style={{ backgroundColor: tag.color }}
+                          title={`${tag.name} ${
+                            tag.description ? `- ${tag.description}` : ""
+                          }`}
+                        >
+                          {tag.name}
+                        </span>
+                      ))}
                     </div>
                     {member.github && (
                       <a
