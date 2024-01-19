@@ -74,7 +74,7 @@
         "tags": [
           {
             "name": "Folia",
-            "color": "#a82d71",
+            "color": "#bf026b",
             "description": "Maintains Folia"
           }
         ]
@@ -204,7 +204,7 @@
         "tags": [
           {
             "name": "Docs",
-            "color": "#0e8bb5",
+            "color": "#00a6db",
             "description": "Handles Paper's documentation"
           }
         ]
