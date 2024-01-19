@@ -95,7 +95,7 @@ const Team: NextPage = () => {
                     )}
                   </div>
                   <div className="min-w-0 flex-1 break-all">
-                    <div className="flex-1">
+                    <div className="flex-1 flex items-center">
                       <span className="font-semibold">{member.name}</span>
                       {member.tags &&
                         member.tags.map((tag) => (

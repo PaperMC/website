@@ -70,7 +70,14 @@
         "name": "Spottedleaf",
         "avatar": "https://avatars.githubusercontent.com/u/6100722?v=4",
         "discord": "spottedleaf",
-        "github": "Spottedleaf"
+        "github": "Spottedleaf",
+        "tags": [
+          {
+            "name": "Folia",
+            "color": "#a82d71",
+            "description": "Maintains Folia"
+          }
+        ]
       }
     ]
   },
@@ -197,7 +204,7 @@
         "tags": [
           {
             "name": "Docs",
-            "color": "#4b7ca3",
+            "color": "#0e8bb5",
             "description": "Handles Paper's documentation"
           }
         ]
