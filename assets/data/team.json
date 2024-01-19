@@ -193,7 +193,14 @@
         "name": "Ollie",
         "avatar": "https://avatars.githubusercontent.com/u/69084614?v=4",
         "discord": "ollieee_",
-        "github": "olijeffers0n"
+        "github": "olijeffers0n",
+        "tags": [
+          {
+            "name": "Docs",
+            "color": "#4b7ca3",
+            "description": "Handles Paper's documentation"
+          }
+        ]
       }
     ]
   },
