@@ -205,7 +205,7 @@
           {
             "name": "Docs",
             "color": "#00a6db",
-            "description": "Handles Paper's documentation"
+            "description": "Handles documentation for PaperMC projects"
           }
         ]
       }
