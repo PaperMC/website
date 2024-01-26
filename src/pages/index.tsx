@@ -146,7 +146,7 @@ const Home: NextPage<ProjectProps> = ({ project }) => {
               PaperMC’s software powers hundreds of thousands of Minecraft
               servers on a daily basis, from small single-servers setups to
               massive Minecraft server networks. Designed with utility and
-              performance in mind, it can handle whatever you throw at it.
+              performance in mind, to handle whatever you throw to it.
             </p>
           </div>
         </div>
