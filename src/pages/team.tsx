@@ -43,7 +43,7 @@ const Team: NextPage = () => {
           the game’s ecosystem with faster and more secure software."
         keywords={["papermc", "paper", "minecraft", "team"]}
       />
-      <header className="max-w-7xl flex flex-row mx-auto px-4 pt-32 pb-26 lg:(pt-48 pb-46) gap-16">
+      <header className="hero">
         <div className="flex-1">
           <h1 className="font-medium leading-normal lg:(text-5xl leading-normal) text-4xl">
             Meet our team
@@ -83,7 +83,7 @@ const Team: NextPage = () => {
                 className="border border-gray-300 dark:border-gray-700 rounded-md hover:shadow-md transition-shadow p-4"
               >
                 <div className="flex flex-row gap-6">
-                  <div className="w-20 h-20 relative bg-gray-600 rounded-md overflow-clip ">
+                  <div className="w-68px h-68px relative bg-gray-600 rounded-md overflow-clip">
                     {member.avatar && (
                       <Image
                         alt={`${member.name}'s avatar`}
@@ -95,12 +95,14 @@ const Team: NextPage = () => {
                     )}
                   </div>
                   <div className="min-w-0 flex-1 break-all">
-                    <div className="flex-1 flex items-center">
-                      <span className="font-semibold">{member.name}</span>
+                    <div className="flex items-center relative w-max">
+                      <span className="font-semibold leading-4">
+                        {member.name}
+                      </span>
                       {member.tags?.map((tag) => (
                         <span
                           key={tag.name}
-                          className="ml-2 px-2 py-1 rounded-md text-xs font-medium"
+                          className="ml-2 px-2 py-1 rounded-md text-xs font-medium absolute left-[100%] w-max"
                           style={{ backgroundColor: tag.color }}
                           title={`${tag.name} ${
                             tag.description ? `- ${tag.description}` : ""
