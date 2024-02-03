@@ -103,7 +103,7 @@ const Team: NextPage = () => {
                         <span
                           key={tag.name}
                           className="ml-2 px-2 py-1 rounded-md text-xs font-medium absolute left-[100%] w-max"
-                          style={{ backgroundColor: tag.color }}
+                          style={{ backgroundColor: tag.color, color: "white" }}
                           title={`${tag.name} ${
                             tag.description ? `- ${tag.description}` : ""
                           }`}
