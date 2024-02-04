@@ -204,7 +204,7 @@
         "tags": [
           {
             "name": "Docs",
-            "color": "#00a6db",
+            "color": "#029ffa",
             "description": "Handles documentation for PaperMC projects"
           }
         ]
