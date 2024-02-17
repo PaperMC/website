@@ -41,7 +41,7 @@ const LegacyDownloads: NextPage<LegacyDownloadProps> = ({
         keywords={[]}
       />
       <div className="flex flex-col h-screen">
-        <div className="h-14" />
+        <div className="h-16" />
         <div className="text-center px-4 py-2 font-bold bg-red-400 dark:bg-red-500 shadow-md">
           Legacy builds are not supported. Proceed at your own risk!
         </div>
