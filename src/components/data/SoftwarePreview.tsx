@@ -1,6 +1,8 @@
 import Link from "next/link";
 import type { FunctionComponent } from "react";
 
+import ArchiveIcon from "@/assets/icons/fontawesome/box-archive.svg";
+
 export interface SoftwarePreviewProps {
   id: string;
   name: string;
@@ -9,6 +11,7 @@ export interface SoftwarePreviewProps {
   description?: string;
   download?: boolean;
   javadocs?: string;
+  archived?: boolean;
 }
 
 const SoftwarePreview = ({
@@ -18,6 +21,7 @@ const SoftwarePreview = ({
   description,
   download,
   javadocs,
+  archived,
 }: SoftwarePreviewProps) => (
   <Link
     href={
@@ -33,7 +37,9 @@ const SoftwarePreview = ({
         <div className="rounded-lg w-12 h-12 bg-gray-800 p-3">
           <Icon />
         </div>
-        <h3 className="font-medium flex-1">{name}</h3>
+        <h3 className="font-medium flex-1 flex gap-4 items-center">
+          {name} {archived && <ArchiveIcon className="fill-current h-6" />}
+        </h3>
       </div>
 
       {description && (

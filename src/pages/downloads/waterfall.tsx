@@ -26,7 +26,8 @@ const WaterfallDownloads = ({ project }: ProjectProps): ReactElement => {
         id="waterfall"
         project={project}
         icon={WaterfallIcon}
-        description="Download Waterfall, our Bungee-compatible upgrade, offering better performance and full compatibility."
+        description="Download unsupported, archived Waterfall builds below."
+        archived
       />
     </>
   );

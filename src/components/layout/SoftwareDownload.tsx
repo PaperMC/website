@@ -14,6 +14,7 @@ export interface SoftwareDownloadProps {
   icon?: FunctionComponent<any>;
   description: string;
   experimentalWarning?: string;
+  archived?: boolean;
 }
 
 const SoftwareDownload = ({
@@ -22,6 +23,7 @@ const SoftwareDownload = ({
   icon: Icon,
   description,
   experimentalWarning,
+  archived,
 }: SoftwareDownloadProps & ProjectProps): ReactElement => {
   const [isStable, setStable] = useState(true);
   const version = isStable
@@ -36,7 +38,13 @@ const SoftwareDownload = ({
 
   return (
     <>
-      <header className="max-w-7xl flex flex-row mx-auto px-4 pt-32 pb-16 lg:(pt-48 pb-26) gap-16">
+      <header className="max-w-7xl flex flex-row flex-wrap mx-auto px-4 pt-32 pb-16 lg:(pt-48 pb-26) gap-16">
+        {archived && (
+          <div className="text-center px-4 py-8 -mt-16 font-bold bg-yellow-400 dark:bg-yellow-900 shadow-md rounded w-full">
+            Waterfall has been archived! It is no longer maintained or
+            supported.
+          </div>
+        )}
         <div className="flex-1">
           <div className="flex flex-row mb-6 gap-4 items-center">
             <div className="w-12 h-12 rounded-lg bg-gray-800 p-3">
@@ -60,6 +68,7 @@ const SoftwareDownload = ({
               build={latestBuild}
               version={version}
               stable={!latestBuild || latestBuild?.channel === "default"}
+              archived={archived}
             />
             {project.latestExperimentalVersion && (
               <button
