@@ -40,8 +40,8 @@ const SoftwareDownload = ({
     <>
       <header className="max-w-7xl flex flex-row flex-wrap mx-auto px-4 pt-32 pb-16 lg:(pt-48 pb-26) gap-16">
         {archived && (
-          <div className="text-center px-4 py-8 -mt-16 font-bold bg-yellow-400 dark:bg-yellow-900 shadow-md rounded w-full">
-            Waterfall has been archived! It is no longer maintained or
+          <div className="text-center px-4 py-8 -mt-16 font-bold bg-red-400 dark:bg-red-500 shadow-md rounded w-full">
+            {project.name} has been archived! It is no longer maintained or
             supported.
           </div>
         )}
@@ -54,7 +54,11 @@ const SoftwareDownload = ({
           </div>
           <h2 className="font-medium leading-normal lg:(text-5xl leading-normal) text-4xl">
             Get {project.name}&nbsp;
-            <span className={isStable ? "text-blue-600" : "text-red-500"}>
+            <span
+              className={
+                isStable && !archived ? "text-blue-600" : "text-red-500"
+              }
+            >
               {version}
             </span>
           </h2>
@@ -112,6 +116,7 @@ const SoftwareDownload = ({
           project={id}
           version={version}
           builds={builds?.builds}
+          archived={archived}
         />
       </section>
     </>

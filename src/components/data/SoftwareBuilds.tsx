@@ -12,12 +12,14 @@ export interface SoftwareBuildsProps {
   project: string;
   version: string;
   builds?: Build[];
+  archived?: boolean;
 }
 
 const SoftwareBuilds = ({
   project,
   version,
   builds,
+  archived,
 }: SoftwareBuildsProps): ReactElement => (
   <div className="flex flex-col gap-1">
     {builds &&
@@ -42,7 +44,9 @@ const SoftwareBuilds = ({
               target="_blank"
               className={clsx(
                 "text-gray-100 text-sm text-center font-medium rounded-full p-2 min-w-16 mr-4 inline-flex items-center gap-1",
-                build.channel === "default" ? "bg-gray-800" : "bg-red-500",
+                build.channel === "default" && !archived
+                  ? "bg-gray-800"
+                  : "bg-red-500",
               )}
             >
               <DownloadIcon className="w-4 h-4" />#{build.build}

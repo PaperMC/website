@@ -40,11 +40,9 @@ const SoftwareBuildsTable = ({
                 <span
                   className={clsx(
                     "text-sm font-medium text-gray-100 rounded-full py-2 px-3 min-w-16",
-                    build.channel === "experimental"
+                    build.channel === "experimental" || archived
                       ? "bg-red-500"
-                      : archived
-                        ? "bg-yellow-900"
-                        : "bg-gray-800",
+                      : "bg-gray-800",
                   )}
                 >
                   #{build.build}

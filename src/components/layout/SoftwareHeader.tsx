@@ -27,8 +27,8 @@ const SoftwareHeader = ({
 }: SoftwareHeaderProps): ReactElement => (
   <header className="max-w-7xl flex flex-row flex-wrap mx-auto px-4 pt-32 pb-26 lg:(pt-48 pb-46) gap-16">
     {archived && (
-      <div className="text-center px-4 py-8 -mt-16 font-bold bg-yellow-400 dark:bg-yellow-900 shadow-md rounded w-full">
-        Waterfall has been archived! It is no longer maintained or supported.
+      <div className="text-center px-4 py-8 -mt-16 font-bold bg-red-400 dark:bg-red-500 shadow-md rounded w-full">
+        {name} has been archived! It is no longer maintained or supported.
       </div>
     )}
     <div className="flex-1">
@@ -49,7 +49,7 @@ const SoftwareHeader = ({
           variant="filled"
           href={github ?? `/downloads/${id}`}
           external={Boolean(github)}
-          className={archived ? "bg-yellow-900 hover:bg-yellow-700" : ""}
+          className={archived ? "!bg-red-500 !hover:bg-red-400" : ""}
         >
           {github ? "GitHub" : "Downloads"}
         </Button>

@@ -34,12 +34,12 @@ const ProjectSubTree = ({
             className={clsx(
               "pl-6 py-1 rounded-md transition-colors text-gray-800 dark:text-gray-200 block w-full text-left",
               archived
-                ? "hover:bg-yellow-100 hover:dark:bg-yellow-900"
+                ? "hover:bg-red-100 hover:dark:bg-red-900"
                 : "hover:bg-blue-100 hover:dark:bg-gray-900",
               selectedProject === id &&
                 selectedVersion === version &&
                 (archived
-                  ? "bg-yellow-100 dark:bg-yellow-900"
+                  ? "bg-red-100 dark:bg-red-900"
                   : "bg-blue-100 dark:bg-blue-900"),
             )}
             onClick={() => onSelect(id, version)}
