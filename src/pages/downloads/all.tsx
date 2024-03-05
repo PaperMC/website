@@ -33,7 +33,7 @@ const LegacyDownloads: NextPage<LegacyDownloadProps> = ({
   const [selectedVersion, setSelectedVersion] = useState(initialProjectVersion);
   const { data: builds } = useVersionBuilds(selectedProject, selectedVersion);
 
-  const archived = selectedProject === "waterfall";
+  const eol = selectedProject === "waterfall";
 
   return (
     <>
@@ -57,16 +57,16 @@ const LegacyDownloads: NextPage<LegacyDownloadProps> = ({
             }}
           />
           <div className="flex-1 overflow-auto">
-            {archived && (
+            {eol && (
               <div className="text-center px-4 py-2 font-bold bg-yellow-400 dark:bg-yellow-500 shadow-md">
-                Archived builds are not supported. Proceed at your own risk!
+                EOL builds are not supported. Proceed at your own risk!
               </div>
             )}
             <SoftwareBuildsTable
               project={selectedProject}
               version={selectedVersion}
               builds={builds?.builds ?? []}
-              archived={archived}
+              eol={eol}
             />
           </div>
         </div>

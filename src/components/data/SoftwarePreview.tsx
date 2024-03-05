@@ -11,7 +11,7 @@ export interface SoftwarePreviewProps {
   description?: string;
   download?: boolean;
   javadocs?: string;
-  archived?: boolean;
+  eol?: boolean;
 }
 
 const SoftwarePreview = ({
@@ -21,7 +21,7 @@ const SoftwarePreview = ({
   description,
   download,
   javadocs,
-  archived,
+  eol,
 }: SoftwarePreviewProps) => (
   <Link
     href={
@@ -38,7 +38,7 @@ const SoftwarePreview = ({
           <Icon />
         </div>
         <h3 className="font-medium flex-1 flex gap-4 items-center">
-          {name} {archived && <ArchiveIcon className="fill-current h-6" />}
+          {name} {eol && <ArchiveIcon className="fill-current h-6" />}
         </h3>
       </div>
 

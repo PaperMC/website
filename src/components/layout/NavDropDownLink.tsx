@@ -9,7 +9,7 @@ export interface NavDropDownLinkProps {
   target?: string;
   className?: string;
   children: ReactNode;
-  archived?: boolean;
+  eol?: boolean;
 }
 
 const NavDropDownLink = ({
@@ -17,12 +17,12 @@ const NavDropDownLink = ({
   target,
   className,
   children,
-  archived,
+  eol,
 }: NavDropDownLinkProps): ReactElement => (
   <li
     className={clsx(
       "color-gray-200 text-gray-800 hover:text-blue-600 text-sm transition-colors dark:(text-gray-200 hover:text-blue-400)",
-      archived && "hover:(text-red-600 dark:text-red-400)",
+      eol && "hover:(text-red-600 dark:text-red-400)",
       className,
     )}
   >
@@ -30,12 +30,12 @@ const NavDropDownLink = ({
       href={href}
       className={clsx(
         "px-4 py-2 w-full",
-        archived ? "flex items-center gap-2" : "block",
+        eol ? "flex items-center gap-2" : "block",
       )}
       role="button"
       target={target}
     >
-      {children} {archived && <ArchiveIcon className="fill-current h-4" />}
+      {children} {eol && <ArchiveIcon className="fill-current h-4" />}
     </Link>
   </li>
 );

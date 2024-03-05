@@ -27,7 +27,7 @@ const WaterfallDownloads = ({ project }: ProjectProps): ReactElement => {
         project={project}
         icon={WaterfallIcon}
         description="Download unsupported, archived Waterfall builds below."
-        archived
+        eol
       />
     </>
   );

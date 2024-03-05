@@ -18,7 +18,7 @@ export interface SoftwareDownloadButtonProps {
   version: string;
   stable: boolean;
   compact?: boolean;
-  archived?: boolean;
+  eol?: boolean;
 }
 
 const SoftwareDownloadButton = ({
@@ -28,7 +28,7 @@ const SoftwareDownloadButton = ({
   version,
   stable,
   compact,
-  archived,
+  eol,
 }: SoftwareDownloadButtonProps) => {
   const [copied, setCopied] = useState("");
   const [timeoutHandler, setTimeoutHandler] = useState<NodeJS.Timeout | null>(
@@ -49,7 +49,7 @@ const SoftwareDownloadButton = ({
         className={clsx(
           "rounded-lg flex flex-row ransition-shadow text-white transition-color hover:shadow-lg",
           !compact && "w-full md:w-100",
-          stable && !archived
+          stable && !eol
             ? "bg-blue-600 hover:bg-blue-500"
             : "bg-red-500 hover:bg-red-400",
         )}

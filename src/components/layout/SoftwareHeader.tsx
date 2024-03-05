@@ -12,7 +12,7 @@ export interface SoftwareHeaderProps {
   header: ReactElement;
   description: string;
   github?: string;
-  archived?: boolean;
+  eol?: boolean;
 }
 
 const SoftwareHeader = ({
@@ -23,12 +23,12 @@ const SoftwareHeader = ({
   header,
   description,
   github,
-  archived,
+  eol,
 }: SoftwareHeaderProps): ReactElement => (
   <header className="max-w-7xl flex flex-row flex-wrap mx-auto px-4 pt-32 pb-26 lg:(pt-48 pb-46) gap-16">
-    {archived && (
+    {eol && (
       <div className="text-center px-4 py-8 -mt-16 font-bold bg-red-400 dark:bg-red-500 shadow-md rounded w-full">
-        {name} has been archived! It is no longer maintained or supported.
+        {name} has reached end of life! It is no longer maintained or supported.
       </div>
     )}
     <div className="flex-1">
@@ -37,7 +37,7 @@ const SoftwareHeader = ({
           {Icon && <Icon />}
         </div>
         <h1 className="font-medium text-xl flex gap-4 items-center">
-          {name} {archived && <ArchiveIcon className="fill-current h-6" />}
+          {name} {eol && <ArchiveIcon className="fill-current h-6" />}
         </h1>
       </div>
       <h2 className="font-medium leading-normal lg:(text-5xl leading-normal) text-4xl">
@@ -49,7 +49,7 @@ const SoftwareHeader = ({
           variant="filled"
           href={github ?? `/downloads/${id}`}
           external={Boolean(github)}
-          className={archived ? "!bg-red-500 !hover:bg-red-400" : ""}
+          className={eol ? "!bg-red-500 !hover:bg-red-400" : ""}
         >
           {github ? "GitHub" : "Downloads"}
         </Button>

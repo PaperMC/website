@@ -30,9 +30,9 @@ const WaterfallHome = ({ project }: HangarProjectProps): ReactElement => {
         name="Waterfall"
         versionGroup={project.latestVersionGroup}
         icon={WaterfallIcon}
-        header={<>Waterfall has been archived</>}
+        header={<>Waterfall has reached end of life</>}
         description="Archived Waterfall builds and docs are available here."
-        archived
+        eol
       />
       <section
         id="facts"

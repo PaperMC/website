@@ -14,7 +14,7 @@ export interface SoftwareDownloadProps {
   icon?: FunctionComponent<any>;
   description: string;
   experimentalWarning?: string;
-  archived?: boolean;
+  eol?: boolean;
 }
 
 const SoftwareDownload = ({
@@ -23,7 +23,7 @@ const SoftwareDownload = ({
   icon: Icon,
   description,
   experimentalWarning,
-  archived,
+  eol,
 }: SoftwareDownloadProps & ProjectProps): ReactElement => {
   const [isStable, setStable] = useState(true);
   const version = isStable
@@ -39,10 +39,10 @@ const SoftwareDownload = ({
   return (
     <>
       <header className="max-w-7xl flex flex-row flex-wrap mx-auto px-4 pt-32 pb-16 lg:(pt-48 pb-26) gap-16">
-        {archived && (
+        {eol && (
           <div className="text-center px-4 py-8 -mt-16 font-bold bg-red-400 dark:bg-red-500 shadow-md rounded w-full">
-            {project.name} has been archived! It is no longer maintained or
-            supported.
+            {project.name} has reached end of life! It is no longer maintained
+            or supported.
           </div>
         )}
         <div className="flex-1">
@@ -55,9 +55,7 @@ const SoftwareDownload = ({
           <h2 className="font-medium leading-normal lg:(text-5xl leading-normal) text-4xl">
             Get {project.name}&nbsp;
             <span
-              className={
-                isStable && !archived ? "text-blue-600" : "text-red-500"
-              }
+              className={isStable && !eol ? "text-blue-600" : "text-red-500"}
             >
               {version}
             </span>
@@ -72,7 +70,7 @@ const SoftwareDownload = ({
               build={latestBuild}
               version={version}
               stable={!latestBuild || latestBuild?.channel === "default"}
-              archived={archived}
+              eol={eol}
             />
             {project.latestExperimentalVersion && (
               <button
@@ -116,7 +114,7 @@ const SoftwareDownload = ({
           project={id}
           version={version}
           builds={builds?.builds}
-          archived={archived}
+          eol={eol}
         />
       </section>
     </>

@@ -11,14 +11,14 @@ export interface SoftwareBuildsTableProps {
   project: string;
   version: string;
   builds: Build[];
-  archived?: boolean;
+  eol?: boolean;
 }
 
 const SoftwareBuildsTable = ({
   project,
   version,
   builds,
-  archived,
+  eol,
 }: SoftwareBuildsTableProps) => {
   return (
     <table className="w-full relative">
@@ -40,7 +40,7 @@ const SoftwareBuildsTable = ({
                 <span
                   className={clsx(
                     "text-sm font-medium text-gray-100 rounded-full py-2 px-3 min-w-16",
-                    build.channel === "experimental" || archived
+                    build.channel === "experimental" || eol
                       ? "bg-red-500"
                       : "bg-gray-800",
                   )}
@@ -61,7 +61,7 @@ const SoftwareBuildsTable = ({
                   build={build}
                   stable={build.channel === "default"}
                   compact
-                  archived={archived}
+                  eol={eol}
                 />
               </td>
             </tr>
