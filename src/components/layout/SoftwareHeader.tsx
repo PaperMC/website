@@ -10,7 +10,7 @@ export interface SoftwareHeaderProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   icon?: FunctionComponent<any>;
   header: ReactElement;
-  description: string;
+  description: ReactElement | string;
   github?: string;
   eol?: boolean;
 }

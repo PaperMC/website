@@ -12,7 +12,7 @@ export interface SoftwareDownloadProps {
   id: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   icon?: FunctionComponent<any>;
-  description: string;
+  description: ReactElement | string;
   experimentalWarning?: string;
   eol?: boolean;
 }
