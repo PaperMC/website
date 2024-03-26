@@ -40,7 +40,7 @@ const SoftwareDownload = ({
     <>
       <header className="max-w-7xl flex flex-row flex-wrap mx-auto px-4 pt-32 pb-16 lg:(pt-48 pb-26) gap-16">
         {eol && (
-          <div className="text-center px-4 py-8 -mt-16 font-bold bg-red-400 dark:bg-red-500 shadow-md rounded w-full">
+          <div className="text-center px-4 py-8 -mt-16 font-bold bg-red-400 dark:bg-red-500 shadow-md rounded-lg w-full">
             {project.name} has reached end of life! It is no longer maintained
             or supported.
           </div>
