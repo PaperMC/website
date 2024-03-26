@@ -12,8 +12,9 @@ export interface SoftwareDownloadProps {
   id: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   icon?: FunctionComponent<any>;
-  description: string;
+  description: ReactElement | string;
   experimentalWarning?: string;
+  eol?: boolean;
 }
 
 const SoftwareDownload = ({
@@ -22,6 +23,7 @@ const SoftwareDownload = ({
   icon: Icon,
   description,
   experimentalWarning,
+  eol,
 }: SoftwareDownloadProps & ProjectProps): ReactElement => {
   const [isStable, setStable] = useState(true);
   const version = isStable
@@ -36,7 +38,13 @@ const SoftwareDownload = ({
 
   return (
     <>
-      <header className="max-w-7xl flex flex-row mx-auto px-4 pt-32 pb-16 lg:(pt-48 pb-26) gap-16">
+      <header className="max-w-7xl flex flex-row flex-wrap mx-auto px-4 pt-32 pb-16 lg:(pt-48 pb-26) gap-16">
+        {eol && (
+          <div className="text-center px-4 py-8 -mt-16 font-bold bg-red-400 dark:bg-red-500 shadow-md rounded-lg w-full">
+            {project.name} has reached end of life! It is no longer maintained
+            or supported.
+          </div>
+        )}
         <div className="flex-1">
           <div className="flex flex-row mb-6 gap-4 items-center">
             <div className="w-12 h-12 rounded-lg bg-gray-800 p-3">
@@ -46,7 +54,9 @@ const SoftwareDownload = ({
           </div>
           <h2 className="font-medium leading-normal lg:(text-5xl leading-normal) text-4xl">
             Get {project.name}&nbsp;
-            <span className={isStable ? "text-blue-600" : "text-red-500"}>
+            <span
+              className={isStable && !eol ? "text-blue-600" : "text-red-500"}
+            >
               {version}
             </span>
           </h2>
@@ -60,6 +70,7 @@ const SoftwareDownload = ({
               build={latestBuild}
               version={version}
               stable={!latestBuild || latestBuild?.channel === "default"}
+              eol={eol}
             />
             {project.latestExperimentalVersion && (
               <button
@@ -103,6 +114,7 @@ const SoftwareDownload = ({
           project={id}
           version={version}
           builds={builds?.builds}
+          eol={eol}
         />
       </section>
     </>

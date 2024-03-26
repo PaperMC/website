@@ -3,7 +3,6 @@ import Image from "next/image";
 
 import PaperIcon from "@/assets/brand/paper.svg";
 import VelocityIcon from "@/assets/brand/velocity.svg";
-import WaterfallIcon from "@/assets/brand/waterfall.svg";
 import HomeImage1 from "@/assets/images/home-1.png";
 import HomeImage2 from "@/assets/images/home-2.png";
 import HomeImage3 from "@/assets/images/home-3.png";
@@ -72,12 +71,6 @@ const Home: NextPage<ProjectProps> = ({ project }) => {
               name="Velocity"
               icon={VelocityIcon}
               description="Velocity is a high-performance, scalable Minecraft proxy server that allows players to connect to multiple Minecraft servers under the proxy."
-            />
-            <SoftwarePreview
-              id="waterfall"
-              name="Waterfall"
-              icon={WaterfallIcon}
-              description="Waterfall is a legacy drop-in BungeeCord replacement with some additional improvements to performance and stability."
             />
           </div>
         </div>

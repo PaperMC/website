@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { ReactElement } from "react";
 
 import WaterfallIcon from "@/assets/brand/waterfall.svg";
@@ -26,7 +27,27 @@ const WaterfallDownloads = ({ project }: ProjectProps): ReactElement => {
         id="waterfall"
         project={project}
         icon={WaterfallIcon}
-        description="Download Waterfall, our Bungee-compatible upgrade, offering better performance and full compatibility."
+        description={
+          <>
+            Waterfall has reached end of life. We recommend you transition to{" "}
+            <Link
+              className="text-blue-500 hover:text-blue-400 hover:underline"
+              href="/software/velocity"
+            >
+              Velocity
+            </Link>
+            . For more information see the{" "}
+            <a
+              className="text-blue-500 hover:text-blue-400 hover:underline"
+              href="https://forums.papermc.io/threads/1088/"
+            >
+              announcement
+            </a>
+            . <br />
+            Download unsupported, archived Waterfall builds below.
+          </>
+        }
+        eol
       />
     </>
   );

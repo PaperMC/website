@@ -83,7 +83,7 @@ const NavBar = ({ component }: NavBarProps) => {
             <NavDropDownLink href="/software/velocity">
               Velocity
             </NavDropDownLink>
-            <NavDropDownLink href="/software/waterfall">
+            <NavDropDownLink href="/software/waterfall" eol>
               Waterfall
             </NavDropDownLink>
           </NavDropDown>

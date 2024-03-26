@@ -65,6 +65,7 @@ const Downloads: NextPage = () => {
             icon={WaterfallIcon}
             description="Waterfall is a legacy drop-in BungeeCord replacement with some additional improvements to performance and stability."
             download
+            eol
           />
         </div>
       </header>
