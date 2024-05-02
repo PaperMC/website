@@ -50,12 +50,12 @@ const CommunityGuidelines: NextPage = () => (
       <ul className="list-disc list-inside my-4">
         <li>The PaperMC Discord server</li>
         <li>The PaperMC IRC channels</li>
+        <li>The PaperMC forums</li>
         <li>The PaperMC GitHub organization</li>
         <li>
           This includes issues, pull requests, and any discussion inside issues
           or pull requests
         </li>
-        <li>The PaperMC forums</li>
       </ul>
     </section>
     <section
@@ -335,15 +335,15 @@ const CommunityGuidelines: NextPage = () => (
       <h2 className="text-2xl font-medium mb-4">Support Channels</h2>
       <p>
         Our support channels <code>#paper-help</code>,{" "}
-        <code>#velocity-help</code> and <code>#waterfall-help</code> are there
-        for people who need support using our software. While we are very happy
-        that so many members of the community actively support there and answer
-        questions, please make sure to follow our guidelines there as well. Many
-        people that go there to ask questions are new to Minecraft Servers and
-        to the community itself. We should be welcoming towards newcomers,
-        especially since we all started somewhere. In general, &quot;Rule 1:
-        Don&apos;t be a jerk&quot; applies here as well, but we would like to
-        add the following points:
+        <code>#velocity-help</code>, <code>#waterfall-help</code> and{" "}
+        <code>#folia-help</code> are there for people who need support using our
+        software. While we are very happy that so many members of the community
+        actively support there and answer questions, please make sure to follow
+        our guidelines there as well. Many people that go there to ask questions
+        are new to Minecraft servers and to the community itself. We should be
+        welcoming towards newcomers, especially since we all started somewhere.
+        In general, &quot;Rule 1: Don&apos;t be a jerk&quot; applies here as
+        well, but we would like to add the following points:
       </p>
       <ol className="list-decimal list-inside my-4 ml-4 space-y-2">
         <li>
