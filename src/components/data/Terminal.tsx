@@ -78,10 +78,10 @@ export function Terminal({ project }: ProjectProps) {
       }
       setCmdOutput([
         cmdOutputRef.current,
-        <div>
+        <div key={event.currentTarget.id}>
           {">"} {event.currentTarget.value}
         </div>,
-        <InfoLog>{currentCmdOutput}</InfoLog>,
+        <InfoLog key={2}>{currentCmdOutput}</InfoLog>,
       ]);
       event.currentTarget.value = "";
     }
