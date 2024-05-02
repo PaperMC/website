@@ -1,10 +1,5 @@
-import {
-  KeyboardEvent,
-  type ReactNode,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import type { KeyboardEvent } from "react";
+import { type ReactNode, useEffect, useRef, useState } from "react";
 
 import type { ProjectProps } from "@/lib/context/downloads";
 import { formatISOFullTime } from "@/lib/util/time";
@@ -141,7 +136,7 @@ export function Terminal({ project }: ProjectProps) {
           <span className="text-green-400">
             Done (2.274s)! For help, type &quot;help&quot;
           </span>
-        </InfoLog>
+        </InfoLog>,
       );
 
       setInput(
@@ -151,7 +146,7 @@ export function Terminal({ project }: ProjectProps) {
             onKeyDown={(event) => handleCommand(event)}
             className="w-105 bg-transparent border-none outline-none"
           ></input>
-        </div>
+        </div>,
       );
     })();
   }, [project.latestStableVersion]);
