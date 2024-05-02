@@ -1,4 +1,4 @@
-import { useEffect, useState, type ReactNode } from "react";
+import React, { KeyboardEvent, type ReactNode, useEffect, useState } from "react";
 
 import type { ProjectProps } from "@/lib/context/downloads";
 import { formatISOFullTime } from "@/lib/util/time";
@@ -23,6 +23,41 @@ export function Terminal({ project }: ProjectProps) {
   const [loading, setLoading] = useState("");
   const [output, setOutput] = useState<ReactNode>(null);
   const [success, setSuccess] = useState<ReactNode>(null);
+  const [input, setInput] = useState<ReactNode>(null);
+  const [cmdOutput, _setCmdOutput] = useState<ReactNode>(null);
+
+  const cmdOutputRef = React.useRef(cmdOutput);
+  function setCmdOutput (data: ReactNode[]) {
+    cmdOutputRef.current = data;
+    _setCmdOutput(data);
+  }
+
+  const handleCommand = (event: KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      let cmd = event.currentTarget.value;
+      event.currentTarget.value = "";
+      let currentCmdOutput;
+      switch (cmd) {
+        case "help": {
+          currentCmdOutput = "Existing commands: /help, /downloads, /plugins, /docs, /forums, /team, /contribute";
+          break;
+        }
+        case "downloads": {
+          window.location.href = "/downloads";
+        }
+      }
+      setCmdOutput([
+        cmdOutputRef.current,
+        <div>{">"} {cmd}</div>,
+        <InfoLog>{currentCmdOutput}</InfoLog>
+        ]
+      )
+      // @ts-ignore
+      let containingDiv = document.getElementById("containing-div")
+      // @ts-ignore
+      containingDiv.scrollTop = containingDiv.scrollHeight;
+    }
+  }
 
   useEffect(() => {
     const outputLines = [
@@ -75,6 +110,12 @@ export function Terminal({ project }: ProjectProps) {
           </span>
         </InfoLog>,
       );
+
+      setInput(
+        <div>
+          {">"} <input onKeyDown={event => handleCommand(event)} className="bg-transparent border-none outline-none"></input>
+        </div>
+      );
     })();
   }, [project.latestStableVersion]);
 
@@ -85,7 +126,7 @@ export function Terminal({ project }: ProjectProps) {
         <div className="w-2.5 h-2.5 bg-yellow-500 rounded-full" />
         <div className="w-2.5 h-2.5 bg-green-500 rounded-full" />
       </div>
-      <div className="p-4 font-mono text-xs text-white">
+      <div className="max-h-74 p-4 font-mono text-xs text-white overflow-y-scroll" id="containing-div">
         <div>
           <span className="text-green-400">$ </span>
           <span className="text-blue-400">{cmd}</span>
@@ -96,6 +137,8 @@ export function Terminal({ project }: ProjectProps) {
         </div>
         <div>{output}</div>
         <div>{success}</div>
+        <div>{cmdOutput}</div>
+        {input}
       </div>
     </div>
   );
