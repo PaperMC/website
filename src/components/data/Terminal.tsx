@@ -39,7 +39,7 @@ export function Terminal({ project }: ProjectProps) {
       switch (event.currentTarget.value) {
         case "help": {
           currentCmdOutput =
-            "Existing commands: /help, /downloads, /plugins, /docs, /forums, /team, /contribute";
+            "Existing commands: help, downloads, plugins, docs, forums, team, contribute";
           break;
         }
         case "downloads": {
