@@ -1,4 +1,10 @@
-import { KeyboardEvent, type ReactNode, useEffect, useRef, useState } from "react";
+import {
+  KeyboardEvent,
+  type ReactNode,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 
 import type { ProjectProps } from "@/lib/context/downloads";
 import { formatISOFullTime } from "@/lib/util/time";
@@ -27,17 +33,18 @@ export function Terminal({ project }: ProjectProps) {
   const [cmdOutput, _setCmdOutput] = useState<ReactNode>(null);
 
   const cmdOutputRef = useRef(cmdOutput);
-  function setCmdOutput (data: ReactNode[]) {
+  function setCmdOutput(data: ReactNode[]) {
     cmdOutputRef.current = data;
     _setCmdOutput(data);
   }
 
   const handleCommand = (event: KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === 'Enter') {
+    if (event.key === "Enter") {
       let currentCmdOutput;
       switch (event.currentTarget.value) {
         case "help": {
-          currentCmdOutput = "Existing commands: /help, /downloads, /plugins, /docs, /forums, /team, /contribute";
+          currentCmdOutput =
+            "Existing commands: /help, /downloads, /plugins, /docs, /forums, /team, /contribute";
           break;
         }
         case "downloads": {
@@ -71,18 +78,19 @@ export function Terminal({ project }: ProjectProps) {
           break;
         }
         default: {
-          currentCmdOutput = "Unknown Command"
+          currentCmdOutput = "Unknown Command";
         }
       }
       setCmdOutput([
         cmdOutputRef.current,
-        <div>{">"} {event.currentTarget.value}</div>,
-        <InfoLog>{currentCmdOutput}</InfoLog>
-        ]
-      )
+        <div>
+          {">"} {event.currentTarget.value}
+        </div>,
+        <InfoLog>{currentCmdOutput}</InfoLog>,
+      ]);
       event.currentTarget.value = "";
     }
-  }
+  };
 
   useEffect(() => {
     const outputLines = [
@@ -133,12 +141,16 @@ export function Terminal({ project }: ProjectProps) {
           <span className="text-green-400">
             Done (2.274s)! For help, type &quot;help&quot;
           </span>
-        </InfoLog>,
+        </InfoLog>
       );
 
       setInput(
         <div>
-          {">"} <input onKeyDown={event => handleCommand(event)} className="w-105 bg-transparent border-none outline-none"></input>
+          {">"}{" "}
+          <input
+            onKeyDown={(event) => handleCommand(event)}
+            className="w-105 bg-transparent border-none outline-none"
+          ></input>
         </div>
       );
     })();
