@@ -140,7 +140,7 @@ export function Terminal({ project }: ProjectProps) {
 
       setInput(
         <div>
-          {">"} <input onKeyDown={event => handleCommand(event)} className="bg-transparent border-none outline-none"></input>
+          {">"} <input onKeyDown={event => handleCommand(event)} className="w-105 bg-transparent border-none outline-none"></input>
         </div>
       );
     })();
