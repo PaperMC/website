@@ -73,7 +73,7 @@ export function Terminal({ project }: ProjectProps) {
           break;
         }
         default: {
-          currentCmdOutput = "Unknown command. Type \"help\" for help.";
+          currentCmdOutput = 'Unknown command. Type "help" for help.';
         }
       }
       setCmdOutput([
