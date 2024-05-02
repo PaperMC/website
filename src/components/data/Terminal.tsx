@@ -1,4 +1,5 @@
-import { useEffect, useState, type ReactNode } from "react";
+import type { KeyboardEvent } from "react";
+import { type ReactNode, useEffect, useRef, useState } from "react";
 
 import type { ProjectProps } from "@/lib/context/downloads";
 import { formatISOFullTime } from "@/lib/util/time";
@@ -23,6 +24,68 @@ export function Terminal({ project }: ProjectProps) {
   const [loading, setLoading] = useState("");
   const [output, setOutput] = useState<ReactNode>(null);
   const [success, setSuccess] = useState<ReactNode>(null);
+  const [input, setInput] = useState<ReactNode>(null);
+  const [cmdOutput, _setCmdOutput] = useState<ReactNode>(null);
+
+  const cmdOutputRef = useRef(cmdOutput);
+  function setCmdOutput(data: ReactNode[]) {
+    cmdOutputRef.current = data;
+    _setCmdOutput(data);
+  }
+
+  const handleCommand = (event: KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      let currentCmdOutput;
+      switch (event.currentTarget.value) {
+        case "help": {
+          currentCmdOutput =
+            "Existing commands: help, downloads, plugins, docs, forums, team, contribute";
+          break;
+        }
+        case "downloads": {
+          window.location.href = "/downloads";
+          currentCmdOutput = "Redirecting...";
+          break;
+        }
+        case "plugins": {
+          window.location.href = "https://hangar.papermc.io";
+          currentCmdOutput = "Redirecting...";
+          break;
+        }
+        case "docs": {
+          window.location.href = "https://docs.papermc.io";
+          currentCmdOutput = "Redirecting...";
+          break;
+        }
+        case "forums": {
+          window.location.href = "https://forums.papermc.io";
+          currentCmdOutput = "Redirecting...";
+          break;
+        }
+        case "team": {
+          window.location.href = "/team";
+          currentCmdOutput = "Redirecting...";
+          break;
+        }
+        case "contribute": {
+          window.location.href = "/contribute";
+          currentCmdOutput = "Redirecting...";
+          break;
+        }
+        default: {
+          currentCmdOutput = 'Unknown command. Type "help" for help.';
+        }
+      }
+      setCmdOutput([
+        cmdOutputRef.current,
+        <div key={event.currentTarget.id}>
+          {">"} {event.currentTarget.value}
+        </div>,
+        <InfoLog key={2}>{currentCmdOutput}</InfoLog>,
+      ]);
+      event.currentTarget.value = "";
+    }
+  };
 
   useEffect(() => {
     const outputLines = [
@@ -75,6 +138,16 @@ export function Terminal({ project }: ProjectProps) {
           </span>
         </InfoLog>,
       );
+
+      setInput(
+        <div>
+          {">"}{" "}
+          <input
+            onKeyDown={(event) => handleCommand(event)}
+            className="w-105 bg-transparent border-none outline-none"
+          ></input>
+        </div>,
+      );
     })();
   }, [project.latestStableVersion]);
 
@@ -85,17 +158,19 @@ export function Terminal({ project }: ProjectProps) {
         <div className="w-2.5 h-2.5 bg-yellow-500 rounded-full" />
         <div className="w-2.5 h-2.5 bg-green-500 rounded-full" />
       </div>
-      <div className="p-4 font-mono text-xs text-white">
+      <div className="max-h-74 p-4 font-mono text-xs text-white overflow-y-hidden flex flex-col-reverse">
+        {input}
+        <div>{cmdOutput}</div>
+        <div>{success}</div>
+        <div>{output}</div>
+        <div>
+          <span className="text-gray-400">{loading}</span>
+        </div>
         <div>
           <span className="text-green-400">$ </span>
           <span className="text-blue-400">{cmd}</span>
           <span>{args}</span>
         </div>
-        <div>
-          <span className="text-gray-400">{loading}</span>
-        </div>
-        <div>{output}</div>
-        <div>{success}</div>
       </div>
     </div>
   );
