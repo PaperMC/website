@@ -1,4 +1,4 @@
-import React, { KeyboardEvent, type ReactNode, useEffect, useState } from "react";
+import { KeyboardEvent, type ReactNode, useEffect, useRef, useState } from "react";
 
 import type { ProjectProps } from "@/lib/context/downloads";
 import { formatISOFullTime } from "@/lib/util/time";
@@ -26,7 +26,7 @@ export function Terminal({ project }: ProjectProps) {
   const [input, setInput] = useState<ReactNode>(null);
   const [cmdOutput, _setCmdOutput] = useState<ReactNode>(null);
 
-  const cmdOutputRef = React.useRef(cmdOutput);
+  const cmdOutputRef = useRef(cmdOutput);
   function setCmdOutput (data: ReactNode[]) {
     cmdOutputRef.current = data;
     _setCmdOutput(data);
@@ -44,6 +44,33 @@ export function Terminal({ project }: ProjectProps) {
         }
         case "downloads": {
           window.location.href = "/downloads";
+          currentCmdOutput = "Redirecting...";
+          break;
+        }
+        case "plugins": {
+          window.location.href = "https://hangar.papermc.io";
+          currentCmdOutput = "Redirecting...";
+          break;
+        }
+        case "docs": {
+          window.location.href = "https://docs.papermc.io";
+          currentCmdOutput = "Redirecting...";
+          break;
+        }
+        case "forums": {
+          window.location.href = "https://forums.papermc.io";
+          currentCmdOutput = "Redirecting...";
+          break;
+        }
+        case "team": {
+          window.location.href = "/team";
+          currentCmdOutput = "Redirecting...";
+          break;
+        }
+        case "contribute": {
+          window.location.href = "/contribute";
+          currentCmdOutput = "Redirecting...";
+          break;
         }
       }
       setCmdOutput([
@@ -53,7 +80,7 @@ export function Terminal({ project }: ProjectProps) {
         ]
       )
       // @ts-ignore
-      let containingDiv = document.getElementById("containing-div")
+      let containingDiv = event.currentTarget.parentElement.parentElement
       // @ts-ignore
       containingDiv.scrollTop = containingDiv.scrollHeight;
     }
@@ -126,19 +153,19 @@ export function Terminal({ project }: ProjectProps) {
         <div className="w-2.5 h-2.5 bg-yellow-500 rounded-full" />
         <div className="w-2.5 h-2.5 bg-green-500 rounded-full" />
       </div>
-      <div className="max-h-74 p-4 font-mono text-xs text-white overflow-y-scroll" id="containing-div">
+      <div className="max-h-74 p-4 font-mono text-xs text-white overflow-y-hidden flex flex-col-reverse">
+        {input}
+        <div>{cmdOutput}</div>
+        <div>{success}</div>
+        <div>{output}</div>
+        <div>
+          <span className="text-gray-400">{loading}</span>
+        </div>
         <div>
           <span className="text-green-400">$ </span>
           <span className="text-blue-400">{cmd}</span>
           <span>{args}</span>
         </div>
-        <div>
-          <span className="text-gray-400">{loading}</span>
-        </div>
-        <div>{output}</div>
-        <div>{success}</div>
-        <div>{cmdOutput}</div>
-        {input}
       </div>
     </div>
   );
