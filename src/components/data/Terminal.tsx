@@ -34,10 +34,8 @@ export function Terminal({ project }: ProjectProps) {
 
   const handleCommand = (event: KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
-      let cmd = event.currentTarget.value;
-      event.currentTarget.value = "";
       let currentCmdOutput;
-      switch (cmd) {
+      switch (event.currentTarget.value) {
         case "help": {
           currentCmdOutput = "Existing commands: /help, /downloads, /plugins, /docs, /forums, /team, /contribute";
           break;
@@ -72,17 +70,17 @@ export function Terminal({ project }: ProjectProps) {
           currentCmdOutput = "Redirecting...";
           break;
         }
+        default: {
+          currentCmdOutput = "Unknown Command"
+        }
       }
       setCmdOutput([
         cmdOutputRef.current,
-        <div>{">"} {cmd}</div>,
+        <div>{">"} {event.currentTarget.value}</div>,
         <InfoLog>{currentCmdOutput}</InfoLog>
         ]
       )
-      // @ts-ignore
-      let containingDiv = event.currentTarget.parentElement.parentElement
-      // @ts-ignore
-      containingDiv.scrollTop = containingDiv.scrollHeight;
+      event.currentTarget.value = "";
     }
   }
 
