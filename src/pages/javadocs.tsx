@@ -76,13 +76,13 @@ const Javadocs: NextPage<JavadocProps> = ({
 export default Javadocs;
 
 export const getStaticProps: GetStaticProps<JavadocProps> = async () => {
-  const { version_groups: paper_groups } = await getProject("paper");
+  const { versions: paper_versions } = await getProject("paper");
   const { version_groups: folia_groups } = await getProject("folia");
   const { version_groups: velocity_groups } = await getProject("velocity");
   const { version_groups: waterfall_groups } = await getProject("waterfall");
   return {
     props: {
-      paperVersion: paper_groups[paper_groups.length - 1],
+      paperVersion: paper_versions[paper_versions.length - 1],
       foliaVersion: folia_groups[folia_groups.length - 1],
       velocityVersion: velocity_groups[velocity_groups.length - 1],
       waterfallVersion: waterfall_groups[waterfall_groups.length - 1],
