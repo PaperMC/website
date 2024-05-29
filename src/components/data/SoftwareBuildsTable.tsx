@@ -51,7 +51,10 @@ const SoftwareBuildsTable = ({
               <td>
                 <SoftwareBuildChanges project={project} build={build} />
               </td>
-              <td className={"whitespace-nowrap"} title={formatISODateTime(new Date(build.time))}>
+              <td
+                className={"whitespace-nowrap"}
+                title={formatISODateTime(new Date(build.time))}
+              >
                 {formatRelativeDate(new Date(build.time))}
               </td>
               <td className={"gap-1"}>
