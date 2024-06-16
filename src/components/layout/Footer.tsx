@@ -129,8 +129,8 @@ const Footer = () => (
               href="https://github.com/PaperMC/website/"
             >
               PaperMC/website
-            </Link>{" "}
-            @{" "}
+            </Link>
+            {" @ "}
             <Link
               className={"text-blue-800 dark:text-blue-300 text-sm font-medium"}
               href={`https://github.com/PaperMC/website/commit/${process.env.CURRENT_COMMIT}`}
