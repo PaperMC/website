@@ -5,15 +5,23 @@ export interface SEOProps {
   title: string;
   description: string;
   keywords: string[];
+  canonical: string;
 }
 
-const SEO = ({ title, description, keywords }: SEOProps): ReactElement => {
+const SEO = ({
+  title,
+  description,
+  keywords,
+  canonical,
+}: SEOProps): ReactElement => {
   return (
     <Head>
       <title>{title + " | PaperMC"}</title>
 
       <meta name="description" content={description} />
       <meta name="keywords" content={keywords.join(", ")} />
+
+      <link rel="canonical" href={`https://papermc.io` + canonical} />
 
       <meta property="og:type" content="website" />
       <meta property="og:title" content={title} />

@@ -29,6 +29,7 @@ const FoliaHome = ({ project }: HangarProjectProps): ReactElement => {
           "multithreading",
           "fork",
         ]}
+        canonical="/software/folia"
       />
       <SoftwareHeader
         id="folia"

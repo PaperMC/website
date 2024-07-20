@@ -22,6 +22,7 @@ const WaterfallDownloads = ({ project }: ProjectProps): ReactElement => {
           "downloads",
           "jar",
         ]}
+        canonical="/downloads/waterfall"
       />
       <SoftwareDownload
         id="waterfall"

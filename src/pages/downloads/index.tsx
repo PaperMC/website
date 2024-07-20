@@ -22,6 +22,7 @@ const Downloads: NextPage = () => {
           "waterfall",
           "downloads",
         ]}
+        canonical="/downloads"
       />
       <header className="max-w-4xl flex flex-col items-center mx-auto px-4 pt-32 pb-16 lg:(pt-48 pb-26) gap-2">
         <h1 className="font-medium leading-normal lg:(text-5xl leading-normal) text-4xl">

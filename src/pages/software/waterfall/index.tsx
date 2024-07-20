@@ -25,6 +25,7 @@ const WaterfallHome = ({ project }: HangarProjectProps): ReactElement => {
           "bungeecord",
           "fork",
         ]}
+        canonical="/software/waterfall"
       />
       <SoftwareHeader
         id="waterfall"

@@ -31,6 +31,7 @@ const VelocityHome = ({
           "performance",
           "bungeecord",
         ]}
+        canonical="/software/velocity"
       />
       <SoftwareHeader
         id="velocity"

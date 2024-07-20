@@ -20,6 +20,7 @@ const Team: NextPage = () => {
         description="Meet the team behind PaperMC, a Minecraft software organization focusing on improving
           the game’s ecosystem with faster and more secure software."
         keywords={["papermc", "paper", "minecraft", "team"]}
+        canonical="/team"
       />
       <header className="max-w-7xl flex flex-row mx-auto px-4 pt-32 pb-26 lg:(pt-48 pb-46) gap-16">
         <div className="flex-1">

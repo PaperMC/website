@@ -28,7 +28,7 @@ const SoftwareDownload = ({
   const [isStable, setStable] = useState(true);
   const version = isStable
     ? project.latestStableVersion
-    : project.latestExperimentalVersion ?? project.latestStableVersion;
+    : (project.latestExperimentalVersion ?? project.latestStableVersion);
   const { data: builds } = useVersionBuilds(id, version);
   const latestBuild = builds && builds.builds[builds.builds.length - 1];
 
@@ -61,7 +61,7 @@ const SoftwareDownload = ({
             </span>
           </h2>
           <p className="text-xl mt-4">
-            {isStable ? description : experimentalWarning ?? description}
+            {isStable ? description : (experimentalWarning ?? description)}
           </p>
           <div className="flex flex-col gap-4 mt-8">
             <SoftwareDownloadButton

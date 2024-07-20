@@ -20,6 +20,7 @@ const VelocityDownloads = ({ project }: ProjectProps): ReactElement => {
           "downloads",
           "jar",
         ]}
+        canonical="/downloads/velocity"
       />
       <SoftwareDownload
         id="velocity"

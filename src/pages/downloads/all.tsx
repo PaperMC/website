@@ -46,6 +46,7 @@ const LegacyDownloads: NextPage<LegacyDownloadProps> = ({
         title="Build explorer"
         description="Build explorer for PaperMC projects. Proceed with caution!"
         keywords={[]}
+        canonical="/downloads/all"
       />
       <div className="flex flex-col h-screen">
         <div className="h-16" />

@@ -33,6 +33,7 @@ const PaperHome = ({
           "spigot",
           "fork",
         ]}
+        canonical="/software/paper"
       />
       <SoftwareHeader
         id="paper"
