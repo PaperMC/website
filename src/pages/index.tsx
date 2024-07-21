@@ -75,10 +75,10 @@ const Home: NextPage<ProjectProps> = ({ project }) => {
               description="Velocity is a high-performance, scalable Minecraft proxy server that allows players to connect to multiple Minecraft servers under the proxy."
             />
             <SoftwarePreview
-                id="folia"
-                name="Folia"
-                icon={FoliaIcon}
-                description="Folia is a new fork of Paper that adds regionized multithreading to the server allowing for better performance and scalability."
+              id="folia"
+              name="Folia"
+              icon={FoliaIcon}
+              description="Folia is a new fork of Paper that adds regionized multithreading to the server allowing for better performance and scalability."
             />
           </div>
         </div>
