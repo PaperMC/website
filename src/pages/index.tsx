@@ -27,7 +27,7 @@ const Home: NextPage<ProjectProps> = ({ project }) => {
         keywords={["papermc", "paper", "velocity", "minecraft", "performance"]}
         canonical="/"
       />
-      <header className="max-w-7xl flex flex-row mx-auto px-4 pt-32 pb-26 lg:(pt-28 pb-14)">
+      <header className="max-w-7xl flex flex-row mx-auto px-4 pt-32 pb-26 lg:(pt-44 pb-38)">
         <div className="flex-1">
           <h1 className="font-medium leading-normal lg:(text-5xl leading-normal) text-4xl">
             Modern software. <br />
@@ -54,7 +54,7 @@ const Home: NextPage<ProjectProps> = ({ project }) => {
       </header>
       <section
         id="software"
-        className="w-full pt-10 pb-6 bg-primary-200 dark:bg-background-dark-80"
+        className="w-full pt-12 pb-8 bg-primary-200 dark:bg-background-dark-80"
       >
         <div className="max-w-7xl mx-auto">
           <h2 className="font-semibold text-xl md:text-2xl px-6 lg:px-4 mb-4">
