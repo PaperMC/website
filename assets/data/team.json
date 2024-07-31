@@ -139,7 +139,7 @@
   {
     "id": "community-team",
     "name": "Community Team",
-    "description": "Moderators keeps our community a safe and vibrant space. By watching chat, helping newcomers with questions, and making sure everyone follows the community guidelines, PaperMC's community spaces are able to be as fantastic as they are!",
+    "description": "Community Team members keeps our community a safe and vibrant space. By watching chat, helping newcomers with questions, and making sure everyone follows the community guidelines, PaperMC's community spaces are able to be as fantastic as they are!",
     "members": [
       {
         "name": "Amaranth",
@@ -202,15 +202,15 @@
         "github": "Puremin0rez"
       },
       {
-        "name": "stefvanschie",
-        "discord": "stefvanschie",
-        "github": "stefvanschie"
-      },
-      {
         "name": "STG-Allen",
         "avatar": "https://avatars.githubusercontent.com/u/26695048?v=4",
         "discord": "stgallen",
         "github": "STG-Allen"
+      },
+      {
+        "name": "stefvanschie",
+        "discord": "stefvanschie",
+        "github": "stefvanschie"
       }
     ]
   },
@@ -219,6 +219,12 @@
     "name": "Triage Team",
     "description": "The Triage Team helps the project by reviewing, testing, and organizing our GitHub's issues and pull requests. With their efforts, developers and maintainers are able to most efficiently handle the most important tasks.",
     "members": [
+      {
+        "name": "_11",
+        "avatar": "https://avatars.githubusercontent.com/u/55677189?v=4",
+        "discord": "_11",
+        "github": "underscore11code"
+      },
       {
         "name": "Camm",
         "avatar": "https://avatars.githubusercontent.com/u/41496198?v=4",
@@ -244,10 +250,16 @@
         "github": "Malfrador"
       },
       {
-        "name": "NotMyFault",
-        "avatar": "https://avatars.githubusercontent.com/u/13383509?v=4",
-        "discord": "notmyfault",
-        "github": "NotMyFault"
+        "name": "Nacio",
+        "avatar": "https://avatars.githubusercontent.com/u/41339226?v=4",
+        "discord": "nacio.",
+        "github": "Nacioszeczek"
+      },
+      {
+        "name": "Ollie",
+        "avatar": "https://avatars.githubusercontent.com/u/69084614?v=4",
+        "discord": "ollieee_",
+        "github": "olijeffers0n"
       },
       {
         "name": "Pop",
@@ -260,18 +272,6 @@
         "avatar": "https://avatars.githubusercontent.com/u/50800980?v=4",
         "discord": "warriorrr.",
         "github": "Warriorrrr"
-      },
-      {
-        "name": "_11",
-        "avatar": "https://avatars.githubusercontent.com/u/55677189?v=4",
-        "discord": "_11",
-        "github": "underscore11code"
-      },
-      {
-        "name": "Ollie",
-        "avatar": "https://avatars.githubusercontent.com/u/69084614?v=4",
-        "discord": "ollieee_",
-        "github": "olijeffers0n"
       }
     ]
   },
