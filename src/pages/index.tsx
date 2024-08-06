@@ -3,9 +3,9 @@ import Image from "next/image";
 
 import PaperIcon from "@/assets/brand/paper.svg";
 import VelocityIcon from "@/assets/brand/velocity.svg";
-import HomeImage1 from "@/assets/images/home-1.png";
-import HomeImage2 from "@/assets/images/home-2.png";
-import HomeImage3 from "@/assets/images/home-3.png";
+import HomeImage1 from "@/assets/images/home-1.webp";
+import HomeImage2 from "@/assets/images/home-2.webp";
+import HomeImage3 from "@/assets/images/home-3.webp";
 import Skeleton from "@/components/data/Skeleton";
 import SoftwarePreview from "@/components/data/SoftwarePreview";
 import { Terminal } from "@/components/data/Terminal";

@@ -5,7 +5,7 @@ import FoliaIcon from "@/assets/brand/folia.svg";
 import BoltIcon from "@/assets/icons/heroicons/bolt.svg";
 import ChatBubbleLeftRightIcon from "@/assets/icons/heroicons/chat-bubble-left-right.svg";
 import CodeBracketIcon from "@/assets/icons/heroicons/code-bracket.svg";
-import HomeImage3 from "@/assets/images/home-3.png";
+import HomeImage3 from "@/assets/images/home-3.webp";
 import FeatureCard from "@/components/data/FeatureCard";
 import Button from "@/components/input/Button";
 import SoftwareHeader from "@/components/layout/SoftwareHeader";

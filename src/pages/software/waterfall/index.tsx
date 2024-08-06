@@ -3,8 +3,8 @@ import Link from "next/link";
 import type { ReactElement } from "react";
 
 import WaterfallIcon from "@/assets/brand/waterfall.svg";
-import CommunityImage from "@/assets/images/community.png";
-import VelocityImage from "@/assets/images/velocity.png";
+import CommunityImage from "@/assets/images/community.webp";
+import VelocityImage from "@/assets/images/velocity.webp";
 import Button from "@/components/input/Button";
 import SoftwareHeader from "@/components/layout/SoftwareHeader";
 import SEO from "@/components/util/SEO";
