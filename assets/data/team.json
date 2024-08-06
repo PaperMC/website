@@ -1,8 +1,8 @@
 [
   {
-    "id": "core-team",
-    "name": "Core Team",
-    "description": "Core Team members are responsible for the direction of the project, and for making the big decisions. Whether they focus on the code or the community, they're essential to making everything run and have final say in just about anything.",
+    "id": "leadership-team",
+    "name": "Leadership Team",
+    "description": "Leadership Team members are responsible for the direction of the project, and for making the big decisions. Whether they focus on the code or the community, they're essential to making everything run and have final say in just about anything.",
     "members": [
       {
         "name": "electronicboy",
@@ -137,76 +137,9 @@
     ]
   },
   {
-    "id": "triage-team",
-    "name": "Triage Team",
-    "description": "The Triage Team helps the project by reviewing, testing, and organizing our GitHub's issues and pull requests. With their efforts, developers and maintainers are able to most efficiently handle the most important tasks.",
-    "members": [
-      {
-        "name": "Camm",
-        "avatar": "https://avatars.githubusercontent.com/u/41496198?v=4",
-        "discord": "_camm",
-        "github": "CodeByCam"
-      },
-      {
-        "name": "Camotoy",
-        "avatar": "https://avatars.githubusercontent.com/u/20743703?v=4",
-        "discord": "camotoy",
-        "github": "camotoy"
-      },
-      {
-        "name": "Emily",
-        "avatar": "https://avatars.githubusercontent.com/u/35617540?v=4",
-        "discord": "emily.ar",
-        "github": "emilyy-dev"
-      },
-      {
-        "name": "Malfrador",
-        "avatar": "https://avatars.githubusercontent.com/u/6106558?v=4",
-        "discord": "malfrador",
-        "github": "Malfrador"
-      },
-      {
-        "name": "Nacio",
-        "avatar": "https://avatars.githubusercontent.com/u/41339226?v=4",
-        "discord": "nacio.",
-        "github": "Nacioszeczek"
-      },
-      {
-        "name": "NotMyFault",
-        "avatar": "https://avatars.githubusercontent.com/u/13383509?v=4",
-        "discord": "notmyfault",
-        "github": "NotMyFault"
-      },
-      {
-        "name": "Pop",
-        "avatar": "https://avatars.githubusercontent.com/u/17698576?v=4",
-        "discord": "pop4959",
-        "github": "pop4959"
-      },
-      {
-        "name": "Warrior",
-        "avatar": "https://avatars.githubusercontent.com/u/50800980?v=4",
-        "discord": "warriorrr.",
-        "github": "Warriorrrr"
-      },
-      {
-        "name": "_11",
-        "avatar": "https://avatars.githubusercontent.com/u/55677189?v=4",
-        "discord": "_11",
-        "github": "underscore11code"
-      },
-      {
-        "name": "Ollie",
-        "avatar": "https://avatars.githubusercontent.com/u/69084614?v=4",
-        "discord": "ollieee_",
-        "github": "olijeffers0n"
-      }
-    ]
-  },
-  {
-    "id": "moderators",
-    "name": "Moderators",
-    "description": "Moderators keeps our community a safe and vibrant space. By watching chat, helping newcomers with questions, and making sure everyone follows the community guidelines, PaperMC's community spaces are able to be as fantastic as they are!",
+    "id": "community-team",
+    "name": "Community Team",
+    "description": "Community Team members keeps our community a safe and vibrant space. By watching chat, helping newcomers with questions, and making sure everyone follows the community guidelines, PaperMC's community spaces are able to be as fantastic as they are!",
     "members": [
       {
         "name": "Amaranth",
@@ -269,15 +202,89 @@
         "github": "Puremin0rez"
       },
       {
-        "name": "stefvanschie",
-        "discord": "stefvanschie",
-        "github": "stefvanschie"
-      },
-      {
         "name": "STG-Allen",
         "avatar": "https://avatars.githubusercontent.com/u/26695048?v=4",
         "discord": "stgallen",
         "github": "STG-Allen"
+      },
+      {
+        "name": "stefvanschie",
+        "discord": "stefvanschie",
+        "github": "stefvanschie"
+      }
+    ]
+  },
+  {
+    "id": "triage-team",
+    "name": "Triage Team",
+    "description": "The Triage Team helps the project by reviewing, testing, and organizing our GitHub's issues and pull requests. With their efforts, developers and maintainers are able to most efficiently handle the most important tasks.",
+    "members": [
+      {
+        "name": "_11",
+        "avatar": "https://avatars.githubusercontent.com/u/55677189?v=4",
+        "discord": "_11",
+        "github": "underscore11code"
+      },
+      {
+        "name": "Camm",
+        "avatar": "https://avatars.githubusercontent.com/u/41496198?v=4",
+        "discord": "_camm",
+        "github": "CodeByCam"
+      },
+      {
+        "name": "Camotoy",
+        "avatar": "https://avatars.githubusercontent.com/u/20743703?v=4",
+        "discord": "camotoy",
+        "github": "camotoy"
+      },
+      {
+        "name": "Emily",
+        "avatar": "https://avatars.githubusercontent.com/u/35617540?v=4",
+        "discord": "emily.ar",
+        "github": "emilyy-dev"
+      },
+      {
+        "name": "Malfrador",
+        "avatar": "https://avatars.githubusercontent.com/u/6106558?v=4",
+        "discord": "malfrador",
+        "github": "Malfrador"
+      },
+      {
+        "name": "Nacio",
+        "avatar": "https://avatars.githubusercontent.com/u/41339226?v=4",
+        "discord": "nacio.",
+        "github": "Nacioszeczek"
+      },
+      {
+        "name": "Ollie",
+        "avatar": "https://avatars.githubusercontent.com/u/69084614?v=4",
+        "discord": "ollieee_",
+        "github": "olijeffers0n"
+      },
+      {
+        "name": "Pop",
+        "avatar": "https://avatars.githubusercontent.com/u/17698576?v=4",
+        "discord": "pop4959",
+        "github": "pop4959"
+      },
+      {
+        "name": "Warrior",
+        "avatar": "https://avatars.githubusercontent.com/u/50800980?v=4",
+        "discord": "warriorrr.",
+        "github": "Warriorrrr"
+      }
+    ]
+  },
+  {
+    "id": "docs-team",
+    "name": "Docs Team",
+    "description": "The Docs Team is responsible for maintaining and updating the PaperMC documentation. They ensure that the documentation is up-to-date and accurate, and that it's easy to understand for all users.",
+    "members": [
+      {
+        "name": "zlataovce",
+        "avatar": "https://avatars.githubusercontent.com/u/34477304?v=4",
+        "discord": "zlataovce",
+        "github": "zlataovce"
       }
     ]
   }
