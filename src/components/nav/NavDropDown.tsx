@@ -1,7 +1,8 @@
 import { Transition } from "@headlessui/react";
+import { clsx } from "clsx";
 import { Fragment, useState, type ReactNode } from "react";
-import clsx from "clsx";
-import ChevronDownIcon from "../../assets/icons/heroicons/chevron-down.svg";
+
+import ChevronDownIcon from "@/assets/icons/heroicons/chevron-down.svg";
 
 export interface NavDropDownProps {
     label: string;

@@ -1,6 +1,7 @@
 import type { KeyboardEvent } from "react";
-import { useRef, useState, type ReactNode } from 'react'
-import { formatISOFullTime } from "../utils/time";
+import { useRef, useState, type ReactNode } from "react";
+
+import { formatISOFullTime } from "@/utils/time";
 
 function InfoLog({ children }: { children: ReactNode }) {
     return (
