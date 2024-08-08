@@ -1,5 +1,5 @@
 ---
-import { Image } from "astro:assets";
+import RemoteImageWrapper from "@/components/RemoteImageWrapper.astro";
 
 import Button from "@/components/Button.astro";
 import FeatureCard from "@/components/FeatureCard.astro";
@@ -107,7 +107,7 @@ const sponsors = await fetchAllSponsors();
                 class="relative rounded-full aspect-square bg-gray-600 flex items-center justify-center text-white font-bold uppercase overflow-auto transition-transform transform hover:(scale-120 shadow-lg)"
               >
                 {node.name[0]}
-                <Image
+                <RemoteImageWrapper
                   alt={`${node.name}'s avatar`}
                   src={node.image}
                   width={80}
@@ -125,7 +125,7 @@ const sponsors = await fetchAllSponsors();
               target="_blank"
             >
               {node.login[0]}
-              <Image
+              <RemoteImageWrapper
                 alt={`${node.login}'s avatar`}
                 src={node.avatarUrl}
                 width={80}
