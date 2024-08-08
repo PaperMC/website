@@ -16,7 +16,9 @@
 - Double check contributor fetching logic is correct
 - Integrate logic for onError / onLoad
 - Fix up the CSS styling for the images as they look at little off right now
-- Figure out a way to handle a fallback if an image is missing at buildtime
 
 - Guidelines Page
 - Fix the alignment of the CC BY SA icons at the bottom
+
+- RemoteImageWrapper
+- Feel free to make adjustments
