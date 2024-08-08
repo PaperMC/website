@@ -22,3 +22,9 @@
 
 - RemoteImageWrapper
 - Feel free to make adjustments
+
+- Software Pages
+- Integrate the proper props fetching for version groups and whatnot
+
+- Software Header
+- Utilize named slots since Waterfall takes in a component for header and description
