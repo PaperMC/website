@@ -7,9 +7,15 @@ import react from "@astrojs/react";
 export default defineConfig({
   integrations: [UnoCSS({ injectReset: true }), react(), icon({ iconDir: "src/assets" })],
   image: {
-    remotePatterns: [{
-      protocol: "https",
-      hostname: "**.githubusercontent.com",
-    }]
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**.githubusercontent.com",
+      },
+      {
+        protocol: "https",
+        hostname: "**.opencollective.com",
+      }
+    ]
   }
 });
