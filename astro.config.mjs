@@ -5,5 +5,11 @@ import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [UnoCSS({ injectReset: true }), react(), icon({ iconDir: "src/assets" })]
+  integrations: [UnoCSS({ injectReset: true }), react(), icon({ iconDir: "src/assets" })],
+  image: {
+    remotePatterns: [{
+      protocol: "https",
+      hostname: "**.githubusercontent.com",
+    }]
+  }
 });
