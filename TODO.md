@@ -10,3 +10,9 @@
 - light mode nav bar style
 - check if windicss/plugin/aspect-ratio was needed for anything
 - auto generate a sitemap.xml
+
+
+- Team Page
+- Double check contributor fetching logic is correct
+- Integrate logic for onError / onLoad
+- Fix up the CSS styling for the images as they look at little off right now
