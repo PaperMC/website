@@ -1,58 +1,64 @@
-import {
-  defineConfig,
-  presetWind,
-  presetAttributify,
-  presetTypography,
-  transformerVariantGroup,
-  transformerDirectives
-} from "unocss";
 import presetWebFonts from "@unocss/preset-web-fonts";
 import { createLocalFontProcessor } from "@unocss/preset-web-fonts/local";
+import {
+  defineConfig,
+  presetAttributify,
+  presetTypography,
+  presetWind,
+  transformerDirectives,
+  transformerVariantGroup,
+} from "unocss";
 
 export default defineConfig({
-  presets: [presetWind({
-    dark: "media",
-  }), presetAttributify(), presetTypography(), presetWebFonts({
-    provider: "google",
-    fonts: {
-      sans: [
-        {
-          name: "Poppins",
-          weights: [400, 500]
-        },
-        {
-          name: "Roboto",
-          weights: [400, 500]
-        },
-        {
-          name: "Open Sans",
-          weights: [400, 500]
-        },
-        {
-          name: "ui-sans-serif",
-          provider: "none"
-        }, {
-          name: "system-ui",
-          provider: "none"
-        }, {
-          name: "sans-serif",
-          provider: "none"
-        }
-      ]
-    },
-    extendTheme: true,
-    processors: createLocalFontProcessor({
-      cacheDir: "node_modules/.cache/unocss/fonts",
-      fontAssetsDir: "public/assets/fonts",
-      fontServeBaseUrl: "/assets/fonts"
-    })
-  })],
+  presets: [
+    presetWind({
+      dark: "media",
+    }),
+    presetAttributify(),
+    presetTypography(),
+    presetWebFonts({
+      provider: "google",
+      fonts: {
+        sans: [
+          {
+            name: "Poppins",
+            weights: [400, 500],
+          },
+          {
+            name: "Roboto",
+            weights: [400, 500],
+          },
+          {
+            name: "Open Sans",
+            weights: [400, 500],
+          },
+          {
+            name: "ui-sans-serif",
+            provider: "none",
+          },
+          {
+            name: "system-ui",
+            provider: "none",
+          },
+          {
+            name: "sans-serif",
+            provider: "none",
+          },
+        ],
+      },
+      extendTheme: true,
+      processors: createLocalFontProcessor({
+        cacheDir: "node_modules/.cache/unocss/fonts",
+        fontAssetsDir: "public/assets/fonts",
+        fontServeBaseUrl: "/assets/fonts",
+      }),
+    }),
+  ],
   transformers: [transformerVariantGroup(), transformerDirectives()],
   content: {
-    filesystem: ["src/**/*.{tsx,css}"]
+    filesystem: ["src/**/*.{tsx,css}"],
   },
   theme: {
-    // https://github.com/HangarMC/Hangar/blob/master/frontend-new/windi.config.ts#L80
     colors: {
       primary: {
         0: "#FFFFFF",
@@ -65,7 +71,7 @@ export default defineConfig({
         700: "#B8CDF9",
         800: "#ADC6F8",
         900: "#A3BFF7",
-        1000: "#99B8F6"
+        1000: "#99B8F6",
       },
       "primary-dark": {
         0: "#E6EDFD",
@@ -78,15 +84,15 @@ export default defineConfig({
         600: "#002F8C",
         700: "#001F5D",
         800: "#00102F",
-        900: "#000817"
+        900: "#000817",
       },
       "background-dark-90": "#111111",
       "background-dark-80": "#181a1b",
       "background-light-10": "#f8faff",
-      "background-light-0": "#ffffff"
+      "background-light-0": "#ffffff",
     },
     listStyleType: {
       alpha: "lower-alpha",
     },
-  }
+  },
 });

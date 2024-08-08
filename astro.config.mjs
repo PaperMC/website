@@ -1,11 +1,19 @@
+import react from "@astrojs/react";
+import icon from "astro-icon";
 import { defineConfig } from "astro/config";
 import UnoCSS from "unocss/astro";
-import icon from "astro-icon";
-import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [UnoCSS({ injectReset: true }), react(), icon({ iconDir: "src/assets" })],
+  integrations: [
+    icon({
+      iconDir: "src/assets",
+    }),
+    UnoCSS({
+      injectReset: true,
+    }),
+    react(),
+  ],
   image: {
     remotePatterns: [
       {
@@ -15,7 +23,7 @@ export default defineConfig({
       {
         protocol: "https",
         hostname: "**.opencollective.com",
-      }
-    ]
-  }
+      },
+    ],
+  },
 });

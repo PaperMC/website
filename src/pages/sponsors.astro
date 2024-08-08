@@ -1,9 +1,10 @@
 ---
-import Layout from "@/layouts/Layout.astro";
+import { Image } from "astro:assets";
+
 import Button from "@/components/Button.astro";
 import FeatureCard from "@/components/FeatureCard.astro";
+import Layout from "@/layouts/Layout.astro";
 import { fetchAllSponsors } from "@/utils/sponsors";
-import { Image } from "astro:assets";
 
 const sponsors = await fetchAllSponsors();
 ---

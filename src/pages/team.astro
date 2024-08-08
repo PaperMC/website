@@ -1,9 +1,10 @@
 ---
-import teams from "@/assets/data/team.json";
-import Layout from "@/layouts/Layout.astro";
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
+
+import teams from "@/assets/data/team.json";
 import Button from "@/components/Button.astro";
+import Layout from "@/layouts/Layout.astro";
 import { fetchAllContributors } from "@/utils/github";
 
 const HIDDEN_USERS = [1007849, 23557539, 49699333]; // md_5, EcoCityCraftCI, dependabot

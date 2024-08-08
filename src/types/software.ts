@@ -1,3 +1,3 @@
 export interface PageSoftwareProps {
-    github?: string;
+  github?: string;
 }
