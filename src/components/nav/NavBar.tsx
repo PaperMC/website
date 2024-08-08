@@ -1,16 +1,18 @@
-import { useEffect, useState } from 'react'
-import clsx from 'clsx';
-import MenuIcon from "../../assets/icons/heroicons/menu.svg";
-import LogoMarketLight from "../../assets/brand/logo-marker-light.svg";
-import LogoMarketDark from "../../assets/brand/logo-marker-dark.svg";
-import ExternalUrlIcon from "../../assets/icons/heroicons/arrow-top-right-on-square.svg";
-import DiscordIcon from "../../assets/icons/fontawesome/discord-brands.svg";
-import GitHubIcon from "../../assets/icons/fontawesome/github-brands.svg";
-import TwitterIcon from "../../assets/icons/fontawesome/twitter-brands.svg";
-import NavDropDown from './NavDropDown';
-import NavDropDownLink from './NavDropDownLink';
-import NavLink from './NavLink';
-import IconButton from '../IconButton';
+import { clsx } from "clsx";
+import { useEffect, useState } from "react";
+
+import IconButton from '@/components/IconButton';
+import NavDropDown from '@/components/nav/NavDropDown';
+import NavDropDownLink from '@/components/nav/NavDropDownLink';
+import NavLink from '@/components/nav/NavLink';
+
+import LogoMarkerDark from "@/assets/brand/logo-marker-dark.svg";
+import LogoMarkerLight from "@/assets/brand/logo-marker-light.svg";
+import DiscordIcon from "@/assets/icons/fontawesome/discord-brands.svg";
+import GitHubIcon from "@/assets/icons/fontawesome/github-brands.svg";
+import TwitterIcon from "@/assets/icons/fontawesome/twitter-brands.svg";
+import ExternalUrlIcon from "@/assets/icons/heroicons/arrow-top-right-on-square.svg";
+import MenuIcon from "@/assets/icons/heroicons/menu.svg";
 
 const NavBar = () => {
     const [scroll, setScroll] = useState(false);
@@ -42,8 +44,8 @@ const NavBar = () => {
                     <img src={MenuIcon.src} alt="Menu" className="w-6 h-6 fill-gray-500" />
                 </button>
                 <a href='/' className="leading-0" tabIndex={-1} aria-hidden={true}>
-                    <img src={LogoMarketLight.src} alt="PaperMC" className="block dark:hidden h-12 cursor-pointer" />
-                    <img src={LogoMarketDark.src} alt="PaperMC" className="hidden dark:block h-12 cursor-pointer" />
+                    <img src={LogoMarkerLight.src} alt="PaperMC" className="block dark:hidden h-12 cursor-pointer" />
+                    <img src={LogoMarkerDark.src} alt="PaperMC" className="hidden dark:block h-12 cursor-pointer" />
                 </a>
                 <div className={clsx(
                     "absolute top-full left-0 right-0 flex flex-col bg-background-light-10 dark:bg-background-dark-90 gap-4 p-4 shadow-xl w-full md:(block relative w-auto shadow-none bg-transparent p-0)",

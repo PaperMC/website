@@ -1,7 +1,15 @@
 {
   "extends": "astro/tsconfigs/strict",
+
   "compilerOptions": {
+    /* Visit https://aka.ms/tsconfig to read more about this file */
+
+    /* Language and Environment */
     "jsx": "react-jsx",
-    "jsxImportSource": "react"
+    "jsxImportSource": "react",
+
+    /* Modules */
+    "baseUrl": ".",
+    "paths": {"@/*": ["./src/*"]}
   }
 }
