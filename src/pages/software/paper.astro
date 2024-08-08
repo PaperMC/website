@@ -9,10 +9,13 @@ import HomeImage3 from "@/assets/images/home-3.png";
 import CommunityImage from "@/assets/images/community.png";
 
 import { Image } from "astro:assets";
+import { fetchProject } from "@/utils/api";
+
+const { version_groups } = await fetchProject("paper");
 ---
 
 <Layout title="Paper" description="Paper is a Minecraft game server based on Spigot, designed to greatly improve performance and offer more advanced features and API." keywords={["papermc", "paper", "server", "minecraft", "performance", "spigot", "fork"]} canonical="/software/paper">
-  <SoftwareHeader id="paper" name="Paper" versionGroup={"TODO"} icon="brand/paper" description="Paper is a Minecraft game server based on Spigot, designed to greatly improve performance and offer more advanced features and API.">
+  <SoftwareHeader id="paper" name="Paper" versionGroup={version_groups[version_groups.length -1]} icon="brand/paper" description="Paper is a Minecraft game server based on Spigot, designed to greatly improve performance and offer more advanced features and API.">
     The blazing fast
     <br />
     <span class="text-blue-500">Minecraft server</span>

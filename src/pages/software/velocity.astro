@@ -9,10 +9,13 @@ import HomeImage3 from "@/assets/images/home-3.png";
 import CommunityImage from "@/assets/images/community.png";
 
 import { Image } from "astro:assets";
+import { fetchProject } from "@/utils/api";
+
+const { version_groups } = await fetchProject("velocity");
 ---
 
 <Layout title="Velocity" description="Velocity is the modern, high-performance Minecraft server proxy. Designed with performance and stability in mind, it’s a full alternative to Waterfall with its own plugin ecosystem." keywords={["velocity", "proxy", "minecraft", "performance", "bungeecord"]} canonical="/software/velocity">
-  <SoftwareHeader id="velocity" name="Velocity" versionGroup={"TODO"} icon="brand/velocity" description="Velocity is the modern, high-performance proxy. Designed with performance and stability in mind, it’s a full alternative to Waterfall with its own plugin ecosystem."> Next generation speed and capability </SoftwareHeader>
+  <SoftwareHeader id="velocity" name="Velocity" versionGroup={version_groups[version_groups.length -1]} icon="brand/velocity" description="Velocity is the modern, high-performance proxy. Designed with performance and stability in mind, it’s a full alternative to Waterfall with its own plugin ecosystem."> Next generation speed and capability </SoftwareHeader>
   <section id="why" class="w-full pt-10 pb-5 bg-primary-200 dark:bg-background-dark-80">
     <div class="max-w-7xl mx-auto">
       <h2 class="font-semibold text-xl md:text-2xl px-6 lg:px-4">Why Velocity?</h2>

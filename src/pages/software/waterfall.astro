@@ -7,10 +7,13 @@ import VelocityImage from "@/assets/images/velocity.png";
 import CommunityImage from "@/assets/images/community.png";
 
 import { Image } from "astro:assets";
+import { fetchProject } from "@/utils/api";
+
+const { version_groups } = await fetchProject("waterfall");
 ---
 
 <Layout title="Waterfall" description="Waterfall is an upgraded BungeeCord, offering full compatibility with improvements to performance and stability." keywords={["waterfall", "proxy", "minecraft", "performance", "bungeecord", "fork"]} canonical="/software/waterfall">
-  <SoftwareHeader id="waterfall" name="Waterfall" versionGroup={"TODO"} icon="brand/waterfall" description="TODO" eol> Waterfall has reached end of life </SoftwareHeader>
+  <SoftwareHeader id="waterfall" name="Waterfall" versionGroup={version_groups[version_groups.length -1]} icon="brand/waterfall" description="TODO" eol> Waterfall has reached end of life </SoftwareHeader>
   <section id="facts" class="flex flex-col max-w-7xl mx-auto px-4 py-8 gap-8 md:(gap-12 py-16)">
     <div class="flex flex-col gap-6 md:(flex-row gap-8) xl:gap-24 items-center">
       <div class="w-full flex-1 rounded-xl bg-gray-900 aspect-video relative overflow-clip">
