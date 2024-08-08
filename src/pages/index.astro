@@ -2,13 +2,10 @@
 import { Image } from "astro:assets";
 
 import Button from "@/components/Button.astro";
-import Skeleton from "@/components/Skeleton.astro";
 import SoftwarePreview from "@/components/SoftwarePreview.astro";
 import { Terminal } from "@/components/Terminal";
 import Layout from "@/layouts/Layout.astro";
 
-import PaperIcon from "@/assets/brand/paper.svg";
-import VelocityIcon from "@/assets/brand/velocity.svg";
 import HomeImage1 from "@/assets/images/home-1.png";
 import HomeImage2 from "@/assets/images/home-2.png";
 import HomeImage3 from "@/assets/images/home-3.png";
@@ -63,13 +60,13 @@ import HomeImage3 from "@/assets/images/home-3.png";
                 <SoftwarePreview
                     id="paper"
                     name="Paper"
-                    icon={PaperIcon}
+                    icon="brand/paper"
                     description="Paper is a Minecraft game server based on Spigot, designed to greatly improve performance and offer more advanced features and API."
                 />
                 <SoftwarePreview
                     id="velocity"
                     name="Velocity"
-                    icon={VelocityIcon}
+                    icon="brand/velocity"
                     description="Velocity is a high-performance, scalable Minecraft proxy server that allows players to connect to multiple Minecraft servers under the proxy."
                 />
             </div>
@@ -184,6 +181,9 @@ import HomeImage3 from "@/assets/images/home-3.png";
     const playerCount = await players.json();
 
     if (playerCount) {
-        document.getElementById("pcount").textContent = `${Math.round(playerCount[0][1] / 1000)}k+`;
+        const pcountElement = document.getElementById("pcount");
+        if (pcountElement) {
+            pcountElement.textContent = `${Math.round(playerCount[0][1] / 1000)}k+`;
+        }
     }
 </script>
