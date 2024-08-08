@@ -27,6 +27,7 @@
     "sharp": "^0.33.4"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.8.3",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@unocss/preset-web-fonts": "^0.61.9",
