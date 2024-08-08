@@ -1,11 +1,8 @@
 ---
-import { Image } from "astro:assets";
-import { clsx } from "clsx";
-
-import LogoMarkerDark from "@/assets/brand/logo-marker-dark.svg";
+import { Icon } from 'astro-icon/components';
 ---
 
-<footer class="bg-background-dark-80 py-12 mt-8 transition hover:text-gray-200">
+<footer class="bg-background-dark-80 py-12 mt-8 transition hover:text-gray-200 footer">
     <div class="max-w-7xl m-auto px-4">
         <div class="grid gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 text-sm text-white">
           <div>
@@ -117,7 +114,7 @@ import LogoMarkerDark from "@/assets/brand/logo-marker-dark.svg";
           </div>
         </div>
         <div class="flex flex-row items-center gap-2 border-t border-gray-600/50 mt-8 pt-10">
-          <Image src={LogoMarkerDark} class="h-12 cursor-pointer" alt="PaperMC"  />
+          <Icon name="brand/logo-marker-dark" height="3rem" width={undefined} class="cursor-pointer" alt="PaperMC" />
           <div class="flex-1" />
           <span class="text-gray-300 text-sm">
             © {new Date().getFullYear()} The PaperMC Team
@@ -125,3 +122,9 @@ import LogoMarkerDark from "@/assets/brand/logo-marker-dark.svg";
         </div>
       </div>
 </footer>
+
+<style>
+    .footer a {
+        @apply transition hover:text-gray-200;
+    }
+</style>

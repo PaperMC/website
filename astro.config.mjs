@@ -1,9 +1,9 @@
-import { defineConfig } from 'astro/config';
-import windicss from 'astro-windicss';
-
+import { defineConfig } from "astro/config";
+import UnoCSS from "unocss/astro";
+import icon from "astro-icon";
 import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [windicss(), react()]
+  integrations: [UnoCSS({ injectReset: true }), react(), icon({ iconDir: "src/assets" })]
 });
