@@ -22,3 +22,6 @@ pnpm-debug.log*
 # environment variables
 .env
 .env.production
+
+# auto downloaded fonts
+public/assets/fonts/

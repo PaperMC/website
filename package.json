@@ -18,10 +18,9 @@
   "dependencies": {
     "@astrojs/check": "^0.9.2",
     "@astrojs/react": "^3.6.1",
-    "@astrojs/tailwind": "^5.1.0",
-    "@fontsource/poppins": "^5.0.14",
     "@headlessui/react": "^2.1.2",
     "astro": "^4.13.1",
+    "astro-icon": "^1.1.0",
     "clsx": "^2.1.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -30,8 +29,9 @@
   "devDependencies": {
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
-    "astro-windicss": "^0.2.0",
+    "@unocss/preset-web-fonts": "^0.61.9",
+    "@unocss/reset": "^0.61.9",
     "typescript": "^5.5.4",
-    "windicss": "^3.5.6"
+    "unocss": "^0.61.9"
   }
 }

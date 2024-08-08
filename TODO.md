@@ -4,7 +4,9 @@
 - Overhaul the navbar into regular CSS / Astro to remove React (also fix the navbar drodown being stuck open)
 - Migrate Terminal from React to Vanilla JS
 
-- Consider better approached for the icons
+- Consider better approached for the icons (added astro-icon for footer)
 - Fix CSS styling for external links not being visible
 - Add back social icons to navbar
-- Fix footer styling
+- light mode nav bar style
+- check if windicss/plugin/aspect-ratio was needed for anything
+- auto generate a sitemap.xml
