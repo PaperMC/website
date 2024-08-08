@@ -5,6 +5,7 @@ import Button from "@/components/Button.astro";
 import FeatureCard from "@/components/FeatureCard.astro";
 import Layout from "@/layouts/Layout.astro";
 import { fetchAllSponsors } from "@/utils/sponsors";
+import UserImage from "../components/UserImage.astro";
 
 const sponsors = await fetchAllSponsors();
 ---
@@ -102,38 +103,17 @@ const sponsors = await fetchAllSponsors();
           {sponsors?.ocData?.collective?.contributors?.nodes
             ?.filter((n) => n.name !== "Guest")
             .map((node) => (
-              <div
-                role="button"
-                class="relative rounded-full aspect-square bg-gray-600 flex items-center justify-center text-white font-bold uppercase overflow-auto transition-transform transform hover:(scale-120 shadow-lg)"
-              >
-                {node.name[0]}
-                <RemoteImageWrapper
-                  alt={`${node.name}'s avatar`}
-                  src={node.image}
-                  width={80}
-                  height={80}
-                  class="object-cover"
-                />
-              </div>
+              <UserImage avatarUrl={node.image} name={node.name} />
             ))}
           {sponsors?.ghData?.organization?.sponsors?.nodes?.map((node) => (
-            <a
-              role="button"
-              class="relative rounded-full aspect-square bg-gray-600 flex items-center justify-center text-white font-bold uppercase overflow-auto transition-transform transform hover:(scale-120 shadow-lg)"
-              href={`https://github.com/${node.login}`}
-              rel="noreferrer"
-              target="_blank"
-            >
-              {node.login[0]}
-              <RemoteImageWrapper
-                alt={`${node.login}'s avatar`}
-                src={node.avatarUrl}
-                width={80}
-                height={80}
-                class="object-cover"
-              />
-            </a>
+            <UserImage avatarUrl={node.avatarUrl} name={node.login} link={`https://github.com/${node.login}`} />
           ))}
         </div>
       </section>
 </Layout>
+
+<style>
+  img.invalid {
+    display: none;
+  }
+</style>

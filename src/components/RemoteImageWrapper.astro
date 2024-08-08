@@ -21,18 +21,16 @@ if (typeof props.height === "string") {
   props.height = parseInt(props.height);
 }
 
-let valid = true;
-
+const additionalAttributes: HTMLAttributes<"img"> = {};
 try {
   await inferRemoteSize(props.src.toString());
 } catch (e) {
-  valid = false;
+  additionalAttributes.class = "invalid";
   props.src = fallbackImage;
 }
 
 const image = await getImage(props);
 
-const additionalAttributes: HTMLAttributes<"img"> = {};
 if (image.srcSet.values.length > 0) {
   additionalAttributes.srcset = image.srcSet.attribute;
 }

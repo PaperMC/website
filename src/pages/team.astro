@@ -6,6 +6,7 @@ import teams from "@/assets/data/team.json";
 import Button from "@/components/Button.astro";
 import Layout from "@/layouts/Layout.astro";
 import { fetchAllContributors } from "@/utils/github";
+import UserImage from "@/components/UserImage.astro";
 
 const HIDDEN_USERS = [1007849, 23557539, 49699333]; // md_5, EcoCityCraftCI, dependabot
 
@@ -107,22 +108,7 @@ const contributors = await fetchAllContributors();
         </p>
         <div class="grid grid-cols-8 md:grid-cols-16 lg:grid-cols-18 xl:grid-cols-20 mt-8 gap-2">
             {contributors?.filter((contributor) => !HIDDEN_USERS.includes(contributor.id)).map((contributor) => (
-                <a
-                  role="button"
-                  class="relative rounded-full aspect-square bg-gray-600 flex items-center justify-center text-white font-bold uppercase overflow-auto transition-transform transform hover:(scale-120 shadow-lg)"
-                  href={`https://github.com/${contributor.login}`}
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                    {contributor.login[0]}
-                    <RemoteImageWrapper
-                        alt={`${contributor.login}'s avatar`}
-                        src={contributor.avatar_url}
-                        width={80}
-                        height={80}
-                        class="object-cover h-full w-full"
-                    />
-                </a>
+              <UserImage avatarUrl={contributor.avatar_url} name={contributor.login} link={`https://github.com/${contributor.login}`} />
             ))}
         </div>
     </section>
