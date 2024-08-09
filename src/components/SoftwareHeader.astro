@@ -1,15 +1,15 @@
 ---
-import { Icon } from 'astro-icon/components';
-import Button from './Button.astro';
+import { Icon } from "astro-icon/components";
+import Button from "./Button.astro";
 
 interface Props {
-    id: string;
-    name: string;
-    versionGroup: string;
-    icon?: string;
-    description: string;
-    github?: string;
-    eol?: boolean;
+  id: string;
+  name: string;
+  versionGroup: string;
+  icon?: string;
+  description: string;
+  github?: string;
+  eol?: boolean;
 }
 
 const { id, name, versionGroup, icon, description, github, eol } = Astro.props;
