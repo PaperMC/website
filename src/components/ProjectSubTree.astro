@@ -14,7 +14,8 @@ interface Props {
   onSelect(project: string, version: string): void;
 }
 
-const { id, name, eol, selectedProject, selectedVersion, onSelect } = Astro.props;
+const { id, name, eol, selectedProject, selectedVersion, onSelect } =
+  Astro.props;
 
 const project = await fetchProject(id);
 ---

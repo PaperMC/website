@@ -1,6 +1,14 @@
 ---
-import { type LocalImageProps, type RemoteImageProps, getImage, inferRemoteSize } from "astro:assets";
-import { AstroError, AstroErrorData } from "node_modules/astro/dist/core/errors";
+import {
+  type LocalImageProps,
+  type RemoteImageProps,
+  getImage,
+  inferRemoteSize,
+} from "astro:assets";
+import {
+  AstroError,
+  AstroErrorData,
+} from "node_modules/astro/dist/core/errors";
 import type { HTMLAttributes } from "astro/types";
 
 import fallbackImage from "@/assets/brand/paper.svg";

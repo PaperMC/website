@@ -9,7 +9,10 @@ const INITIAL_PROJECT = "paper";
 const project = await fetchProject(INITIAL_PROJECT);
 const versions = project.versions;
 
-const builds = await fetchVersionBuilds(project.project_id, versions[versions.length - 1]);
+const builds = await fetchVersionBuilds(
+  project.project_id,
+  versions[versions.length - 1],
+);
 ---
 
 <Layout
