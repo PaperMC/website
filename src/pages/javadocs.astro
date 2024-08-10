@@ -6,10 +6,17 @@ import { fetchProject } from "@/utils/api";
 
 export const prerender = false;
 
-const { version_groups: paper_groups } = await fetchProject("paper");
-const { version_groups: folia_groups } = await fetchProject("folia");
-const { version_groups: velocity_groups } = await fetchProject("velocity");
-const { version_groups: waterfall_groups } = await fetchProject("waterfall");
+const [paperData, foliaData, velocityData, waterfallData] = await Promise.all([
+  fetchProject("paper"),
+  fetchProject("folia"),
+  fetchProject("velocity"),
+  fetchProject("waterfall"),
+]);
+
+const { version_groups: paper_groups } = paperData;
+const { version_groups: folia_groups } = foliaData;
+const { version_groups: velocity_groups } = velocityData;
+const { version_groups: waterfall_groups } = waterfallData;
 ---
 
 <Layout title="Javadocs" description="Find javadocs for our software – including Paper, Folia, Velocity, and Waterfall." keywords={["papermc", "paper", "folia", "javadocs", "velocity", "waterfall"]} canonical="/javadocs">
