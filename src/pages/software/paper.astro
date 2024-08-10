@@ -10,8 +10,10 @@ import CommunityImage from "@/assets/images/community.png";
 
 import { Image } from "astro:assets";
 import { fetchProject } from "@/utils/api";
+import { fetchHangarProjects } from "@/utils/hangar";
 
 const { version_groups } = await fetchProject("paper");
+const hangarProjects = await fetchHangarProjects("paper");
 ---
 
 <Layout title="Paper" description="Paper is a Minecraft game server based on Spigot, designed to greatly improve performance and offer more advanced features and API." keywords={["papermc", "paper", "server", "minecraft", "performance", "spigot", "fork"]} canonical="/software/paper">
@@ -40,7 +42,7 @@ const { version_groups } = await fetchProject("paper");
         <p class="md:(mt-6 text-xl) text-gray-900 dark:text-gray-100 mt-3">
           Crafted by the PaperMC team & contributors, Hangar is our own dedicated plugin repository, now in open beta! View&nbsp;
           <span class={"text-blue-500"}>
-            {"TODO HANGAR PROJECT LIST COUNT"}
+            {hangarProjects.pagination.count}
           </span>
           &nbsp;different plugins that are specific to Paper, or list your own with a very streamlined creation process.
         </p>

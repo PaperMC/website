@@ -8,8 +8,10 @@ import HomeImage3 from "@/assets/images/home-3.png";
 
 import { Image } from "astro:assets";
 import { fetchProject } from "@/utils/api";
+import { fetchHangarFoliaProjects } from "@/utils/hangar";
 
 const { version_groups } = await fetchProject("folia");
+const hangarProjects = await fetchHangarFoliaProjects();
 ---
 
 <Layout title="Folia" description="Folia is a new fork of Paper that adds regionized multithreading to the server." keywords={["papermc", "folia", "server", "minecraft", "performance", "regionized", "multithreading", "fork"]} canonical="/software/folia">
@@ -34,7 +36,7 @@ const { version_groups } = await fetchProject("folia");
         <h2 class="font-semibold text-2xl md:text-4xl">A diverse plugin ecosystem</h2>
         <p class="md:(mt-6 text-xl) text-gray-900 dark:text-gray-100 mt-3">
           Crafted by the PaperMC team & contributors, Hangar is our own dedicated plugin repository, now in open beta! View over&nbsp;
-          <span class={"text-blue-500"} id="hangarCount">100</span>
+          <span class={"text-blue-500"}>{hangarProjects.pagination.count}</span>
           &nbsp;different plugins that support Folia, or list your own with a very streamlined creation process.
         </p>
         <div class="flex flex-row gap-4 mt-8">
