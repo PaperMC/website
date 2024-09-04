@@ -16,24 +16,24 @@
   },
   "packageManager": "pnpm@9.6.0+sha512.38dc6fba8dba35b39340b9700112c2fe1e12f10b17134715a4aa98ccf7bb035e76fd981cf0bb384dfa98f8d6af5481c2bef2f4266a24bfa20c34eb7147ce0b5e",
   "dependencies": {
-    "@astrojs/check": "^0.9.2",
+    "@astrojs/check": "^0.9.3",
     "@astrojs/cloudflare": "^11.0.4",
     "@astrojs/react": "^3.6.2",
-    "@headlessui/react": "^2.1.2",
-    "astro": "^4.13.3",
-    "astro-icon": "^1.1.0",
+    "@headlessui/react": "^2.1.4",
+    "astro": "^4.15.2",
+    "astro-icon": "^1.1.1",
     "clsx": "^2.1.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "sharp": "^0.33.4"
+    "sharp": "^0.33.5"
   },
   "devDependencies": {
     "@biomejs/biome": "1.8.3",
-    "@types/react": "^18.3.3",
+    "@types/react": "^18.3.5",
     "@types/react-dom": "^18.3.0",
-    "@unocss/preset-web-fonts": "^0.61.9",
-    "@unocss/reset": "^0.61.9",
+    "@unocss/preset-web-fonts": "^0.62.3",
+    "@unocss/reset": "^0.62.3",
     "typescript": "^5.5.4",
-    "unocss": "^0.61.9"
+    "unocss": "^0.62.3"
   }
 }
