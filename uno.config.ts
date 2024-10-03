@@ -1,13 +1,6 @@
 import presetWebFonts from "@unocss/preset-web-fonts";
 import { createLocalFontProcessor } from "@unocss/preset-web-fonts/local";
-import {
-  defineConfig,
-  presetAttributify,
-  presetTypography,
-  presetWind,
-  transformerDirectives,
-  transformerVariantGroup,
-} from "unocss";
+import { defineConfig, presetAttributify, presetTypography, presetWind, transformerDirectives, transformerVariantGroup } from "unocss";
 
 export default defineConfig({
   presets: [

@@ -9,28 +9,14 @@ const INITIAL_PROJECT = "paper";
 const project = await fetchProject(INITIAL_PROJECT);
 const versions = project.versions;
 
-const builds = await fetchVersionBuilds(
-  project.project_id,
-  versions[versions.length - 1],
-);
+const builds = await fetchVersionBuilds(project.project_id, versions[versions.length - 1]);
 ---
 
-<Layout
-    title="Build explorer"
-    description="Build explorer for PaperMC projects. Proceed with caution!"
-    keywords={[]}
-    canonical="/downloads/all"
->
-<div class="flex flex-col h-screen">
-    <div class="h-16" />
+<Layout title="Build explorer" description="Build explorer for PaperMC projects. Proceed with caution!" keywords={[]} canonical="/downloads/all">
+  <div class="flex flex-col h-screen">
+    <div class="h-16"></div>
     <div class="flex-1 flex flex-row min-h-0">
-      <DownloadsTree
-        selectedProject={project.project_id}
-        selectedVersion={versions[versions.length - 1]}
-        onSelect={(project, version) => {
-
-        }}
-      />
+      <DownloadsTree selectedProject={project.project_id} selectedVersion={versions[versions.length - 1]} onSelect={(project, version) => {}} />
       <div class="flex-1 overflow-auto">
         <!-- {legacy && (
           <>
