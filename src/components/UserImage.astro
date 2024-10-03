@@ -10,6 +10,7 @@ interface Props {
 const { avatarUrl, name, link } = Astro.props;
 const Tag = link ? "a" : "div";
 ---
+
 <Tag
   role={link ? "button" : undefined}
   class="user-image relative rounded-full aspect-square bg-gray-600 flex items-center justify-center text-white font-bold uppercase overflow-auto transition-transform transform hover:(scale-120 shadow-lg)"
@@ -18,13 +19,7 @@ const Tag = link ? "a" : "div";
   target={link && "_blank"}
 >
   {name[0]}
-  <RemoteImageWrapper
-    alt={`${name}'s avatar`}
-    src={avatarUrl}
-    width={80}
-    height={80}
-    class="object-cover h-full w-full absolute bg-white"
-  />
+  <RemoteImageWrapper alt={`${name}'s avatar`} src={avatarUrl} width={80} height={80} class="object-cover h-full w-full absolute bg-white" />
 </Tag>
 
 <style>

@@ -14,23 +14,55 @@ const { version_groups } = await fetchProject("folia");
 const hangarProjects = await fetchHangarFoliaProjects();
 ---
 
-<Layout title="Folia" description="Folia is a new fork of Paper that adds regionized multithreading to the server." keywords={["papermc", "folia", "server", "minecraft", "performance", "regionized", "multithreading", "fork"]} canonical="/software/folia">
-  <SoftwareHeader id="folia" name="Folia" versionGroup={version_groups[version_groups.length -1]} icon="brand/folia" description="Folia is a new fork of Paper that adds regionized multithreading to the server. Access to Folia builds isn't currently available. To build Folia, you need to compile from source following Paper's standard compilation guide." github="https://github.com/PaperMC/Folia"> What is Folia? </SoftwareHeader>
+<Layout
+  title="Folia"
+  description="Folia is a new fork of Paper that adds regionized multithreading to the server."
+  keywords={["papermc", "folia", "server", "minecraft", "performance", "regionized", "multithreading", "fork"]}
+  canonical="/software/folia"
+>
+  <SoftwareHeader
+    id="folia"
+    name="Folia"
+    versionGroup={version_groups[version_groups.length - 1]}
+    icon="brand/folia"
+    description="Folia is a new fork of Paper that adds regionized multithreading to the server. Access to Folia builds isn't currently available. To build Folia, you need to compile from source following Paper's standard compilation guide."
+    github="https://github.com/PaperMC/Folia"
+  >
+    What is Folia?
+  </SoftwareHeader>
 
   <section id="why" class="w-full pt-10 pb-5 bg-primary-200 dark:bg-background-dark-80">
     <div class="max-w-7xl mx-auto">
       <h2 class="font-semibold text-xl md:text-2xl px-6 lg:px-4">About Folia</h2>
       <div class="grid md:grid-cols-3 mt-6 gap-2 px-2 xl:gap-4">
-        <FeatureCard icon="icons/heroicons/bolt" label="How's it different from Paper?" description="Folia is designed to address the constant bottleneck of the Minecraft server running on a single thread causing performance issues. It is by no means a drop-in replacement for Paper." />
-        <FeatureCard icon="icons/heroicons/chat-bubble-left-right" label="Is Folia for me?" description="Folia won't be useful for the majority of servers out there and will break most public plugins. It's ideal for servers with very high players counts, that offer gamemodes that naturally spread players out, such as SkyBlock or SMP." />
-        <FeatureCard icon="icons/heroicons/code-bracket" label="Where can I learn more?" description="You can visit the GitHub repository for Folia to read an overview of the project, and some frequently asked questions." />
+        <FeatureCard
+          icon="icons/heroicons/bolt"
+          label="How's it different from Paper?"
+          description="Folia is designed to address the constant bottleneck of the Minecraft server running on a single thread causing performance issues. It is by no means a drop-in replacement for Paper."
+        />
+        <FeatureCard
+          icon="icons/heroicons/chat-bubble-left-right"
+          label="Is Folia for me?"
+          description="Folia won't be useful for the majority of servers out there and will break most public plugins. It's ideal for servers with very high players counts, that offer gamemodes that naturally spread players out, such as SkyBlock or SMP."
+        />
+        <FeatureCard
+          icon="icons/heroicons/code-bracket"
+          label="Where can I learn more?"
+          description="You can visit the GitHub repository for Folia to read an overview of the project, and some frequently asked questions."
+        />
       </div>
     </div>
   </section>
   <section id="facts" class="flex flex-col max-w-7xl mx-auto px-4 py-8 gap-8 md:(gap-12 py-16)">
     <div class="flex flex-col gap-6 md:(flex-row gap-8) xl:gap-24 items-center">
       <div class="w-full flex-1 rounded-xl aspect-video relative overflow-clip">
-        <Image alt="Hangar Homepage" src={HomeImage3} sizes="(min-width: 80rem) 40rem, (min-width: 768px) 40vw, 100vw" widths={[400, 800, 1200, 1600]} class="w-full h-full object-cover" />
+        <Image
+          alt="Hangar Homepage"
+          src={HomeImage3}
+          sizes="(min-width: 80rem) 40rem, (min-width: 768px) 40vw, 100vw"
+          widths={[400, 800, 1200, 1600]}
+          class="w-full h-full object-cover"
+        />
       </div>
       <div class="flex-1">
         <h2 class="font-semibold text-2xl md:text-4xl">A diverse plugin ecosystem</h2>

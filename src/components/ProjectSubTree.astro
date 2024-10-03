@@ -14,8 +14,7 @@ interface Props {
   onSelect(project: string, version: string): void;
 }
 
-const { id, name, eol, selectedProject, selectedVersion, onSelect } =
-  Astro.props;
+const { id, name, eol, selectedProject, selectedVersion, onSelect } = Astro.props;
 
 const project = await fetchProject(id);
 ---
@@ -28,5 +27,15 @@ const project = await fetchProject(id);
   project?.versions
     ?.slice()
     ?.reverse()
-    ?.map((version) => <button class={clsx("pl-6 py-1 rounded-md transition-colors text-gray-800 dark:text-gray-200 block w-full text-left", eol ? "hover:bg-red-100 hover:dark:bg-red-900" : "hover:bg-blue-100 hover:dark:bg-gray-900", selectedProject === id && selectedVersion === version && (eol ? "bg-red-100 dark:bg-red-900" : "bg-blue-100 dark:bg-blue-900"))}>{version}</button>)
+    ?.map((version) => (
+      <button
+        class={clsx(
+          "pl-6 py-1 rounded-md transition-colors text-gray-800 dark:text-gray-200 block w-full text-left",
+          eol ? "hover:bg-red-100 hover:dark:bg-red-900" : "hover:bg-blue-100 hover:dark:bg-gray-900",
+          selectedProject === id && selectedVersion === version && (eol ? "bg-red-100 dark:bg-red-900" : "bg-blue-100 dark:bg-blue-900")
+        )}
+      >
+        {version}
+      </button>
+    ))
 }

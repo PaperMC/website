@@ -6,9 +6,7 @@ export async function fetchAllContributors(): Promise<Contributor[]> {
   let hasMoreContributors = true;
 
   while (hasMoreContributors) {
-    const response = await fetch(
-      `https://api.github.com/repos/PaperMC/Paper/contributors?per_page=100&page=${page}`,
-    );
+    const response = await fetch(`https://api.github.com/repos/PaperMC/Paper/contributors?per_page=100&page=${page}`);
 
     if (!response.ok) {
       throw new Error(`Failed to fetch page ${page}: ${response.statusText}`);

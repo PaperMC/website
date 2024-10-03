@@ -1,4 +1,3 @@
-import react from "@astrojs/react";
 import icon from "astro-icon";
 import { defineConfig } from "astro/config";
 import UnoCSS from "unocss/astro";
@@ -14,7 +13,6 @@ export default defineConfig({
     UnoCSS({
       injectReset: true,
     }),
-    react(),
   ],
   image: {
     remotePatterns: [

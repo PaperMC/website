@@ -10,19 +10,11 @@ export interface NavDropDownProps {
 
 const { label, className } = Astro.props;
 ---
-<div
-  class={clsx(
-    "hover:text-blue-600 dark:hover:text-blue-400 text-sm transition-colors px-2.5 relative inline-block h-full",
-    className
-  )}
-  data-nav-dropdown
->
+
+<div class={clsx("hover:text-blue-600 dark:hover:text-blue-400 text-sm transition-colors px-2.5 relative inline-block h-full", className)} data-nav-dropdown>
   <span class="flex flex-row items-center gap-1" role="button">
     {label}
-    <img
-      src={ChevronDownIcon.src}
-      class="w-4 h-4 fill-gray-700 dark:fill-gray-300"
-    />
+    <img src={ChevronDownIcon.src} class="w-4 h-4 fill-gray-700 dark:fill-gray-300" />
   </span>
 
   <!--<Transition
@@ -36,14 +28,16 @@ const { label, className } = Astro.props;
     show={hover}
     unmount
   >-->
-  <ul class="hidden! mt-2 flex flex-col py-1 z-100 bg-background-light-10 dark:bg-background-dark-90 transition-all md:(absolute border border-gray-200 dark:border-gray-800 rounded-lg shadow-md mt-0)">
+  <ul
+    class="hidden! mt-2 flex flex-col py-1 z-100 bg-background-light-10 dark:bg-background-dark-90 transition-all md:(absolute border border-gray-200 dark:border-gray-800 rounded-lg shadow-md mt-0)"
+  >
     <slot />
   </ul>
   <!--</Transition> -->
 </div>
 
 <script>
-  document.querySelectorAll("[data-nav-dropdown]").forEach(el => {
+  document.querySelectorAll("[data-nav-dropdown]").forEach((el) => {
     const ul = el.querySelector("ul");
     el.addEventListener("mouseenter", () => {
       ul?.classList?.remove("hidden!");
