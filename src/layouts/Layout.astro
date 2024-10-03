@@ -1,6 +1,6 @@
 ---
 import Footer from "@/components/Footer.astro";
-import NavBar from "@/components/nav/NavBar";
+import NavBar from "@/components/nav/NavBar.astro";
 
 interface Props {
   title: string;
@@ -38,7 +38,7 @@ const { title, description, keywords, canonical } = Astro.props;
   </head>
   <body class="flex flex-col h-screen font-sans">
     <main class="flex-1">
-      <NavBar client:load />
+      <NavBar />
       <slot />
       <Footer />
     </main>
