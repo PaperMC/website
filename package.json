@@ -42,5 +42,5 @@
     "windicss-webpack-plugin": "1.8.0"
   },
   "sideEffects": false,
-  "packageManager": "pnpm@7.33.7+sha256.d1581d46ed10f54ff0cbdd94a2373b1f070202b0fbff29f27c2ce01460427043"
+  "packageManager": "pnpm@9.12.2+sha512.22721b3a11f81661ae1ec68ce1a7b879425a1ca5b991c975b074ac220b187ce56c708fe5db69f4c962c989452eee76c82877f4ee80f474cebd61ee13461b6228"
 }
