@@ -1,4 +1,5 @@
 ---
+import { Icon } from "astro-icon/components";
 import { clsx } from "clsx";
 
 interface Props {
@@ -19,6 +20,6 @@ const { href, target, className, eol } = Astro.props;
   )}
 >
   <a href={href} class={clsx("px-4 py-2 w-full", eol ? "flex items-center gap-2" : "block")} role="button" target={target}>
-    <slot />
+    <slot /> {eol && <Icon name="icons/fontawesome/box-archive" class="fill-current h-6" /> }
   </a>
 </li>
