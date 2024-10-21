@@ -2,9 +2,9 @@
 
 ### Navbar Overhaul
 
-- menu should be default to closed on mobile | (should be fixed - Glare)
+- ~~menu should be default to closed on mobile~~ | (should be fixed - Glare)
 - Consider better approaches for icons (added astro-icon for footer). their colors are wrong
-- fix social icons not loading | (should be fixed - Glare)
+- ~~fix social icons not loading~~ | (should be fixed - Glare)
 - nav dropdown transition?
 
 ### Misc
@@ -22,7 +22,7 @@
 
 ### Guidelines Page
 
-- Fix the alignment of the CC BY SA icons at the bottom. (kinda fixed, just icons in general are ugly)
+- ~~Fix the alignment of the CC BY SA icons at the bottom. (kinda fixed, just icons in general are ugly)~~
 
 ### RemoteImageWrapper
 
@@ -38,6 +38,6 @@
 
 ### Software Download
 
-- project icons (should be fixed - Glare)
+- ~~project icons~~ (should be fixed - Glare)
 - waterfall eol message (similar problem as the software header)
 - actual logic, download button, etc
