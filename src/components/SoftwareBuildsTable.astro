@@ -1,0 +1,64 @@
+---
+import type { Build } from "@/types/project";
+import clsx from "clsx";
+import SoftwareBuildChanges from "./SoftwareBuildChanges.astro";
+import { formatISODateTime, formatRelativeDate } from "@/utils/time";
+import SoftwareDownloadButton from "./SoftwareDownloadButton.astro";
+
+interface Props {
+  project: string;
+  version: string;
+  builds: Build[];
+  eol?: boolean;
+}
+
+const { project, version, builds, eol } = Astro.props;
+---
+
+<table class="w-full relative">
+  <thead class="sticky top-0 z-40 bg-background-light-10 dark:bg-background-dark-90 shadow-sm">
+    <tr>
+      <th class="text-left px-6 py-4 border-b dark:border-gray-600">Build</th>
+      <th class="text-left px-6 py-4 border-b dark:border-gray-600">Changelog</th>
+      <th class="text-left px-6 py-4 border-b dark:border-gray-600">Timestamp</th>
+      <th class="text-left px-6 py-4 border-b dark:border-gray-600">Download</th>
+    </tr>
+  </thead>
+  <tbody>
+    {
+      builds
+        .slice()
+        .reverse()
+        .map((build) => (
+          <tr class="border-b hover:bg-blue-100 dark:(border-gray-600 hover:bg-gray-900)">
+            <td class="px-6 py-2">
+              <span
+                class={clsx(
+                  "text-sm font-medium text-gray-100 rounded-full py-2 px-3 min-w-16",
+                  build.channel === "experimental" || eol ? "bg-red-500" : "bg-gray-800"
+                )}
+              >
+                #{build.build}
+              </span>
+            </td>
+            <td class="px-6 py-2">
+              <SoftwareBuildChanges project={project} build={build} />
+            </td>
+            <td class="px-6 py-2 whitespace-no-wrap" title={formatISODateTime(new Date(build.time))}>
+              {formatRelativeDate(new Date(build.time))}
+            </td>
+            <td class="px-6 py-2 gap-1">
+              <SoftwareDownloadButton
+                projectId={project.toLowerCase()}
+                version={version}
+                build={build}
+                stable={build.channel === "default"}
+                compact
+                eol={eol}
+              />
+            </td>
+          </tr>
+        ))
+    }
+  </tbody>
+</table>
