@@ -8,11 +8,6 @@ export async function fetchAllContributors(): Promise<Contributor[]> {
   while (hasMoreContributors) {
     const response = await fetch(`https://api.github.com/repos/PaperMC/Paper/contributors?per_page=100&page=${page}`);
 
-    // TODO: remove - stupid ratelimit
-    if (response.headers.get("x-ratelimit-remaining") === "0") {
-      return contributors;
-    }
-
     if (!response.ok) {
       throw new Error(`Failed to fetch page ${page}: ${response.statusText}`);
     }
