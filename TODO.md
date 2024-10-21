@@ -2,9 +2,9 @@
 
 ### Navbar Overhaul
 
-- menu should be default to closed on mobile
+- menu should be default to closed on mobile | (should be fixed - Glare)
 - Consider better approaches for icons (added astro-icon for footer). their colors are wrong
-- fix social icons not loading
+- fix social icons not loading | (should be fixed - Glare)
 - nav dropdown transition?
 
 ### Misc
@@ -36,6 +36,6 @@
 
 ### Software Download
 
-- project icons
+- project icons (should be fixed - Glare)
 - waterfall eol message (similar problem as the software header)
 - actual logic, download button, etc
