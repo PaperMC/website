@@ -49,7 +49,7 @@ const toggleStable = () => {
         <h1 class="font-medium text-xl">Downloads</h1>
       </div>
       <h2 class="font-medium leading-normal lg:(text-5xl leading-normal) text-4xl">
-        Get {project.name}&nbsp;
+        Get {project.name}
         <span class={stable && !eol ? "text-blue-600" : "text-red-500"}>
           {version}
         </span>
@@ -82,12 +82,11 @@ const toggleStable = () => {
   <section id="builds" class="max-w-7xl mx-auto py-8">
     <h2 class="text-center text-xl font-medium">Older builds</h2>
     <p class="text-center text-gray-800 dark:text-gray-200 text-lg mt-2 mb-8 px-4">
-      Looking for older builds - or changelogs? We got you!&nbsp;
+      Looking for older builds - or changelogs? We got you!
       <br />
       <span class="text-gray-700 dark:text-gray-400">
-        Even older builds are available in our&nbsp;
-        <a href="/downloads/all" class="text-gray-700 dark:text-gray-400 underline"> build explorer </a>
-        .
+        Even older builds are available in our
+        <a href="/downloads/all" class="text-gray-700 dark:text-gray-400 underline">build explorer</a>.
       </span>
     </p>
     <SoftwareBuilds project={id} version={version} builds={builds?.builds} eol={eol} />
