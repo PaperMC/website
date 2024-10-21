@@ -14,7 +14,7 @@ function fetchGitCommitHash() {
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://papermc.io",
+  site: "https://papermc.dev",
   integrations: [
     icon({
       iconDir: "src/assets",
