@@ -60,6 +60,7 @@ const toggleStable = () => {
       <div class="flex flex-col gap-4 mt-8">
         <SoftwareDownloadButton projectId={id} project={project} version={version} stable={stable} eol={eol} build={latestBuild} />
         {
+          // TODO: Implement toggleStable
           project.latestExperimentalVersion && (
             <button
               class={clsx(
@@ -68,7 +69,6 @@ const toggleStable = () => {
                   ? "dark:border-red-500 dark:text-red-400 border-red-900 text-red-700"
                   : "dark:border-blue-600 dark:text-blue-400 border-blue-900 text-blue-700"
               )}
-              onClick={toggleStable}
             >
               {stable ? "Toggle experimental builds for " : "Back to stable builds for "}
               {stable ? project.latestExperimentalVersion : project.latestStableVersion}

@@ -27,10 +27,7 @@ export async function fetchVersionFamilyBuilds(project: string, family: string):
 export const generateVersionBuildDownloadURL = (project: string, version: string, build: number, file: string): string =>
   `${API_ENDPOINT}/projects/${project}/versions/${version}/builds/${build}/downloads/${file}`;
 
-export const isVersionStable = async (
-  project: string,
-  version: string,
-): Promise<boolean> => {
+export const isVersionStable = async (project: string, version: string): Promise<boolean> => {
   const { builds } = await fetchVersionBuilds(project, version);
   for (let i = builds.length - 1; i >= 0; i--) {
     if (builds[i].channel === "default") return true;
@@ -51,20 +48,17 @@ export async function aggregateProjectInfo(id: string, hangarProject: boolean) {
     }
   }
 
-  const latestExperimentalVersion =
-  latestStableVersion !== versions[versions.length - 1]
-    ? versions[versions.length - 1]
-    : null;
+  const latestExperimentalVersion = latestStableVersion !== versions[versions.length - 1] ? versions[versions.length - 1] : null;
 
-    const project: ProjectDescriptor = {
-      name: project_name,
-      latestStableVersion,
-      latestExperimentalVersion,
-      latestVersionGroup: version_groups[version_groups.length - 1],
-    };
+  const project: ProjectDescriptor = {
+    name: project_name,
+    latestStableVersion,
+    latestExperimentalVersion,
+    latestVersionGroup: version_groups[version_groups.length - 1],
+  };
 
-    return {
-      project,
-      hangarProjectList,
-    }
+  return {
+    project,
+    hangarProjectList,
+  };
 }
