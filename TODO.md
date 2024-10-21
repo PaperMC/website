@@ -10,9 +10,12 @@
 ### Misc
 
 - Verify if `windicss/plugin/aspect-ratio` is necessary for anything.
-- Auto-generate a `sitemap.xml`.
+- ~~Auto-generate a `sitemap.xml`.~~
 - Determine which pages should be marked as `prerendered = false`
 - Investigate if there's some way we can introduce the SWR 10 minute cache on the server-side since the `prerendered = false` pages will render on-demand.
+- Allow indexing in robots.txt (Disallow: / => Allow: /)
+- Verify if the sitemap urls are correct.
+- Change domain in astro.config.mjs
 
 ### Team Page & Sponsor Page
 
@@ -41,3 +44,5 @@
 - ~~project icons~~ (should be fixed - Glare)
 - waterfall eol message (similar problem as the software header)
 - actual logic, download button, etc
+- fix the added spaces before and after parentheses in the build changes
+- fix "16 hours ago" turning into "16 hours (newline) ago"
