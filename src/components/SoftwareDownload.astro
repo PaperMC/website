@@ -1,6 +1,10 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+import { aggregateProjectInfo, fetchProject, fetchVersionBuilds } from "@/utils/api";
+import { Icon } from "astro-icon/components";
 import { clsx } from "clsx";
+import SoftwareDownloadButton from "./SoftwareDownloadButton.astro";
+import SoftwareBuilds from "./SoftwareBuilds.astro";
 
 interface Props {
   id: string;
@@ -10,23 +14,22 @@ interface Props {
   keywords: string[];
   canonical: string;
   eol?: boolean;
+  icon?: any;
 }
 
-const { id, title, description, experimentalWarning, keywords, canonical, eol } = Astro.props;
+const { id, title, description, experimentalWarning, keywords, canonical, eol, icon } = Astro.props;
 
-/*
-TODO logic for software download page
-  const [isStable, setStable] = useState(true);
-  const version = isStable
-    ? project.latestStableVersion
-    : (project.latestExperimentalVersion ?? project.latestStableVersion);
-  const { data: builds } = useVersionBuilds(id, version);
-  const latestBuild = builds && builds.builds[builds.builds.length - 1];
+// TODO: Add a way to toggle between stable and experimental builds
+let stable = true;
 
-  const toggleStable = () => {
-    setStable(!isStable);
-  };
-  */
+const { project, hangarProjectList } = await aggregateProjectInfo(id, true);
+const version = stable ? project.latestStableVersion : (project.latestExperimentalVersion ?? project.latestStableVersion);
+const builds = await fetchVersionBuilds(id, version);
+const latestBuild = builds?.builds[builds.builds.length - 1];
+
+const toggleStable = () => {
+  stable = !stable;
+};
 ---
 
 <Layout title={title} description={description} keywords={keywords} canonical={canonical}>
@@ -41,41 +44,34 @@ TODO logic for software download page
     <div class="flex-1">
       <div class="flex flex-row mb-6 gap-4 items-center">
         <div class="w-12 h-12 rounded-lg bg-gray-800 p-3">
-          <!-- todo icon {Icon && <Icon />} -->
+          {icon && <Icon name={icon} class="size-6 text-white" />}
         </div>
         <h1 class="font-medium text-xl">Downloads</h1>
       </div>
       <h2 class="font-medium leading-normal lg:(text-5xl leading-normal) text-4xl">
         Get {project.name}&nbsp;
-        <span class={isStable && !eol ? "text-blue-600" : "text-red-500"}>
+        <span class={stable && !eol ? "text-blue-600" : "text-red-500"}>
           {version}
         </span>
       </h2>
       <p class="text-xl mt-4">
-        {isStable ? description : (experimentalWarning ?? description)}
+        {stable ? description : (experimentalWarning ?? description)}
       </p>
       <div class="flex flex-col gap-4 mt-8">
-        <SoftwareDownloadButton
-          projectId={id}
-          project={project}
-          build={latestBuild}
-          version={version}
-          stable={!latestBuild || latestBuild?.channel === "default"}
-          eol={eol}
-        />
+        <SoftwareDownloadButton projectId={id} project={project} version={version} stable={stable} eol={eol} build={latestBuild} />
         {
           project.latestExperimentalVersion && (
             <button
               class={clsx(
                 "rounded-lg flex flex-row w-full md:w-100 border text-white transition-border pl-5 py-3",
-                isStable
+                stable
                   ? "dark:border-red-500 dark:text-red-400 border-red-900 text-red-700"
                   : "dark:border-blue-600 dark:text-blue-400 border-blue-900 text-blue-700"
               )}
               onClick={toggleStable}
             >
-              {isStable ? "Toggle experimental builds for " : "Back to stable builds for "}
-              {isStable ? project.latestExperimentalVersion : project.latestStableVersion}
+              {stable ? "Toggle experimental builds for " : "Back to stable builds for "}
+              {stable ? project.latestExperimentalVersion : project.latestStableVersion}
             </button>
           )
         }

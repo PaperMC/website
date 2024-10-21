@@ -56,3 +56,10 @@ export interface BuildDownload {
 export interface ProjectsResponse {
   projects: string[];
 }
+
+export interface ProjectDescriptor {
+  name: string;
+  latestStableVersion: string;
+  latestExperimentalVersion: string | null;
+  latestVersionGroup: string;
+}
