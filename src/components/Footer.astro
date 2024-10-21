@@ -1,9 +1,7 @@
 ---
 import { Icon } from "astro-icon/components";
 
-import childProcess from "node:child_process";
-
-const hash = childProcess.execSync("git rev-parse --short HEAD").toString().trim();
+const hash = import.meta.env.GIT_COMMIT_HASH;
 ---
 
 <footer class="bg-background-dark-80 py-12 mt-8 transition hover:text-gray-200 footer">
