@@ -1,0 +1,27 @@
+---
+import type { Build } from "@/types/project";
+import HighlightedIssue from "./HighlightedIssue.astro";
+
+interface Props {
+  project: string;
+  build: Build;
+}
+
+const { project, build } = Astro.props;
+---
+
+{
+  build.changes.map((change) => (
+    <p class="flex flex-row">
+      <a
+        href={`https://github.com/PaperMC/${project}/commit/${change.commit}`}
+        class="text-blue-600 dark:text-blue-500 mr-1 font-mono"
+        rel="noreferrer"
+        target="_blank"
+      >
+        {change.commit.slice(0, 7)}
+      </a>
+      <HighlightedIssue summary={change.summary} project={project} highlightClass="text-blue-600 dark:text-blue-500" />
+    </p>
+  ))
+}

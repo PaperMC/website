@@ -1,0 +1,76 @@
+---
+import type { Build, Project, ProjectDescriptor } from "@/types/project";
+
+import { generateVersionBuildDownloadURL } from "@/utils/api";
+
+import clsx from "clsx";
+import { Icon } from "astro-icon/components";
+import Skeleton from "./Skeleton.astro";
+import Button from "./Button.astro";
+
+interface Props {
+  projectId: string;
+  project?: ProjectDescriptor;
+  build?: Build;
+  version: string;
+  stable: boolean;
+  compact?: boolean;
+  eol?: boolean;
+}
+
+const { projectId, project, build, version, stable, compact, eol } = Astro.props;
+
+// TODO: Finish this and implement some kind of dropdown for the arrow
+---
+
+<div class="relative w-max">
+  <div
+    class={clsx(
+      "rounded-lg flex flex-row transition-shadow text-white transition-color hover:shadow-lg",
+      !compact && "w-full md:w-100",
+      stable && !eol ? "bg-blue-600 hover:bg-blue-500" : "bg-red-500 hover:bg-red-400"
+    )}
+  >
+    <a class={clsx(
+        "flex flex-row flex-1 items-center",
+        compact ? "gap-2 pl-2 leading-0 py-1" : "gap-8 pl-5 py-3"
+    )}
+     href={
+        projectId &&
+        build &&
+        generateVersionBuildDownloadURL(
+            projectId,
+            version,
+            build.build,
+            build.downloads["application"].name
+        )
+     }
+     target="_blank"
+    >
+        <div>
+            <Icon name="icons/heroicons/document-download" class={clsx(compact ? "size-4" : "size-8")} />
+        </div>
+        <div class="text-left flex-1 border-r border-gray-300/50 pr-3">
+            {compact ? (
+              <span class="font-medium text-sm">Download</span>
+            ) : projectId && build ? (
+            <span class="font-medium text-lg">
+                  {project?.name ?? projectId} {version}
+                </span>
+                <p class="text-gray-100">
+                  {build && `Build #${build.build}`}
+                </p>
+            ) : (
+            <Skeleton className="w-40 mb-2" />
+            <Skeleton className="w-20 h-5" />
+            )}
+          </div>
+    </a>
+    <Button variant="filled" href="#" className="leading-0">
+        <Icon name="icons/heroicons/chevron-down" class={clsx(
+            "text-gray-200",
+            compact ? "size-4 mx-3" : "size-6 mx-5"
+        )} />
+    </Button>
+  </div>
+</div>
