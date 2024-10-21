@@ -1,5 +1,9 @@
 ---
 import { Icon } from "astro-icon/components";
+
+import childProcess from "node:child_process";
+
+const hash = childProcess.execSync("git rev-parse --short HEAD").toString().trim();
 ---
 
 <footer class="bg-background-dark-80 py-12 mt-8 transition hover:text-gray-200 footer">
@@ -86,9 +90,18 @@ import { Icon } from "astro-icon/components";
     <div class="flex flex-row items-center gap-2 border-t border-gray-600/50 mt-8 pt-10">
       <Icon name="brand/logo-marker-dark" width={undefined} class="cursor-pointer h-12" />
       <div class="flex-1"></div>
-      <span class="text-gray-300 text-sm">
-        © {new Date().getFullYear()} The PaperMC Team
-      </span>
+      <div class="flex flex-col">
+        <span class="text-gray-300 text-sm">
+          © {new Date().getFullYear()} The PaperMC Team
+        </span>
+        <span class="text-gray-300 text-sm">
+          <a class="text-blue-800 dark:text-blue-300 text-sm font-medium" href="https://github.com/PaperMC/website/"> PaperMC/website </a>
+          {" @ "}
+          <a class="text-blue-800 dark:text-blue-300 text-sm font-medium" href={`https://github.com/PaperMC/website/commit/${hash}`}>
+            {hash}
+          </a>
+        </span>
+      </div>
     </div>
   </div>
 </footer>
