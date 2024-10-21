@@ -13,6 +13,8 @@
 - ~~Auto-generate a `sitemap.xml`.~~
 - Determine which pages should be marked as `prerendered = false`
 - Investigate if there's some way we can introduce the SWR 10 minute cache on the server-side since the `prerendered = false` pages will render on-demand.
+- Allow indexing in robots.txt (Disallow: / => Allow: /)
+- Verify if the sitemap urls are correct.
 
 ### Team Page & Sponsor Page
 
