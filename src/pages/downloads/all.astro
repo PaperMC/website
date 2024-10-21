@@ -3,6 +3,7 @@ import Layout from "@/layouts/Layout.astro";
 import DownloadsTree from "@/components/DownloadsTree.astro";
 
 import { fetchProject, fetchVersionBuilds } from "@/utils/api";
+import SoftwareBuildsTable from "@/components/SoftwareBuildsTable.astro";
 
 const INITIAL_PROJECT = "paper";
 
@@ -10,6 +11,8 @@ const project = await fetchProject(INITIAL_PROJECT);
 const versions = project.versions;
 
 const builds = await fetchVersionBuilds(project.project_id, versions[versions.length - 1]);
+
+// TODO: Overhaul how we and handling this and showing the warnings
 ---
 
 <Layout title="Build explorer" description="Build explorer for PaperMC projects. Proceed with caution!" keywords={[]} canonical="/downloads/all">
@@ -38,12 +41,7 @@ const builds = await fetchVersionBuilds(project.project_id, versions[versions.le
             EOL builds are not supported. Proceed at your own risk!
           </div>
         )} -->
-        <!-- <SoftwareBuildsTable
-          project={selectedProject}
-          version={selectedVersion}
-          builds={builds?.builds ?? []}
-          eol={eol}
-        /> -->
+        <SoftwareBuildsTable project={project.project_name} version={versions[versions.length - 1]} builds={builds?.builds ?? []} />
       </div>
     </div>
   </div>
