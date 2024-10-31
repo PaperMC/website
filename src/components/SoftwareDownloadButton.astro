@@ -110,7 +110,7 @@ let dropdownOpen = false;
     dropdownContent?.classList.toggle("hidden");
     dropdownContent?.classList.toggle("block");
   });
-  document.querySelectorAll("[copy-sha-button]").forEach(button => {
+  document.querySelectorAll("[copy-sha-button]").forEach((button) => {
     button.addEventListener("click", async (event) => {
       event.preventDefault();
       const sha256 = button.closest("div")?.querySelector("span.truncate")?.textContent;
