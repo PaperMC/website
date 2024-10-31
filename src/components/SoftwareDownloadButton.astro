@@ -87,7 +87,7 @@ let dropdownOpen = false;
                       </div>
                       <div class="text-gray-700 dark:text-gray-300 text-xs inline-flex items-center w-full">
                         <span class="truncate">{download.sha256}</span>
-                        <button class="ml-2 size-6">
+                        <button class="ml-2 size-6" copy-sha-button>
                           <Icon name="icons/fontawesome/clone-icon" class="size-4" />
                         </button>
                       </div>
@@ -109,5 +109,16 @@ let dropdownOpen = false;
   dropdownArrow?.addEventListener("click", () => {
     dropdownContent?.classList.toggle("hidden");
     dropdownContent?.classList.toggle("block");
+  });
+  document.querySelectorAll("[copy-sha-button]").forEach(button => {
+    button.addEventListener("click", async (event) => {
+      event.preventDefault();
+      const sha256 = button.closest("div")?.querySelector("span.truncate")?.textContent;
+      try {
+        if (sha256 && window.isSecureContext) await navigator.clipboard.writeText(sha256);
+      } catch (err) {
+        console.error("Failed to copy: ", err);
+      }
+    });
   });
 </script>
