@@ -18,10 +18,6 @@ interface Props {
 }
 
 const { projectId, project, build, version, stable, compact, eol } = Astro.props;
-
-// TODO: Change this to work with client-side state
-let copied = "";
-let dropdownOpen = false;
 ---
 
 <div class="relative w-max">
@@ -29,7 +25,7 @@ let dropdownOpen = false;
     class={clsx(
       "rounded-lg flex flex-row transition-shadow text-white transition-color hover:shadow-lg",
       !compact && "w-full md:w-100",
-      stable && !eol ? "bg-blue-600 hover:bg-blue-500" : "bg-red-500 hover:bg-red-400"
+      stable && !eol ? "bg-blue-600 hover:bg-blue-500" : "bg-red-500 hover:bg-red-400",
     )}
   >
     <a
@@ -60,54 +56,119 @@ let dropdownOpen = false;
         }
       </div>
     </a>
-    <div class="leading-0 flex items-center justify-center cursor-pointer" id="dropdown-arrow" onclick="toggleDropdown">
-      <Icon name="icons/heroicons/chevron-down" class={clsx("text-gray-200", compact ? "size-4 mx-3" : "size-6 mx-5")} />
+    <div class="leading-0 flex items-center justify-center cursor-pointer" data-software-dropdown>
+      <Icon name="icons/heroicons/chevron-down"
+            class={clsx("text-gray-200", compact ? "size-4 mx-3" : "size-6 mx-5")} />
     </div>
     <div
-      id="dropdown-content"
       class={clsx(
-        "absolute mt-2 rounded-md bg-background-light-10 shadow-lg divide-y divide-gray-200 border border-gray-200 dark:(bg-background-dark-80 divide-gray-800 border-gray-800) z-40",
+        "absolute mt-2 rounded-md bg-background-light-10 shadow-lg divide-y divide-gray-200 border border-gray-200 dark:(bg-background-dark-80 divide-gray-800 border-gray-800) z-40 hidden",
         compact ? "origin-top-right right-0" : "origin-top-left left-0 w-full md:w-auto",
-        dropdownOpen ? "block" : "hidden"
       )}
-      style="top: 100%;"
+      data-software-dropdown-content aria-expanded="false"
     >
       {
         build &&
-          Object.entries(build.downloads).map(([name, download]) => (
-            <div>
-              {() => (
-                <div class="hover:bg-blue-100 dark:hover:bg-gray-800 transition-colors">
-                  <a href={projectId && build && generateVersionBuildDownloadURL(projectId, version, build.build, download.name)} target="_blank">
-                    <div class="px-4 py-3">
-                      <div class="font-medium">
-                        {download.name}
-                        {name === "application" && <span class="ml-2 text-xs rounded-full py-0.5 px-2 bg-yellow-200/80 text-yellow-800">Recommended</span>}
-                        {copied === download.sha256 && <span class="ml-2 text-xs rounded-full py-0.5 px-2 bg-green-200/80 text-green-800">Copied</span>}
-                      </div>
-                      <div class="text-gray-700 dark:text-gray-300 text-xs inline-flex items-center w-full">
-                        <span class="truncate">{download.sha256}</span>
-                        <button class="ml-2 size-6">
-                          <Icon name="icons/fontawesome/clone-icon" class="size-4" />
-                        </button>
-                      </div>
+        Object.entries(build.downloads).map(([name, download]) => (
+          <div>
+            {() => (
+              <div class="hover:bg-blue-100 dark:hover:bg-gray-800 transition-colors">
+                <a data-copy-software-button
+                   href={projectId && build && generateVersionBuildDownloadURL(projectId, version, build.build, download.name)}
+                   target="_blank">
+                  <div class="px-4 py-3">
+                    <div class="font-medium">
+                      {download.name}
+                      {name === "application" && <span
+                        class="ml-2 text-xs rounded-full py-0.5 px-2 bg-yellow-200/80 text-yellow-800">Recommended</span>}
+                      <span class="ml-2 text-xs rounded-full py-0.5 px-2 bg-green-200/80 text-green-800"
+                            aria-expanded="false">Copied</span>
                     </div>
-                  </a>
-                </div>
-              )}
-            </div>
-          ))
+                    <div class="text-gray-700 dark:text-gray-300 text-xs inline-flex items-center w-full">
+                      <span class="truncate">{download.sha256}</span>
+                      <button class="ml-2 size-6">
+                        <Icon name="icons/fontawesome/clone-icon" class="size-4" />
+                      </button>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            )}
+          </div>
+        ))
       }
     </div>
   </div>
 </div>
 
 <script>
-  const dropdownArrow = document.getElementById("dropdown-arrow");
-  const dropdownContent = document.getElementById("dropdown-content");
-
-  dropdownArrow?.addEventListener("click", () => {
-    dropdownContent?.classList.toggle("hidden");
-    dropdownContent?.classList.toggle("block");
+  // dropdowns
+  const allDropdowns = document.querySelectorAll("[data-software-dropdown]");
+  const allContent = document.querySelectorAll("[data-software-dropdown-content]");
+  allDropdowns.forEach((dropdown) => {
+    dropdown.addEventListener("click", () => {
+      const content = dropdown.nextElementSibling;
+      if (content?.getAttribute("aria-expanded") === "false") {
+        allContent?.forEach(other => other.setAttribute("aria-expanded", "false"));
+        content.setAttribute("aria-expanded", "true");
+      } else {
+        content?.setAttribute("aria-expanded", "false");
+      }
+    });
+  });
+  document.addEventListener("click", (event) => {
+    if (!(event.target as HTMLElement)?.closest("[data-software-dropdown-content]") && !(event.target as HTMLElement)?.closest("[data-software-dropdown]")) {
+      console.log("close", (event.target as HTMLElement)?.closest("[data-software-dropdown-content]"), event.target);
+      allContent?.forEach(content => content.setAttribute("aria-expanded", "false"));
+    }
+  });
+  // copy button
+  const copyButtons = document.querySelectorAll("[data-copy-software-button] button");
+  copyButtons.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      const url = button.parentElement?.parentElement?.parentElement?.getAttribute("href");
+      event.preventDefault();
+      if (!url) return;
+      navigator.clipboard.writeText(url);
+      const copied = button.parentElement?.previousElementSibling?.querySelector("[aria-expanded]");
+      copied?.setAttribute("aria-expanded", "true");
+      setTimeout(() => {
+        copied?.setAttribute("aria-expanded", "false");
+      }, 2000);
+    });
   });
 </script>
+
+<style>
+    /* Dropdown */
+    [data-software-dropdown-content] {
+        top: 100%;
+        transition: all 0.25s allow-discrete;
+    }
+
+    [data-software-dropdown-content][aria-expanded="true"] {
+        display: block;
+        opacity: 1;
+    }
+
+    @starting-style {
+        [data-software-dropdown-content][aria-expanded="true"] {
+            opacity: 0;
+            display: block;
+        }
+    }
+
+    [data-software-dropdown-content][aria-expanded="false"] {
+        display: none;
+        opacity: 0;
+    }
+
+    /* Copy button */
+    [data-software-dropdown-content] [aria-expanded="false"] {
+        display: none;
+    }
+
+    [data-software-dropdown-content] [aria-expanded="true"] {
+        display: inline;
+    }
+</style>
