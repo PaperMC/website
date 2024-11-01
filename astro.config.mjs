@@ -6,6 +6,8 @@ import cloudflare from "@astrojs/cloudflare";
 import { execSync } from "node:child_process";
 import sitemap from "@astrojs/sitemap";
 
+import svelte from "@astrojs/svelte";
+
 process.env.GIT_COMMIT_HASH = (process.env.GITHUB_SHA || "").trim().substring(0, 7) || fetchGitCommitHash();
 
 function fetchGitCommitHash() {
@@ -15,15 +17,11 @@ function fetchGitCommitHash() {
 // https://astro.build/config
 export default defineConfig({
   site: "https://papermc.dev",
-  integrations: [
-    icon({
-      iconDir: "src/assets",
-    }),
-    UnoCSS({
-      injectReset: true,
-    }),
-    sitemap(),
-  ],
+  integrations: [icon({
+    iconDir: "src/assets",
+  }), UnoCSS({
+    injectReset: true,
+  }), sitemap(), svelte()],
   image: {
     remotePatterns: [
       {

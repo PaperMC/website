@@ -3,7 +3,7 @@ import type { Build } from "@/types/project";
 import clsx from "clsx";
 import SoftwareBuildChanges from "./SoftwareBuildChanges.astro";
 import { formatISODateTime, formatRelativeDate } from "@/utils/time";
-import SoftwareDownloadButton from "./SoftwareDownloadButton.astro";
+import SoftwareDownloadButton from "./SoftwareDownloadButton.svelte";
 
 interface Props {
   project: string;
@@ -49,6 +49,7 @@ const { project, version, builds, eol } = Astro.props;
             </td>
             <td class="px-6 py-2 gap-1">
               <SoftwareDownloadButton
+                client:load
                 projectId={project.toLowerCase()}
                 version={version}
                 build={build}

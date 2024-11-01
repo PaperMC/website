@@ -3,7 +3,7 @@ import Layout from "@/layouts/Layout.astro";
 import { aggregateProjectInfo, fetchProject, fetchVersionBuilds } from "@/utils/api";
 import { Icon } from "astro-icon/components";
 import { clsx } from "clsx";
-import SoftwareDownloadButton from "./SoftwareDownloadButton.astro";
+import SoftwareDownloadButton from "./SoftwareDownloadButton.svelte";
 import SoftwareBuilds from "./SoftwareBuilds.astro";
 
 interface Props {
@@ -58,7 +58,7 @@ const toggleStable = () => {
         {stable ? description : (experimentalWarning ?? description)}
       </p>
       <div class="flex flex-col gap-4 mt-8">
-        <SoftwareDownloadButton projectId={id} project={project} version={version} stable={stable} eol={eol} build={latestBuild} />
+        <SoftwareDownloadButton client:load projectId={id} project={project} version={version} stable={stable} eol={eol} build={latestBuild} />
         {
           // TODO: Implement toggleStable
           project.latestExperimentalVersion && (
