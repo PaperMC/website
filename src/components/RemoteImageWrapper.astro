@@ -1,7 +1,10 @@
 ---
-import { type LocalImageProps, type RemoteImageProps, getImage, inferRemoteSize } from "astro:assets";
+import { type LocalImageProps, type RemoteImageProps, getImage, imageConfig, inferRemoteSize } from "astro:assets";
+import type { UnresolvedImageTransform } from "astro";
+import { applyResponsiveAttributes } from "node_modules/astro/dist/assets/utils/imageAttributes";
 import { AstroError, AstroErrorData } from "node_modules/astro/dist/core/errors";
 import type { HTMLAttributes } from "astro/types";
+import "node_modules/astro/components/image.css";
 
 import fallbackImage from "@/assets/brand/paper.svg";
 
@@ -14,11 +17,11 @@ if (props.alt === undefined || props.alt === null) {
 }
 
 if (typeof props.width === "string") {
-  props.width = parseInt(props.width);
+  props.width = Number.parseInt(props.width);
 }
 
 if (typeof props.height === "string") {
-  props.height = parseInt(props.height);
+  props.height = Number.parseInt(props.height);
 }
 
 const additionalAttributes: HTMLAttributes<"img"> = {};
@@ -29,7 +32,17 @@ try {
   props.src = fallbackImage;
 }
 
-const image = await getImage(props);
+const layout = props.layout ?? imageConfig.experimentalLayout ?? "none";
+const useResponsive = imageConfig.experimentalResponsiveImages && layout !== "none";
+
+if (useResponsive) {
+  // Apply defaults from imageConfig if not provided
+  props.layout ??= imageConfig.experimentalLayout;
+  props.fit ??= imageConfig.experimentalObjectFit ?? "cover";
+  props.position ??= imageConfig.experimentalObjectPosition ?? "center";
+}
+
+const image = await getImage(props as UnresolvedImageTransform);
 
 if (image.srcSet.values.length > 0) {
   additionalAttributes.srcset = image.srcSet.attribute;
@@ -38,6 +51,16 @@ if (image.srcSet.values.length > 0) {
 if (import.meta.env.DEV) {
   additionalAttributes["data-image-component"] = "true";
 }
+
+const attributes = useResponsive
+  ? applyResponsiveAttributes({
+      layout,
+      image,
+      props,
+      additionalAttributes,
+    })
+  : { ...additionalAttributes, ...image.attributes };
 ---
 
-<img src={image.src} {...additionalAttributes} {...image.attributes} />
+{/* Applying class outside of the spread prevents it from applying unnecessary astro-* classes */}
+<img src={image.src} {...attributes} class={attributes.class} />

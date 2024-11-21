@@ -19,10 +19,10 @@
   "packageManager": "pnpm@9.12.2+sha512.22721b3a11f81661ae1ec68ce1a7b879425a1ca5b991c975b074ac220b187ce56c708fe5db69f4c962c989452eee76c82877f4ee80f474cebd61ee13461b6228",
   "dependencies": {
     "@astrojs/check": "^0.9.4",
-    "@astrojs/cloudflare": "^11.1.0",
+    "@astrojs/cloudflare": "12.0.0-beta.1",
     "@astrojs/sitemap": "^3.2.1",
-    "astro": "^4.16.6",
-    "astro-icon": "^1.1.1",
+    "astro": "5.0.0-beta.10",
+    "astro-icon": "^1.1.2",
     "clsx": "^2.1.1",
     "sharp": "^0.33.5"
   },
@@ -34,5 +34,10 @@
     "prettier-plugin-astro": "^0.14.1",
     "typescript": "^5.6.3",
     "unocss": "^0.63.4"
+  },
+  "pnpm": {
+    "overrides": {
+      "vite": "6.0.0-beta.10"
+    }
   }
 }

@@ -1,15 +1,24 @@
 {
   "extends": "astro/tsconfigs/strict",
-
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig to read more about this file */
-
     /* Language and Environment */
     "jsx": "react-jsx",
     "jsxImportSource": "react",
-
     /* Modules */
     "baseUrl": ".",
-    "paths": { "@/*": ["./src/*"] }
-  }
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    },
+    "resolveJsonModule": true,
+  },
+  "include": [
+    ".astro/types.d.ts",
+    "**/*"
+  ],
+  "exclude": [
+    "dist"
+  ]
 }
