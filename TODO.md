@@ -16,7 +16,6 @@
 - Allow indexing in robots.txt (Disallow: / => Allow: /)
 - Verify if the sitemap urls are correct.
 - Change domain in astro.config.mjs
-- Remove pnpm override of vite once astro upgrades
 
 ### Team Page & Sponsor Page
 
