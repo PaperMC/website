@@ -24,13 +24,7 @@ const { version_groups } = await fetchProject("waterfall");
   <section id="facts" class="flex flex-col max-w-7xl mx-auto px-4 py-8 gap-8 md:(gap-12 py-16)">
     <div class="flex flex-col gap-6 md:(flex-row gap-8) xl:gap-24 items-center">
       <div class="w-full flex-1 rounded-xl bg-gray-900 aspect-video relative overflow-clip">
-        <Image
-          alt="Velocity"
-          src={VelocityImage}
-          sizes="(min-width: 80rem) 40rem, (min-width: 768px) 40vw, 100vw"
-          widths={[400, 800, 1200, 1600]}
-          class="w-full h-full object-cover"
-        />
+        <Image alt="Velocity" src={VelocityImage} class="w-full h-full object-cover" />
       </div>
       <div class="flex-1">
         <h2 class="font-semibold text-2xl md:text-4xl">Need an updated proxy? Use Velocity!</h2>
@@ -55,13 +49,7 @@ const { version_groups } = await fetchProject("waterfall");
         </div>
       </div>
       <div class="w-full flex-1 rounded-xl aspect-video relative overflow-clip">
-        <Image
-          alt="Community"
-          src={CommunityImage}
-          sizes="(min-width: 80rem) 40rem, (min-width: 768px) 40vw, 100vw"
-          widths={[400, 800, 1200, 1600]}
-          class="w-full h-full object-cover"
-        />
+        <Image alt="Community" src={CommunityImage} class="w-full h-full object-cover" />
       </div>
     </div>
   </section>

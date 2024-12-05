@@ -24,7 +24,11 @@ export default defineConfig({
     }),
     sitemap(),
   ],
+  experimental: {
+    responsiveImages: true,
+  },
   image: {
+    experimentalLayout: "responsive",
     remotePatterns: [
       {
         protocol: "https",
@@ -36,6 +40,6 @@ export default defineConfig({
       },
     ],
   },
-  output: "hybrid",
+  output: "static",
   adapter: cloudflare(),
 });
