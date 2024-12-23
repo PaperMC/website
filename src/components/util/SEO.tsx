@@ -33,6 +33,13 @@ const SEO = ({
       <meta property="twitter:title" content={title} />
       <meta property="twitter:description" content={description} />
       <meta property="twitter:image" content="/assets/logo/256x.png" />
+
+      <script
+        async
+        defer
+        src="https://trk.papermc.io/api/init"
+        data-website-id="25e9dbc9-fc84-4d4a-af95-82d38c56d2d3"
+      ></script>
     </Head>
   );
 };
