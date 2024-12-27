@@ -22,3 +22,21 @@ const getURL = (pageIndex: number, previousPageData: any): string | null => {
 
 export const useGitHubContributors = (): SWRInfiniteResponse<Contributor[]> =>
   useSWRInfinite(getURL, fetcher, swrNoAutoUpdateSettings);
+
+export const getProjectRepository = (
+  project: string,
+  version: string,
+): string => {
+  if (project !== "paper") return `https://github.com/PaperMC/${project}`;
+
+  const baseVersion = [21, 4]; // 1.21.4 is after the hardfork
+  const isBelowBaseVersion = version
+    .replace(/^1\./, "")
+    .split(".")
+    .map(Number)
+    .some((v, i) => v < (baseVersion[i] || 0));
+
+  return isBelowBaseVersion
+    ? "https://github.com/PaperMC/Paper-Archive"
+    : "https://github.com/PaperMC/Paper";
+};
