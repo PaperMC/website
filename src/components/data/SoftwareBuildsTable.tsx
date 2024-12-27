@@ -49,7 +49,11 @@ const SoftwareBuildsTable = ({
                 </span>
               </td>
               <td>
-                <SoftwareBuildChanges project={project} build={build} />
+                <SoftwareBuildChanges
+                  project={project}
+                  build={build}
+                  version={version}
+                />
               </td>
               <td
                 className={"whitespace-nowrap"}

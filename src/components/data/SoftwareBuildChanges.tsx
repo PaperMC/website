@@ -1,23 +1,26 @@
 import type { ReactElement } from "react";
 import { Fragment } from "react";
 
+import { getProjectRepository } from "@/lib/service/github";
 import type { Build } from "@/lib/service/types";
 import styles from "@/styles/components/data/SoftwareBuildChanges.module.css";
 
 export interface SoftwareBuildChangesProps {
   project: string;
   build: Build;
+  version: string;
 }
 
 const SoftwareBuildChanges = ({
   project,
   build,
+  version,
 }: SoftwareBuildChangesProps): ReactElement => (
   <>
     {build.changes.map((change) => (
       <p key={change.commit}>
         <a
-          href={`https://github.com/PaperMC/${project}/commit/${change.commit}`}
+          href={`${getProjectRepository(project, version)}/commit/${change.commit}`}
           className={styles.commit}
           rel="noreferrer"
           target="_blank"
