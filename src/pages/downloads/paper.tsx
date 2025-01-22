@@ -33,6 +33,10 @@ const PaperDownloads = ({ project }: ProjectProps): ReactElement => {
   );
 };
 
+PaperDownloads.softwareProps = {
+  github: "https://github.com/PaperMC/Paper",
+};
+
 export default PaperDownloads;
 
 export const getStaticProps = getProjectProps("paper");

@@ -32,6 +32,10 @@ const VelocityDownloads = ({ project }: ProjectProps): ReactElement => {
   );
 };
 
+VelocityDownloads.softwareProps = {
+  github: "https://github.com/PaperMC/Velocity",
+};
+
 export default VelocityDownloads;
 
 export const getStaticProps = getProjectProps("velocity");
