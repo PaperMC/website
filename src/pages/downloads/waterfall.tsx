@@ -54,6 +54,10 @@ const WaterfallDownloads = ({ project }: ProjectProps): ReactElement => {
   );
 };
 
+WaterfallDownloads.softwareProps = {
+  github: "https://github.com/PaperMC/Waterfall",
+};
+
 export default WaterfallDownloads;
 
 export const getStaticProps = getProjectProps("waterfall");
