@@ -233,11 +233,9 @@ const CommunityGuidelines: NextPage = () => (
       <p>
         If someone is violating those feel free to use the <code>@mods</code>{" "}
         ping on Discord to notify the moderation team. You can also contact the
-        team privately using the <code>/modmail</code> command or sending a
-        direct message to our bot <code>Pencil#7974 (811281085723705395)</code>,
-        however this does not alert us in the same way that the{" "}
-        <code>@mods</code> ping does, so don&apos;t use it for time sensitive
-        issues.
+        team privately using the <code>/modmail</code> command, however this does
+        not alert us in the same way that the <code>@mods</code> ping does,{" "}
+        so don&apos;t use it for time sensitive issues.
       </p>
     </section>
     <section
@@ -310,22 +308,31 @@ const CommunityGuidelines: NextPage = () => (
           <code>#paper-dev</code>
         </li>
         <li>
+          <code>#folia-help</code>
+        </li>
+        <li>
+          <code>#folia-dev</code>
+        </li>
+        <li>
           <code>#velocity-help</code>
         </li>
         <li>
           <code>#velocity-dev</code>
         </li>
         <li>
-          <code>#waterfall-help</code>
+          <code>#adventure-help</code>
         </li>
         <li>
-          <code>#waterfall-dev</code>
+          <code>#adventure-platform-help</code>
         </li>
         <li>
-          <code>#folia-help</code>
+          <code>#adventure-contrib</code>
         </li>
         <li>
-          <code>#folia-dev</code>
+          <code>#hangar-help</code>
+        </li>
+        <li>
+          <code>#hangar-contrib</code>
         </li>
       </ul>
     </section>
@@ -336,9 +343,10 @@ const CommunityGuidelines: NextPage = () => (
       <h2 className="text-2xl font-medium mb-4">Support Channels</h2>
       <p>
         Our support channels <code>#paper-help</code>,{" "}
-        <code>#velocity-help</code>, <code>#waterfall-help</code> and{" "}
-        <code>#folia-help</code> are there for people who need support using our
-        software. While we are very happy that so many members of the community
+        <code>#folia-help</code>, <code>#velocity-help</code>,{" "}
+        <code>#adventure-help</code>, <code>#adventure-platform-help</code>,{" "}
+        and <code>#hangar-help</code> are there for people who need support using
+        our software. While we are very happy that so many members of the community
         actively support there and answer questions, please make sure to follow
         our guidelines there as well. Many people that go there to ask questions
         are new to Minecraft servers and to the community itself. We should be
@@ -389,7 +397,7 @@ const CommunityGuidelines: NextPage = () => (
       className="px-4 py-4 max-w-7xl mx-auto leading-7"
     >
       <h2 className="text-2xl font-medium mb-4">
-        Last Updated <code>2023-08-19</code>
+        Last Updated <code>2025-03-31</code>
       </h2>
       <p>
         This document is licensed under{" "}
