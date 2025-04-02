@@ -20,15 +20,12 @@ const hangarProjects = await fetchHangarFoliaProjects();
   keywords={["papermc", "folia", "server", "minecraft", "performance", "regionized", "multithreading", "fork"]}
   canonical="/software/folia"
 >
-  <SoftwareHeader
-    id="folia"
-    name="Folia"
-    versionGroup={version_groups[version_groups.length - 1]}
-    icon="brand/folia"
-    description="Folia is a new fork of Paper that adds regionized multithreading to the server. Access to Folia builds isn't currently available. To build Folia, you need to compile from source following Paper's standard compilation guide."
-    github="https://github.com/PaperMC/Folia"
-  >
-    What is Folia?
+  <SoftwareHeader id="folia" name="Folia" versionGroup={version_groups[version_groups.length - 1]} icon="brand/folia" github="https://github.com/PaperMC/Folia">
+    <span slot="header">What is Folia?</span>
+    <span slot="description"
+      >Folia is a new fork of Paper that adds regionized multithreading to the server. Access to Folia builds isn't currently available. To build Folia, you
+      need to compile from source following Paper's standard compilation guide.</span
+    >
   </SoftwareHeader>
 
   <section id="why" class="w-full pt-10 pb-5 bg-primary-200 dark:bg-background-dark-80">

@@ -22,14 +22,12 @@ const hangarProjects = await fetchHangarProjects("velocity");
   keywords={["velocity", "proxy", "minecraft", "performance", "bungeecord"]}
   canonical="/software/velocity"
 >
-  <SoftwareHeader
-    id="velocity"
-    name="Velocity"
-    versionGroup={version_groups[version_groups.length - 1]}
-    icon="brand/velocity"
-    description="Velocity is the modern, high-performance proxy. Designed with performance and stability in mind, it’s a full alternative to Waterfall with its own plugin ecosystem."
-  >
-    Next generation speed and capability
+  <SoftwareHeader id="velocity" name="Velocity" versionGroup={version_groups[version_groups.length - 1]} icon="brand/velocity">
+    <span slot="header">Next generation speed and capability</span>
+    <span slot="description"
+      >Velocity is the modern, high-performance proxy. Designed with performance and stability in mind, it’s a full alternative to Waterfall with its own plugin
+      ecosystem.</span
+    >
   </SoftwareHeader>
   <section id="why" class="w-full pt-10 pb-5 bg-primary-200 dark:bg-background-dark-80">
     <div class="max-w-7xl mx-auto">

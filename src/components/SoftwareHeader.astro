@@ -7,12 +7,11 @@ interface Props {
   name: string;
   versionGroup: string;
   icon?: string;
-  description: string;
   github?: string;
   eol?: boolean;
 }
 
-const { id, name, versionGroup, icon, description, github, eol } = Astro.props;
+const { id, name, versionGroup, icon, github, eol } = Astro.props;
 ---
 
 <header class="max-w-7xl flex flex-row flex-wrap mx-auto px-4 pt-32 pb-26 lg:(pt-48 pb-46) gap-16">
@@ -34,9 +33,9 @@ const { id, name, versionGroup, icon, description, github, eol } = Astro.props;
       </h1>
     </div>
     <h2 class="font-medium leading-normal lg:(text-5xl leading-normal) text-4xl">
-      <slot />
+      <slot name="header" />
     </h2>
-    <p class="text-xl mt-4">{description}</p>
+    <p class="text-xl mt-4"><slot name="description" /></p>
     <div class="flex flex-row gap-4 mt-8">
       <Button variant="filled" href={github ?? `/downloads/${id}`} external={Boolean(github)} className={eol ? "!bg-red-500 !hover:bg-red-400" : ""}>
         {github ? "GitHub" : "Downloads"}

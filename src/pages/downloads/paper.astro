@@ -1,13 +1,18 @@
 ---
+import Layout from "@/layouts/Layout.astro";
 import SoftwareDownload from "../../components/SoftwareDownload.astro";
 ---
 
-<SoftwareDownload
-  id="paper"
+<Layout
   title="Paper"
   description="Download Paper, our Minecraft server software offering unrivaled performance and stability."
-  experimentalWarning="Download experimental builds of Paper, our Minecraft server software offering unrivaled performance and stability. Proceed with caution!"
   keywords={["papermc", "minecraft", "performance", "paper", "downloads", "jar"]}
   canonical="/downloads/paper"
-  icon="brand/paper"
-/>
+>
+  <SoftwareDownload id="paper" icon="brand/paper">
+    <span slot="description">Download Paper, our Minecraft server software offering unrivaled performance and stability.</span>
+    <span slot="experimental-warning">
+      Download experimental builds of Paper, our Minecraft server software offering unrivaled performance and stability. Proceed with caution!
+    </span>
+  </SoftwareDownload>
+</Layout>
