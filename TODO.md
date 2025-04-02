@@ -29,7 +29,7 @@
 
 ### RemoteImageWrapper
 
-- Make any necessary adjustments.
+- ~~Make any necessary adjustments.~~ (OK for now. Thought might not be needed with Astro Image updates. For discussion.)
 
 ### Software Pages
 
