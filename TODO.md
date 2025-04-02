@@ -37,7 +37,7 @@
 
 ### Software Header
 
-- Utilize named slots since Waterfall takes in a component for the header and description.
+- ~~Utilize named slots since Waterfall takes in a component for the header and description.~~
 
 ### Software Download
 

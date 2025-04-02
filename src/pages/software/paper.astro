@@ -22,16 +22,11 @@ const hangarProjects = await fetchHangarProjects("paper");
   keywords={["papermc", "paper", "server", "minecraft", "performance", "spigot", "fork"]}
   canonical="/software/paper"
 >
-  <SoftwareHeader
-    id="paper"
-    name="Paper"
-    versionGroup={version_groups[version_groups.length - 1]}
-    icon="brand/paper"
-    description="Paper is a Minecraft game server based on Spigot, designed to greatly improve performance and offer more advanced features and API."
-  >
-    The blazing fast
-    <br />
-    <span class="text-blue-500">Minecraft server</span>
+  <SoftwareHeader id="paper" name="Paper" versionGroup={version_groups[version_groups.length - 1]} icon="brand/paper">
+    <p slot="header">The blazing fast<br /><span class="text-blue-500">Minecraft server</span></p>
+    <p slot="description">
+      Paper is a Minecraft game server based on Spigot, designed to greatly improve performance and offer more advanced features and API.
+    </p>
   </SoftwareHeader>
   <section id="why" class="w-full pt-10 pb-5 bg-primary-200 dark:bg-background-dark-80">
     <div class="max-w-7xl mx-auto">
