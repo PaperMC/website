@@ -29,7 +29,7 @@
 
 ### RemoteImageWrapper
 
-- Make any necessary adjustments.
+- ~~Make any necessary adjustments.~~ (OK for now. Thought might not be needed with Astro Image updates. For discussion.)
 
 ### Software Pages
 
@@ -37,12 +37,12 @@
 
 ### Software Header
 
-- Utilize named slots since Waterfall takes in a component for the header and description.
+- ~~Utilize named slots since Waterfall takes in a component for the header and description.~~
 
 ### Software Download
 
 - ~~project icons~~ (should be fixed - Glare)
-- waterfall eol message (similar problem as the software header)
+- ~~waterfall eol message (similar problem as the software header)~~
 - actual logic, download button, etc
 - fix the added spaces before and after parentheses in the build changes
 - fix "16 hours ago" turning into "16 hours (newline) ago"

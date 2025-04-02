@@ -1,14 +1,21 @@
 ---
+import Layout from "@/layouts/Layout.astro";
 import SoftwareDownload from "../../components/SoftwareDownload.astro";
 ---
 
-<!-- todo eol description -->
-<SoftwareDownload
-  id="waterfall"
+<Layout
   title="Waterfall Downloads"
   description="Download Waterfall, our Bungee-compatible upgrade, offering better performance and full compatibility."
   keywords={["papermc", "minecraft", "performance", "bungeecord", "waterfall", "downloads", "jar"]}
   canonical="/downloads/waterfall"
-  eol={true}
-  icon="brand/waterfall"
-/>
+>
+  <SoftwareDownload id="waterfall" icon="brand/waterfall" eol={true}>
+    <span slot="description">
+      Waterfall has reached end of life. We recommend you transition to <a href="/software/velocity" class="text-blue-500 hover:text-blue-400 hover:underline"
+        >Velocity</a
+      >. For more information see the <a href="https://forums.papermc.io/threads/1088/" class="text-blue-500 hover:text-blue-400 hover:underline"
+        >announcement</a
+      >. Download unsupported, archived Waterfall builds below.
+    </span>
+  </SoftwareDownload>
+</Layout>
