@@ -1,12 +1,15 @@
 ---
+import Layout from "@/layouts/Layout.astro";
 import SoftwareDownload from "../../components/SoftwareDownload.astro";
 ---
 
-<SoftwareDownload
-  id="velocity"
+<Layout
   title="Velocity Downloads"
   description="Download Velocity, our high-performance Minecraft proxy."
   keywords={["papermc", "minecraft", "performance", "velocity", "downloads", "jar"]}
   canonical="/downloads/velocity"
-  icon="brand/velocity"
-/>
+>
+  <SoftwareDownload id="velocity" icon="brand/velocity">
+    <slot name="description">Download Velocity, our high-performance Minecraft proxy.</slot>
+  </SoftwareDownload>
+</Layout>
