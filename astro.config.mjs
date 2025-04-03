@@ -20,6 +20,10 @@ export default defineConfig({
       iconDir: "src/assets",
     }),
     UnoCSS({
+      injectReset: true
+    }),
+    UnoCSS({
+      mode: 'shadow-dom',
       injectReset: true,
     }),
     sitemap(),
