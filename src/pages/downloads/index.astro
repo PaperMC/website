@@ -1,5 +1,5 @@
 ---
-import SoftwarePreview from "@/components/SoftwarePreview.astro";
+import SoftwarePreview, { SoftwarePreviewType } from "@/components/SoftwarePreview.astro";
 import Layout from "@/layouts/Layout.astro";
 ---
 
@@ -21,13 +21,14 @@ import Layout from "@/layouts/Layout.astro";
         name="Paper"
         icon="brand/paper"
         description="Paper is a Minecraft game server, designed to greatly improve performance and offer more advanced features and API."
-        download
+        type={SoftwarePreviewType.Download}
       />
       <SoftwarePreview
         id="folia"
         name="Folia"
         icon="brand/folia"
         description="Folia is a new fork of Paper that adds regionized multithreading to the server. Access to Folia builds isn't currently available."
+        type={SoftwarePreviewType.Download}
       />
     </div>
     <h2 class="text-2xl text-center font-medium mt-4">Proxy Software</h2>
@@ -37,14 +38,14 @@ import Layout from "@/layouts/Layout.astro";
         name="Velocity"
         icon="brand/velocity"
         description="Velocity is the modern, high-performance Minecraft server proxy."
-        download
+        type={SoftwarePreviewType.Download}
       />
       <SoftwarePreview
         id="waterfall"
         name="Waterfall"
         icon="brand/waterfall"
         description="Waterfall is a legacy drop-in BungeeCord replacement with some additional improvements to performance and stability."
-        download
+        type={SoftwarePreviewType.Download}
         eol
       />
     </div>
