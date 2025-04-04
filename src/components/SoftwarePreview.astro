@@ -44,13 +44,11 @@ const { id, name, icon, description, type, eol } = Astro.props;
     async connectedCallback() {
       const { software, previewType } = this.dataset;
       if (!software || !previewType) {
-        console.error("REEE");
         return;
       }
 
       const anchor = this.querySelector("a");
       if (!anchor) {
-        console.error("REE2");
         return;
       }
 
