@@ -7,9 +7,6 @@ import VelocityImage from "@/assets/images/velocity.png";
 import CommunityImage from "@/assets/images/community.png";
 
 import { Image } from "astro:assets";
-import { fetchProject } from "@/utils/api";
-
-const { version_groups } = await fetchProject("waterfall");
 ---
 
 <Layout
@@ -18,7 +15,7 @@ const { version_groups } = await fetchProject("waterfall");
   keywords={["waterfall", "proxy", "minecraft", "performance", "bungeecord", "fork"]}
   canonical="/software/waterfall"
 >
-  <SoftwareHeader id="waterfall" name="Waterfall" versionGroup={version_groups[version_groups.length - 1]} icon="brand/waterfall" eol>
+  <SoftwareHeader id="waterfall" name="Waterfall" icon="brand/waterfall" eol>
     <span slot="header">Waterfall has reached end of life</span>
     <span slot="description"
       >We recommend you transition to <a href="/software/velocity" class="text-blue-500 hover:text-blue-400 hover:underline">Velocity</a>. For more information

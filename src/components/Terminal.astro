@@ -1,6 +1,5 @@
 ---
-import { fetchProject } from "../utils/api";
-const project = await fetchProject("paper");
+
 ---
 
 <div class="max-h-82 w-120 h-283 rounded-lg bg-gray-800">
@@ -25,21 +24,55 @@ const project = await fetchProject("paper");
   </div>
 </div>
 
-<script defer define:vars={{ versions: project.versions }}>
-  start();
+<template id="info-log-tmpl">
+  <style>/* @unocss-placeholder */</style>
+  <div>
+    <span class="text-amber-400">[<slot name="date" is:inline></slot> INFO]</span>: <slot name="message" is:inline></slot>
+  </div>
+</template>
+
+<script>
+  import { fetchProject } from "@/utils/api";
+
+  customElements.define("info-log", class extends HTMLElement {
+    constructor() {
+      super();
+
+      const template = (document.getElementById("info-log-tmpl") as HTMLTemplateElement).content;
+
+      const shadowRoot = this.attachShadow({ mode: "open" });
+      shadowRoot.appendChild(template.cloneNode(true));
+    }
+  })
 
   async function start() {
-    const getNaturalDelay = () => Math.floor(Math.random() * 80) + 40;
-    const formatISOFullTime = (date) => {
-      const hour = String(date.getHours()).padStart(2, "0");
-      const minute = String(date.getMinutes()).padStart(2, "0");
-      const second = String(date.getSeconds()).padStart(2, "0");
-      return `${hour}:${minute}:${second}`;
-    };
-    const sleep = async (ms) => new Promise((r) => setTimeout(r, ms));
+    const { versions } = await fetchProject("paper");
 
-    function InfoLog({ children }) {
-      return `<div><span class="text-amber-400">[${formatISOFullTime(new Date())} INFO]</span>: ${children}</div>`;
+    const getNaturalDelay = () => Math.floor(Math.random() * 80) + 40;
+
+    const sleep = async (ms: number) => new Promise((r) => setTimeout(r, ms));
+
+    function appendInfoLog(element: HTMLElement, message: string) {
+      const formatISOFullTime = (date: Date) => {
+        const hour = String(date.getHours()).padStart(2, "0");
+        const minute = String(date.getMinutes()).padStart(2, "0");
+        const second = String(date.getSeconds()).padStart(2, "0");
+        return `${hour}:${minute}:${second}`;
+      };
+
+      const infoLog = document.createElement("info-log");
+
+      const dateSpan = document.createElement("span");
+      dateSpan.setAttribute("slot", "date");
+      dateSpan.textContent = formatISOFullTime(new Date());
+      infoLog.appendChild(dateSpan);
+
+      const messageSpan = document.createElement("span");
+      messageSpan.setAttribute("slot", "message");
+      messageSpan.innerHTML = message;
+      infoLog.appendChild(messageSpan);
+
+      element.appendChild(infoLog);
     }
 
     const outputLines = [
@@ -55,39 +88,40 @@ const project = await fetchProject("paper");
     ];
 
     for (const char of "java") {
-      document.getElementById("cmd").innerHTML += char;
+      document.getElementById("cmd")!.innerHTML += char;
       await sleep(getNaturalDelay());
     }
 
     for (const char of " -jar paper.jar") {
-      document.getElementById("args").innerHTML += char;
+      document.getElementById("args")!.innerHTML += char;
       await sleep(getNaturalDelay());
     }
 
     for (let i = 0; i < 3; i++) {
-      document.getElementById("loading").innerHTML = "Loading libraries, please wait" + ".".repeat(i + 1);
+      document.getElementById("loading")!.innerHTML = "Loading libraries, please wait" + ".".repeat(i + 1);
       await sleep(500);
     }
 
     for (let i = 0; i < outputLines.length; i++) {
-      document.getElementById("output").innerHTML += InfoLog({ children: outputLines[i] }) + "\n";
+      appendInfoLog(document.getElementById("output")!, outputLines[i]);
       await sleep(getNaturalDelay());
     }
 
-    document.getElementById("success").innerHTML = InfoLog({
-      children: '<span class="text-green-400">Done (2.274s)! For help, type "help"</span>',
-    });
+    appendInfoLog(document.getElementById("success")!, '<span class="text-green-400">Done (2.274s)! For help, type "help"</span>');
 
-    document.getElementById("input").innerHTML = `<span>> </span>
+    document.getElementById("input")!.innerHTML = `<span>> </span>
            <input id="terminal-input" class="w-105 bg-transparent border-none outline-none">
           `;
 
-    document.getElementById("input").addEventListener("keydown", (event) => {
+    document.getElementById("input")!.addEventListener("keydown", (event) => {
       if (event.key !== "Enter") {
         return;
       }
+
+      const target = event.target as HTMLInputElement;
+
       let currentCmdOutput = "Redirecting...";
-      switch (event.target.value) {
+      switch (target.value) {
         case "help":
           currentCmdOutput = "Existing commands: help, downloads, plugins, docs, forums, team, contribute";
           break;
@@ -112,8 +146,13 @@ const project = await fetchProject("paper");
         default:
           currentCmdOutput = 'Unknown command. Type "help" for help.';
       }
-      document.getElementById("cmdOutput").innerHTML += `> ${event.target.value}\n` + InfoLog({ children: currentCmdOutput });
-      event.target.value = "";
+
+      document.getElementById("cmdOutput")!.innerHTML += `> ${target.value}\n`;
+      appendInfoLog(document.getElementById("cmdOutput")!, currentCmdOutput);
+
+      target.value = "";
     });
   }
+
+  await start();
 </script>

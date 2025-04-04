@@ -3,6 +3,6 @@ Disallow: /downloads/all
 Disallow: /repository/
 Disallow: /repo/
 Disallow: /api/
-Disallow: /
+Allow: /
 
 Sitemap: https://papermc.dev/sitemap-index.xml
