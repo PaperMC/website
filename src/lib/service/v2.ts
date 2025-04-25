@@ -1,7 +1,7 @@
 import type { SWRResponse } from "swr";
 import useSWR from "swr";
 
-import { swrNoAutoUpdateSettings } from "./api";
+import { cachedFetcher, enhancedFetcher, swrNoAutoUpdateSettings } from "./api";
 
 import type {
   Project,
@@ -12,14 +12,14 @@ import type {
 
 const API_ENDPOINT = "https://api.papermc.io/v2";
 
-const fetcher = (path: string) =>
-  fetch(API_ENDPOINT + path).then((res) => res.json());
+// Enhanced fetcher specific to PaperMC API
+const apiFetcher = (path: string) => cachedFetcher(API_ENDPOINT + path);
 
 export const useProjects = (): SWRResponse<ProjectsResponse> =>
-  useSWR("/projects", fetcher, swrNoAutoUpdateSettings);
+  useSWR("/projects", apiFetcher, swrNoAutoUpdateSettings);
 
 export const useProject = (project: string): SWRResponse<Project> =>
-  useSWR(`/projects/${project}`, fetcher, swrNoAutoUpdateSettings);
+  useSWR(`/projects/${project}`, apiFetcher, swrNoAutoUpdateSettings);
 
 export const useVersionBuilds = (
   project: string,
@@ -27,7 +27,7 @@ export const useVersionBuilds = (
 ): SWRResponse<VersionBuilds> =>
   useSWR(
     `/projects/${project}/versions/${version}/builds`,
-    fetcher,
+    apiFetcher,
     swrNoAutoUpdateSettings,
   );
 
@@ -37,12 +37,19 @@ export const useVersionFamilyBuilds = (
 ): SWRResponse<VersionFamilyBuilds> =>
   useSWR(
     `/projects/${project}/version_group/${family}/builds`,
-    fetcher,
+    apiFetcher,
     swrNoAutoUpdateSettings,
   );
 
-// TODO: Better error handling?
-const getJSON = <T>(path: string): Promise<T> => fetcher(path);
+// Improved direct API calls with error handling
+const getJSON = async <T>(path: string): Promise<T> => {
+  try {
+    return await enhancedFetcher(API_ENDPOINT + path);
+  } catch (error) {
+    console.error(`Error fetching from PaperMC API (${path}):`, error);
+    throw error;
+  }
+};
 
 export const getProject = (project: string): Promise<Project> =>
   getJSON(`/projects/${project}`);

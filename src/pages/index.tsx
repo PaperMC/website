@@ -89,6 +89,7 @@ const Home: NextPage<ProjectProps> = ({ project }) => {
               fill
               sizes="(min-width: 80rem) 40rem, (min-width: 768px) 40vw, 100vw"
               className="object-cover"
+              priority={true}
             />
           </div>
           <div className="flex-1">
@@ -122,6 +123,7 @@ const Home: NextPage<ProjectProps> = ({ project }) => {
               fill
               sizes="(min-width: 80rem) 40rem, (min-width: 768px) 40vw, 100vw"
               className="object-cover"
+              priority={true}
             />
           </div>
           <div className="flex-1">
@@ -153,6 +155,7 @@ const Home: NextPage<ProjectProps> = ({ project }) => {
               fill
               sizes="(min-width: 80rem) 40rem, (min-width: 768px) 40vw, 100vw"
               className="object-cover"
+              priority={true}
             />
           </div>
           <div className="flex-1">
