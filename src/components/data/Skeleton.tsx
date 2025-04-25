@@ -1,5 +1,4 @@
-import clsx from "clsx";
-import type { ReactElement } from "react";
+import React, { ReactElement } from 'react';
 
 export interface SkeletonProps {
   className?: string;
@@ -7,10 +6,8 @@ export interface SkeletonProps {
 
 const Skeleton = ({ className }: SkeletonProps): ReactElement => (
   <div
-    className={clsx(
-      "rounded-md bg-gray-400/40 animate-pulse h-6 w-auto",
-      className,
-    )}
+    className={`animate-pulse bg-gray-300 dark:bg-gray-700 ${className || ''}`}
+    aria-hidden="true"
   />
 );
 

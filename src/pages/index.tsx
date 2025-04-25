@@ -1,15 +1,16 @@
 import type { NextPage } from "next";
-import Image from "next/image";
 
 import PaperIcon from "@/assets/brand/paper.svg";
 import VelocityIcon from "@/assets/brand/velocity.svg";
 import HomeImage1 from "@/assets/images/home-1.webp";
 import HomeImage2 from "@/assets/images/home-2.webp";
 import HomeImage3 from "@/assets/images/home-3.webp";
-import Skeleton from "@/components/data/Skeleton";
+import LoadingStats from "@/components/data/LoadingStats";
 import SoftwarePreview from "@/components/data/SoftwarePreview";
 import { Terminal } from "@/components/data/Terminal";
 import Button from "@/components/input/Button";
+import ErrorBoundary from "@/components/util/ErrorBoundary";
+import OptimizedImage from "@/components/util/OptimizedImage";
 import SEO from "@/components/util/SEO";
 import { getProjectProps, type ProjectProps } from "@/lib/context/downloads";
 import { useBstatsPlayers } from "@/lib/service/bstats";
@@ -22,7 +23,7 @@ const Home: NextPage<ProjectProps> = ({ project }) => {
       <SEO
         title="Home"
         description="PaperMC is a Minecraft software organization focusing on improving
-          the game’s ecosystem with faster and more secure software."
+          the game's ecosystem with faster and more secure software."
         keywords={["papermc", "paper", "velocity", "minecraft", "performance"]}
         canonical="/"
       />
@@ -33,7 +34,7 @@ const Home: NextPage<ProjectProps> = ({ project }) => {
             <span className="text-blue-500">Built to perform.</span>
           </h1>
           <p className="text-xl mt-4">
-            PaperMC improves Minecraft’s ecosystem with fast, secure software
+            PaperMC improves Minecraft's ecosystem with fast, secure software
             and an expanding plugin API, providing quick releases and helpful
             support as the most widely used, performant, and stable software
             available.
@@ -82,14 +83,14 @@ const Home: NextPage<ProjectProps> = ({ project }) => {
       >
         <div className="flex flex-col gap-6 md:(flex-row-reverse gap-8) xl:gap-24 items-center">
           <div className="w-full flex-1 rounded-xl bg-gray-900 aspect-video relative overflow-clip">
-            <Image
-              alt=""
+            <OptimizedImage
+              alt="Plugin ecosystem illustration"
               src={HomeImage3}
               placeholder="blur"
               fill
               sizes="(min-width: 80rem) 40rem, (min-width: 768px) 40vw, 100vw"
-              className="object-cover"
-              priority={true}
+              className="object-cover" 
+              isPriority={true}
             />
           </div>
           <div className="flex-1">
@@ -116,30 +117,34 @@ const Home: NextPage<ProjectProps> = ({ project }) => {
         </div>
         <div className="flex flex-col gap-6 md:(flex-row gap-8) xl:gap-24 items-center">
           <div className="w-full flex-1 rounded-xl bg-gray-900 aspect-video relative overflow-clip">
-            <Image
-              alt=""
+            <OptimizedImage
+              alt="Minecraft server illustration"
               src={HomeImage1}
               placeholder="blur"
               fill
               sizes="(min-width: 80rem) 40rem, (min-width: 768px) 40vw, 100vw"
               className="object-cover"
-              priority={true}
+              isPriority={true}
             />
           </div>
           <div className="flex-1">
             <h2 className="font-semibold text-2xl md:text-4xl break-all">
               Powering&nbsp;
-              {playerData ? (
-                <span className="text-blue-500">
-                  {Math.round(playerData[0][1] / 1000)}k+
-                </span>
-              ) : (
-                <Skeleton className="w-30 h-6 inline-block" />
-              )}
+              <ErrorBoundary>
+                <LoadingStats 
+                  isLoading={!playerData} 
+                  width="w-30"
+                  retryFn={() => window.location.reload()}
+                >
+                  <span className="text-blue-500">
+                    {Math.round((playerData?.[0]?.[1] || 0) / 1000)}k+
+                  </span>
+                </LoadingStats>
+              </ErrorBoundary>
               &nbsp;players
             </h2>
             <p className="md:(mt-6 text-xl) text-gray-900 dark:text-gray-100 mt-3">
-              PaperMC’s software powers hundreds of thousands of Minecraft
+              PaperMC's software powers hundreds of thousands of Minecraft
               servers on a daily basis, from small single-servers setups to
               massive Minecraft server networks. Designed with utility and
               performance in mind, it can handle whatever you throw at it.
@@ -148,14 +153,14 @@ const Home: NextPage<ProjectProps> = ({ project }) => {
         </div>
         <div className="flex flex-col gap-6 md:(flex-row-reverse gap-8) xl:gap-24 items-center">
           <div className="w-full flex-1 rounded-xl bg-gray-900 aspect-video relative overflow-clip">
-            <Image
-              alt=""
+            <OptimizedImage
+              alt="Security and stability illustration"
               src={HomeImage2}
               placeholder="blur"
               fill
               sizes="(min-width: 80rem) 40rem, (min-width: 768px) 40vw, 100vw"
               className="object-cover"
-              priority={true}
+              isPriority={true}
             />
           </div>
           <div className="flex-1">

@@ -74,12 +74,13 @@ const FoliaHome = ({ project }: HangarProjectProps): ReactElement => {
         <div className="flex flex-col gap-6 md:(flex-row gap-8) xl:gap-24 items-center">
           <div className="w-full flex-1 rounded-xl aspect-video relative overflow-clip">
             <Image
-              alt=""
+              alt="Folia plugin ecosystem"
               src={HomeImage3}
               placeholder="blur"
               fill
               sizes="(min-width: 80rem) 40rem, (min-width: 768px) 40vw, 100vw"
               className="object-cover"
+              loading="eager"
             />
           </div>
           <div className="flex-1">

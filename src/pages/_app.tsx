@@ -6,19 +6,50 @@ import "@fontsource/poppins/700.css";
 import "windi.css";
 import "@/styles/globals.css";
 
+import { useEffect, useState } from "react";
 import type { AppProps } from "next/app";
+import dynamic from "next/dynamic";
+import Head from "next/head";
 
-import Footer from "@/components/layout/Footer";
-import NavBar from "@/components/layout/NavBar";
+import ErrorBoundary from "@/components/util/ErrorBoundary";
 
-const MyApp = ({ Component, pageProps, router }: AppProps) => (
-  <>
-    <NavBar component={Component} />
-    <main className="flex-1">
-      <Component {...pageProps} />
-    </main>
-    {router.route !== "/downloads/all" && <Footer />}
-  </>
-);
+// Dynamically load components that are not needed for initial paint
+const NavBar = dynamic(() => import("@/components/layout/NavBar"), { 
+  ssr: true,
+});
+
+const Footer = dynamic(() => import("@/components/layout/Footer"), { 
+  ssr: true,
+});
+
+/**
+ * Main application component handling layouts and error boundaries
+ */
+const MyApp = ({ Component, pageProps, router }: AppProps) => {
+  const [isClient, setIsClient] = useState(false);
+
+  // Used to detect if we're running on client-side
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  return (
+    <>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
+      
+      <ErrorBoundary>
+        <NavBar component={Component} />
+        <main className="flex-1">
+          <ErrorBoundary>
+            <Component {...pageProps} />
+          </ErrorBoundary>
+        </main>
+        {router.route !== "/downloads/all" && <Footer />}
+      </ErrorBoundary>
+    </>
+  );
+};
 
 export default MyApp;

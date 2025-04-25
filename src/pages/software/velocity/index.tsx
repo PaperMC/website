@@ -75,12 +75,13 @@ const VelocityHome = ({
         <div className="flex flex-col gap-6 md:(flex-row gap-8) xl:gap-24 items-center">
           <div className="w-full flex-1 rounded-xl aspect-video relative overflow-clip">
             <Image
-              alt=""
+              alt="Velocity plugin ecosystem"
               src={HomeImage3}
               placeholder="blur"
               fill
               sizes="(min-width: 80rem) 40rem, (min-width: 768px) 40vw, 100vw"
               className="object-cover"
+              loading="eager"
             />
           </div>
           <div className="flex-1">
@@ -111,12 +112,13 @@ const VelocityHome = ({
         <div className="flex flex-col gap-6 md:(flex-row-reverse gap-8) xl:gap-24 items-center">
           <div className="w-full flex-1 rounded-xl bg-gray-900 aspect-video relative overflow-clip">
             <Image
-              alt=""
+              alt="Getting started with Velocity"
               src={HomeImage1}
               placeholder="blur"
               fill
               sizes="(min-width: 80rem) 40rem, (min-width: 768px) 40vw, 100vw"
               className="object-cover"
+              loading="eager"
             />
           </div>
           <div className="flex-1">
@@ -146,12 +148,13 @@ const VelocityHome = ({
         <div className="flex flex-col gap-6 md:(flex-row gap-8) xl:gap-24 items-center">
           <div className="w-full flex-1 rounded-xl aspect-video relative overflow-clip">
             <Image
-              alt=""
+              alt="PaperMC community"
               src={CommunityImage}
               placeholder="blur"
               fill
               sizes="(min-width: 80rem) 40rem, (min-width: 768px) 40vw, 100vw"
               className="object-cover"
+              loading="eager"
             />
           </div>
           <div className="flex-1">
