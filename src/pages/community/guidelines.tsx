@@ -233,8 +233,8 @@ const CommunityGuidelines: NextPage = () => (
       <p>
         If someone is violating those feel free to use the <code>@mods</code>{" "}
         ping on Discord to notify the moderation team. You can also contact the
-        team privately using the <code>/modmail</code> command, however this does
-        not alert us in the same way that the <code>@mods</code> ping does,{" "}
+        team privately using the <code>/modmail</code> command, however this
+        does not alert us in the same way that the <code>@mods</code> ping does,{" "}
         so don&apos;t use it for time sensitive issues.
       </p>
     </section>
@@ -342,17 +342,17 @@ const CommunityGuidelines: NextPage = () => (
     >
       <h2 className="text-2xl font-medium mb-4">Support Channels</h2>
       <p>
-        Our support channels <code>#paper-help</code>,{" "}
-        <code>#folia-help</code>, <code>#velocity-help</code>,{" "}
-        <code>#adventure-help</code>, <code>#adventure-platform-help</code>,{" "}
-        and <code>#hangar-help</code> are there for people who need support using
-        our software. While we are very happy that so many members of the community
-        actively support there and answer questions, please make sure to follow
-        our guidelines there as well. Many people that go there to ask questions
-        are new to Minecraft servers and to the community itself. We should be
-        welcoming towards newcomers, especially since we all started somewhere.
-        In general, &quot;Rule 1: Don&apos;t be a jerk&quot; applies here as
-        well, but we would like to add the following points:
+        Our support channels <code>#paper-help</code>, <code>#folia-help</code>,{" "}
+        <code>#velocity-help</code>, <code>#adventure-help</code>,{" "}
+        <code>#adventure-platform-help</code>, and <code>#hangar-help</code> are
+        there for people who need support using our software. While we are very
+        happy that so many members of the community actively support there and
+        answer questions, please make sure to follow our guidelines there as
+        well. Many people that go there to ask questions are new to Minecraft
+        servers and to the community itself. We should be welcoming towards
+        newcomers, especially since we all started somewhere. In general,
+        &quot;Rule 1: Don&apos;t be a jerk&quot; applies here as well, but we
+        would like to add the following points:
       </p>
       <ol className="list-decimal list-inside my-4 ml-4 space-y-2">
         <li>
