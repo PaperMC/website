@@ -4,8 +4,8 @@ import { useState } from "react";
 import SoftwareBuildsTable from "@/components/data/SoftwareBuildsTable";
 import DownloadsTree from "@/components/layout/DownloadsTree";
 import SEO from "@/components/util/SEO";
+import { useVersionBuilds, getProject, useProject } from "@/lib/service/fill";
 import type { Project } from "@/lib/service/types";
-import { useVersionBuilds, getProject, useProject } from "@/lib/service/v3";
 
 const INITIAL_PROJECT = "paper";
 

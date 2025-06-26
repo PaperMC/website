@@ -6,7 +6,7 @@ import VelocityIcon from "@/assets/brand/velocity.svg";
 import WaterfallIcon from "@/assets/brand/waterfall.svg";
 import SoftwarePreview from "@/components/data/SoftwarePreview";
 import SEO from "@/components/util/SEO";
-import { getProject } from "@/lib/service/v2";
+import { getProject } from "@/lib/service/fill";
 
 interface JavadocProps {
   paperVersion: string;
