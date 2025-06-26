@@ -8,7 +8,6 @@ import DocumentDownloadIcon from "@/assets/icons/heroicons/document-download.svg
 import Skeleton from "@/components/data/Skeleton";
 import type { ProjectDescriptor } from "@/lib/context/downloads";
 import type { Build } from "@/lib/service/types";
-import { getVersionBuildDownloadURL } from "@/lib/service/v2";
 import styles from "@/styles/components/input/SoftwareDownloadButton.module.css";
 
 export interface SoftwareDownloadButtonProps {
@@ -60,16 +59,7 @@ const SoftwareDownloadButton = ({
             "flex flex-row flex-1 items-center",
             compact ? "gap-2 pl-2 leading-0 py-1" : "gap-8 pl-5 py-3",
           )}
-          href={
-            projectId &&
-            build &&
-            getVersionBuildDownloadURL(
-              projectId,
-              version,
-              build.build,
-              build.downloads["application"].name,
-            )
-          }
+          href={projectId && build && build.downloads["server:default"].url}
           target="_blank"
         >
           <div className={compact ? "w-4 h-4" : "w-8 h-8"}>
@@ -83,9 +73,7 @@ const SoftwareDownloadButton = ({
                 <span className="font-medium text-lg">
                   {project?.name ?? projectId} {version}
                 </span>
-                <p className="text-gray-100">
-                  {build && `Build #${build.build}`}
-                </p>
+                <p className="text-gray-100">{build && `Build #${build.id}`}</p>
               </>
             ) : (
               <>
@@ -131,12 +119,7 @@ const SoftwareDownloadButton = ({
                       href={
                         projectId &&
                         build &&
-                        getVersionBuildDownloadURL(
-                          projectId,
-                          version,
-                          build.build,
-                          download.name,
-                        )
+                        build.downloads["server:default"].url
                       }
                       target="_blank"
                     >
@@ -148,20 +131,24 @@ const SoftwareDownloadButton = ({
                               Recommended
                             </span>
                           )}
-                          {copied === download.sha256 && (
+                          {copied === download.checksums.sha256 && (
                             <span className="ml-2 text-xs rounded-full py-0.5 px-2 bg-green-200/80 text-green-800">
                               Copied
                             </span>
                           )}
                         </div>
                         <div className="text-gray-700 dark:text-gray-300 text-xs inline-flex items-center w-full">
-                          <span className="truncate">{download.sha256}</span>
+                          <span className="truncate">
+                            {download.checksums.sha256}
+                          </span>
                           <button
                             className="ml-2 h-6 w-6"
                             onClick={(evt) => {
                               evt.preventDefault();
-                              navigator.clipboard.writeText(download.sha256);
-                              updateCopied(download.sha256);
+                              navigator.clipboard.writeText(
+                                download.checksums.sha256,
+                              );
+                              updateCopied(download.checksums.sha256);
                             }}
                           >
                             <CloneIcon className="h-4 w-4" />

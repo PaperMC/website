@@ -17,20 +17,20 @@ const SoftwareBuildChanges = ({
   version,
 }: SoftwareBuildChangesProps): ReactElement => (
   <>
-    {build.changes.map((change) => (
-      <p key={change.commit}>
+    {build.commits.map((change) => (
+      <p key={change.sha}>
         <a
-          href={`${getProjectRepository(project, version)}/commit/${change.commit}`}
+          href={`${getProjectRepository(project, version)}/commit/${change.sha}`}
           className={styles.commit}
           rel="noreferrer"
           target="_blank"
         >
-          {change.commit.slice(0, 7)}
+          {change.sha.slice(0, 7)}
         </a>
-        {highlightIssues(change.summary, project, styles.issue)}
+        {highlightIssues(change.message, project, styles.issue)}
       </p>
     ))}
-    {build.changes.length === 0 && <i className="text-gray-600">No changes</i>}
+    {build.commits.length === 0 && <i className="text-gray-600">No changes</i>}
   </>
 );
 

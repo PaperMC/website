@@ -3,14 +3,9 @@ import useSWR from "swr";
 
 import { swrNoAutoUpdateSettings } from "./api";
 
-import type {
-  Project,
-  ProjectsResponse,
-  VersionBuilds,
-  VersionFamilyBuilds,
-} from "@/lib/service/types";
+import type { Build, Project, ProjectsResponse } from "@/lib/service/types";
 
-const API_ENDPOINT = "https://api.papermc.io/v2";
+const API_ENDPOINT = "https://fill.papermc.io/v3";
 
 const fetcher = (path: string) =>
   fetch(API_ENDPOINT + path).then((res) => res.json());
@@ -24,19 +19,9 @@ export const useProject = (project: string): SWRResponse<Project> =>
 export const useVersionBuilds = (
   project: string,
   version: string,
-): SWRResponse<VersionBuilds> =>
+): SWRResponse<Build[]> =>
   useSWR(
     `/projects/${project}/versions/${version}/builds`,
-    fetcher,
-    swrNoAutoUpdateSettings,
-  );
-
-export const useVersionFamilyBuilds = (
-  project: string,
-  family: string,
-): SWRResponse<VersionFamilyBuilds> =>
-  useSWR(
-    `/projects/${project}/version_group/${family}/builds`,
     fetcher,
     swrNoAutoUpdateSettings,
   );
@@ -50,13 +35,5 @@ export const getProject = (project: string): Promise<Project> =>
 export const getVersionBuilds = (
   project: string,
   version: string,
-): Promise<VersionBuilds> =>
+): Promise<Build[]> =>
   getJSON(`/projects/${project}/versions/${version}/builds`);
-
-export const getVersionBuildDownloadURL = (
-  project: string,
-  version: string,
-  build: number,
-  file: string,
-): string =>
-  `${API_ENDPOINT}/projects/${project}/versions/${version}/builds/${build}/downloads/${file}`;

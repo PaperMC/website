@@ -1,8 +1,10 @@
 export interface Project {
-  project_id: string;
-  project_name: string;
-  version_groups: string[];
-  versions: string[];
+  project: {
+    id: string;
+  };
+  versions: {
+    [key: string]: string[];
+  };
 }
 
 export interface ProjectVersion {
@@ -34,25 +36,30 @@ export interface VersionFamilyBuild extends Build {
 }
 
 export interface Build {
-  build: number;
+  id: number;
   time: string;
-  channel: "default" | "experimental";
-  promoted: boolean;
-  changes: BuildChange[];
-  downloads: Record<string, BuildDownload>;
+  channel: "ALPHA" | "BETA" | "STABLE" | "RECOMMENDED";
+  commits: BuildChange[];
+  downloads: {
+    [key: string]: BuildDownload;
+  };
 }
 
 export interface BuildChange {
-  commit: string;
-  summary: string;
+  sha: string;
   message: string;
+  time: string;
 }
 
 export interface BuildDownload {
   name: string;
-  sha256: string;
+  checksums: {
+    sha256: string;
+  };
+  size: number;
+  url: string;
 }
 
 export interface ProjectsResponse {
-  projects: string[];
+  projects: Project[];
 }

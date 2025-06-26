@@ -7,7 +7,7 @@ import type {
 } from "@/lib/service/hangar";
 import { getHangarProjects } from "@/lib/service/hangar";
 import type { Build } from "@/lib/service/types";
-import { getProject, getVersionBuilds } from "@/lib/service/v2";
+import { getProject, getVersionBuilds } from "@/lib/service/v3";
 
 export interface DownloadsContextProps {
   projectId: string;
@@ -44,9 +44,9 @@ const isVersionStable = async (
   project: string,
   version: string,
 ): Promise<boolean> => {
-  const { builds } = await getVersionBuilds(project, version);
+  const builds = await getVersionBuilds(project, version);
   for (let i = builds.length - 1; i >= 0; i--) {
-    if (builds[i].channel === "default") return true;
+    if (builds[i].channel === "STABLE") return true;
   }
 
   return false;
@@ -57,29 +57,32 @@ export const getProjectProps = (
   hangarProject: boolean = true,
 ): GetStaticProps => {
   return async () => {
-    const { project_name, versions, version_groups } = await getProject(id);
+    const {
+      project: { id: projectId },
+      versions,
+    } = await getProject(id);
     const hangarProjectList: HangarProjectList | null = hangarProject
       ? await getHangarProjects(id)
       : null;
-
-    let latestStableVersion = versions[versions.length - 1];
-    for (let i = versions.length - 1; i >= 0; i--) {
-      if (await isVersionStable(id, versions[i])) {
-        latestStableVersion = versions[i];
+    const flattenedVersions = Object.values(versions).flat().reverse();
+    let latestStableVersion = flattenedVersions[flattenedVersions.length - 1];
+    for (let i = flattenedVersions.length - 1; i >= 0; i--) {
+      if (await isVersionStable(id, flattenedVersions[i])) {
+        latestStableVersion = flattenedVersions[i];
         break;
       }
     }
 
     const latestExperimentalVersion =
-      latestStableVersion !== versions[versions.length - 1]
-        ? versions[versions.length - 1]
+      latestStableVersion !== flattenedVersions[flattenedVersions.length - 1]
+        ? flattenedVersions[flattenedVersions.length - 1]
         : null;
 
     const project: ProjectDescriptor = {
-      name: project_name,
+      name: projectId,
       latestStableVersion,
       latestExperimentalVersion,
-      latestVersionGroup: version_groups[version_groups.length - 1],
+      latestVersionGroup: Object.keys(versions)[0],
     };
 
     return {
