@@ -6,7 +6,7 @@ import { useState } from "react";
 import SoftwareBuilds from "@/components/data/SoftwareBuilds";
 import SoftwareDownloadButton from "@/components/input/SoftwareDownloadButton";
 import type { ProjectProps } from "@/lib/context/downloads";
-import { useVersionBuilds } from "@/lib/service/v3";
+import { useVersionBuilds } from "@/lib/service/fill";
 
 export interface SoftwareDownloadProps {
   id: string;

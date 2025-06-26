@@ -1,7 +1,7 @@
 import clsx from "clsx";
 
 import ArchiveIcon from "@/assets/icons/fontawesome/box-archive.svg";
-import { useProject } from "@/lib/service/v3";
+import { useProject } from "@/lib/service/fill";
 
 interface ProjectSubTreeProps {
   id: string;
