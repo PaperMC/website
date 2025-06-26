@@ -31,48 +31,45 @@ const SoftwareBuildsTable = ({
         </tr>
       </thead>
       <tbody className={styles.body}>
-        {builds
-          .slice()
-          .reverse()
-          .map((build) => (
-            <tr key={build.build}>
-              <td>
-                <span
-                  className={clsx(
-                    "text-sm font-medium text-gray-100 rounded-full py-2 px-3 min-w-16",
-                    build.channel === "experimental" || eol
-                      ? "bg-red-500"
-                      : "bg-gray-800",
-                  )}
-                >
-                  #{build.build}
-                </span>
-              </td>
-              <td>
-                <SoftwareBuildChanges
-                  project={project}
-                  build={build}
-                  version={version}
-                />
-              </td>
-              <td
-                className={"whitespace-nowrap"}
-                title={formatISODateTime(new Date(build.time))}
+        {builds.map((build) => (
+          <tr key={build.id}>
+            <td>
+              <span
+                className={clsx(
+                  "text-sm font-medium text-gray-100 rounded-full py-2 px-3 min-w-16",
+                  build.channel === "ALPHA" || build.channel === "BETA" || eol
+                    ? "bg-red-500"
+                    : "bg-gray-800",
+                )}
               >
-                {formatRelativeDate(new Date(build.time))}
-              </td>
-              <td className={"gap-1"}>
-                <SoftwareDownloadButton
-                  projectId={project}
-                  version={version}
-                  build={build}
-                  stable={build.channel === "default"}
-                  compact
-                  eol={eol}
-                />
-              </td>
-            </tr>
-          ))}
+                #{build.id}
+              </span>
+            </td>
+            <td>
+              <SoftwareBuildChanges
+                project={project}
+                build={build}
+                version={version}
+              />
+            </td>
+            <td
+              className={"whitespace-nowrap"}
+              title={formatISODateTime(new Date(build.time))}
+            >
+              {formatRelativeDate(new Date(build.time))}
+            </td>
+            <td className={"gap-1"}>
+              <SoftwareDownloadButton
+                projectId={project}
+                version={version}
+                build={build}
+                stable={build.channel === "STABLE"}
+                compact
+                eol={eol}
+              />
+            </td>
+          </tr>
+        ))}
       </tbody>
     </table>
   );

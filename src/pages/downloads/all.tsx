@@ -5,7 +5,7 @@ import SoftwareBuildsTable from "@/components/data/SoftwareBuildsTable";
 import DownloadsTree from "@/components/layout/DownloadsTree";
 import SEO from "@/components/util/SEO";
 import type { Project } from "@/lib/service/types";
-import { useVersionBuilds, getProject, useProject } from "@/lib/service/v2";
+import { useVersionBuilds, getProject, useProject } from "@/lib/service/v3";
 
 const INITIAL_PROJECT = "paper";
 
@@ -16,11 +16,11 @@ interface LegacyDownloadProps {
 
 export const getStaticProps: GetStaticProps<LegacyDownloadProps> = async () => {
   const project: Project = await getProject(INITIAL_PROJECT);
-  const versions = project.versions;
+  const flattenedVersions = Object.values(project.versions).flat();
   return {
     props: {
-      initialProjectId: project.project_id,
-      initialProjectVersion: versions[versions.length - 1],
+      initialProjectId: project.project.id,
+      initialProjectVersion: flattenedVersions[0],
     },
   };
 };
@@ -32,13 +32,14 @@ const LegacyDownloads: NextPage<LegacyDownloadProps> = ({
   const [selectedProject, setSelectedProject] = useState(initialProjectId);
   const [selectedVersion, setSelectedVersion] = useState(initialProjectVersion);
   const { data: builds } = useVersionBuilds(selectedProject, selectedVersion);
-  const { data: versions } = useProject(selectedProject);
+  const { data: project } = useProject(selectedProject);
 
   const eol = selectedProject === "waterfall";
-  const latestVersion = versions?.versions[versions?.versions.length - 1];
+  const flattenedVersions = Object.values(project?.versions ?? {}).flat();
+  const latestVersion = flattenedVersions[0];
   const legacy = selectedVersion !== latestVersion;
   const experimental =
-    builds?.builds[builds?.builds.length - 1].channel === "experimental";
+    builds?.[0].channel === "ALPHA" || builds?.[0].channel === "BETA";
 
   return (
     <>
@@ -83,7 +84,7 @@ const LegacyDownloads: NextPage<LegacyDownloadProps> = ({
             <SoftwareBuildsTable
               project={selectedProject}
               version={selectedVersion}
-              builds={builds?.builds ?? []}
+              builds={builds ?? []}
               eol={eol}
             />
           </div>

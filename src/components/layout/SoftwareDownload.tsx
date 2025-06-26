@@ -6,7 +6,7 @@ import { useState } from "react";
 import SoftwareBuilds from "@/components/data/SoftwareBuilds";
 import SoftwareDownloadButton from "@/components/input/SoftwareDownloadButton";
 import type { ProjectProps } from "@/lib/context/downloads";
-import { useVersionBuilds } from "@/lib/service/v2";
+import { useVersionBuilds } from "@/lib/service/v3";
 
 export interface SoftwareDownloadProps {
   id: string;
@@ -30,7 +30,7 @@ const SoftwareDownload = ({
     ? project.latestStableVersion
     : (project.latestExperimentalVersion ?? project.latestStableVersion);
   const { data: builds } = useVersionBuilds(id, version);
-  const latestBuild = builds && builds.builds[builds.builds.length - 1];
+  const latestBuild = builds && builds[0];
 
   const toggleStable = () => {
     setStable(!isStable);
@@ -69,7 +69,7 @@ const SoftwareDownload = ({
               project={project}
               build={latestBuild}
               version={version}
-              stable={!latestBuild || latestBuild?.channel === "default"}
+              stable={!latestBuild || latestBuild?.channel === "STABLE"}
               eol={eol}
             />
             {project.latestExperimentalVersion && (
@@ -113,7 +113,7 @@ const SoftwareDownload = ({
         <SoftwareBuilds
           project={id}
           version={version}
-          builds={builds?.builds}
+          builds={builds}
           eol={eol}
         />
       </section>
