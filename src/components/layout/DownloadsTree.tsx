@@ -61,6 +61,7 @@ const DownloadsTree = (props: DownloadsTreeProps) => {
     <nav className="w-50 p-2 border-r border-gray-300 overflow-auto">
       <ProjectSubTree id="paper" name="Paper" {...props} />
       <ProjectSubTree id="velocity" name="Velocity" {...props} />
+      <ProjectSubTree id="folia" name="Folia" {...props} />
       <ProjectSubTree id="waterfall" name="Waterfall" eol {...props} />
     </nav>
   );

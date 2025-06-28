@@ -37,8 +37,7 @@ const FoliaHome = ({ project }: HangarProjectProps): ReactElement => {
         versionGroup={project.latestVersionGroup}
         icon={FoliaIcon}
         header={<>What is Folia?</>}
-        description="Folia is a new fork of Paper that adds regionized multithreading to the server. Access to Folia builds isn't currently available. To build Folia, you need to compile from source following Paper's standard compilation guide."
-        github="https://github.com/PaperMC/Folia"
+        description="Folia is a new fork of Paper that adds regionized multithreading to the server"
       />
       <section
         id="why"
