@@ -23,7 +23,7 @@ const ProjectSubTree = ({
   return (
     <>
       <div className="pl-3 py-1 rounded-md font-bold flex gap-2 items-center">
-        {project?.project.id ?? name}{" "}
+        {project?.project.name ?? name}{" "}
         {eol && <ArchiveIcon className="fill-current h-4" />}
       </div>
       {flattenedVersions.map((version) => (

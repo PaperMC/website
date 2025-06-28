@@ -1,6 +1,7 @@
 export interface Project {
   project: {
     id: string;
+    name: string;
   };
   versions: {
     [key: string]: string[];
