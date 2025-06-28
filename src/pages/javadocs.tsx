@@ -76,6 +76,11 @@ const Javadocs: NextPage<JavadocProps> = ({
 
 export default Javadocs;
 
+function stringToSemver(version: string): string {
+  // We may be passed something like 3.4.0-SNAPSHOT, so we need the 3.4.0
+  return version.match(/(\d+\.\d+\.\d+)/)?.[0] ?? version;
+}
+
 export const getStaticProps: GetStaticProps<JavadocProps> = async () => {
   const { versions: paper_groups } = await getProject("paper");
   const { versions: folia_groups } = await getProject("folia");
@@ -84,8 +89,8 @@ export const getStaticProps: GetStaticProps<JavadocProps> = async () => {
   return {
     props: {
       paperVersion: Object.values(paper_groups).flat()[0],
-      foliaVersion: Object.values(folia_groups).flat()[0],
-      velocityVersion: Object.values(velocity_groups).flat()[0],
+      foliaVersion: Object.keys(folia_groups)[0], // In Folia's case Javadocs are only available for major versions
+      velocityVersion: stringToSemver(Object.values(velocity_groups).flat()[0]), // Velocity's JDs don't have the -SNAPSHOT suffix (but we also can't use the version group)
       waterfallVersion: Object.values(waterfall_groups).flat()[0],
     },
     revalidate: 3600, // 1 hour
