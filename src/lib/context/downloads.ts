@@ -58,7 +58,7 @@ export const getProjectProps = (
 ): GetStaticProps => {
   return async () => {
     const {
-      project: { id: projectId },
+      project: { name: projectName },
       versions,
     } = await getProject(id);
     const hangarProjectList: HangarProjectList | null = hangarProject
@@ -79,7 +79,7 @@ export const getProjectProps = (
         : null;
 
     const project: ProjectDescriptor = {
-      name: projectId,
+      name: projectName,
       latestStableVersion,
       latestExperimentalVersion,
       latestVersionGroup: Object.keys(versions)[0],
