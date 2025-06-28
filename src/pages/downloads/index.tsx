@@ -12,7 +12,7 @@ const Downloads: NextPage = () => {
     <>
       <SEO
         title="Downloads"
-        description="Find downloads for our software – including Paper, Velocity, Folia and Waterfall."
+        description="Find downloads for our software – including Paper, Velocity, Folia, and Waterfall."
         keywords={[
           "papermc",
           "minecraft",
