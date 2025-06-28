@@ -12,7 +12,7 @@ const Downloads: NextPage = () => {
     <>
       <SEO
         title="Downloads"
-        description="Find downloads for our software – including Paper, Velocity, and Waterfall."
+        description="Find downloads for our software – including Paper, Velocity, Folia and Waterfall."
         keywords={[
           "papermc",
           "minecraft",
@@ -46,7 +46,8 @@ const Downloads: NextPage = () => {
             id="folia"
             name="Folia"
             icon={FoliaIcon}
-            description="Folia is a new fork of Paper that adds regionized multithreading to the server. Access to Folia builds isn't currently available."
+            description="Folia is a new fork of Paper that adds regionized multithreading to the server"
+            download
           />
         </div>
         <h2 className="text-2xl text-center font-medium mt-4">
