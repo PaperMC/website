@@ -35,46 +35,48 @@ export default SoftwareBuildChanges;
 const formatCommitMessage = (summary: string, project: string, highlightClass: string): ReactElement[] => {
   // Regex for issues (#123) and commit links
   const regex = /(@?https:\/\/github\.com\/[\w-]+\/[\w-]+\/commit\/([a-f0-9]{7,40}))|([^&])(#[0-9]+)/gim;
-  let lastIndex = 0;
-  let match;
-  const elements: ReactElement[] = [];
   let key = 0;
-
-  // Use regex to find all matches
-  while ((match = regex.exec(summary)) !== null) {
-    // Add text before match
-    if (match.index > lastIndex) {
-      elements.push(<Fragment key={key++}>{summary.slice(lastIndex, match.index)}</Fragment>);
+  const trimmedSummary = summary.replace(/[\r\n]+$/g, "");
+  const lines = trimmedSummary.split(/\r?\n/);
+  const elements: ReactElement[] = [];
+  lines.forEach((line, lineIdx) => {
+    let lastIndex = 0;
+    let match;
+    while ((match = regex.exec(line)) !== null) {
+      if (match.index > lastIndex) {
+        elements.push(<Fragment key={key++}>{line.slice(lastIndex, match.index)}</Fragment>);
+      }
+      if (match[2]) {
+        // Commit link
+        const url = match[1].replace(/^@/, "");
+        const shortHash = match[2].slice(0, 7);
+        elements.push(
+          <a key={key++} className={highlightClass} href={url} target="_blank" rel="noreferrer">
+            {shortHash}
+          </a>,
+        );
+      } else if (match[4]) {
+        elements.push(
+          <Fragment key={key++}>{match[3]}</Fragment>,
+          <a
+            key={key++}
+            className={highlightClass}
+            href={`https://github.com/PaperMC/${project}/issues/${match[4].slice(1)}`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            {match[4]}
+          </a>,
+        );
+      }
+      lastIndex = regex.lastIndex;
     }
-    if (match[2]) {
-      // Commit link
-      const url = match[1].replace(/^@/, "");
-      const shortHash = match[2].slice(0, 7);
-      elements.push(
-        <a key={key++} className={highlightClass} href={url} target="_blank" rel="noreferrer">
-          {shortHash}
-        </a>,
-      );
-    } else if (match[4]) {
-      // Issue reference
-      elements.push(
-        <Fragment key={key++}>{match[3]}</Fragment>,
-        <a
-          key={key++}
-          className={highlightClass}
-          href={`https://github.com/PaperMC/${project}/issues/${match[4].slice(1)}`}
-          target="_blank"
-          rel="noreferrer"
-        >
-          {match[4]}
-        </a>,
-      );
+    if (lastIndex < line.length) {
+      elements.push(<Fragment key={key++}>{line.slice(lastIndex)}</Fragment>);
     }
-    lastIndex = regex.lastIndex;
-  }
-  // Add any remaining text
-  if (lastIndex < summary.length) {
-    elements.push(<Fragment key={key++}>{summary.slice(lastIndex)}</Fragment>);
-  }
+    if (lineIdx < lines.length - 1) {
+      elements.push(<br key={key++} />);
+    }
+  });
   return elements;
 };
