@@ -1,5 +1,6 @@
 import type { GetStaticProps, NextPage } from "next";
-import { useState } from "react";
+import { useRouter } from "next/router";
+import { useState, useEffect, useRef } from "react";
 
 import SoftwareBuildsTable from "@/components/data/SoftwareBuildsTable";
 import DownloadsTree from "@/components/layout/DownloadsTree";
@@ -29,17 +30,65 @@ const LegacyDownloads: NextPage<LegacyDownloadProps> = ({
   initialProjectId,
   initialProjectVersion,
 }) => {
+  const router = useRouter();
+  const downloadsTreeRef = useRef<HTMLDivElement>(null);
   const [selectedProject, setSelectedProject] = useState(initialProjectId);
   const [selectedVersion, setSelectedVersion] = useState(initialProjectVersion);
   const { data: builds } = useVersionBuilds(selectedProject, selectedVersion);
   const { data: project } = useProject(selectedProject);
+
+  // Auto-select project from query parameter
+  useEffect(() => {
+    const { project: projectParam } = router.query;
+    if (projectParam && typeof projectParam === "string") {
+      const validProjects = ["paper", "velocity", "folia", "waterfall"];
+      if (validProjects.includes(projectParam)) {
+        setSelectedProject(projectParam);
+        // Fetch the project and set the first version
+        getProject(projectParam).then((proj) => {
+          const flattenedVersions = Object.values(proj.versions).flat();
+          if (flattenedVersions.length > 0) {
+            setSelectedVersion(flattenedVersions[0]);
+          }
+        });
+        // Scroll to the selected project after a short delay to ensure the tree is rendered
+        setTimeout(() => {
+          const projectElement = downloadsTreeRef.current?.querySelector(
+            `[data-project="${projectParam}"]`,
+          );
+          if (projectElement) {
+            projectElement.scrollIntoView({
+              behavior: "smooth",
+              block: "center",
+            });
+          }
+        }, 100);
+      }
+    }
+  }, [router.query]);
+
+  // Handler for selecting a project/version from the tree
+  const handleSelect = (project: string, version?: string) => {
+    setSelectedProject(project);
+    if (version) {
+      setSelectedVersion(version);
+    } else {
+      // Fetch the project and set the first version
+      getProject(project).then((proj) => {
+        const flattenedVersions = Object.values(proj.versions).flat();
+        if (flattenedVersions.length > 0) {
+          setSelectedVersion(flattenedVersions[0]);
+        }
+      });
+    }
+  };
 
   const eol = selectedProject === "waterfall";
   const flattenedVersions = Object.values(project?.versions ?? {}).flat();
   const latestVersion = flattenedVersions[0];
   const legacy = selectedVersion !== latestVersion;
   const experimental =
-    builds?.[0].channel === "ALPHA" || builds?.[0].channel === "BETA";
+    builds?.[0]?.channel === "ALPHA" || builds?.[0]?.channel === "BETA";
 
   return (
     <>
@@ -53,12 +102,10 @@ const LegacyDownloads: NextPage<LegacyDownloadProps> = ({
         <div className="h-16" />
         <div className="flex-1 flex flex-row min-h-0">
           <DownloadsTree
+            ref={downloadsTreeRef}
             selectedProject={selectedProject}
             selectedVersion={selectedVersion}
-            onSelect={(project, version) => {
-              setSelectedProject(project);
-              setSelectedVersion(version);
-            }}
+            onSelect={handleSelect}
           />
           <div className="flex-1 overflow-auto">
             {legacy && (
@@ -84,7 +131,7 @@ const LegacyDownloads: NextPage<LegacyDownloadProps> = ({
             <SoftwareBuildsTable
               project={selectedProject}
               version={selectedVersion}
-              builds={builds ?? []}
+              builds={Array.isArray(builds) ? builds : []}
               eol={eol}
             />
           </div>
