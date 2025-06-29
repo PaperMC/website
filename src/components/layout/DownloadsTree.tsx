@@ -24,7 +24,7 @@ const ProjectSubTree = ({
 
   return (
     <>
-      <div className="pl-3 py-1 rounded-md font-bold flex gap-2 items-center">
+      <div className="pl-3 py-1 rounded-md font-bold flex gap-2 items-center" data-project={id}>
         {project?.project.name ?? name} {eol && <ArchiveIcon className="fill-current h-4" />}
       </div>
       {flattenedVersions.map((version) => (
@@ -52,10 +52,9 @@ interface DownloadsTreeProps {
 
   onSelect(project: string, version: string): void;
 }
-
-const DownloadsTree = (props: DownloadsTreeProps) => {
+const DownloadsTree = (props: DownloadsTreeProps, ref: React.Ref<HTMLDivElement>) => {
   return (
-    <nav className="w-50 p-2 md:border-r border-gray-300 overflow-auto">
+    <nav ref={ref} className="w-50 p-2 md:border-r border-gray-300 overflow-auto">
       <ProjectSubTree id="paper" name="Paper" {...props} />
       <ProjectSubTree id="velocity" name="Velocity" {...props} />
       <ProjectSubTree id="folia" name="Folia" {...props} />
