@@ -4,6 +4,10 @@
   @apply text-blue-600 dark:text-blue-500 mr-1 font-mono;
 }
 
+.commitParagraph {
+    @apply break-words whitespace-normal w-full;
+}
+
 .issue {
   @apply text-blue-600 dark:text-blue-500;
 }
