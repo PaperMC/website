@@ -1,10 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useSearchParams } from "next/navigation";
+import { useState, useEffect, useRef } from "react";
 
 import MenuIcon from "@/assets/icons/heroicons/menu.svg";
 import SoftwareBuildsTable from "@/components/data/SoftwareBuildsTable";
 import DownloadsTree from "@/components/layout/DownloadsTree";
+import { getProject } from "@/lib/service/fill";
 import { useProject, useVersionBuilds } from "@/lib/service/hooks";
 
 interface DownloadsAllClientProps {
@@ -13,9 +15,29 @@ interface DownloadsAllClientProps {
 }
 
 export default function DownloadsAllClient({ initialProjectId, initialProjectVersion }: DownloadsAllClientProps) {
+  const searchParams = useSearchParams();
+  const projectParam = searchParams.get("project");
+  const downloadsTreeRef = useRef<HTMLDivElement>(null);
   const [selectedProject, setSelectedProject] = useState(initialProjectId);
   const [selectedVersion, setSelectedVersion] = useState(initialProjectVersion);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  useEffect(() => {
+    if (projectParam && ["paper", "velocity", "folia", "waterfall"].includes(projectParam)) {
+      setSelectedProject(projectParam);
+      getProject(projectParam).then((proj) => {
+        const flattenedVersions = Object.values(proj.versions).flat();
+        if (flattenedVersions.length > 0) {
+          setSelectedVersion(flattenedVersions[0]);
+        }
+      });
+      setTimeout(() => {
+        const projectElement = downloadsTreeRef.current?.querySelector(`[data-project="${projectParam}"]`);
+        if (projectElement) {
+          projectElement.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+      }, 100);
+    }
+  }, [projectParam]);
 
   const { data: builds } = useVersionBuilds(selectedProject, selectedVersion);
   const { data: project } = useProject(selectedProject);
@@ -59,11 +81,13 @@ export default function DownloadsAllClient({ initialProjectId, initialProjectVer
       <div className="flex-1 flex flex-row min-h-0">
         {/* Desktop Tree - Always visible on md+ */}
         <div className="hidden md:block">
-          <DownloadsTree
-            selectedProject={selectedProject}
-            selectedVersion={selectedVersion}
-            onSelect={handleProjectSelect}
-          />
+          <div ref={downloadsTreeRef}>
+            <DownloadsTree
+              selectedProject={selectedProject}
+              selectedVersion={selectedVersion}
+              onSelect={handleProjectSelect}
+            />
+          </div>
         </div>
 
         {/* Mobile Tree - Overlay */}
