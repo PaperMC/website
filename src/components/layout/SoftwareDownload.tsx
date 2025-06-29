@@ -102,7 +102,7 @@ const SoftwareDownload = ({
           <span className="text-gray-700 dark:text-gray-400">
             Even older builds are available in our&nbsp;
             <Link
-              href="/downloads/all"
+              href={`/downloads/all?project=${id}`}
               className="text-gray-700 dark:text-gray-400 underline"
             >
               build explorer
