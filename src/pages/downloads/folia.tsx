@@ -11,7 +11,7 @@ const FoliaDownloads = ({ project }: ProjectProps): ReactElement => {
     <>
       <SEO
         title="Folia Downloads"
-        description="Download Folia, our Minecraft server software offering unrivaled performance and stability."
+        description="Download Folia, our new fork of Paper that adds regionized multithreading to the server."
         keywords={[
           "papermc",
           "folia",
