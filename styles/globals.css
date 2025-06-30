@@ -77,3 +77,15 @@ body {
 [role=button], button {
     cursor: pointer
 }
+#__next {
+    @apply flex flex-col h-screen;
+}
+
+/* Add our channel colors to the global CSS */
+:root {
+    --channel-alpha: #ea1500;
+    --channel-beta: #d8c200;
+    --channel-stable: #0a9ada;
+    --channel-recommended: #409c93;
+    --channel-eol: #374151;
+}

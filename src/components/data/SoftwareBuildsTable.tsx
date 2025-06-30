@@ -31,29 +31,22 @@ const SoftwareBuildsTable = ({ project, version, builds, eol }: SoftwareBuildsTa
             <tr key={build.id}>
               <td>
                 <span
-                  className={clsx(
-                    "text-sm font-medium text-gray-100 rounded-full py-2 px-3 min-w-16",
-                    build.channel === "ALPHA" || build.channel === "BETA" || eol ? "bg-red-500" : "bg-gray-800",
-                  )}
+                  className={clsx("text-sm font-medium text-gray-100 rounded-full py-2 px-3 min-w-16")}
+                  style={{
+                    backgroundColor: `var(${eol ? "--channel-eol" : `--channel-${build.channel.toLowerCase()}`})`,
+                  }}
                 >
                   #{build.id}
                 </span>
               </td>
-              <td className={styles.changelogColumn}>
+              <td>
                 <SoftwareBuildChanges project={project} build={build} version={version} />
               </td>
               <td className={"whitespace-nowrap"} title={formatISODateTime(new Date(build.time))}>
                 {formatRelativeDate(new Date(build.time))}
               </td>
               <td className={"gap-1"}>
-                <SoftwareDownloadButton
-                  projectId={project}
-                  version={version}
-                  build={build}
-                  stable={build.channel === "STABLE"}
-                  compact
-                  eol={eol}
-                />
+                <SoftwareDownloadButton projectId={project} version={version} build={build} compact eol={eol} />
               </td>
             </tr>
           ))}
