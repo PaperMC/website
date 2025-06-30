@@ -63,18 +63,17 @@ const SoftwareDownload = ({
           </div>
           <h2 className="font-medium leading-normal lg:text-5xl lg:leading-normal text-4xl">
             Get {project.name}&nbsp;
-            <span className={isStable && !eol ? "text-blue-600" : "text-red-500"}>{version}</span>
+            <span
+              style={{
+                color: `var(${eol ? "--channel-eol" : `--channel-${latestBuild?.channel.toLowerCase()}`})`,
+              }}
+            >
+              {version}
+            </span>
           </h2>
           <p className="text-xl mt-4">{isStable ? description : (experimentalWarning ?? description)}</p>
           <div className="flex flex-col gap-4 mt-8">
-            <SoftwareDownloadButton
-              projectId={id}
-              project={project}
-              build={latestBuild}
-              version={version}
-              stable={!latestBuild || latestBuild?.channel === "STABLE"}
-              eol={eol}
-            />
+            <SoftwareDownloadButton projectId={id} project={project} build={latestBuild} version={version} eol={eol} />
             {project.latestExperimentalVersion && (
               <button
                 className={clsx(

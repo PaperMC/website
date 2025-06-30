@@ -12,22 +12,23 @@ export interface SoftwareBuildsProps {
   builds?: Build[];
   eol?: boolean;
 }
-
 const SoftwareBuilds = ({ project, version, builds, eol }: SoftwareBuildsProps) => (
-  <div className="flex flex-col gap-1">
+  <div className="flex flex-col">
     {builds &&
       builds.slice(0, 10).map((build, idx) => (
         <div key={build.id}>
-          <div className="flex flex-row items-start hover:bg-blue-100 dark:hover:bg-gray-900 px-4 py-2 rounded-lg transition-colors">
+          <div className="flex flex-row items-start hover:bg-blue-100 dark:hover:bg-gray-900 px-4 py-2 transition-colors">
             {/* eslint-disable-next-line react/jsx-no-target-blank */}
             <a
               role="button"
               href={build.downloads["server:default"].url}
               target="_blank"
               className={clsx(
-                "text-gray-100 text-sm text-center font-medium rounded-full p-2 min-w-16 mr-4 inline-flex items-center gap-1 mt-1",
-                build.channel === "STABLE" && !eol ? "bg-gray-800" : "bg-red-500",
+                "text-gray-100 text-sm text-center font-medium rounded-full p-2 min-w-16 mr-4 inline-flex items-center gap-1",
               )}
+              style={{
+                backgroundColor: `var(${eol ? "--channel-eol" : `--channel-${build.channel.toLowerCase()}`})`,
+              }}
             >
               <DownloadIcon className="w-4 h-4" />#{build.id}
             </a>
@@ -41,9 +42,7 @@ const SoftwareBuilds = ({ project, version, builds, eol }: SoftwareBuildsProps) 
               {formatRelativeDate(new Date(build.time))}
             </div>
           </div>
-          {idx < builds.slice(0, 10).length - 1 && (
-            <hr className="border-t border-gray-300 dark:border-gray-700 mx-4" />
-          )}
+          {idx < builds.slice(0, 10).length - 1 && <hr className="border border-gray-300 dark:border-gray-700 m-0" />}
         </div>
       ))}
     {!builds &&
