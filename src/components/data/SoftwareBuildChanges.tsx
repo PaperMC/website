@@ -13,19 +13,25 @@ export interface SoftwareBuildChangesProps {
 
 const SoftwareBuildChanges = ({ project, build, version }: SoftwareBuildChangesProps) => (
   <>
-    {build.commits.map((change) => (
-      <p key={change.sha} className={styles.commitMessage}>
-        <a
-          href={`${getProjectRepository(project, version)}/commit/${change.sha}`}
-          className={styles.commit}
-          rel="noreferrer"
-          target="_blank"
-        >
-          {change.sha.slice(0, 7)}
-        </a>
-        {formatCommitMessage(change.message, project, styles.issue)}
-      </p>
-    ))}
+    {build.commits.map((change) => {
+      const [firstLine, ...restLines] = change.message.split(/\r?\n/);
+      const hasAdditionalContent = restLines.length > 0;
+      const fullMessage = hasAdditionalContent ? change.message : undefined;
+
+      return (
+        <p key={change.sha} className={styles.commitMessage}>
+          <a
+            href={`${getProjectRepository(project, version)}/commit/${change.sha}`}
+            className={styles.commit}
+            rel="noreferrer"
+            target="_blank"
+          >
+            {change.sha.slice(0, 7)}
+          </a>
+          <span title={fullMessage}>{formatCommitMessage(firstLine, project, styles.issue)}</span>
+        </p>
+      );
+    })}
     {build.commits.length === 0 && <i className="text-gray-600">No changes</i>}
   </>
 );
@@ -37,46 +43,40 @@ const formatCommitMessage = (summary: string, project: string, highlightClass: s
   const regex = /(@?https:\/\/github\.com\/[\w-]+\/[\w-]+\/commit\/([a-f0-9]{7,40}))|([^&])(#[0-9]+)/gim;
   let key = 0;
   const trimmedSummary = summary.replace(/[\r\n]+$/g, "");
-  const lines = trimmedSummary.split(/\r?\n/);
   const elements: ReactElement[] = [];
-  lines.forEach((line, lineIdx) => {
-    let lastIndex = 0;
-    let match;
-    while ((match = regex.exec(line)) !== null) {
-      if (match.index > lastIndex) {
-        elements.push(<Fragment key={key++}>{line.slice(lastIndex, match.index)}</Fragment>);
-      }
-      if (match[2]) {
-        // Commit link
-        const url = match[1].replace(/^@/, "");
-        const shortHash = match[2].slice(0, 7);
-        elements.push(
-          <a key={key++} className={highlightClass} href={url} target="_blank" rel="noreferrer">
-            {shortHash}
-          </a>,
-        );
-      } else if (match[4]) {
-        elements.push(
-          <Fragment key={key++}>{match[3]}</Fragment>,
-          <a
-            key={key++}
-            className={highlightClass}
-            href={`https://github.com/PaperMC/${project}/issues/${match[4].slice(1)}`}
-            target="_blank"
-            rel="noreferrer"
-          >
-            {match[4]}
-          </a>,
-        );
-      }
-      lastIndex = regex.lastIndex;
+  let lastIndex = 0;
+  let match;
+  while ((match = regex.exec(trimmedSummary)) !== null) {
+    if (match.index > lastIndex) {
+      elements.push(<Fragment key={key++}>{trimmedSummary.slice(lastIndex, match.index)}</Fragment>);
     }
-    if (lastIndex < line.length) {
-      elements.push(<Fragment key={key++}>{line.slice(lastIndex)}</Fragment>);
+    if (match[2]) {
+      // Commit link
+      const url = match[1].replace(/^@/, "");
+      const shortHash = match[2].slice(0, 7);
+      elements.push(
+        <a key={key++} className={highlightClass} href={url} target="_blank" rel="noreferrer">
+          {shortHash}
+        </a>,
+      );
+    } else if (match[4]) {
+      elements.push(
+        <Fragment key={key++}>{match[3]}</Fragment>,
+        <a
+          key={key++}
+          className={highlightClass}
+          href={`https://github.com/PaperMC/${project}/issues/${match[4].slice(1)}`}
+          target="_blank"
+          rel="noreferrer"
+        >
+          {match[4]}
+        </a>,
+      );
     }
-    if (lineIdx < lines.length - 1) {
-      elements.push(<br key={key++} />);
-    }
-  });
+    lastIndex = regex.lastIndex;
+  }
+  if (lastIndex < trimmedSummary.length) {
+    elements.push(<Fragment key={key++}>{trimmedSummary.slice(lastIndex)}</Fragment>);
+  }
   return elements;
 };
