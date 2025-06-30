@@ -15,7 +15,6 @@ export interface SoftwareDownloadButtonProps {
   project?: ProjectDescriptor;
   build?: Build;
   version: string;
-  stable: boolean;
   compact?: boolean;
   eol?: boolean;
 }
@@ -25,7 +24,6 @@ const SoftwareDownloadButton = ({
   project,
   build,
   version,
-  stable,
   compact,
   eol,
 }: SoftwareDownloadButtonProps) => {
@@ -48,10 +46,10 @@ const SoftwareDownloadButton = ({
         className={clsx(
           "rounded-lg flex flex-row ransition-shadow text-white transition-color hover:shadow-lg",
           !compact && "w-full md:w-100",
-          stable && !eol
-            ? "bg-blue-600 hover:bg-blue-500"
-            : "bg-red-500 hover:bg-red-400",
         )}
+        style={{
+          backgroundColor: `var(${eol ? "--channel-eol" : `--channel-${build?.channel.toLowerCase()}`})`,
+        }}
       >
         {/* eslint-disable-next-line react/jsx-no-target-blank */}
         <a

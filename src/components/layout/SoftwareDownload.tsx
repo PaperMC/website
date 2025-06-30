@@ -55,7 +55,9 @@ const SoftwareDownload = ({
           <h2 className="font-medium leading-normal lg:(text-5xl leading-normal) text-4xl">
             Get {project.name}&nbsp;
             <span
-              className={isStable && !eol ? "text-blue-600" : "text-red-500"}
+              style={{
+                color: `var(${eol ? "--channel-eol" : `--channel-${latestBuild?.channel.toLowerCase()}`})`,
+              }}
             >
               {version}
             </span>
@@ -69,7 +71,6 @@ const SoftwareDownload = ({
               project={project}
               build={latestBuild}
               version={version}
-              stable={!latestBuild || latestBuild?.channel === "STABLE"}
               eol={eol}
             />
             {project.latestExperimentalVersion && (
