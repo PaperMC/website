@@ -1,7 +1,7 @@
-const WindiCSSWebpackPlugin = require("windicss-webpack-plugin");
+import type { NextConfig } from "next";
+import WindiCSSWebpackPlugin from "windicss-webpack-plugin";
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+const nextConfig: NextConfig = {
   reactStrictMode: true,
   webpack: (config) => {
     config.plugins.push(new WindiCSSWebpackPlugin());
@@ -14,9 +14,8 @@ const nextConfig = {
         },
       ],
     });
-
     return config;
   },
 };
 
-module.exports = nextConfig;
+export default nextConfig;
