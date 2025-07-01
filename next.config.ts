@@ -1,10 +1,8 @@
 import type { NextConfig } from "next";
-import WindiCSSWebpackPlugin from "windicss-webpack-plugin";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   webpack: (config) => {
-    config.plugins.push(new WindiCSSWebpackPlugin());
     config.module.rules.push({
       test: /\.svg$/,
       use: [
@@ -15,6 +13,21 @@ const nextConfig: NextConfig = {
       ],
     });
     return config;
+  },
+  turbopack: {
+    rules: {
+      "*.svg": {
+        loaders: [
+          {
+            loader: "@svgr/webpack",
+            options: {
+              dimensions: false,
+            },
+          },
+        ],
+        as: "*.js",
+      },
+    },
   },
 };
 

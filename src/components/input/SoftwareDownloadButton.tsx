@@ -47,7 +47,7 @@ const SoftwareDownloadButton = ({
       <div
         className={clsx(
           "rounded-lg flex flex-row ransition-shadow text-white transition-color hover:shadow-lg",
-          !compact && "w-full md:w-100",
+          !compact && "w-full md:w-[25rem]",
           stable && !eol
             ? "bg-blue-600 hover:bg-blue-500"
             : "bg-red-500 hover:bg-red-400",
@@ -57,7 +57,7 @@ const SoftwareDownloadButton = ({
         <a
           className={clsx(
             "flex flex-row flex-1 items-center",
-            compact ? "gap-2 pl-2 leading-0 py-1" : "gap-8 pl-5 py-3",
+            compact ? "gap-2 pl-2 leading-none py-1" : "gap-8 pl-5 py-3",
           )}
           href={projectId && build && build.downloads["server:default"].url}
           target="_blank"
@@ -83,7 +83,10 @@ const SoftwareDownloadButton = ({
             )}
           </div>
         </a>
-        <Menu.Button aria-label="Other download variants" className="leading-0">
+        <Menu.Button
+          aria-label="Other download variants"
+          className="leading-none"
+        >
           <ChevronDownIcon
             className={clsx(
               "text-gray-200",

@@ -36,7 +36,7 @@ const SoftwareBuildsTable = ({
             <td>
               <span
                 className={clsx(
-                  "text-sm font-medium text-gray-100 rounded-full py-2 px-3 min-w-16",
+                  "text-sm font-medium text-gray-100 rounded-full py-2 px-3 min-w-[4rem]",
                   build.channel === "ALPHA" || build.channel === "BETA" || eol
                     ? "bg-red-500"
                     : "bg-gray-800",

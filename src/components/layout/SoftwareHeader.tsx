@@ -25,7 +25,7 @@ const SoftwareHeader = ({
   github,
   eol,
 }: SoftwareHeaderProps): ReactElement => (
-  <header className="max-w-7xl flex flex-row flex-wrap mx-auto px-4 pt-32 pb-26 lg:(pt-48 pb-46) gap-16">
+  <header className="max-w-7xl flex flex-row flex-wrap mx-auto px-4 pt-32 pb-[6.5rem] lg:pt-48 lg:pb-[11.5rem] gap-16">
     {eol && (
       <div className="text-center px-4 py-8 -mt-16 font-bold bg-red-400 dark:bg-red-500 shadow-md rounded-lg w-full">
         {name} has reached end of life! It is no longer maintained or supported.
@@ -40,7 +40,7 @@ const SoftwareHeader = ({
           {name} {eol && <ArchiveIcon className="fill-current h-6" />}
         </h1>
       </div>
-      <h2 className="font-medium leading-normal lg:(text-5xl leading-normal) text-4xl">
+      <h2 className="font-medium leading-normal lg:text-5xl lg:leading-normal text-4xl">
         {header}
       </h2>
       <p className="text-xl mt-4">{description}</p>

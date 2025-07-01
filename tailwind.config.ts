@@ -1,13 +1,12 @@
-import { defineConfig } from "windicss/helpers";
+import type { Config } from "tailwindcss";
 
-export default defineConfig({
+const config: Config = {
+  content: [
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
   darkMode: "media",
-  extract: {
-    include: ["**/*.{tsx,css}"],
-    exclude: ["node_modules", ".git", ".next/**/*"],
-  },
-  attributify: true,
-  plugins: [require("windicss/plugin/aspect-ratio")],
   theme: {
     extend: {
       fontFamily: {
@@ -20,7 +19,6 @@ export default defineConfig({
           "sans-serif",
         ],
       },
-      // https://github.com/HangarMC/Hangar/blob/master/frontend-new/windi.config.ts#L80
       colors: {
         primary: {
           0: "#FFFFFF",
@@ -56,7 +54,22 @@ export default defineConfig({
       listStyleType: {
         alpha: "lower-alpha",
       },
+      aspectRatio: {
+        auto: "auto",
+        square: "1 / 1",
+        video: "16 / 9",
+      },
+      gridTemplateColumns: {
+        "16": "repeat(16, minmax(0, 1fr))",
+        "18": "repeat(18, minmax(0, 1fr))",
+        "20": "repeat(20, minmax(0, 1fr))",
+      },
+      scale: {
+        "120": "1.2",
+      },
     },
   },
-  shortcuts: {},
-});
+  plugins: [require("@tailwindcss/aspect-ratio")],
+};
+
+export default config;

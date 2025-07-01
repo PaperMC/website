@@ -15,9 +15,9 @@ const Contribute: NextPage = () => (
       keywords={["papermc", "paper", "minecraft", "sponsor", "contributing"]}
       canonical="/contribute"
     />
-    <header className="max-w-7xl flex flex-row mx-auto px-4 pt-32 pb-16 lg:(pt-48 pb-32) gap-16">
+    <header className="max-w-7xl flex flex-row mx-auto px-4 pt-32 pb-16 lg:pt-48 lg:pb-32 gap-16">
       <div className="flex-1">
-        <h1 className="font-medium leading-normal lg:(text-5xl leading-normal) text-4xl">
+        <h1 className="font-medium leading-normal lg:text-5xl lg:leading-normal text-4xl">
           You can contribute
         </h1>
         <p className="text-xl mt-4">
@@ -35,7 +35,7 @@ const Contribute: NextPage = () => (
     >
       <div className="flex-1">
         <h2 className="font-medium text-2xl md:text-4xl">...Financially</h2>
-        <p className="md:(mt-6 text-lg) text-gray-900 dark:text-gray-100 mt-3">
+        <p className="md:mt-6 md:text-lg text-gray-900 dark:text-gray-100 mt-3">
           PaperMC uses Open Collective to manage various recurring expenses,
           mostly related to infrastructure. Open Collective allows us to be
           extremely transparent, so you can always see how your donations are
@@ -47,8 +47,8 @@ const Contribute: NextPage = () => (
           </Button>
         </div>
       </div>
-      <div className="justify-start flex w-full lg:(flex-1 justify-end)">
-        <SavingsIllustration className="max-h-32 lg:(max-w-72 max-h-none)" />
+      <div className="justify-start flex w-full lg:flex-1 lg:justify-end">
+        <SavingsIllustration className="max-h-32 lg:max-w-[18rem] lg:max-h-none" />
       </div>
     </section>
     <section
@@ -57,7 +57,7 @@ const Contribute: NextPage = () => (
     >
       <div className="flex-1">
         <h2 className="font-medium text-2xl md:text-4xl">...Code</h2>
-        <p className="md:(mt-6 text-lg) text-gray-900 dark:text-gray-100 mt-3">
+        <p className="md:mt-6 md:text-lg text-gray-900 dark:text-gray-100 mt-3">
           A big chunk of the code in our projects is written by community
           members, and we welcome your contributions!
         </p>
@@ -72,8 +72,8 @@ const Contribute: NextPage = () => (
           </Button>
         </div>
       </div>
-      <div className="justify-start flex w-full lg:(flex-1 justify-end)">
-        <CodeReviewIllustration className="max-h-32 lg:(max-w-72 max-h-none)" />
+      <div className="justify-start flex w-full lg:flex-1 lg:justify-end">
+        <CodeReviewIllustration className="max-h-32 lg:max-w-[18rem] lg:max-h-none" />
       </div>
     </section>
     <section
@@ -82,7 +82,7 @@ const Contribute: NextPage = () => (
     >
       <div className="lg:flex-1">
         <h2 className="font-medium text-2xl md:text-4xl">...Support</h2>
-        <p className="md:(mt-6 text-lg) text-gray-900 dark:text-gray-100 mt-3">
+        <p className="md:mt-6 md:text-lg text-gray-900 dark:text-gray-100 mt-3">
           A lot of users result in a lot of questions. Everyone is welcome to
           answer questions or provide support, whether on our Discord server or
           in our forums
@@ -93,8 +93,8 @@ const Contribute: NextPage = () => (
           </Button>
         </div>
       </div>
-      <div className="justify-start flex w-full lg:(flex-1 justify-end)">
-        <ChattingIllustration className="max-h-32 lg:(max-w-72 max-h-none)" />
+      <div className="justify-start flex w-full lg:flex-1 lg:justify-end">
+        <ChattingIllustration className="max-h-32 lg:max-w-[18rem] lg:max-h-none" />
       </div>
     </section>
     <section
@@ -103,7 +103,7 @@ const Contribute: NextPage = () => (
     >
       <div className="flex-1">
         <h2 className="font-medium text-2xl md:text-4xl">...Documentation</h2>
-        <p className="md:(mt-6 text-lg) text-gray-900 dark:text-gray-100 mt-3">
+        <p className="md:mt-6 md:text-lg text-gray-900 dark:text-gray-100 mt-3">
           Constantly evolving software needs constantly updated documentation.
           No matter if you want to report missing information or add guides
           yourself, we always appreciate help.
@@ -119,8 +119,8 @@ const Contribute: NextPage = () => (
           </Button>
         </div>
       </div>
-      <div className="justify-start flex w-full lg:(flex-1 justify-end)">
-        <KnowledgeIllustration className="max-h-32 lg:(max-w-72 max-h-none)" />
+      <div className="justify-start flex w-full lg:flex-1 lg:justify-end">
+        <KnowledgeIllustration className="max-h-32 lg:max-w-[18rem] lg:max-h-none" />
       </div>
     </section>
   </>

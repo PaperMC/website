@@ -51,7 +51,7 @@ const NavDropDown = ({
         show={hover}
         unmount
       >
-        <ul className="mt-2 flex flex-col py-1 z-100 bg-background-light-10 dark:bg-background-dark-90 transition-all md:(absolute border border-gray-200 dark:border-gray-800 rounded-lg shadow-md mt-0)">
+        <ul className="mt-2 flex flex-col py-1 z-100 bg-background-light-10 dark:bg-background-dark-90 transition-all md:absolute md:border md:border-gray-200 md:dark:border-gray-800 md:rounded-lg md:shadow-md md:mt-0">
           {children}
         </ul>
       </Transition>

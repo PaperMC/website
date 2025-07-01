@@ -11,9 +11,9 @@ const CommunityIndex: NextPage = () => (
       keywords={["papermc", "paper", "minecraft", "sponsor", "community"]}
       canonical="/community"
     />
-    <header className="max-w-7xl flex flex-row mx-auto px-4 pt-32 pb-16 lg:(pt-48 pb-32) gap-16">
+    <header className="max-w-7xl flex flex-row mx-auto px-4 pt-32 pb-16 lg:pt-48 lg:pb-32 gap-16">
       <div className="flex-1">
-        <h1 className="font-medium leading-normal lg:(text-5xl leading-normal) text-4xl">
+        <h1 className="font-medium leading-normal lg:text-5xl lg:leading-normal text-4xl">
           Join Our Community
         </h1>
         <p className="text-xl mt-4">
@@ -34,7 +34,7 @@ const CommunityIndex: NextPage = () => (
     >
       <div className="flex-1">
         <h2 className="font-medium text-2xl md:text-4xl">Discord</h2>
-        <p className="md:(mt-6 text-lg) text-gray-900 dark:text-gray-100 mt-3">
+        <p className="md:mt-6 md:text-lg text-gray-900 dark:text-gray-100 mt-3">
           Discord is a popular option for many gamers to communicate with each
           other. We have a Discord community server that anyone can join.
         </p>
@@ -49,7 +49,7 @@ const CommunityIndex: NextPage = () => (
           </Button>
         </div>
       </div>
-      <div className="justify-start flex w-full lg:(flex-1 justify-end)"></div>
+      <div className="justify-start flex w-full lg:flex-1 lg:justify-end"></div>
     </section>
     <section
       id="forums"
@@ -57,7 +57,7 @@ const CommunityIndex: NextPage = () => (
     >
       <div className="flex-1">
         <h2 className="font-medium text-2xl md:text-4xl">Forums</h2>
-        <p className="md:(mt-6 text-lg) text-gray-900 dark:text-gray-100 mt-3">
+        <p className="md:mt-6 md:text-lg text-gray-900 dark:text-gray-100 mt-3">
           You can join the forums and chat with other administrators,
           developers, project staff, and more.
         </p>
@@ -72,7 +72,7 @@ const CommunityIndex: NextPage = () => (
           </Button>
         </div>
       </div>
-      <div className="justify-start flex w-full lg:(flex-1 justify-end)"></div>
+      <div className="justify-start flex w-full lg:flex-1 lg:justify-end"></div>
     </section>
   </>
 );

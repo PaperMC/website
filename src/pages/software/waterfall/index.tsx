@@ -56,9 +56,9 @@ const WaterfallHome = ({ project }: HangarProjectProps): ReactElement => {
       />
       <section
         id="facts"
-        className="flex flex-col max-w-7xl mx-auto px-4 py-8 gap-8 md:(gap-12 py-16)"
+        className="flex flex-col max-w-7xl mx-auto px-4 py-8 gap-8 md:gap-12 md:py-16"
       >
-        <div className="flex flex-col gap-6 md:(flex-row gap-8) xl:gap-24 items-center">
+        <div className="flex flex-col gap-6 md:flex-row md:gap-8 xl:gap-24 items-center">
           <div className="w-full flex-1 rounded-xl bg-gray-900 aspect-video relative overflow-clip">
             <Image
               alt=""
@@ -73,7 +73,7 @@ const WaterfallHome = ({ project }: HangarProjectProps): ReactElement => {
             <h2 className="font-semibold text-2xl md:text-4xl">
               Need an updated proxy? Use Velocity!
             </h2>
-            <p className="md:(mt-6 text-xl) text-gray-900 dark:text-gray-100 mt-3">
+            <p className="md:mt-6 md:text-xl text-gray-900 dark:text-gray-100 mt-3">
               All the experience the PaperMC team has gained from working on
               Waterfall has applied to Velocity. Designed with performance and
               scalability in mind, Velocity is the best proxy software
@@ -86,12 +86,12 @@ const WaterfallHome = ({ project }: HangarProjectProps): ReactElement => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col gap-6 md:(flex-row-reverse gap-8) xl:gap-24 items-center">
+        <div className="flex flex-col gap-6 md:flex-row-reverse md:gap-8 xl:gap-24 items-center">
           <div className="flex-1">
             <h2 className="font-semibold text-2xl md:text-4xl">
               Together with a community of server owners
             </h2>
-            <p className="md:(mt-6 text-xl) text-gray-900 dark:text-gray-100 mt-3">
+            <p className="md:mt-6 md:text-xl text-gray-900 dark:text-gray-100 mt-3">
               Whether you need help with your proxy settings, server lag, or
               need a guide for formatting your chat, our knowledgeable staff and
               friendly community are always around to lend a hand.
