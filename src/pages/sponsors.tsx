@@ -20,9 +20,9 @@ const Sponsors: NextPage = () => {
         keywords={["papermc", "paper", "minecraft", "sponsor", "contributing"]}
         canonical="/sponsors"
       />
-      <header className="max-w-7xl flex flex-row mx-auto px-4 pt-32 pb-16 lg:(pt-48 pb-32) gap-16">
+      <header className="max-w-7xl flex flex-row mx-auto px-4 pt-32 pb-16 lg:pt-48 lg:pb-32 gap-16">
         <div className="flex-1">
-          <h1 className="font-medium leading-normal lg:(text-5xl leading-normal) text-4xl">
+          <h1 className="font-medium leading-normal lg:text-5xl lg:leading-normal text-4xl">
             Sponsors
           </h1>
           <p className="text-xl mt-4">
@@ -105,7 +105,7 @@ const Sponsors: NextPage = () => {
             .map((node) => (
               <div
                 role="button"
-                className="relative rounded-full aspect-square bg-gray-600 flex items-center justify-center text-white font-bold uppercase overflow-auto transition-transform transform hover:(scale-120 shadow-lg)"
+                className="relative rounded-full aspect-square bg-gray-600 flex items-center justify-center text-white font-bold uppercase overflow-auto transition-transform transform hover:scale-120 hover:shadow-lg"
                 key={node.name}
               >
                 {node.name[0]}
@@ -125,7 +125,7 @@ const Sponsors: NextPage = () => {
           {sponsorData?.ghData?.organization?.sponsors?.nodes?.map((node) => (
             <a
               role="button"
-              className="relative rounded-full aspect-square bg-gray-600 flex items-center justify-center text-white font-bold uppercase overflow-auto transition-transform transform hover:(scale-120 shadow-lg)"
+              className="relative rounded-full aspect-square bg-gray-600 flex items-center justify-center text-white font-bold uppercase overflow-auto transition-transform transform hover:scale-120 hover:shadow-lg"
               href={`https://github.com/${node.login}`}
               rel="noreferrer"
               target="_blank"

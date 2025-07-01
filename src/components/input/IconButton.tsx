@@ -19,7 +19,7 @@ const IconButton = (props: IconButtonProps) => {
         href={href}
         rel="noreferrer"
         target="_blank"
-        className="inline-block h-min w-min rounded-full p-2 transition-colors hover:bg-gray-800/20 dark:hover:bg-gray-400/20 leading-0"
+        className="inline-block h-fit w-fit rounded-full p-2 transition-colors hover:bg-gray-800/20 dark:hover:bg-gray-400/20 leading-none"
         onClick={onClick}
         aria-label={label}
       >
@@ -30,7 +30,7 @@ const IconButton = (props: IconButtonProps) => {
 
   return (
     <button
-      className="h-min w-min rounded-full p-2 transition-colors hover:bg-gray-800/20"
+      className="h-fit w-fit rounded-full p-2 transition-colors hover:bg-gray-800/20"
       onClick={onClick}
       aria-label={label}
     >

@@ -14,7 +14,7 @@ const CommunityGuidelines: NextPage = () => (
       canonical="/community/guidelines"
     />
     <header className="max-w-7xl mx-auto px-4 pt-32 pb-16">
-      <h1 className="font-medium leading-normal lg:(text-5xl leading-normal) text-4xl">
+      <h1 className="font-medium leading-normal lg:text-5xl lg:leading-normal text-4xl">
         PaperMC Community Guidelines
       </h1>
     </header>
@@ -405,12 +405,12 @@ const CommunityGuidelines: NextPage = () => (
           href="https://creativecommons.org/licenses/by-sa/4.0/?ref=chooser-v1"
           target="_blank"
           rel="noreferrer"
-          className="text-blue-800 dark:text-blue-300"
+          className="text-blue-800 dark:text-blue-300 inline-flex items-center"
         >
           CC BY-SA 4.0
-          <CCIcon className="ml-2 w-6 align-sub" />
-          <BYIcon className="w-6 align-sub" />
-          <SAIcon className="w-6 align-sub" />
+          <CCIcon className="ml-2 w-6 h-6" />
+          <BYIcon className="w-6 h-6" />
+          <SAIcon className="w-6 h-6" />
         </a>
       </p>
     </section>

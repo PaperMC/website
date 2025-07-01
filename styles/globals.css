@@ -1,5 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html {
-    @apply bg-background-light-10 dark:(bg-background-dark-90 text-white) smooth-scroll;
+    @apply bg-background-light-10 dark:bg-background-dark-90 dark:text-white scroll-smooth;
     -webkit-tap-highlight-color: transparent;
 }
 

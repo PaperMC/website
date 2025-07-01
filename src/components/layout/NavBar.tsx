@@ -56,12 +56,17 @@ const NavBar = ({ component }: NavBarProps) => {
       <div className="max-w-7xl flex flex-row items-center mx-auto px-4 py-2 gap-2">
         <button
           title={"Toggle nav"}
-          className="leading-0 mr-2 md:hidden"
+          className="leading-none mr-2 md:hidden"
           onClick={() => setShowMenu((show) => !show)}
         >
           <MenuIcon className="w-6 h-6 fill-gray-500" />
         </button>
-        <Link href="/" className="leading-0" tabIndex={-1} aria-hidden={true}>
+        <Link
+          href="/"
+          className="leading-none"
+          tabIndex={-1}
+          aria-hidden={true}
+        >
           <LogoMarkerLight
             className="block dark:hidden h-12 cursor-pointer"
             alt="PaperMC"
@@ -73,7 +78,7 @@ const NavBar = ({ component }: NavBarProps) => {
         </Link>
         <div
           className={clsx(
-            "absolute top-full left-0 right-0 flex flex-col bg-background-light-10 dark:bg-background-dark-90 gap-4 p-4 shadow-xl w-full md:(block relative w-auto shadow-none bg-transparent p-0)",
+            "absolute top-full left-0 right-0 flex flex-col bg-background-light-10 dark:bg-background-dark-90 gap-4 p-4 shadow-xl w-full md:block md:relative md:w-auto md:shadow-none md:bg-transparent md:p-0",
             !showMenu && "hidden",
           )}
         >

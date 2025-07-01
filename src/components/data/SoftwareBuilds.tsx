@@ -33,7 +33,7 @@ const SoftwareBuilds = ({
             href={build.downloads["server:default"].url}
             target="_blank"
             className={clsx(
-              "text-gray-100 text-sm text-center font-medium rounded-full p-2 min-w-16 mr-4 inline-flex items-center gap-1",
+              "text-gray-100 text-sm text-center font-medium rounded-full p-2 min-w-[4rem] mr-4 inline-flex items-center gap-1",
               build.channel === "STABLE" && !eol ? "bg-gray-800" : "bg-red-500",
             )}
           >
@@ -57,7 +57,7 @@ const SoftwareBuilds = ({
     {!builds &&
       [...Array(5)].map((_, k) => (
         <div className="flex flex-row items-start w-full" key={k}>
-          <div className="bg-gray-800 rounded-full p-2 min-w-16 mr-4 ">
+          <div className="bg-gray-800 rounded-full p-2 min-w-[4rem] mr-4 ">
             <Skeleton className="h-5" />
           </div>
           <Skeleton className="mt-1 flex-grow" />

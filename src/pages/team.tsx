@@ -22,9 +22,9 @@ const Team: NextPage = () => {
         keywords={["papermc", "paper", "minecraft", "team"]}
         canonical="/team"
       />
-      <header className="max-w-7xl flex flex-row mx-auto px-4 pt-32 pb-26 lg:(pt-48 pb-46) gap-16">
+      <header className="max-w-7xl flex flex-row mx-auto px-4 pt-32 pb-[6.5rem] lg:pt-48 lg:pb-[11.5rem] gap-16">
         <div className="flex-1">
-          <h1 className="font-medium leading-normal lg:(text-5xl leading-normal) text-4xl">
+          <h1 className="font-medium leading-normal lg:text-5xl lg:leading-normal text-4xl">
             Meet our team
           </h1>
           <p className="text-xl mt-4">
@@ -114,7 +114,7 @@ const Team: NextPage = () => {
               .map((contributor) => (
                 <a
                   role="button"
-                  className="relative rounded-full aspect-square bg-gray-600 flex items-center justify-center text-white font-bold uppercase overflow-auto transition-transform transform hover:(scale-120 shadow-lg)"
+                  className="relative rounded-full aspect-square bg-gray-600 flex items-center justify-center text-white font-bold uppercase overflow-auto transition-transform transform hover:scale-120 hover:shadow-lg"
                   href={`https://github.com/${contributor.login}`}
                   rel="noreferrer"
                   target="_blank"

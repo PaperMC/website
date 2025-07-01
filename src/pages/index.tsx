@@ -26,9 +26,9 @@ const Home: NextPage<ProjectProps> = ({ project }) => {
         keywords={["papermc", "paper", "velocity", "minecraft", "performance"]}
         canonical="/"
       />
-      <header className="max-w-7xl flex flex-row mx-auto px-4 pt-32 pb-26 lg:(pt-48 pb-46)">
+      <header className="max-w-7xl flex flex-row mx-auto px-4 pt-32 pb-[6.5rem] lg:pt-48 lg:pb-[11.5rem]">
         <div className="flex-1">
-          <h1 className="font-medium leading-normal lg:(text-5xl leading-normal) text-4xl">
+          <h1 className="font-medium leading-normal lg:text-5xl lg:leading-normal text-4xl">
             Modern software. <br />
             <span className="text-blue-500">Built to perform.</span>
           </h1>
@@ -60,7 +60,7 @@ const Home: NextPage<ProjectProps> = ({ project }) => {
             Your server deserves the&nbsp;
             <span className="text-blue-500">best.</span>
           </h2>
-          <div className="grid md:(grid-cols-3 -ml-4) gap-2 px-2 xl:gap-4">
+          <div className="grid md:grid-cols-3 md:-ml-4 gap-2 px-2 xl:gap-4">
             <SoftwarePreview
               id="paper"
               name="Paper"
@@ -78,9 +78,9 @@ const Home: NextPage<ProjectProps> = ({ project }) => {
       </section>
       <section
         id="facts"
-        className="flex flex-col max-w-7xl mx-auto px-4 py-8 gap-8 md:(gap-12 py-16)"
+        className="flex flex-col max-w-7xl mx-auto px-4 py-8 gap-8 md:gap-12 md:py-16"
       >
-        <div className="flex flex-col gap-6 md:(flex-row-reverse gap-8) xl:gap-24 items-center">
+        <div className="flex flex-col gap-6 md:flex-row-reverse md:gap-8 xl:gap-24 items-center">
           <div className="w-full flex-1 rounded-xl bg-gray-900 aspect-video relative overflow-clip">
             <Image
               alt=""
@@ -95,7 +95,7 @@ const Home: NextPage<ProjectProps> = ({ project }) => {
             <h2 className="font-semibold text-2xl md:text-4xl">
               A diverse plugin ecosystem
             </h2>
-            <p className="md:(mt-6 text-xl) text-gray-900 dark:text-gray-100 mt-3">
+            <p className="md:mt-6 md:text-xl text-gray-900 dark:text-gray-100 mt-3">
               Crafted by the PaperMC team & contributors, Hangar is our own
               dedicated plugin repository, now in open beta! A place for
               developers to host their creations, and server owners to enrich
@@ -113,7 +113,7 @@ const Home: NextPage<ProjectProps> = ({ project }) => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col gap-6 md:(flex-row gap-8) xl:gap-24 items-center">
+        <div className="flex flex-col gap-6 md:flex-row md:gap-8 xl:gap-24 items-center">
           <div className="w-full flex-1 rounded-xl bg-gray-900 aspect-video relative overflow-clip">
             <Image
               alt=""
@@ -132,11 +132,11 @@ const Home: NextPage<ProjectProps> = ({ project }) => {
                   {Math.round(playerData[0][1] / 1000)}k+
                 </span>
               ) : (
-                <Skeleton className="w-30 h-6 inline-block" />
+                <Skeleton className="w-[7.5rem] h-6 inline-block" />
               )}
               &nbsp;players
             </h2>
-            <p className="md:(mt-6 text-xl) text-gray-900 dark:text-gray-100 mt-3">
+            <p className="md:mt-6 md:text-xl text-gray-900 dark:text-gray-100 mt-3">
               PaperMC’s software powers hundreds of thousands of Minecraft
               servers on a daily basis, from small single-servers setups to
               massive Minecraft server networks. Designed with utility and
@@ -144,7 +144,7 @@ const Home: NextPage<ProjectProps> = ({ project }) => {
             </p>
           </div>
         </div>
-        <div className="flex flex-col gap-6 md:(flex-row-reverse gap-8) xl:gap-24 items-center">
+        <div className="flex flex-col gap-6 md:flex-row-reverse md:gap-8 xl:gap-24 items-center">
           <div className="w-full flex-1 rounded-xl bg-gray-900 aspect-video relative overflow-clip">
             <Image
               alt=""
@@ -159,7 +159,7 @@ const Home: NextPage<ProjectProps> = ({ project }) => {
             <h2 className="font-semibold text-2xl md:text-4xl">
               The promise of stability
             </h2>
-            <p className="md:(mt-6 text-xl) text-gray-900 dark:text-gray-100 mt-3">
+            <p className="md:mt-6 md:text-xl text-gray-900 dark:text-gray-100 mt-3">
               Our software is designed with security and stability in mind. We
               have consistently been among the first to fix vulnerabilities in
               the Minecraft space for years, so you can rest assured that

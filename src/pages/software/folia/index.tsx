@@ -68,9 +68,9 @@ const FoliaHome = ({ project }: HangarProjectProps): ReactElement => {
       </section>
       <section
         id="facts"
-        className="flex flex-col max-w-7xl mx-auto px-4 py-8 gap-8 md:(gap-12 py-16)"
+        className="flex flex-col max-w-7xl mx-auto px-4 py-8 gap-8 md:gap-12 md:py-16"
       >
-        <div className="flex flex-col gap-6 md:(flex-row gap-8) xl:gap-24 items-center">
+        <div className="flex flex-col gap-6 md:flex-row md:gap-8 xl:gap-24 items-center">
           <div className="w-full flex-1 rounded-xl aspect-video relative overflow-clip">
             <Image
               alt=""
@@ -85,7 +85,7 @@ const FoliaHome = ({ project }: HangarProjectProps): ReactElement => {
             <h2 className="font-semibold text-2xl md:text-4xl">
               A diverse plugin ecosystem
             </h2>
-            <p className="md:(mt-6 text-xl) text-gray-900 dark:text-gray-100 mt-3">
+            <p className="md:mt-6 md:text-xl text-gray-900 dark:text-gray-100 mt-3">
               Crafted by the PaperMC team & contributors, Hangar is our own
               dedicated plugin repository, now in open beta! View over&nbsp;
               <span className={"text-blue-500"}>100</span>
