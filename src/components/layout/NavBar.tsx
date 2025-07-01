@@ -120,7 +120,7 @@ const NavBar = ({ component }: NavBarProps) => {
           <NavLink href="/contribute">Contribute</NavLink>
         </div>
 
-        <div className="flex-grow" />
+        <div className="grow" />
         <IconButton
           icon={DiscordIcon}
           label="Discord"

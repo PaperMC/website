@@ -1,3 +1,5 @@
+@reference '../../globals.css';
+
 .header th {
     @apply text-left px-6 py-4 border-b dark:border-gray-600;
 }

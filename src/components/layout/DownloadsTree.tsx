@@ -32,8 +32,8 @@ const ProjectSubTree = ({
           className={clsx(
             "pl-6 py-1 rounded-md transition-colors text-gray-800 dark:text-gray-200 block w-full text-left",
             eol
-              ? "hover:bg-red-100 hover:dark:bg-red-900"
-              : "hover:bg-blue-100 hover:dark:bg-gray-900",
+              ? "hover:bg-red-100 dark:hover:bg-red-900"
+              : "hover:bg-blue-100 dark:hover:bg-gray-900",
             selectedProject === id &&
               selectedVersion === version &&
               (eol
@@ -58,7 +58,7 @@ interface DownloadsTreeProps {
 
 const DownloadsTree = (props: DownloadsTreeProps) => {
   return (
-    <nav className="w-[12.5rem] p-2 border-r border-gray-300 overflow-auto">
+    <nav className="w-50 p-2 border-r border-gray-300 overflow-auto">
       <ProjectSubTree id="paper" name="Paper" {...props} />
       <ProjectSubTree id="velocity" name="Velocity" {...props} />
       <ProjectSubTree id="folia" name="Folia" {...props} />
