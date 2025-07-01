@@ -40,7 +40,7 @@ const highlightIssues = (
   summary: string,
   project: string,
   highlightClass: string,
-): JSX.Element[] => {
+): ReactElement[] => {
   return summary.split(/([^&])(#[0-9]+)/gm).map((part: string, i: number) => {
     if (!part.match(/#[0-9]+/)) {
       return <Fragment key={i}>{part}</Fragment>;
