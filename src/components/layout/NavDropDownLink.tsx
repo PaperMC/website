@@ -22,7 +22,7 @@ const NavDropDownLink = ({
   <li
     className={clsx(
       "color-gray-200 text-gray-800 hover:text-blue-600 text-sm transition-colors dark:text-gray-200 dark:hover:text-blue-400",
-      eol && "hover:text-red-600 hover:dark:text-red-400",
+      eol && "hover:text-red-600 dark:hover:text-red-400",
       className,
     )}
   >

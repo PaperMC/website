@@ -36,7 +36,7 @@ const Javadocs: NextPage<JavadocProps> = ({
         ]}
         canonical="/javadocs"
       />
-      <header className="max-w-7xl flex flex-col items-center mx-auto px-4 pt-32 pb-16 lg:pt-48 lg:pb-[6.5rem] gap-2">
+      <header className="max-w-7xl flex flex-col items-center mx-auto px-4 pt-32 pb-16 lg:pt-48 lg:pb-26 gap-2">
         <h1 className="font-medium leading-normal lg:text-5xl lg:leading-normal text-4xl">
           Javadocs
         </h1>

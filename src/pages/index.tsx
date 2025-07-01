@@ -26,7 +26,7 @@ const Home: NextPage<ProjectProps> = ({ project }) => {
         keywords={["papermc", "paper", "velocity", "minecraft", "performance"]}
         canonical="/"
       />
-      <header className="max-w-7xl flex flex-row mx-auto px-4 pt-32 pb-[6.5rem] lg:pt-48 lg:pb-[11.5rem]">
+      <header className="max-w-7xl flex flex-row mx-auto px-4 pt-32 pb-26 lg:pt-48 lg:pb-46">
         <div className="flex-1">
           <h1 className="font-medium leading-normal lg:text-5xl lg:leading-normal text-4xl">
             Modern software. <br />
@@ -132,7 +132,7 @@ const Home: NextPage<ProjectProps> = ({ project }) => {
                   {Math.round(playerData[0][1] / 1000)}k+
                 </span>
               ) : (
-                <Skeleton className="w-[7.5rem] h-6 inline-block" />
+                <Skeleton className="w-30 h-6 inline-block" />
               )}
               &nbsp;players
             </h2>

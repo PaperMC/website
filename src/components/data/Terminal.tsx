@@ -144,7 +144,7 @@ export function Terminal({ project }: ProjectProps) {
           {">"}{" "}
           <input
             onKeyDown={(event) => handleCommand(event)}
-            className="w-[420px] bg-transparent border-none outline-none"
+            className="w-[420px] bg-transparent border-none outline-hidden"
           ></input>
         </div>,
       );

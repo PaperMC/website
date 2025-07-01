@@ -21,7 +21,7 @@ const SoftwareDownloadCard = ({
     <article
       role="button"
       className={clsx(
-        "rounded-xl transition-shadow transition-color p-4 bg-primary-200 shadow-sm hover:shadow-lg",
+        "rounded-xl transition-shadow transition-color p-4 bg-primary-200 shadow-xs hover:shadow-lg",
         selected ? "bg-primary-400" : "hover:bg-primary-300",
       )}
       onClick={onSelect}

@@ -47,7 +47,7 @@ const SoftwareDownloadButton = ({
       <div
         className={clsx(
           "rounded-lg flex flex-row ransition-shadow text-white transition-color hover:shadow-lg",
-          !compact && "w-full md:w-[25rem]",
+          !compact && "w-full md:w-100",
           stable && !eol
             ? "bg-blue-600 hover:bg-blue-500"
             : "bg-red-500 hover:bg-red-400",
