@@ -14,9 +14,5 @@ export default function PlayerCountDisplay({}: PlayerCountDisplayProps) {
     return <Skeleton className="w-30 h-6 inline-block" />;
   }
 
-  return (
-    <span className="text-blue-500">
-      {Math.round(playerData[0][1] / 1000)}k+
-    </span>
-  );
+  return <span className="text-blue-500">{Math.round(playerData[0][1] / 1000)}k+</span>;
 }

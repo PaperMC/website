@@ -4,8 +4,7 @@ import SoftwareDownloadPage from "@/components/layout/SoftwareDownloadPage";
 
 export const metadata: Metadata = {
   title: "Folia",
-  description:
-    "Download the latest builds of Folia, the experimental Paper fork with regionised multithreading.",
+  description: "Download the latest builds of Folia, the experimental Paper fork with regionised multithreading.",
 };
 
 export const revalidate = 600; // 10 minutes

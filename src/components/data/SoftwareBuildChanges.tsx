@@ -11,11 +11,7 @@ export interface SoftwareBuildChangesProps {
   version: string;
 }
 
-const SoftwareBuildChanges = ({
-  project,
-  build,
-  version,
-}: SoftwareBuildChangesProps): ReactElement => (
+const SoftwareBuildChanges = ({ project, build, version }: SoftwareBuildChangesProps): ReactElement => (
   <>
     {build.commits.map((change) => (
       <p key={change.sha}>
@@ -36,11 +32,7 @@ const SoftwareBuildChanges = ({
 
 export default SoftwareBuildChanges;
 
-const highlightIssues = (
-  summary: string,
-  project: string,
-  highlightClass: string,
-): ReactElement[] => {
+const highlightIssues = (summary: string, project: string, highlightClass: string): ReactElement[] => {
   return summary.split(/([^&])(#[0-9]+)/gm).map((part: string, i: number) => {
     if (!part.match(/#[0-9]+/)) {
       return <Fragment key={i}>{part}</Fragment>;

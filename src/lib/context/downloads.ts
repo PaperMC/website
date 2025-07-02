@@ -2,10 +2,7 @@ import type { GetStaticProps } from "next";
 import { createContext } from "react";
 
 import { getProject, getVersionBuilds } from "@/lib/service/fill";
-import type {
-  HangarProjectListPagination,
-  HangarProjectList,
-} from "@/lib/service/hangar";
+import type { HangarProjectListPagination, HangarProjectList } from "@/lib/service/hangar";
 import { getHangarProjects } from "@/lib/service/hangar";
 import type { Build } from "@/lib/service/types";
 
@@ -40,10 +37,7 @@ export const DownloadsContext = createContext<DownloadsContextProps>({
   stable: true,
 });
 
-const isVersionStable = async (
-  project: string,
-  version: string,
-): Promise<boolean> => {
+const isVersionStable = async (project: string, version: string): Promise<boolean> => {
   const builds = await getVersionBuilds(project, version);
   for (let i = builds.length - 1; i >= 0; i--) {
     if (builds[i].channel === "STABLE") return true;
@@ -52,18 +46,13 @@ const isVersionStable = async (
   return false;
 };
 
-export const getProjectProps = (
-  id: string,
-  hangarProject: boolean = true,
-): GetStaticProps => {
+export const getProjectProps = (id: string, hangarProject: boolean = true): GetStaticProps => {
   return async () => {
     const {
       project: { name: projectName },
       versions,
     } = await getProject(id);
-    const hangarProjectList: HangarProjectList | null = hangarProject
-      ? await getHangarProjects(id)
-      : null;
+    const hangarProjectList: HangarProjectList | null = hangarProject ? await getHangarProjects(id) : null;
     const flattenedVersions = Object.values(versions).flat().reverse();
     let latestStableVersion = flattenedVersions[flattenedVersions.length - 1];
     for (let i = flattenedVersions.length - 1; i >= 0; i--) {
@@ -88,9 +77,7 @@ export const getProjectProps = (
     return {
       props: {
         project,
-        hangarProjectListPagination: hangarProjectList
-          ? hangarProjectList.pagination
-          : null,
+        hangarProjectListPagination: hangarProjectList ? hangarProjectList.pagination : null,
       },
       revalidate: 600, // 10 minutes
     };

@@ -8,12 +8,7 @@ export interface SEOProps {
   canonical: string;
 }
 
-const SEO = ({
-  title,
-  description,
-  keywords,
-  canonical,
-}: SEOProps): ReactElement => {
+const SEO = ({ title, description, keywords, canonical }: SEOProps): ReactElement => {
   return (
     <Head>
       <title>{title + " | PaperMC"}</title>

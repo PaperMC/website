@@ -10,18 +10,8 @@ import { getProjectDescriptor } from "@/lib/util/downloads";
 
 export const metadata: Metadata = {
   title: "Folia",
-  description:
-    "Folia is a new fork of Paper that adds regionized multithreading to the server.",
-  keywords: [
-    "papermc",
-    "folia",
-    "server",
-    "minecraft",
-    "performance",
-    "regionized",
-    "multithreading",
-    "fork",
-  ],
+  description: "Folia is a new fork of Paper that adds regionized multithreading to the server.",
+  keywords: ["papermc", "folia", "server", "minecraft", "performance", "regionized", "multithreading", "fork"],
 };
 
 export const revalidate = 600; // 10 minutes
@@ -42,14 +32,9 @@ export default async function FoliaSoftwarePage() {
         header={<>What is Folia?</>}
         description="Folia is a new fork of Paper that adds regionized multithreading to the server"
       />
-      <section
-        id="why"
-        className="w-full pt-10 pb-5 bg-primary-200 dark:bg-background-dark-80"
-      >
+      <section id="why" className="w-full pt-10 pb-5 bg-primary-200 dark:bg-background-dark-80">
         <div className="max-w-7xl mx-auto">
-          <h2 className="font-semibold text-xl md:text-2xl px-6 lg:px-4">
-            About Folia
-          </h2>
+          <h2 className="font-semibold text-xl md:text-2xl px-6 lg:px-4">About Folia</h2>
           <div className="grid md:grid-cols-3 mt-6 gap-2 px-2 xl:gap-4">
             <FeatureCard
               iconId="bolt"
@@ -69,10 +54,7 @@ export default async function FoliaSoftwarePage() {
           </div>
         </div>
       </section>
-      <section
-        id="facts"
-        className="flex flex-col max-w-7xl mx-auto px-4 py-8 gap-8 md:gap-12 md:py-16"
-      >
+      <section id="facts" className="flex flex-col max-w-7xl mx-auto px-4 py-8 gap-8 md:gap-12 md:py-16">
         <div className="flex flex-col gap-6 md:flex-row md:gap-8 xl:gap-24 items-center">
           <div className="w-full flex-1 rounded-xl aspect-video relative overflow-clip">
             <Image
@@ -85,23 +67,15 @@ export default async function FoliaSoftwarePage() {
             />
           </div>
           <div className="flex-1">
-            <h2 className="font-semibold text-2xl md:text-4xl">
-              A diverse plugin ecosystem
-            </h2>
+            <h2 className="font-semibold text-2xl md:text-4xl">A diverse plugin ecosystem</h2>
             <p className="md:mt-6 md:text-xl text-gray-900 dark:text-gray-100 mt-3">
-              Crafted by the PaperMC team & contributors, Hangar is our own
-              dedicated plugin repository, now in open beta! View over&nbsp;
+              Crafted by the PaperMC team & contributors, Hangar is our own dedicated plugin repository, now in open
+              beta! View over&nbsp;
               <span className={"text-blue-500"}>100</span>
-              &nbsp;different plugins that support Folia, or list your own with
-              a very streamlined creation process.
+              &nbsp;different plugins that support Folia, or list your own with a very streamlined creation process.
             </p>
             <div className="flex flex-row gap-4 mt-8">
-              <Button
-                variant="filled"
-                href="https://hangar.papermc.io/"
-                external
-                dense
-              >
+              <Button variant="filled" href="https://hangar.papermc.io/" external dense>
                 Check out Hangar
               </Button>
             </div>

@@ -25,22 +25,17 @@ const ProjectSubTree = ({
   return (
     <>
       <div className="pl-3 py-1 rounded-md font-bold flex gap-2 items-center">
-        {project?.project.name ?? name}{" "}
-        {eol && <ArchiveIcon className="fill-current h-4" />}
+        {project?.project.name ?? name} {eol && <ArchiveIcon className="fill-current h-4" />}
       </div>
       {flattenedVersions.map((version) => (
         <button
           key={version}
           className={clsx(
             "pl-6 py-1 rounded-md transition-colors text-gray-800 dark:text-gray-200 block w-full text-left",
-            eol
-              ? "hover:bg-red-100 dark:hover:bg-red-900"
-              : "hover:bg-blue-100 dark:hover:bg-gray-900",
+            eol ? "hover:bg-red-100 dark:hover:bg-red-900" : "hover:bg-blue-100 dark:hover:bg-gray-900",
             selectedProject === id &&
               selectedVersion === version &&
-              (eol
-                ? "bg-red-100 dark:bg-red-900"
-                : "bg-blue-100 dark:bg-blue-900"),
+              (eol ? "bg-red-100 dark:bg-red-900" : "bg-blue-100 dark:bg-blue-900"),
           )}
           onClick={() => onSelect(id, version)}
         >

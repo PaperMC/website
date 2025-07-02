@@ -1,19 +1,13 @@
 import type { Build, Project } from "@/lib/service/types";
 
 const API_ENDPOINT = "https://fill.papermc.io/v3";
-const BSTATS_URL =
-  "https://bstats.org/api/v1/plugins/580/charts/players/data/?maxElements=1";
+const BSTATS_URL = "https://bstats.org/api/v1/plugins/580/charts/players/data/?maxElements=1";
 
-const fetcher = (path: string) =>
-  fetch(API_ENDPOINT + path).then((res) => res.json());
+const fetcher = (path: string) => fetch(API_ENDPOINT + path).then((res) => res.json());
 
-export const getProject = (project: string): Promise<Project> =>
-  fetcher(`/projects/${project}`);
+export const getProject = (project: string): Promise<Project> => fetcher(`/projects/${project}`);
 
-export const getVersionBuilds = (
-  project: string,
-  version: string,
-): Promise<Build[]> =>
+export const getVersionBuilds = (project: string, version: string): Promise<Build[]> =>
   fetcher(`/projects/${project}/versions/${version}/builds`);
 
 export const getBStats = async (): Promise<{

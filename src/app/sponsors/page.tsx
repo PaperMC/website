@@ -4,8 +4,7 @@ import SponsorsClient from "./sponsors-client";
 
 export const metadata: Metadata = {
   title: "Sponsors",
-  description:
-    "Without contributors our projects wouldn't be possible. Find out how you can help.",
+  description: "Without contributors our projects wouldn't be possible. Find out how you can help.",
   keywords: ["papermc", "paper", "minecraft", "sponsor", "contributing"],
 };
 

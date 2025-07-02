@@ -13,42 +13,26 @@ export default function SponsorsClient() {
     <>
       <header className="max-w-7xl flex flex-row mx-auto px-4 pt-32 pb-16 lg:pt-48 lg:pb-32 gap-16">
         <div className="flex-1">
-          <h1 className="font-medium leading-normal lg:text-5xl lg:leading-normal text-4xl">
-            Sponsors
-          </h1>
+          <h1 className="font-medium leading-normal lg:text-5xl lg:leading-normal text-4xl">Sponsors</h1>
           <p className="text-xl mt-4">
-            PaperMC is an open community, and part of managing the community
-            involves paying for services, servers, and infrastructure. We do
-            what we can to keep our costs reasonable and sustainable, but still
-            some costs are unavoidable.
+            PaperMC is an open community, and part of managing the community involves paying for services, servers, and
+            infrastructure. We do what we can to keep our costs reasonable and sustainable, but still some costs are
+            unavoidable.
           </p>
           <div className="flex flex-row gap-4 mt-8">
-            <Button
-              variant="filled"
-              href="https://opencollective.com/papermc"
-              external
-            >
+            <Button variant="filled" href="https://opencollective.com/papermc" external>
               Open Collective
             </Button>
-            <Button
-              variant="outlined"
-              href="https://github.com/sponsors/PaperMC"
-              external
-            >
+            <Button variant="outlined" href="https://github.com/sponsors/PaperMC" external>
               GitHub Sponsors
             </Button>
           </div>
         </div>
         <div className="flex-1 lg:flex hidden justify-end"></div>
       </header>
-      <section
-        id="why"
-        className="w-full pt-10 pb-5 bg-primary-200 dark:bg-background-dark-80"
-      >
+      <section id="why" className="w-full pt-10 pb-5 bg-primary-200 dark:bg-background-dark-80">
         <div className="max-w-7xl mx-auto py-2">
-          <h2 className="font-semibold text-xl md:text-2xl px-6 lg:px-4">
-            Why You Should Donate
-          </h2>
+          <h2 className="font-semibold text-xl md:text-2xl px-6 lg:px-4">Why You Should Donate</h2>
           <div className="grid md:grid-cols-3 mt-6 gap-2 px-2 xl:gap-4">
             <FeatureCard
               iconId="globe-americas"
@@ -73,20 +57,13 @@ export default function SponsorsClient() {
         <p className="text-lg text-gray-900 dark:text-gray-100 mt-3">
           Our current balance is{" "}
           <b>
-            $
-            {sponsorData &&
-              (
-                sponsorData.ocData.collective.stats.balance.valueInCents / 100
-              )?.toLocaleString("en")}
+            ${sponsorData && (sponsorData.ocData.collective.stats.balance.valueInCents / 100)?.toLocaleString("en")}
           </b>
           , our estimated expenses are{" "}
           <b>
             $
             {sponsorData &&
-              (
-                sponsorData.ocData.collective.stats.monthlySpending
-                  .valueInCents / 100
-              )?.toLocaleString("en")}
+              (sponsorData.ocData.collective.stats.monthlySpending.valueInCents / 100)?.toLocaleString("en")}
           </b>{" "}
           per month.
         </p>
@@ -104,9 +81,7 @@ export default function SponsorsClient() {
                   alt={`${node.name}'s avatar`}
                   src={node.image}
                   onError={(e) => (e.currentTarget.style.display = "none")}
-                  onLoad={(e) =>
-                    (e.currentTarget.style.backgroundColor = "white")
-                  }
+                  onLoad={(e) => (e.currentTarget.style.backgroundColor = "white")}
                   unoptimized
                   fill
                   className="object-cover"
@@ -127,9 +102,7 @@ export default function SponsorsClient() {
                 alt={`${node.login}'s avatar`}
                 src={node.avatarUrl}
                 onError={(e) => (e.currentTarget.style.display = "none")}
-                onLoad={(e) =>
-                  (e.currentTarget.style.backgroundColor = "white")
-                }
+                onLoad={(e) => (e.currentTarget.style.backgroundColor = "white")}
                 unoptimized
                 fill
                 className="object-cover"

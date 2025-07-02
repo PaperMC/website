@@ -13,14 +13,7 @@ export const metadata: Metadata = {
   title: "Waterfall",
   description:
     "Waterfall is an upgraded BungeeCord, offering full compatibility with improvements to performance and stability.",
-  keywords: [
-    "waterfall",
-    "proxy",
-    "minecraft",
-    "performance",
-    "bungeecord",
-    "fork",
-  ],
+  keywords: ["waterfall", "proxy", "minecraft", "performance", "bungeecord", "fork"],
 };
 
 export const revalidate = 600; // 10 minutes
@@ -42,10 +35,7 @@ export default async function WaterfallSoftwarePage() {
         description={
           <>
             We recommend you transition to{" "}
-            <Link
-              className="text-blue-500 hover:text-blue-400 hover:underline"
-              href="/software/velocity"
-            >
+            <Link className="text-blue-500 hover:text-blue-400 hover:underline" href="/software/velocity">
               Velocity
             </Link>
             . For more information see the{" "}
@@ -60,10 +50,7 @@ export default async function WaterfallSoftwarePage() {
         }
         eol
       />
-      <section
-        id="facts"
-        className="flex flex-col max-w-7xl mx-auto px-4 py-8 gap-8 md:gap-12 md:py-16"
-      >
+      <section id="facts" className="flex flex-col max-w-7xl mx-auto px-4 py-8 gap-8 md:gap-12 md:py-16">
         <div className="flex flex-col gap-6 md:flex-row md:gap-8 xl:gap-24 items-center">
           <div className="w-full flex-1 rounded-xl bg-gray-900 aspect-video relative overflow-clip">
             <Image
@@ -76,14 +63,10 @@ export default async function WaterfallSoftwarePage() {
             />
           </div>
           <div className="flex-1">
-            <h2 className="font-semibold text-2xl md:text-4xl">
-              Need an updated proxy? Use Velocity!
-            </h2>
+            <h2 className="font-semibold text-2xl md:text-4xl">Need an updated proxy? Use Velocity!</h2>
             <p className="md:mt-6 md:text-xl text-gray-900 dark:text-gray-100 mt-3">
-              All the experience the PaperMC team has gained from working on
-              Waterfall has applied to Velocity. Designed with performance and
-              scalability in mind, Velocity is the best proxy software
-              available.
+              All the experience the PaperMC team has gained from working on Waterfall has applied to Velocity. Designed
+              with performance and scalability in mind, Velocity is the best proxy software available.
             </p>
             <div className="flex flex-row gap-4 mt-8">
               <Button variant="filled" href="/software/velocity" dense>
@@ -94,21 +77,13 @@ export default async function WaterfallSoftwarePage() {
         </div>
         <div className="flex flex-col gap-6 md:flex-row-reverse md:gap-8 xl:gap-24 items-center">
           <div className="flex-1">
-            <h2 className="font-semibold text-2xl md:text-4xl">
-              Together with a community of server owners
-            </h2>
+            <h2 className="font-semibold text-2xl md:text-4xl">Together with a community of server owners</h2>
             <p className="md:mt-6 md:text-xl text-gray-900 dark:text-gray-100 mt-3">
-              Whether you need help with your proxy settings, server lag, or
-              need a guide for formatting your chat, our knowledgeable staff and
-              friendly community are always around to lend a hand.
+              Whether you need help with your proxy settings, server lag, or need a guide for formatting your chat, our
+              knowledgeable staff and friendly community are always around to lend a hand.
             </p>
             <div className="flex flex-row gap-4 mt-8">
-              <Button
-                variant="filled"
-                href="https://discord.gg/papermc"
-                external
-                dense
-              >
+              <Button variant="filled" href="https://discord.gg/papermc" external dense>
                 Join our Discord
               </Button>
             </div>

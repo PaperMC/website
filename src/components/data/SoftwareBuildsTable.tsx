@@ -14,12 +14,7 @@ export interface SoftwareBuildsTableProps {
   eol?: boolean;
 }
 
-const SoftwareBuildsTable = ({
-  project,
-  version,
-  builds,
-  eol,
-}: SoftwareBuildsTableProps) => {
+const SoftwareBuildsTable = ({ project, version, builds, eol }: SoftwareBuildsTableProps) => {
   return (
     <table className="w-full relative">
       <thead className="sticky top-0 z-40 bg-background-light-10 dark:bg-background-dark-90 shadow-xs">
@@ -37,25 +32,16 @@ const SoftwareBuildsTable = ({
               <span
                 className={clsx(
                   "text-sm font-medium text-gray-100 rounded-full py-2 px-3 min-w-16",
-                  build.channel === "ALPHA" || build.channel === "BETA" || eol
-                    ? "bg-red-500"
-                    : "bg-gray-800",
+                  build.channel === "ALPHA" || build.channel === "BETA" || eol ? "bg-red-500" : "bg-gray-800",
                 )}
               >
                 #{build.id}
               </span>
             </td>
             <td>
-              <SoftwareBuildChanges
-                project={project}
-                build={build}
-                version={version}
-              />
+              <SoftwareBuildChanges project={project} build={build} version={version} />
             </td>
-            <td
-              className={"whitespace-nowrap"}
-              title={formatISODateTime(new Date(build.time))}
-            >
+            <td className={"whitespace-nowrap"} title={formatISODateTime(new Date(build.time))}>
               {formatRelativeDate(new Date(build.time))}
             </td>
             <td className={"gap-1"}>

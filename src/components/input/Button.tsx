@@ -11,14 +11,7 @@ export interface ButtonProps {
   children: ReactNode;
 }
 
-const Button = ({
-  variant,
-  dense,
-  href,
-  external,
-  className,
-  children,
-}: ButtonProps) => (
+const Button = ({ variant, dense, href, external, className, children }: ButtonProps) => (
   <Link
     role="button"
     className={clsx(

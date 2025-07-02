@@ -22,11 +22,9 @@ const NavBar = () => {
   // Determine GitHub URL based on current path
   const getGitHubUrl = () => {
     if (pathname?.includes("/paper")) return "https://github.com/PaperMC/Paper";
-    if (pathname?.includes("/velocity"))
-      return "https://github.com/PaperMC/Velocity";
+    if (pathname?.includes("/velocity")) return "https://github.com/PaperMC/Velocity";
     if (pathname?.includes("/folia")) return "https://github.com/PaperMC/Folia";
-    if (pathname?.includes("/waterfall"))
-      return "https://github.com/PaperMC/Waterfall";
+    if (pathname?.includes("/waterfall")) return "https://github.com/PaperMC/Waterfall";
     return "https://github.com/PaperMC";
   };
 
@@ -59,20 +57,9 @@ const NavBar = () => {
         >
           <MenuIcon className="w-6 h-6 fill-gray-500" />
         </button>
-        <Link
-          href="/"
-          className="leading-none"
-          tabIndex={-1}
-          aria-hidden={true}
-        >
-          <LogoMarkerLight
-            className="block dark:hidden h-12 cursor-pointer"
-            alt="PaperMC"
-          />
-          <LogoMarkerDark
-            className="hidden dark:block h-12 cursor-pointer"
-            alt="PaperMC"
-          />
+        <Link href="/" className="leading-none" tabIndex={-1} aria-hidden={true}>
+          <LogoMarkerLight className="block dark:hidden h-12 cursor-pointer" alt="PaperMC" />
+          <LogoMarkerDark className="hidden dark:block h-12 cursor-pointer" alt="PaperMC" />
         </Link>
         <div
           className={clsx(
@@ -83,34 +70,20 @@ const NavBar = () => {
           <NavDropDown label="Software">
             <NavDropDownLink href="/software/paper">Paper</NavDropDownLink>
             <NavDropDownLink href="/software/folia">Folia</NavDropDownLink>
-            <NavDropDownLink href="/software/velocity">
-              Velocity
-            </NavDropDownLink>
+            <NavDropDownLink href="/software/velocity">Velocity</NavDropDownLink>
             <NavDropDownLink href="/software/waterfall" eol>
               Waterfall
             </NavDropDownLink>
           </NavDropDown>
-          <NavLink
-            href="https://hangar.papermc.io/"
-            target="_blank"
-            className="inline-flex items-center"
-          >
+          <NavLink href="https://hangar.papermc.io/" target="_blank" className="inline-flex items-center">
             Plugins
             <ExternalUrlIcon className="h-4 w-4 ml-1 align-sub" />
           </NavLink>
-          <NavLink
-            href="https://docs.papermc.io/"
-            target="_blank"
-            className="inline-flex items-center"
-          >
+          <NavLink href="https://docs.papermc.io/" target="_blank" className="inline-flex items-center">
             Docs
             <ExternalUrlIcon className="h-4 w-4 ml-1 align-sub" />
           </NavLink>
-          <NavLink
-            href="https://forums.papermc.io/"
-            target="_blank"
-            className="inline-flex items-center"
-          >
+          <NavLink href="https://forums.papermc.io/" target="_blank" className="inline-flex items-center">
             Forums
             <ExternalUrlIcon className="h-4 w-4 ml-1 align-sub" />
           </NavLink>
@@ -119,24 +92,9 @@ const NavBar = () => {
         </div>
 
         <div className="grow" />
-        <IconButton
-          iconId="discord"
-          label="Discord"
-          href="https://discord.gg/papermc"
-          external
-        />
-        <IconButton
-          iconId="github"
-          label="GitHub"
-          href={getGitHubUrl()}
-          external
-        />
-        <IconButton
-          iconId="twitter"
-          label="Twitter"
-          href="https://twitter.com/PaperPowered"
-          external
-        />
+        <IconButton iconId="discord" label="Discord" href="https://discord.gg/papermc" external />
+        <IconButton iconId="github" label="GitHub" href={getGitHubUrl()} external />
+        <IconButton iconId="twitter" label="Twitter" href="https://twitter.com/PaperPowered" external />
       </div>
     </nav>
   );

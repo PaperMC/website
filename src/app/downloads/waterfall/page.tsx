@@ -5,8 +5,7 @@ import SoftwareDownloadPage from "@/components/layout/SoftwareDownloadPage";
 
 export const metadata: Metadata = {
   title: "Waterfall",
-  description:
-    "Download the latest builds of Waterfall, the BungeeCord fork focused on performance and stability.",
+  description: "Download the latest builds of Waterfall, the BungeeCord fork focused on performance and stability.",
 };
 
 export const revalidate = 600; // 10 minutes
@@ -18,10 +17,7 @@ export default function WaterfallDownloadPage() {
       description={
         <>
           Waterfall has reached end of life. We recommend you transition to{" "}
-          <Link
-            className="text-blue-500 hover:text-blue-400 hover:underline"
-            href="/software/velocity"
-          >
+          <Link className="text-blue-500 hover:text-blue-400 hover:underline" href="/software/velocity">
             Velocity
           </Link>
           . For more information see the{" "}

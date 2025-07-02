@@ -11,12 +11,7 @@ export interface SoftwareDownloadCardProps {
   onSelect: () => void;
 }
 
-const SoftwareDownloadCard = ({
-  id,
-  name,
-  selected,
-  onSelect,
-}: SoftwareDownloadCardProps) => {
+const SoftwareDownloadCard = ({ id, name, selected, onSelect }: SoftwareDownloadCardProps) => {
   const { data } = useProject(id);
 
   return (

@@ -21,10 +21,7 @@ export const metadata: Metadata = {
 
 export const revalidate = 600; // 10 minutes
 
-const isVersionStable = async (
-  project: string,
-  version: string,
-): Promise<boolean> => {
+const isVersionStable = async (project: string, version: string): Promise<boolean> => {
   try {
     const builds = await getVersionBuilds(project, version);
     for (let i = builds.length - 1; i >= 0; i--) {
@@ -44,11 +41,8 @@ export default async function HomePage() {
 
   let projectDescriptor: ProjectDescriptor | null = null;
   if (projectData) {
-    const flattenedVersions = Object.values(projectData.versions)
-      .flat()
-      .reverse();
-    let latestStableVersion =
-      flattenedVersions[flattenedVersions.length - 1] || "1.21.4";
+    const flattenedVersions = Object.values(projectData.versions).flat().reverse();
+    let latestStableVersion = flattenedVersions[flattenedVersions.length - 1] || "1.21.4";
 
     // Check versions from newest to oldest to find the latest stable one
     for (let i = flattenedVersions.length - 1; i >= 0; i--) {
@@ -80,10 +74,9 @@ export default async function HomePage() {
             <span className="text-blue-500">Built to perform.</span>
           </h1>
           <p className="text-xl mt-4">
-            PaperMC improves Minecraft&apos;s ecosystem with fast, secure
-            software and an expanding plugin API, providing quick releases and
-            helpful support as the most widely used, performant, and stable
-            software available.
+            PaperMC improves Minecraft&apos;s ecosystem with fast, secure software and an expanding plugin API,
+            providing quick releases and helpful support as the most widely used, performant, and stable software
+            available.
           </p>
           <div className="flex flex-row gap-4 mt-8">
             <Button variant="filled" href="/downloads">
@@ -98,10 +91,7 @@ export default async function HomePage() {
           {projectDescriptor && <Terminal project={projectDescriptor} />}
         </div>
       </header>
-      <section
-        id="software"
-        className="w-full pt-12 pb-8 bg-primary-200 dark:bg-background-dark-80"
-      >
+      <section id="software" className="w-full pt-12 pb-8 bg-primary-200 dark:bg-background-dark-80">
         <div className="max-w-7xl mx-auto">
           <h2 className="font-semibold text-xl md:text-2xl px-6 lg:px-4 mb-4">
             Your server deserves the&nbsp;
@@ -121,10 +111,7 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
-      <section
-        id="facts"
-        className="flex flex-col max-w-7xl mx-auto px-4 py-8 gap-8 md:gap-12 md:py-16"
-      >
+      <section id="facts" className="flex flex-col max-w-7xl mx-auto px-4 py-8 gap-8 md:gap-12 md:py-16">
         <div className="flex flex-col gap-6 md:flex-row-reverse md:gap-8 xl:gap-24 items-center">
           <div className="w-full flex-1 rounded-xl bg-gray-900 aspect-video relative overflow-clip">
             <Image
@@ -137,22 +124,14 @@ export default async function HomePage() {
             />
           </div>
           <div className="flex-1">
-            <h2 className="font-semibold text-2xl md:text-4xl">
-              A diverse plugin ecosystem
-            </h2>
+            <h2 className="font-semibold text-2xl md:text-4xl">A diverse plugin ecosystem</h2>
             <p className="md:mt-6 md:text-xl text-gray-900 dark:text-gray-100 mt-3">
-              Crafted by the PaperMC team & contributors, Hangar is our own
-              dedicated plugin repository, now in open beta! A place for
-              developers to host their creations, and server owners to enrich
-              their player&apos;s gameplay. From Administration Tools, to
-              Minigames, you&apos;ll find it all on Hangar.
+              Crafted by the PaperMC team & contributors, Hangar is our own dedicated plugin repository, now in open
+              beta! A place for developers to host their creations, and server owners to enrich their player&apos;s
+              gameplay. From Administration Tools, to Minigames, you&apos;ll find it all on Hangar.
             </p>
             <div className="flex flex-row gap-4 mt-8">
-              <Button
-                variant="filled"
-                href="https://hangar.papermc.io/"
-                external
-              >
+              <Button variant="filled" href="https://hangar.papermc.io/" external>
                 Check out Hangar
               </Button>
             </div>
@@ -176,10 +155,9 @@ export default async function HomePage() {
               &nbsp;players
             </h2>
             <p className="md:mt-6 md:text-xl text-gray-900 dark:text-gray-100 mt-3">
-              PaperMC&apos;s software powers hundreds of thousands of Minecraft
-              servers on a daily basis, from small single-servers setups to
-              massive Minecraft server networks. Designed with utility and
-              performance in mind, it can handle whatever you throw at it.
+              PaperMC&apos;s software powers hundreds of thousands of Minecraft servers on a daily basis, from small
+              single-servers setups to massive Minecraft server networks. Designed with utility and performance in mind,
+              it can handle whatever you throw at it.
             </p>
           </div>
         </div>
@@ -195,14 +173,11 @@ export default async function HomePage() {
             />
           </div>
           <div className="flex-1">
-            <h2 className="font-semibold text-2xl md:text-4xl">
-              The promise of stability
-            </h2>
+            <h2 className="font-semibold text-2xl md:text-4xl">The promise of stability</h2>
             <p className="md:mt-6 md:text-xl text-gray-900 dark:text-gray-100 mt-3">
-              Our software is designed with security and stability in mind. We
-              have consistently been among the first to fix vulnerabilities in
-              the Minecraft space for years, so you can rest assured that
-              PaperMC software is a good choice.
+              Our software is designed with security and stability in mind. We have consistently been among the first to
+              fix vulnerabilities in the Minecraft space for years, so you can rest assured that PaperMC software is a
+              good choice.
             </p>
           </div>
         </div>
