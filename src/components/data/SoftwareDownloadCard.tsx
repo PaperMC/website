@@ -1,6 +1,8 @@
+"use client";
+
 import clsx from "clsx";
 
-import { useProject } from "@/lib/service/fill";
+import { useProject } from "@/lib/service/hooks";
 
 export interface SoftwareDownloadCardProps {
   id: string;
