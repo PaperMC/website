@@ -12,10 +12,7 @@ const getNaturalDelay = () => Math.floor(Math.random() * 80) + 40;
 function InfoLog({ children }: { children: ReactNode }) {
   return (
     <div>
-      <span className="text-amber-400">
-        [{formatISOFullTime(new Date())} INFO]
-      </span>
-      : {children}
+      <span className="text-amber-400">[{formatISOFullTime(new Date())} INFO]</span>: {children}
     </div>
   );
 }
@@ -41,8 +38,7 @@ export function Terminal({ project }: ProjectProps) {
         let currentCmdOutput;
         switch (event.currentTarget.value) {
           case "help": {
-            currentCmdOutput =
-              "Existing commands: help, downloads, plugins, docs, forums, team, contribute";
+            currentCmdOutput = "Existing commands: help, downloads, plugins, docs, forums, team, contribute";
             break;
           }
           case "downloads": {
@@ -124,10 +120,7 @@ export function Terminal({ project }: ProjectProps) {
 
       let currentOutput: ReactNode[] = [];
       for (let i = 0; i < outputLines.length; i++) {
-        currentOutput = [
-          ...currentOutput,
-          <InfoLog key={i}>{outputLines[i]}</InfoLog>,
-        ];
+        currentOutput = [...currentOutput, <InfoLog key={i}>{outputLines[i]}</InfoLog>];
         setOutput(currentOutput);
 
         await sleep(getNaturalDelay());
@@ -135,9 +128,7 @@ export function Terminal({ project }: ProjectProps) {
 
       setSuccess(
         <InfoLog>
-          <span className="text-green-400">
-            Done (2.274s)! For help, type &quot;help&quot;
-          </span>
+          <span className="text-green-400">Done (2.274s)! For help, type &quot;help&quot;</span>
         </InfoLog>,
       );
 

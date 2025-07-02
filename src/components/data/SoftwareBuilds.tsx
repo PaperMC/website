@@ -14,12 +14,7 @@ export interface SoftwareBuildsProps {
   eol?: boolean;
 }
 
-const SoftwareBuilds = ({
-  project,
-  version,
-  builds,
-  eol,
-}: SoftwareBuildsProps): ReactElement => (
+const SoftwareBuilds = ({ project, version, builds, eol }: SoftwareBuildsProps): ReactElement => (
   <div className="flex flex-col gap-1">
     {builds &&
       builds.slice(0, 10).map((build) => (
@@ -40,11 +35,7 @@ const SoftwareBuilds = ({
             <DownloadIcon className="w-4 h-4" />#{build.id}
           </a>
           <div className="flex-1 flex flex-col text-gray-900 dark:text-gray-200">
-            <SoftwareBuildChanges
-              project={project}
-              build={build}
-              version={version}
-            />
+            <SoftwareBuildChanges project={project} build={build} version={version} />
           </div>
           <div
             className="hidden md:block text-gray-500 dark:text-gray-300 mt-1 ml-2"

@@ -4,8 +4,7 @@ import SoftwareDownloadPage from "@/components/layout/SoftwareDownloadPage";
 
 export const metadata: Metadata = {
   title: "Paper",
-  description:
-    "Download the latest builds of Paper, the high-performance Minecraft server software.",
+  description: "Download the latest builds of Paper, the high-performance Minecraft server software.",
 };
 
 export const revalidate = 600; // 10 minutes

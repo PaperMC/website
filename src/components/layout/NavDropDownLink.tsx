@@ -12,13 +12,7 @@ export interface NavDropDownLinkProps {
   eol?: boolean;
 }
 
-const NavDropDownLink = ({
-  href,
-  target,
-  className,
-  children,
-  eol,
-}: NavDropDownLinkProps): ReactElement => (
+const NavDropDownLink = ({ href, target, className, children, eol }: NavDropDownLinkProps): ReactElement => (
   <li
     className={clsx(
       "color-gray-200 text-gray-800 hover:text-blue-600 text-sm transition-colors dark:text-gray-200 dark:hover:text-blue-400",
@@ -28,10 +22,7 @@ const NavDropDownLink = ({
   >
     <Link
       href={href}
-      className={clsx(
-        "px-4 py-2 w-full",
-        eol ? "flex items-center gap-2" : "block",
-      )}
+      className={clsx("px-4 py-2 w-full", eol ? "flex items-center gap-2" : "block")}
       role="button"
       target={target}
     >

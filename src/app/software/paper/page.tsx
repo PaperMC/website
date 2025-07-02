@@ -14,15 +14,7 @@ export const metadata: Metadata = {
   title: "Paper",
   description:
     "Paper is a Minecraft game server based on Spigot, designed to greatly improve performance and offer more advanced features and API.",
-  keywords: [
-    "papermc",
-    "paper",
-    "server",
-    "minecraft",
-    "performance",
-    "spigot",
-    "fork",
-  ],
+  keywords: ["papermc", "paper", "server", "minecraft", "performance", "spigot", "fork"],
 };
 
 export const revalidate = 600; // 10 minutes
@@ -51,14 +43,9 @@ export default async function PaperSoftwarePage() {
         }
         description="Paper is a Minecraft game server based on Spigot, designed to greatly improve performance and offer more advanced features and API."
       />
-      <section
-        id="why"
-        className="w-full pt-10 pb-5 bg-primary-200 dark:bg-background-dark-80"
-      >
+      <section id="why" className="w-full pt-10 pb-5 bg-primary-200 dark:bg-background-dark-80">
         <div className="max-w-7xl mx-auto">
-          <h2 className="font-semibold text-xl md:text-2xl px-6 lg:px-4">
-            Why Paper?
-          </h2>
+          <h2 className="font-semibold text-xl md:text-2xl px-6 lg:px-4">Why Paper?</h2>
           <div className="grid md:grid-cols-3 mt-6 gap-2 px-2 xl:gap-4">
             <FeatureCard
               iconId="bolt"
@@ -78,10 +65,7 @@ export default async function PaperSoftwarePage() {
           </div>
         </div>
       </section>
-      <section
-        id="facts"
-        className="flex flex-col max-w-7xl mx-auto px-4 py-8 gap-8 md:gap-12 md:py-16"
-      >
+      <section id="facts" className="flex flex-col max-w-7xl mx-auto px-4 py-8 gap-8 md:gap-12 md:py-16">
         <div className="flex flex-col gap-6 md:flex-row md:gap-8 xl:gap-24 items-center">
           <div className="w-full flex-1 rounded-xl aspect-video relative overflow-clip">
             <Image
@@ -94,23 +78,16 @@ export default async function PaperSoftwarePage() {
             />
           </div>
           <div className="flex-1">
-            <h2 className="font-semibold text-2xl md:text-4xl">
-              A diverse plugin ecosystem
-            </h2>
+            <h2 className="font-semibold text-2xl md:text-4xl">A diverse plugin ecosystem</h2>
             <p className="md:mt-6 md:text-xl text-gray-900 dark:text-gray-100 mt-3">
-              Crafted by the PaperMC team & contributors, Hangar is our own
-              dedicated plugin repository, now in open beta! View&nbsp;
+              Crafted by the PaperMC team & contributors, Hangar is our own dedicated plugin repository, now in open
+              beta! View&nbsp;
               <span className={"text-blue-500"}>{hangarCount}</span>
-              &nbsp;different plugins that are specific to Paper, or list your
-              own with a very streamlined creation process.
+              &nbsp;different plugins that are specific to Paper, or list your own with a very streamlined creation
+              process.
             </p>
             <div className="flex flex-row gap-4 mt-8">
-              <Button
-                variant="filled"
-                href="https://hangar.papermc.io/"
-                external
-                dense
-              >
+              <Button variant="filled" href="https://hangar.papermc.io/" external dense>
                 Check out Hangar
               </Button>
             </div>
@@ -128,24 +105,16 @@ export default async function PaperSoftwarePage() {
             />
           </div>
           <div className="flex-1">
-            <h2 className="font-semibold text-2xl md:text-4xl break-all">
-              Getting Started
-            </h2>
+            <h2 className="font-semibold text-2xl md:text-4xl break-all">Getting Started</h2>
             <p className="md:mt-6 md:text-xl text-gray-900 dark:text-gray-100 mt-3">
-              To get started with Paper, you will need to download and install
-              the latest version of the server software. Once you&apos;re ready,
-              take a look at our extensive documentation.
+              To get started with Paper, you will need to download and install the latest version of the server
+              software. Once you&apos;re ready, take a look at our extensive documentation.
             </p>
             <div className="flex flex-row gap-4 mt-8">
               <Button variant="filled" href="/downloads/paper" dense>
                 Downloads
               </Button>
-              <Button
-                variant="outlined"
-                href="https://docs.papermc.io/paper/getting-started"
-                external
-                dense
-              >
+              <Button variant="outlined" href="https://docs.papermc.io/paper/getting-started" external dense>
                 Documentation
               </Button>
             </div>
@@ -163,21 +132,13 @@ export default async function PaperSoftwarePage() {
             />
           </div>
           <div className="flex-1">
-            <h2 className="font-semibold text-2xl md:text-4xl">
-              Together with a community of server owners
-            </h2>
+            <h2 className="font-semibold text-2xl md:text-4xl">Together with a community of server owners</h2>
             <p className="md:mt-6 md:text-xl text-gray-900 dark:text-gray-100 mt-3">
-              Whether you need help with your server settings, server lag, or
-              need a guide for formatting your chat, our knowledgeable staff and
-              friendly community are always around to lend a hand.
+              Whether you need help with your server settings, server lag, or need a guide for formatting your chat, our
+              knowledgeable staff and friendly community are always around to lend a hand.
             </p>
             <div className="flex flex-row gap-4 mt-8">
-              <Button
-                variant="filled"
-                href="https://discord.gg/papermc"
-                external
-                dense
-              >
+              <Button variant="filled" href="https://discord.gg/papermc" external dense>
                 Join our Discord
               </Button>
             </div>

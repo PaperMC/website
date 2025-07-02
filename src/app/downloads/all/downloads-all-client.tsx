@@ -11,10 +11,7 @@ interface DownloadsAllClientProps {
   initialProjectVersion: string;
 }
 
-export default function DownloadsAllClient({
-  initialProjectId,
-  initialProjectVersion,
-}: DownloadsAllClientProps) {
+export default function DownloadsAllClient({ initialProjectId, initialProjectVersion }: DownloadsAllClientProps) {
   const [selectedProject, setSelectedProject] = useState(initialProjectId);
   const [selectedVersion, setSelectedVersion] = useState(initialProjectVersion);
 
@@ -25,8 +22,7 @@ export default function DownloadsAllClient({
   const flattenedVersions = Object.values(project?.versions ?? {}).flat();
   const latestVersion = flattenedVersions[0];
   const legacy = selectedVersion !== latestVersion;
-  const experimental =
-    builds?.[0]?.channel === "ALPHA" || builds?.[0]?.channel === "BETA";
+  const experimental = builds?.[0]?.channel === "ALPHA" || builds?.[0]?.channel === "BETA";
 
   return (
     <div className="flex flex-col h-screen">
@@ -48,8 +44,7 @@ export default function DownloadsAllClient({
           )}
           {experimental && (
             <div className="text-center px-4 py-2 font-bold bg-orange-400 dark:bg-orange-500 shadow-md">
-              Experimental builds are not ready for production servers. Proceed
-              at your own risk!
+              Experimental builds are not ready for production servers. Proceed at your own risk!
             </div>
           )}
           {eol && (
@@ -57,12 +52,7 @@ export default function DownloadsAllClient({
               EOL builds are not supported. Proceed at your own risk!
             </div>
           )}
-          <SoftwareBuildsTable
-            project={selectedProject}
-            version={selectedVersion}
-            builds={builds ?? []}
-            eol={eol}
-          />
+          <SoftwareBuildsTable project={selectedProject} version={selectedVersion} builds={builds ?? []} eol={eol} />
         </div>
       </div>
     </div>

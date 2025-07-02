@@ -11,11 +11,7 @@ export interface NavDropDownProps {
   children: ReactNode;
 }
 
-const NavDropDown = ({
-  label,
-  className,
-  children,
-}: NavDropDownProps): ReactElement => {
+const NavDropDown = ({ label, className, children }: NavDropDownProps): ReactElement => {
   const [hover, setHover] = useState(false);
 
   const handleEnter = () => {

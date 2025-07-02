@@ -18,12 +18,7 @@ export default async function DownloadsAllPage() {
     const project = await getProject(INITIAL_PROJECT);
     const flattenedVersions = Object.values(project.versions).flat();
 
-    return (
-      <DownloadsAllClient
-        initialProjectId={project.project.id}
-        initialProjectVersion={flattenedVersions[0]}
-      />
-    );
+    return <DownloadsAllClient initialProjectId={project.project.id} initialProjectVersion={flattenedVersions[0]} />;
   } catch (error) {
     console.error("Failed to load initial project data:", error);
     notFound();
