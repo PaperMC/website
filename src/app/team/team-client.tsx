@@ -12,7 +12,7 @@ import { useGitHubContributors } from "@/lib/service/github";
 const HIDDEN_USERS = [1007849, 23557539, 49699333]; // md_5, EcoCityCraftCI, dependabot
 
 export default function TeamClient() {
-  const { data: contributors } = useGitHubContributors();
+  const { data: contributors, error } = useGitHubContributors();
 
   return (
     <>
@@ -101,34 +101,62 @@ export default function TeamClient() {
           redstone engine to PRing a fix for a nasty bug, our contributors have
           helped us to provide the best software we possibly can.
         </p>
-        <div className="grid grid-cols-8 md:grid-cols-16 lg:grid-cols-18 xl:grid-cols-20 mt-8 gap-2">
-          {contributors?.map((page: Contributor[]) =>
-            page
-              .filter((contributor) => !HIDDEN_USERS.includes(contributor.id))
-              .map((contributor: Contributor) => (
-                <a
-                  role="button"
-                  className="relative rounded-full aspect-square bg-gray-600 flex items-center justify-center text-white font-bold uppercase overflow-auto transition-transform transform hover:scale-120 hover:shadow-lg"
-                  href={`https://github.com/${contributor.login}`}
-                  rel="noreferrer"
-                  target="_blank"
-                  key={contributor.id}
-                >
-                  {contributor.login[0]}
-                  {/* eslint-disable-next-line @next/next/no-img-element -- these are from github, don't need to optimize them */}
-                  <img
-                    alt={`${contributor.login}'s avatar`}
-                    src={contributor.avatar_url}
-                    onError={(e) => (e.currentTarget.style.display = "none")}
-                    onLoad={(e) => {
-                      e.currentTarget.style.backgroundColor = "white";
-                    }}
-                    className="absolute inset-0 w-full h-full object-cover rounded-full"
-                  />
-                </a>
-              )),
-          )}
-        </div>
+        {error ||
+        (contributors && contributors.some((page) => !Array.isArray(page))) ? (
+          <div className="mt-8 p-4 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-md">
+            <p className="text-amber-800 dark:text-amber-200">
+              Unable to load contributors at this time. This is likely due to
+              GitHub API rate limiting. Please try again later or visit our{" "}
+              <a
+                href="https://github.com/PaperMC/Paper/graphs/contributors"
+                className="underline hover:no-underline"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                GitHub contributors page
+              </a>{" "}
+              directly.
+            </p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-8 md:grid-cols-16 lg:grid-cols-18 xl:grid-cols-20 mt-8 gap-2">
+            {contributors?.map((page: Contributor[]) => {
+              // Handle case where GitHub API returns error due to rate limiting
+              if (!Array.isArray(page)) {
+                console.warn(
+                  "GitHub API returned non-array data, likely due to rate limiting:",
+                  page,
+                );
+                return null;
+              }
+
+              return page
+                .filter((contributor) => !HIDDEN_USERS.includes(contributor.id))
+                .map((contributor: Contributor) => (
+                  <a
+                    role="button"
+                    className="relative rounded-full aspect-square bg-gray-600 flex items-center justify-center text-white font-bold uppercase overflow-auto transition-transform transform hover:scale-120 hover:shadow-lg"
+                    href={`https://github.com/${contributor.login}`}
+                    rel="noreferrer"
+                    target="_blank"
+                    key={contributor.id}
+                  >
+                    {contributor.login[0]}
+                    {/* eslint-disable-next-line @next/next/no-img-element -- these are from github, don't need to optimize them */}
+                    <img
+                      alt={`${contributor.login}'s avatar`}
+                      src={contributor.avatar_url}
+                      onError={(e) => (e.currentTarget.style.display = "none")}
+                      onLoad={(e) => {
+                        e.currentTarget.style.backgroundColor = "white";
+                      }}
+                      className="absolute inset-0 w-full h-full object-cover rounded-full"
+                    />
+                  </a>
+                ));
+            })}
+          </div>
+        )}
       </section>
     </>
   );
