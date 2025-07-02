@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @custom-variant dark (@media (prefers-color-scheme: dark));
 
@@ -66,10 +66,10 @@
 }
 
 html {
-    @apply bg-background-light-10 dark:bg-background-dark-90 dark:text-white scroll-smooth;
-    -webkit-tap-highlight-color: transparent;
+  @apply bg-background-light-10 dark:bg-background-dark-90 dark:text-white scroll-smooth;
+  -webkit-tap-highlight-color: transparent;
 }
 
 #__next {
-    @apply flex flex-col h-screen;
+  @apply flex flex-col h-screen;
 }

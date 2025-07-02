@@ -1,5 +1,5 @@
 @reference '../../globals.css';
 
 .menu {
-    @apply absolute mt-2 rounded-md bg-background-light-10 shadow-lg divide-y divide-gray-200 border border-gray-200 dark:bg-background-dark-80 dark:divide-gray-800 dark:border-gray-800 z-40;
+  @apply absolute mt-2 rounded-md bg-background-light-10 shadow-lg divide-y divide-gray-200 border border-gray-200 dark:bg-background-dark-80 dark:divide-gray-800 dark:border-gray-800 z-40;
 }
