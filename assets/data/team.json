@@ -23,6 +23,12 @@
         "github": "kennytv"
       },
       {
+        "name": "mbaxter",
+        "avatar": "https://avatars.githubusercontent.com/u/181668?v=4",
+        "discord": "mbaxter",
+        "github": "mbax"
+      },
+      {
         "name": "MiniDigger",
         "avatar": "https://avatars.githubusercontent.com/u/2185527?v=4",
         "discord": "minidigger",
@@ -40,12 +46,6 @@
         "avatar": "https://avatars.githubusercontent.com/u/58414982?v=4",
         "discord": "larbl",
         "github": "Laarryy"
-      },
-      {
-        "name": "mbaxter",
-        "avatar": "https://avatars.githubusercontent.com/u/181668?v=4",
-        "discord": "mbaxter",
-        "github": "mbax"
       }
     ]
   },
