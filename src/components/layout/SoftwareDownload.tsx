@@ -1,17 +1,28 @@
+"use client";
+
 import clsx from "clsx";
 import Link from "next/link";
-import type { FunctionComponent, ReactElement } from "react";
+import type { ReactElement } from "react";
 import { useState } from "react";
 
+import FoliaIcon from "@/assets/brand/folia.svg";
+import PaperIcon from "@/assets/brand/paper.svg";
+import VelocityIcon from "@/assets/brand/velocity.svg";
+import WaterfallIcon from "@/assets/brand/waterfall.svg";
 import SoftwareBuilds from "@/components/data/SoftwareBuilds";
 import SoftwareDownloadButton from "@/components/input/SoftwareDownloadButton";
 import type { ProjectProps } from "@/lib/context/downloads";
-import { useVersionBuilds } from "@/lib/service/fill";
+import { useVersionBuilds } from "@/lib/service/hooks";
+
+const ICONS = {
+  paper: PaperIcon,
+  velocity: VelocityIcon,
+  folia: FoliaIcon,
+  waterfall: WaterfallIcon,
+} as const;
 
 export interface SoftwareDownloadProps {
   id: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  icon?: FunctionComponent<any>;
   description: ReactElement | string;
   experimentalWarning?: string;
   eol?: boolean;
@@ -20,7 +31,6 @@ export interface SoftwareDownloadProps {
 const SoftwareDownload = ({
   id,
   project,
-  icon: Icon,
   description,
   experimentalWarning,
   eol,
@@ -35,6 +45,8 @@ const SoftwareDownload = ({
   const toggleStable = () => {
     setStable(!isStable);
   };
+
+  const Icon = ICONS[id as keyof typeof ICONS];
 
   return (
     <>

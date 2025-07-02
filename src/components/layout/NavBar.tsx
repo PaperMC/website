@@ -1,36 +1,34 @@
+"use client";
+
 import clsx from "clsx";
-import type { NextComponentType, NextPageContext } from "next";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import LogoMarkerDark from "@/assets/brand/logo-marker-dark.svg";
 import LogoMarkerLight from "@/assets/brand/logo-marker-light.svg";
-import DiscordIcon from "@/assets/icons/fontawesome/discord-brands.svg";
-import GitHubIcon from "@/assets/icons/fontawesome/github-brands.svg";
-import TwitterIcon from "@/assets/icons/fontawesome/twitter-brands.svg";
 import ExternalUrlIcon from "@/assets/icons/heroicons/arrow-top-right-on-square.svg";
 import MenuIcon from "@/assets/icons/heroicons/menu.svg";
 import IconButton from "@/components/input/IconButton";
 import NavDropDown from "@/components/layout/NavDropDown";
 import NavDropDownLink from "@/components/layout/NavDropDownLink";
 import NavLink from "@/components/layout/NavLink";
-import type { PageSoftwareProps } from "@/lib/util/types";
 
-export interface NavBarProps {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  component: NextComponentType<NextPageContext, any, any>;
-}
-
-const NavBar = ({ component }: NavBarProps) => {
+const NavBar = () => {
   const [scroll, setScroll] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
-  const router = useRouter();
+  const pathname = usePathname();
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const softwareProps: PageSoftwareProps | undefined = (component as any)[
-    "softwareProps"
-  ];
+  // Determine GitHub URL based on current path
+  const getGitHubUrl = () => {
+    if (pathname?.includes("/paper")) return "https://github.com/PaperMC/Paper";
+    if (pathname?.includes("/velocity"))
+      return "https://github.com/PaperMC/Velocity";
+    if (pathname?.includes("/folia")) return "https://github.com/PaperMC/Folia";
+    if (pathname?.includes("/waterfall"))
+      return "https://github.com/PaperMC/Waterfall";
+    return "https://github.com/PaperMC";
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -44,7 +42,7 @@ const NavBar = ({ component }: NavBarProps) => {
 
   useEffect(() => {
     setShowMenu(false);
-  }, [router.route]);
+  }, [pathname]);
 
   return (
     <nav
@@ -122,19 +120,19 @@ const NavBar = ({ component }: NavBarProps) => {
 
         <div className="grow" />
         <IconButton
-          icon={DiscordIcon}
+          iconId="discord"
           label="Discord"
           href="https://discord.gg/papermc"
           external
         />
         <IconButton
-          icon={GitHubIcon}
+          iconId="github"
           label="GitHub"
-          href={softwareProps?.github || "https://github.com/PaperMC"}
+          href={getGitHubUrl()}
           external
         />
         <IconButton
-          icon={TwitterIcon}
+          iconId="twitter"
           label="Twitter"
           href="https://twitter.com/PaperPowered"
           external

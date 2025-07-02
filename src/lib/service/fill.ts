@@ -1,39 +1,32 @@
-import type { SWRResponse } from "swr";
-import useSWR from "swr";
-
-import { swrNoAutoUpdateSettings } from "./api";
-
-import type { Build, Project, ProjectsResponse } from "@/lib/service/types";
+import type { Build, Project } from "@/lib/service/types";
 
 const API_ENDPOINT = "https://fill.papermc.io/v3";
+const BSTATS_URL =
+  "https://bstats.org/api/v1/plugins/580/charts/players/data/?maxElements=1";
 
 const fetcher = (path: string) =>
   fetch(API_ENDPOINT + path).then((res) => res.json());
 
-export const useProjects = (): SWRResponse<ProjectsResponse> =>
-  useSWR("/projects", fetcher, swrNoAutoUpdateSettings);
-
-export const useProject = (project: string): SWRResponse<Project> =>
-  useSWR(`/projects/${project}`, fetcher, swrNoAutoUpdateSettings);
-
-export const useVersionBuilds = (
-  project: string,
-  version: string,
-): SWRResponse<Build[]> =>
-  useSWR(
-    `/projects/${project}/versions/${version}/builds`,
-    fetcher,
-    swrNoAutoUpdateSettings,
-  );
-
-// TODO: Better error handling?
-const getJSON = <T>(path: string): Promise<T> => fetcher(path);
-
 export const getProject = (project: string): Promise<Project> =>
-  getJSON(`/projects/${project}`);
+  fetcher(`/projects/${project}`);
 
 export const getVersionBuilds = (
   project: string,
   version: string,
 ): Promise<Build[]> =>
-  getJSON(`/projects/${project}/versions/${version}/builds`);
+  fetcher(`/projects/${project}/versions/${version}/builds`);
+
+export const getBStats = async (): Promise<{
+  servers: number;
+  players: number;
+}> => {
+  try {
+    const response = await fetch(BSTATS_URL);
+    const data = await response.json();
+    const players = data[0]?.[1] || 0;
+    return { servers: Math.round(players / 20), players }; // Estimate servers based on players
+  } catch (error) {
+    console.error("Failed to fetch bStats:", error);
+    return { servers: 0, players: 0 };
+  }
+};

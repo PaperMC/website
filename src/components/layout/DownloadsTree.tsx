@@ -1,7 +1,9 @@
+"use client";
+
 import clsx from "clsx";
 
 import ArchiveIcon from "@/assets/icons/fontawesome/box-archive.svg";
-import { useProject } from "@/lib/service/fill";
+import { useProject } from "@/lib/service/hooks";
 
 interface ProjectSubTreeProps {
   id: string;
