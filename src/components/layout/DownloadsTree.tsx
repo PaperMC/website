@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import { forwardRef } from "react";
 
 import ArchiveIcon from "@/assets/icons/fontawesome/box-archive.svg";
 import { useProject } from "@/lib/service/fill";
@@ -22,7 +23,10 @@ const ProjectSubTree = ({
 
   return (
     <>
-      <div className="pl-3 py-1 rounded-md font-bold flex gap-2 items-center">
+      <div
+        className="pl-3 py-1 rounded-md font-bold flex gap-2 items-center"
+        data-project={id}
+      >
         {project?.project.name ?? name}{" "}
         {eol && <ArchiveIcon className="fill-current h-4" />}
       </div>
@@ -56,15 +60,22 @@ interface DownloadsTreeProps {
   onSelect(project: string, version: string): void;
 }
 
-const DownloadsTree = (props: DownloadsTreeProps) => {
-  return (
-    <nav className="w-50 p-2 border-r border-gray-300 overflow-auto">
-      <ProjectSubTree id="paper" name="Paper" {...props} />
-      <ProjectSubTree id="velocity" name="Velocity" {...props} />
-      <ProjectSubTree id="folia" name="Folia" {...props} />
-      <ProjectSubTree id="waterfall" name="Waterfall" eol {...props} />
-    </nav>
-  );
-};
+const DownloadsTree = forwardRef<HTMLDivElement, DownloadsTreeProps>(
+  (props, ref) => {
+    return (
+      <nav
+        ref={ref}
+        className="w-50 p-2 border-r border-gray-300 overflow-auto"
+      >
+        <ProjectSubTree id="paper" name="Paper" {...props} />
+        <ProjectSubTree id="velocity" name="Velocity" {...props} />
+        <ProjectSubTree id="folia" name="Folia" {...props} />
+        <ProjectSubTree id="waterfall" name="Waterfall" eol {...props} />
+      </nav>
+    );
+  },
+);
+
+DownloadsTree.displayName = "DownloadsTree";
 
 export default DownloadsTree;

@@ -37,10 +37,10 @@ const SoftwareBuildsTable = ({
               <span
                 className={clsx(
                   "text-sm font-medium text-gray-100 rounded-full py-2 px-3 min-w-16",
-                  build.channel === "ALPHA" || build.channel === "BETA" || eol
-                    ? "bg-red-500"
-                    : "bg-gray-800",
                 )}
+                style={{
+                  backgroundColor: `var(${eol ? "--channel-eol" : `--channel-${build.channel.toLowerCase()}`})`,
+                }}
               >
                 #{build.id}
               </span>
@@ -63,7 +63,6 @@ const SoftwareBuildsTable = ({
                 projectId={project}
                 version={version}
                 build={build}
-                stable={build.channel === "STABLE"}
                 compact
                 eol={eol}
               />
