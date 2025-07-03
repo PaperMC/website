@@ -1,6 +1,6 @@
 import { Transition } from "@headlessui/react";
 import clsx from "clsx";
-import type { ReactElement, ReactNode } from "react";
+import type { ReactNode } from "react";
 import { Fragment, useState } from "react";
 
 import ChevronDownIcon from "@/assets/icons/heroicons/chevron-down.svg";
@@ -11,7 +11,7 @@ export interface NavDropDownProps {
   children: ReactNode;
 }
 
-const NavDropDown = ({ label, className, children }: NavDropDownProps): ReactElement => {
+const NavDropDown = ({ label, className, children }: NavDropDownProps) => {
   const [hover, setHover] = useState(false);
 
   const handleEnter = () => {

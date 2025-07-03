@@ -4,7 +4,7 @@ import SoftwareDownloadButton from "../input/SoftwareDownloadButton";
 
 import SoftwareBuildChanges from "@/components/data/SoftwareBuildChanges";
 import type { Build } from "@/lib/service/types";
-import { formatRelativeDate, formatISODateTime } from "@/lib/util/time";
+import { formatISODateTime, formatRelativeDate } from "@/lib/util/time";
 import styles from "@/styles/components/data/SoftwareBuildsTable.module.css";
 
 export interface SoftwareBuildsTableProps {

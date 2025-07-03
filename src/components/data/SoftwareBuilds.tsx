@@ -1,11 +1,10 @@
 import clsx from "clsx";
-import type { ReactElement } from "react";
 
 import DownloadIcon from "@/assets/icons/heroicons/document-download.svg";
 import Skeleton from "@/components/data/Skeleton";
 import SoftwareBuildChanges from "@/components/data/SoftwareBuildChanges";
 import type { Build } from "@/lib/service/types";
-import { formatRelativeDate, formatISODateTime } from "@/lib/util/time";
+import { formatISODateTime, formatRelativeDate } from "@/lib/util/time";
 
 export interface SoftwareBuildsProps {
   project: string;
@@ -14,7 +13,7 @@ export interface SoftwareBuildsProps {
   eol?: boolean;
 }
 
-const SoftwareBuilds = ({ project, version, builds, eol }: SoftwareBuildsProps): ReactElement => (
+const SoftwareBuilds = ({ project, version, builds, eol }: SoftwareBuildsProps) => (
   <div className="flex flex-col gap-1">
     {builds &&
       builds.slice(0, 10).map((build) => (

@@ -1,6 +1,6 @@
 "use client";
 
-import type { KeyboardEvent } from "react";
+import type { KeyboardEvent, PropsWithChildren } from "react";
 import { type ReactNode, useEffect, useRef, useState } from "react";
 
 import type { ProjectProps } from "@/lib/context/downloads";
@@ -9,7 +9,7 @@ import { formatISOFullTime } from "@/lib/util/time";
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 const getNaturalDelay = () => Math.floor(Math.random() * 80) + 40;
 
-function InfoLog({ children }: { children: ReactNode }) {
+function InfoLog({ children }: PropsWithChildren) {
   return (
     <div>
       <span className="text-amber-400">[{formatISOFullTime(new Date())} INFO]</span>: {children}
@@ -27,6 +27,7 @@ export function Terminal({ project }: ProjectProps) {
   const [cmdOutput, _setCmdOutput] = useState<ReactNode>(null);
 
   const cmdOutputRef = useRef(cmdOutput);
+
   function setCmdOutput(data: ReactNode[]) {
     cmdOutputRef.current = data;
     _setCmdOutput(data);

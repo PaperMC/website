@@ -10,7 +10,7 @@ import SoftwarePreview from "@/components/data/SoftwarePreview";
 import { Terminal } from "@/components/data/Terminal";
 import Button from "@/components/input/Button";
 import type { ProjectDescriptor } from "@/lib/context/downloads";
-import { getProject, getBStats, getVersionBuilds } from "@/lib/service/fill";
+import { getBStats, getProject, getVersionBuilds } from "@/lib/service/fill";
 
 export const metadata: Metadata = {
   title: "Home",

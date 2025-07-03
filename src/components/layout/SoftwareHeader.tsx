@@ -24,15 +24,7 @@ export interface SoftwareHeaderProps {
   eol?: boolean;
 }
 
-const SoftwareHeader = ({
-  id,
-  name,
-  versionGroup,
-  header,
-  description,
-  github,
-  eol,
-}: SoftwareHeaderProps): ReactElement => {
+const SoftwareHeader = ({ id, name, versionGroup, header, description, github, eol }: SoftwareHeaderProps) => {
   const Icon = ICONS[id as keyof typeof ICONS];
 
   return (

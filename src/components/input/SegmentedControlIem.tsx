@@ -1,6 +1,6 @@
-import type { HTMLAttributes, ReactElement } from "react";
+import type { HTMLAttributes } from "react";
 
-const SegmentedControlItem = (props: HTMLAttributes<HTMLButtonElement>): ReactElement => (
+const SegmentedControlItem = (props: HTMLAttributes<HTMLButtonElement>) => (
   <button className="flex-1 text-sm font-semibold py-2" {...props} />
 );
 
