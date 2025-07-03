@@ -30,9 +30,7 @@ const SoftwareDownloadButton = ({
   eol,
 }: SoftwareDownloadButtonProps) => {
   const [copied, setCopied] = useState("");
-  const [timeoutHandler, setTimeoutHandler] = useState<NodeJS.Timeout | null>(
-    null,
-  );
+  const [timeoutHandler, setTimeoutHandler] = useState<NodeJS.Timeout | null>(null);
 
   const updateCopied = (text: string) => {
     if (timeoutHandler) {
@@ -48,16 +46,14 @@ const SoftwareDownloadButton = ({
         className={clsx(
           "rounded-lg flex flex-row ransition-shadow text-white transition-color hover:shadow-lg",
           !compact && "w-full md:w-100",
-          stable && !eol
-            ? "bg-blue-600 hover:bg-blue-500"
-            : "bg-red-500 hover:bg-red-400",
+          stable && !eol ? "bg-blue-600 hover:bg-blue-500" : "bg-red-500 hover:bg-red-400",
         )}
       >
         {/* eslint-disable-next-line react/jsx-no-target-blank */}
         <a
           className={clsx(
             "flex flex-row flex-1 items-center",
-            compact ? "gap-2 pl-2 leading-0 py-1" : "gap-8 pl-5 py-3",
+            compact ? "gap-2 pl-2 leading-none py-1" : "gap-8 pl-5 py-3",
           )}
           href={projectId && build && build.downloads["server:default"].url}
           target="_blank"
@@ -83,13 +79,8 @@ const SoftwareDownloadButton = ({
             )}
           </div>
         </a>
-        <Menu.Button aria-label="Other download variants" className="leading-0">
-          <ChevronDownIcon
-            className={clsx(
-              "text-gray-200",
-              compact ? "w-4 h-4 mx-3" : "w-6 h-6 mx-5",
-            )}
-          />
+        <Menu.Button aria-label="Other download variants" className="leading-none">
+          <ChevronDownIcon className={clsx("text-gray-200", compact ? "w-4 h-4 mx-3" : "w-6 h-6 mx-5")} />
         </Menu.Button>
       </div>
       <Transition
@@ -104,9 +95,7 @@ const SoftwareDownloadButton = ({
         <Menu.Items
           className={clsx(
             styles.menu,
-            compact
-              ? "origin-top-right right-0"
-              : "origin-top-left left-0 w-full md:w-auto",
+            compact ? "origin-top-right right-0" : "origin-top-left left-0 w-full md:w-auto",
           )}
         >
           {build &&
@@ -115,14 +104,7 @@ const SoftwareDownloadButton = ({
                 {() => (
                   <div className="hover:bg-blue-100 dark:hover:bg-gray-800 transition-colors">
                     {/* eslint-disable-next-line react/jsx-no-target-blank */}
-                    <a
-                      href={
-                        projectId &&
-                        build &&
-                        build.downloads["server:default"].url
-                      }
-                      target="_blank"
-                    >
+                    <a href={projectId && build && build.downloads["server:default"].url} target="_blank">
                       <div className="px-4 py-3">
                         <div className="font-medium">
                           {download.name}
@@ -138,16 +120,12 @@ const SoftwareDownloadButton = ({
                           )}
                         </div>
                         <div className="text-gray-700 dark:text-gray-300 text-xs inline-flex items-center w-full">
-                          <span className="truncate">
-                            {download.checksums.sha256}
-                          </span>
+                          <span className="truncate">{download.checksums.sha256}</span>
                           <button
                             className="ml-2 h-6 w-6"
                             onClick={(evt) => {
                               evt.preventDefault();
-                              navigator.clipboard.writeText(
-                                download.checksums.sha256,
-                              );
+                              navigator.clipboard.writeText(download.checksums.sha256);
                               updateCopied(download.checksums.sha256);
                             }}
                           >

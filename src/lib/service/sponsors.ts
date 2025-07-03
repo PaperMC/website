@@ -50,8 +50,4 @@ export interface GitHubSponsorsData {
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 export const useSponsors = (): SWRResponse<SponsorData> =>
-  useSWR(
-    "https://raw.githubusercontent.com/PaperMC/papermc.io/data/sponsors.json",
-    fetcher,
-    swrNoAutoUpdateSettings,
-  );
+  useSWR("https://raw.githubusercontent.com/PaperMC/papermc.io/data/sponsors.json", fetcher, swrNoAutoUpdateSettings);

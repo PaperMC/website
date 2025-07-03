@@ -1,5 +1,4 @@
 import Head from "next/head";
-import type { ReactElement } from "react";
 
 export interface SEOProps {
   title: string;
@@ -8,12 +7,7 @@ export interface SEOProps {
   canonical: string;
 }
 
-const SEO = ({
-  title,
-  description,
-  keywords,
-  canonical,
-}: SEOProps): ReactElement => {
+const SEO = ({ title, description, keywords, canonical }: SEOProps) => {
   return (
     <Head>
       <title>{title + " | PaperMC"}</title>

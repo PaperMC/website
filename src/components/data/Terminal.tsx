@@ -1,4 +1,6 @@
-import type { KeyboardEvent } from "react";
+"use client";
+
+import type { KeyboardEvent, PropsWithChildren } from "react";
 import { type ReactNode, useEffect, useRef, useState } from "react";
 
 import type { ProjectProps } from "@/lib/context/downloads";
@@ -7,13 +9,10 @@ import { formatISOFullTime } from "@/lib/util/time";
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 const getNaturalDelay = () => Math.floor(Math.random() * 80) + 40;
 
-function InfoLog({ children }: { children: ReactNode }) {
+function InfoLog({ children }: PropsWithChildren) {
   return (
     <div>
-      <span className="text-amber-400">
-        [{formatISOFullTime(new Date())} INFO]
-      </span>
-      : {children}
+      <span className="text-amber-400">[{formatISOFullTime(new Date())} INFO]</span>: {children}
     </div>
   );
 }
@@ -28,66 +27,66 @@ export function Terminal({ project }: ProjectProps) {
   const [cmdOutput, _setCmdOutput] = useState<ReactNode>(null);
 
   const cmdOutputRef = useRef(cmdOutput);
+
   function setCmdOutput(data: ReactNode[]) {
     cmdOutputRef.current = data;
     _setCmdOutput(data);
   }
 
-  const handleCommand = (event: KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === "Enter") {
-      let currentCmdOutput;
-      switch (event.currentTarget.value) {
-        case "help": {
-          currentCmdOutput =
-            "Existing commands: help, downloads, plugins, docs, forums, team, contribute";
-          break;
-        }
-        case "downloads": {
-          window.location.href = "/downloads";
-          currentCmdOutput = "Redirecting...";
-          break;
-        }
-        case "plugins": {
-          window.location.href = "https://hangar.papermc.io";
-          currentCmdOutput = "Redirecting...";
-          break;
-        }
-        case "docs": {
-          window.location.href = "https://docs.papermc.io";
-          currentCmdOutput = "Redirecting...";
-          break;
-        }
-        case "forums": {
-          window.location.href = "https://forums.papermc.io";
-          currentCmdOutput = "Redirecting...";
-          break;
-        }
-        case "team": {
-          window.location.href = "/team";
-          currentCmdOutput = "Redirecting...";
-          break;
-        }
-        case "contribute": {
-          window.location.href = "/contribute";
-          currentCmdOutput = "Redirecting...";
-          break;
-        }
-        default: {
-          currentCmdOutput = 'Unknown command. Type "help" for help.';
-        }
-      }
-      setCmdOutput([
-        cmdOutputRef.current,
-        <div key={event.currentTarget.id}>
-          {">"} {event.currentTarget.value}
-        </div>,
-        <InfoLog key={2}>{currentCmdOutput}</InfoLog>,
-      ]);
-      event.currentTarget.value = "";
-    }
-  };
-
   useEffect(() => {
+    const handleCommand = (event: KeyboardEvent<HTMLInputElement>) => {
+      if (event.key === "Enter") {
+        let currentCmdOutput;
+        switch (event.currentTarget.value) {
+          case "help": {
+            currentCmdOutput = "Existing commands: help, downloads, plugins, docs, forums, team, contribute";
+            break;
+          }
+          case "downloads": {
+            window.location.href = "/downloads";
+            currentCmdOutput = "Redirecting...";
+            break;
+          }
+          case "plugins": {
+            window.location.href = "https://hangar.papermc.io";
+            currentCmdOutput = "Redirecting...";
+            break;
+          }
+          case "docs": {
+            window.location.href = "https://docs.papermc.io";
+            currentCmdOutput = "Redirecting...";
+            break;
+          }
+          case "forums": {
+            window.location.href = "https://forums.papermc.io";
+            currentCmdOutput = "Redirecting...";
+            break;
+          }
+          case "team": {
+            window.location.href = "/team";
+            currentCmdOutput = "Redirecting...";
+            break;
+          }
+          case "contribute": {
+            window.location.href = "/contribute";
+            currentCmdOutput = "Redirecting...";
+            break;
+          }
+          default: {
+            currentCmdOutput = 'Unknown command. Type "help" for help.';
+          }
+        }
+        setCmdOutput([
+          cmdOutputRef.current,
+          <div key={event.currentTarget.id}>
+            {">"} {event.currentTarget.value}
+          </div>,
+          <InfoLog key={2}>{currentCmdOutput}</InfoLog>,
+        ]);
+        event.currentTarget.value = "";
+      }
+    };
+
     const outputLines = [
       `Starting minecraft server version ${project.latestStableVersion}`,
       'Preparing level "world"',
@@ -122,10 +121,7 @@ export function Terminal({ project }: ProjectProps) {
 
       let currentOutput: ReactNode[] = [];
       for (let i = 0; i < outputLines.length; i++) {
-        currentOutput = [
-          ...currentOutput,
-          <InfoLog key={i}>{outputLines[i]}</InfoLog>,
-        ];
+        currentOutput = [...currentOutput, <InfoLog key={i}>{outputLines[i]}</InfoLog>];
         setOutput(currentOutput);
 
         await sleep(getNaturalDelay());
@@ -133,9 +129,7 @@ export function Terminal({ project }: ProjectProps) {
 
       setSuccess(
         <InfoLog>
-          <span className="text-green-400">
-            Done (2.274s)! For help, type &quot;help&quot;
-          </span>
+          <span className="text-green-400">Done (2.274s)! For help, type &quot;help&quot;</span>
         </InfoLog>,
       );
 
@@ -144,7 +138,7 @@ export function Terminal({ project }: ProjectProps) {
           {">"}{" "}
           <input
             onKeyDown={(event) => handleCommand(event)}
-            className="w-105 bg-transparent border-none outline-none"
+            className="w-[420px] bg-transparent border-none outline-hidden"
           ></input>
         </div>,
       );
@@ -152,13 +146,13 @@ export function Terminal({ project }: ProjectProps) {
   }, [project.latestStableVersion]);
 
   return (
-    <div className="max-h-82 w-120 h-283 rounded-lg bg-gray-800">
+    <div className="max-h-[328px] w-[480px] h-[1132px] rounded-lg bg-gray-800">
       <div className="w-full bg-gray-900 rounded-t-lg flex p-2 gap-2">
         <div className="w-2.5 h-2.5 bg-red-500 rounded-full" />
         <div className="w-2.5 h-2.5 bg-yellow-500 rounded-full" />
         <div className="w-2.5 h-2.5 bg-green-500 rounded-full" />
       </div>
-      <div className="max-h-74 p-4 font-mono text-xs text-white overflow-y-hidden flex flex-col-reverse">
+      <div className="max-h-[296px] p-4 font-mono text-xs text-white overflow-y-hidden flex flex-col-reverse">
         {input}
         <div>{cmdOutput}</div>
         <div>{success}</div>
