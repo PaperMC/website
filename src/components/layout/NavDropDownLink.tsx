@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import Link from "next/link";
-import type { ReactElement, ReactNode } from "react";
+import type { ReactNode } from "react";
 
 import ArchiveIcon from "@/assets/icons/fontawesome/box-archive.svg";
 
@@ -12,7 +12,7 @@ export interface NavDropDownLinkProps {
   eol?: boolean;
 }
 
-const NavDropDownLink = ({ href, target, className, children, eol }: NavDropDownLinkProps): ReactElement => (
+const NavDropDownLink = ({ href, target, className, children, eol }: NavDropDownLinkProps) => (
   <li
     className={clsx(
       "color-gray-200 text-gray-800 hover:text-blue-600 text-sm transition-colors dark:text-gray-200 dark:hover:text-blue-400",

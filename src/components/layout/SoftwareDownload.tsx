@@ -34,7 +34,7 @@ const SoftwareDownload = ({
   description,
   experimentalWarning,
   eol,
-}: SoftwareDownloadProps & ProjectProps): ReactElement => {
+}: SoftwareDownloadProps & ProjectProps) => {
   const [isStable, setStable] = useState(true);
   const version = isStable
     ? project.latestStableVersion

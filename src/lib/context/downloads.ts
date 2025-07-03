@@ -2,7 +2,7 @@ import type { GetStaticProps } from "next";
 import { createContext } from "react";
 
 import { getProject, getVersionBuilds } from "@/lib/service/fill";
-import type { HangarProjectListPagination, HangarProjectList } from "@/lib/service/hangar";
+import type { HangarProjectList, HangarProjectListPagination } from "@/lib/service/hangar";
 import { getHangarProjects } from "@/lib/service/hangar";
 import type { Build } from "@/lib/service/types";
 

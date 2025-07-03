@@ -11,7 +11,7 @@ export interface SoftwareBuildChangesProps {
   version: string;
 }
 
-const SoftwareBuildChanges = ({ project, build, version }: SoftwareBuildChangesProps): ReactElement => (
+const SoftwareBuildChanges = ({ project, build, version }: SoftwareBuildChangesProps) => (
   <>
     {build.commits.map((change) => (
       <p key={change.sha}>
