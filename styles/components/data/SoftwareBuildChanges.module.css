@@ -7,3 +7,9 @@
 .issue {
   @apply text-blue-600 dark:text-blue-500;
 }
+
+.commitMessage {
+  @apply break-words overflow-hidden;
+  word-wrap: break-word;
+  hyphens: auto;
+}
