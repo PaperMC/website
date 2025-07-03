@@ -14,7 +14,7 @@ export interface SoftwareBuildChangesProps {
 const SoftwareBuildChanges = ({ project, build, version }: SoftwareBuildChangesProps) => (
   <>
     {build.commits.map((change) => (
-      <p key={change.sha}>
+      <p key={change.sha} className={styles.commitMessage}>
         <a
           href={`${getProjectRepository(project, version)}/commit/${change.sha}`}
           className={styles.commit}

@@ -11,3 +11,35 @@
 .body td {
   @apply px-6 py-2;
 }
+
+/* Mobile responsive improvements */
+@media (max-width: 768px) {
+  .header th {
+    @apply px-3 py-2 text-sm;
+  }
+  
+  .body td {
+    @apply px-3 py-2 text-sm;
+  }
+  
+  .body td:nth-child(2) {
+    @apply max-w-0 overflow-hidden;
+    width: 50%;
+  }
+  
+  .body td:nth-child(3) {
+    @apply text-xs;
+  }
+  
+  /* Hide timestamp column on mobile */
+  .header th:nth-child(3),
+  .body td:nth-child(3) {
+    display: none;
+  }
+}
+
+/* Ensure changelog column can wrap properly */
+.changelogColumn {
+  @apply min-w-0 break-words;
+  word-wrap: break-word;
+}
