@@ -70,6 +70,10 @@ html {
   -webkit-tap-highlight-color: transparent;
 }
 
-#__next {
+body {
   @apply flex flex-col h-screen;
+}
+
+[role=button], button {
+    cursor: pointer
 }

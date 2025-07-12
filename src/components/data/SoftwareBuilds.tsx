@@ -33,7 +33,7 @@ const SoftwareBuilds = ({ project, version, builds, eol }: SoftwareBuildsProps) 
           >
             <DownloadIcon className="w-4 h-4" />#{build.id}
           </a>
-          <div className="flex-1 flex flex-col text-gray-900 dark:text-gray-200">
+          <div className="flex-1 flex flex-col text-gray-900 dark:text-gray-200 min-w-0">
             <SoftwareBuildChanges project={project} build={build} version={version} />
           </div>
           <div

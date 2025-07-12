@@ -69,7 +69,7 @@ export default function SponsorsClient() {
         </p>
         <div className="grid grid-cols-8 md:grid-cols-16 lg:grid-cols-18 xl:grid-cols-20 mt-8 gap-2">
           {sponsorData?.ocData?.collective?.contributors?.nodes
-            ?.filter((n) => n.name !== "Guest")
+            ?.filter((n) => n.name !== "Guest" && n.name !== "Incognito")
             .map((node) => (
               <div
                 role="button"
