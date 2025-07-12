@@ -17,34 +17,35 @@
   "dependencies": {
     "@fontsource/poppins": "5.2.6",
     "@headlessui/react": "2.2.4",
-    "@tailwindcss/aspect-ratio": "^0.4.2",
+    "@tailwindcss/aspect-ratio": "0.4.2",
     "clsx": "2.1.1",
-    "next": "15.3.4",
-    "next-sitemap": "^4.2.3",
+    "next": "15.3.5",
+    "next-sitemap": "4.2.3",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "sharp": "^0.34.2",
-    "swr": "2.3.3"
+    "sharp": "0.34.3",
+    "swr": "2.3.4"
   },
   "devDependencies": {
     "@svgr/webpack": "8.1.0",
-    "@tailwindcss/postcss": "^4.1.11",
-    "@types/node": "24.0.8",
+    "@tailwindcss/postcss": "4.1.11",
+    "@types/node": "24.0.13",
     "@types/react": "19.1.8",
     "@types/react-dom": "19.1.6",
-    "@typescript-eslint/eslint-plugin": "8.35.1",
-    "@typescript-eslint/parser": "8.35.1",
-    "eslint": "9.30.0",
-    "eslint-config-next": "15.3.4",
+    "@typescript-eslint/eslint-plugin": "8.36.0",
+    "@typescript-eslint/parser": "8.36.0",
+    "eslint": "9.31.0",
+    "eslint-config-next": "15.3.5",
     "eslint-config-prettier": "10.1.5",
     "eslint-plugin-prettier": "5.5.1",
-    "postcss": "^8.4.38",
+    "postcss": "8.5.6",
     "prettier": "3.6.2",
-    "tailwindcss": "^4.1.11",
+    "tailwindcss": "4.1.11",
     "typescript": "5.8.3"
   },
   "overrides": {
     "@types/react": "19.1.8",
     "@types/react-dom": "19.1.6"
-  }
+  },
+  "packageManager": "pnpm@8.15.9+sha512.499434c9d8fdd1a2794ebf4552b3b25c0a633abcee5bb15e7b5de90f32f47b513aca98cd5cfd001c31f0db454bc3804edccd578501e4ca293a6816166bbd9f81"
 }
