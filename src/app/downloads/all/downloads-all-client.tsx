@@ -30,12 +30,6 @@ export default function DownloadsAllClient({ initialProjectId, initialProjectVer
           setSelectedVersion(flattenedVersions[0]);
         }
       });
-      setTimeout(() => {
-        const projectElement = downloadsTreeRef.current?.querySelector(`[data-project="${projectParam}"]`);
-        if (projectElement) {
-          projectElement.scrollIntoView({ behavior: "smooth", block: "center" });
-        }
-      }, 100);
     }
   }, [projectParam]);
 
