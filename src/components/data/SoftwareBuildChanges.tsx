@@ -1,43 +1,38 @@
 import type { ReactElement } from "react";
 import { Fragment } from "react";
 
+import { getProjectRepository } from "@/lib/service/github";
 import type { Build } from "@/lib/service/types";
 import styles from "@/styles/components/data/SoftwareBuildChanges.module.css";
 
 export interface SoftwareBuildChangesProps {
   project: string;
   build: Build;
+  version: string;
 }
 
-const SoftwareBuildChanges = ({
-  project,
-  build,
-}: SoftwareBuildChangesProps): ReactElement => (
+const SoftwareBuildChanges = ({ project, build, version }: SoftwareBuildChangesProps) => (
   <>
-    {build.changes.map((change) => (
-      <p key={change.commit}>
+    {build.commits.map((change) => (
+      <p key={change.sha} className={styles.commitMessage}>
         <a
-          href={`https://github.com/PaperMC/${project}/commit/${change.commit}`}
+          href={`${getProjectRepository(project, version)}/commit/${change.sha}`}
           className={styles.commit}
           rel="noreferrer"
           target="_blank"
         >
-          {change.commit.slice(0, 7)}
+          {change.sha.slice(0, 7)}
         </a>
-        {highlightIssues(change.summary, project, styles.issue)}
+        {highlightIssues(change.message, project, styles.issue)}
       </p>
     ))}
-    {build.changes.length === 0 && <i className="text-gray-600">No changes</i>}
+    {build.commits.length === 0 && <i className="text-gray-600">No changes</i>}
   </>
 );
 
 export default SoftwareBuildChanges;
 
-const highlightIssues = (
-  summary: string,
-  project: string,
-  highlightClass: string,
-): JSX.Element[] => {
+const highlightIssues = (summary: string, project: string, highlightClass: string): ReactElement[] => {
   return summary.split(/([^&])(#[0-9]+)/gm).map((part: string, i: number) => {
     if (!part.match(/#[0-9]+/)) {
       return <Fragment key={i}>{part}</Fragment>;

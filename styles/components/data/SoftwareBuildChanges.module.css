@@ -1,7 +1,15 @@
+@reference '../../globals.css';
+
 .commit {
-    @apply text-blue-600 dark:text-blue-500 mr-1 font-mono;
+  @apply text-blue-600 dark:text-blue-500 mr-1 font-mono;
 }
 
 .issue {
-    @apply text-blue-600 dark:text-blue-500;
+  @apply text-blue-600 dark:text-blue-500;
+}
+
+.commitMessage {
+  @apply break-words overflow-hidden;
+  word-wrap: break-word;
+  hyphens: auto;
 }

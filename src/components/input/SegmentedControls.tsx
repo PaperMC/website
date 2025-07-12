@@ -5,10 +5,7 @@ export interface SegmentedControlsProps {
   children: ReactElement[];
 }
 
-const SegmentedControls = ({
-  selectedIndex,
-  children,
-}: SegmentedControlsProps): ReactElement => (
+const SegmentedControls = ({ selectedIndex, children }: SegmentedControlsProps) => (
   <div className="p-1  bg-primary-200 rounded-lg">
     <div className="flex flex-row relative z-1">
       {children}

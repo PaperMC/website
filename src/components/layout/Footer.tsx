@@ -32,20 +32,12 @@ const Footer = () => (
               <Link href="/community">Our Community</Link>
             </li>
             <li>
-              <a
-                href="https://github.com/PaperMC"
-                target="_blank"
-                rel="noreferrer"
-              >
+              <a href="https://github.com/PaperMC" target="_blank" rel="noreferrer">
                 GitHub
               </a>
             </li>
             <li>
-              <a
-                href="https://discord.gg/papermc"
-                target="_blank"
-                rel="noreferrer"
-              >
+              <a href="https://discord.gg/papermc" target="_blank" rel="noreferrer">
                 Discord
               </a>
             </li>
@@ -56,11 +48,7 @@ const Footer = () => (
               </a>
             </li>
             <li>
-              <a
-                href="https://twitter.com/PaperPowered"
-                target="_blank"
-                rel="noreferrer"
-              >
+              <a href="https://twitter.com/PaperPowered" target="_blank" rel="noreferrer">
                 Twitter
               </a>
             </li>
@@ -93,22 +81,16 @@ const Footer = () => (
               <Link href="https://forums.papermc.io/help/terms/">Terms</Link>
             </li>
             <li>
-              <Link href="https://forums.papermc.io/help/privacy-policy/">
-                Privacy Policy
-              </Link>
+              <Link href="https://forums.papermc.io/help/privacy-policy/">Privacy Policy</Link>
             </li>
             <li>
-              <Link href="https://forums.papermc.io/help/legal-notice/">
-                Legal Notice
-              </Link>
+              <Link href="https://forums.papermc.io/help/legal-notice/">Legal Notice</Link>
             </li>
             <li>
               <Link href="https://hangar.papermc.io/terms">Hangar Terms</Link>
             </li>
             <li>
-              <Link href="https://hangar.papermc.io/privacy">
-                Hangar Privacy Policy
-              </Link>
+              <Link href="https://hangar.papermc.io/privacy">Hangar Privacy Policy</Link>
             </li>
             <li>
               <Link href="/community/guidelines">Community Guidelines</Link>
@@ -119,8 +101,30 @@ const Footer = () => (
       <div className="flex flex-row items-center gap-2 border-t border-gray-600/50 mt-8 pt-10">
         <LogoMarkerDark className="h-12 cursor-pointer" alt="PaperMC" />
         <div className="flex-1" />
+        <div className={"flex flex-col"}>
+          <span className="text-gray-300 text-sm">© {new Date().getFullYear()} The PaperMC Team</span>
+          <span className="text-gray-300 text-sm">
+            <Link
+              className={"text-blue-800 dark:text-blue-300 text-sm font-medium"}
+              href="https://github.com/PaperMC/website/"
+            >
+              PaperMC/website
+            </Link>
+            {" @ "}
+            <Link
+              className={"text-blue-800 dark:text-blue-300 text-sm font-medium"}
+              href={`https://github.com/PaperMC/website/commit/${process.env.CURRENT_COMMIT}`}
+            >
+              {process.env.CURRENT_COMMIT}
+            </Link>
+          </span>
+        </div>
+      </div>
+      <div className="flex flex-row items-center gap-2 mt-4 pt-4">
         <span className="text-gray-300 text-sm">
-          © {new Date().getFullYear()} The PaperMC Team
+          This website is not an official Minecraft website and is not associated with Mojang Studios or Microsoft. All
+          product and company names are trademarks or registered trademarks of their respective holders. Use of these
+          names does not imply any affiliation or endorsement by them.
         </span>
       </div>
     </div>

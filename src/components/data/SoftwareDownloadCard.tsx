@@ -1,6 +1,8 @@
+"use client";
+
 import clsx from "clsx";
 
-import { useProject } from "@/lib/service/v2";
+import { useProject } from "@/lib/service/hooks";
 
 export interface SoftwareDownloadCardProps {
   id: string;
@@ -9,19 +11,14 @@ export interface SoftwareDownloadCardProps {
   onSelect: () => void;
 }
 
-const SoftwareDownloadCard = ({
-  id,
-  name,
-  selected,
-  onSelect,
-}: SoftwareDownloadCardProps) => {
+const SoftwareDownloadCard = ({ id, name, selected, onSelect }: SoftwareDownloadCardProps) => {
   const { data } = useProject(id);
 
   return (
     <article
       role="button"
       className={clsx(
-        "rounded-xl transition-shadow transition-color p-4 bg-primary-200 shadow-sm hover:shadow-lg",
+        "rounded-xl transition-shadow transition-color p-4 bg-primary-200 shadow-xs hover:shadow-lg",
         selected ? "bg-primary-400" : "hover:bg-primary-300",
       )}
       onClick={onSelect}

@@ -1,13 +1,10 @@
 import type { GetStaticProps } from "next";
 import { createContext } from "react";
 
-import type {
-  HangarProjectListPagination,
-  HangarProjectList,
-} from "@/lib/service/hangar";
+import { getProject, getVersionBuilds } from "@/lib/service/fill";
+import type { HangarProjectList, HangarProjectListPagination } from "@/lib/service/hangar";
 import { getHangarProjects } from "@/lib/service/hangar";
 import type { Build } from "@/lib/service/types";
-import { getProject, getVersionBuilds } from "@/lib/service/v2";
 
 export interface DownloadsContextProps {
   projectId: string;
@@ -40,54 +37,47 @@ export const DownloadsContext = createContext<DownloadsContextProps>({
   stable: true,
 });
 
-const isVersionStable = async (
-  project: string,
-  version: string,
-): Promise<boolean> => {
-  const { builds } = await getVersionBuilds(project, version);
+const isVersionStable = async (project: string, version: string): Promise<boolean> => {
+  const builds = await getVersionBuilds(project, version);
   for (let i = builds.length - 1; i >= 0; i--) {
-    if (builds[i].channel === "default") return true;
+    if (builds[i].channel === "STABLE") return true;
   }
 
   return false;
 };
 
-export const getProjectProps = (
-  id: string,
-  hangarProject: boolean = true,
-): GetStaticProps => {
+export const getProjectProps = (id: string, hangarProject: boolean = true): GetStaticProps => {
   return async () => {
-    const { project_name, versions, version_groups } = await getProject(id);
-    const hangarProjectList: HangarProjectList | null = hangarProject
-      ? await getHangarProjects(id)
-      : null;
-
-    let latestStableVersion = versions[versions.length - 1];
-    for (let i = versions.length - 1; i >= 0; i--) {
-      if (await isVersionStable(id, versions[i])) {
-        latestStableVersion = versions[i];
+    const {
+      project: { name: projectName },
+      versions,
+    } = await getProject(id);
+    const hangarProjectList: HangarProjectList | null = hangarProject ? await getHangarProjects(id) : null;
+    const flattenedVersions = Object.values(versions).flat().reverse();
+    let latestStableVersion = flattenedVersions[flattenedVersions.length - 1];
+    for (let i = flattenedVersions.length - 1; i >= 0; i--) {
+      if (await isVersionStable(id, flattenedVersions[i])) {
+        latestStableVersion = flattenedVersions[i];
         break;
       }
     }
 
     const latestExperimentalVersion =
-      latestStableVersion !== versions[versions.length - 1]
-        ? versions[versions.length - 1]
+      latestStableVersion !== flattenedVersions[flattenedVersions.length - 1]
+        ? flattenedVersions[flattenedVersions.length - 1]
         : null;
 
     const project: ProjectDescriptor = {
-      name: project_name,
+      name: projectName,
       latestStableVersion,
       latestExperimentalVersion,
-      latestVersionGroup: version_groups[version_groups.length - 1],
+      latestVersionGroup: Object.keys(versions)[0],
     };
 
     return {
       props: {
         project,
-        hangarProjectListPagination: hangarProjectList
-          ? hangarProjectList.pagination
-          : null,
+        hangarProjectListPagination: hangarProjectList ? hangarProjectList.pagination : null,
       },
       revalidate: 600, // 10 minutes
     };

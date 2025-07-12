@@ -1,8 +1,79 @@
-html {
-    @apply bg-background-light-10 dark:(bg-background-dark-90 text-white) smooth-scroll;
-    -webkit-tap-highlight-color: transparent;
+@import "tailwindcss";
+
+@custom-variant dark (@media (prefers-color-scheme: dark));
+
+@theme {
+  --font-sans: Poppins, Roboto, Open Sans, ui-sans-serif, system-ui, sans-serif;
+
+  --color-primary-0: #ffffff;
+  --color-primary-100: #f5f8fe;
+  --color-primary-200: #ebf1fd;
+  --color-primary-300: #e0eafc;
+  --color-primary-400: #d6e3fb;
+  --color-primary-500: #ccdcfb;
+  --color-primary-600: #c2d4fa;
+  --color-primary-700: #b8cdf9;
+  --color-primary-800: #adc6f8;
+  --color-primary-900: #a3bff7;
+  --color-primary-1000: #99b8f6;
+
+  --color-primary-dark-0: #e6edfd;
+  --color-primary-dark-50: #ccdcfb;
+  --color-primary-dark-100: #99b8f6;
+  --color-primary-dark-200: #6695f2;
+  --color-primary-dark-300: #3371ed;
+  --color-primary-dark-400: #004ee9;
+  --color-primary-dark-500: #003eba;
+  --color-primary-dark-600: #002f8c;
+  --color-primary-dark-700: #001f5d;
+  --color-primary-dark-800: #00102f;
+  --color-primary-dark-900: #000817;
+
+  --color-background-dark-90: #111111;
+  --color-background-dark-80: #181a1b;
+  --color-background-light-10: #f8faff;
+  --color-background-light-0: #ffffff;
+
+  --list-style-type-alpha: lower-alpha;
+
+  --aspect-auto: auto;
+  --aspect-square: 1 / 1;
+  --aspect-video: 16 / 9;
+
+  --grid-template-columns-16: repeat(16, minmax(0, 1fr));
+  --grid-template-columns-18: repeat(18, minmax(0, 1fr));
+  --grid-template-columns-20: repeat(20, minmax(0, 1fr));
+
+  --scale-120: 1.2;
 }
 
-#__next {
-    @apply flex flex-col h-screen;
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+html {
+  @apply bg-background-light-10 dark:bg-background-dark-90 dark:text-white scroll-smooth;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  @apply flex flex-col h-screen;
+}
+
+[role=button], button {
+    cursor: pointer
 }
