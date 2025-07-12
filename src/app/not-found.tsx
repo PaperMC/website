@@ -1,9 +1,9 @@
 import ErrorIllustration from "@/assets/illustrations/undraw/404.svg";
 import Button from "@/components/input/Button";
 
-const notFound = () => {
+export default function NotFound() {
   return (
-    <div className="flex flex-col justify-center items-center h-screen">
+    <div className="max-w-7xl flex flex-col mx-auto px-4 pt-32 pb-16 lg:pt-48 lg:pb-32 items-center">
       <ErrorIllustration className="w-96 " />
       <p className="m-8 text-2xl">404 page not found</p>
       <h1>
@@ -13,6 +13,4 @@ const notFound = () => {
       </h1>
     </div>
   );
-};
-
-export default notFound;
+}
