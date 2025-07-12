@@ -1,11 +1,10 @@
 import clsx from "clsx";
-import type { ReactElement } from "react";
 
 import DownloadIcon from "@/assets/icons/heroicons/document-download.svg";
 import Skeleton from "@/components/data/Skeleton";
 import SoftwareBuildChanges from "@/components/data/SoftwareBuildChanges";
 import type { Build } from "@/lib/service/types";
-import { formatRelativeDate, formatISODateTime } from "@/lib/util/time";
+import { formatISODateTime, formatRelativeDate } from "@/lib/util/time";
 
 export interface SoftwareBuildsProps {
   project: string;
@@ -14,12 +13,7 @@ export interface SoftwareBuildsProps {
   eol?: boolean;
 }
 
-const SoftwareBuilds = ({
-  project,
-  version,
-  builds,
-  eol,
-}: SoftwareBuildsProps): ReactElement => (
+const SoftwareBuilds = ({ project, version, builds, eol }: SoftwareBuildsProps) => (
   <div className="flex flex-col gap-1">
     {builds &&
       builds.slice(0, 10).map((build) => (
@@ -39,12 +33,8 @@ const SoftwareBuilds = ({
           >
             <DownloadIcon className="w-4 h-4" />#{build.id}
           </a>
-          <div className="flex-1 flex flex-col text-gray-900 dark:text-gray-200">
-            <SoftwareBuildChanges
-              project={project}
-              build={build}
-              version={version}
-            />
+          <div className="flex-1 flex flex-col text-gray-900 dark:text-gray-200 min-w-0">
+            <SoftwareBuildChanges project={project} build={build} version={version} />
           </div>
           <div
             className="hidden md:block text-gray-500 dark:text-gray-300 mt-1 ml-2"
@@ -60,7 +50,7 @@ const SoftwareBuilds = ({
           <div className="bg-gray-800 rounded-full p-2 min-w-16 mr-4 ">
             <Skeleton className="h-5" />
           </div>
-          <Skeleton className="mt-1 flex-grow" />
+          <Skeleton className="mt-1 grow" />
         </div>
       ))}
   </div>

@@ -1,9 +1,17 @@
 import Link from "next/link";
-import type { FunctionComponent } from "react";
+
+import DiscordIcon from "@/assets/icons/fontawesome/discord-brands.svg";
+import GitHubIcon from "@/assets/icons/fontawesome/github-brands.svg";
+import TwitterIcon from "@/assets/icons/fontawesome/twitter-brands.svg";
+
+const ICONS = {
+  discord: DiscordIcon,
+  github: GitHubIcon,
+  twitter: TwitterIcon,
+} as const;
 
 export interface IconButtonProps {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  icon: FunctionComponent<any>;
+  iconId: keyof typeof ICONS;
   label: string;
   href?: string;
   external?: boolean;
@@ -11,7 +19,8 @@ export interface IconButtonProps {
 }
 
 const IconButton = (props: IconButtonProps) => {
-  const { icon: Icon, label, href, onClick } = props;
+  const { iconId, label, href, onClick } = props;
+  const Icon = ICONS[iconId];
 
   if (href) {
     return (
@@ -19,7 +28,7 @@ const IconButton = (props: IconButtonProps) => {
         href={href}
         rel="noreferrer"
         target="_blank"
-        className="inline-block h-min w-min rounded-full p-2 transition-colors hover:bg-gray-800/20 dark:hover:bg-gray-400/20 leading-0"
+        className="inline-block h-fit w-fit rounded-full p-2 transition-colors hover:bg-gray-800/20 dark:hover:bg-gray-400/20 leading-none"
         onClick={onClick}
         aria-label={label}
       >
@@ -30,7 +39,7 @@ const IconButton = (props: IconButtonProps) => {
 
   return (
     <button
-      className="h-min w-min rounded-full p-2 transition-colors hover:bg-gray-800/20"
+      className="h-fit w-fit rounded-full p-2 transition-colors hover:bg-gray-800/20"
       onClick={onClick}
       aria-label={label}
     >
