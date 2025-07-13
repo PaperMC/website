@@ -5,7 +5,7 @@ import SoftwarePreview from "@/components/data/SoftwarePreview";
 export default function DownloadsClient() {
   return (
     <>
-      <header className="max-w-4xl flex flex-col items-center mx-auto px-4 pt-32 pb-16 lg:pt-48 lg:pb-26 gap-2">
+      <header className="max-w-4xl flex flex-col items-center mx-auto px-4 pt-32 pb-16 lg:pt-28 lg:pb-12 gap-2">
         <h1 className="font-medium leading-normal lg:text-5xl lg:leading-normal text-4xl">Downloads</h1>
         <p className="text-xl text-center mb-6">{"Select the software you want to download."}</p>
         <h2 className="text-2xl text-center font-medium mt-4">Server Software</h2>

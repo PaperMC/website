@@ -28,7 +28,7 @@ const SoftwareHeader = ({ id, name, versionGroup, header, description, github, e
   const Icon = ICONS[id as keyof typeof ICONS];
 
   return (
-    <header className="max-w-7xl flex flex-row flex-wrap mx-auto px-4 pt-32 pb-26 lg:pt-48 lg:pb-46 gap-16">
+    <header className="max-w-7xl flex flex-row flex-wrap mx-auto px-4 pt-32 pb-26 lg:pt-28 lg:pb-14 gap-16">
       {eol && (
         <div className="text-center px-4 py-8 -mt-16 font-bold bg-red-400 dark:bg-red-500 shadow-md rounded-lg w-full">
           {name} has reached end of life! It is no longer maintained or supported.
