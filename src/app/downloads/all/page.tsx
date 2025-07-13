@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 
 import DownloadsAllClient from "./downloads-all-client";
 
@@ -18,7 +19,11 @@ export default async function DownloadsAllPage() {
     const project = await getProject(INITIAL_PROJECT);
     const flattenedVersions = Object.values(project.versions).flat();
 
-    return <DownloadsAllClient initialProjectId={project.project.id} initialProjectVersion={flattenedVersions[0]} />;
+    return (
+      <Suspense>
+        <DownloadsAllClient initialProjectId={project.project.id} initialProjectVersion={flattenedVersions[0]} />
+      </Suspense>
+    );
   } catch (error) {
     console.error("Failed to load initial project data:", error);
     notFound();

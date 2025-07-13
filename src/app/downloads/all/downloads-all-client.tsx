@@ -16,7 +16,7 @@ interface DownloadsAllClientProps {
 
 export default function DownloadsAllClient({ initialProjectId, initialProjectVersion }: DownloadsAllClientProps) {
   const searchParams = useSearchParams();
-  const projectParam = searchParams.get("project");
+  const projectParam = searchParams?.get("project");
   const downloadsTreeRef = useRef<HTMLDivElement>(null);
   const [selectedProject, setSelectedProject] = useState(initialProjectId);
   const [selectedVersion, setSelectedVersion] = useState(initialProjectVersion);
@@ -39,7 +39,7 @@ export default function DownloadsAllClient({ initialProjectId, initialProjectVer
   const eol = selectedProject === "waterfall";
   const flattenedVersions = Object.values(project?.versions ?? {}).flat();
   const latestVersion = flattenedVersions[0];
-  const legacy = selectedVersion !== latestVersion;
+  const legacy = latestVersion && selectedVersion !== latestVersion;
   const experimental = builds?.[0]?.channel === "ALPHA" || builds?.[0]?.channel === "BETA";
 
   const handleProjectSelect = (projectId: string, version: string) => {
