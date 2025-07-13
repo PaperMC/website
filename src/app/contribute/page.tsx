@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 export default function ContributePage() {
   return (
     <>
-      <header className="max-w-7xl flex flex-row mx-auto px-4 pt-32 pb-16 lg:pt-48 lg:pb-32 gap-16">
+      <header className="max-w-7xl flex flex-row mx-auto px-4 pt-32 pb-16 lg:pt-28 lg:pb-16 gap-16">
         <div className="flex-1">
           <h1 className="font-medium leading-normal lg:text-5xl lg:leading-normal text-4xl">You can contribute</h1>
           <p className="text-xl mt-4">
