@@ -24,7 +24,8 @@ export const useGitHubContributors = (): SWRInfiniteResponse<Contributor[]> =>
 
 export const getProjectRepository = (project: string, version: string): string => {
   if (project !== "paper") return `https://github.com/PaperMC/${project}`;
-
+  if (project == "paper" && version == "1.7.10") return "https://github.com/PaperMC/Paper-1.7";
+  
   const baseVersion = [21, 4]; // 1.21.4 is after the hardfork
   const isBelowBaseVersion = version
     .replace(/^1\./, "")
