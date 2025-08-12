@@ -105,7 +105,7 @@ const SoftwareDownload = ({
             .
           </span>
         </p>
-        <SoftwareBuilds project={id} version={version} builds={builds} eol={eol} />
+        <SoftwareBuilds project={id} projectName={project.name} version={version} builds={builds} eol={eol} />
       </section>
     </>
   );

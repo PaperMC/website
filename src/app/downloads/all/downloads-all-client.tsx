@@ -136,7 +136,13 @@ export default function DownloadsAllClient({ initialProjectId, initialProjectVer
               EOL builds are not supported. Proceed at your own risk!
             </div>
           )}
-          <SoftwareBuildsTable project={selectedProject} version={selectedVersion} builds={builds ?? []} eol={eol} />
+          <SoftwareBuildsTable
+            project={selectedProject}
+            projectName={project?.project.name || selectedProject}
+            version={selectedVersion}
+            builds={builds ?? []}
+            eol={eol}
+          />
         </div>
       </div>
     </div>

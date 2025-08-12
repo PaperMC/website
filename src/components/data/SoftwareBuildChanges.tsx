@@ -7,11 +7,12 @@ import styles from "@/styles/components/data/SoftwareBuildChanges.module.css";
 
 export interface SoftwareBuildChangesProps {
   project: string;
+  projectName?: string;
   build: Build;
   version: string;
 }
 
-const SoftwareBuildChanges = ({ project, build, version }: SoftwareBuildChangesProps) => (
+const SoftwareBuildChanges = ({ project, projectName, build, version }: SoftwareBuildChangesProps) => (
   <>
     {build.commits.map((change) => {
       const [firstLine, ...restLines] = change.message.split(/\r?\n/);
@@ -21,14 +22,14 @@ const SoftwareBuildChanges = ({ project, build, version }: SoftwareBuildChangesP
       return (
         <p key={change.sha} className={styles.commitMessage}>
           <a
-            href={`${getProjectRepository(project, version)}/commit/${change.sha}`}
+            href={`${getProjectRepository(project, version, projectName)}/commit/${change.sha}`}
             className={styles.commit}
             rel="noreferrer"
             target="_blank"
           >
             {change.sha.slice(0, 7)}
           </a>
-          <span title={fullMessage}>{formatCommitMessage(firstLine, project, styles.issue)}</span>
+          <span title={fullMessage}>{formatCommitMessage(firstLine, project, styles.issue, projectName)}</span>
         </p>
       );
     })}
@@ -38,7 +39,12 @@ const SoftwareBuildChanges = ({ project, build, version }: SoftwareBuildChangesP
 
 export default SoftwareBuildChanges;
 
-const formatCommitMessage = (summary: string, project: string, highlightClass: string): ReactElement[] => {
+const formatCommitMessage = (
+  summary: string,
+  project: string,
+  highlightClass: string,
+  projectName?: string,
+): ReactElement[] => {
   // Regex for issues (#123) and commit links
   const regex = /(@?https:\/\/github\.com\/[\w-]+\/[\w-]+\/commit\/([a-f0-9]{7,40}))|([^&])(#[0-9]+)/gim;
   let key = 0;
@@ -65,7 +71,7 @@ const formatCommitMessage = (summary: string, project: string, highlightClass: s
         <a
           key={key++}
           className={highlightClass}
-          href={`https://github.com/PaperMC/${project}/issues/${match[4].slice(1)}`}
+          href={`https://github.com/PaperMC/${projectName || project}/issues/${match[4].slice(1)}`}
           target="_blank"
           rel="noreferrer"
         >

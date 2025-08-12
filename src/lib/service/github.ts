@@ -22,8 +22,8 @@ const getURL = (pageIndex: number, previousPageData: any): string | null => {
 export const useGitHubContributors = (): SWRInfiniteResponse<Contributor[]> =>
   useSWRInfinite(getURL, fetcher, swrNoAutoUpdateSettings);
 
-export const getProjectRepository = (project: string, version: string): string => {
-  if (project !== "paper") return `https://github.com/PaperMC/${project}`;
+export const getProjectRepository = (project: string, version: string, projectName?: string): string => {
+  if (project !== "paper") return `https://github.com/PaperMC/${projectName || project}`;
   if (project == "paper" && version == "1.7.10") return "https://github.com/PaperMC/Paper-1.7";
 
   const baseVersion = [21, 4]; // 1.21.4 is after the hardfork
