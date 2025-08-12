@@ -9,12 +9,13 @@ import styles from "@/styles/components/data/SoftwareBuildsTable.module.css";
 
 export interface SoftwareBuildsTableProps {
   project: string;
+  projectName?: string;
   version: string;
   builds: Build[];
   eol?: boolean;
 }
 
-const SoftwareBuildsTable = ({ project, version, builds, eol }: SoftwareBuildsTableProps) => {
+const SoftwareBuildsTable = ({ project, projectName, version, builds, eol }: SoftwareBuildsTableProps) => {
   return (
     <div className="overflow-x-auto">
       <table className="w-full relative">
@@ -40,7 +41,7 @@ const SoftwareBuildsTable = ({ project, version, builds, eol }: SoftwareBuildsTa
                 </span>
               </td>
               <td>
-                <SoftwareBuildChanges project={project} build={build} version={version} />
+                <SoftwareBuildChanges project={project} projectName={projectName} build={build} version={version} />
               </td>
               <td className={"whitespace-nowrap"} title={formatISODateTime(new Date(build.time))}>
                 {formatRelativeDate(new Date(build.time))}

@@ -8,11 +8,12 @@ import { formatISODateTime, formatRelativeDate } from "@/lib/util/time";
 
 export interface SoftwareBuildsProps {
   project: string;
+  projectName?: string;
   version: string;
   builds?: Build[];
   eol?: boolean;
 }
-const SoftwareBuilds = ({ project, version, builds, eol }: SoftwareBuildsProps) => (
+const SoftwareBuilds = ({ project, projectName, version, builds, eol }: SoftwareBuildsProps) => (
   <div className="flex flex-col">
     {builds &&
       builds.slice(0, 10).map((build, idx) => (
@@ -33,7 +34,7 @@ const SoftwareBuilds = ({ project, version, builds, eol }: SoftwareBuildsProps) 
               <DownloadIcon className="w-4 h-4" />#{build.id}
             </a>
             <div className="flex-1 flex flex-col text-gray-900 dark:text-gray-200 min-w-0">
-              <SoftwareBuildChanges project={project} build={build} version={version} />
+              <SoftwareBuildChanges project={project} build={build} version={version} projectName={projectName} />
             </div>
             <div
               className="hidden md:block text-gray-500 dark:text-gray-300 mt-1 ml-2"
