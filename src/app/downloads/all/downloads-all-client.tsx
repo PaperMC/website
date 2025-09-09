@@ -18,20 +18,25 @@ export default function DownloadsAllClient({ initialProjectId, initialProjectVer
   const searchParams = useSearchParams();
   const projectParam = searchParams?.get("project");
   const downloadsTreeRef = useRef<HTMLDivElement>(null);
-  const [selectedProject, setSelectedProject] = useState(initialProjectId);
-  const [selectedVersion, setSelectedVersion] = useState(initialProjectVersion);
+  const projectFromParam =
+    projectParam && ["paper", "velocity", "folia", "waterfall"].includes(projectParam)
+      ? projectParam
+      : initialProjectId;
+  const [selectedProject, setSelectedProject] = useState(projectFromParam);
+  const [selectedVersion, setSelectedVersion] = useState<string | undefined>(
+    projectFromParam === initialProjectId ? initialProjectVersion : undefined
+  );
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   useEffect(() => {
-    if (projectParam && ["paper", "velocity", "folia", "waterfall"].includes(projectParam)) {
-      setSelectedProject(projectParam);
-      getProject(projectParam).then((proj) => {
+    if (initialProjectId !== projectFromParam) {
+      getProject(projectFromParam).then((proj) => {
         const flattenedVersions = Object.values(proj.versions).flat();
         if (flattenedVersions.length > 0) {
           setSelectedVersion(flattenedVersions[0]);
         }
       });
     }
-  }, [projectParam]);
+  });
 
   const { data: builds } = useVersionBuilds(selectedProject, selectedVersion);
   const { data: project } = useProject(selectedProject);
