@@ -77,7 +77,7 @@ const SoftwareDownload = ({
             {project.latestExperimentalVersion && (
               <button
                 className={clsx(
-                  "rounded-lg flex flex-row w-full md:w-100 border text-white transition-border pl-5 py-3",
+                  "rounded-lg flex flex-row w-full md:w-100 border transition-border pl-5 py-3",
                   isStable
                     ? "dark:border-red-500 dark:text-red-400 border-red-900 text-red-700"
                     : "dark:border-blue-600 dark:text-blue-400 border-blue-900 text-blue-700",
