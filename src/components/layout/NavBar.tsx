@@ -18,6 +18,7 @@ const NavBar = () => {
   const [scroll, setScroll] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const pathname = usePathname();
+  const isSoftwareActive = pathname?.startsWith("/software");
 
   // Determine GitHub URL based on current path
   const getGitHubUrl = () => {
@@ -63,11 +64,11 @@ const NavBar = () => {
         </Link>
         <div
           className={clsx(
-            "absolute top-full left-0 right-0 flex flex-col bg-background-light-10 dark:bg-background-dark-90 gap-4 p-4 shadow-xl w-full md:block md:relative md:w-auto md:shadow-none md:bg-transparent md:p-0",
+            "absolute top-full left-0 right-0 flex flex-col bg-background-light-10 dark:bg-background-dark-90 gap-4 p-4 shadow-xl w-full md:block md:relative md:w-auto md:shadow-none md:bg-transparent md:p-5",
             !showMenu && "hidden",
           )}
         >
-          <NavDropDown label="Software">
+          <NavDropDown label="Software" className={clsx(isSoftwareActive && "text-blue-400 font-bold")}>
             <NavDropDownLink href="/software/paper">Paper</NavDropDownLink>
             <NavDropDownLink href="/software/folia">Folia</NavDropDownLink>
             <NavDropDownLink href="/software/velocity">Velocity</NavDropDownLink>
