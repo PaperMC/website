@@ -1,8 +1,0 @@
-User-agent: *
-Disallow: /downloads/all
-Disallow: /repository/
-Disallow: /repo/
-Disallow: /api/
-Allow: /
-
-Sitemap: https://papermc.io/sitemap.xml
