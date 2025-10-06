@@ -1,6 +1,7 @@
 import childProcess from "child_process";
 
 import type { NextConfig } from "next";
+import createMDX from "@next/mdx";
 
 let currentCommit;
 try {
@@ -9,6 +10,8 @@ try {
   console.error("Failed to get the current commit:", error);
   currentCommit = "unknown";
 }
+
+const withMDX = createMDX({});
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
@@ -30,21 +33,16 @@ const nextConfig: NextConfig = {
   turbopack: {
     rules: {
       "*.svg": {
-        loaders: [
-          {
-            loader: "@svgr/webpack",
-            options: {
-              dimensions: false,
-            },
-          },
-        ],
+        loaders: [{ loader: "@svgr/webpack", options: { dimensions: false } }],
         as: "*.js",
       },
     },
+    resolveExtensions: [".tsx", ".ts", ".jsx", ".js", ".json", ".mdx", ".md"],
   },
+  pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
 };
 
-export default nextConfig;
+export default withMDX(nextConfig);
 
 import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare";
 initOpenNextCloudflareForDev();

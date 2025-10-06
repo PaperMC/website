@@ -32,13 +32,15 @@
   "devDependencies": {
     "@svgr/webpack": "8.1.0",
     "@tailwindcss/postcss": "4.1.11",
+    "@tailwindcss/typography": "^0.5.19",
+    "@types/mdx": "^2.0.13",
     "@types/node": "24.0.13",
-    "@types/react": "19.1.8",
-    "@types/react-dom": "19.1.6",
+    "@types/react": "19.1.16",
+    "@types/react-dom": "19.1.9",
     "@typescript-eslint/eslint-plugin": "8.36.0",
     "@typescript-eslint/parser": "8.36.0",
     "eslint": "9.31.0",
-    "eslint-config-next": "15.3.5",
+    "eslint-config-next": "15.5.4",
     "eslint-config-prettier": "10.1.5",
     "eslint-plugin-prettier": "5.5.1",
     "postcss": "8.5.6",
@@ -48,8 +50,8 @@
     "wrangler": "^4.42.0"
   },
   "overrides": {
-    "@types/react": "19.1.8",
-    "@types/react-dom": "19.1.6"
+    "@types/react": "19.1.16",
+    "@types/react-dom": "19.1.9"
   },
   "packageManager": "pnpm@8.15.9+sha512.499434c9d8fdd1a2794ebf4552b3b25c0a633abcee5bb15e7b5de90f32f47b513aca98cd5cfd001c31f0db454bc3804edccd578501e4ca293a6816166bbd9f81"
 }

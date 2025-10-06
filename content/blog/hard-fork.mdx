@@ -1,0 +1,114 @@
+export const metadata = {
+  title: "The future of Paper — Hard fork",
+  date: "2024-12-13",
+  authors: ["Paper Team"],
+  summary: "Starting with 1.21.4, Paper hard-forks from Spigot to accelerate development, ship missing API, and simplify contributions—without breaking existing servers.",
+  tags: ["announcement", "project", "paper"],
+  hero: "/blog/1.21.7/hero.png",
+};
+
+# The future of Paper — Hard fork
+
+After the release of the first builds for Minecraft **1.21.4**, we’re excited to share a bigger update about the direction of the project. Following the successful rollout of our Mojang-mapped server in 1.20.5, we’re taking the next step:
+
+## Hard fork from our upstream
+
+Since its inception, Paper has been built on top of Spigot and kept up to date with its features. Today, Paper applies nearly **1600** additional patches and **130,000+** lines of code over Spigot. That divergence, combined with Spigot’s closed snapshot/pre-release workflow, has slowed our version updates.
+
+**Hardforking** removes that delay and makes Paper an independent project. It streamlines server development and unlocks major missing API (e.g., registry and item data component API). This **does not** mean existing configs/API/behavior will be removed. Starting with **1.21.4**, Paper simply won’t be bound to future Spigot changes—letting us (and you) move forward on our own terms.
+
+<Callout title="Don’t panic" tone="info">
+We’re committed to a smooth transition for all users. See the group-specific notes below, and ask questions on Discord if anything’s unclear.
+</Callout>
+
+---
+
+## Server owners / administrators
+
+- **No immediate change.** `bukkit.yml` and `spigot.yml` continue to work as before.
+- Plugins already running on stable **1.21.4** builds, and those compiled against older Spigot versions, will continue to run.
+- Over time, as Paper and Spigot APIs diverge, the *only* potential issue is plugins calling **new Spigot-only API** added after the hardfork.
+
+We expect many plugins to prefer Paper compatibility (given current market share). A big upside for you is **faster Paper releases** during Minecraft cycles—updates to release candidates, pre-releases, and potentially snapshots for early experimental builds.
+
+---
+
+## Plugin developers
+
+- **No initial API change.** Methods inherited from Spigot remain and continue to work (including deprecated ones like legacy text/chat color).
+- We will **not** automatically pull all new post-hardfork Spigot API. To avoid accidental usage, **build against `Paper-API`**.
+- We may manually import targeted upstream API when it meaningfully helps developers—but don’t rely on it.
+
+### Using server internals
+
+If you rely on server internals via `paperweight-userdev`, things continue to work. We **recommend** preparing your plugin for a Mojang-mapped server with remapping disabled:
+
+- If you already use `paperweight-userdev`, you’ll later remove the obfuscation step and be compatible; only reflective calls need attention.
+- We’ll **continue to remap plugins automatically** for a while and give ample time to adjust.
+- Long-term, this makes **multi-version support far easier** (single standard mappings, simpler debugging, better code-sharing).
+
+> With the switch to `Paper-API` and later Mojang mappings, plugins may no longer run on Spigot. Paper’s **85–90%** market share on recent versions (per bStats across major plugins, including forks) means you can still support nearly all users. Publishing Paper-only plugins is supported on **Hangar** and **Modrinth**.
+
+---
+
+## Moving old version branches to a new repo
+
+We’re merging API/API-implementation history and changing the branch to an unrelated commit history. We’ll eventually **delete older branches** (from `ver/1.8.8` up to `ver/1.21.3`). If you reference them, update URLs to:
+
+- **https://github.com/PaperMC/Paper-archive**
+
+---
+
+## Paper contributors
+
+Hardfork significantly changes contributions—mostly for the better:
+
+- Paper repo will be **restructured**: API and API-implementation live as **source** in the repo. Contribute directly to `.java` files; no more editing/rebuilding giant patch stacks for those.
+- Mojang-owned sources remain patch-based, but each vanilla source becomes a **single per-file patch**.
+- Large features (e.g., anti-xray, moonrise) can still use **feature-based patches** layered on top.
+- Tooling updates: new **Vineflower** decompiler and **Parchment** mappings.
+
+We’ve merged multiple git trees to preserve history, including full patch history and applied patches as real commits over the existing Spigot history (older states with decompiled vanilla filtered).
+
+**Heads-up:** all open PRs will be closed later and cannot be force-pushed to the new branch. Please wait for our guide on semi-automatic PR updates before reopening.
+
+---
+
+## Paper fork developers
+
+The main changes for forks are the **updated decompiler and mappings**. We’ll publish details once the initial update process completes. New `paperweight` patcher versions will support the new repository structure.
+
+For now, point any **1.21.3 and older** upstream targets to the archive repository mentioned above.
+
+---
+
+## Next steps / rough timeline
+
+You can follow progress here:
+
+- **https://github.com/PaperMC/Paper/issues/11735**
+
+What to expect:
+
+1. Over the next weeks we’ll change the patch structure and resolve conflicts resulting from the new decompiler and updated local/parameter mappings.  
+2. We’ll push **experimental builds** to validate that we didn’t break backward compatibility or introduce regressions.  
+3. Once tooling for forks and userdev is ready, we’ll post an announcement with update steps and notify contributors on how to properly update PRs to the new main branch.  
+4. In future Minecraft releases, expect **API and preliminary builds** even before full release day.  
+5. We’ll gradually clean up and automatically migrate configs, and **remove long-dysfunctional deprecated API** with care—keeping transitions as smooth as possible.
+
+---
+
+## TL;DR
+
+<Callout tone="success">
+<strong>This unlocks snapshots and faster API work.</strong> Contributions get much simpler, and plugin development gets easier—both for API and internals.
+</Callout>
+
+- **Server admins:** No action now. Starting with **1.21.4**, you might not be able to go back to Spigot.  
+- **Plugin developers:** No immediate action, but compile against **Paper-API** starting with **1.21.4**.  
+- **Paper contributors:** You’ll need to redo your PRs later; we’ll provide scripts and instructions.  
+- **Forks/server hosts:** Update any use of old version branches (≤ 1.21.3) to **Paper-archive**.
+
+---
+
+Thank you for making Paper what it is today. Focusing on this transition slowed PR/Hangar throughput a bit, but we’ll be able to move much faster afterwards!

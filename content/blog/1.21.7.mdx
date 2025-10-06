@@ -1,0 +1,145 @@
+export const metadata = {
+  title: "Paper 1.21.7",
+  date: "2025-06-30",
+  authors: ["Paper Team"],
+  summary: "What changed in 1.21.5/6/7, upgrade advice, and acknowledgements.",
+  tags: ["release", "1.21.x"],
+  hero: "/blog/1.21.7/hero.png",
+};
+
+<ReleaseBanner version="1.21.7" />
+
+> **Backups are absolutely mandatory.**  
+> After upgrading your world to 1.21.7, you **cannot** downgrade back to a lower version!
+
+It’s been a hot minute since the last post, but here we are! We’ve also addressed the long “experimental” phase and inflexible build channels (details below and on Discord).
+
+---
+
+## Thanks
+
+We’d like to thank everyone who worked on this update:
+
+- Gerrygames (Velocity)
+- [electronicboy](https://github.com/sponsors/electronicboy)
+- [jmp](https://github.com/sponsors/jpenilla)
+- kennytv
+- Lulu13022002
+- [lynxplay](https://github.com/lynxplay)
+- [Machine Maker](https://github.com/sponsors/Machine-Maker)
+- [Noah](https://github.com/sponsors/NoahvdAa)
+- [Owen1212055](https://github.com/sponsors/Owen1212055)
+- [MiniDigger](https://github.com/sponsors/MiniDigger)
+- SpaceWalkerRS
+- [Spottedleaf](https://www.patreon.com/Spottedleaf)
+
+If you’d like to support PaperMC as a whole, see **https://papermc.io/sponsors**.
+
+---
+
+## Release channel changes
+
+Among other changes (and the new v3 of our downloads API), release channels have moved to:
+
+- `alpha` — equivalent to the prior **experimental** label.  
+- `beta` — middle-point for builds that aren’t entirely unstable, but are partially unfinished (e.g., missing config options, or long 1.21.5-style datafixer phases).  
+- `stable` — equivalent to the prior **default** label. **Stay up-to-date here**, as important fixes/changes continue to land.  
+- `recommended` — unused in Paper right now (currently used by Velocity). If this ever changes, we’ll announce it beforehand.
+
+---
+
+## `force-upgrade` startup param
+
+From time to time, old-world upgrade code is revisited and long-standing issues get fixed by Mojang or Paper. If you use the `--forceUpgrade` startup flag, you may **lose out on fixes** from future versions—because it forcibly reloads/upgrades all worlds and entities.
+
+- If you are upgrading from **before 1.13**, `--forceUpgrade` can save some CPU-heavy conversions.  
+- For everyone else, the safer option is **not** to force-upgrade on 1.21.7 Paper.  
+- TL;DR: **do not force-upgrade unless you have a specific reason.**
+
+---
+
+## Reloading with `/reload`
+
+`/reload` (and plugin/API methods that tried to mimic it) has long been discouraged. The command now points to the **`/minecraft:reload`** mechanic (the vanilla data-pack reload), which will remain supported.
+
+- Users should **stop/start** their server when a restart is needed.  
+- Developers should use **hot reloading** for code where possible, or do **real restarts** otherwise.  
+- For guidance on hotswap practices, see pinned messages in the Paper Discord.
+
+---
+
+## For developers
+
+### Configuration phase API & deprecation of `PlayerLoginEvent`
+
+`PlayerLoginEvent` is now **deprecated**. This change allows us to build API around Minecraft’s **Configuration Phase** (e.g., dialogs to a player before fully joining, or resource packs sent earlier). Backwards‐compatibility remains for now, but **breaking changes may land in the future**—start migrating.
+
+#### What you should use instead
+
+- **`PlayerConnectionValidateLoginEvent`** — to control whether a player may join (runs twice: once on initial login, once when exiting the configuration phase). Note: you get a `PlayerProfile`, not a full `Player`.  
+- **`PlayerServerFullCheckEvent`** — common `PlayerLoginEvent` usage was “allow join even if full”; use this to override fullness checks.
+
+#### Other configuration-phase events
+
+The configuration phase is now explicit between “logging in” and “fully joined world.” During this phase, the server may send custom data (tags, registry info, resource pack application, etc.). You can also throw a player **back into** configuration via:
+
+- `PlayerGameConnection#reenterConfiguration`  
+- `PlayerConfigurationConnection#completeReconfiguration`
+
+New related events include (non-exhaustive):
+
+- `PlayerConnectionInitialConfigureEvent` (initial entry)  
+- `AsyncPlayerConnectionConfigureEvent`  
+- `PlayerConnectionReconfigureEvent` (when `#reenterConfiguration` is used on an already-joined player)
+
+### Dialog API
+
+A new **Dialog API** is targeted for 1.21.7 (announcement once merged). You’ll be able to open dialogs via a click event type (e.g., `ClickEvent.openDialog`). For custom click actions, prefer a consumer-like callback in `DialogAction.customClick`, which runs when the player clicks the specified element.
+
+---
+
+## ItemStack config serialization
+
+ItemStacks now use **SNBT** when writing to configuration files. This lets us run ItemStack upgrades through Mojang’s **data fixers**, giving much more reliable upgrades of existing stacks. Direct JSON/bytes serialization of `ItemMeta` is now considered **unsupported** and may be removed in the future. If you need other formats, (de)serialize through the new SNBT route.
+
+---
+
+## Cow and splash potion type changes
+
+- **MushroomCow** no longer extends `Cow`; there is now an **`AbstractCow`** base, and **`Cow`** extends `AbstractCow`.  
+- The **`potion`** entity type has been split into **splash** and **lingering** variants. Use the new types explicitly rather than swapping flags on one type.
+
+---
+
+## Other API additions and changes (highlights)
+
+- **Registry events** for adding/modifying custom cat, chicken, cow, frog, pig, and wolf variants; damage types; paintings; etc.  
+- `Player#openVirtualSign` — open unplaced signs (see `UncheckedSignChangeEvent` for change detection).  
+- `Entity#getPickItemStack` — return the spawn egg/item for an entity when using “pick item.”  
+- `HumanEntity#setCooldown(key, ticks)` and grouped cooldown getter.  
+- `Server#sendRichMessage(String)` and `sendPlainMessage` — broadcast/logging helpers for plain/minimessage.  
+- More events, including:  
+  `PlayerMapFilledEvent`, `PlayerPickBlockEvent`, `PlayerPickEntityEvent`,  
+  `VaultChangeStateEvent`, `ClientTickEndEvent`, `EntityEquipmentChangedEvent`,  
+  `EntityAttemptSmashAttackEvent`, `PlayerClientLoadedWorldEvent`, `EntityEffectTickEvent`.
+
+---
+
+<Changelog items={[
+  "Release channels revamped: alpha, beta, stable, recommended",
+  "Safer defaults around force-upgrade; only use when necessary",
+  "Reload command now maps to vanilla /minecraft:reload",
+  "Configuration Phase API: new events and PlayerLoginEvent deprecation",
+  "Dialog API (incoming): open dialogs via click events and custom callbacks",
+  "ItemStack config now serializes via SNBT (datafixer-friendly)",
+  "Entity/type cleanup: AbstractCow, split splash vs lingering potion",
+  "Numerous new events and quality-of-life API additions",
+]} />
+
+---
+
+## Final notes
+
+- **Backups** first—there’s no downgrade path from 1.21.7.  
+- Keep servers on **stable** builds unless you know you need alpha/beta.  
+- Questions? Check Discord or the forums threads for deeper technical notes and PR links.
