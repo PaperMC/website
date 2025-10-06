@@ -8,14 +8,19 @@
   },
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
     "build": "next build",
+    "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts",
+    "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+    "dev": "next dev --turbopack",
+    "lint": "next lint",
+    "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
     "start": "next start",
-    "lint": "next lint"
+    "upload": "opennextjs-cloudflare build && opennextjs-cloudflare upload"
   },
   "dependencies": {
     "@fontsource/poppins": "5.2.6",
     "@headlessui/react": "2.2.4",
+    "@opennextjs/cloudflare": "^1.9.1",
     "@tailwindcss/aspect-ratio": "0.4.2",
     "clsx": "2.1.1",
     "next": "15.3.5",
@@ -39,7 +44,8 @@
     "postcss": "8.5.6",
     "prettier": "3.6.2",
     "tailwindcss": "4.1.11",
-    "typescript": "5.8.3"
+    "typescript": "5.8.3",
+    "wrangler": "^4.42.0"
   },
   "overrides": {
     "@types/react": "19.1.8",
