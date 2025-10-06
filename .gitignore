@@ -34,3 +34,6 @@ yarn-error.log*
 # intellij
 /.idea
 *.iml
+
+# open-next
+.open-next
