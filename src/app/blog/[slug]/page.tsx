@@ -1,6 +1,7 @@
+import type { Metadata } from "next";
 import Image from "next/image";
+
 import { listPostSlugs, loadPostModule } from "@/lib/blog";
-import { Metadata } from "next";
 
 type Params = Promise<{ slug: string }>;
 

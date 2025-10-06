@@ -1,8 +1,9 @@
 import type { MDXComponents } from "mdx/types";
 import Link from "next/link";
+
 import { Callout } from "@/components/blog/Callout";
-import { ReleaseBanner } from "@/components/blog/ReleaseBanner";
 import { Changelog } from "@/components/blog/Changelog";
+import { ReleaseBanner } from "@/components/blog/ReleaseBanner";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -12,8 +13,6 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ul: (p) => <ul className="my-4 list-disc pl-6 marker:text-emerald-500" {...p} />,
     ol: (p) => <ol className="my-4 list-decimal pl-6" {...p} />,
     blockquote: (p) => <blockquote className="my-6 border-l-4 border-emerald-500/60 pl-4 italic opacity-90" {...p} />,
-    pre: (p) => <pre className="my-6 overflow-x-auto rounded-lg border border-white/10 p-4" {...p} />,
-    code: (props) => <code {...props} className="rounded bg-neutral-900 px-1.5 py-0.5 font-mono text-emerald-300" />,
     Callout,
     ReleaseBanner,
     Changelog,

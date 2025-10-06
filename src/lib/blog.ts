@@ -1,5 +1,5 @@
-import path from "node:path";
 import fs from "node:fs/promises";
+import path from "node:path";
 
 export type PostMeta = {
   title: string;
@@ -25,7 +25,7 @@ export async function loadAllPosts() {
   const slugs = await listPostSlugs();
   const entries = await Promise.all(
     slugs.map(async (slug) => {
-      const mod: any = await loadPostModule(slug);
+      const mod = await loadPostModule(slug);
       const meta: PostMeta = mod.metadata ?? {};
       return { slug, meta };
     }),

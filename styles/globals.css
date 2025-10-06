@@ -112,3 +112,82 @@ body {
 #__next {
     @apply flex flex-col h-screen;
 }
+
+/* Add our channel colors to the global CSS */
+:root {
+    --channel-alpha: #ea1500;
+    --channel-beta: #d8c200;
+    --channel-stable: #0a9ada;
+    --channel-recommended: #409c93;
+    --channel-eol: #374151;
+}
+
+:not(pre) > code {
+  @apply rounded px-1.5 py-0.5 font-mono text-sm;
+  background: color-mix(in oklab, var(--color-background-dark-90) 85%, white 15%);
+  color: #9ae6b4;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+[data-rehype-pretty-code-fragment] {
+  @apply my-6;
+}
+
+[data-rehype-pretty-code-fragment] pre {
+  @apply overflow-x-auto rounded-lg border border-white/10 p-4;
+  background: var(--code-bg, color-mix(in oklab, #0b0b0b 92%, white 8%));
+}
+
+[data-rehype-pretty-code-fragment] pre code {
+  background: transparent !important;
+  @apply grid;
+}
+
+[data-rehype-pretty-code-fragment] [data-line] {
+  display: block;
+  padding-inline: 0.25rem;
+  margin-inline: -0.25rem;
+}
+
+[data-rehype-pretty-code-fragment] [data-highlighted-line] {
+  background: color-mix(in oklab, #22c55e 15%, transparent);
+  border-left: 3px solid #22c55e;
+  padding-left: 0.5rem;
+}
+
+[data-rehype-pretty-code-fragment] [data-highlighted-chars] {
+  background: color-mix(in oklab, #eab308 28%, transparent);
+  border-radius: 0.25rem;
+  box-decoration-break: clone;
+}
+
+[data-rehype-pretty-code-title],
+[data-filename]::before {
+  content: attr(data-rehype-pretty-code-title);
+  @apply block text-xs font-medium tracking-wide uppercase;
+  margin-bottom: 0.25rem;
+  opacity: 0.8;
+}
+
+[data-filename]::before {
+  content: attr(data-filename);
+}
+
+[data-rehype-pretty-code-fragment][data-line-numbers] pre code {
+  counter-reset: line;
+}
+[data-rehype-pretty-code-fragment][data-line-numbers] [data-line]::before {
+  counter-increment: line;
+  content: counter(line);
+  @apply inline-block text-right mr-4 opacity-60 select-none;
+  width: 2rem;
+}
+
+.prose code::before,
+.prose code::after {
+  content: none !important;
+}
+
+.prose :where(pre):not(:where([class~="not-prose"] *)) {
+  @apply bg-transparent;
+}

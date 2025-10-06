@@ -1,5 +1,4 @@
 import childProcess from "child_process";
-
 import type { NextConfig } from "next";
 import createMDX from "@next/mdx";
 
@@ -11,7 +10,27 @@ try {
   currentCommit = "unknown";
 }
 
-const withMDX = createMDX({});
+const withMDX = createMDX({
+  options: {
+    rehypePlugins: [
+      [
+        require.resolve("rehype-pretty-code"),
+        {
+          theme: {
+            light: "github-light-default",
+            dark: "github-dark-default",
+          },
+          keepBackground: false,
+          defaultLang: "bash",
+          tokensMap: {
+            fn: "entity.name.function",
+            var: "variable",
+          },
+        },
+      ],
+    ],
+  },
+});
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,

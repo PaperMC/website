@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+
 import { loadAllPosts } from "@/lib/blog";
 
 export const revalidate = false;
