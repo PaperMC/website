@@ -37,10 +37,8 @@ const SoftwareDownloadButton = ({ projectId, project, build, version, compact, e
         className={clsx(
           "rounded-lg flex flex-row ransition-shadow text-white transition-color hover:shadow-lg",
           !compact && "w-full md:w-100",
+          eol ? "channel-eol-bg" : `bg-channel-${build?.channel?.toLowerCase()}`,
         )}
-        style={{
-          backgroundColor: `var(${eol ? "--channel-eol" : `--channel-${build?.channel.toLowerCase()}`})`,
-        }}
       >
         {/* eslint-disable-next-line react/jsx-no-target-blank */}
         <a

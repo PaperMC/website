@@ -31,10 +31,10 @@ const SoftwareBuildsTable = ({ project, version, builds, eol }: SoftwareBuildsTa
             <tr key={build.id}>
               <td>
                 <span
-                  className={clsx("text-sm font-medium text-gray-100 rounded-full py-2 px-3 min-w-16")}
-                  style={{
-                    backgroundColor: `var(${eol ? "--channel-eol" : `--channel-${build.channel.toLowerCase()}`})`,
-                  }}
+                  className={clsx(
+                    "text-sm font-medium text-gray-100 rounded-full py-2 px-3 min-w-16",
+                    eol ? "channel-eol-bg" : `bg-channel-${build?.channel?.toLowerCase()}`,
+                  )}
                 >
                   #{build.id}
                 </span>

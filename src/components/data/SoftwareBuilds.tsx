@@ -25,10 +25,8 @@ const SoftwareBuilds = ({ project, version, builds, eol }: SoftwareBuildsProps) 
               target="_blank"
               className={clsx(
                 "text-gray-100 text-sm text-center font-medium rounded-full p-2 min-w-16 mr-4 inline-flex items-center gap-1",
+                eol ? "channel-eol-bg" : `bg-channel-${build?.channel?.toLowerCase()}`,
               )}
-              style={{
-                backgroundColor: `var(${eol ? "--channel-eol" : `--channel-${build.channel.toLowerCase()}`})`,
-              }}
             >
               <DownloadIcon className="w-4 h-4" />#{build.id}
             </a>

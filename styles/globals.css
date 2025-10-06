@@ -2,6 +2,8 @@
 
 @custom-variant dark (@media (prefers-color-scheme: dark));
 
+@source inline("bg-channel-alpha bg-channel-beta bg-channel-stable bg-channel-recommended bg-channel-eol text-channel-alpha text-channel-beta text-channel-stable text-channel-recommended text-channel-eol");
+
 @theme {
   --font-sans: Poppins, Roboto, Open Sans, ui-sans-serif, system-ui, sans-serif;
 
@@ -34,6 +36,13 @@
   --color-background-light-10: #f8faff;
   --color-background-light-0: #ffffff;
 
+  /* These colours come from Fill - changes must be synchronized. */
+  --color-channel-alpha: #ea5b6f;
+  --color-channel-beta: #ffc859;
+  --color-channel-stable: #57bcff;
+  --color-channel-recommended: #4ecb8b;
+  --color-channel-eol: #374151;
+
   --list-style-type-alpha: lower-alpha;
 
   --aspect-auto: auto;
@@ -45,6 +54,17 @@
   --grid-template-columns-20: repeat(20, minmax(0, 1fr));
 
   --scale-120: 1.2;
+}
+
+@variant dark {
+  @theme {
+    /* These colours come from Fill - changes must be synchronized. */
+    --color-channel-alpha: #ea5b6f;
+    --color-channel-beta: #ffc859;
+    --color-channel-stable: #57bcff;
+    --color-channel-recommended: #4ecb8b;
+    --color-channel-eol: #374151;
+  }
 }
 
 /*
@@ -79,13 +99,4 @@ body {
 }
 #__next {
     @apply flex flex-col h-screen;
-}
-
-/* Add our channel colors to the global CSS */
-:root {
-    --channel-alpha: #ea1500;
-    --channel-beta: #d8c200;
-    --channel-stable: #0a9ada;
-    --channel-recommended: #409c93;
-    --channel-eol: #374151;
 }
