@@ -12,15 +12,26 @@
     "global_fetch_strictly_public"
   ],
 
+  "preview_urls": true,
+
   "assets": {
     "binding": "ASSETS",
     "directory": ".open-next/assets"
   },
 
-  "services": [
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "NEXT_CACHE_DO_QUEUE",
+        "class_name": "DurableObjectQueueHandler"
+      }
+    ],
+  },
+
+  "migrations": [
     {
-      "binding": "WORKER_SELF_REFERENCE",
-      "service": "papermc-website"
+      "tag": "v1",
+      "new_sqlite_classes": ["DurableObjectQueueHandler"],
     }
   ],
 
@@ -29,5 +40,12 @@
       "binding": "NEXT_INC_CACHE_R2_BUCKET",
       "bucket_name": "website-cache"
     }
-  ]
+  ],
+
+  "services": [
+    {
+      "binding": "WORKER_SELF_REFERENCE",
+      "service": "papermc-website"
+    }
+  ],
 }
