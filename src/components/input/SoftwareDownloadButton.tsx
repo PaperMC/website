@@ -35,12 +35,11 @@ const SoftwareDownloadButton = ({ projectId, project, build, version, compact, e
     <Menu as="div" className="relative w-max">
       <div
         className={clsx(
-          "rounded-lg flex flex-row ransition-shadow text-white transition-color hover:shadow-lg",
+          "rounded-lg flex flex-row ransition-shadow transition-color hover:shadow-lg",
           !compact && "w-full md:w-100",
+          eol ? "bg-channel-eol-primary" : `bg-channel-${build?.channel?.toLowerCase()}-primary`,
+          eol ? "text-channel-eol-secondary" : `text-channel-${build?.channel?.toLowerCase()}-secondary`,
         )}
-        style={{
-          backgroundColor: `var(${eol ? "--channel-eol" : `--channel-${build?.channel.toLowerCase()}`})`,
-        }}
       >
         {/* eslint-disable-next-line react/jsx-no-target-blank */}
         <a
@@ -62,7 +61,7 @@ const SoftwareDownloadButton = ({ projectId, project, build, version, compact, e
                 <span className="font-medium text-lg">
                   {project?.name ?? projectId} {version}
                 </span>
-                <p className="text-gray-100">{build && `Build #${build.id}`}</p>
+                <p>{build && `Build #${build.id}`}</p>
               </>
             ) : (
               <>

@@ -64,9 +64,9 @@ const SoftwareDownload = ({
           <h2 className="font-medium leading-normal lg:text-5xl lg:leading-normal text-4xl">
             Get {project.name}&nbsp;
             <span
-              style={{
-                color: `var(${eol ? "--channel-eol" : `--channel-${latestBuild?.channel.toLowerCase()}`})`,
-              }}
+              className={clsx(
+                eol ? "text-channel-eol-primary" : `text-channel-${latestBuild?.channel?.toLowerCase()}-primary`,
+              )}
             >
               {version}
             </span>

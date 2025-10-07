@@ -2,6 +2,9 @@
 
 @custom-variant dark (@media (prefers-color-scheme: dark));
 
+@source inline("bg-channel-alpha-primary bg-channel-alpha-secondary bg-channel-beta-primary bg-channel-beta-secondary bg-channel-stable-primary bg-channel-stable-secondary bg-channel-recommended-primary bg-channel-recommended-secondary bg-channel-eol-primary bg-channel-eol-secondary");
+@source inline("text-channel-alpha-primary text-channel-alpha-secondary text-channel-beta-primary text-channel-beta-secondary text-channel-stable-primary text-channel-stable-secondary text-channel-recommended-primary text-channel-recommended-secondary text-channel-eol-primary text-channel-eol-secondary");
+
 @theme {
   --font-sans: Poppins, Roboto, Open Sans, ui-sans-serif, system-ui, sans-serif;
 
@@ -47,6 +50,34 @@
   --scale-120: 1.2;
 }
 
+@theme {
+  /* These colours come from Fill - changes must be synchronized. */
+  --color-channel-alpha-primary: #ea5b6f;
+  --color-channel-alpha-secondary: var(--color-white);
+  --color-channel-beta-primary: #ffc859;
+  --color-channel-beta-secondary: var(--color-black);
+  --color-channel-stable-primary: var(--color-blue-500);
+  --color-channel-stable-secondary: var(--color-white);
+  --color-channel-recommended-primary: #4ecb8b;
+  --color-channel-recommended-secondary: var(--color-white);
+  --color-channel-eol: #374151;
+  --color-channel-eol: #374151;
+}
+
+@variant dark {
+  :root {
+    /* These colours come from Fill - changes must be synchronized. */
+    --color-channel-alpha-primary: #e42e47;
+    --color-channel-alpha-secondary: var(--color-white);
+    --color-channel-beta-primary: #f9da22;
+    --color-channel-beta-secondary: var(--color-black);
+    --color-channel-stable-primary: var(--color-blue-500);
+    --color-channel-stable-secondary: var(--color-white);
+    --color-channel-recommended-primary: #4ecb8b;
+    --color-channel-recommended-secondary: var(--color-white);
+  }
+}
+
 /*
   The default border color has changed to `currentcolor` in Tailwind CSS v4,
   so we've added these compatibility styles to make sure everything still
@@ -79,13 +110,4 @@ body {
 }
 #__next {
     @apply flex flex-col h-screen;
-}
-
-/* Add our channel colors to the global CSS */
-:root {
-    --channel-alpha: #ea1500;
-    --channel-beta: #d8c200;
-    --channel-stable: #0a9ada;
-    --channel-recommended: #409c93;
-    --channel-eol: #374151;
 }
