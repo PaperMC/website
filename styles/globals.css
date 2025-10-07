@@ -56,7 +56,7 @@
   --color-channel-alpha-secondary: var(--color-white);
   --color-channel-beta-primary: #ffc859;
   --color-channel-beta-secondary: var(--color-black);
-  --color-channel-stable-primary: #57bcff;
+  --color-channel-stable-primary: var(--color-blue-500);
   --color-channel-stable-secondary: var(--color-white);
   --color-channel-recommended-primary: #4ecb8b;
   --color-channel-recommended-secondary: var(--color-white);
@@ -67,11 +67,11 @@
 @variant dark {
   :root {
     /* These colours come from Fill - changes must be synchronized. */
-    --color-channel-alpha-primary: #e42e47; /*e42e47*/
+    --color-channel-alpha-primary: #e42e47;
     --color-channel-alpha-secondary: var(--color-white);
-    --color-channel-beta-primary: #f9da22; /*f9da22*/
+    --color-channel-beta-primary: #f9da22;
     --color-channel-beta-secondary: var(--color-black);
-    --color-channel-stable-primary: #0b9dff;
+    --color-channel-stable-primary: var(--color-blue-500);
     --color-channel-stable-secondary: var(--color-white);
     --color-channel-recommended-primary: #4ecb8b;
     --color-channel-recommended-secondary: var(--color-white);
