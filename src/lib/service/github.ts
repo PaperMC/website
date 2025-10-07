@@ -7,6 +7,19 @@ export interface Contributor {
 
 const CONTRIBUTORS_BASE_URL = "https://api.github.com/repos/PaperMC/Paper/contributors?per_page=100";
 
+/**
+ * Fetches a list of contributors from the GitHub API, paginating through results up to a specified maximum number of pages.
+ *
+ * The function accumulates contributors from each page until one of the following conditions is met:
+ * - The maximum number of pages (`maxPages`) is reached.
+ * - The response status is 403 (forbidden).
+ * - The response is not OK.
+ * - The returned data is not an array or is empty.
+ * - The number of contributors in the current page is less than 100 (indicating the last page).
+ *
+ * @param maxPages - The maximum number of pages to fetch. Defaults to 15.
+ * @returns A promise that resolves to an array of `Contributor` objects.
+ */
 export async function fetchContributors(maxPages = 15): Promise<Contributor[]> {
   const all: Contributor[] = [];
 
