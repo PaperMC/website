@@ -3,24 +3,38 @@ import type { Build, Project } from "@/lib/service/types";
 const API_ENDPOINT = "https://fill.papermc.io/v3";
 const BSTATS_URL = "https://bstats.org/api/v1/plugins/580/charts/players/data/?maxElements=1";
 
-const fetcher = (path: string) => fetch(API_ENDPOINT + path).then((res) => res.json());
+export async function getProject(project: string): Promise<Project> {
+  const res = await fetch(`${API_ENDPOINT}/projects/${project}`, {
+    next: { revalidate: 300, tags: [`downloads`, `project:${project}`] },
+  });
 
-export const getProject = (project: string): Promise<Project> => fetcher(`/projects/${project}`);
+  if (!res.ok) {
+    throw new Error(`getProject(${project}) failed: ${res.status}`);
+  }
+  return res.json();
+}
 
-export const getVersionBuilds = (project: string, version: string): Promise<Build[]> =>
-  fetcher(`/projects/${project}/versions/${version}/builds`);
+export async function getVersionBuilds(project: string, version: string): Promise<Build[]> {
+  const res = await fetch(`${API_ENDPOINT}/projects/${project}/versions/${version}/builds`, {
+    next: { revalidate: 300, tags: [`downloads`, `builds:${project}:${version}`] },
+  });
 
-export const getBStats = async (): Promise<{
-  servers: number;
-  players: number;
-}> => {
+  if (!res.ok) {
+    throw new Error(`getVersionBuilds(${project}, ${version}) failed: ${res.status}`);
+  }
+  return res.json();
+}
+
+export async function getBStats(): Promise<{ servers: number; players: number }> {
   try {
-    const response = await fetch(BSTATS_URL);
+    const response = await fetch(BSTATS_URL, {
+      next: { revalidate: 300, tags: ["bstats"] },
+    });
     const data = await response.json();
     const players = data[0]?.[1] || 0;
-    return { servers: Math.round(players / 20), players }; // Estimate servers based on players
+    return { servers: Math.round(players / 20), players };
   } catch (error) {
     console.error("Failed to fetch bStats:", error);
     return { servers: 0, players: 0 };
   }
-};
+}

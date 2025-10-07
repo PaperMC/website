@@ -3,7 +3,7 @@
 import type { KeyboardEvent, PropsWithChildren } from "react";
 import { type ReactNode, useEffect, useRef, useState } from "react";
 
-import type { ProjectProps } from "@/lib/context/downloads";
+import type { ProjectProps } from "@/lib/service/types";
 import { formatISOFullTime } from "@/lib/util/time";
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));

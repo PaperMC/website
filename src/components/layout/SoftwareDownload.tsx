@@ -11,8 +11,8 @@ import VelocityIcon from "@/assets/brand/velocity.svg";
 import WaterfallIcon from "@/assets/brand/waterfall.svg";
 import SoftwareBuilds from "@/components/data/SoftwareBuilds";
 import SoftwareDownloadButton from "@/components/input/SoftwareDownloadButton";
-import type { ProjectProps } from "@/lib/context/downloads";
 import { useVersionBuilds } from "@/lib/service/hooks";
+import type { ProjectProps } from "@/lib/service/types";
 
 const ICONS = {
   paper: PaperIcon,

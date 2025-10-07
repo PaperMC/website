@@ -1,16 +1,14 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 
-import PlayerCountDisplay from "./player-count-display";
-
 import HomeImage1 from "@/assets/images/home-1.webp";
 import HomeImage2 from "@/assets/images/home-2.webp";
 import HomeImage3 from "@/assets/images/home-3.webp";
 import SoftwarePreview from "@/components/data/SoftwarePreview";
 import { Terminal } from "@/components/data/Terminal";
 import Button from "@/components/input/Button";
-import type { ProjectDescriptor } from "@/lib/context/downloads";
 import { getBStats, getProject, getVersionBuilds } from "@/lib/service/fill";
+import type { ProjectDescriptor } from "@/lib/service/types";
 
 export const metadata: Metadata = {
   title: "Home",
@@ -34,10 +32,7 @@ const isVersionStable = async (project: string, version: string): Promise<boolea
 };
 
 export default async function HomePage() {
-  const [projectData, bstatsData] = await Promise.all([
-    getProject("paper").catch(() => null),
-    getBStats().catch(() => ({ servers: 0, players: 0 })),
-  ]);
+  const [projectData, bstatsData] = await Promise.all([getProject("paper").catch(() => null), getBStats()]);
 
   let projectDescriptor: ProjectDescriptor | null = null;
   if (projectData) {
@@ -156,7 +151,7 @@ export default async function HomePage() {
           <div className="flex-1">
             <h2 className="font-semibold text-2xl md:text-4xl break-all">
               Powering&nbsp;
-              <PlayerCountDisplay fallbackPlayers={bstatsData.players} />
+              <span className="text-blue-500">{Math.round(bstatsData.players / 1000)}k+</span>
               &nbsp;players
             </h2>
             <p className="md:mt-6 md:text-xl text-gray-900 dark:text-gray-100 mt-3">
