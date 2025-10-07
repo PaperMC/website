@@ -64,3 +64,14 @@ export interface BuildDownload {
 export interface ProjectsResponse {
   projects: Project[];
 }
+
+export interface ProjectDescriptor {
+  name: string;
+  latestStableVersion: string;
+  latestExperimentalVersion: string | null;
+  latestVersionGroup: string;
+}
+
+export interface ProjectProps {
+  project: ProjectDescriptor;
+}

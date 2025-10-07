@@ -1,6 +1,6 @@
-import type { ProjectDescriptor } from "@/lib/context/downloads";
 import { getProject, getVersionBuilds } from "@/lib/service/fill";
 import { getHangarProjects } from "@/lib/service/hangar";
+import type { ProjectDescriptor } from "@/lib/service/types";
 
 export async function getProjectDescriptor(id: string): Promise<ProjectDescriptor | null> {
   try {
