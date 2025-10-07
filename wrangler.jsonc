@@ -23,7 +23,8 @@
     "bindings": [
       {
         "name": "NEXT_CACHE_DO_QUEUE",
-        "class_name": "DurableObjectQueueHandler"
+        "class_name": "DurableObjectQueueHandler",
+        "script_name": "papermc-website"
       }
     ],
   },
