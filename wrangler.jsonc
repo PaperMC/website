@@ -23,4 +23,11 @@
       "service": "papermc-website"
     }
   ],
+
+  "r2_buckets": [
+    {
+      "binding": "OPENNEXT_CACHE",
+      "bucket_name": "website-cache"
+    }
+  ]
 }
