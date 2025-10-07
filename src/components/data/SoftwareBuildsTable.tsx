@@ -33,7 +33,8 @@ const SoftwareBuildsTable = ({ project, version, builds, eol }: SoftwareBuildsTa
                 <span
                   className={clsx(
                     "text-sm font-medium text-gray-100 rounded-full py-2 px-3 min-w-16",
-                    eol ? "channel-eol-bg" : `bg-channel-${build?.channel?.toLowerCase()}`,
+                    eol ? "bg-channel-eol-primary" : `bg-channel-${build?.channel?.toLowerCase()}-primary`,
+                    eol ? "text-channel-eol-secondary" : `text-channel-${build?.channel?.toLowerCase()}-secondary`,
                   )}
                 >
                   #{build.id}
