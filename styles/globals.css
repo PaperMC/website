@@ -113,15 +113,6 @@ body {
     @apply flex flex-col h-screen;
 }
 
-/* Add our channel colors to the global CSS */
-:root {
-    --channel-alpha: #ea1500;
-    --channel-beta: #d8c200;
-    --channel-stable: #0a9ada;
-    --channel-recommended: #409c93;
-    --channel-eol: #374151;
-}
-
 :not(pre) > code {
   @apply rounded px-1.5 py-0.5 font-mono text-sm;
   background: color-mix(in oklab, var(--color-background-dark-90) 85%, white 15%);
