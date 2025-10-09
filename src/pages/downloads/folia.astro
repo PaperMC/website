@@ -1,0 +1,25 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import SoftwareDownloadPage from "@/components/data/SoftwareDownloadPage.svelte";
+---
+
+<Layout
+  title="Folia"
+  description="Download the latest builds of Folia, the experimental Paper fork with regionised multithreading."
+  keywords={[
+    "papermc",
+    "minecraft",
+    "performance",
+    "paper",
+    "downloads",
+    "jar",
+  ]}
+  canonical="/downloads/folia"
+>
+  <SoftwareDownloadPage
+      id="folia"
+      description="Download Folia, our new fork of Paper that adds regionized multithreading to the server"
+      experimentalWarning="Download experimental builds of Folia, our new fork of Paper that adds regionized multithreading to the server. Proceed with caution!"
+    client:only="svelte"
+  />
+</Layout>

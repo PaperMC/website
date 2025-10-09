@@ -1,16 +1,32 @@
 ---
-import SoftwarePreview, { SoftwarePreviewType } from "@/components/SoftwarePreview.astro";
+import SoftwarePreview, {
+  SoftwarePreviewType,
+} from "@/components/data/SoftwarePreview.astro";
 import Layout from "@/layouts/Layout.astro";
 ---
 
 <Layout
   title="Downloads"
   description="Find downloads for our software – including Paper, Velocity, and Waterfall."
-  keywords={["papermc", "minecraft", "performance", "paper", "velocity", "waterfall", "downloads"]}
+  keywords={[
+    "papermc",
+    "minecraft",
+    "performance",
+    "paper",
+    "velocity",
+    "waterfall",
+    "downloads",
+  ]}
   canonical="/downloads"
 >
-  <header class="max-w-4xl flex flex-col items-center mx-auto px-4 pt-32 pb-16 lg:(pt-48 pb-26) gap-2">
-    <h1 class="font-medium leading-normal lg:(text-5xl leading-normal) text-4xl">Downloads</h1>
+  <header
+    class="max-w-4xl flex flex-col items-center mx-auto px-4 pt-32 pb-16 lg:pt-28 lg:pb-12 gap-2"
+  >
+    <h1
+      class="font-medium leading-normal lg:text-5xl lg:leading-normal text-4xl"
+    >
+      Downloads
+    </h1>
     <p class="text-xl text-center mb-6">
       {"Select the software you want to download."}
     </p>

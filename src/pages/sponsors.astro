@@ -1,9 +1,9 @@
 ---
-import Button from "@/components/Button.astro";
-import FeatureCard from "@/components/FeatureCard.astro";
+import Button from "@/components/input/Button.astro";
 import Layout from "@/layouts/Layout.astro";
 import { fetchAllSponsors } from "@/utils/sponsors";
-import UserImage from "@/components/UserImage.astro";
+import UserImage from "@/components/data/UserImage.astro";
+import FeatureCard from "@/components/data/FeatureCard.astro";
 
 const sponsors = await fetchAllSponsors();
 ---
@@ -14,9 +14,9 @@ const sponsors = await fetchAllSponsors();
   keywords={["papermc", "paper", "minecraft", "sponsor", "contributing"]}
   canonical="/sponsors"
 >
-  <header class="max-w-7xl flex flex-row mx-auto px-4 pt-32 pb-16 lg:(pt-48 pb-32) gap-16">
+  <header class="max-w-7xl flex flex-row mx-auto px-4 pt-32 pb-16 lg:pt-48 lg:pb-32 gap-16">
     <div class="flex-1">
-      <h1 class="font-medium leading-normal lg:(text-5xl leading-normal) text-4xl">Sponsors</h1>
+      <h1 class="font-medium leading-normal lg:text-5xl lg:leading-normal text-4xl">Sponsors</h1>
       <p class="text-xl mt-4">
         PaperMC is an open community, and part of managing the community involves paying for services, servers, and infrastructure. We do what we can to keep
         our costs reasonable and sustainable, but still some costs are unavoidable.

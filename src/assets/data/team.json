@@ -23,6 +23,12 @@
         "github": "kennytv"
       },
       {
+        "name": "mbaxter",
+        "avatar": "https://avatars.githubusercontent.com/u/181668?v=4",
+        "discord": "mbaxter",
+        "github": "mbax"
+      },
+      {
         "name": "MiniDigger",
         "avatar": "https://avatars.githubusercontent.com/u/2185527?v=4",
         "discord": "minidigger",
@@ -40,12 +46,6 @@
         "avatar": "https://avatars.githubusercontent.com/u/58414982?v=4",
         "discord": "larbl",
         "github": "Laarryy"
-      },
-      {
-        "name": "mbaxter",
-        "avatar": "https://avatars.githubusercontent.com/u/181668?v=4",
-        "discord": "mbaxter",
-        "github": "mbax"
       }
     ]
   },
@@ -71,6 +71,12 @@
         "avatar": "https://avatars.githubusercontent.com/u/6100722?v=4",
         "discord": "spottedleaf",
         "github": "Spottedleaf"
+      },
+      {
+        "name": "lynxplay",
+        "avatar": "https://avatars.githubusercontent.com/u/32834385?v=4",
+        "discord": "lynxplay",
+        "github": "lynxplay"
       }
     ]
   },
@@ -86,12 +92,6 @@
         "github": "Lulu13022002"
       },
       {
-        "name": "lynxplay",
-        "avatar": "https://avatars.githubusercontent.com/u/32834385?v=4",
-        "discord": "lynxplay",
-        "github": "lynxplay"
-      },
-      {
         "name": "Noah",
         "avatar": "https://avatars.githubusercontent.com/u/44026893?v=4",
         "discord": "noah.pm",
@@ -102,6 +102,18 @@
         "avatar": "https://avatars.githubusercontent.com/u/23108066?v=4",
         "discord": "owen.zip",
         "github": "Owen1212055"
+      },
+      {
+        "name": "Warrior",
+        "avatar": "https://avatars.githubusercontent.com/u/50800980?v=4",
+        "discord": "warriorrr.",
+        "github": "Warriorrrr"
+      },
+      {
+        "name": "Tamion",
+        "avatar": "https://avatars.githubusercontent.com/u/70228790?v=4",
+        "discord": "tamion",
+        "github": "notTamion"
       }
     ]
   },
@@ -137,6 +149,25 @@
     ]
   },
   {
+    "id": "adventure-developers",
+    "name": "Adventure Developers",
+    "description": "Adventure Developers manage and develop the adventure user-interface library for minecraft. They are responsible both for day-to-day project maintenance and leading the project itself, keeping all users and platforms adventure is relevant for in mind.",
+    "members": [
+      {
+        "name": "Kezz",
+        "avatar": "https://avatars.githubusercontent.com/u/1526243?v=4",
+        "discord": "kezz101",
+        "github": "kezz"
+      },
+      {
+        "name": "zml",
+        "avatar": "https://avatars.githubusercontent.com/u/629092?v=4",
+        "discord": "zml",
+        "github": "zml2008"
+      }
+    ]
+  },
+  {
     "id": "community-team",
     "name": "Community Team",
     "description": "Community Team members keeps our community a safe and vibrant space. By watching chat, helping newcomers with questions, and making sure everyone follows the community guidelines, PaperMC's community spaces are able to be as fantastic as they are!",
@@ -158,12 +189,6 @@
         "avatar": "https://avatars.githubusercontent.com/u/21014720?v=4",
         "discord": "glare",
         "github": "darbyjack"
-      },
-      {
-        "name": "gsand",
-        "avatar": "https://avatars.githubusercontent.com/u/1694336?v=4",
-        "discord": "gsand",
-        "github": "gsand"
       },
       {
         "name": "JRoy",
@@ -200,12 +225,6 @@
         "avatar": "https://avatars.githubusercontent.com/u/734478?v=4",
         "discord": "puremin0rez",
         "github": "Puremin0rez"
-      },
-      {
-        "name": "STG-Allen",
-        "avatar": "https://avatars.githubusercontent.com/u/26695048?v=4",
-        "discord": "stgallen",
-        "github": "STG-Allen"
       },
       {
         "name": "stefvanschie",
@@ -266,12 +285,6 @@
         "avatar": "https://avatars.githubusercontent.com/u/17698576?v=4",
         "discord": "pop4959",
         "github": "pop4959"
-      },
-      {
-        "name": "Warrior",
-        "avatar": "https://avatars.githubusercontent.com/u/50800980?v=4",
-        "discord": "warriorrr.",
-        "github": "Warriorrrr"
       }
     ]
   },
@@ -285,6 +298,12 @@
         "avatar": "https://avatars.githubusercontent.com/u/34477304?v=4",
         "discord": "zlataovce",
         "github": "zlataovce"
+      },
+      {
+        "name": "Strokkur24",
+        "avatar": "https://avatars.githubusercontent.com/u/133226102?v=4",
+        "discord": "strokkur24",
+        "github": "Strokkur424"
       }
     ]
   }

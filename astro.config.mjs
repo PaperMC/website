@@ -1,39 +1,30 @@
-import icon from "astro-icon";
+// @ts-check
 import { defineConfig } from "astro/config";
-import UnoCSS from "unocss/astro";
 
-import cloudflare from "@astrojs/cloudflare";
-import { execSync } from "node:child_process";
-import sitemap from "@astrojs/sitemap";
+import tailwindcss from "@tailwindcss/vite";
+import { execSync } from "child_process";
 
-process.env.GIT_COMMIT_HASH = (process.env.GITHUB_SHA || "").trim().substring(0, 7) || fetchGitCommitHash();
+import svelte from "@astrojs/svelte";
+
+import icon from "astro-icon";
+
+process.env.GIT_COMMIT_HASH =
+  (process.env.GITHUB_SHA || "").trim().substring(0, 7) || fetchGitCommitHash();
 
 function fetchGitCommitHash() {
   return execSync("git rev-parse --short HEAD").toString().trim();
 }
 
-// https://astro.build/config
 export default defineConfig({
-  site: "https://papermc.dev",
-  integrations: [
-    icon({
-      iconDir: "src/assets",
-    }),
-    UnoCSS({
-      injectReset: true
-    }),
-    UnoCSS({
-      mode: 'shadow-dom',
-      injectReset: true,
-    }),
-    sitemap(),
-  ],
-  experimental: {
-    responsiveImages: true,
+  site: "https://papermc.io",
+  vite: {
+    plugins: [tailwindcss()],
   },
+
   image: {
-    experimentalLayout: "responsive",
-    remotePatterns: [
+    responsiveStyles: true,
+    layout: "full-width",
+        remotePatterns: [
       {
         protocol: "https",
         hostname: "**.githubusercontent.com",
@@ -44,6 +35,11 @@ export default defineConfig({
       },
     ],
   },
-  output: "static",
-  adapter: cloudflare(),
+
+  integrations: [
+    svelte(),
+    icon({
+      iconDir: "src/assets",
+    }),
+  ],
 });
