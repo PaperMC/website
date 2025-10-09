@@ -8,6 +8,8 @@ import svelte from "@astrojs/svelte";
 
 import icon from "astro-icon";
 
+import sitemap from "@astrojs/sitemap";
+
 process.env.GIT_COMMIT_HASH =
   (process.env.GITHUB_SHA || "").trim().substring(0, 7) || fetchGitCommitHash();
 
@@ -24,7 +26,7 @@ export default defineConfig({
   image: {
     responsiveStyles: true,
     layout: "full-width",
-        remotePatterns: [
+    remotePatterns: [
       {
         protocol: "https",
         hostname: "**.githubusercontent.com",
@@ -41,5 +43,6 @@ export default defineConfig({
     icon({
       iconDir: "src/assets",
     }),
+    sitemap(),
   ],
 });
