@@ -1,17 +1,11 @@
-# IntelliJ IDEA
-/.idea/
-
-# macOS
-.DS_Store
-
-# Node.js
-/node_modules/
-
 # build output
 dist/
 
 # generated types
 .astro/
+
+# dependencies
+node_modules/
 
 # logs
 npm-debug.log*
@@ -23,5 +17,8 @@ pnpm-debug.log*
 .env
 .env.production
 
-# auto downloaded fonts
-public/assets/fonts/
+# macOS-specific files
+.DS_Store
+
+# jetbrains setting folder
+.idea/

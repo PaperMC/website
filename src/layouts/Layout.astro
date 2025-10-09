@@ -1,6 +1,7 @@
 ---
-import Footer from "@/components/Footer.astro";
-import NavBar from "@/components/nav/NavBar.astro";
+import Footer from "@/components/layout/Footer.astro";
+import NavBar from "@/components/layout/NavBar.astro";
+import "@/styles/global.css";
 
 interface Props {
   title: string;
@@ -13,7 +14,10 @@ const { title, description, keywords, canonical } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" class="bg-background-light-10 dark:(bg-background-dark-90 text-white) smooth-scroll -webkit-tap-highlight-color: transparent">
+<html
+  lang="en"
+  class="bg-background-light-10 dark:bg-background-dark-90 dark:text-white scroll-smooth [tap-highlight-color:transparent]"
+>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
@@ -34,11 +38,9 @@ const { title, description, keywords, canonical } = Astro.props;
     <link rel="sitemap" href="/sitemap-index.xml" />
     <title>{`${title} | PaperMC`}</title>
   </head>
-  <body class="flex flex-col h-screen font-sans">
-    <main class="flex-1">
-      <NavBar />
-      <slot />
-      <Footer />
-    </main>
+  <body>
+    <NavBar />
+    <slot />
+    <Footer />
   </body>
 </html>

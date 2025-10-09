@@ -1,6 +1,6 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import SoftwareDownload from "../../components/SoftwareDownload.astro";
+import SoftwareDownloadPage from "@/components/data/SoftwareDownloadPage.svelte";
 ---
 
 <Layout
@@ -9,13 +9,9 @@ import SoftwareDownload from "../../components/SoftwareDownload.astro";
   keywords={["papermc", "minecraft", "performance", "bungeecord", "waterfall", "downloads", "jar"]}
   canonical="/downloads/waterfall"
 >
-  <SoftwareDownload id="waterfall" icon="brand/waterfall" eol={true}>
-    <span slot="description">
-      Waterfall has reached end of life. We recommend you transition to <a href="/software/velocity" class="text-blue-500 hover:text-blue-400 hover:underline"
-        >Velocity</a
-      >. For more information see the <a href="https://forums.papermc.io/threads/1088/" class="text-blue-500 hover:text-blue-400 hover:underline"
-        >announcement</a
-      >. Download unsupported, archived Waterfall builds below.
-    </span>
-  </SoftwareDownload>
+  <SoftwareDownloadPage
+    id="waterfall"
+    description="TODO"
+    client:only="svelte"
+  />
 </Layout>

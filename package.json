@@ -1,38 +1,25 @@
 {
-  "name": "papermc.io",
-  "version": "0.1.0",
-  "author": {
-    "name": "Cubxity",
-    "email": "contact@cubxity.dev",
-    "url": "https://cubxity.dev"
-  },
-  "private": true,
+  "name": "paper-astro",
+  "type": "module",
+  "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "start": "astro dev",
-    "build": "pnpm run format:check && astro check && astro build",
+    "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro",
-    "format:write": "prettier --write \"**/*.{css,js,mjs,ts,md,astro}\"",
-    "format:check": "prettier --check \"**/*.{css,js,mjs,ts,md,astro}\""
+    "astro": "astro"
   },
-  "packageManager": "pnpm@9.12.2+sha512.22721b3a11f81661ae1ec68ce1a7b879425a1ca5b991c975b074ac220b187ce56c708fe5db69f4c962c989452eee76c82877f4ee80f474cebd61ee13461b6228",
   "dependencies": {
-    "@astrojs/check": "^0.9.4",
-    "@astrojs/cloudflare": "12.4.0",
-    "@astrojs/sitemap": "^3.3.0",
-    "astro": "5.5.6",
+    "@astrojs/svelte": "^7.2.0",
+    "@fontsource/poppins": "^5.2.7",
+    "@tailwindcss/vite": "^4.1.14",
+    "astro": "5.14.3",
     "astro-icon": "^1.1.5",
     "clsx": "^2.1.1",
-    "sharp": "^0.33.5"
+    "svelte": "^5.39.11",
+    "tailwindcss": "^4.1.14",
+    "typescript": "^5.9.3"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.9.4",
-    "@unocss/preset-web-fonts": "^0.63.6",
-    "@unocss/reset": "^0.63.6",
-    "prettier": "^3.5.3",
-    "prettier-plugin-astro": "^0.14.1",
-    "typescript": "^5.8.2",
-    "unocss": "^0.63.6"
+    "@types/node": "^24.7.0"
   }
 }

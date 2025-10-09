@@ -1,8 +1,10 @@
-# papermc.io
+# Astro Starter Kit: Basics
 
-## Development
+```sh
+bun create astro@latest -- --template basics
+```
 
-### Getting started
+> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
 First, install the dependencies. We use [bun](https://bun.sh/) as the package manager.
 
@@ -10,17 +12,23 @@ First, install the dependencies. We use [bun](https://bun.sh/) as the package ma
 bun install
 ```
 
-Then, run the development server:
+To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
 
 ```bash
 bun dev
 ```
 
-Open [http://localhost:4321](http://localhost:4321) with your browser to see the result.
+All commands are run from the root of the project, from a terminal:
 
-### Learn More
+| Command                   | Action                                           |
+| :------------------------ | :----------------------------------------------- |
+| `bun install`             | Installs dependencies                            |
+| `bun dev`             | Starts local dev server at `localhost:4321`      |
+| `bun build`           | Build your production site to `./dist/`          |
+| `bun preview`         | Preview your build locally, before deploying     |
+| `bun astro ...`       | Run CLI commands like `astro add`, `astro check` |
+| `bun astro -- --help` | Get help using the Astro CLI                     |
 
-To learn more about technologies used in this project, take a look at the following resources:
+## 👀 Want to learn more?
 
-- [Astro Documentation](https://docs.astro.build/en/getting-started/) - learn about Astro features and API.
-- [Tailwind CSS Documentation](https://tailwindui.com/documentation) - learn about Tailwind CSS utilities.
+Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
