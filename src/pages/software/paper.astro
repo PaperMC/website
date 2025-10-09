@@ -9,16 +9,11 @@ import HomeImage3 from "@/assets/images/home-3.png";
 import CommunityImage from "@/assets/images/community.png";
 
 import { Image } from "astro:assets";
-import Skeleton from "@/components/layout/Skeleton.astro";
+
+import { getHangarProjects } from "@/utils/hangar";
+
+const { pagination } = await getHangarProjects("paper");
 ---
-
-<script>
-  // TODO: address hangar endpoint CORS failure pending Hangar PR
-  // import { fetchHangarProjects } from "@/utils/hangar";
-
-  // document.getElementById("hangar-project-count")!.innerHTML = `<span>${hangarProjects.pagination.count}</span>`;
-</script>
-
 <Layout
   title="Paper"
   description="Paper is a Minecraft game server based on Spigot, designed to greatly improve performance and offer more advanced features and API."
@@ -62,10 +57,7 @@ import Skeleton from "@/components/layout/Skeleton.astro";
         <h2 class="font-semibold text-2xl md:text-4xl">A diverse plugin ecosystem</h2>
         <div class="md:mt-6 md:text-xl text-gray-900 dark:text-gray-100 mt-3">
           Crafted by the PaperMC team & contributors, Hangar is our own dedicated plugin repository, now in open beta! View 
-          <span class="text-blue-500" id="hangar-project-count">
-            <!-- replaced by clientside fetch -->
-            <Skeleton className="inline-block align-middle w-12 h-5" />
-          </span> 
+          <span class="text-blue-500">{pagination.count}</span>
           different plugins that are specific to Paper, or list your own with a very streamlined creation process.
         </div>
         <div class="flex flex-row gap-4 mt-8">
