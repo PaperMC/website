@@ -1,0 +1,24 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import SoftwarePreview, { SoftwarePreviewType} from "@/components/data/SoftwarePreview.astro";
+---
+
+<Layout
+  title="Javadocs"
+  description="Find javadocs for our software – including Paper, Folia, Velocity, and Waterfall."
+  keywords={["papermc", "paper", "folia", "javadocs", "velocity", "waterfall"]}
+  canonical="/javadocs"
+>
+  <header class="max-w-7xl flex flex-col items-center mx-auto px-4 pt-32 pb-16 lg:pt-48 lg:pb-26 gap-2">
+    <h1 class="font-medium leading-normal lg:text-5xl lg:leading-normal text-4xl">Javadocs</h1>
+    <p class="text-xl text-center mb-6">
+      {"You can find the javadocs for our software below:"}
+    </p>
+    <div class="grid md:grid-cols-4 lg:mt-6 gap-2 px-2 xl:gap-4">
+      <SoftwarePreview id="paper" name="Paper" icon="brand/paper" type={SoftwarePreviewType.Javadocs} />
+      <SoftwarePreview id="folia" name="Folia" icon="brand/folia" type={SoftwarePreviewType.Javadocs} />
+      <SoftwarePreview id="velocity" name="Velocity" icon="brand/velocity" type={SoftwarePreviewType.Javadocs} />
+      <SoftwarePreview id="waterfall" name="Waterfall" icon="brand/waterfall" type={SoftwarePreviewType.Javadocs} />
+    </div>
+  </header>
+</Layout>
