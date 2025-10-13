@@ -38,9 +38,11 @@ const { title, description, keywords, canonical } = Astro.props;
     <link rel="sitemap" href="/sitemap-index.xml" />
     <title>{`${title} | PaperMC`}</title>
   </head>
-  <body>
+  <body class="flex flex-col min-h-screen">
     <NavBar />
-    <slot />
+    <main class="flex-1">
+      <slot />
+    </main>
     <Footer />
   </body>
 </html>

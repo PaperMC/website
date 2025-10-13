@@ -34,17 +34,18 @@
             class={`text-sm text-center font-medium rounded-full p-2 min-w-16 mr-4 inline-flex items-center gap-1 ${channelBgClass(build.channel)} ${channelTextClass(build.channel)}`}
           >
             <svg
-              class="w-4 h-4"
-              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+              class="size-4"
               fill="none"
+              viewBox="0 0 24 24"
               stroke="currentColor"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              stroke-width="2"
             >
-              <path d="M12 3v12" />
-              <path d="M8.5 11.5 12 15l3.5-3.5" />
-              <path d="M5 18h14" />
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+              />
             </svg>
             #{build.id}
           </a>

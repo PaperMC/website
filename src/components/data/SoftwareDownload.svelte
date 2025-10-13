@@ -101,7 +101,7 @@
     <h2
       class="font-medium leading-normal lg:text-5xl lg:leading-normal text-4xl"
     >
-      Get {project.name}&nbsp;
+      Get {project.name}
       <span class={channelClass(latestBuild?.channel)}>{version}</span>
     </h2>
 
@@ -155,5 +155,5 @@
     {/if}
   </div>
 
-  <div class="flex-1 lg:flex hidden justify-end"></div>
+  <div class="hidden"></div>
 </header>

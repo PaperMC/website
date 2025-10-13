@@ -57,9 +57,9 @@
 
 {#if rows.length > 0}
   {#each rows as row (row.sha)}
-    <p class="commitMessage">
+    <p class="commitMessage break-words overflow-hidden" style="word-wrap: break-word; hyphens: auto;">
       <a
-        class="commit"
+        class="text-blue-600 dark:text-blue-500 mr-1 font-mono"
         href={`${getProjectRepository(project, version)}/commit/${row.sha}`}
         target="_blank"
         rel="noreferrer"
@@ -72,7 +72,7 @@
           {#if seg.kind === "text"}
             {seg.text}
           {:else}
-            <a class="issue" href={seg.url} target="_blank" rel="noreferrer"
+            <a class="text-blue-600 dark:text-blue-500" href={seg.url} target="_blank" rel="noreferrer"
               >{seg.text}</a
             >
           {/if}
@@ -83,27 +83,3 @@
 {:else}
   <i class="text-gray-600">No changes</i>
 {/if}
-
-<style>
-  .commitMessage {
-    display: block;
-    line-height: 1.4;
-    overflow-wrap: anywhere;
-  }
-  .commit {
-    display: inline-block;
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-      "Liberation Mono", "Courier New", monospace;
-    font-size: 0.9em;
-    margin-right: 0.5rem;
-    padding: 0.1rem 0.4rem;
-    border-radius: 0.375rem;
-    background: color-mix(in oklab, currentColor 12%, transparent);
-    text-decoration: none;
-  }
-  .issue {
-    color: inherit;
-    text-decoration: underline;
-    text-underline-offset: 2px;
-  }
-</style>
