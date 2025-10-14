@@ -1,6 +1,23 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import SoftwareDownloadPage from "@/components/data/SoftwareDownloadPage.svelte";
+
+const descriptionHtml = `
+  Waterfall has reached end of life. We recommend you transition to
+  <a class="text-blue-500 hover:text-blue-400 hover:underline" href="/software/velocity">
+    Velocity
+  </a>.
+  For more information see the
+  <a
+    class="text-blue-500 hover:text-blue-400 hover:underline"
+    href="https://forums.papermc.io/threads/1088/"
+    rel="noopener"
+  >
+    announcement
+  </a>.
+  <br />
+  Download unsupported, archived Waterfall builds below.
+`;
 ---
 
 <Layout
@@ -19,7 +36,8 @@ import SoftwareDownloadPage from "@/components/data/SoftwareDownloadPage.svelte"
 >
   <SoftwareDownloadPage
     id="waterfall"
-    description="TODO"
+    description={descriptionHtml}
+    eol
     client:load="svelte"
   />
 </Layout>

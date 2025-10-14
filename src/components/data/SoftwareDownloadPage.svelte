@@ -1,21 +1,23 @@
 <script lang="ts">
-  import { onMount } from "svelte";
+  import { onMount, type Snippet } from "svelte";
   import SoftwareDownload from "@/components/data/SoftwareDownload.svelte";
   import type { ProjectDescriptor } from "@/utils/types";
   import { getProjectDescriptor } from "@/utils/download";
 
   interface Props {
     id: string;
-    description: string | any;
-    experimentalWarning: string | undefined;
+    description?: string;
+    experimentalWarning?: string;
     eol?: boolean;
+    Description?: Snippet;
   }
 
   let {
     id,
-    description,
-    experimentalWarning,
-    eol = false
+    description = undefined,
+    experimentalWarning = undefined,
+    eol = false,
+    Description = undefined,
   }: Props = $props();
 
   let project: ProjectDescriptor | null = $state(null);
@@ -48,5 +50,12 @@
     <div class="text-red-500 font-semibold">{error}</div>
   </header>
 {:else if project}
-  <SoftwareDownload id={id} {project} {description} {experimentalWarning} {eol} />
+  <SoftwareDownload
+    {id}
+    {project}
+    {eol}
+    {experimentalWarning}
+    {Description}
+    {description}
+  />
 {/if}

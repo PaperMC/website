@@ -64,8 +64,8 @@
   --color-channel-stable-secondary: var(--color-white);
   --color-channel-recommended-primary: #4ecb8b;
   --color-channel-recommended-secondary: var(--color-white);
-  --color-channel-eol: #374151;
-  --color-channel-eol: #374151;
+  --color-channel-eol-primary: #9CA3AF;
+  --color-channel-eol-secondary: #111827;
 }
 
 @variant dark {
@@ -79,6 +79,8 @@
     --color-channel-stable-secondary: var(--color-white);
     --color-channel-recommended-primary: #4ecb8b;
     --color-channel-recommended-secondary: var(--color-white);
+    --color-channel-eol-primary: #4B5563;
+    --color-channel-eol-secondary: #E5E7EB;
   }
 }
 

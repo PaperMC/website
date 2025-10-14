@@ -5,25 +5,27 @@
   import SoftwareDownloadButton from "@/components/data/SoftwareDownloadButton.svelte";
   import SoftwareBuilds from "@/components/data/SoftwareBuilds.svelte";
 
-
   import PaperIconUrl from "@/assets/brand/paper.svg?url";
   import VelocityIconUrl from "@/assets/brand/velocity.svg?url";
   import FoliaIconUrl from "@/assets/brand/folia.svg?url";
   import WaterfallIconUrl from "@/assets/brand/waterfall.svg?url";
+  import type { Snippet } from "svelte";
   interface Props {
     id: "paper" | "velocity" | "folia" | "waterfall" | (string & {});
     project: ProjectDescriptor;
-    description: string | any;
-    experimentalWarning: string | undefined;
-    eol: boolean | undefined;
+    description?: string;
+    Description?: Snippet;
+    experimentalWarning?: string;
+    eol?: boolean;
   }
 
   let {
     id,
     project,
-    description,
-    experimentalWarning,
-    eol
+    description = undefined,
+    Description = undefined,
+    experimentalWarning = undefined,
+    eol = false,
   }: Props = $props();
 
   const ICONS: Record<string, string | undefined> = {
@@ -35,9 +37,11 @@
 
   let isStable = $state(true);
 
-  let version = $derived(isStable
-    ? project?.latestStableVersion
-    : (project?.latestExperimentalVersion ?? project?.latestStableVersion));
+  let version = $derived(
+    isStable
+      ? project?.latestStableVersion
+      : (project?.latestExperimentalVersion ?? project?.latestStableVersion)
+  );
 
   let builds: Build[] = $state([]);
   let latestBuild: Build | undefined = $state();
@@ -117,12 +121,17 @@
 
     <p class="text-xl mt-4">
       {#if isStable}
-        {#if typeof description === "string"}{description}{:else}{@html String(
-            description
-          )}{/if}
-      {:else}
-        {experimentalWarning ??
-          (typeof description === "string" ? description : String(description))}
+        {#if Description}
+          {@render Description()}
+        {:else if typeof description === "string"}
+          {@html description}
+        {/if}
+      {:else if experimentalWarning}
+        {experimentalWarning}
+      {:else if Description}
+        {@render Description()}
+      {:else if typeof description === "string"}
+        {@html description}
       {/if}
     </p>
 
@@ -138,10 +147,11 @@
 
       {#if project.latestExperimentalVersion}
         <button
-          class="rounded-lg flex flex-row w-full md:w-100 border transition-border pl-5 py-3
-                 {isStable
-            ? 'dark:border-red-500 dark:text-red-400 border-red-900 text-red-700'
-            : 'dark:border-blue-600 dark:text-blue-400 border-blue-900 text-blue-700'}"
+          class={`rounded-lg flex flex-row w-full md:w-100 border transition-border pl-5 py-3 ${
+            isStable
+              ? "dark:border-red-500 dark:text-red-400 border-red-900 text-red-700"
+              : "dark:border-blue-600 dark:text-blue-400 border-blue-900 text-blue-700"
+          }`}
           onclick={toggleStable}
         >
           {#if isStable}
