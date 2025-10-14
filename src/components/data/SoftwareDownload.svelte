@@ -163,16 +163,32 @@
       {/if}
     </div>
 
-    {#if buildsLoading}
-      <div class="mt-6 text-sm text-gray-400">Loading builds…</div>
-    {:else if buildsError}
-      <div class="mt-6 text-sm text-red-500">{buildsError}</div>
-    {:else if builds.length > 0}
-      <div class="mt-6">
-        <SoftwareBuilds project={id} {version} {builds} eol={!!eol} />
-      </div>
-    {/if}
-  </div>
+    <section id="builds" class="mt-20">
+      <h2 class="text-center text-xl font-medium">Older builds</h2>
+      <p
+        class="text-center text-gray-800 dark:text-gray-200 text-lg mt-2 mb-8 px-4"
+      >
+        Looking for older builds - or changelogs? We got you!&nbsp;<br />
+        <span class="text-gray-700 dark:text-gray-400">
+          Even older builds are available in our&nbsp;
+          <a
+            href={`https://fill-ui.papermc.io/projects/${id}`}
+            class="text-gray-700 dark:text-gray-400 underline"
+          >
+            build explorer
+          </a>.
+        </span>
+      </p>
 
-  <div class="hidden"></div>
+      {#if buildsLoading}
+        <div class="text-sm text-gray-400 text-center">Loading builds…</div>
+      {:else if buildsError}
+        <div class="text-sm text-red-500 text-center">{buildsError}</div>
+      {:else if builds.length > 0}
+        <SoftwareBuilds project={id} {version} {builds} eol={!!eol} />
+      {/if}
+    </section>
+
+    <div class="hidden"></div>
+  </div>
 </header>
