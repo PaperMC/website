@@ -10,6 +10,8 @@ import icon from "astro-icon";
 
 import sitemap from "@astrojs/sitemap";
 
+import cloudflare from "@astrojs/cloudflare";
+
 process.env.GIT_COMMIT_HASH =
   (process.env.GITHUB_SHA || "").trim().substring(0, 7) || fetchGitCommitHash();
 
@@ -19,6 +21,7 @@ function fetchGitCommitHash() {
 
 export default defineConfig({
   site: "https://papermc.io",
+
   vite: {
     plugins: [tailwindcss()],
   },
@@ -45,4 +48,6 @@ export default defineConfig({
     }),
     sitemap(),
   ],
+
+  adapter: cloudflare(),
 });
