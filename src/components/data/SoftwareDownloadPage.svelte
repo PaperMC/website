@@ -4,14 +4,23 @@
   import type { ProjectDescriptor } from "@/utils/types";
   import { getProjectDescriptor } from "@/utils/download";
 
-  export let id: string;
-  export let description: string | any;
-  export let experimentalWarning: string | undefined;
-  export let eol: boolean = false;
+  interface Props {
+    id: string;
+    description: string | any;
+    experimentalWarning: string | undefined;
+    eol?: boolean;
+  }
 
-  let project: ProjectDescriptor | null = null;
-  let loading = true;
-  let error: string | null = null;
+  let {
+    id,
+    description,
+    experimentalWarning,
+    eol = false
+  }: Props = $props();
+
+  let project: ProjectDescriptor | null = $state(null);
+  let loading = $state(true);
+  let error: string | null = $state(null);
 
   onMount(async () => {
     try {

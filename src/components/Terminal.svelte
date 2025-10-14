@@ -21,12 +21,12 @@
     | { kind: "info"; text: string; ts: Date; tone: Tone; id: number }
     | { kind: "plain"; text: string; id: number };
 
-  let cmd = ""
-  let args = "";
-  let loading = "";
-  let logs: Line[] = [];
-  let inputValue = "";
-  let inputEl: HTMLInputElement | null = null;
+  let cmd = $state("")
+  let args = $state("");
+  let loading = $state("");
+  let logs: Line[] = $state([]);
+  let inputValue = $state("");
+  let inputEl: HTMLInputElement | null = $state(null);
 
   const MAX_LOG_LINES = 500;
   let _id = 0;
@@ -200,7 +200,7 @@
       <input
         bind:this={inputEl}
         bind:value={inputValue}
-        on:keydown={handleKeydown}
+        onkeydown={handleKeydown}
         class="w-[420px] max-w-full bg-transparent border-none outline-none focus:outline-none caret-white"
         aria-label="Terminal input"
         autocomplete="off"

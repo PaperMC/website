@@ -1,21 +1,30 @@
 <script lang="ts">
-  import { onMount } from "svelte";
   import { getVersionBuilds } from "@/utils/fill";
   import type { Build, ProjectDescriptor } from "@/utils/types";
 
   import SoftwareDownloadButton from "@/components/data/SoftwareDownloadButton.svelte";
   import SoftwareBuilds from "@/components/data/SoftwareBuilds.svelte";
 
-  export let id: "paper" | "velocity" | "folia" | "waterfall" | (string & {});
-  export let project: ProjectDescriptor;
-  export let description: string | any;
-  export let experimentalWarning: string | undefined;
-  export let eol: boolean | undefined;
 
   import PaperIconUrl from "@/assets/brand/paper.svg?url";
   import VelocityIconUrl from "@/assets/brand/velocity.svg?url";
   import FoliaIconUrl from "@/assets/brand/folia.svg?url";
   import WaterfallIconUrl from "@/assets/brand/waterfall.svg?url";
+  interface Props {
+    id: "paper" | "velocity" | "folia" | "waterfall" | (string & {});
+    project: ProjectDescriptor;
+    description: string | any;
+    experimentalWarning: string | undefined;
+    eol: boolean | undefined;
+  }
+
+  let {
+    id,
+    project,
+    description,
+    experimentalWarning,
+    eol
+  }: Props = $props();
 
   const ICONS: Record<string, string | undefined> = {
     paper: PaperIconUrl,
@@ -24,21 +33,21 @@
     waterfall: WaterfallIconUrl,
   };
 
-  let isStable = true;
+  let isStable = $state(true);
 
-  $: version = isStable
+  let version = $derived(isStable
     ? project?.latestStableVersion
-    : (project?.latestExperimentalVersion ?? project?.latestStableVersion);
+    : (project?.latestExperimentalVersion ?? project?.latestStableVersion));
 
-  let builds: Build[] | null = null;
-  let latestBuild: Build | null = null;
-  let buildsLoading = false;
-  let buildsError: string | null = null;
+  let builds: Build[] = $state([]);
+  let latestBuild: Build | undefined = $state();
+  let buildsLoading = $state(false);
+  let buildsError: string | null = $state(null);
 
   async function fetchBuilds() {
     if (!id || !version) {
-      builds = null;
-      latestBuild = null;
+      builds = [];
+      latestBuild = undefined;
       return;
     }
     buildsLoading = true;
@@ -46,19 +55,20 @@
     try {
       const res = await getVersionBuilds(id, version);
       builds = Array.isArray(res) ? res : [];
-      latestBuild = builds[0] ?? null;
+      latestBuild = builds[0] || undefined;
     } catch (e) {
       console.error(e);
       buildsError = `Failed to load builds for ${id} ${version}`;
-      builds = null;
-      latestBuild = null;
+      builds = [];
+      latestBuild = undefined;
     } finally {
       buildsLoading = false;
     }
   }
 
-  onMount(fetchBuilds);
-  $: version, id, fetchBuilds();
+  $effect(() => {
+    fetchBuilds();
+  });
 
   function toggleStable() {
     isStable = !isStable;
@@ -124,7 +134,6 @@
         {version}
         eol={!!eol}
         disabled={buildsLoading || !latestBuild}
-        stable={isStable}
       />
 
       {#if project.latestExperimentalVersion}
@@ -133,7 +142,7 @@
                  {isStable
             ? 'dark:border-red-500 dark:text-red-400 border-red-900 text-red-700'
             : 'dark:border-blue-600 dark:text-blue-400 border-blue-900 text-blue-700'}"
-          on:click={toggleStable}
+          onclick={toggleStable}
         >
           {#if isStable}
             Toggle experimental builds for {project.latestExperimentalVersion}
@@ -148,7 +157,7 @@
       <div class="mt-6 text-sm text-gray-400">Loading builds…</div>
     {:else if buildsError}
       <div class="mt-6 text-sm text-red-500">{buildsError}</div>
-    {:else if builds && builds.length > 0}
+    {:else if builds.length > 0}
       <div class="mt-6">
         <SoftwareBuilds project={id} {version} {builds} eol={!!eol} />
       </div>

@@ -17,9 +17,9 @@ import SoftwareDownloadPage from "@/components/data/SoftwareDownloadPage.svelte"
   canonical="/downloads/folia"
 >
   <SoftwareDownloadPage
-      id="folia"
-      description="Download Folia, our new fork of Paper that adds regionized multithreading to the server"
-      experimentalWarning="Download experimental builds of Folia, our new fork of Paper that adds regionized multithreading to the server. Proceed with caution!"
-    client:only="svelte"
+    id="folia"
+    description="Download Folia, our new fork of Paper that adds regionized multithreading to the server"
+    experimentalWarning="Download experimental builds of Folia, our new fork of Paper that adds regionized multithreading to the server. Proceed with caution!"
+    client:load="svelte"
   />
 </Layout>

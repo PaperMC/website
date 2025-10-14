@@ -6,12 +6,20 @@ import SoftwareDownloadPage from "@/components/data/SoftwareDownloadPage.svelte"
 <Layout
   title="Waterfall Downloads"
   description="Download Waterfall, our Bungee-compatible upgrade, offering better performance and full compatibility."
-  keywords={["papermc", "minecraft", "performance", "bungeecord", "waterfall", "downloads", "jar"]}
+  keywords={[
+    "papermc",
+    "minecraft",
+    "performance",
+    "bungeecord",
+    "waterfall",
+    "downloads",
+    "jar",
+  ]}
   canonical="/downloads/waterfall"
 >
   <SoftwareDownloadPage
     id="waterfall"
     description="TODO"
-    client:only="svelte"
+    client:load="svelte"
   />
 </Layout>

@@ -3,10 +3,19 @@
   import { formatISODateTime, formatRelativeDate } from "@/utils/time";
   import SoftwareBuildChanges from "@/components/data/SoftwareBuildChanges.svelte";
 
-  export let project: string;
-  export let version: string;
-  export let builds: Build[] | undefined;
-  export let eol: boolean = false;
+  interface Props {
+    project: string;
+    version: string;
+    builds: Build[];
+    eol?: boolean;
+  }
+
+  let {
+    project,
+    version,
+    builds,
+    eol = false
+  }: Props = $props();
 
   function channelBgClass(ch?: Build["channel"]): string {
     if (eol) return "bg-channel-eol-primary";
@@ -23,6 +32,7 @@
 <div class="flex flex-col">
   {#if builds}
     {#each builds.slice(0, 10) as build, idx (build.id)}
+      {@const date = new Date(build.time)}
       <div>
         <div
           class="flex flex-row items-start hover:bg-blue-100 dark:hover:bg-gray-900 px-4 py-2 transition-colors"
@@ -58,9 +68,9 @@
 
           <div
             class="hidden md:block text-gray-500 dark:text-gray-300 mt-1 ml-2"
-            title={formatISODateTime(new Date(build.time))}
+            title={formatISODateTime(date)}
           >
-            {formatRelativeDate(new Date(build.time))}
+            {formatRelativeDate(date)}
           </div>
         </div>
 
@@ -70,8 +80,8 @@
       </div>
     {/each}
   {:else}
-    {#each Array(5) as _, k}
-      <div class="flex flex-row items-start w-full" {k}>
+    {#each Array(5) as _}
+      <div class="flex flex-row items-start w-full">
         <div class="bg-gray-800 rounded-full p-2 min-w-16 mr-4">
           <div class="h-5 w-8 rounded bg-gray-500/30 animate-pulse"></div>
         </div>

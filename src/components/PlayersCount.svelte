@@ -2,13 +2,13 @@
   import { onMount } from "svelte";
   import { getBStats } from "@/utils/fill";
 
-  export let ttlMs = 12 * 60 * 1000;
+  let { ttlMs = 12 * 60 * 1000 } = $props();
 
   type BStats = { servers: number; players: number };
   const LS_KEY = "bstats:players:v1";
 
-  let players: number | null = null;
-  let loading = true;
+  let players: number | null = $state(null);
+  let loading = $state(true);
   let error: string | null = null;
 
   function now() {
@@ -65,7 +65,7 @@
     swrLoad();
   });
 
-  $: display = players == null ? null : `${Math.round(players / 1000)}k+`;
+  let display = $derived(players == null ? null : `${Math.round(players / 1000)}k+`);
 </script>
 
 {#if loading && players == null}

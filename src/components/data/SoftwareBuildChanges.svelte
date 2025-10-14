@@ -2,9 +2,13 @@
   import type { Build } from "@/utils/types";
   import { getProjectRepository } from "@/utils/github";
 
-  export let project!: string;
-  export let build!: Build;
-  export let version!: string;
+  interface Props {
+    project: string;
+    build: Build;
+    version: string;
+  }
+
+  let { project, build, version }: Props = $props();
 
   type Segment =
     | { kind: "text"; text: string }
@@ -44,15 +48,15 @@
   }
 
   type Row = { sha: string; fullMessage?: string; segments: Segment[] };
-  $: rows =
-    build?.commits.map<Row>((c) => {
+  let rows =
+    $derived(build?.commits.map<Row>((c) => {
       const [firstLine, ...rest] = c.message.split(/\r?\n/);
       return {
         sha: c.sha,
         fullMessage: rest.length > 0 ? c.message : undefined,
         segments: toSegments(firstLine),
       };
-    }) ?? [];
+    }) ?? []);
 </script>
 
 {#if rows.length > 0}

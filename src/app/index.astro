@@ -38,7 +38,7 @@ import SoftwarePreview, { SoftwarePreviewType } from "@/components/data/Software
           </div>
         </div>
         <div class="flex-1 lg:flex hidden justify-end">
-          <Terminal client:only="svelte" />
+          <Terminal client:load="svelte" />
         </div>
       </header>
       <section id="software" class="w-full pt-12 pb-8 bg-primary-200 dark:bg-background-dark-80">
@@ -106,7 +106,7 @@ import SoftwarePreview, { SoftwarePreviewType } from "@/components/data/Software
           <div class="flex-1">
             <h2 class="font-semibold text-2xl md:text-4xl break-all">
               Powering
-              <PlayersCount client:only="svelte" ttlMs={12 * 60 * 1000} />
+              <PlayersCount client:load="svelte" ttlMs={12 * 60 * 1000} />
               players
             </h2>
             <p class="md:mt-6 md:text-xl text-gray-900 dark:text-gray-100 mt-3">

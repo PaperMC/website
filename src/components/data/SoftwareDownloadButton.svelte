@@ -2,17 +2,29 @@
   import type { Build, ProjectDescriptor } from "@/utils/types";
   import { onMount } from "svelte";
 
-  export let projectId: string;
-  export let project: ProjectDescriptor | undefined;
-  export let build: Build | undefined;
-  export let version!: string;
-  export let compact: boolean = false;
-  export let eol: boolean = false;
-  export let disabled: boolean = false;
+  interface Props {
+    projectId: string;
+    project: ProjectDescriptor | undefined;
+    build: Build | undefined;
+    version: string;
+    compact?: boolean;
+    eol?: boolean;
+    disabled?: boolean;
+  }
 
-  let open = false;
-  let rootEl: HTMLDivElement | null = null;
-  let copied: Record<string, boolean> = {};
+  let {
+    projectId,
+    project,
+    build,
+    version,
+    compact = false,
+    eol = false,
+    disabled = false
+  }: Props = $props();
+
+  let open = $state(false);
+  let rootEl: HTMLDivElement | null = $state(null);
+  let copied: Record<string, boolean> = $state({});
 
   function close() {
     open = false;
@@ -35,22 +47,26 @@
     string,
     { name: string; checksums: { sha256: string }; size: number; url: string },
   ];
-  $: downloadEntries = build
+  let downloadEntries = $derived(build
     ? (Object.entries(build.downloads) as DownloadEntry[])
-    : [];
+    : []);
 
   async function copyUrl(evt: MouseEvent, entry: DownloadEntry) {
     evt.preventDefault();
     evt.stopPropagation();
     const [, d] = entry;
     if (!d.url) return;
-    await navigator.clipboard.writeText(d.url);
-    copied[d.name] = true;
-    copied = { ...copied };
-    setTimeout(() => {
-      copied[d.name] = false;
+    try {
+      await navigator.clipboard.writeText(d.url);
+      copied[d.name] = true;
       copied = { ...copied };
-    }, 2000);
+      setTimeout(() => {
+        copied[d.name] = false;
+        copied = { ...copied };
+      }, 2000);
+    } catch (error) {
+      console.error('Failed to copy URL to clipboard:', error);
+    }
   }
 </script>
 
@@ -67,7 +83,7 @@
       href={build?.downloads["server:default"]?.url}
       target="_blank"
       aria-disabled={disabled}
-      on:click={(e) => disabled && (e.preventDefault(), e.stopPropagation())}
+      onclick={(e) => disabled && (e.preventDefault(), e.stopPropagation())}
     >
       <div class={compact ? "w-4 h-4" : "w-8 h-8"}>
         <svg
@@ -112,7 +128,7 @@
              hover:bg-white/10"
       aria-haspopup="menu"
       aria-expanded={open}
-      on:click={toggle}
+      onclick={toggle}
       disabled={disabled || !build}
       title="More downloads"
     >
@@ -144,7 +160,7 @@
             href={build?.downloads["server:default"]?.url}
             target="_blank"
             role="menuitem"
-            on:click={() => (open = false)}
+            onclick={() => (open = false)}
           >
             <div class="px-4 py-3">
               <div class="font-medium flex items-center gap-2 flex-wrap">
@@ -169,7 +185,7 @@
                 <span class="truncate">{entry[1].checksums.sha256}</span>
                 <button
                   class="ml-2 size-6 inline-flex items-center justify-center rounded hover:bg-black/5 dark:hover:bg-white/5"
-                  on:click={(e) => copyUrl(e, entry)}
+                  onclick={(e) => copyUrl(e, entry)}
                   title="Copy URL"
                 >
                   <svg
