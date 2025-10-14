@@ -48,20 +48,24 @@
   }
 
   type Row = { sha: string; fullMessage?: string; segments: Segment[] };
-  let rows =
-    $derived(build?.commits.map<Row>((c) => {
+  let rows = $derived(
+    build?.commits.map<Row>((c) => {
       const [firstLine, ...rest] = c.message.split(/\r?\n/);
       return {
         sha: c.sha,
         fullMessage: rest.length > 0 ? c.message : undefined,
         segments: toSegments(firstLine),
       };
-    }) ?? []);
+    }) ?? []
+  );
 </script>
 
 {#if rows.length > 0}
   {#each rows as row (row.sha)}
-    <p class="commitMessage break-words overflow-hidden" style="word-wrap: break-word; hyphens: auto;">
+    <p
+      class="commitMessage break-words overflow-hidden"
+      style="word-wrap: break-word; hyphens: auto;"
+    >
       <a
         class="text-blue-600 dark:text-blue-500 mr-1 font-mono"
         href={`${getProjectRepository(project, version)}/commit/${row.sha}`}
@@ -76,8 +80,11 @@
           {#if seg.kind === "text"}
             {seg.text}
           {:else}
-            <a class="text-blue-600 dark:text-blue-500" href={seg.url} target="_blank" rel="noreferrer"
-              >{seg.text}</a
+            <a
+              class="text-blue-600 dark:text-blue-500"
+              href={seg.url}
+              target="_blank"
+              rel="noreferrer">{seg.text}</a
             >
           {/if}
         {/each}

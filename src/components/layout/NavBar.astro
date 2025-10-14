@@ -10,14 +10,29 @@ import LogoMarkerDark from "@/assets/brand/logo-marker-dark.svg";
 import LogoMarkerLight from "@/assets/brand/logo-marker-light.svg";
 ---
 
-<nav id="nav-wrapper" class="fixed top-0 left-0 right-0 z-50 transition-shadow bg-background-light-10 dark:bg-background-dark-90">
+<nav
+  id="nav-wrapper"
+  class="fixed top-0 left-0 right-0 z-50 transition-shadow bg-background-light-10 dark:bg-background-dark-90"
+>
   <div class="max-w-7xl flex flex-row items-center mx-auto px-4 py-2 gap-2">
-    <button id="nav-toggle" title={"Toggle nav"} class="leading-none mr-2 md:hidden">
+    <button
+      id="nav-toggle"
+      title={"Toggle nav"}
+      class="leading-none mr-2 md:hidden"
+    >
       <Icon name="icons/heroicons/menu" class="size-6 fill-gray-500" />
     </button>
     <a href="/" class="leading-none" tabindex="-1" aria-hidden={true}>
-      <img src={LogoMarkerLight.src} alt="PaperMC" class="block dark:hidden h-12 cursor-pointer" />
-      <img src={LogoMarkerDark.src} alt="PaperMC" class="hidden dark:block h-12 cursor-pointer" />
+      <img
+        src={LogoMarkerLight.src}
+        alt="PaperMC"
+        class="block dark:hidden h-12 cursor-pointer"
+      />
+      <img
+        src={LogoMarkerDark.src}
+        alt="PaperMC"
+        class="hidden dark:block h-12 cursor-pointer"
+      />
     </a>
     <div
       id="nav-menu"
@@ -27,19 +42,42 @@ import LogoMarkerLight from "@/assets/brand/logo-marker-light.svg";
         <NavDropDownLink href="/software/paper">Paper</NavDropDownLink>
         <NavDropDownLink href="/software/folia">Folia</NavDropDownLink>
         <NavDropDownLink href="/software/velocity">Velocity</NavDropDownLink>
-        <NavDropDownLink href="/software/waterfall" eol>Waterfall</NavDropDownLink>
+        <NavDropDownLink href="/software/waterfall" eol
+          >Waterfall</NavDropDownLink
+        >
       </NavDropDown>
-      <NavLink href="https://hangar.papermc.io/" target="_blank" className="inline-flex items-center">
+      <NavLink
+        href="https://hangar.papermc.io/"
+        target="_blank"
+        className="inline-flex items-center"
+      >
         Plugins
-        <Icon name="icons/heroicons/arrow-top-right-on-square" class="size-4 ml-1 align-sub" />
+        <Icon
+          name="icons/heroicons/arrow-top-right-on-square"
+          class="size-4 ml-1 align-sub"
+        />
       </NavLink>
-      <NavLink href="https://docs.papermc.io/" target="_blank" className="inline-flex items-center">
+      <NavLink
+        href="https://docs.papermc.io/"
+        target="_blank"
+        className="inline-flex items-center"
+      >
         Docs
-        <Icon name="icons/heroicons/arrow-top-right-on-square" class="size-4 ml-1 align-sub" />
+        <Icon
+          name="icons/heroicons/arrow-top-right-on-square"
+          class="size-4 ml-1 align-sub"
+        />
       </NavLink>
-      <NavLink href="https://forums.papermc.io/" target="_blank" className="inline-flex items-center">
+      <NavLink
+        href="https://forums.papermc.io/"
+        target="_blank"
+        className="inline-flex items-center"
+      >
         Forums
-        <Icon name="icons/heroicons/arrow-top-right-on-square" class="size-4 ml-1 align-sub" />
+        <Icon
+          name="icons/heroicons/arrow-top-right-on-square"
+          class="size-4 ml-1 align-sub"
+        />
       </NavLink>
       <NavLink href="/team">Team</NavLink>
       <NavLink href="/contribute">Contribute</NavLink>
@@ -47,9 +85,24 @@ import LogoMarkerLight from "@/assets/brand/logo-marker-light.svg";
 
     <div class="grow"></div>
 
-    <IconButton icon="icons/fontawesome/discord-brands" label="Discord" href="https://discord.gg/papermc" external />
-    <IconButton icon="icons/fontawesome/github-brands" label="GitHub" href="https://github.com/PaperMC" external />
-    <IconButton icon="icons/fontawesome/twitter-brands" label="Twitter" href="https://twitter.com/PaperPowered" external />
+    <IconButton
+      icon="icons/fontawesome/discord-brands"
+      label="Discord"
+      href="https://discord.gg/papermc"
+      external
+    />
+    <IconButton
+      icon="icons/fontawesome/github-brands"
+      label="GitHub"
+      href="https://github.com/PaperMC"
+      external
+    />
+    <IconButton
+      icon="icons/fontawesome/twitter-brands"
+      label="Twitter"
+      href="https://twitter.com/PaperPowered"
+      external
+    />
   </div>
 </nav>
 
@@ -60,7 +113,10 @@ import LogoMarkerLight from "@/assets/brand/logo-marker-light.svg";
   window.addEventListener("scroll", () => {
     const wrapper = document.getElementById("nav-wrapper");
     wrapper?.classList?.toggle("bg-background-light-10", window.scrollY > 64);
-    wrapper?.classList?.toggle("dark:bg-background-dark-90", window.scrollY > 64);
+    wrapper?.classList?.toggle(
+      "dark:bg-background-dark-90",
+      window.scrollY > 64
+    );
     wrapper?.classList?.toggle("shadow-xl", window.scrollY > 64);
   });
 </script>

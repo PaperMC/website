@@ -10,12 +10,7 @@
     eol?: boolean;
   }
 
-  let {
-    project,
-    version,
-    builds,
-    eol = false
-  }: Props = $props();
+  let { project, version, builds, eol = false }: Props = $props();
 
   function channelBgClass(ch?: Build["channel"]): string {
     if (eol) return "bg-channel-eol-primary";

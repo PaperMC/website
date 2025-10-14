@@ -19,8 +19,17 @@ const { href, target, className, eol } = Astro.props;
     className
   )}
 >
-  <a href={href} class={clsx("px-4 py-2 w-full", eol ? "flex items-center gap-2" : "block")} role="button" target={target}>
+  <a
+    href={href}
+    class={clsx("px-4 py-2 w-full", eol ? "flex items-center gap-2" : "block")}
+    role="button"
+    target={target}
+  >
     <slot />
-    {eol && <Icon name="icons/fontawesome/box-archive" class="fill-current h-4" />}
+    {
+      eol && (
+        <Icon name="icons/fontawesome/box-archive" class="fill-current h-4" />
+      )
+    }
   </a>
 </li>

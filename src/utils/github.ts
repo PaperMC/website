@@ -5,7 +5,8 @@ export interface Contributor {
   contributions: number;
 }
 
-const CONTRIBUTORS_BASE_URL = "https://api.github.com/repos/PaperMC/Paper/contributors?per_page=100";
+const CONTRIBUTORS_BASE_URL =
+  "https://api.github.com/repos/PaperMC/Paper/contributors?per_page=100";
 
 /**
  * Fetches a list of contributors from the GitHub API, paginating through results up to a specified maximum number of pages.
@@ -48,9 +49,13 @@ export async function fetchContributors(maxPages = 15): Promise<Contributor[]> {
   return all;
 }
 
-export const getProjectRepository = (project: string, version: string): string => {
+export const getProjectRepository = (
+  project: string,
+  version: string
+): string => {
   if (project !== "paper") return `https://github.com/PaperMC/${project}`;
-  if (project === "paper" && version === "1.7.10") return "https://github.com/PaperMC/Paper-1.7";
+  if (project === "paper" && version === "1.7.10")
+    return "https://github.com/PaperMC/Paper-1.7";
 
   const baseVersion = [21, 4]; // 1.21.4 is after the hardfork
   const isBelowBaseVersion = version
@@ -59,5 +64,7 @@ export const getProjectRepository = (project: string, version: string): string =
     .map(Number)
     .some((v, i) => v < (baseVersion[i] || 0));
 
-  return isBelowBaseVersion ? "https://github.com/PaperMC/Paper-Archive" : "https://github.com/PaperMC/Paper";
+  return isBelowBaseVersion
+    ? "https://github.com/PaperMC/Paper-Archive"
+    : "https://github.com/PaperMC/Paper";
 };

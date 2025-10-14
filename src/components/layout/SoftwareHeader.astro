@@ -14,11 +14,14 @@ const { id, name, icon, github, eol } = Astro.props;
 ---
 
 <software-header data-software={id}>
-  <header class="max-w-7xl flex flex-row flex-wrap mx-auto px-4 pt-32 pb-26 lg:pt-28 lg:pb-14 gap-16">
+  <header
+    class="max-w-7xl flex flex-row flex-wrap mx-auto px-4 pt-32 pb-26 lg:pt-28 lg:pb-14 gap-16"
+  >
     {
       eol && (
         <div class="text-center px-4 py-8 -mt-16 font-bold bg-red-400 dark:bg-red-500 shadow-md rounded-lg w-full">
-          {name} has reached end of life! It is no longer maintained or supported.
+          {name} has reached end of life! It is no longer maintained or
+          supported.
         </div>
       )
     }
@@ -29,19 +32,46 @@ const { id, name, icon, github, eol } = Astro.props;
         </div>
         <h1 class="font-medium text-xl flex gap-4 items-center">
           {name}
-          {eol && <Icon name="icons/fontawesome/box-archive" class="fill-current h-6" />}
+          {
+            eol && (
+              <Icon
+                name="icons/fontawesome/box-archive"
+                class="fill-current h-6"
+              />
+            )
+          }
         </h1>
       </div>
-      <h2 class="font-medium leading-normal lg:text-5xl lg:leading-normal text-4xl">
+      <h2
+        class="font-medium leading-normal lg:text-5xl lg:leading-normal text-4xl"
+      >
         <slot name="header" />
       </h2>
       <p class="text-xl mt-4"><slot name="description" /></p>
       <div class="flex flex-row gap-4 mt-8">
-        <Button variant="filled" href={github ?? `/downloads/${id}`} external={Boolean(github)} className={eol ? "!bg-red-500 !hover:bg-red-400" : ""}>
+        <Button
+          variant="filled"
+          href={github ?? `/downloads/${id}`}
+          external={Boolean(github)}
+          className={eol ? "!bg-red-500 !hover:bg-red-400" : ""}
+        >
           {github ? "GitHub" : "Downloads"}
         </Button>
-        <Button variant="outlined" href={`https://docs.papermc.io/${id}`} external> Documentation </Button>
-        <Button variant="outlined" href="#loading" className="hidden md:block jd-link-btn" external> Javadoc </Button>
+        <Button
+          variant="outlined"
+          href={`https://docs.papermc.io/${id}`}
+          external
+        >
+          Documentation
+        </Button>
+        <Button
+          variant="outlined"
+          href="#loading"
+          className="hidden md:block jd-link-btn"
+          external
+        >
+          Javadoc
+        </Button>
       </div>
     </div>
     <div class="flex-1 lg:flex hidden justify-end"></div>
@@ -50,6 +80,7 @@ const { id, name, icon, github, eol } = Astro.props;
 
 <script>
   import { getProject } from "@/utils/fill";
+  import { latestVersionFrom } from "@/utils/versions";
 
   class SoftwareHeader extends HTMLElement {
     async connectedCallback() {
@@ -64,7 +95,11 @@ const { id, name, icon, github, eol } = Astro.props;
       }
 
       const { versions } = await getProject(software);
-      button.setAttribute("href", `https://jd.papermc.io/${software}/${versions[versions.length - 1]}`);
+      const latest = latestVersionFrom(versions);
+      button.setAttribute(
+        "href",
+        `https://jd.papermc.io/${software}/${latest}`
+      );
     }
   }
 

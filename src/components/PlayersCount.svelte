@@ -65,7 +65,9 @@
     swrLoad();
   });
 
-  let display = $derived(players == null ? null : `${Math.round(players / 1000)}k+`);
+  let display = $derived(
+    players == null ? null : `${Math.round(players / 1000)}k+`
+  );
 </script>
 
 {#if loading && players == null}

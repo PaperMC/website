@@ -2,10 +2,14 @@ import { getProject, getVersionBuilds } from "@/utils/fill";
 import { getHangarProjects } from "@/utils/hangar";
 import type { ProjectDescriptor } from "@/utils/types";
 
-export async function getProjectDescriptor(id: string): Promise<ProjectDescriptor | null> {
+export async function getProjectDescriptor(
+  id: string
+): Promise<ProjectDescriptor | null> {
   try {
     const projectData = await getProject(id);
-    const flattenedVersions = Object.values(projectData.versions).flat().reverse();
+    const flattenedVersions = Object.values(projectData.versions)
+      .flat()
+      .reverse();
     let latestStableVersion = flattenedVersions[flattenedVersions.length - 1];
 
     // Check for stable builds
@@ -39,12 +43,17 @@ export async function getProjectDescriptor(id: string): Promise<ProjectDescripto
 }
 
 export async function getProjectDescriptorWithHangar(
-  id: string,
+  id: string
 ): Promise<{ project: ProjectDescriptor; hangarCount: number } | null> {
   try {
-    const [projectData, hangarData] = await Promise.all([getProject(id), getHangarProjects(id).catch(() => null)]);
+    const [projectData, hangarData] = await Promise.all([
+      getProject(id),
+      getHangarProjects(id).catch(() => null),
+    ]);
 
-    const flattenedVersions = Object.values(projectData.versions).flat().reverse();
+    const flattenedVersions = Object.values(projectData.versions)
+      .flat()
+      .reverse();
     let latestStableVersion = flattenedVersions[flattenedVersions.length - 1];
 
     // Check for stable builds

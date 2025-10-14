@@ -19,7 +19,7 @@
     version,
     compact = false,
     eol = false,
-    disabled = false
+    disabled = false,
   }: Props = $props();
 
   let open = $state(false);
@@ -47,9 +47,9 @@
     string,
     { name: string; checksums: { sha256: string }; size: number; url: string },
   ];
-  let downloadEntries = $derived(build
-    ? (Object.entries(build.downloads) as DownloadEntry[])
-    : []);
+  let downloadEntries = $derived(
+    build ? (Object.entries(build.downloads) as DownloadEntry[]) : []
+  );
 
   async function copyUrl(evt: MouseEvent, entry: DownloadEntry) {
     evt.preventDefault();
@@ -65,7 +65,7 @@
         copied = { ...copied };
       }, 2000);
     } catch (error) {
-      console.error('Failed to copy URL to clipboard:', error);
+      console.error("Failed to copy URL to clipboard:", error);
     }
   }
 </script>
