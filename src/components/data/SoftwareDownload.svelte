@@ -54,15 +54,18 @@
   }
 
   let buildsLoading = $state(false);
+  let buildsPromise: Promise<[] | void> = Promise.resolve([]);
   watch(
     () => version,
     (ver, oldVer) => {
       // Only handle changes, not initial page load where builds are prerendered on server.
       if (oldVer !== undefined && ver !== oldVer) {
-        buildsLoading = true;
-        fetchBuildsOrError({ value: project }, !isStable).then((result) => {
-          builds = result;
-          buildsLoading = false;
+        buildsPromise = buildsPromise.then(() => {
+          buildsLoading = true;
+          fetchBuildsOrError({ value: project }, !isStable).then((result) => {
+            builds = result;
+            buildsLoading = false;
+          });
         });
       }
     }
