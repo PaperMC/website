@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Build, ProjectDescriptor } from "@/utils/types";
+  import { type Build, type ProjectDescriptor } from "@/utils/types";
   import { onMount } from "svelte";
 
   interface Props {
