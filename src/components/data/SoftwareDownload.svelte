@@ -11,6 +11,7 @@
   import type { Snippet } from "svelte";
   import { fetchBuildsOrError, type ProjectBuildsOrError } from "@/utils/download";
   import { watch } from "runed";
+  import { fade } from "svelte/transition";
 
   interface Props {
     id: "paper" | "velocity" | "folia" | "waterfall" | (string & {});
@@ -149,11 +150,13 @@
       </p>
 
       {#if buildsLoading}
-        <div class="text-center text-sm text-gray-400">Loading builds…</div>
+        <div transition:fade class="text-center text-sm text-gray-400">Loading builds…</div>
       {:else if builds.error}
-        <div class="text-center text-sm text-red-500">{builds.error}</div>
+        <div transition:fade class="text-center text-sm text-red-500">{builds.error}</div>
       {:else if builds.value && builds.value.builds && builds.value.builds.length > 0}
-        <SoftwareBuilds project={id} {version} builds={builds.value.builds} eol={!!eol} />
+        <div transition:fade>
+          <SoftwareBuilds project={id} {version} builds={builds.value.builds} eol={!!eol} />
+        </div>
       {/if}
     </section>
 
