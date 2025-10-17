@@ -7,11 +7,10 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "lint": "eslint . --cache",
-    "lint:fix": "eslint . --fix --cache",
     "format": "prettier --write .",
-    "format:check": "prettier --check .",
-    "check": "bun run format:check && bun run lint"
+    "lint:eslint": "eslint . --cache",
+    "lint:prettier": "prettier --check .",
+    "lint": "bun run lint:eslint && bun run lint:prettier"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^12.6.10",
