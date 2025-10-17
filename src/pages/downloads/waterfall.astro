@@ -1,6 +1,10 @@
 ---
+export const prerender = false
 import Layout from "@/layouts/Layout.astro";
 import SoftwareDownloadPage from "@/components/data/SoftwareDownloadPage.svelte";
+import { getProjectDescriptorOrError } from "@/utils/download";
+
+const projectResult = await getProjectDescriptorOrError("waterfall");
 
 const descriptionHtml = `
   Waterfall has reached end of life. We recommend you transition to
@@ -39,5 +43,6 @@ const descriptionHtml = `
     description={descriptionHtml}
     eol
     client:load="svelte"
+    project={projectResult}
   />
 </Layout>

@@ -1,6 +1,10 @@
 ---
+export const prerender = false
 import Layout from "@/layouts/Layout.astro";
 import SoftwareDownloadPage from "@/components/data/SoftwareDownloadPage.svelte";
+import { getProjectDescriptorOrError } from "@/utils/download";
+
+const projectResult = await getProjectDescriptorOrError("paper");
 ---
 
 <Layout
@@ -21,5 +25,6 @@ import SoftwareDownloadPage from "@/components/data/SoftwareDownloadPage.svelte"
     description="Download Paper, our Minecraft server software offering unrivaled performance and stability."
     experimentalWarning="Download experimental builds of Paper, our Minecraft server software offering unrivaled performance and stability. Proceed with caution!"
     client:load="svelte"
+    project={projectResult}
   />
 </Layout>
