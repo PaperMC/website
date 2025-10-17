@@ -1,24 +1,24 @@
 ---
-import Layout from '@/layouts/Layout.astro';
-import SoftwareHeader from '@/components/layout/SoftwareHeader.astro';
-import FeatureCard from '@/components/data/FeatureCard.astro';
-import Button from '@/components/input/Button.astro';
+import Layout from "@/layouts/Layout.astro";
+import SoftwareHeader from "@/components/layout/SoftwareHeader.astro";
+import FeatureCard from "@/components/data/FeatureCard.astro";
+import Button from "@/components/input/Button.astro";
 
-import HomeImage1 from '@/assets/images/home-1.png';
-import HomeImage3 from '@/assets/images/home-3.png';
-import CommunityImage from '@/assets/images/community.png';
+import HomeImage1 from "@/assets/images/home-1.png";
+import HomeImage3 from "@/assets/images/home-3.png";
+import CommunityImage from "@/assets/images/community.png";
 
-import { Image } from 'astro:assets';
+import { Image } from "astro:assets";
 
-import { getHangarProjects } from '@/utils/hangar';
+import { getHangarProjects } from "@/utils/hangar";
 
-const { pagination } = await getHangarProjects('paper');
+const { pagination } = await getHangarProjects("paper");
 ---
 
 <Layout
   title="Paper"
   description="Paper is a Minecraft game server based on Spigot, designed to greatly improve performance and offer more advanced features and API."
-  keywords={['papermc', 'paper', 'server', 'minecraft', 'performance', 'spigot', 'fork']}
+  keywords={["papermc", "paper", "server", "minecraft", "performance", "spigot", "fork"]}
   canonical="/software/paper"
 >
   <SoftwareHeader id="paper" name="Paper" icon="brand/paper">

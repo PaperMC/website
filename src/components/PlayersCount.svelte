@@ -1,11 +1,11 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
-  import { getBStats } from '@/utils/fill';
+  import { onMount } from "svelte";
+  import { getBStats } from "@/utils/fill";
 
   let { ttlMs = 12 * 60 * 1000 } = $props();
 
   type BStats = { servers: number; players: number };
-  const LS_KEY = 'bstats:players:v1';
+  const LS_KEY = "bstats:players:v1";
 
   let players: number | null = $state(null);
   let loading = $state(true);
@@ -49,13 +49,13 @@
 
     try {
       const fresh = await fetchFresh();
-      if (typeof fresh.players === 'number') {
+      if (typeof fresh.players === "number") {
         players = fresh.players;
         writeCache(fresh);
       }
       error = null;
     } catch (e) {
-      error = 'Failed to refresh bStats';
+      error = "Failed to refresh bStats";
     } finally {
       loading = false;
     }

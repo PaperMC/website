@@ -1,24 +1,24 @@
 ---
-import Layout from '@/layouts/Layout.astro';
-import SoftwareHeader from '@/components/layout/SoftwareHeader.astro';
-import FeatureCard from '@/components/data/FeatureCard.astro';
-import Button from '@/components/input/Button.astro';
+import Layout from "@/layouts/Layout.astro";
+import SoftwareHeader from "@/components/layout/SoftwareHeader.astro";
+import FeatureCard from "@/components/data/FeatureCard.astro";
+import Button from "@/components/input/Button.astro";
 
-import HomeImage1 from '@/assets/images/home-1.png';
-import HomeImage3 from '@/assets/images/home-3.png';
-import CommunityImage from '@/assets/images/community.png';
+import HomeImage1 from "@/assets/images/home-1.png";
+import HomeImage3 from "@/assets/images/home-3.png";
+import CommunityImage from "@/assets/images/community.png";
 
-import { Image } from 'astro:assets';
+import { Image } from "astro:assets";
 
-import { getHangarProjects } from '@/utils/hangar';
+import { getHangarProjects } from "@/utils/hangar";
 
-const { pagination } = await getHangarProjects('velocity');
+const { pagination } = await getHangarProjects("velocity");
 ---
 
 <Layout
   title="Velocity"
   description="Velocity is the modern, high-performance Minecraft server proxy. Designed with performance and stability in mind, it’s a full alternative to Waterfall with its own plugin ecosystem."
-  keywords={['velocity', 'proxy', 'minecraft', 'performance', 'bungeecord']}
+  keywords={["velocity", "proxy", "minecraft", "performance", "bungeecord"]}
   canonical="/software/velocity"
 >
   <SoftwareHeader id="velocity" name="Velocity" icon="brand/velocity">

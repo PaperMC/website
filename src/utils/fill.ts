@@ -1,7 +1,7 @@
-import type { Build, Project } from '@/utils/types';
+import type { Build, Project } from "@/utils/types";
 
-const API_ENDPOINT = 'https://fill.papermc.io/v3';
-const BSTATS_URL = 'https://bstats.org/api/v1/plugins/580/charts/players/data/?maxElements=1';
+const API_ENDPOINT = "https://fill.papermc.io/v3";
+const BSTATS_URL = "https://bstats.org/api/v1/plugins/580/charts/players/data/?maxElements=1";
 
 export async function getProject(project: string): Promise<Project> {
   const res = await fetch(`${API_ENDPOINT}/projects/${project}`);
@@ -31,7 +31,7 @@ export async function getBStats(): Promise<{
     const players = data[0]?.[1] || 0;
     return { servers: Math.round(players / 20), players };
   } catch (error) {
-    console.error('Failed to fetch bStats:', error);
+    console.error("Failed to fetch bStats:", error);
     return { servers: 0, players: 0 };
   }
 }

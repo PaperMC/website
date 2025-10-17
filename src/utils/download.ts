@@ -1,6 +1,6 @@
-import { getProject, getVersionBuilds } from '@/utils/fill';
-import { getHangarProjects } from '@/utils/hangar';
-import type { ProjectDescriptor } from '@/utils/types';
+import { getProject, getVersionBuilds } from "@/utils/fill";
+import { getHangarProjects } from "@/utils/hangar";
+import type { ProjectDescriptor } from "@/utils/types";
 
 export async function getProjectDescriptorOrError(id: string): Promise<{ error?: string; value?: ProjectDescriptor }> {
   try {
@@ -24,7 +24,7 @@ export async function getProjectDescriptor(id: string): Promise<ProjectDescripto
     for (let i = flattenedVersions.length - 1; i >= 0; i--) {
       try {
         const builds = await getVersionBuilds(id, flattenedVersions[i]);
-        if (builds.some((build) => build.channel === 'STABLE')) {
+        if (builds.some((build) => build.channel === "STABLE")) {
           latestStableVersion = flattenedVersions[i];
           break;
         }
@@ -59,7 +59,7 @@ export async function getProjectDescriptorWithHangar(id: string): Promise<{ proj
     for (let i = flattenedVersions.length - 1; i >= 0; i--) {
       try {
         const builds = await getVersionBuilds(id, flattenedVersions[i]);
-        if (builds.some((build) => build.channel === 'STABLE')) {
+        if (builds.some((build) => build.channel === "STABLE")) {
           latestStableVersion = flattenedVersions[i];
           break;
         }

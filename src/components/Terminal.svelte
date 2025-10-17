@@ -1,23 +1,23 @@
 <script lang="ts">
-  import { formatISOFullTime } from '@/utils/time';
-  import { getProject } from '@/utils/fill';
-  import { latestVersionFrom } from '@/utils/versions';
+  import { formatISOFullTime } from "@/utils/time";
+  import { getProject } from "@/utils/fill";
+  import { latestVersionFrom } from "@/utils/versions";
 
   const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
   const getNaturalDelay = () => Math.floor(Math.random() * 80) + 40;
 
-  let cmd = $state('');
-  let args = $state('');
-  let loading = $state('');
+  let cmd = $state("");
+  let args = $state("");
+  let loading = $state("");
   let lines = $state<string[]>([]);
   let success = $state<string | null>(null);
-  let history = $state<{ kind: 'cmd' | 'info'; text: string }[]>([]);
+  let history = $state<{ kind: "cmd" | "info"; text: string }[]>([]);
 
-  let latestStableVersion = $state<string>('1.21.8');
+  let latestStableVersion = $state<string>("1.21.8");
 
   $effect(() => {
     (async () => {
-      const { versions } = await getProject('paper');
+      const { versions } = await getProject("paper");
       const latest = latestVersionFrom(versions);
       if (latest) {
         latestStableVersion = latest;
@@ -26,79 +26,79 @@
   });
 
   function handleCommand(e: KeyboardEvent & { currentTarget: HTMLInputElement }) {
-    if (e.key !== 'Enter') return;
+    if (e.key !== "Enter") return;
 
     const value = e.currentTarget.value.trim();
     let response: string;
 
     switch (value) {
-      case 'help':
-        response = 'Existing commands: help, downloads, plugins, docs, forums, team, contribute';
+      case "help":
+        response = "Existing commands: help, downloads, plugins, docs, forums, team, contribute";
         break;
-      case 'downloads':
-        window.location.href = '/downloads';
-        response = 'Redirecting...';
+      case "downloads":
+        window.location.href = "/downloads";
+        response = "Redirecting...";
         break;
-      case 'plugins':
-        window.location.href = 'https://hangar.papermc.io';
-        response = 'Redirecting...';
+      case "plugins":
+        window.location.href = "https://hangar.papermc.io";
+        response = "Redirecting...";
         break;
-      case 'docs':
-        window.location.href = 'https://docs.papermc.io';
-        response = 'Redirecting...';
+      case "docs":
+        window.location.href = "https://docs.papermc.io";
+        response = "Redirecting...";
         break;
-      case 'forums':
-        window.location.href = 'https://forums.papermc.io';
-        response = 'Redirecting...';
+      case "forums":
+        window.location.href = "https://forums.papermc.io";
+        response = "Redirecting...";
         break;
-      case 'team':
-        window.location.href = '/team';
-        response = 'Redirecting...';
+      case "team":
+        window.location.href = "/team";
+        response = "Redirecting...";
         break;
-      case 'contribute':
-        window.location.href = '/contribute';
-        response = 'Redirecting...';
+      case "contribute":
+        window.location.href = "/contribute";
+        response = "Redirecting...";
         break;
       default:
         response = 'Unknown command. Type "help" for help.';
     }
 
-    history = [...history, { kind: 'cmd', text: value }, { kind: 'info', text: response }];
-    e.currentTarget.value = '';
+    history = [...history, { kind: "cmd", text: value }, { kind: "info", text: response }];
+    e.currentTarget.value = "";
   }
 
   $effect(() => {
-    cmd = '';
-    args = '';
-    loading = '';
+    cmd = "";
+    args = "";
+    loading = "";
     lines = [];
     success = null;
 
     const outputLines = [
       `Starting minecraft server version ${latestStableVersion}`,
       'Preparing level "world"',
-      'Preparing start region for dimension minecraft:overworld',
-      'Time elapsed: 363 ms',
-      'Preparing start region for dimension minecraft:the_nether',
-      'Time elapsed: 147 ms',
-      'Preparing start region for dimension minecraft:the_end',
-      'Time elapsed: 366 ms',
-      'Running delayed init tasks',
+      "Preparing start region for dimension minecraft:overworld",
+      "Time elapsed: 363 ms",
+      "Preparing start region for dimension minecraft:the_nether",
+      "Time elapsed: 147 ms",
+      "Preparing start region for dimension minecraft:the_end",
+      "Time elapsed: 366 ms",
+      "Running delayed init tasks",
     ];
 
     let cancelled = false;
 
     (async () => {
-      let currentCmd = '';
-      for (const ch of 'java') {
+      let currentCmd = "";
+      for (const ch of "java") {
         if (cancelled) return;
         currentCmd += ch;
         cmd = currentCmd;
         await sleep(getNaturalDelay());
       }
 
-      let currentArgs = '';
-      for (const ch of ' -jar paper.jar') {
+      let currentArgs = "";
+      for (const ch of " -jar paper.jar") {
         if (cancelled) return;
         currentArgs += ch;
         args = currentArgs;
@@ -107,7 +107,7 @@
 
       for (let i = 0; i < 3; i++) {
         if (cancelled) return;
-        loading = 'Loading libraries, please wait' + '.'.repeat(i + 1);
+        loading = "Loading libraries, please wait" + ".".repeat(i + 1);
         await sleep(500);
       }
 
@@ -147,7 +147,7 @@
 
     <div>
       {#each history as item, index (index)}
-        {#if item.kind === 'cmd'}
+        {#if item.kind === "cmd"}
           <div>&gt; {item.text}</div>
         {:else}
           {@render InfoLog(item.text)}

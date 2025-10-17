@@ -1,6 +1,6 @@
 ---
-import { Icon } from 'astro-icon/components';
-import Button from '@/components/input/Button.astro';
+import { Icon } from "astro-icon/components";
+import Button from "@/components/input/Button.astro";
 
 interface Props {
   id: string;
@@ -41,9 +41,9 @@ const { id, name, icon, github, eol } = Astro.props;
           variant="filled"
           href={github ?? `/downloads/${id}`}
           external={Boolean(github)}
-          className={eol ? '!hover:bg-red-400 !bg-red-500' : ''}
+          className={eol ? "!hover:bg-red-400 !bg-red-500" : ""}
         >
-          {github ? 'GitHub' : 'Downloads'}
+          {github ? "GitHub" : "Downloads"}
         </Button>
         <Button variant="outlined" href={`https://docs.papermc.io/${id}`} external> Documentation </Button>
         <Button variant="outlined" href="#loading" className="jd-link-btn hidden md:block" external> Javadoc </Button>
@@ -54,8 +54,8 @@ const { id, name, icon, github, eol } = Astro.props;
 </software-header>
 
 <script>
-  import { getProject } from '@/utils/fill';
-  import { latestVersionFrom } from '@/utils/versions';
+  import { getProject } from "@/utils/fill";
+  import { latestVersionFrom } from "@/utils/versions";
 
   class SoftwareHeader extends HTMLElement {
     async connectedCallback() {
@@ -64,7 +64,7 @@ const { id, name, icon, github, eol } = Astro.props;
         return;
       }
 
-      const button = this.querySelector('.jd-link-btn');
+      const button = this.querySelector(".jd-link-btn");
       if (!button) {
         return;
       }
@@ -72,13 +72,13 @@ const { id, name, icon, github, eol } = Astro.props;
       const { versions } = await getProject(software);
       let latest = latestVersionFrom(versions);
 
-      if (software === 'velocity' && latest.endsWith('-SNAPSHOT')) {
-        latest = latest.replace(/-SNAPSHOT$/, '');
+      if (software === "velocity" && latest.endsWith("-SNAPSHOT")) {
+        latest = latest.replace(/-SNAPSHOT$/, "");
       }
 
-      button.setAttribute('href', `https://jd.papermc.io/${software}/${latest}`);
+      button.setAttribute("href", `https://jd.papermc.io/${software}/${latest}`);
     }
   }
 
-  customElements.define('software-header', SoftwareHeader);
+  customElements.define("software-header", SoftwareHeader);
 </script>

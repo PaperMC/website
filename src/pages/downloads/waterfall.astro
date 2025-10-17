@@ -1,12 +1,12 @@
 ---
 export const prerender = false;
-import Layout from '@/layouts/Layout.astro';
-import SoftwareDownloadPage from '@/components/data/SoftwareDownloadPage.svelte';
-import { getProjectDescriptorOrError } from '@/utils/download';
+import Layout from "@/layouts/Layout.astro";
+import SoftwareDownloadPage from "@/components/data/SoftwareDownloadPage.svelte";
+import { getProjectDescriptorOrError } from "@/utils/download";
 
-Astro.response.headers.set('Cache-Control', 'public, max-age=300');
-Astro.response.headers.set('CDN-Cache-Control', 'public, max-age=600');
-const projectResult = await getProjectDescriptorOrError('waterfall');
+Astro.response.headers.set("Cache-Control", "public, max-age=300");
+Astro.response.headers.set("CDN-Cache-Control", "public, max-age=600");
+const projectResult = await getProjectDescriptorOrError("waterfall");
 
 const descriptionHtml = `
   Waterfall has reached end of life. We recommend you transition to
@@ -29,7 +29,7 @@ const descriptionHtml = `
 <Layout
   title="Waterfall Downloads"
   description="Download Waterfall, our Bungee-compatible upgrade, offering better performance and full compatibility."
-  keywords={['papermc', 'minecraft', 'performance', 'bungeecord', 'waterfall', 'downloads', 'jar']}
+  keywords={["papermc", "minecraft", "performance", "bungeecord", "waterfall", "downloads", "jar"]}
   canonical="/downloads/waterfall"
 >
   <SoftwareDownloadPage id="waterfall" description={descriptionHtml} eol client:load="svelte" project={projectResult} />

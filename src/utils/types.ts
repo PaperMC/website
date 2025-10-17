@@ -39,7 +39,7 @@ export interface VersionFamilyBuild extends Build {
 export interface Build {
   id: number;
   time: string;
-  channel: 'ALPHA' | 'BETA' | 'STABLE' | 'RECOMMENDED';
+  channel: "ALPHA" | "BETA" | "STABLE" | "RECOMMENDED";
   commits: BuildChange[];
   downloads: {
     [key: string]: BuildDownload;

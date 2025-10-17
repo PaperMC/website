@@ -1,10 +1,10 @@
 ---
-import { Icon } from 'astro-icon/components';
+import { Icon } from "astro-icon/components";
 
 export enum SoftwarePreviewType {
-  Info = 'Info',
-  Download = 'Download',
-  Javadocs = 'Javadocs',
+  Info = "Info",
+  Download = "Download",
+  Javadocs = "Javadocs",
 }
 
 interface Props {
@@ -38,8 +38,8 @@ const { id, name, icon, description, type, eol } = Astro.props;
 </software-preview>
 
 <script>
-  import { getProject } from '@/utils/fill';
-  import { latestVersionFrom } from '@/utils/versions';
+  import { getProject } from "@/utils/fill";
+  import { latestVersionFrom } from "@/utils/versions";
 
   class SoftwarePreview extends HTMLElement {
     async connectedCallback() {
@@ -48,19 +48,19 @@ const { id, name, icon, description, type, eol } = Astro.props;
         return;
       }
 
-      const anchor = this.querySelector('a');
+      const anchor = this.querySelector("a");
       if (!anchor) {
         return;
       }
 
       switch (previewType) {
-        case 'Info':
+        case "Info":
           anchor.href = `/software/${software}`;
           break;
-        case 'Download':
+        case "Download":
           anchor.href = `/downloads/${software}`;
           break;
-        case 'Javadocs':
+        case "Javadocs":
           const { versions } = await getProject(software);
           const latest = latestVersionFrom(versions);
           if (latest) {
@@ -73,5 +73,5 @@ const { id, name, icon, description, type, eol } = Astro.props;
     }
   }
 
-  customElements.define('software-preview', SoftwarePreview);
+  customElements.define("software-preview", SoftwarePreview);
 </script>

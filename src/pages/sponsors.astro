@@ -1,9 +1,9 @@
 ---
-import Button from '@/components/input/Button.astro';
-import Layout from '@/layouts/Layout.astro';
-import { fetchAllSponsors } from '@/utils/sponsors';
-import UserImage from '@/components/data/UserImage.astro';
-import FeatureCard from '@/components/data/FeatureCard.astro';
+import Button from "@/components/input/Button.astro";
+import Layout from "@/layouts/Layout.astro";
+import { fetchAllSponsors } from "@/utils/sponsors";
+import UserImage from "@/components/data/UserImage.astro";
+import FeatureCard from "@/components/data/FeatureCard.astro";
 
 const sponsors = await fetchAllSponsors();
 ---
@@ -11,7 +11,7 @@ const sponsors = await fetchAllSponsors();
 <Layout
   title="Sponsors"
   description="Without contributors our projects wouldn't be possible. Find out how you can help."
-  keywords={['papermc', 'paper', 'minecraft', 'sponsor', 'contributing']}
+  keywords={["papermc", "paper", "minecraft", "sponsor", "contributing"]}
   canonical="/sponsors"
 >
   <header class="mx-auto flex max-w-7xl flex-row gap-16 px-4 pt-32 pb-16 lg:pt-48 lg:pb-32">
@@ -53,20 +53,20 @@ const sponsors = await fetchAllSponsors();
   <section id="sponsors" class="mx-auto max-w-7xl px-4 py-8">
     <h2 class="text-xl font-semibold md:text-2xl">Our Sponsors</h2>
     <p class="mt-3 text-lg text-gray-900 dark:text-gray-100">
-      Our current balance is{' '}
+      Our current balance is{" "}
       <b>
-        ${sponsors && (sponsors.ocData.collective.stats.balance.valueInCents / 100)?.toLocaleString('en')}
+        ${sponsors && (sponsors.ocData.collective.stats.balance.valueInCents / 100)?.toLocaleString("en")}
       </b>
-      , and our estimated expenses are{' '}
+      , and our estimated expenses are{" "}
       <b>
-        ${sponsors && (sponsors.ocData.collective.stats.monthlySpending.valueInCents / 100)?.toLocaleString('en')}
-      </b>{' '}
+        ${sponsors && (sponsors.ocData.collective.stats.monthlySpending.valueInCents / 100)?.toLocaleString("en")}
+      </b>{" "}
       per month.
     </p>
     <div class="mt-8 grid grid-cols-8 gap-2 md:grid-cols-16 lg:grid-cols-18 xl:grid-cols-20">
       {
         sponsors?.ocData?.collective?.contributors?.nodes
-          ?.filter((n) => n.name !== 'Guest')
+          ?.filter((n) => n.name !== "Guest")
           .map((node) => <UserImage avatarUrl={node.image} name={node.name} />)
       }
       {

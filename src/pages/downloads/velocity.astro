@@ -1,18 +1,18 @@
 ---
 export const prerender = false;
-import Layout from '@/layouts/Layout.astro';
-import SoftwareDownloadPage from '@/components/data/SoftwareDownloadPage.svelte';
-import { getProjectDescriptorOrError } from '@/utils/download';
+import Layout from "@/layouts/Layout.astro";
+import SoftwareDownloadPage from "@/components/data/SoftwareDownloadPage.svelte";
+import { getProjectDescriptorOrError } from "@/utils/download";
 
-Astro.response.headers.set('Cache-Control', 'public, max-age=300');
-Astro.response.headers.set('CDN-Cache-Control', 'public, max-age=600');
-const projectResult = await getProjectDescriptorOrError('velocity');
+Astro.response.headers.set("Cache-Control", "public, max-age=300");
+Astro.response.headers.set("CDN-Cache-Control", "public, max-age=600");
+const projectResult = await getProjectDescriptorOrError("velocity");
 ---
 
 <Layout
   title="Velocity Downloads"
   description="Download Velocity, our high-performance Minecraft proxy."
-  keywords={['papermc', 'minecraft', 'performance', 'velocity', 'downloads', 'jar']}
+  keywords={["papermc", "minecraft", "performance", "velocity", "downloads", "jar"]}
   canonical="/downloads/velocity"
 >
   <SoftwareDownloadPage

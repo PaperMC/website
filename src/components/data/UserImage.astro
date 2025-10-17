@@ -1,5 +1,5 @@
 ---
-import RemoteResponsiveImageWrapper from '@/components/data/RemoteResponsiveImageWrapper.astro';
+import RemoteResponsiveImageWrapper from "@/components/data/RemoteResponsiveImageWrapper.astro";
 
 interface Props {
   avatarUrl: string;
@@ -8,15 +8,15 @@ interface Props {
 }
 
 const { avatarUrl, name, link } = Astro.props;
-const Tag = link ? 'a' : 'div';
+const Tag = link ? "a" : "div";
 ---
 
 <Tag
-  role={link ? 'button' : undefined}
+  role={link ? "button" : undefined}
   class="user-image relative flex aspect-square transform items-center justify-center overflow-auto rounded-full bg-gray-600 font-bold text-white uppercase transition-transform hover:scale-120 hover:shadow-lg"
   href={link}
-  rel={link && 'noreferrer'}
-  target={link && '_blank'}
+  rel={link && "noreferrer"}
+  target={link && "_blank"}
 >
   {name[0]}
   <RemoteResponsiveImageWrapper

@@ -1,5 +1,5 @@
 ---
-import { Icon } from 'astro-icon/components';
+import { Icon } from "astro-icon/components";
 
 const hash = import.meta.env.GIT_COMMIT_HASH;
 ---
@@ -91,7 +91,7 @@ const hash = import.meta.env.GIT_COMMIT_HASH;
         </span>
         <span class="text-sm text-gray-300">
           <a class="text-sm font-medium text-blue-800 dark:text-blue-300" href="https://github.com/PaperMC/website/"> PaperMC/website </a>
-          {' @ '}
+          {" @ "}
           <a class="text-sm font-medium text-blue-800 dark:text-blue-300" href={`https://github.com/PaperMC/website/commit/${hash}`}>
             {hash}
           </a>

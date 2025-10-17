@@ -1,7 +1,7 @@
 ---
-import Footer from '@/components/layout/Footer.astro';
-import NavBar from '@/components/layout/NavBar.astro';
-import '@/styles/global.css';
+import Footer from "@/components/layout/Footer.astro";
+import NavBar from "@/components/layout/NavBar.astro";
+import "@/styles/global.css";
 
 interface Props {
   title: string;
@@ -19,7 +19,7 @@ const { title, description, keywords, canonical } = Astro.props;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content={description} />
-    <meta name="keywords" content={keywords.join(', ')} />
+    <meta name="keywords" content={keywords.join(", ")} />
     <meta property="og:title" content={title} />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="/assets/logo/256x.png" />

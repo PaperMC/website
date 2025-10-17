@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { type Build, type ProjectDescriptor } from '@/utils/types';
-  import { onMount } from 'svelte';
+  import { type Build, type ProjectDescriptor } from "@/utils/types";
+  import { onMount } from "svelte";
 
   interface Props {
     projectId: string;
@@ -31,8 +31,8 @@
     close();
   }
   onMount(() => {
-    document.addEventListener('click', onDocumentClick);
-    return () => document.removeEventListener('click', onDocumentClick);
+    document.addEventListener("click", onDocumentClick);
+    return () => document.removeEventListener("click", onDocumentClick);
   });
 
   type DownloadEntry = [string, { name: string; checksums: { sha256: string }; size: number; url: string }];
@@ -52,7 +52,7 @@
         copied = { ...copied };
       }, 2000);
     } catch (error) {
-      console.error('Failed to copy URL to clipboard:', error);
+      console.error("Failed to copy URL to clipboard:", error);
     }
   }
 </script>
@@ -60,19 +60,19 @@
 <div class="relative w-max" bind:this={rootEl}>
   <div
     class={`transition-color flex flex-row rounded-lg transition-shadow hover:shadow-lg
-      ${!compact ? 'w-full md:w-100' : ''}
-      ${eol ? 'bg-channel-eol-primary' : `bg-channel-${build?.channel?.toLowerCase()}-primary`}
-      ${eol ? 'text-channel-eol-secondary' : `text-channel-${build?.channel?.toLowerCase()}-secondary`}
-      ${disabled ? 'cursor-not-allowed opacity-60' : ''}`}
+      ${!compact ? "w-full md:w-100" : ""}
+      ${eol ? "bg-channel-eol-primary" : `bg-channel-${build?.channel?.toLowerCase()}-primary`}
+      ${eol ? "text-channel-eol-secondary" : `text-channel-${build?.channel?.toLowerCase()}-secondary`}
+      ${disabled ? "cursor-not-allowed opacity-60" : ""}`}
   >
     <a
-      class={`flex flex-1 flex-row items-center ${compact ? 'gap-2 py-1 pl-2 leading-0' : 'gap-8 py-3 pl-5'}`}
-      href={build?.downloads['server:default']?.url}
+      class={`flex flex-1 flex-row items-center ${compact ? "gap-2 py-1 pl-2 leading-0" : "gap-8 py-3 pl-5"}`}
+      href={build?.downloads["server:default"]?.url}
       target="_blank"
       aria-disabled={disabled}
       onclick={(e) => disabled && (e.preventDefault(), e.stopPropagation())}
     >
-      <div class={compact ? 'h-4 w-4' : 'h-8 w-8'}>
+      <div class={compact ? "h-4 w-4" : "h-8 w-8"}>
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
           <path
             stroke-linecap="round"
@@ -90,7 +90,7 @@
             {project?.name ?? projectId}
             {version}
           </span>
-          <p class="text-gray-100">{build ? `Build #${build.id}` : ''}</p>
+          <p class="text-gray-100">{build ? `Build #${build.id}` : ""}</p>
         {:else}
           <div class="mb-2 h-6 w-40 animate-pulse rounded bg-gray-200/40 dark:bg-gray-700/40"></div>
           <div class="h-5 w-20 animate-pulse rounded bg-gray-200/30 dark:bg-gray-700/30"></div>
@@ -111,7 +111,7 @@
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        class={`text-gray-200 ${compact ? 'h-4 w-4' : 'h-5 w-5'}`}
+        class={`text-gray-200 ${compact ? "h-4 w-4" : "h-5 w-5"}`}
         viewBox="0 0 20 20"
         fill="currentColor"
       >
@@ -126,15 +126,15 @@
 
     <div
       class={`bg-background-light-10 dark:bg-background-dark-80 absolute z-40 mt-2 divide-y divide-gray-200 rounded-md border border-gray-200 shadow-lg dark:divide-gray-800 dark:border-gray-800
-              ${compact ? 'right-0 origin-top-right' : 'left-0 w-full origin-top-left md:w-auto'}
-              ${open ? 'block opacity-100' : 'hidden opacity-0'}`}
+              ${compact ? "right-0 origin-top-right" : "left-0 w-full origin-top-left md:w-auto"}
+              ${open ? "block opacity-100" : "hidden opacity-0"}`}
       role="menu"
     >
       {#if build}
         {#each downloadEntries as entry (entry[1].name)}
           <a
             class="block transition-colors hover:bg-blue-100 dark:hover:bg-gray-800"
-            href={build?.downloads['server:default']?.url}
+            href={build?.downloads["server:default"]?.url}
             target="_blank"
             role="menuitem"
             onclick={() => (open = false)}
@@ -142,7 +142,7 @@
             <div class="px-4 py-3">
               <div class="flex flex-wrap items-center gap-2 font-medium">
                 <span>{entry[1].name}</span>
-                {#if entry[0] === 'application'}
+                {#if entry[0] === "application"}
                   <span class="rounded-full bg-yellow-200/80 px-2 py-0.5 text-xs text-yellow-800">Recommended</span>
                 {/if}
                 {#if copied[entry[1].name]}
@@ -186,7 +186,7 @@
     height: 2rem;
   }
 
-  [role='menu'] {
+  [role="menu"] {
     top: 100%;
     transition: opacity 0.25s ease;
   }

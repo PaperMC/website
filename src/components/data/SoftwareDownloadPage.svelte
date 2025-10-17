@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { onMount, type Snippet } from 'svelte';
-  import SoftwareDownload from '@/components/data/SoftwareDownload.svelte';
-  import type { ProjectDescriptor } from '@/utils/types';
+  import { onMount, type Snippet } from "svelte";
+  import SoftwareDownload from "@/components/data/SoftwareDownload.svelte";
+  import type { ProjectDescriptor } from "@/utils/types";
 
   interface Props {
     id: string;

@@ -1,18 +1,18 @@
 ---
 export const prerender = false;
-import Layout from '@/layouts/Layout.astro';
-import SoftwareDownloadPage from '@/components/data/SoftwareDownloadPage.svelte';
-import { getProjectDescriptorOrError } from '@/utils/download';
+import Layout from "@/layouts/Layout.astro";
+import SoftwareDownloadPage from "@/components/data/SoftwareDownloadPage.svelte";
+import { getProjectDescriptorOrError } from "@/utils/download";
 
-Astro.response.headers.set('Cache-Control', 'public, max-age=300');
-Astro.response.headers.set('CDN-Cache-Control', 'public, max-age=600');
-const projectResult = await getProjectDescriptorOrError('folia');
+Astro.response.headers.set("Cache-Control", "public, max-age=300");
+Astro.response.headers.set("CDN-Cache-Control", "public, max-age=600");
+const projectResult = await getProjectDescriptorOrError("folia");
 ---
 
 <Layout
   title="Folia"
   description="Download the latest builds of Folia, the experimental Paper fork with regionised multithreading."
-  keywords={['papermc', 'minecraft', 'performance', 'paper', 'downloads', 'jar']}
+  keywords={["papermc", "minecraft", "performance", "paper", "downloads", "jar"]}
   canonical="/downloads/folia"
 >
   <SoftwareDownloadPage

@@ -1,17 +1,17 @@
 <script lang="ts">
-  import { getVersionBuilds } from '@/utils/fill';
-  import type { Build, ProjectDescriptor } from '@/utils/types';
+  import { getVersionBuilds } from "@/utils/fill";
+  import type { Build, ProjectDescriptor } from "@/utils/types";
 
-  import SoftwareDownloadButton from '@/components/data/SoftwareDownloadButton.svelte';
-  import SoftwareBuilds from '@/components/data/SoftwareBuilds.svelte';
+  import SoftwareDownloadButton from "@/components/data/SoftwareDownloadButton.svelte";
+  import SoftwareBuilds from "@/components/data/SoftwareBuilds.svelte";
 
-  import PaperIconUrl from '@/assets/brand/paper.svg?url';
-  import VelocityIconUrl from '@/assets/brand/velocity.svg?url';
-  import FoliaIconUrl from '@/assets/brand/folia.svg?url';
-  import WaterfallIconUrl from '@/assets/brand/waterfall.svg?url';
-  import type { Snippet } from 'svelte';
+  import PaperIconUrl from "@/assets/brand/paper.svg?url";
+  import VelocityIconUrl from "@/assets/brand/velocity.svg?url";
+  import FoliaIconUrl from "@/assets/brand/folia.svg?url";
+  import WaterfallIconUrl from "@/assets/brand/waterfall.svg?url";
+  import type { Snippet } from "svelte";
   interface Props {
-    id: 'paper' | 'velocity' | 'folia' | 'waterfall' | (string & {});
+    id: "paper" | "velocity" | "folia" | "waterfall" | (string & {});
     project: ProjectDescriptor;
     description?: string;
     Description?: Snippet;
@@ -68,8 +68,8 @@
   }
 
   function channelClass(channel?: string) {
-    if (eol) return 'text-channel-eol-primary';
-    const c = (channel ?? '').toLowerCase();
+    if (eol) return "text-channel-eol-primary";
+    const c = (channel ?? "").toLowerCase();
     return `text-channel-${c}-primary`;
   }
 </script>
@@ -100,14 +100,14 @@
       {#if isStable}
         {#if Description}
           {@render Description()}
-        {:else if typeof description === 'string'}
+        {:else if typeof description === "string"}
           {@html description}
         {/if}
       {:else if experimentalWarning}
         {experimentalWarning}
       {:else if Description}
         {@render Description()}
-      {:else if typeof description === 'string'}
+      {:else if typeof description === "string"}
         {@html description}
       {/if}
     </p>
@@ -119,8 +119,8 @@
         <button
           class={`transition-border flex w-full flex-row rounded-lg border py-3 pl-5 md:w-100 ${
             isStable
-              ? 'border-red-900 text-red-700 dark:border-red-500 dark:text-red-400'
-              : 'border-blue-900 text-blue-700 dark:border-blue-600 dark:text-blue-400'
+              ? "border-red-900 text-red-700 dark:border-red-500 dark:text-red-400"
+              : "border-blue-900 text-blue-700 dark:border-blue-600 dark:text-blue-400"
           }`}
           onclick={toggleStable}
         >

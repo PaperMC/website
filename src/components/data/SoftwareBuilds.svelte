@@ -1,7 +1,7 @@
 <script lang="ts">
-  import type { Build } from '@/utils/types';
-  import { formatISODateTime, formatRelativeDate } from '@/utils/time';
-  import SoftwareBuildChanges from '@/components/data/SoftwareBuildChanges.svelte';
+  import type { Build } from "@/utils/types";
+  import { formatISODateTime, formatRelativeDate } from "@/utils/time";
+  import SoftwareBuildChanges from "@/components/data/SoftwareBuildChanges.svelte";
 
   interface Props {
     project: string;
@@ -12,14 +12,14 @@
 
   let { project, version, builds, eol = false }: Props = $props();
 
-  function channelBgClass(ch?: Build['channel']): string {
-    if (eol) return 'bg-channel-eol-primary';
-    const c = (ch ?? '').toLowerCase();
+  function channelBgClass(ch?: Build["channel"]): string {
+    if (eol) return "bg-channel-eol-primary";
+    const c = (ch ?? "").toLowerCase();
     return `bg-channel-${c}-primary`;
   }
-  function channelTextClass(ch?: Build['channel']): string {
-    if (eol) return 'text-channel-eol-secondary';
-    const c = (ch ?? '').toLowerCase();
+  function channelTextClass(ch?: Build["channel"]): string {
+    if (eol) return "text-channel-eol-secondary";
+    const c = (ch ?? "").toLowerCase();
     return `text-channel-${c}-secondary`;
   }
 </script>
@@ -32,7 +32,7 @@
         <div class="flex flex-row items-start px-4 py-2 transition-colors hover:bg-blue-100 dark:hover:bg-gray-900">
           <a
             role="button"
-            href={build.downloads?.['server:default']?.url}
+            href={build.downloads?.["server:default"]?.url}
             target="_blank"
             class={`mr-4 inline-flex min-w-16 items-center gap-1 rounded-full p-2 text-center text-sm font-medium ${channelBgClass(build.channel)} ${channelTextClass(build.channel)}`}
           >
