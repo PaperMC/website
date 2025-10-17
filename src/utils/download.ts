@@ -97,6 +97,7 @@ export async function getProjectDescriptorWithHangar(id: string): Promise<{ proj
 
     return {
       project: {
+        id,
         name: projectData.project.name,
         latestStableVersion,
         latestExperimentalVersion,
