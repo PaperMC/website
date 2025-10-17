@@ -118,7 +118,7 @@
         build={builds.value?.latest}
         {version}
         eol={!!eol}
-        disabled={builds.value?.latest === null || builds.value?.latest === undefined}
+        disabled={builds.value?.latest === null || builds.value?.latest === undefined || buildsLoading}
       />
 
       {#if project.latestExperimentalVersion}
