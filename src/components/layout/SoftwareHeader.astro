@@ -35,7 +35,9 @@ const { id, name, icon, github, eol } = Astro.props;
       <h2 class="text-4xl leading-normal font-medium lg:text-5xl lg:leading-normal">
         <slot name="header" />
       </h2>
-      <p class="mt-4 text-xl"><slot name="description" /></p>
+      <div class="mt-4 text-xl">
+        <slot name="description" />
+      </div>
       <div class="mt-8 flex flex-row gap-4">
         <Button
           variant="filled"
