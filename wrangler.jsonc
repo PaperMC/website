@@ -1,8 +1,11 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "papermc-website-staging",
+  "main": "./dist/_worker.js/index.js",
   "compatibility_date": "2025-10-17",
+  "compatibility_flags": ["nodejs_compat"],
   "assets": {
+    "binding": "ASSETS",
     "directory": "./dist",
   },
   "preview_urls": true,
