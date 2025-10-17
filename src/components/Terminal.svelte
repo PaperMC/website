@@ -1,6 +1,7 @@
 <script lang="ts">
   import { formatISOFullTime } from "@/utils/time";
-  import { getProject, getVersionBuilds } from "@/utils/fill";
+  import { getProject } from "@/utils/fill";
+  import { latestVersionFrom } from "@/utils/versions";
 
   const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
   const getNaturalDelay = () => Math.floor(Math.random() * 80) + 40;
@@ -12,39 +13,16 @@
   let success = $state<string | null>(null);
   let history = $state<{ kind: "cmd" | "info"; text: string }[]>([]);
 
-  let latestStableVersion = $state<string>("1.21.4");
-
-  const isVersionStable = async (version: string): Promise<boolean> => {
-    try {
-      const builds = await getVersionBuilds("paper", version);
-      for (let i = builds.length - 1; i >= 0; i--) {
-        if (builds[i].channel === "STABLE") return true;
-      }
-      return false;
-    } catch {
-      return false;
-    }
-  };
+  let latestStableVersion = $state<string>("1.21.8");
 
   $effect(() => {
-    let cancelled = false;
     (async () => {
-      try {
-        const projectData = await getProject("paper");
-        const flattened = (
-          Object.values(projectData.versions).flat() as string[]
-        ).reverse();
-        for (const v of flattened) {
-          if (cancelled) return;
-          if (await isVersionStable(v)) {
-            latestStableVersion = v;
-            return;
-          }
-        }
-        if (flattened.length) latestStableVersion = flattened[0];
-      } catch {}
+      const { versions } = await getProject("paper");
+      const latest = latestVersionFrom(versions);
+      if (latest) {
+        latestStableVersion = latest;
+      }
     })();
-    return () => (cancelled = true);
   });
 
   function handleCommand(
