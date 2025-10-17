@@ -53,13 +53,16 @@
     return `text-channel-${c}-primary`;
   }
 
+  let buildsLoading = $state(false);
   watch(
     () => version,
     (ver, oldVer) => {
       // Only handle changes, not initial page load where builds are prerendered on server.
       if (oldVer !== undefined && ver !== oldVer) {
+        buildsLoading = true;
         fetchBuildsOrError({ value: project }, !isStable).then((result) => {
           builds = result;
+          buildsLoading = false;
         });
       }
     }
@@ -142,7 +145,9 @@
         </span>
       </p>
 
-      {#if builds.error}
+      {#if buildsLoading}
+        <div class="text-center text-sm text-gray-400">Loading builds…</div>
+      {:else if builds.error}
         <div class="text-center text-sm text-red-500">{builds.error}</div>
       {:else if builds.value && builds.value.builds && builds.value.builds.length > 0}
         <SoftwareBuilds project={id} {version} builds={builds.value.builds} eol={!!eol} />
