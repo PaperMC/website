@@ -15,12 +15,27 @@ export function cmpVersion(a: string, b: string) {
 }
 
 export function latestVersionFrom(
-  versionsObj: Record<string, string[]>
+  versionsObj: Record<string, string[]>,
+  includePreReleases = false
 ): string {
   const all = Object.values(versionsObj).flat();
+  if (all.length === 0) return "";
+
+  if (includePreReleases) {
+    return all.sort(cmpVersion).at(-1) ?? "";
+  }
 
   const stable = all.filter((v) => !v.includes("-"));
-  const pool = stable.length ? stable : all;
+  if (stable.length === 0) {
+    return all.sort(cmpVersion).at(-1) ?? "";
+  }
 
-  return pool.sort(cmpVersion).at(-1) ?? "";
+  const latestStable = stable.sort(cmpVersion).at(-1) ?? "";
+  const latestOverall = all.sort(cmpVersion).at(-1) ?? "";
+
+  if (!latestOverall.includes("-")) return latestOverall;
+
+  return cmpVersion(latestOverall, latestStable) > 0
+    ? latestOverall
+    : latestStable;
 }

@@ -95,7 +95,12 @@ const { id, name, icon, github, eol } = Astro.props;
       }
 
       const { versions } = await getProject(software);
-      const latest = latestVersionFrom(versions);
+      let latest = latestVersionFrom(versions);
+
+      if (software === "velocity" && latest.endsWith("-SNAPSHOT")) {
+        latest = latest.replace(/-SNAPSHOT$/, "");
+      }
+
       button.setAttribute(
         "href",
         `https://jd.papermc.io/${software}/${latest}`
