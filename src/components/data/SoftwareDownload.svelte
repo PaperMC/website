@@ -135,9 +135,9 @@
     <section id="builds" class="mt-20">
       <h2 class="text-center text-xl font-medium">Older builds</h2>
       <p class="mt-2 mb-8 px-4 text-center text-lg text-gray-800 dark:text-gray-200">
-        Looking for older builds - or changelogs? We got you!&nbsp;<br />
+        Looking for older builds - or changelogs? We got you!<br />
         <span class="text-gray-700 dark:text-gray-400">
-          Even older builds are available in our&nbsp;
+          Even older builds are available in our
           <a href={`https://fill-ui.papermc.io/projects/${id}`} class="text-gray-700 underline dark:text-gray-400"> build explorer </a>.
         </span>
       </p>
