@@ -6,12 +6,10 @@
 
 @custom-variant dark (@media (prefers-color-scheme: dark));
 
-@source inline(
-  "bg-channel-alpha-primary bg-channel-alpha-secondary bg-channel-beta-primary bg-channel-beta-secondary bg-channel-stable-primary bg-channel-stable-secondary bg-channel-recommended-primary bg-channel-recommended-secondary bg-channel-eol-primary bg-channel-eol-secondary"
-);
-@source inline(
-  "text-channel-alpha-primary text-channel-alpha-secondary text-channel-beta-primary text-channel-beta-secondary text-channel-stable-primary text-channel-stable-secondary text-channel-recommended-primary text-channel-recommended-secondary text-channel-eol-primary text-channel-eol-secondary"
-);
+/* prettier-ignore */
+@source inline("bg-channel-alpha-primary bg-channel-alpha-secondary bg-channel-beta-primary bg-channel-beta-secondary bg-channel-stable-primary bg-channel-stable-secondary bg-channel-recommended-primary bg-channel-recommended-secondary bg-channel-eol-primary bg-channel-eol-secondary");
+/* prettier-ignore */
+@source inline("text-channel-alpha-primary text-channel-alpha-secondary text-channel-beta-primary text-channel-beta-secondary text-channel-stable-primary text-channel-stable-secondary text-channel-recommended-primary text-channel-recommended-secondary text-channel-eol-primary text-channel-eol-secondary");
 
 @theme {
   --font-sans: Poppins, Roboto, Open Sans, ui-sans-serif, system-ui, sans-serif;
