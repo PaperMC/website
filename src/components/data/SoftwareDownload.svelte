@@ -60,9 +60,9 @@
     (ver, oldVer) => {
       // Only handle changes, not initial page load where builds are prerendered on server.
       if (oldVer !== undefined && ver !== oldVer) {
-        buildsPromise = buildsPromise.then(() => {
+        buildsPromise = buildsPromise.then(async () => {
           buildsLoading = true;
-          fetchBuildsOrError({ value: project }, !isStable).then((result) => {
+          await fetchBuildsOrError({ value: project }, !isStable).then((result) => {
             builds = result;
             buildsLoading = false;
           });
