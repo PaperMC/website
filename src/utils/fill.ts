@@ -27,7 +27,7 @@ export async function getVersionBuilds(project: string, version: string, channel
   }
   const res = await edgeFetch(url, 300);
   if (!res.ok) {
-    throw new Error(`getVersionBuilds(${project}, ${version}) failed: ${res.status}`);
+    throw new Error(`getVersionBuilds(${project}, ${version}, ${channel}) failed: ${res.status}`);
   }
   return res.json() as Promise<Build[]>;
 }
