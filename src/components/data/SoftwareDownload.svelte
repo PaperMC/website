@@ -1,6 +1,5 @@
 <script lang="ts">
-  import { getVersionBuilds } from "@/utils/fill";
-  import type { Build, ProjectDescriptor } from "@/utils/types";
+  import type { ProjectDescriptor } from "@/utils/types";
 
   import SoftwareDownloadButton from "@/components/data/SoftwareDownloadButton.svelte";
   import SoftwareBuilds from "@/components/data/SoftwareBuilds.svelte";
@@ -10,16 +9,28 @@
   import FoliaIconUrl from "@/assets/brand/folia.svg?url";
   import WaterfallIconUrl from "@/assets/brand/waterfall.svg?url";
   import type { Snippet } from "svelte";
+  import { fetchBuildsOrError, type ProjectBuildsOrError } from "@/utils/download";
+  import { watch } from "runed";
+
   interface Props {
     id: "paper" | "velocity" | "folia" | "waterfall" | (string & {});
     project: ProjectDescriptor;
+    builds: ProjectBuildsOrError;
     description?: string;
     Description?: Snippet;
     experimentalWarning?: string;
     eol?: boolean;
   }
 
-  let { id, project, description = undefined, Description = undefined, experimentalWarning = undefined, eol = false }: Props = $props();
+  let {
+    id,
+    project,
+    builds,
+    description = undefined,
+    Description = undefined,
+    experimentalWarning = undefined,
+    eol = false,
+  }: Props = $props();
 
   const ICONS: Record<string, string | undefined> = {
     paper: PaperIconUrl,
@@ -32,37 +43,6 @@
 
   let version = $derived(isStable ? project?.latestStableVersion : (project?.latestExperimentalVersion ?? project?.latestStableVersion));
 
-  let builds: Build[] = $state([]);
-  let latestBuild: Build | undefined = $state();
-  let buildsLoading = $state(false);
-  let buildsError: string | null = $state(null);
-
-  async function fetchBuilds() {
-    if (!id || !version) {
-      builds = [];
-      latestBuild = undefined;
-      return;
-    }
-    buildsLoading = true;
-    buildsError = null;
-    try {
-      const res = await getVersionBuilds(id, version);
-      builds = Array.isArray(res) ? res : [];
-      latestBuild = builds[0] || undefined;
-    } catch (e) {
-      console.error(e);
-      buildsError = `Failed to load builds for ${id} ${version}`;
-      builds = [];
-      latestBuild = undefined;
-    } finally {
-      buildsLoading = false;
-    }
-  }
-
-  $effect(() => {
-    fetchBuilds();
-  });
-
   function toggleStable() {
     isStable = !isStable;
   }
@@ -72,6 +52,18 @@
     const c = (channel ?? "").toLowerCase();
     return `text-channel-${c}-primary`;
   }
+
+  watch(
+    () => version,
+    (ver, oldVer) => {
+      // Only handle changes, not initial page load where builds are prerendered on server.
+      if (oldVer !== undefined && ver !== oldVer) {
+        fetchBuildsOrError({ value: project }, !isStable).then((result) => {
+          builds = result;
+        });
+      }
+    }
+  );
 </script>
 
 <header class="mx-auto flex max-w-7xl flex-row flex-wrap gap-16 px-4 pt-32 pb-16 lg:pt-48 lg:pb-26">
@@ -93,7 +85,7 @@
 
     <h2 class="text-4xl leading-normal font-medium lg:text-5xl lg:leading-normal">
       Get {project.name}
-      <span class={channelClass(latestBuild?.channel)}>{version}</span>
+      <span class={channelClass(builds?.value?.latest?.channel)}>{version}</span>
     </h2>
 
     <p class="mt-4 text-xl">
@@ -113,7 +105,14 @@
     </p>
 
     <div class="mt-8 flex flex-col gap-4">
-      <SoftwareDownloadButton projectId={id} {project} build={latestBuild} {version} eol={!!eol} disabled={buildsLoading || !latestBuild} />
+      <SoftwareDownloadButton
+        projectId={id}
+        {project}
+        build={builds.value?.latest}
+        {version}
+        eol={!!eol}
+        disabled={builds.value?.latest === null || builds.value?.latest === undefined}
+      />
 
       {#if project.latestExperimentalVersion}
         <button
@@ -143,12 +142,10 @@
         </span>
       </p>
 
-      {#if buildsLoading}
-        <div class="text-center text-sm text-gray-400">Loading builds…</div>
-      {:else if buildsError}
-        <div class="text-center text-sm text-red-500">{buildsError}</div>
-      {:else if builds.length > 0}
-        <SoftwareBuilds project={id} {version} {builds} eol={!!eol} />
+      {#if builds.error}
+        <div class="text-center text-sm text-red-500">{builds.error}</div>
+      {:else if builds.value && builds.value.builds && builds.value.builds.length > 0}
+        <SoftwareBuilds project={id} {version} builds={builds.value.builds} eol={!!eol} />
       {/if}
     </section>
 

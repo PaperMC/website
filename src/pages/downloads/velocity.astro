@@ -2,11 +2,12 @@
 export const prerender = false;
 import Layout from "@/layouts/Layout.astro";
 import SoftwareDownloadPage from "@/components/data/SoftwareDownloadPage.svelte";
-import { getProjectDescriptorOrError } from "@/utils/download";
+import { getProjectDescriptorOrError, fetchBuildsOrError } from "@/utils/download";
 
 Astro.response.headers.set("Cache-Control", "public, max-age=300");
 Astro.response.headers.set("CDN-Cache-Control", "public, max-age=600");
 const projectResult = await getProjectDescriptorOrError("velocity");
+const buildsResult = await fetchBuildsOrError(projectResult, false);
 ---
 
 <Layout
@@ -20,5 +21,6 @@ const projectResult = await getProjectDescriptorOrError("velocity");
     description="Download Velocity, our high-performance Minecraft proxy."
     client:load="svelte"
     project={projectResult}
+    builds={buildsResult}
   />
 </Layout>

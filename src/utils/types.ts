@@ -66,6 +66,7 @@ export interface ProjectsResponse {
 }
 
 export interface ProjectDescriptor {
+  id: string;
   name: string;
   latestStableVersion: string;
   latestExperimentalVersion: string | null;
