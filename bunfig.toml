@@ -1,0 +1,7 @@
+[run]
+# equivalent to `bun --bun` for all `bun run` commands
+bun = true
+
+[install]
+# Only install package versions published at least 3 days ago
+minimumReleaseAge = 259200
