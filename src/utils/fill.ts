@@ -1,4 +1,4 @@
-import type { Build, Project } from "@/utils/types";
+import type { Build, BuildChannel, Project } from "@/utils/types";
 
 const API_ENDPOINT = "https://fill.papermc.io/v3";
 const BSTATS_URL = "https://bstats.org/api/v1/plugins/580/charts/players/data/?maxElements=1";
@@ -20,8 +20,12 @@ export async function getProject(project: string): Promise<Project> {
   return res.json() as Promise<Project>;
 }
 
-export async function getVersionBuilds(project: string, version: string): Promise<Build[]> {
-  const res = await edgeFetch(`${API_ENDPOINT}/projects/${project}/versions/${version}/builds`, 300);
+export async function getVersionBuilds(project: string, version: string, channel?: BuildChannel): Promise<Build[]> {
+  let url = `${API_ENDPOINT}/projects/${project}/versions/${version}/builds`;
+  if (channel) {
+    url += `?channel=${encodeURIComponent(channel)}`;
+  }
+  const res = await edgeFetch(url, 300);
   if (!res.ok) {
     throw new Error(`getVersionBuilds(${project}, ${version}) failed: ${res.status}`);
   }

@@ -36,10 +36,12 @@ export interface VersionFamilyBuild extends Build {
   version: string;
 }
 
+export type BuildChannel = "ALPHA" | "BETA" | "STABLE" | "RECOMMENDED";
+
 export interface Build {
   id: number;
   time: string;
-  channel: "ALPHA" | "BETA" | "STABLE" | "RECOMMENDED";
+  channel: BuildChannel;
   commits: BuildChange[];
   downloads: {
     [key: string]: BuildDownload;

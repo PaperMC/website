@@ -48,8 +48,8 @@ export async function getProjectDescriptor(id: string): Promise<ProjectDescripto
     // Check for stable builds
     for (let i = flattenedVersions.length - 1; i >= 0; i--) {
       try {
-        const builds = await getVersionBuilds(id, flattenedVersions[i]);
-        if (builds.some((build) => build.channel === "STABLE")) {
+        const builds = await getVersionBuilds(id, flattenedVersions[i], "STABLE");
+        if (builds.length > 0) {
           latestStableVersion = flattenedVersions[i];
           break;
         }
@@ -84,8 +84,8 @@ export async function getProjectDescriptorWithHangar(id: string): Promise<{ proj
     // Check for stable builds
     for (let i = flattenedVersions.length - 1; i >= 0; i--) {
       try {
-        const builds = await getVersionBuilds(id, flattenedVersions[i]);
-        if (builds.some((build) => build.channel === "STABLE")) {
+        const builds = await getVersionBuilds(id, flattenedVersions[i], "STABLE");
+        if (builds.length > 0) {
           latestStableVersion = flattenedVersions[i];
           break;
         }
