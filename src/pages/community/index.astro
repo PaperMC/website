@@ -1,79 +1,48 @@
 ---
-import Button from "@/components/input/Button.astro";
-import Layout from "@/layouts/Layout.astro";
+import Button from '@/components/input/Button.astro';
+import Layout from '@/layouts/Layout.astro';
 ---
 
 <Layout
   title="Community"
   description="We're happy to have you as a part of the PaperMC community!"
-  keywords={["papermc", "paper", "minecraft", "sponsor", "community"]}
+  keywords={['papermc', 'paper', 'minecraft', 'sponsor', 'community']}
   canonical="/community"
 >
-  <header
-    class="max-w-7xl flex flex-row mx-auto px-4 pt-32 pb-16 lg:pt-48 lg:pb-32 gap-16"
-  >
+  <header class="mx-auto flex max-w-7xl flex-row gap-16 px-4 pt-32 pb-16 lg:pt-48 lg:pb-32">
     <div class="flex-1">
-      <h1
-        class="font-medium leading-normal lg:text-5xl lg:leading-normal text-4xl"
-      >
-        Join Our Community
-      </h1>
-      <p class="text-xl mt-4">
-        We&apos;re happy to have you as a part of the PaperMC community! Please
-        read our community guidelines before participating.
+      <h1 class="text-4xl leading-normal font-medium lg:text-5xl lg:leading-normal">Join Our Community</h1>
+      <p class="mt-4 text-xl">
+        We&apos;re happy to have you as a part of the PaperMC community! Please read our community guidelines before participating.
       </p>
-      <div class="flex flex-row gap-4 mt-8">
-        <Button variant="filled" href="/community/guidelines" dense>
-          Community Guidelines
-        </Button>
+      <div class="mt-8 flex flex-row gap-4">
+        <Button variant="filled" href="/community/guidelines" dense> Community Guidelines </Button>
       </div>
     </div>
-    <div class="flex-1 lg:flex hidden justify-end"></div>
+    <div class="hidden flex-1 justify-end lg:flex"></div>
   </header>
-  <section
-    id="discord"
-    class="px-4 py-4 max-w-7xl mx-auto flex flex-col-reverse items-center gap-8 lg:flex-row"
-  >
+  <section id="discord" class="mx-auto flex max-w-7xl flex-col-reverse items-center gap-8 px-4 py-4 lg:flex-row">
     <div class="flex-1">
-      <h2 class="font-medium text-2xl md:text-4xl">Discord</h2>
-      <p class="md:mt-6 md:text-lg text-gray-900 dark:text-gray-100 mt-3">
-        Discord is a popular option for many gamers to communicate with each
-        other. We have a Discord community server that anyone can join.
+      <h2 class="text-2xl font-medium md:text-4xl">Discord</h2>
+      <p class="mt-3 text-gray-900 md:mt-6 md:text-lg dark:text-gray-100">
+        Discord is a popular option for many gamers to communicate with each other. We have a Discord community server that anyone can join.
       </p>
-      <div class="flex flex-row gap-4 mt-8">
-        <Button
-          variant="filled"
-          href="https://discord.gg/papermc"
-          external
-          dense
-        >
-          Join Our Discord
-        </Button>
+      <div class="mt-8 flex flex-row gap-4">
+        <Button variant="filled" href="https://discord.gg/papermc" external dense> Join Our Discord </Button>
       </div>
     </div>
-    <div class="justify-start flex w-full lg:flex-1 lg:justify-end"></div>
+    <div class="flex w-full justify-start lg:flex-1 lg:justify-end"></div>
   </section>
-  <section
-    id="forums"
-    class="px-4 py-4 max-w-7xl mx-auto flex flex-col-reverse items-center mt-12 gap-8 lg:flex-row"
-  >
+  <section id="forums" class="mx-auto mt-12 flex max-w-7xl flex-col-reverse items-center gap-8 px-4 py-4 lg:flex-row">
     <div class="flex-1">
-      <h2 class="font-medium text-2xl md:text-4xl">Forums</h2>
-      <p class="md:mt-6 md:text-lg text-gray-900 dark:text-gray-100 mt-3">
-        You can join the forums and chat with other administrators, developers,
-        project staff, and more.
+      <h2 class="text-2xl font-medium md:text-4xl">Forums</h2>
+      <p class="mt-3 text-gray-900 md:mt-6 md:text-lg dark:text-gray-100">
+        You can join the forums and chat with other administrators, developers, project staff, and more.
       </p>
-      <div class="flex flex-row gap-4 mt-8">
-        <Button
-          variant="filled"
-          href="https://forums.papermc.io/"
-          external
-          dense
-        >
-          Forums
-        </Button>
+      <div class="mt-8 flex flex-row gap-4">
+        <Button variant="filled" href="https://forums.papermc.io/" external dense> Forums </Button>
       </div>
     </div>
-    <div class="justify-start flex w-full lg:flex-1 lg:justify-end"></div>
+    <div class="flex w-full justify-start lg:flex-1 lg:justify-end"></div>
   </section>
 </Layout>

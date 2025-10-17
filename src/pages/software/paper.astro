@@ -1,32 +1,24 @@
 ---
-import Layout from "@/layouts/Layout.astro";
-import SoftwareHeader from "@/components/layout/SoftwareHeader.astro";
-import FeatureCard from "@/components/data/FeatureCard.astro";
-import Button from "@/components/input/Button.astro";
+import Layout from '@/layouts/Layout.astro';
+import SoftwareHeader from '@/components/layout/SoftwareHeader.astro';
+import FeatureCard from '@/components/data/FeatureCard.astro';
+import Button from '@/components/input/Button.astro';
 
-import HomeImage1 from "@/assets/images/home-1.png";
-import HomeImage3 from "@/assets/images/home-3.png";
-import CommunityImage from "@/assets/images/community.png";
+import HomeImage1 from '@/assets/images/home-1.png';
+import HomeImage3 from '@/assets/images/home-3.png';
+import CommunityImage from '@/assets/images/community.png';
 
-import { Image } from "astro:assets";
+import { Image } from 'astro:assets';
 
-import { getHangarProjects } from "@/utils/hangar";
+import { getHangarProjects } from '@/utils/hangar';
 
-const { pagination } = await getHangarProjects("paper");
+const { pagination } = await getHangarProjects('paper');
 ---
 
 <Layout
   title="Paper"
   description="Paper is a Minecraft game server based on Spigot, designed to greatly improve performance and offer more advanced features and API."
-  keywords={[
-    "papermc",
-    "paper",
-    "server",
-    "minecraft",
-    "performance",
-    "spigot",
-    "fork",
-  ]}
+  keywords={['papermc', 'paper', 'server', 'minecraft', 'performance', 'spigot', 'fork']}
   canonical="/software/paper"
 >
   <SoftwareHeader id="paper" name="Paper" icon="brand/paper">
@@ -34,17 +26,13 @@ const { pagination } = await getHangarProjects("paper");
       The blazing fast<br /><span class="text-blue-500">Minecraft server</span>
     </p>
     <p slot="description">
-      Paper is a Minecraft game server based on Spigot, designed to greatly
-      improve performance and offer more advanced features and API.
+      Paper is a Minecraft game server based on Spigot, designed to greatly improve performance and offer more advanced features and API.
     </p>
   </SoftwareHeader>
-  <section
-    id="why"
-    class="w-full pt-10 pb-5 bg-primary-200 dark:bg-background-dark-80"
-  >
-    <div class="max-w-7xl mx-auto">
-      <h2 class="font-semibold text-xl md:text-2xl px-6 lg:px-4">Why Paper?</h2>
-      <div class="grid md:grid-cols-3 mt-6 gap-2 px-2 xl:gap-4">
+  <section id="why" class="bg-primary-200 dark:bg-background-dark-80 w-full pt-10 pb-5">
+    <div class="mx-auto max-w-7xl">
+      <h2 class="px-6 text-xl font-semibold md:text-2xl lg:px-4">Why Paper?</h2>
+      <div class="mt-6 grid gap-2 px-2 md:grid-cols-3 xl:gap-4">
         <FeatureCard
           icon="icons/heroicons/bolt"
           label="It's stupidly fast"
@@ -63,107 +51,51 @@ const { pagination } = await getHangarProjects("paper");
       </div>
     </div>
   </section>
-  <section
-    id="facts"
-    class="flex flex-col max-w-7xl mx-auto px-4 py-8 gap-8 md:gap-12 md:py-16"
-  >
-    <div
-      class="flex flex-col gap-6 md:flex-row md:gap-8 xl:gap-24 items-center"
-    >
-      <div class="w-full flex-1 rounded-xl aspect-video relative overflow-clip">
-        <Image
-          alt="Hangar Homepage"
-          src={HomeImage3}
-          class="w-full h-full object-cover"
-        />
+  <section id="facts" class="mx-auto flex max-w-7xl flex-col gap-8 px-4 py-8 md:gap-12 md:py-16">
+    <div class="flex flex-col items-center gap-6 md:flex-row md:gap-8 xl:gap-24">
+      <div class="relative aspect-video w-full flex-1 overflow-clip rounded-xl">
+        <Image alt="Hangar Homepage" src={HomeImage3} class="h-full w-full object-cover" />
       </div>
       <div class="flex-1">
-        <h2 class="font-semibold text-2xl md:text-4xl">
-          A diverse plugin ecosystem
-        </h2>
-        <div class="md:mt-6 md:text-xl text-gray-900 dark:text-gray-100 mt-3">
-          Crafted by the PaperMC team & contributors, Hangar is our own
-          dedicated plugin repository, now in open beta! View
+        <h2 class="text-2xl font-semibold md:text-4xl">A diverse plugin ecosystem</h2>
+        <div class="mt-3 text-gray-900 md:mt-6 md:text-xl dark:text-gray-100">
+          Crafted by the PaperMC team & contributors, Hangar is our own dedicated plugin repository, now in open beta! View
           <span class="text-blue-500">{pagination.count}</span>
-          different plugins that are specific to Paper, or list your own with a very
-          streamlined creation process.
+          different plugins that are specific to Paper, or list your own with a very streamlined creation process.
         </div>
-        <div class="flex flex-row gap-4 mt-8">
-          <Button
-            variant="filled"
-            href="https://hangar.papermc.io/"
-            external
-            dense
-          >
-            Check out Hangar
-          </Button>
+        <div class="mt-8 flex flex-row gap-4">
+          <Button variant="filled" href="https://hangar.papermc.io/" external dense> Check out Hangar </Button>
         </div>
       </div>
     </div>
-    <div
-      class="flex flex-col gap-6 md:flex-row-reverse md:gap-8 xl:gap-24 items-center"
-    >
-      <div
-        class="w-full flex-1 rounded-xl bg-gray-900 aspect-video relative overflow-clip"
-      >
-        <Image
-          alt="Minecraft Players"
-          src={HomeImage1}
-          class="w-full h-full object-cover"
-        />
+    <div class="flex flex-col items-center gap-6 md:flex-row-reverse md:gap-8 xl:gap-24">
+      <div class="relative aspect-video w-full flex-1 overflow-clip rounded-xl bg-gray-900">
+        <Image alt="Minecraft Players" src={HomeImage1} class="h-full w-full object-cover" />
       </div>
       <div class="flex-1">
-        <h2 class="font-semibold text-2xl md:text-4xl break-all">
-          Getting Started
-        </h2>
-        <p class="md:mt-6 md:text-xl text-gray-900 dark:text-gray-100 mt-3">
-          To get started with Paper, you will need to download and install the
-          latest version of the server software. Once you&apos;re ready, take a
-          look at our extensive documentation.
+        <h2 class="text-2xl font-semibold break-all md:text-4xl">Getting Started</h2>
+        <p class="mt-3 text-gray-900 md:mt-6 md:text-xl dark:text-gray-100">
+          To get started with Paper, you will need to download and install the latest version of the server software. Once you&apos;re
+          ready, take a look at our extensive documentation.
         </p>
-        <div class="flex flex-row gap-4 mt-8">
-          <Button variant="filled" href="/downloads/paper" dense>
-            Downloads
-          </Button>
-          <Button
-            variant="outlined"
-            href="https://docs.papermc.io/paper/getting-started"
-            external
-            dense
-          >
-            Documentation
-          </Button>
+        <div class="mt-8 flex flex-row gap-4">
+          <Button variant="filled" href="/downloads/paper" dense> Downloads </Button>
+          <Button variant="outlined" href="https://docs.papermc.io/paper/getting-started" external dense> Documentation </Button>
         </div>
       </div>
     </div>
-    <div
-      class="flex flex-col gap-6 md:flex-row md:gap-8 xl:gap-24 items-center"
-    >
-      <div class="w-full flex-1 rounded-xl aspect-video relative overflow-clip">
-        <Image
-          alt="Community"
-          src={CommunityImage}
-          class="w-full h-full object-cover"
-        />
+    <div class="flex flex-col items-center gap-6 md:flex-row md:gap-8 xl:gap-24">
+      <div class="relative aspect-video w-full flex-1 overflow-clip rounded-xl">
+        <Image alt="Community" src={CommunityImage} class="h-full w-full object-cover" />
       </div>
       <div class="flex-1">
-        <h2 class="font-semibold text-2xl md:text-4xl">
-          Together with a community of server owners
-        </h2>
-        <p class="md:mt-6 md:text-xl text-gray-900 dark:text-gray-100 mt-3">
-          Whether you need help with your server settings, server lag, or need a
-          guide for formatting your chat, our knowledgeable staff and friendly
-          community are always around to lend a hand.
+        <h2 class="text-2xl font-semibold md:text-4xl">Together with a community of server owners</h2>
+        <p class="mt-3 text-gray-900 md:mt-6 md:text-xl dark:text-gray-100">
+          Whether you need help with your server settings, server lag, or need a guide for formatting your chat, our knowledgeable staff and
+          friendly community are always around to lend a hand.
         </p>
-        <div class="flex flex-row gap-4 mt-8">
-          <Button
-            variant="filled"
-            href="https://discord.gg/papermc"
-            external
-            dense
-          >
-            Join our Discord
-          </Button>
+        <div class="mt-8 flex flex-row gap-4">
+          <Button variant="filled" href="https://discord.gg/papermc" external dense> Join our Discord </Button>
         </div>
       </div>
     </div>

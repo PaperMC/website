@@ -1,6 +1,6 @@
 ---
-import { Icon } from "astro-icon/components";
-import { clsx } from "clsx";
+import { Icon } from 'astro-icon/components';
+import { clsx } from 'clsx';
 
 export interface NavDropDownProps {
   label: string;
@@ -12,35 +12,32 @@ const { label, className } = Astro.props;
 
 <div
   class={clsx(
-    "color-gray-200 hover:text-blue-600 dark:hover:text-blue-400 text-sm transition-colors px-2.5 relative inline-block h-full",
+    'color-gray-200 hover:text-blue-600 dark:hover:text-blue-400 text-sm transition-colors px-2.5 relative inline-block h-full',
     className
   )}
   data-nav-dropdown
 >
   <span class="flex flex-row items-center gap-1" role="button">
     {label}
-    <Icon
-      name="icons/heroicons/chevron-down"
-      class="w-4 h-4 fill-gray-700 dark:fill-gray-300"
-    />
+    <Icon name="icons/heroicons/chevron-down" class="h-4 w-4 fill-gray-700 dark:fill-gray-300" />
   </span>
   <ul
-    class="opacity-0 pointer-events-none mt-2 flex flex-col py-1 z-100 bg-background-light-10 dark:bg-background-dark-90 transition-all md:absolute md:border md:border-gray-200 md:dark:border-gray-800 md:rounded-lg md:shadow-md md:mt-0"
+    class="bg-background-light-10 dark:bg-background-dark-90 pointer-events-none z-100 mt-2 flex flex-col py-1 opacity-0 transition-all md:absolute md:mt-0 md:rounded-lg md:border md:border-gray-200 md:shadow-md md:dark:border-gray-800"
   >
     <slot />
   </ul>
 </div>
 
 <script>
-  document.querySelectorAll("[data-nav-dropdown]").forEach((el) => {
-    const ul = el.querySelector("ul");
-    el.addEventListener("mouseenter", () => {
-      ul?.classList?.remove("opacity-0", "pointer-events-none");
-      ul?.classList?.add("opacity-100");
+  document.querySelectorAll('[data-nav-dropdown]').forEach((el) => {
+    const ul = el.querySelector('ul');
+    el.addEventListener('mouseenter', () => {
+      ul?.classList?.remove('opacity-0', 'pointer-events-none');
+      ul?.classList?.add('opacity-100');
     });
-    el.addEventListener("mouseleave", () => {
-      ul?.classList?.remove("opacity-100");
-      ul?.classList?.add("opacity-0", "pointer-events-none");
+    el.addEventListener('mouseleave', () => {
+      ul?.classList?.remove('opacity-100');
+      ul?.classList?.add('opacity-0', 'pointer-events-none');
     });
   });
 </script>

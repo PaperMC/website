@@ -1,18 +1,13 @@
 ---
-import {
-  getImage,
-  imageConfig,
-  type LocalImageProps,
-  type RemoteImageProps,
-} from "astro:assets";
-import type { UnresolvedImageTransform } from "node_modules/astro/dist/assets/types";
-import type { HTMLAttributes } from "astro/types";
-import "node_modules/astro/components/image.css";
+import { getImage, imageConfig, type LocalImageProps, type RemoteImageProps } from 'astro:assets';
+import type { UnresolvedImageTransform } from 'node_modules/astro/dist/assets/types';
+import type { HTMLAttributes } from 'astro/types';
+import 'node_modules/astro/components/image.css';
 
-import fallbackImage from "@/assets/brand/paper.svg";
-import { AstroError } from "node_modules/astro/dist/core/errors/errors";
-import { AstroErrorData } from "node_modules/astro/dist/core/errors";
-import { inferRemoteSize } from "astro/assets/utils";
+import fallbackImage from '@/assets/brand/paper.svg';
+import { AstroError } from 'node_modules/astro/dist/core/errors/errors';
+import { AstroErrorData } from 'node_modules/astro/dist/core/errors';
+import { inferRemoteSize } from 'astro/assets/utils';
 
 type Props = LocalImageProps | RemoteImageProps;
 
@@ -22,28 +17,28 @@ if (props.alt === undefined || props.alt === null) {
   throw new AstroError(AstroErrorData.ImageMissingAlt);
 }
 
-if (typeof props.width === "string") {
+if (typeof props.width === 'string') {
   props.width = parseInt(props.width);
 }
 
-if (typeof props.height === "string") {
+if (typeof props.height === 'string') {
   props.height = parseInt(props.height);
 }
 
-const additionalAttributes: HTMLAttributes<"img"> = {};
+const additionalAttributes: HTMLAttributes<'img'> = {};
 try {
   await inferRemoteSize(props.src.toString());
 } catch (e) {
-  additionalAttributes.class = "invalid";
+  additionalAttributes.class = 'invalid';
   props.src = fallbackImage;
 }
 
-const layout = props.layout ?? imageConfig.layout ?? "none";
+const layout = props.layout ?? imageConfig.layout ?? 'none';
 
-if (layout !== "none") {
+if (layout !== 'none') {
   props.layout ??= imageConfig.layout;
-  props.fit ??= imageConfig.objectFit ?? "cover";
-  props.position ??= imageConfig.objectPosition ?? "center";
+  props.fit ??= imageConfig.objectFit ?? 'cover';
+  props.position ??= imageConfig.objectPosition ?? 'center';
 }
 
 const image = await getImage(props as UnresolvedImageTransform);
@@ -53,7 +48,7 @@ if (image.srcSet.values.length > 0) {
 }
 
 if (import.meta.env.DEV) {
-  additionalAttributes["data-image-component"] = "true";
+  additionalAttributes['data-image-component'] = 'true';
 }
 
 const { class: className, ...attributes } = {
@@ -62,7 +57,5 @@ const { class: className, ...attributes } = {
 };
 ---
 
-{
-  /* Applying class outside of the spread prevents it from applying unnecessary astro-* classes */
-}
+{/* Applying class outside of the spread prevents it from applying unnecessary astro-* classes */}
 <img src={image.src} {...attributes} class={className} />

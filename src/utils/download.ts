@@ -1,10 +1,8 @@
-import { getProject, getVersionBuilds } from "@/utils/fill";
-import { getHangarProjects } from "@/utils/hangar";
-import type { ProjectDescriptor } from "@/utils/types";
+import { getProject, getVersionBuilds } from '@/utils/fill';
+import { getHangarProjects } from '@/utils/hangar';
+import type { ProjectDescriptor } from '@/utils/types';
 
-export async function getProjectDescriptorOrError(
-  id: string,
-): Promise<{ error?: string; value?: ProjectDescriptor }> {
+export async function getProjectDescriptorOrError(id: string): Promise<{ error?: string; value?: ProjectDescriptor }> {
   try {
     const result = await getProjectDescriptor(id);
     if (result == null) {
@@ -16,21 +14,17 @@ export async function getProjectDescriptorOrError(
   }
 }
 
-export async function getProjectDescriptor(
-  id: string
-): Promise<ProjectDescriptor | null> {
+export async function getProjectDescriptor(id: string): Promise<ProjectDescriptor | null> {
   try {
     const projectData = await getProject(id);
-    const flattenedVersions = Object.values(projectData.versions)
-      .flat()
-      .reverse();
+    const flattenedVersions = Object.values(projectData.versions).flat().reverse();
     let latestStableVersion = flattenedVersions[flattenedVersions.length - 1];
 
     // Check for stable builds
     for (let i = flattenedVersions.length - 1; i >= 0; i--) {
       try {
         const builds = await getVersionBuilds(id, flattenedVersions[i]);
-        if (builds.some((build) => build.channel === "STABLE")) {
+        if (builds.some((build) => build.channel === 'STABLE')) {
           latestStableVersion = flattenedVersions[i];
           break;
         }
@@ -40,9 +34,7 @@ export async function getProjectDescriptor(
     }
 
     const latestExperimentalVersion =
-      latestStableVersion !== flattenedVersions[flattenedVersions.length - 1]
-        ? flattenedVersions[flattenedVersions.length - 1]
-        : null;
+      latestStableVersion !== flattenedVersions[flattenedVersions.length - 1] ? flattenedVersions[flattenedVersions.length - 1] : null;
 
     return {
       name: projectData.project.name,
@@ -56,25 +48,18 @@ export async function getProjectDescriptor(
   }
 }
 
-export async function getProjectDescriptorWithHangar(
-  id: string
-): Promise<{ project: ProjectDescriptor; hangarCount: number } | null> {
+export async function getProjectDescriptorWithHangar(id: string): Promise<{ project: ProjectDescriptor; hangarCount: number } | null> {
   try {
-    const [projectData, hangarData] = await Promise.all([
-      getProject(id),
-      getHangarProjects(id).catch(() => null),
-    ]);
+    const [projectData, hangarData] = await Promise.all([getProject(id), getHangarProjects(id).catch(() => null)]);
 
-    const flattenedVersions = Object.values(projectData.versions)
-      .flat()
-      .reverse();
+    const flattenedVersions = Object.values(projectData.versions).flat().reverse();
     let latestStableVersion = flattenedVersions[flattenedVersions.length - 1];
 
     // Check for stable builds
     for (let i = flattenedVersions.length - 1; i >= 0; i--) {
       try {
         const builds = await getVersionBuilds(id, flattenedVersions[i]);
-        if (builds.some((build) => build.channel === "STABLE")) {
+        if (builds.some((build) => build.channel === 'STABLE')) {
           latestStableVersion = flattenedVersions[i];
           break;
         }
@@ -82,9 +67,7 @@ export async function getProjectDescriptorWithHangar(
     }
 
     const latestExperimentalVersion =
-      latestStableVersion !== flattenedVersions[flattenedVersions.length - 1]
-        ? flattenedVersions[flattenedVersions.length - 1]
-        : null;
+      latestStableVersion !== flattenedVersions[flattenedVersions.length - 1] ? flattenedVersions[flattenedVersions.length - 1] : null;
 
     return {
       project: {

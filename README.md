@@ -16,25 +16,25 @@ How to get the project running on your local machine for development.
 
 1. Clone the repository. If you plan to make changes, create a fork first!
 
-    ```bash
-    git clone --branch feat/astro https://github.com/PaperMC/website.git
-    cd website
-    ```
+   ```bash
+   git clone --branch feat/astro https://github.com/PaperMC/website.git
+   cd website
+   ```
 
 2. Install all required dependencies.
 
-    ```bash
-    bun install
-    ```
+   ```bash
+   bun install
+   ```
 
 3. Start the development server.
 
-    ```bash
-    bun run dev
-    ```
+   ```bash
+   bun run dev
+   ```
 
-    The site will be available at:
-    👉 http://localhost:4321
+   The site will be available at:
+   👉 http://localhost:4321
 
 ### Building
 

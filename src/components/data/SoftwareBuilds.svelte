@@ -1,7 +1,7 @@
 <script lang="ts">
-  import type { Build } from "@/utils/types";
-  import { formatISODateTime, formatRelativeDate } from "@/utils/time";
-  import SoftwareBuildChanges from "@/components/data/SoftwareBuildChanges.svelte";
+  import type { Build } from '@/utils/types';
+  import { formatISODateTime, formatRelativeDate } from '@/utils/time';
+  import SoftwareBuildChanges from '@/components/data/SoftwareBuildChanges.svelte';
 
   interface Props {
     project: string;
@@ -12,14 +12,14 @@
 
   let { project, version, builds, eol = false }: Props = $props();
 
-  function channelBgClass(ch?: Build["channel"]): string {
-    if (eol) return "bg-channel-eol-primary";
-    const c = (ch ?? "").toLowerCase();
+  function channelBgClass(ch?: Build['channel']): string {
+    if (eol) return 'bg-channel-eol-primary';
+    const c = (ch ?? '').toLowerCase();
     return `bg-channel-${c}-primary`;
   }
-  function channelTextClass(ch?: Build["channel"]): string {
-    if (eol) return "text-channel-eol-secondary";
-    const c = (ch ?? "").toLowerCase();
+  function channelTextClass(ch?: Build['channel']): string {
+    if (eol) return 'text-channel-eol-secondary';
+    const c = (ch ?? '').toLowerCase();
     return `text-channel-${c}-secondary`;
   }
 </script>
@@ -29,23 +29,14 @@
     {#each builds.slice(0, 10) as build, idx (build.id)}
       {@const date = new Date(build.time)}
       <div>
-        <div
-          class="flex flex-row items-start hover:bg-blue-100 dark:hover:bg-gray-900 px-4 py-2 transition-colors"
-        >
+        <div class="flex flex-row items-start px-4 py-2 transition-colors hover:bg-blue-100 dark:hover:bg-gray-900">
           <a
             role="button"
-            href={build.downloads?.["server:default"]?.url}
+            href={build.downloads?.['server:default']?.url}
             target="_blank"
-            class={`text-sm text-center font-medium rounded-full p-2 min-w-16 mr-4 inline-flex items-center gap-1 ${channelBgClass(build.channel)} ${channelTextClass(build.channel)}`}
+            class={`mr-4 inline-flex min-w-16 items-center gap-1 rounded-full p-2 text-center text-sm font-medium ${channelBgClass(build.channel)} ${channelTextClass(build.channel)}`}
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="size-4"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              stroke-width="2"
-            >
+            <svg xmlns="http://www.w3.org/2000/svg" class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -55,32 +46,27 @@
             #{build.id}
           </a>
 
-          <div
-            class="flex-1 flex flex-col text-gray-900 dark:text-gray-200 min-w-0"
-          >
+          <div class="flex min-w-0 flex-1 flex-col text-gray-900 dark:text-gray-200">
             <SoftwareBuildChanges {project} {build} {version} />
           </div>
 
-          <div
-            class="hidden md:block text-gray-500 dark:text-gray-300 mt-1 ml-2"
-            title={formatISODateTime(date)}
-          >
+          <div class="mt-1 ml-2 hidden text-gray-500 md:block dark:text-gray-300" title={formatISODateTime(date)}>
             {formatRelativeDate(date)}
           </div>
         </div>
 
         {#if idx < Math.min(builds.length, 10) - 1}
-          <hr class="border border-gray-300 dark:border-gray-700 m-0" />
+          <hr class="m-0 border border-gray-300 dark:border-gray-700" />
         {/if}
       </div>
     {/each}
   {:else}
-    {#each Array(5) as _}
-      <div class="flex flex-row items-start w-full">
-        <div class="bg-gray-800 rounded-full p-2 min-w-16 mr-4">
-          <div class="h-5 w-8 rounded bg-gray-500/30 animate-pulse"></div>
+    {#each Array(5) as i (i)}
+      <div class="flex w-full flex-row items-start">
+        <div class="mr-4 min-w-16 rounded-full bg-gray-800 p-2">
+          <div class="h-5 w-8 animate-pulse rounded bg-gray-500/30"></div>
         </div>
-        <div class="mt-1 grow h-6 rounded bg-gray-500/20 animate-pulse"></div>
+        <div class="mt-1 h-6 grow animate-pulse rounded bg-gray-500/20"></div>
       </div>
     {/each}
   {/if}

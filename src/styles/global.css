@@ -1,13 +1,17 @@
-@import "tailwindcss";
-@import "@fontsource/poppins/400.css";
-@import "@fontsource/poppins/500.css";
-@import "@fontsource/poppins/600.css";
-@import "@fontsource/poppins/700.css";
+@import 'tailwindcss';
+@import '@fontsource/poppins/400.css';
+@import '@fontsource/poppins/500.css';
+@import '@fontsource/poppins/600.css';
+@import '@fontsource/poppins/700.css';
 
 @custom-variant dark (@media (prefers-color-scheme: dark));
 
-@source inline("bg-channel-alpha-primary bg-channel-alpha-secondary bg-channel-beta-primary bg-channel-beta-secondary bg-channel-stable-primary bg-channel-stable-secondary bg-channel-recommended-primary bg-channel-recommended-secondary bg-channel-eol-primary bg-channel-eol-secondary");
-@source inline("text-channel-alpha-primary text-channel-alpha-secondary text-channel-beta-primary text-channel-beta-secondary text-channel-stable-primary text-channel-stable-secondary text-channel-recommended-primary text-channel-recommended-secondary text-channel-eol-primary text-channel-eol-secondary");
+@source inline(
+  'bg-channel-alpha-primary bg-channel-alpha-secondary bg-channel-beta-primary bg-channel-beta-secondary bg-channel-stable-primary bg-channel-stable-secondary bg-channel-recommended-primary bg-channel-recommended-secondary bg-channel-eol-primary bg-channel-eol-secondary'
+);
+@source inline(
+  'text-channel-alpha-primary text-channel-alpha-secondary text-channel-beta-primary text-channel-beta-secondary text-channel-stable-primary text-channel-stable-secondary text-channel-recommended-primary text-channel-recommended-secondary text-channel-eol-primary text-channel-eol-secondary'
+);
 
 @theme {
   --font-sans: Poppins, Roboto, Open Sans, ui-sans-serif, system-ui, sans-serif;
@@ -64,7 +68,7 @@
   --color-channel-stable-secondary: var(--color-white);
   --color-channel-recommended-primary: #4ecb8b;
   --color-channel-recommended-secondary: var(--color-white);
-  --color-channel-eol-primary: #9CA3AF;
+  --color-channel-eol-primary: #9ca3af;
   --color-channel-eol-secondary: #111827;
 }
 
@@ -79,8 +83,8 @@
     --color-channel-stable-secondary: var(--color-white);
     --color-channel-recommended-primary: #4ecb8b;
     --color-channel-recommended-secondary: var(--color-white);
-    --color-channel-eol-primary: #4B5563;
-    --color-channel-eol-secondary: #E5E7EB;
+    --color-channel-eol-primary: #4b5563;
+    --color-channel-eol-secondary: #e5e7eb;
   }
 }
 
@@ -95,10 +99,11 @@
 }
 
 html {
-  @apply bg-background-light-10 dark:bg-background-dark-90 dark:text-white scroll-smooth;
+  @apply bg-background-light-10 dark:bg-background-dark-90 scroll-smooth dark:text-white;
   -webkit-tap-highlight-color: transparent;
 }
 
-[role=button], button {
-    cursor: pointer
+[role='button'],
+button {
+  cursor: pointer;
 }

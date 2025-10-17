@@ -1,5 +1,5 @@
 ---
-import { Icon } from "astro-icon/components";
+import { Icon } from 'astro-icon/components';
 
 export interface Props {
   icon: string;
@@ -17,17 +17,14 @@ const { icon, label, href } = Astro.props;
       href={href}
       rel="noreferrer"
       target="_blank"
-      class="inline-block h-min w-min rounded-full p-2 transition-colors hover:bg-gray-800/20 dark:hover:bg-gray-400/20 leading-0"
+      class="inline-block h-min w-min rounded-full p-2 leading-0 transition-colors hover:bg-gray-800/20 dark:hover:bg-gray-400/20"
       aria-label={label}
     >
       <Icon name={icon} class="size-6 text-gray-700 dark:text-gray-300" />
     </a>
   ) : (
-    <button
-      class="h-min w-min rounded-full p-2 transition-colors hover:bg-gray-800/20"
-      aria-label={label}
-    >
-      <img src={icon} class="h-6 w-6 gray-700" alt="" />
+    <button class="h-min w-min rounded-full p-2 transition-colors hover:bg-gray-800/20" aria-label={label}>
+      <img src={icon} class="gray-700 h-6 w-6" alt="" />
     </button>
   )
 }

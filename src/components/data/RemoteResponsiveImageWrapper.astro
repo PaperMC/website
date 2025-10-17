@@ -1,15 +1,13 @@
 ---
-import type { LocalImageProps, RemoteImageProps } from "astro:assets";
-import RemoteImageWrapper from "@/components/data/RemoteImageWrapper.astro";
+import type { LocalImageProps, RemoteImageProps } from 'astro:assets';
+import RemoteImageWrapper from '@/components/data/RemoteImageWrapper.astro';
 
 type Props = LocalImageProps | RemoteImageProps;
 
 const { class: className, ...props } = Astro.props;
 
-import "node_modules/astro/components/image.css";
+import 'node_modules/astro/components/image.css';
 ---
 
-{
-  /* Applying class outside of the spread prevents it from applying unnecessary astro-* classes */
-}
+{/* Applying class outside of the spread prevents it from applying unnecessary astro-* classes */}
 <RemoteImageWrapper {...props} class={className} />

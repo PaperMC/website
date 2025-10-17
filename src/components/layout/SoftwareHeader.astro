@@ -1,6 +1,6 @@
 ---
-import { Icon } from "astro-icon/components";
-import Button from "@/components/input/Button.astro";
+import { Icon } from 'astro-icon/components';
+import Button from '@/components/input/Button.astro';
 
 interface Props {
   id: string;
@@ -14,73 +14,48 @@ const { id, name, icon, github, eol } = Astro.props;
 ---
 
 <software-header data-software={id}>
-  <header
-    class="max-w-7xl flex flex-row flex-wrap mx-auto px-4 pt-32 pb-26 lg:pt-28 lg:pb-14 gap-16"
-  >
+  <header class="mx-auto flex max-w-7xl flex-row flex-wrap gap-16 px-4 pt-32 pb-26 lg:pt-28 lg:pb-14">
     {
       eol && (
-        <div class="text-center px-4 py-8 -mt-6 font-bold bg-red-400 dark:bg-red-500 shadow-md rounded-lg w-full">
-          {name} has reached end of life! It is no longer maintained or
-          supported.
+        <div class="-mt-6 w-full rounded-lg bg-red-400 px-4 py-8 text-center font-bold shadow-md dark:bg-red-500">
+          {name} has reached end of life! It is no longer maintained or supported.
         </div>
       )
     }
     <div class="flex-1">
-      <div class="flex flex-row mb-6 gap-4 items-center">
-        <div class="w-12 h-12 rounded-lg bg-gray-800 p-3">
-          {icon && <Icon name={icon} class="w-full h-full" />}
+      <div class="mb-6 flex flex-row items-center gap-4">
+        <div class="h-12 w-12 rounded-lg bg-gray-800 p-3">
+          {icon && <Icon name={icon} class="h-full w-full" />}
         </div>
-        <h1 class="font-medium text-xl flex gap-4 items-center">
+        <h1 class="flex items-center gap-4 text-xl font-medium">
           {name}
-          {
-            eol && (
-              <Icon
-                name="icons/fontawesome/box-archive"
-                class="fill-current h-6"
-              />
-            )
-          }
+          {eol && <Icon name="icons/fontawesome/box-archive" class="h-6 fill-current" />}
         </h1>
       </div>
-      <h2
-        class="font-medium leading-normal lg:text-5xl lg:leading-normal text-4xl"
-      >
+      <h2 class="text-4xl leading-normal font-medium lg:text-5xl lg:leading-normal">
         <slot name="header" />
       </h2>
-      <p class="text-xl mt-4"><slot name="description" /></p>
-      <div class="flex flex-row gap-4 mt-8">
+      <p class="mt-4 text-xl"><slot name="description" /></p>
+      <div class="mt-8 flex flex-row gap-4">
         <Button
           variant="filled"
           href={github ?? `/downloads/${id}`}
           external={Boolean(github)}
-          className={eol ? "!bg-red-500 !hover:bg-red-400" : ""}
+          className={eol ? '!hover:bg-red-400 !bg-red-500' : ''}
         >
-          {github ? "GitHub" : "Downloads"}
+          {github ? 'GitHub' : 'Downloads'}
         </Button>
-        <Button
-          variant="outlined"
-          href={`https://docs.papermc.io/${id}`}
-          external
-        >
-          Documentation
-        </Button>
-        <Button
-          variant="outlined"
-          href="#loading"
-          className="hidden md:block jd-link-btn"
-          external
-        >
-          Javadoc
-        </Button>
+        <Button variant="outlined" href={`https://docs.papermc.io/${id}`} external> Documentation </Button>
+        <Button variant="outlined" href="#loading" className="jd-link-btn hidden md:block" external> Javadoc </Button>
       </div>
     </div>
-    <div class="flex-1 lg:flex hidden justify-end"></div>
+    <div class="hidden flex-1 justify-end lg:flex"></div>
   </header>
 </software-header>
 
 <script>
-  import { getProject } from "@/utils/fill";
-  import { latestVersionFrom } from "@/utils/versions";
+  import { getProject } from '@/utils/fill';
+  import { latestVersionFrom } from '@/utils/versions';
 
   class SoftwareHeader extends HTMLElement {
     async connectedCallback() {
@@ -89,7 +64,7 @@ const { id, name, icon, github, eol } = Astro.props;
         return;
       }
 
-      const button = this.querySelector(".jd-link-btn");
+      const button = this.querySelector('.jd-link-btn');
       if (!button) {
         return;
       }
@@ -97,16 +72,13 @@ const { id, name, icon, github, eol } = Astro.props;
       const { versions } = await getProject(software);
       let latest = latestVersionFrom(versions);
 
-      if (software === "velocity" && latest.endsWith("-SNAPSHOT")) {
-        latest = latest.replace(/-SNAPSHOT$/, "");
+      if (software === 'velocity' && latest.endsWith('-SNAPSHOT')) {
+        latest = latest.replace(/-SNAPSHOT$/, '');
       }
 
-      button.setAttribute(
-        "href",
-        `https://jd.papermc.io/${software}/${latest}`
-      );
+      button.setAttribute('href', `https://jd.papermc.io/${software}/${latest}`);
     }
   }
 
-  customElements.define("software-header", SoftwareHeader);
+  customElements.define('software-header', SoftwareHeader);
 </script>

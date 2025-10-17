@@ -1,5 +1,5 @@
 ---
-import { Icon } from "astro-icon/components";
+import { Icon } from 'astro-icon/components';
 
 interface Props {
   icon: string;
@@ -11,11 +11,11 @@ const { icon, label, description } = Astro.props;
 ---
 
 <div class="p-4">
-  <div class="flex flex-row items-center gap-4 mb-4">
-    <div class="rounded-lg w-12 h-12 bg-gray-800 p-3">
-      <Icon name={icon} class="text-white w-full h-full" />
+  <div class="mb-4 flex flex-row items-center gap-4">
+    <div class="h-12 w-12 rounded-lg bg-gray-800 p-3">
+      <Icon name={icon} class="h-full w-full text-white" />
     </div>
-    <h3 class="font-medium flex-1">
+    <h3 class="flex-1 font-medium">
       {label}
     </h3>
   </div>

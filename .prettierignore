@@ -1,0 +1,31 @@
+# Dependencies
+node_modules/
+bun.lock
+
+# Build outputs
+dist/
+.astro/
+.wrangler/
+
+# Cache
+.cache/
+
+# Logs
+*.log
+
+# Environment files
+.env
+.env.*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+
+# Lock files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml

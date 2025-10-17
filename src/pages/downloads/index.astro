@@ -1,37 +1,21 @@
 ---
-import SoftwarePreview, {
-  SoftwarePreviewType,
-} from "@/components/data/SoftwarePreview.astro";
-import Layout from "@/layouts/Layout.astro";
+import SoftwarePreview, { SoftwarePreviewType } from '@/components/data/SoftwarePreview.astro';
+import Layout from '@/layouts/Layout.astro';
 ---
 
 <Layout
   title="Downloads"
   description="Find downloads for our software – including Paper, Velocity, and Waterfall."
-  keywords={[
-    "papermc",
-    "minecraft",
-    "performance",
-    "paper",
-    "velocity",
-    "waterfall",
-    "downloads",
-  ]}
+  keywords={['papermc', 'minecraft', 'performance', 'paper', 'velocity', 'waterfall', 'downloads']}
   canonical="/downloads"
 >
-  <header
-    class="max-w-4xl flex flex-col items-center mx-auto px-4 pt-32 pb-16 lg:pt-28 lg:pb-12 gap-2"
-  >
-    <h1
-      class="font-medium leading-normal lg:text-5xl lg:leading-normal text-4xl"
-    >
-      Downloads
-    </h1>
-    <p class="text-xl text-center mb-6">
-      {"Select the software you want to download."}
+  <header class="mx-auto flex max-w-4xl flex-col items-center gap-2 px-4 pt-32 pb-16 lg:pt-28 lg:pb-12">
+    <h1 class="text-4xl leading-normal font-medium lg:text-5xl lg:leading-normal">Downloads</h1>
+    <p class="mb-6 text-center text-xl">
+      {'Select the software you want to download.'}
     </p>
-    <h2 class="text-2xl text-center font-medium mt-4">Server Software</h2>
-    <div class="grid md:grid-cols-2 gap-2 px-2 xl:gap-4">
+    <h2 class="mt-4 text-center text-2xl font-medium">Server Software</h2>
+    <div class="grid gap-2 px-2 md:grid-cols-2 xl:gap-4">
       <SoftwarePreview
         id="paper"
         name="Paper"
@@ -47,8 +31,8 @@ import Layout from "@/layouts/Layout.astro";
         type={SoftwarePreviewType.Download}
       />
     </div>
-    <h2 class="text-2xl text-center font-medium mt-4">Proxy Software</h2>
-    <div class="grid md:grid-cols-2 gap-2 px-2 xl:gap-4">
+    <h2 class="mt-4 text-center text-2xl font-medium">Proxy Software</h2>
+    <div class="grid gap-2 px-2 md:grid-cols-2 xl:gap-4">
       <SoftwarePreview
         id="velocity"
         name="Velocity"

@@ -43,9 +43,7 @@ export interface GitHubSponsorsData {
 }
 
 export async function fetchAllSponsors(): Promise<SponsorData> {
-  const response = await fetch(
-    "https://raw.githubusercontent.com/PaperMC/papermc.io/data/sponsors.json"
-  );
+  const response = await fetch('https://raw.githubusercontent.com/PaperMC/papermc.io/data/sponsors.json');
   if (!response.ok) {
     throw new Error(`Failed to fetch sponsors: ${response.statusText}`);
   }
