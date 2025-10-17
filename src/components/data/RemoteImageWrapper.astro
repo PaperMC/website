@@ -51,11 +51,12 @@ if (import.meta.env.DEV) {
   additionalAttributes["data-image-component"] = "true";
 }
 
-const { class: className, ...attributes } = {
-  ...additionalAttributes,
+const mergedClass = [additionalAttributes.class, image.attributes.class].filter(Boolean).join(" ");
+
+const { class: _ignored, ...attributes } = {
   ...image.attributes,
+  ...additionalAttributes,
 };
 ---
 
-{/* Applying class outside of the spread prevents it from applying unnecessary astro-* classes */}
-<img src={image.src} {...attributes} class={className} />
+<img src={image.src} {...attributes} class={mergedClass} data-fallback={additionalAttributes.class === "invalid" ? "true" : undefined} />

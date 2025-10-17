@@ -6,31 +6,51 @@ interface Props {
   name: string;
   link?: string;
 }
-
 const { avatarUrl, name, link } = Astro.props;
 const Tag = link ? "a" : "div";
+const initial = (name?.trim?.()[0] ?? "?").toUpperCase();
 ---
 
 <Tag
   role={link ? "button" : undefined}
-  class="user-image relative flex aspect-square transform items-center justify-center overflow-auto rounded-full bg-gray-600 font-bold text-white uppercase transition-transform hover:scale-120 hover:shadow-lg"
+  class="user-image relative flex aspect-square items-center justify-center overflow-hidden rounded-full bg-gray-600 font-bold text-white uppercase transition-transform hover:scale-120 hover:shadow-lg"
   href={link}
   rel={link && "noreferrer"}
   target={link && "_blank"}
+  aria-label={name}
+  title={name}
 >
-  {name[0]}
-  <RemoteResponsiveImageWrapper
-    alt={`${name}'s avatar`}
-    src={avatarUrl}
-    width={80}
-    height={80}
-    class="absolute h-full w-full bg-white object-cover"
-  />
+  <span class="initial pointer-events-none select-none">{initial}</span>
+
+  {
+    avatarUrl && (
+      <RemoteResponsiveImageWrapper
+        alt={`${name}'s avatar`}
+        src={avatarUrl}
+        width={80}
+        height={80}
+        loading="lazy"
+        decoding="async"
+        class="absolute h-full w-full bg-white object-cover"
+      />
+    )
+  }
 </Tag>
 
 <style>
-  /* we have our own fallback */
-  .user-image .invalid {
-    display: none;
+  .user-image img.invalid,
+  .user-image img[data-fallback="true"] {
+    display: none !important;
   }
 </style>
+
+<script>
+  const root = document.currentScript?.parentElement;
+  const img = root?.querySelector("img");
+  if (img) {
+    if (!img.complete || img.naturalWidth === 0) {
+      img.classList.add("invalid");
+    }
+    img.addEventListener("error", () => img.classList.add("invalid"));
+  }
+</script>
