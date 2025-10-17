@@ -170,7 +170,9 @@
 
     <div>
       {#if success}
-        {@render InfoLog(success)}
+        <div>
+          <span class="text-amber-400">[{formatISOFullTime(new Date())} INFO]</span>: <span class="text-green-400">{success}</span>
+        </div>
       {/if}
     </div>
 
