@@ -141,7 +141,7 @@
           >
             <div class="px-4 py-3">
               <div class="flex flex-wrap items-center gap-2 font-medium">
-                <span>{entry[1].name}</span>
+                <span class="text-gray-700 dark:text-gray-300">{entry[1].name}</span>
                 {#if entry[0] === "application"}
                   <span class="rounded-full bg-yellow-200/80 px-2 py-0.5 text-xs text-yellow-800">Recommended</span>
                 {/if}
