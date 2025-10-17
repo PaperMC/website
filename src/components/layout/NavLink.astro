@@ -14,7 +14,11 @@ const { href, target, className } = Astro.props;
   href={href}
   rel="noreferrer"
   target={target}
-  class={clsx("color-gray-200 hover:text-blue-600 dark:hover:text-blue-400 text-sm transition-colors px-2.5", className)}
+  class={clsx(
+    "color-gray-200 hover:text-blue-600 dark:hover:text-blue-400 text-sm transition-colors px-2.5",
+    "md:inline-flex md:items-center",
+    className
+  )}
 >
   <slot />
 </a>
