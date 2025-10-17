@@ -8,5 +8,8 @@
     "binding": "ASSETS",
     "directory": "./dist",
   },
+  "observability": {
+    "enabled": true,
+  },
   "preview_urls": true,
 }
