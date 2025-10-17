@@ -2,6 +2,20 @@ import { getProject, getVersionBuilds } from "@/utils/fill";
 import { getHangarProjects } from "@/utils/hangar";
 import type { ProjectDescriptor } from "@/utils/types";
 
+export async function getProjectDescriptorOrError(
+  id: string,
+): Promise<{ error?: string; value?: ProjectDescriptor }> {
+  try {
+    const result = await getProjectDescriptor(id);
+    if (result == null) {
+      return { error: `Project ${id} not found` };
+    }
+    return { value: result };
+  } catch (error) {
+    return { error: `Failed to fetch project ${id}: ${error}` };
+  }
+}
+
 export async function getProjectDescriptor(
   id: string
 ): Promise<ProjectDescriptor | null> {
