@@ -13,7 +13,7 @@
     "check:types": "tsgo --noEmit",
     "lint": "bun run lint:eslint && bun run lint:prettier",
     "check": "bun run check:types",
-    "check:all": "bun run check:types && bun run lint"
+    "check:all": "bun run check && bun run lint"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^12.6.10",
