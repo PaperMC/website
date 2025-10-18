@@ -1,0 +1,60 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import SoftwareHeader from "@/components/layout/SoftwareHeader.astro";
+import Button from "@/components/input/Button.astro";
+
+import VelocityImage from "@/assets/images/velocity.png";
+import CommunityImage from "@/assets/images/community.png";
+
+import { Image } from "astro:assets";
+---
+
+<Layout
+  title="Waterfall"
+  description="Waterfall is an upgraded BungeeCord, offering full compatibility with improvements to performance and stability."
+  keywords={["waterfall", "proxy", "minecraft", "performance", "bungeecord", "fork"]}
+  canonical="/software/waterfall"
+>
+  <SoftwareHeader id="waterfall" name="Waterfall" icon="brand/waterfall" eol>
+    <span slot="header">Waterfall has reached end of life</span>
+    <span slot="description"
+      >We recommend you transition to <a href="/software/velocity" class="text-blue-500 hover:text-blue-400 hover:underline">Velocity</a>.
+      For more information see the <a
+        href="https://forums.papermc.io/threads/1088/"
+        class="text-blue-500 hover:text-blue-400 hover:underline">announcement</a
+      >. Archived Waterfall builds and docs are available here.</span
+    >
+  </SoftwareHeader>
+  <section id="facts" class="mx-auto flex max-w-7xl flex-col gap-8 px-4 py-8 md:gap-12 md:py-16">
+    <div class="flex flex-col items-center gap-6 md:flex-row md:gap-8 xl:gap-24">
+      <div class="relative aspect-video w-full flex-1 overflow-clip rounded-xl bg-gray-900">
+        <Image alt="Velocity" src={VelocityImage} class="h-full w-full object-cover" />
+      </div>
+      <div class="flex-1">
+        <h2 class="text-2xl font-semibold md:text-4xl">Need an updated proxy? Use Velocity!</h2>
+        <p class="mt-3 text-gray-900 md:mt-6 md:text-xl dark:text-gray-100">
+          All the experience the PaperMC team has gained from working on Waterfall has applied to Velocity. Designed with performance and
+          scalability in mind, Velocity is the best proxy software available.
+        </p>
+        <div class="mt-8 flex flex-row gap-4">
+          <Button variant="filled" href="/software/velocity" dense> Learn more </Button>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col items-center gap-6 md:flex-row-reverse md:gap-8 xl:gap-24">
+      <div class="flex-1">
+        <h2 class="text-2xl font-semibold md:text-4xl">Together with a community of server owners</h2>
+        <p class="mt-3 text-gray-900 md:mt-6 md:text-xl dark:text-gray-100">
+          Whether you need help with your proxy settings, server lag, or need a guide for formatting your chat, our knowledgeable staff and
+          friendly community are always around to lend a hand.
+        </p>
+        <div class="mt-8 flex flex-row gap-4">
+          <Button variant="filled" href="https://discord.gg/papermc" external dense> Join our Discord </Button>
+        </div>
+      </div>
+      <div class="relative aspect-video w-full flex-1 overflow-clip rounded-xl">
+        <Image alt="Community" src={CommunityImage} class="h-full w-full object-cover" />
+      </div>
+    </div>
+  </section>
+</Layout>

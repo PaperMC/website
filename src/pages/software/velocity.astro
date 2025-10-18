@@ -1,0 +1,102 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import SoftwareHeader from "@/components/layout/SoftwareHeader.astro";
+import FeatureCard from "@/components/data/FeatureCard.astro";
+import Button from "@/components/input/Button.astro";
+
+import HomeImage1 from "@/assets/images/home-1.png";
+import HomeImage3 from "@/assets/images/home-3.png";
+import CommunityImage from "@/assets/images/community.png";
+
+import { Image } from "astro:assets";
+
+import { getHangarProjects } from "@/utils/hangar";
+
+const { pagination } = await getHangarProjects("velocity");
+---
+
+<Layout
+  title="Velocity"
+  description="Velocity is the modern, high-performance Minecraft server proxy. Designed with performance and stability in mind, it’s a full alternative to Waterfall with its own plugin ecosystem."
+  keywords={["velocity", "proxy", "minecraft", "performance", "bungeecord"]}
+  canonical="/software/velocity"
+>
+  <SoftwareHeader id="velocity" name="Velocity" icon="brand/velocity">
+    <span slot="header">Next generation speed and capability</span>
+    <span slot="description"
+      >Velocity is the modern, high-performance proxy. Designed with performance and stability in mind, it’s a full alternative to Waterfall
+      with its own plugin ecosystem.</span
+    >
+  </SoftwareHeader>
+  <section id="why" class="bg-primary-200 dark:bg-background-dark-80 w-full pt-10 pb-5">
+    <div class="mx-auto max-w-7xl">
+      <h2 class="px-6 text-xl font-semibold md:text-2xl lg:px-4">Why Velocity?</h2>
+      <div class="mt-6 grid gap-2 px-2 md:grid-cols-3 xl:gap-4">
+        <FeatureCard
+          icon="icons/heroicons/bolt"
+          label="Out with the old, in with the new"
+          description="Velocity is the best proxy software available. Designed with performance and scalability in mind, Velocity is a lot faster and much more stable than BungeeCord."
+        />
+        <FeatureCard
+          icon="icons/heroicons/chat-bubble-left-right"
+          label="An active and growing community"
+          description="Velocity has an active and growing community of server administrators and developers. If you encounter any problems, you can come talk with us on Discord and get real time support."
+        />
+        <FeatureCard
+          icon="icons/heroicons/code-bracket"
+          label="Plenty of plugins to choose from"
+          description="While BungeeCord has more third-party software due to its longer life so far, Velocity isn’t lacking in the essentials. With enough to get going and more added every day, Velocity has what you need."
+        />
+      </div>
+    </div>
+  </section>
+  <section id="facts" class="mx-auto flex max-w-7xl flex-col gap-8 px-4 py-8 md:gap-12 md:py-16">
+    <div class="flex flex-col items-center gap-6 md:flex-row md:gap-8 xl:gap-24">
+      <div class="relative aspect-video w-full flex-1 overflow-clip rounded-xl">
+        <Image alt="Hangar Homepage" src={HomeImage3} class="h-full w-full object-cover" layout="none" />
+      </div>
+      <div class="flex-1">
+        <h2 class="text-2xl font-semibold md:text-4xl">A diverse plugin ecosystem</h2>
+        <div class="mt-3 text-gray-900 md:mt-6 md:text-xl dark:text-gray-100">
+          Crafted by the PaperMC team & contributors, Hangar is our own dedicated plugin repository, now in open beta! View over
+          <span class="text-blue-500">{pagination.count}</span>
+          different plugins that are specific to Velocity, or list your own with a very streamlined creation process.
+        </div>
+        <div class="mt-8 flex flex-row gap-4">
+          <Button variant="filled" href="https://hangar.papermc.io/" external dense> Check out Hangar </Button>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col items-center gap-6 md:flex-row-reverse md:gap-8 xl:gap-24">
+      <div class="relative aspect-video w-full flex-1 overflow-clip rounded-xl bg-gray-900">
+        <Image alt="Minecraft Players" src={HomeImage1} class="h-full w-full object-cover" />
+      </div>
+      <div class="flex-1">
+        <h2 class="text-2xl font-semibold break-all md:text-4xl">Getting Started</h2>
+        <p class="mt-3 text-gray-900 md:mt-6 md:text-xl dark:text-gray-100">
+          To get started with Velocity, you will need to download and install the latest version of the proxy software. Once you&apos;re
+          ready, take a look at our extensive documentation.
+        </p>
+        <div class="mt-8 flex flex-row gap-4">
+          <Button variant="filled" href="/downloads/velocity" dense> Downloads </Button>
+          <Button variant="outlined" href="https://docs.papermc.io/velocity/getting-started" external dense> Documentation </Button>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col items-center gap-6 md:flex-row md:gap-8 xl:gap-24">
+      <div class="relative aspect-video w-full flex-1 overflow-clip rounded-xl">
+        <Image alt="Community" src={CommunityImage} class="h-full w-full object-cover" />
+      </div>
+      <div class="flex-1">
+        <h2 class="text-2xl font-semibold md:text-4xl">Together with a community of server owners</h2>
+        <p class="mt-3 text-gray-900 md:mt-6 md:text-xl dark:text-gray-100">
+          Whether you need help with your proxy settings, server lag, or need a guide for formatting your chat, our knowledgeable staff and
+          friendly community are always around to lend a hand.
+        </p>
+        <div class="mt-8 flex flex-row gap-4">
+          <Button variant="filled" href="https://discord.gg/papermc" external dense> Join our Discord </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

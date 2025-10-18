@@ -1,0 +1,44 @@
+---
+export const prerender = false;
+import Layout from "@/layouts/Layout.astro";
+import SoftwareDownloadPage from "@/components/data/SoftwareDownloadPage.svelte";
+import { getProjectDescriptorOrError, fetchBuildsOrError } from "@/utils/download";
+
+Astro.response.headers.set("Cache-Control", "public, max-age=300");
+Astro.response.headers.set("CDN-Cache-Control", "public, max-age=600");
+const projectResult = await getProjectDescriptorOrError("waterfall");
+const buildsResult = await fetchBuildsOrError(projectResult, false);
+
+const descriptionHtml = `
+  Waterfall has reached end of life. We recommend you transition to
+  <a class="text-blue-500 hover:text-blue-400 hover:underline" href="/software/velocity">
+    Velocity
+  </a>.
+  For more information see the
+  <a
+    class="text-blue-500 hover:text-blue-400 hover:underline"
+    href="https://forums.papermc.io/threads/1088/"
+    rel="noopener"
+  >
+    announcement
+  </a>.
+  <br />
+  Download unsupported, archived Waterfall builds below.
+`;
+---
+
+<Layout
+  title="Waterfall Downloads"
+  description="Download Waterfall, our Bungee-compatible upgrade, offering better performance and full compatibility."
+  keywords={["papermc", "minecraft", "performance", "bungeecord", "waterfall", "downloads", "jar"]}
+  canonical="/downloads/waterfall"
+>
+  <SoftwareDownloadPage
+    id="waterfall"
+    description={descriptionHtml}
+    eol
+    client:load="svelte"
+    project={projectResult}
+    builds={buildsResult}
+  />
+</Layout>

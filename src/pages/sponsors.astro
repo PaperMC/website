@@ -1,0 +1,79 @@
+---
+import Button from "@/components/input/Button.astro";
+import Layout from "@/layouts/Layout.astro";
+import { fetchAllSponsors } from "@/utils/sponsors";
+import UserImage from "@/components/data/UserImage.astro";
+import FeatureCard from "@/components/data/FeatureCard.astro";
+
+const sponsors = await fetchAllSponsors();
+---
+
+<Layout
+  title="Sponsors"
+  description="Without contributors our projects wouldn't be possible. Find out how you can help."
+  keywords={["papermc", "paper", "minecraft", "sponsor", "contributing"]}
+  canonical="/sponsors"
+>
+  <header class="mx-auto flex max-w-7xl flex-row gap-16 px-4 pt-32 pb-16 lg:pt-48 lg:pb-32">
+    <div class="flex-1">
+      <h1 class="text-4xl leading-normal font-medium lg:text-5xl lg:leading-normal">Sponsors</h1>
+      <p class="mt-4 text-xl">
+        PaperMC is an open community, and part of managing the community involves paying for services, servers, and infrastructure. We do
+        what we can to keep our costs reasonable and sustainable, but still some costs are unavoidable.
+      </p>
+      <div class="mt-8 flex flex-row gap-4">
+        <Button variant="filled" href="https://opencollective.com/papermc" external> Open Collective </Button>
+        <Button variant="outlined" href="https://github.com/sponsors/PaperMC" external> GitHub Sponsors </Button>
+      </div>
+    </div>
+    <div class="hidden flex-1 justify-end lg:flex"></div>
+  </header>
+  <section id="why" class="bg-primary-200 dark:bg-background-dark-80 w-full pt-10 pb-5">
+    <div class="mx-auto max-w-7xl py-2">
+      <h2 class="px-6 text-xl font-semibold md:text-2xl lg:px-4">Why You Should Donate</h2>
+      <div class="mt-6 grid gap-2 px-2 md:grid-cols-3 xl:gap-4">
+        <FeatureCard
+          icon="icons/heroicons/globe-americas"
+          label="Sustainability"
+          description="Donations help keep PaperMC sustainable and open to all. Only those who can afford to donate should do so, and no one should feel bad if they can't. Our financial information is available on our Open Collective page."
+        />
+        <FeatureCard
+          icon="icons/heroicons/bolt"
+          label="Future plans"
+          description="We need to upgrade our hosting to meet the growing demand for our services and APIs. This will increase costs, which we hope to offset with donations through Open Collective and GitHub Sponsors."
+        />
+        <FeatureCard
+          icon="icons/heroicons/heart"
+          label="Giving back"
+          description="If we receive more in donations than our monthly costs, we may consider distributing funds to contributors in a fair and transparent way."
+        />
+      </div>
+    </div>
+  </section>
+  <section id="sponsors" class="mx-auto max-w-7xl px-4 py-8">
+    <h2 class="text-xl font-semibold md:text-2xl">Our Sponsors</h2>
+    <p class="mt-3 text-lg text-gray-900 dark:text-gray-100">
+      Our current balance is{" "}
+      <b>
+        ${sponsors && (sponsors.ocData.collective.stats.balance.valueInCents / 100)?.toLocaleString("en")}
+      </b>
+      , and our estimated expenses are{" "}
+      <b>
+        ${sponsors && (sponsors.ocData.collective.stats.monthlySpending.valueInCents / 100)?.toLocaleString("en")}
+      </b>{" "}
+      per month.
+    </p>
+    <div class="mt-8 grid grid-cols-8 gap-2 md:grid-cols-16 lg:grid-cols-18 xl:grid-cols-20">
+      {
+        sponsors?.ocData?.collective?.contributors?.nodes
+          ?.filter((n) => n.name !== "Guest")
+          .map((node) => <UserImage avatarUrl={node.image} name={node.name} />)
+      }
+      {
+        sponsors?.ghData?.organization?.sponsors?.nodes?.map((node) => (
+          <UserImage avatarUrl={node.avatarUrl} name={node.login} link={`https://github.com/${node.login}`} />
+        ))
+      }
+    </div>
+  </section>
+</Layout>

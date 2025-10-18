@@ -1,0 +1,48 @@
+---
+import Button from "@/components/input/Button.astro";
+import Layout from "@/layouts/Layout.astro";
+---
+
+<Layout
+  title="Community"
+  description="We're happy to have you as a part of the PaperMC community!"
+  keywords={["papermc", "paper", "minecraft", "sponsor", "community"]}
+  canonical="/community"
+>
+  <header class="mx-auto flex max-w-7xl flex-row gap-16 px-4 pt-32 pb-16 lg:pt-48 lg:pb-32">
+    <div class="flex-1">
+      <h1 class="text-4xl leading-normal font-medium lg:text-5xl lg:leading-normal">Join Our Community</h1>
+      <p class="mt-4 text-xl">
+        We&apos;re happy to have you as a part of the PaperMC community! Please read our community guidelines before participating.
+      </p>
+      <div class="mt-8 flex flex-row gap-4">
+        <Button variant="filled" href="/community/guidelines" dense> Community Guidelines </Button>
+      </div>
+    </div>
+    <div class="hidden flex-1 justify-end lg:flex"></div>
+  </header>
+  <section id="discord" class="mx-auto flex max-w-7xl flex-col-reverse items-center gap-8 px-4 py-4 lg:flex-row">
+    <div class="flex-1">
+      <h2 class="text-2xl font-medium md:text-4xl">Discord</h2>
+      <p class="mt-3 text-gray-900 md:mt-6 md:text-lg dark:text-gray-100">
+        Discord is a popular option for many gamers to communicate with each other. We have a Discord community server that anyone can join.
+      </p>
+      <div class="mt-8 flex flex-row gap-4">
+        <Button variant="filled" href="https://discord.gg/papermc" external dense> Join Our Discord </Button>
+      </div>
+    </div>
+    <div class="flex w-full justify-start lg:flex-1 lg:justify-end"></div>
+  </section>
+  <section id="forums" class="mx-auto mt-12 flex max-w-7xl flex-col-reverse items-center gap-8 px-4 py-4 lg:flex-row">
+    <div class="flex-1">
+      <h2 class="text-2xl font-medium md:text-4xl">Forums</h2>
+      <p class="mt-3 text-gray-900 md:mt-6 md:text-lg dark:text-gray-100">
+        You can join the forums and chat with other administrators, developers, project staff, and more.
+      </p>
+      <div class="mt-8 flex flex-row gap-4">
+        <Button variant="filled" href="https://forums.papermc.io/" external dense> Forums </Button>
+      </div>
+    </div>
+    <div class="flex w-full justify-start lg:flex-1 lg:justify-end"></div>
+  </section>
+</Layout>

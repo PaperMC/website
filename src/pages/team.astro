@@ -1,0 +1,99 @@
+---
+import { Icon } from "astro-icon/components";
+
+import teams from "@/assets/data/team.json";
+import Button from "@/components/input/Button.astro";
+import Layout from "@/layouts/Layout.astro";
+import { fetchContributors } from "@/utils/github";
+import RemoteResponsiveImageWrapper from "@/components/data/RemoteResponsiveImageWrapper.astro";
+import UserImage from "@/components/data/UserImage.astro";
+
+const HIDDEN_USERS = [1007849, 23557539, 49699333]; // md_5, EcoCityCraftCI, dependabot
+
+const contributors = await fetchContributors();
+---
+
+<Layout
+  title="Team"
+  description="Meet the team behind PaperMC, a Minecraft software organization focusing on improving the game’s ecosystem with faster and more secure software."
+  keywords={["papermc", "paper", "minecraft", "team"]}
+  canonical="/team"
+>
+  <header class="mx-auto flex max-w-7xl flex-row gap-16 px-4 pt-32 pb-26 lg:pt-28 lg:pb-16">
+    <div class="flex-1">
+      <h1 class="text-4xl leading-normal font-medium lg:text-5xl lg:leading-normal">Meet our team</h1>
+      <p class="mt-4 text-xl">
+        Meet the members behind PaperMC, a Minecraft software organization focusing on improving the game’s ecosystem with faster and more
+        secure software.
+      </p>
+      <div class="mt-8 flex flex-row gap-4">
+        <Button variant="filled" href="/sponsors"> Sponsor </Button>
+        <Button variant="outlined" href="https://github.com/PaperMC" external> GitHub </Button>
+      </div>
+    </div>
+    <div class="hidden flex-1 justify-end lg:flex"></div>
+  </header>
+  {
+    teams.map((team) => (
+      <section id={team.id} class="mx-auto max-w-7xl px-4 py-8">
+        <h2 class="mb-2 text-2xl font-medium">{team.name}</h2>
+        <p>{team.description}</p>
+        <div class="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {team.members.map((member) => (
+            <article class="rounded-md border border-gray-300 p-4 transition-shadow hover:shadow-md dark:border-gray-700">
+              <div class="flex flex-row gap-6">
+                <div class="relative h-20 w-20 overflow-clip rounded-md bg-gray-600">
+                  {member.avatar && (
+                    <RemoteResponsiveImageWrapper
+                      alt={`${member.name}'s avatar`}
+                      src={member.avatar}
+                      width={80}
+                      height={80}
+                      class="object-cover"
+                    />
+                  )}
+                </div>
+                <div class="min-w-0 flex-1 break-all">
+                  <span class="font-semibold">{member.name}</span>
+                  {member.github && (
+                    <a
+                      href={`https://github.com/${member.github}`}
+                      class="mt-2 flex flex-row items-center gap-2 text-sm font-medium text-blue-800 dark:text-blue-300"
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      <Icon name="icons/fontawesome/github-brands" class="h-4 w-4 text-gray-700 dark:text-gray-300" />
+                      {member.github}
+                    </a>
+                  )}
+                  {member.discord && (
+                    <div class="mt-1 flex flex-row items-center gap-2 text-sm font-medium text-blue-800 dark:text-blue-300">
+                      <Icon name="icons/fontawesome/discord-brands" class="h-4 w-4 text-gray-700 dark:text-gray-300" />
+                      {member.discord}
+                    </div>
+                  )}
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+    ))
+  }
+  <section id="contributors" class="mx-auto max-w-7xl px-4 py-8">
+    <h2 class="mb-2 text-2xl font-medium">Contributors</h2>
+    <p>
+      Contributors are those people who have helped the organization by making important contributions to our codebases. From adding a new
+      redstone engine to PRing a fix for a nasty bug, our contributors have helped us to provide the best software we possibly can.
+    </p>
+    <div class="mt-8 grid grid-cols-8 gap-2 md:grid-cols-16 lg:grid-cols-18 xl:grid-cols-20">
+      {
+        contributors
+          ?.filter((contributor) => !HIDDEN_USERS.includes(contributor.id))
+          .map((contributor) => (
+            <UserImage avatarUrl={contributor.avatar_url} name={contributor.login} link={`https://github.com/${contributor.login}`} />
+          ))
+      }
+    </div>
+  </section>
+</Layout>

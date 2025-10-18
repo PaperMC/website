@@ -1,0 +1,66 @@
+---
+import { Icon } from "astro-icon/components";
+
+import NavDropDown from "@/components/layout/NavDropDown.astro";
+import NavDropDownLink from "@/components/layout/NavDropDownLink.astro";
+import NavLink from "@/components/layout/NavLink.astro";
+import IconButton from "@/components/IconButton.astro";
+
+import LogoMarkerDark from "@/assets/brand/logo-marker-dark.svg";
+import LogoMarkerLight from "@/assets/brand/logo-marker-light.svg";
+---
+
+<nav id="nav-wrapper" class="bg-background-light-10 dark:bg-background-dark-90 fixed top-0 right-0 left-0 z-50 transition-shadow">
+  <div class="mx-auto flex max-w-7xl flex-row items-center gap-2 px-4 py-2">
+    <button id="nav-toggle" title={"Toggle nav"} class="mr-2 leading-none md:hidden">
+      <Icon name="icons/heroicons/menu" class="size-6 fill-gray-500" />
+    </button>
+    <a href="/" class="leading-none" tabindex="-1" aria-hidden={true}>
+      <img src={LogoMarkerLight.src} alt="PaperMC" class="block h-12 cursor-pointer dark:hidden" />
+      <img src={LogoMarkerDark.src} alt="PaperMC" class="hidden h-12 cursor-pointer dark:block" />
+    </a>
+    <div
+      id="nav-menu"
+      class="bg-background-light-10 dark:bg-background-dark-90 absolute top-full right-0 left-0 flex w-full flex-col gap-4 p-4 shadow-xl max-md:hidden! md:relative md:flex md:w-auto md:flex-row md:items-center md:gap-0 md:bg-transparent md:p-0 md:shadow-none"
+    >
+      <NavDropDown label="Software">
+        <NavDropDownLink href="/software/paper">Paper</NavDropDownLink>
+        <NavDropDownLink href="/software/folia">Folia</NavDropDownLink>
+        <NavDropDownLink href="/software/velocity">Velocity</NavDropDownLink>
+        <NavDropDownLink href="/software/waterfall" eol>Waterfall</NavDropDownLink>
+      </NavDropDown>
+      <NavLink href="https://hangar.papermc.io/" target="_blank" className="inline-flex items-center">
+        Plugins
+        <Icon name="icons/heroicons/arrow-top-right-on-square" class="ml-1 size-4 align-sub" />
+      </NavLink>
+      <NavLink href="https://docs.papermc.io/" target="_blank" className="inline-flex items-center">
+        Docs
+        <Icon name="icons/heroicons/arrow-top-right-on-square" class="ml-1 size-4 align-sub" />
+      </NavLink>
+      <NavLink href="https://forums.papermc.io/" target="_blank" className="inline-flex items-center">
+        Forums
+        <Icon name="icons/heroicons/arrow-top-right-on-square" class="ml-1 size-4 align-sub" />
+      </NavLink>
+      <NavLink href="/team">Team</NavLink>
+      <NavLink href="/contribute">Contribute</NavLink>
+    </div>
+
+    <div class="grow"></div>
+
+    <IconButton icon="icons/fontawesome/discord-brands" label="Discord" href="https://discord.gg/papermc" external />
+    <IconButton icon="icons/fontawesome/github-brands" label="GitHub" href="https://github.com/PaperMC" external />
+    <IconButton icon="icons/fontawesome/twitter-brands" label="Twitter" href="https://twitter.com/PaperPowered" external />
+  </div>
+</nav>
+
+<script>
+  document.getElementById("nav-toggle")?.addEventListener("click", () => {
+    document.getElementById("nav-menu")?.classList?.toggle("max-md:hidden!");
+  });
+  window.addEventListener("scroll", () => {
+    const wrapper = document.getElementById("nav-wrapper");
+    wrapper?.classList?.toggle("bg-background-light-10", window.scrollY > 64);
+    wrapper?.classList?.toggle("dark:bg-background-dark-90", window.scrollY > 64);
+    wrapper?.classList?.toggle("shadow-xl", window.scrollY > 64);
+  });
+</script>

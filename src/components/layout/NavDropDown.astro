@@ -1,0 +1,74 @@
+---
+import { Icon } from "astro-icon/components";
+import { clsx } from "clsx";
+
+export interface NavDropDownProps {
+  label: string;
+  className?: string;
+}
+
+const { label, className } = Astro.props;
+---
+
+<div
+  class={clsx(
+    "color-gray-200 hover:text-blue-600 dark:hover:text-blue-400 text-sm transition-colors px-2.5 relative h-full",
+    "md:flex md:items-center",
+    "md:after:content-[''] md:after:absolute md:after:left-0 md:after:top-full md:after:h-2 md:after:w-full",
+    className
+  )}
+  data-nav-dropdown
+>
+  <span
+    class="flex cursor-pointer flex-row items-center gap-1 select-none"
+    role="button"
+    aria-haspopup="menu"
+    aria-expanded="false"
+    data-trigger
+  >
+    {label}
+    <Icon name="icons/heroicons/chevron-down" class="h-4 w-4 fill-gray-700 dark:fill-gray-300" />
+  </span>
+
+  <ul
+    role="menu"
+    class="bg-background-light-10 dark:bg-background-dark-90 z-[100] hidden md:absolute md:top-full md:left-0 md:min-w-40 md:translate-y-1 md:rounded-lg md:border md:border-gray-200 md:py-1 md:shadow-md md:dark:border-gray-800"
+  >
+    <slot />
+  </ul>
+</div>
+
+<script>
+  const mqDesktop = () => window.matchMedia("(min-width: 768px)").matches;
+
+  document.querySelectorAll("[data-nav-dropdown]").forEach((el) => {
+    const trigger = el.querySelector("[data-trigger]");
+    const menu = el.querySelector("ul");
+
+    const open = () => {
+      menu?.classList.remove("hidden");
+      trigger?.setAttribute?.("aria-expanded", "true");
+    };
+    const close = () => {
+      menu?.classList.add("hidden");
+      trigger?.setAttribute?.("aria-expanded", "false");
+    };
+
+    el.addEventListener("mouseenter", () => {
+      if (mqDesktop()) open();
+    });
+    el.addEventListener("mouseleave", () => {
+      if (mqDesktop()) close();
+    });
+
+    trigger?.addEventListener("click", (e) => {
+      if (!mqDesktop()) {
+        e.preventDefault();
+        menu?.classList.toggle("hidden");
+        trigger?.setAttribute?.("aria-expanded", menu?.classList.contains("hidden") ? "false" : "true");
+      }
+    });
+
+    close();
+  });
+</script>

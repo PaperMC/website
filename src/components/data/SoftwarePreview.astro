@@ -1,0 +1,77 @@
+---
+import { Icon } from "astro-icon/components";
+
+export enum SoftwarePreviewType {
+  Info = "Info",
+  Download = "Download",
+  Javadocs = "Javadocs",
+}
+
+interface Props {
+  id: string;
+  name: string;
+  icon: string;
+  description?: string;
+  type: SoftwarePreviewType;
+  eol?: boolean;
+}
+
+const { id, name, icon, description, type, eol } = Astro.props;
+---
+
+<software-preview data-software={id} data-preview-type={type}>
+  <a href="#loading">
+    <article class="hover:bg-primary-300 h-full rounded-xl p-4 transition-all hover:shadow-lg md:p-8 dark:hover:bg-gray-800">
+      <div class="flex flex-row items-center gap-4">
+        <div class="h-12 w-12 rounded-lg bg-gray-800 p-3">
+          <Icon name={icon} class="h-full w-full" />
+        </div>
+        <h3 class="flex flex-1 items-center gap-4 font-medium">
+          {name}
+          {eol && <Icon name="icons/fontawesome/box-archive" class="h-6 fill-current" />}
+        </h3>
+      </div>
+
+      {description && <p class="mt-4 text-gray-800 dark:text-gray-200">{description}</p>}
+    </article>
+  </a>
+</software-preview>
+
+<script>
+  import { getProject } from "@/utils/fill";
+  import { latestVersionFrom } from "@/utils/versions";
+
+  class SoftwarePreview extends HTMLElement {
+    async connectedCallback() {
+      const { software, previewType } = this.dataset;
+      if (!software || !previewType) {
+        return;
+      }
+
+      const anchor = this.querySelector("a");
+      if (!anchor) {
+        return;
+      }
+
+      switch (previewType) {
+        case "Info":
+          anchor.href = `/software/${software}`;
+          break;
+        case "Download":
+          anchor.href = `/downloads/${software}`;
+          break;
+        case "Javadocs":
+          const { versions } = await getProject(software);
+          const latest = latestVersionFrom(versions);
+          if (latest) {
+            anchor.href = `https://jd.papermc.io/${software}/${latest}`;
+          } else {
+            anchor.href = `/software/${software}`;
+          }
+          break;
+      }
+    }
+  }
+
+  customElements.define("software-preview", SoftwarePreview);
+</script>

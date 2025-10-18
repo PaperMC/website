@@ -1,0 +1,107 @@
+@import "tailwindcss";
+@import "@fontsource/poppins/400.css";
+@import "@fontsource/poppins/500.css";
+@import "@fontsource/poppins/600.css";
+@import "@fontsource/poppins/700.css";
+
+@custom-variant dark (@media (prefers-color-scheme: dark));
+
+/* prettier-ignore */
+@source inline("bg-channel-alpha-primary bg-channel-alpha-secondary bg-channel-beta-primary bg-channel-beta-secondary bg-channel-stable-primary bg-channel-stable-secondary bg-channel-recommended-primary bg-channel-recommended-secondary bg-channel-eol-primary bg-channel-eol-secondary");
+/* prettier-ignore */
+@source inline("text-channel-alpha-primary text-channel-alpha-secondary text-channel-beta-primary text-channel-beta-secondary text-channel-stable-primary text-channel-stable-secondary text-channel-recommended-primary text-channel-recommended-secondary text-channel-eol-primary text-channel-eol-secondary");
+
+@theme {
+  --font-sans: Poppins, Roboto, Open Sans, ui-sans-serif, system-ui, sans-serif;
+
+  --color-primary-0: #ffffff;
+  --color-primary-100: #f5f8fe;
+  --color-primary-200: #ebf1fd;
+  --color-primary-300: #e0eafc;
+  --color-primary-400: #d6e3fb;
+  --color-primary-500: #ccdcfb;
+  --color-primary-600: #c2d4fa;
+  --color-primary-700: #b8cdf9;
+  --color-primary-800: #adc6f8;
+  --color-primary-900: #a3bff7;
+  --color-primary-1000: #99b8f6;
+
+  --color-primary-dark-0: #e6edfd;
+  --color-primary-dark-50: #ccdcfb;
+  --color-primary-dark-100: #99b8f6;
+  --color-primary-dark-200: #6695f2;
+  --color-primary-dark-300: #3371ed;
+  --color-primary-dark-400: #004ee9;
+  --color-primary-dark-500: #003eba;
+  --color-primary-dark-600: #002f8c;
+  --color-primary-dark-700: #001f5d;
+  --color-primary-dark-800: #00102f;
+  --color-primary-dark-900: #000817;
+
+  --color-background-dark-90: #111111;
+  --color-background-dark-80: #181a1b;
+  --color-background-light-10: #f8faff;
+  --color-background-light-0: #ffffff;
+
+  --list-style-type-alpha: lower-alpha;
+
+  --aspect-auto: auto;
+  --aspect-square: 1 / 1;
+  --aspect-video: 16 / 9;
+
+  --grid-template-columns-16: repeat(16, minmax(0, 1fr));
+  --grid-template-columns-18: repeat(18, minmax(0, 1fr));
+  --grid-template-columns-20: repeat(20, minmax(0, 1fr));
+
+  --scale-120: 1.2;
+}
+
+@theme {
+  /* These colours come from Fill - changes must be synchronized. */
+  --color-channel-alpha-primary: #ea5b6f;
+  --color-channel-alpha-secondary: var(--color-white);
+  --color-channel-beta-primary: #ffc859;
+  --color-channel-beta-secondary: var(--color-black);
+  --color-channel-stable-primary: var(--color-blue-500);
+  --color-channel-stable-secondary: var(--color-white);
+  --color-channel-recommended-primary: #4ecb8b;
+  --color-channel-recommended-secondary: var(--color-white);
+  --color-channel-eol-primary: #9ca3af;
+  --color-channel-eol-secondary: #111827;
+}
+
+@variant dark {
+  :root {
+    /* These colours come from Fill - changes must be synchronized. */
+    --color-channel-alpha-primary: #e42e47;
+    --color-channel-alpha-secondary: var(--color-white);
+    --color-channel-beta-primary: #f9da22;
+    --color-channel-beta-secondary: var(--color-black);
+    --color-channel-stable-primary: var(--color-blue-500);
+    --color-channel-stable-secondary: var(--color-white);
+    --color-channel-recommended-primary: #4ecb8b;
+    --color-channel-recommended-secondary: var(--color-white);
+    --color-channel-eol-primary: #4b5563;
+    --color-channel-eol-secondary: #e5e7eb;
+  }
+}
+
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+html {
+  @apply bg-background-light-10 dark:bg-background-dark-90 scroll-smooth dark:text-white;
+  -webkit-tap-highlight-color: transparent;
+}
+
+[role="button"],
+button {
+  cursor: pointer;
+}
