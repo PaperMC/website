@@ -7,6 +7,10 @@
       "groupName": "all non-major dependencies",
       "groupSlug": "all-minor-patch",
       "matchPackageNames": ["*"]
+    },
+    {
+      "minimumReleaseAge": "3 days",
+      "matchPackageNames": ["*"]
     }
   ]
 }
