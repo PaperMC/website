@@ -13,7 +13,7 @@ const initial = (name?.trim?.()[0] ?? "?").toUpperCase();
 
 <Tag
   role={link ? "button" : undefined}
-  class="user-image relative flex aspect-square items-center justify-center overflow-hidden rounded-full bg-gray-600 font-bold text-white uppercase transition-transform hover:scale-120 hover:shadow-lg"
+  class="user-image relative flex aspect-square items-center justify-center overflow-hidden rounded-full bg-gray-600 font-bold text-white uppercase transition-transform hover:scale-105 hover:shadow-lg"
   href={link}
   rel={link && "noreferrer"}
   target={link && "_blank"}
@@ -31,7 +31,7 @@ const initial = (name?.trim?.()[0] ?? "?").toUpperCase();
         height={80}
         loading="lazy"
         decoding="async"
-        class="absolute h-full w-full bg-white object-cover"
+        class="pointer-events-none absolute h-full w-full object-cover"
       />
     )
   }
@@ -41,6 +41,17 @@ const initial = (name?.trim?.()[0] ?? "?").toUpperCase();
   .user-image img.invalid,
   .user-image img[data-fallback="true"] {
     display: none !important;
+  }
+
+  .user-image {
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    contain: paint;
+  }
+  .user-image img {
+    display: block;
+    border-radius: 9999px;
   }
 </style>
 
