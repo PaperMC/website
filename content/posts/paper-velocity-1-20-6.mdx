@@ -1,0 +1,76 @@
+---
+title: "Paper & Velocity 1.20.6"
+date: "2024-05-28T15:00:00.000Z"
+author: "Paper Team"
+---
+
+## The 1.20.5/6 Update
+
+Stable Paper and Velocity 1.20.6 builds have been released! As always, **backups are absolutely mandatory**. **After upgrading your world to 1.20.6, **you cannot downgrade back to a lower version!\*\*
+
+The reason for the stable announcement arriving so late is that upstream's item handling has shown to be _incredibly_ broken after the 1.20.5 changes to items. Unfortunately, there still remain a good number of smaller issues with ItemMeta API&lt;-&gt;vanilla conversion, but at this point we should have gotten rid of the nastier ones. In any case, please make sure to report any such issues or missing functionality [on our issue tracker](https://github.com/PaperMC/Paper/issues).
+
+We would like to thank everyone that worked on this update (a lot of people and work were needed for a minor update, once again):
+
+- [4drian3d](https://github.com/4drian3d) and [Gerrygames](https://github.com/Gerrygames) for their work on Velocity
+- [@electronicboy](https://github.com/sponsors/electronicboy)
+- [@jmp](https://github.com/sponsors/jpenilla)
+- [@lynxplay](https://github.com/lynxplay)
+- [Lulu13022002](https://github.com/Lulu13022002)
+- [@Machine Maker](https://github.com/sponsors/Machine-Maker)
+- [@Noah](https://github.com/sponsors/NoahvdAa)
+- [Ollie](https://github.com/sponsors/olijeffers0n) for his work on our docs
+- [@Owen1212055](https://github.com/sponsors/Owen1212055)
+- [@Spottedleaf](https://www.patreon.com/Spottedleaf)
+
+If you'd like to support PaperMC as a whole, you can find more information at https://papermc.io/sponsors.
+
+## Java 21 requirement
+
+Minecraft 1.20.6 requires you to run Java 21. See [here](https://docs.papermc.io/misc/java-install) on how to update your installed Java version.
+
+## Item format changes
+
+Mojang has drastically revamped the way itemstacks store their data. While they are still serialized to raw NBT in chunk and entity files, this is no longer true for commands and storage at runtime. We have created an [**item command converter page**](https://docs.papermc.io/misc/tools/item-command-converter) (https://docs.papermc.io/misc/tools/item-command-converter) where you can update your commands etc. If you are a developer, see the below section on how this might affect you.
+
+Unlike vanilla/Spigot, **Paper will also automatically upgrade commands in command blocks as well as text components in signs **when upgrading from an older server version. If you for whatever reason do not wish to have these upgraded, you can use the `Paper.DisableCommandConverter` system property/startup flag. For this reason, we also highly discourage upgrading your old world with non-Paper servers.
+
+Note that the `hide-item-meta` config option has not yet been updated, but everything else should work as expected.
+
+## `spawnChunkRadius` gamerule
+
+Our `keep-spawn-loaded` and `keep-spawn-loaded-range` config options have been removed, as Mojang has added the `spawnChunkRadius` gamerule, serving the same function.
+
+## For Developers
+
+## Mojang-mapped runtime without CB package relocation
+
+As [announced previously](https://forums.papermc.io/threads/important-dev-psa-future-removal-of-cb-package-relocation.1106/), we have dropped Spigot's mix of partially obfuscated, partially Mojang mapped, and partially Spigot mapped runtime names of classes, methods, and fields. On top of that, we have dropped the arbitrary CraftBukkit package relocation version. Plugins compiled against the reobfuscated server will still work via magical plugin remapping that is applied once on startup, as well as reflection rewriting. However, we highly recommend [using paperweight-userdev to offer plugin jars targeting the mapped server](https://docs.papermc.io/paper/dev/userdev), even if just as a secondary jar, as it would greatly benefit the vast majority of your users (well over 80-90%).
+
+If you are _not_ using internals and thus run on a Mojang mapped server fine, you should exclude your plugin from being remapped by [adding the Mojang-mapped marker to the jar manifest](https://docs.papermc.io/paper/dev/userdev#mojang-mappings) (setting `paperweight-mappings-namespace` to `mojang`). Alternatively, you can add the entry manually in your gradle or [maven](https://maven.apache.org/plugins/maven-jar-plugin/examples/manifest-customization.html) build scripts.
+
+## Brigadier Command API
+
+We have finally added more powerful API to interact with Brigadier commands directly. Brigadier is the command library vanilla uses for creating and parsing commands, meaning you can add much nicer auto-completions and argument handling for your commands, although this will be most interesting for command libraries wrapping around Brigadier. Basic usage is explained [on our docs page](https://docs.papermc.io/paper/dev/commands).
+
+## ItemStack and ItemMeta
+
+If you were using API to modify item data, then you are _largely_ fine. Since we have long deemed moving away from raw NBT data storage inevitable, we have never added API for interacting with the underlying NBT data directly. As such, only plugins unnecessarily mutating items through internals should break. The persistent data container API is also not affected. For item serialization, we highly recommend using our [ItemStack#serializeAsBytes](<https://jd.papermc.io/paper/1.20.6/org/bukkit/inventory/ItemStack.html#serializeAsBytes()>) method over Spigot's config serialization, so that you can guarantee proper upgrade paths, compatibility for stored items, and better performance.
+
+ItemMeta is very much not compatible with the idea of storing any data on any item, e.g. adding durability to a book, or making stone eatable. While we have tried our best at making sure that such custom data is not lost, the API has no proper way of applying these at the moment. On top of that, a lot of Spigot API that previously assumed a specific set of hardcoded enums, such as banner patterns, break when trying to add custom ones. We currently have a [better system for this in the works](https://github.com/PaperMC/Paper/pull/10613), but it will take some more time before it is fully ready.
+
+Finally, a lot of item data now has hard limits for size and length, such as lore being limited to 256 entries - most of these you shouldn't really run into. The most notable example is player profiles (including player head profiles), where player names can no longer exceed 16 characters and are limited to printable ascii characters. We strictly enforce these everywhere, as otherwise it could lead to chunks and player data unable to be saved, as well as inventory or player info updates erroring on the client.
+
+### `canPlaceOn` and `canBreak` break
+
+Another piece of broken API is our canPlaceOn and canBreak methods, as these have had major changes that can now longer accurately be represented by just a list of materials. New API for this will also be added soon.
+
+### ItemFlag behavioral changes
+
+Unlike before, you can no longer set most of the hide item flags without the data in question, e.g. you need to set can_place_on data in order to hide it.
+
+### That's it
+
+Finally, here is a closing note from our master of words, electroniccat:
+
+> as always, BACKUP YO SHIT, so long, and thanks for the fish

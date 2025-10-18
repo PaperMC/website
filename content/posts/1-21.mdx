@@ -1,0 +1,95 @@
+---
+title: "1.21"
+date: "2024-07-20T18:00:16.000Z"
+author: "Paper Team"
+---
+
+## The 1.21 Update
+
+Stable Paper and Velocity 1.21 builds have been released! As always, **backups are absolutely mandatory**. **After upgrading your world to 1.21, you cannot downgrade back to a lower version!**
+
+We would like to thank everyone that worked on this update:
+
+- [4drian3d](https://github.com/4drian3d) and [Gerrygames](https://github.com/Gerrygames) for their work on Velocity
+- [@electronicboy](https://github.com/sponsors/electronicboy)
+- [@jmp](https://github.com/sponsors/jpenilla)
+- @kennytv
+- [@lynxplay](https://github.com/lynxplay)
+- [Lulu13022002](https://github.com/Lulu13022002)
+- [@Machine Maker](https://github.com/sponsors/Machine-Maker)
+- [Ollie](https://github.com/sponsors/olijeffers0n) for his work on our docs
+- [@Spottedleaf](https://www.patreon.com/Spottedleaf)
+- [@Owen1212055](https://github.com/sponsors/Owen1212055)
+- and finally tal5, Dawon, yannicklamprecht and Doc94 for additional help!
+
+If you'd like to support PaperMC as a whole, you can find more information at https://papermc.io/sponsors.
+
+## spark profiler inclusion in Paper
+
+Thanks to riley and Luck, Paper now bundles [spark](https://spark.lucko.me/) as its main profiler for diagnosing causes of lag. Timings is now disabled by default and will be entirely removed at a later date, possibly with 1.22. As a developer, please make sure you remove any custom `Timing` uses by then. You can see our [docs page](https://docs.papermc.io/paper/profiling) as well as the [GitHub Discussions page](https://github.com/PaperMC/Paper/discussions/10565) for more details and also provide feedback there.
+
+## Configuration changes
+
+The `disable-teleportation-suffocation-check` config option is now gone, as this check no longer exists in vanilla. We have also changed a number of default configuration values to improve the gameplay experience:
+
+- `merge-radius.exp`: `3`->`-1`(disabled). vanilla has its own less aggressive merging logic, but generally xp orbs were not a large performance concern; otherwise we might instead offer new options to change vanilla’s merge logic
+- `merge-radius.item`: `2.5`->`0.5`, reflecting the vanilla default, since the increased value was often seen as disruptive. If you expect large number of the same item types to be lying around close to one another, you can increase this again
+- `entity-activation-range.raider`: `48`->`64`
+- Various values under `entity-tracking-range` have been increased to make sure you can actually see monsters and players attacking you from farther away (e.g. no longer running into invisible ghasts shooting at you in the nether. Note that this does not affect ticking, only whether they are sent to a player)
+  - players: `48`->`128`
+  - animals: `48`->`96`
+  - monsters: `48`->`96`
+  - misc: `32`->`96`
+
+## Slower than usual startup
+
+In 1.20.5/6, Spigot has made additions to their plugin rewriting that resulted in poor startup performance, adding multiple seconds to each individual larger plugin. This has unfortunately been made slightly worse again in 1.21.¹
+
+We have already mildly improved on it and are working on reducing it by as much as possible, but in the meantime you can work around it by disabling the cross-version compatibility measures by either optionally using [Paper's plugin loader](https://docs.papermc.io/paper/dev/getting-started/paper-plugins) as a developer, or by using the [**`paper.disableOldApiSupport` startup flag**](https://docs.papermc.io/paper/reference/system-properties#paperdisableoldapisupport). **However, the flag will only work if all of your plugins are built against the latest API version.**
+
+## 'Done'-message changes
+
+The final `Done (7.392s)! For help, type "help"` message now shows the time from when the Minecraft server initially bootstrapped. Previously, it was in a kind of weird spot where it only tracked world loading, plugins, and a few other parts of server startup. We have also reinstated vanilla's original `Done preparing level` message next to the total startup time.
+
+## The .paper-remapped directory
+
+As per the last announcement, we now use Mojang mappings at runtime and thus have to remap plugins that might still be using Spigot's mess of mappings. The `.paper-remapped` folder in the plugin directory caused a bit of confusion, so here's what it does: It stores the remapped plugin jars as well as a cached server jar, so that all of these don't have to be processed during every single server startup. The folder is automatically cleaned up, so you don't need to (and generally shouldn't) touch it.
+
+---
+
+## For developers
+
+In case you skipped the 1.20.5/6 update, make sure to read [its announcement on Mojang mappings use at runtime and our new Brigadier command API](https://forums.papermc.io/threads/paper-velocity-1-20-6.1152/).
+
+## Attribute modifiers
+
+Attribute modifiers no longer have a name and uuid and instead make use of a single string key as its identifier. The old constructors and methods are unusable as of now, only the Paper-added get/removeModifier via uuids have had a temporary compatibility measure put in. If you are using this API, make sure to move to their replacements as soon as possible.
+
+## Removed chunk gen delegation and regeneration methods
+
+Our vanilla chunk gen delegation API already broke with almost every major update and this one is no exceptions. Together with the regenerateChunk method, their implementation is no longer feasible due to how hard-coupled and stateful a lot of the handling has become. The only way to properly regenerate chunks with structures and everything else attached is to generate a world with the same seeds and to copy over those chunks.
+
+## ItemStack and ItemMeta (again)
+
+The ItemStack class within the API module no longer holds its method implementations directly, but instead always redirects to a held internal (Craft)ItemStack instance. This won't matter to most people, but it means that you can no longer run unit tests using the API-only ItemStack. If this affects you and you aren't already using a Minecraft testing framework, we recommend using something like [Mockbukkit](https://github.com/MockBukkit/MockBukkit) to mock a running server instance.
+
+We have added `ItemMeta#hasDamageValue` to check whether the damage item data component has been added to an item. `hasDamage` will still return whether there is a non-0 amount of damage. For resetting damage, we recommend using `resetDamage` instead of setting it to 0 to improve item comparison.
+
+There's still other issues thanks to ItemMeta clashing hard with Minecraft's new item data storage, including unfortunate but not really solvable behavioral breaks to item flags. Right now, we're still working on our improved item data component API in the background and will let you know more once it has been merged.
+
+## Other changes
+
+- End gateway teleportation cancellation doesn't reset the portal cooldown, so you should use `EntityPortalEnterEvent` with `PortalType.END_GATEWAY` to check for initial entries
+- `Projectile#getWeapon` is now nullable
+
+## Opportunity to change the git commit author details in Paper commits
+
+If you have previously contributed to our main Paper repository on GitHub and want the email or name that was used on that commit to be changed, you may use the modmail command on our Discord to tell us the new details. As per our planned [repository restructure in the future](https://github.com/orgs/PaperMC/projects/6), the current git history will be overridden, so we thought we might as well fix the details for anyone that needs it.
+
+---
+
+¹ Here are a few examples (results will vary depending on hardware and OS), which will quickly add up the more plugins you have:
+
+- ViaVersion takes over two seconds longer to load (from a few hundred ms to 2.5 seconds)
+- WorldEdit takes two and a half seconds longer (from about 1.5 to 4 seconds)
+- CoreProtect takes a second and a half longer (on a clean setup with otherwise no measurable load time at all if rewriting is disabled)

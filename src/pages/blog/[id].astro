@@ -1,0 +1,38 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { getCollection, render } from "astro:content";
+import { formatISODate } from "@/utils/time";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("posts");
+  return posts.map((post) => ({
+    params: { id: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<Layout title={post.data.title} description={post.data.title} keywords={[]} canonical={`/blog/${post.id}`}>
+  <section class="mx-auto w-full max-w-7xl space-y-10 px-4 py-20 sm:px-6 lg:px-8">
+    <article class="block overflow-hidden rounded-xl border border-white/10">
+      <div class="p-6">
+        <h1 class="mt-1 text-3xl font-extrabold">{post.data.title}</h1>
+        <div class="mt-3 text-sm opacity-70">
+          <time>{formatISODate(post.data.date)}</time>
+          {" · "}
+          {post.data.author}
+        </div>
+        <div class="prose prose-invert mt-6 max-w-none">
+          <Content />
+        </div>
+      </div>
+    </article>
+
+    <div class="flex items-center justify-between">
+      <a href="/blog/all" class="text-sm underline decoration-dotted underline-offset-4">View all</a>
+    </div>
+  </section>
+</Layout>

@@ -4,6 +4,8 @@
 @import "@fontsource/poppins/600.css";
 @import "@fontsource/poppins/700.css";
 
+@plugin "@tailwindcss/typography";
+
 @custom-variant dark (@media (prefers-color-scheme: dark));
 
 /* prettier-ignore */

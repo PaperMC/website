@@ -1,0 +1,52 @@
+---
+import Layout from "@/layouts/Layout.astro";
+
+import { getCollection } from "astro:content";
+import { formatISODate } from "@/utils/time";
+
+const posts = (await getCollection("posts")).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const [latest, ...rest] = posts;
+---
+
+<Layout title="Blog" description="" keywords={[]} canonical="/blog">
+  <section class="mx-auto w-full max-w-7xl space-y-10 px-4 py-20 sm:px-6 lg:px-8">
+    {
+      latest && (
+        <a href={`/blog/${latest.id}`} class="block overflow-hidden rounded-xl border border-white/10 hover:bg-white/5">
+          <div class="p-6">
+            <div class="text-emerald-400">Latest Post</div>
+            <h1 class="mt-2 text-3xl font-extrabold">{latest.data.title}</h1>
+            <div class="mt-3 text-sm opacity-70">
+              <time>{formatISODate(latest.data.date)}</time>
+              {" · "}
+              {latest.data.author}
+            </div>
+          </div>
+        </a>
+      )
+    }
+
+    <div class="flex items-center justify-between">
+      <h2 class="text-xl font-semibold">Recent Posts</h2>
+      <a href="/blog/all" class="text-sm underline decoration-dotted underline-offset-4"> View all </a>
+    </div>
+
+    <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        rest.map((entry) => (
+          <li class="rounded-lg border border-white/10 p-4 hover:bg-white/5">
+            <a href={`/blog/${entry.id}`}>
+              <div class="line-clamp-2 text-lg font-semibold">{entry.data.title}</div>
+              <div class="mt-3 text-xs opacity-70">
+                <time>{formatISODate(entry.data.date)}</time>
+                {" · "}
+                {entry.data.author}
+              </div>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</Layout>

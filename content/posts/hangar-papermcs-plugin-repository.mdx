@@ -1,0 +1,36 @@
+---
+title: "Hangar - PaperMC's Plugin Repository"
+date: "2023-04-20T14:20:00.000Z"
+author: "Paper Team"
+---
+
+Once again, we have another exciting announcement for you, this time about PaperMC's own site for uploading and downloading Paper, Velocity, and Waterfall plugins, called [Hangar](https://hangar.papermc.io/)! The main reason we started working on this is to finally provide a centralized place for Paper and Velocity plugins. Compared to the Spigot forums, Hangar allows you much more control over your resource in terms of:
+
+- adding other authors to your project,
+- creating organizations with projects under them,
+- managing roles per project or per organization (such as editor or developer)
+- combined releases with multiple jars or external links per platform,
+- customizable release channels (such as beta or snapshot),
+- [a proper, documented API](https://hangar.papermc.io/api-docs) to upload and download plugins ([OpenAPI yaml](https://hangar.papermc.io/v3/api-docs.yaml)),
+- creating multiple project description/wiki pages,
+- selecting compatibility with minor Minecraft versions as well as specific Velocity versions,
+- additional tags to mark a plugin as an addon, a library, or Folia compatible,
+- a secure account system with support for modern multi factor authentication standards like TOTP and WebAuthN (YubiKeys are supported!)
+
+... and more. As Hangar is still in beta, we intend on adding a lot more features and quality of life changes, such as the ability to set notifications per release channel and creating draft releases. You can follow up on our current plans in the Hangar roadmap project: https://github.com/orgs/HangarMC/projects/1/views/14. There are of course other such resource sites already, such as CurseForge and Modrinth, however, we have made Hangar specifically with Paper and Velocity plugins in mind, so that you can have the best experience looking for plugins or uploading them to Hangar.
+
+We have already made a Gradle plugin you can use to automatically upload new version releases, which you can find here with examples provided: https://github.com/HangarMC/hangar-publish-plugin - so the only thing that stands between you and your first uploaded version is creating an account and a project on Hangar!
+
+Additionally, for developers who published to the Spigot forums before, we created an importer for that! You can find it here https://hangar.papermc.io/tools/importer. It will attempt to import the description and convert it to Markdown, set the project avatar and basic settings such as the category to make it as easy as possible for you to adopt Hangar for your projects. Do note however that you will have to upload your versions manually after you imported your projects!
+
+If you happen to find any bugs, you can report them on our issue tracker: https://github.com/HangarMC/Hangar/issues.
+If you want a testing grounds for the API, please use [our staging instance](https://hangar.papermc.dev/).
+
+## Otherwise we hope to see you and your plugins on **Hangar** over at https://hangar.papermc.io/
+
+Let me end this post with a bit of a personal note:
+Hangar was born out of a discussion on the Papers Discord/IRC channel, after being annoyed by existing platforms, almost 3 years ago.
+First it was a from-scratch project, then we forked Ore (the platfrom repository made by the Sponge project), then we rewrote Ore's frontend, then we rewrote the backend, then we rewrote the frontend, again. It has been quite a wild ride, with many ups and downs.
+The lowest point was December last year: We weren't getting anywhere, I thought everything we had sucked, we were exploring alternatives internally, I started modifying existing software for our needs. Basically, I was ready to give up. In the end, we decided to not go that route, the Paper team assured me that what we had at that time was already better than other existing solutions and so I pushed through all that together with Kenny, without whom I would have never be able to do that.
+So I'll end with thanking him, Machine_Maker, AlessioGr, mdcfe and all the other contributors, the Paper team, the people on the Hangar Discord, the plugin developers who where invited as early adopter and everybody else who tested Hangar over the years and provided valuable feedback, and generally everybody in the Paper community who pinged me daily to remind me that Hangar means something to them: You were annoying as heck, but I am glad you did it.
+And now everybody go sign up!

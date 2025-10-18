@@ -1,0 +1,59 @@
+---
+title: "Paper 1.19"
+date: "2022-06-12T16:34:45.000Z"
+author: "Paper Team"
+---
+
+## The 1.19 Update
+
+We’re happy to announce that initial builds for Paper 1.19 have been released. We were able to fix a lot of issues already, but there might still be breaking ones, so as always, **backups are absolutely mandatory**. After upgrading your world to 1.19, **you cannot downgrade back to a lower version!**
+
+We would like to thank everyone that worked on this update. Not only the people actually working on the code, but everyone that provided feedback, helped us test, has been patient, and the people that joined us in VC or on Twitch (where over 400 people watched Kenny stream at one point!). We would like to especially thank the following people:
+
+- [@kennytv](https://github.com/sponsors/kennytv)
+- [@Machine Maker](https://github.com/sponsors/Machine-Maker)
+- [@Spottedleaf](https://www.patreon.com/Spottedleaf)
+- [@Owen1212055](https://github.com/sponsors/Owen1212055)
+- [@Noah](https://github.com/sponsors/NoahvdAa)
+- [@jmp](https://github.com/sponsors/jpenilla/)
+- [@MiniDigger](https://github.com/sponsors/MiniDigger)
+- @sulu
+- [CoreyShupe/FiXed](https://github.com/CoreyShupe)
+- [@electronicboy](https://paypal.me/ShaneFreeder)
+- @FivePB
+- @Michael
+- [@aurora](https://github.com/sponsors/aurorasmiles)
+
+Next to those people, you can find links to support them individually. If you'd like to support PaperMC as a whole, you can find more information at https://papermc.io/sponsors.
+
+## Major Configuration Changes
+
+Starting with 1.19, the Paper configuration files will now be split into multiple parts. Instead of having one giant paper.yml file for everything, there are now two files in a newly created `config` directory: `paper-global.yml`, where you can configure options that apply to the whole server, and `paper-world-defaults.yml`, where you can set default per-world values; you can change the directory from `config` to any directory you like with the new `--paper-settings-directory` command line argument. The per-world configuration has been split into each individual world directory (`paper-world.yml`), so for example, for the world `world_the_end`, you will find the configuration file at `world_the_end/paper-world.yml`.
+
+In addition to this, all configurable messages inside of Paper configs use the MiniMessage format from now on. This means that legacy formatting (`&` or `§` codes) will no longer work in the paper configs. Instead, you use MiniMessage, which allows modern formatting with RGB colors, gradients, translatable components, and a lot more. You can find more information about MiniMessage here: https://docs.adventure.kyori.net/minimessage/format.html
+
+To try out MiniMessage formatting, you can use this live-previewing website: https://webui.adventure.kyori.net/.
+
+Your current configuration files will be migrated into the new format automatically while keeping all of your previous settings. Your old `paper.yml` will automatically be backed-up into `config/legacy-backup/paper.yml.old`.
+
+Our documentation will be updated over the next couple of weeks to reflect those changes.
+
+**Alternate Current redstone implementation**
+About a month ago, Space Walker ported his Fabric mod to Paper, allowing us to offer another redstone implementation: Alternate Current. You can enable it by changing the per-world setting [`redstone-implementation`](https://docs.papermc.io/paper/reference/paper-per-world-configuration#redstone-implementation) to `alternate-current`. As of now, Alternate Current is faster and more stable than the already implemented Eigencraft option (and a lot faster than Vanilla's redstone), but its behavior slightly deviates from Vanilla in certain edge cases, such as the order of surrounding block updates. Read more about Alternate Current and how it differs from other redstone implementations on [its README.](https://github.com/SpaceWalkerRS/alternate-current/blob/main/README.md)
+
+## For Developers
+
+**Signed chat messages**
+Minecraft 1.19 introduced client-side signing of chat messages, allowing other clients to verify a message has been sent by the player, delivered verbatim and unmodified by the server. In the future, the client will most likely visually distinguish signed player messages, unsigned player messages, and system messages. Because we want to avoid issues with upstream compatibility and duplicate work, we are not yet able to provide an API for that system. Currently, all messages will be sent as (unsigned and unverified) system messages – this has no meaningful impact on how clients display these messages yet. With Mojang trying to make the player chat more secure, we will have to make some larger additions and changes around message events and API in the future to allow features like the ability to preview formatted messages on the client.
+
+**MiniMessage methods in API**
+After the inclusion of MiniMessage in our API in 1.18, we have now added `sendPlainMessage(String)` and `sendRichMessage(String)` methods to the `CommandSender` interface to make developers more aware of the distinction between legacy, plain, and MiniMessage text formatting – we strongly discourage the use of the old `sendMessage(String)` methods using legacy formatting.
+
+**Configurate**
+We are currently **not** exposing Configurate, the library now used to manage Paper configurations, via our API. It will be exposed once Configurate receives more updates to make it more user friendly for use in plugins.
+
+## Experimental channel for builds
+
+Our downloads API has different channels to distinguish builds - right now between `experimental` and `default`. The first few 1.19 builds were released in the `experimental` channel, which has now been changed back to the `default` channel.
+
+For future updates, we will no longer provide any early experimental builds on Discord, instead using the `experimental` channel in our downloads API. **This means that you will need to distinguish between channels in your scripts to avoid getting highly experimental and potentially breaking versions. Please adjust your download scripts accordingly.** Experimental builds marked as such will be available to download on our homepage as well.

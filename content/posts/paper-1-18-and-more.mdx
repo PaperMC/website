@@ -1,0 +1,63 @@
+---
+title: "Paper 1.18 and more"
+date: "2022-01-04T20:46:50.000Z"
+author: "Paper Team"
+---
+
+## The 1.18 update
+
+After the initial release a bit over a month ago, Paper 1.18.1 is now deemed ready for use in production environments. As with any upgrade, please ensure you have a functioning backup before proceeding. **World downgrades are not supported under any circumstances.**
+
+**Upgrading worlds to 1.18**
+With the increased world height that 1.18 brought, Mojang has introduced retrogen to allow worlds using the old (0 to 256) height to upgrade cleanly to the new (-64 to 320) height. Retrogen will fill in new caves below the bedrock layer, allowing you to explore the new terrain in already generated chunks. Should retrogen be undesired, you can disable it by setting `below-zero-generation-in-existing-chunks` to `false` in `spigot.yml`. **This option is not recommended and may not work correctly in conjunction with `--forceUpgrade` or with worlds older than 1.14.** Mojang has also introduced world blending to cleanly transition from old to new generation at the border of chunks that have not been generated before.
+
+**Changes to Anti-Xray and ore generation**
+Ores can now generate a lot higher than before, so you might need to adjust your Anti-Xray settings. We have increased the default `max-block-height` to 64, but you might want to increase it even further. Please be aware that higher numbers might impact performance, especially with `engine-mode: 2`. See [stonar's anti-xray guide](https://gist.github.com/stonar96/ba18568bd91e5afd590e8038d14e245e) and the [updated ore distribution](https://minecraft.fandom.com/wiki/Ore#Distribution) for more information.
+
+**Security fixes to all Minecraft versions**
+Throughout December, we have pushed important security fixes to all Paper versions from 1.8 to 1.18. If you are running a build or server fork older than that on any given version, you should **update immediately**. While we decided to make an exception in pushing the fixes to legacy versions, we will never do this again, and it is only a matter of time until a new major security issue sees the light of day.
+
+We would also like to thank the member of our community that made us aware of the issue via the [exploit-report channel on our Discord](https://discord.com/channels/289587909051416579/869651180698099732/869715284511051867), which made it possible to respond to the issue before it received too much public attention and to have Minecraft as a whole be one of the first communities to warn users about it.
+
+**Contributors to 1.18**
+A big thank you to everyone who contributed to the update process:
+
+- [@kennytv](https://github.com/sponsors/kennytv)
+- [@jmp](https://www.patreon.com/jmp_)
+- [@Machine Maker](https://github.com/sponsors/Machine-Maker)
+- [@MiniDigger](https://github.com/sponsors/MiniDigger)
+- [@Spottedleaf](https://www.patreon.com/Spottedleaf)
+- @DenWav
+- @JRoy
+- @stonar96
+
+If you want to support the PaperMC project, you can find more information here: https://papermc.io/sponsors.
+
+We would also like to thank everyone who watched, chatted and talked with us during the update process. You are amazing ❤️
+
+## For Developers
+
+**Changes to Paperweight (Paper contributors)**
+Instead of using the `shadowJar` and `reobfJar` Gradle tasks to create a runnable (but not distributable) jar, you now need the `createMojmapBundlerJar` or `createReobfBundlerJar` tasks. Similarly, Paperclip (distributable) jars are now created with the `createMojmapPaperclipJar` or `createReobfPaperclipJar` task. You can get a full list of tasks by running `gradlew tasks`. An updated, in-depth guide on contributing to Paper can be found [here](https://github.com/PaperMC/Paper/blob/master/CONTRIBUTING.md).
+
+**Paperweight Userdev: Working with NMS in 1.17+ (Plugin developers using NMS)**
+After upstream dropped their field mappings in 1.17, the same now happened with method names as well. Even though we generally advise against depending on server internals, we understand that not everything is possible through API. As of now, the only feasible way of depending on server internals is by coding against mapped names, which are then compiled to the obfuscated names to run with the obfuscated server. Paperweight’s Userdev allows you to do exactly that, but unlike upstream’s maven plugin, userdev uses full Mojang mappings with additional yarn parameter mappings, so you can more easily update your plugin whenever a new Minecraft version is released. Userdev is the **only supported way of working with NMS in 1.18+**. The obfuscated jar is no longer valid to compile against.
+
+To set up paperweight userdev:
+
+1. Add Paper’s maven [repository to your Gradle plugin repositories](https://github.com/PaperMC/paperweight-test-plugin/blob/9d2939f402b9c46454939829cf21c3ab8b8612ca/settings.gradle.kts#L1-L6) in your `settings.gradle.kts`.
+1. Add the Paperweight Userdev Gradle [plugin to your build config](https://github.com/PaperMC/paperweight-test-plugin/blob/9d2939f402b9c46454939829cf21c3ab8b8612ca/build.gradle.kts#L5) with the id `io.papermc.paperweight.userdev`, keeping the version in sync with the [paperweight version used in Paper](https://github.com/PaperMC/Paper/blob/5e30e19e20670b2eac42aacb02dda82d56995bad/build.gradle.kts#L8).
+1. Add the [development bundle to your dependencies](https://github.com/PaperMC/paperweight-test-plugin/blob/9d2939f402b9c46454939829cf21c3ab8b8612ca/build.gradle.kts#L20).
+1. Make the [`assemble` task depend on the `reobfJar` task](https://github.com/PaperMC/paperweight-test-plugin/blob/9d2939f402b9c46454939829cf21c3ab8b8612ca/build.gradle.kts#L31).
+
+A full, working example can be found [on GitHub](https://github.com/PaperMC/paperweight-test-plugin). Both `settings.gradle.kts` and `build.gradle.kts` are important! Paperweight Userdev integrates with the Gradle Shadow plugin, no special configuration is required.
+
+If you have previously used Apache Maven, Gradle supports [automatic migration for the majority of project configurations](https://docs.gradle.org/current/userguide/migrating_from_maven.html#migmvn:automatic_conversion). We would recommend the Kotlin DSL, which can be selected via `gradle init --dsl kotlin`. If you have any issues getting started with Userdev, please come by the `#paper-dev` channel on our [Discord](https://discord.gg/papermc).
+
+## Miscellaneous
+
+**Downloads API**
+We have shut down v1 of our downloads API at the end of November. Please make sure you are using v2 of our downloads API when trying to download Paper via scripts and automated tools. For reference, see the [Downloads API documentation](https://papermc.io/api/docs/). We have also introduced a `channel` field to the `build` response, allowing builds to be marked as experimental.
+
+**Changes to the PaperMC team**
+Over the past couple of months, there have been a number of changes to the PaperMC team. Larry has been promoted to the role of Community Manager and will be focusing on the moderation aspects of the community. We would also like to welcome ocelotpotpie to our moderation team. sulu has taken the position of Triage lead and will be responsible for managing the Triage team, which looks after our GitHub issues. jmp has joined the Maintainer team; Proximyst has left the team, and we wish her all the best! aurora has left the development team to focus more on her responsibilities as a community manager.
