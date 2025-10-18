@@ -12,17 +12,16 @@ import sitemap from "@astrojs/sitemap";
 
 import cloudflare from "@astrojs/cloudflare";
 
-process.env.GIT_COMMIT_HASH = (process.env.GITHUB_SHA || "").trim().substring(0, 7) || fetchGitCommitHash();
-
-function fetchGitCommitHash() {
-  return execSync("git rev-parse --short HEAD").toString().trim();
-}
+const GIT_COMMIT_HASH = (process.env.GITHUB_SHA || "").trim().slice(0, 7) || execSync("git rev-parse --short HEAD").toString().trim();
 
 export default defineConfig({
   site: "https://papermc.io",
 
   vite: {
     plugins: [tailwindcss()],
+    define: {
+      "import.meta.env.GIT_COMMIT_HASH": JSON.stringify(GIT_COMMIT_HASH),
+    },
   },
 
   image: {
