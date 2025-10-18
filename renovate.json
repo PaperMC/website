@@ -3,6 +3,7 @@
   "extends": ["config:recommended"],
   "packageRules": [
     {
+      "minimumReleaseAge": "3 days",
       "matchUpdateTypes": ["minor", "patch"],
       "groupName": "all non-major dependencies",
       "groupSlug": "all-minor-patch",
