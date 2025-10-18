@@ -61,6 +61,12 @@
         "github": "jpenilla"
       },
       {
+        "name": "lynxplay",
+        "avatar": "https://avatars.githubusercontent.com/u/32834385?v=4",
+        "discord": "lynxplay",
+        "github": "lynxplay"
+      },
+      {
         "name": "Machine Maker",
         "avatar": "https://avatars.githubusercontent.com/u/15055071?v=4",
         "discord": "machinemaker",
@@ -71,12 +77,6 @@
         "avatar": "https://avatars.githubusercontent.com/u/6100722?v=4",
         "discord": "spottedleaf",
         "github": "Spottedleaf"
-      },
-      {
-        "name": "lynxplay",
-        "avatar": "https://avatars.githubusercontent.com/u/32834385?v=4",
-        "discord": "lynxplay",
-        "github": "lynxplay"
       }
     ]
   },
@@ -108,12 +108,6 @@
         "avatar": "https://avatars.githubusercontent.com/u/50800980?v=4",
         "discord": "warriorrr.",
         "github": "Warriorrrr"
-      },
-      {
-        "name": "Tamion",
-        "avatar": "https://avatars.githubusercontent.com/u/70228790?v=4",
-        "discord": "tamion",
-        "github": "notTamion"
       }
     ]
   },
@@ -122,6 +116,12 @@
     "name": "Velocity Developers",
     "description": "Velocity Developers manage and develop the Velocity proxy. From handling PRs and issues to writing the fastest production proxy code there is, they do whatever Velocity needs.",
     "members": [
+      {
+        "name": "4drian3d",
+        "avatar": "https://avatars.githubusercontent.com/u/68704415?v=4",
+        "discord": "4drian3d",
+        "github": "4drian3d"
+      },
       {
         "name": "CoreyShupe",
         "avatar": "https://avatars.githubusercontent.com/u/37425956?v=4",
@@ -139,12 +139,6 @@
         "avatar": "https://avatars.githubusercontent.com/u/16436212?v=4",
         "discord": "possiblytux",
         "github": "astei"
-      },
-      {
-        "name": "4drian3d",
-        "avatar": "https://avatars.githubusercontent.com/u/68704415?v=4",
-        "discord": "4drian3d",
-        "github": "4drian3d"
       }
     ]
   },
@@ -245,16 +239,16 @@
         "github": "underscore11code"
       },
       {
-        "name": "Camm",
-        "avatar": "https://avatars.githubusercontent.com/u/41496198?v=4",
-        "discord": "_camm",
-        "github": "CodeByCam"
-      },
-      {
         "name": "Camotoy",
         "avatar": "https://avatars.githubusercontent.com/u/20743703?v=4",
         "discord": "camotoy",
         "github": "camotoy"
+      },
+      {
+        "name": "Doc",
+        "avatar": "https://avatars.githubusercontent.com/u/3602279?v=4",
+        "discord": "doc",
+        "github": "Doc94"
       },
       {
         "name": "Emily",
@@ -294,16 +288,16 @@
     "description": "The Docs Team is responsible for maintaining and updating the PaperMC documentation. They ensure that the documentation is up-to-date and accurate, and that it's easy to understand for all users.",
     "members": [
       {
-        "name": "zlataovce",
-        "avatar": "https://avatars.githubusercontent.com/u/34477304?v=4",
-        "discord": "zlataovce",
-        "github": "zlataovce"
-      },
-      {
         "name": "Strokkur24",
         "avatar": "https://avatars.githubusercontent.com/u/133226102?v=4",
         "discord": "strokkur24",
         "github": "Strokkur424"
+      },
+      {
+        "name": "zlataovce",
+        "avatar": "https://avatars.githubusercontent.com/u/34477304?v=4",
+        "discord": "zlataovce",
+        "github": "zlataovce"
       }
     ]
   }
