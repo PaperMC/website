@@ -15,7 +15,7 @@ const { post } = Astro.props;
 const { Content } = await render(post);
 ---
 
-<Layout title={post.data.title} description={post.data.title} keywords={[]} canonical={`/blog/${post.id}`}>
+<Layout title={post.data.title!} description={post.data.title!} keywords={[]} canonical={`/blog/${post.id}`}>
   <section class="mx-auto w-full max-w-7xl space-y-10 px-4 py-20 sm:px-6 lg:px-8">
     <article class="block overflow-hidden rounded-xl border border-white/10">
       <div class="p-6">
