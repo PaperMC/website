@@ -107,3 +107,19 @@ html {
 button {
   cursor: pointer;
 }
+
+:not(pre) > code {
+  @apply rounded px-1.5 py-0.5 font-mono text-sm;
+  background: color-mix(in oklab, var(--color-background-dark-90) 85%, white 15%);
+  color: #9ae6b4;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.prose code::before,
+.prose code::after {
+  content: none !important;
+}
+
+.prose :where(pre):not(:where([class~="not-prose"] *)) {
+  @apply bg-transparent;
+}
