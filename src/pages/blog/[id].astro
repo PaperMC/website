@@ -1,7 +1,8 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import { getCollection, render } from "astro:content";
-import { formatISODate } from "@/utils/time";
+import { formatDateLong } from "@/utils/time";
+import { countWords, minutesToRead } from "@/utils/content";
 
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
@@ -13,25 +14,76 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
+
+const words = countWords(post.body ?? "");
+const mins = minutesToRead(words);
 ---
 
 <Layout title={post.data.title!} description={post.data.title!} keywords={[]} canonical={`/blog/${post.id}`}>
-  <section class="mx-auto w-full max-w-7xl space-y-10 px-4 py-20 sm:px-6 lg:px-8">
-    <article class="block overflow-hidden rounded-xl border border-white/10">
-      <div class="p-6">
-        <h1 class="mt-1 text-3xl font-extrabold">{post.data.title}</h1>
-        <div class="mt-3 text-sm opacity-70">
-          <time>{formatISODate(post.data.date)}</time>
-          {" · "}
-          {post.data.author}
+  <section class="mx-auto w-full max-w-5xl px-4 py-16 sm:px-6 lg:px-8">
+    <article class="overflow-hidden rounded-xl border border-white/10 bg-black/10 backdrop-blur">
+      <!-- Title -->
+      <header class="px-6 pt-6 sm:px-8 sm:pt-8">
+        <h1 class="text-4xl font-extrabold tracking-tight">{post.data.title}</h1>
+      </header>
+
+      <!-- Optional cover -->
+      {
+        post.data.cover && (
+          <div class="mt-6 aspect-[16/9] w-full overflow-hidden">
+            <img
+              src={typeof post.data.cover === "string" ? post.data.cover : post.data.cover.src}
+              alt={typeof post.data.cover === "string" ? "" : (post.data.cover.alt ?? "")}
+              loading="eager"
+              decoding="async"
+              class="h-full w-full object-cover"
+            />
+          </div>
+        )
+      }
+
+      <!-- Meta strip -->
+      <div class="px-6 sm:px-8">
+        <div class="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-white/70">
+          <time>{formatDateLong(new Date(post.data.date))}</time>
+          <span aria-hidden="true">·</span>
+          <span>{mins} min read</span>
+          <span aria-hidden="true">·</span>
+          <span>{words} words</span>
         </div>
-        <div class="prose prose-invert mt-6 max-w-none">
-          <Content />
+
+        <!-- Author chip (avatar optional) -->
+        <div class="mt-3 flex items-center gap-3">
+          {
+            post.data.authorAvatar && (
+              <img
+                src={post.data.authorAvatar}
+                alt=""
+                width="32"
+                height="32"
+                class="h-8 w-8 rounded-full border border-white/10 object-cover"
+                loading="lazy"
+                decoding="async"
+              />
+            )
+          }
+          <div class="text-sm text-white/90">{post.data.author}</div>
         </div>
       </div>
+
+      <!-- Body -->
+      <div class="prose prose-invert max-w-none px-6 pt-6 pb-8 sm:px-8 sm:pt-8 sm:pb-10">
+        <Content />
+      </div>
+
+      {
+        post.data.cover && typeof post.data.cover !== "string" && post.data.cover.credit && (
+          <div class="px-6 pb-6 text-right text-xs text-white/50 sm:px-8">{post.data.cover.credit}</div>
+        )
+      }
     </article>
 
-    <div class="flex items-center justify-between">
+    <div class="mt-6 flex items-center justify-between">
       <a href="/blog/all" class="text-sm underline decoration-dotted underline-offset-4">View all</a>
     </div>
   </section>
