@@ -103,6 +103,18 @@ html {
   -webkit-tap-highlight-color: transparent;
 }
 
+:root {
+  --fg-muted: oklch(35% 0 0 / 0.7);
+}
+@variant dark {
+  :root {
+    --fg-muted: color-mix(in oklab, white 70%, transparent);
+  }
+}
+.text-muted {
+  color: var(--fg-muted);
+}
+
 [role="button"],
 button {
   cursor: pointer;
@@ -118,6 +130,22 @@ button {
 .prose code::before,
 .prose code::after {
   content: none !important;
+}
+
+.prose :where(pre):not(:where([class~="not-prose"] *)) {
+  @apply bg-transparent;
+}
+
+.prose {
+  --tw-prose-body: theme(colors.gray.800);
+  --tw-prose-headings: theme(colors.gray.900);
+}
+
+@variant dark {
+  .prose {
+    --tw-prose-body: theme(colors.gray.200);
+    --tw-prose-headings: theme(colors.white);
+  }
 }
 
 .prose :where(pre):not(:where([class~="not-prose"] *)) {

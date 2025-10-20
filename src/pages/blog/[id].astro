@@ -21,13 +21,13 @@ const mins = minutesToRead(words);
 
 <Layout title={post.data.title!} description={post.data.title!} keywords={[]} canonical={`/blog/${post.id}`}>
   <section class="mx-auto w-full max-w-5xl px-4 py-16 sm:px-6 lg:px-8">
-    <article class="overflow-hidden rounded-xl border border-white/10 bg-black/10 backdrop-blur">
-      <!-- Title -->
+    <article class="overflow-hidden rounded-xl border border-gray-200/60 bg-white/70 backdrop-blur dark:border-white/10 dark:bg-black/10">
       <header class="px-6 pt-6 sm:px-8 sm:pt-8">
-        <h1 class="text-4xl font-extrabold tracking-tight">{post.data.title}</h1>
+        <h1 class="text-4xl font-extrabold tracking-tight">
+          {post.data.title}
+        </h1>
       </header>
 
-      <!-- Optional cover -->
       {
         post.data.cover && (
           <div class="mt-6 aspect-[16/9] w-full overflow-hidden">
@@ -42,9 +42,8 @@ const mins = minutesToRead(words);
         )
       }
 
-      <!-- Meta strip -->
       <div class="px-6 sm:px-8">
-        <div class="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-white/70">
+        <div class="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-gray-600 dark:text-white/70">
           <time>{formatDateLong(new Date(post.data.date))}</time>
           <span aria-hidden="true">·</span>
           <span>{mins} min read</span>
@@ -52,7 +51,6 @@ const mins = minutesToRead(words);
           <span>{words} words</span>
         </div>
 
-        <!-- Author chip (avatar optional) -->
         <div class="mt-3 flex items-center gap-3">
           {
             post.data.authorAvatar && (
@@ -61,30 +59,31 @@ const mins = minutesToRead(words);
                 alt=""
                 width="32"
                 height="32"
-                class="h-8 w-8 rounded-full border border-white/10 object-cover"
+                class="h-8 w-8 rounded-full border border-gray-200/60 object-cover dark:border-white/10"
                 loading="lazy"
                 decoding="async"
               />
             )
           }
-          <div class="text-sm text-white/90">{post.data.author}</div>
+          <div class="text-sm text-gray-900 dark:text-white/90">
+            {post.data.author}
+          </div>
         </div>
       </div>
 
-      <!-- Body -->
-      <div class="prose prose-invert max-w-none px-6 pt-6 pb-8 sm:px-8 sm:pt-8 sm:pb-10">
+      <div class="prose dark:prose-invert max-w-none px-6 pt-6 pb-8 sm:px-8 sm:pt-8 sm:pb-10">
         <Content />
       </div>
 
       {
         post.data.cover && typeof post.data.cover !== "string" && post.data.cover.credit && (
-          <div class="px-6 pb-6 text-right text-xs text-white/50 sm:px-8">{post.data.cover.credit}</div>
+          <div class="px-6 pb-6 text-right text-xs text-gray-500 sm:px-8 dark:text-white/50">{post.data.cover.credit}</div>
         )
       }
     </article>
 
     <div class="mt-6 flex items-center justify-between">
-      <a href="/blog/all" class="text-sm underline decoration-dotted underline-offset-4">View all</a>
+      <a href="/blog/all" class="text-sm text-gray-700 underline decoration-dotted underline-offset-4 dark:text-gray-300"> View all </a>
     </div>
   </section>
 </Layout>
