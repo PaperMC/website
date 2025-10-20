@@ -26,19 +26,19 @@ Using this new Lifecycle API, we will now allow plugins to start running code on
 ```java
 @Override
 public void onEnable() {
- final LifecycleEventManager<Plugin> lifecycles = this.getLifecycleManager();
- lifecycles.registerEventHandler(LifecycleEvents.DUMMY_STATIC.newHandler(event -> {
- final DummyResourceRegistrar registrar = event.registrar();
- System.out.println("dummy_static hook FIRST");
- }).priority(-1));
- lifecycles.registerEventHandler(LifecycleEvents.DUMMY_STATIC.newHandler(event -> {
- final DummyResourceRegistrar registrar = event.registrar();
- System.out.println("dummy_static hook FOURTH (monitor)");
- }).monitor());
- lifecycles.registerEventHandler(LifecycleEvents.DUMMY_STATIC.newHandler(event -> {
- final DummyResourceRegistrar registrar = event.registrar();
- System.out.println("dummy_static hook THIRD");
- }).priority(100));
+   final LifecycleEventManager<Plugin> lifecycles = this.getLifecycleManager();
+   lifecycles.registerEventHandler(LifecycleEvents.DUMMY_STATIC.newHandler(event -> {
+      final DummyResourceRegistrar registrar = event.registrar();
+      System.out.println("dummy_static hook FIRST");
+   }).priority(-1));
+   lifecycles.registerEventHandler(LifecycleEvents.DUMMY_STATIC.newHandler(event -> {
+      final DummyResourceRegistrar registrar = event.registrar();
+      System.out.println("dummy_static hook FOURTH (monitor)");
+   }).monitor());
+   lifecycles.registerEventHandler(LifecycleEvents.DUMMY_STATIC.newHandler(event -> {
+      final DummyResourceRegistrar registrar = event.registrar();
+      System.out.println("dummy_static hook THIRD");
+   }).priority(100));
 }
 ```
 
@@ -51,33 +51,33 @@ This API will also support adding custom serverside arguments and more, allowing
 
 ```java
 CommandBuilder.of(plugin, "admin")
- .then(
- LiteralArgumentBuilder.<CommandSourceStack>literal("execute")
- .redirect(Bukkit.getCommandDispatcher().getRoot().getChild("execute"))
- )
- .then(
- LiteralArgumentBuilder.<CommandSourceStack>literal("signed_message").then(
- RequiredArgumentBuilder.argument("msg", VanillaArguments.signedMessage()).executes((context) -> {
- MessageArgumentResponse argumentResponse = context.
- getArgument("msg", MessageArgumentResponse.class); // Gets the raw argument.
+            .then(
+                LiteralArgumentBuilder.<CommandSourceStack>literal("execute")
+                    .redirect(Bukkit.getCommandDispatcher().getRoot().getChild("execute"))
+            )
+            .then(
+                LiteralArgumentBuilder.<CommandSourceStack>literal("signed_message").then(
+                    RequiredArgumentBuilder.argument("msg", VanillaArguments.signedMessage()).executes((context) -> {
+                        MessageArgumentResponse argumentResponse = context.
+                        getArgument("msg", MessageArgumentResponse.class); // Gets the raw argument.
 
- // This is a better way of getting signed messages,
- // includes the concept of "disguised" messages.
- argumentResponse.resolveSignedMessage("msg", context)
- .thenAccept((signedMsg) -> {
- Component comp = Component.text("STATIC");
- context.getSource()
- .getBukkitSender()
- .sendMessage(signedMsg, ChatType.SAY_COMMAND.bind(comp));
- });
+                        // This is a better way of getting signed messages,
+                        // includes the concept of "disguised" messages.
+                        argumentResponse.resolveSignedMessage("msg", context)
+                            .thenAccept((signedMsg) -> {
+                                Component comp = Component.text("STATIC");
+                                context.getSource()
+                                            .getBukkitSender()
+                                            .sendMessage(signedMsg, ChatType.SAY_COMMAND.bind(comp));
+                            });
 
- return 1;
- })
- )
- ))
- .description("Cool command showcasing what you can do!")
- .aliases("alias_for_admin_that_you_shouldnt_use", "a")
- .register();
+                        return 1;
+                    })
+                )
+            )
+            .description("Cool command showcasing what you can do!")
+            .aliases("alias_for_admin_that_you_shouldnt_use", "a")
+            .register();
 ```
 
 _See more information [here](https://github.com/PaperMC/Paper/pull/8235)_
@@ -93,24 +93,24 @@ static final TypedKey<GameEvent> NEW_EVENT = GameEventKeys.create(Key.key("machi
 
 @Override
 public void bootstrap(@NotNull BootstrapContext context) {
- final LifecycleEventManager<BootstrapContext> lifecycles = context.getLifecycleManager();
+    final LifecycleEventManager<BootstrapContext> lifecycles = context.getLifecycleManager();
 
- // registers a new handler for the prefreeze event for the game event registry
- lifecycles.registerEventHandler(RegistryEvents.GAME_EVENT.preFreeze().newHandler(event -> {
- // the RegistryView provided here is writable so you can register new objects
- event.registry().register(NEW_EVENT, builder -> {
- builder.range(2);
- });
- }));
+    // registers a new handler for the prefreeze event for the game event registry
+    lifecycles.registerEventHandler(RegistryEvents.GAME_EVENT.preFreeze().newHandler(event -> {
+        // the RegistryView provided here is writable so you can register new objects
+        event.registry().register(NEW_EVENT, builder -> {
+            builder.range(2);
+        });
+    }));
 
- // registers a handler for the addition event
- lifecycles.registerEventHandler(RegistryEvents.GAME_EVENT.newAdditionHandler(event -> {
- // checks if the object being registered is the block open game event
- if (event.key().equals(GameEventKeys.BLOCK_OPEN)) {
- // multiplies the range by 2
- event.builder().range(event.builder().range() * 2);
- }
- }));
+    // registers a handler for the addition event
+    lifecycles.registerEventHandler(RegistryEvents.GAME_EVENT.newAdditionHandler(event -> {
+        // checks if the object being registered is the block open game event
+        if (event.key().equals(GameEventKeys.BLOCK_OPEN)) {
+            // multiplies the range by 2
+            event.builder().range(event.builder().range() * 2);
+        }
+    }));
 }
 ```
 
@@ -119,6 +119,28 @@ _See more information [here](https://gist.github.com/Machine-Maker/2901c79021986
 ### Mache and Codebook
 
 Although not directly related to Paper's API, we also have been hard at work building a stable platform for working on the server in the future. Through Mache and Codebook, we have been able to create a stable way of deobfuscating the game in a way more friendly than before.
+
+```java
+default InteractionResultHolder<ItemStack> swapWithEquipmentSlot(Item item, Level level, Player player, InteractionHand hand) {
+    ItemStack itemInHand = player.getItemInHand(hand);
+    EquipmentSlot equipmentSlotForItem = Mob.getEquipmentSlotForItem(itemInHand);
+    ItemStack itemBySlot = player.getItemBySlot(equipmentSlotForItem);
+    if (!EnchantmentHelper.hasBindingCurse(itemBySlot) && !ItemStack.matches(itemInHand, itemBySlot)) {
+        if (!level.isClientSide()) {
+            player.awardStat(Stats.ITEM_USED.get(item));
+        }
+
+        ItemStack itemStack = itemBySlot.isEmpty() ? itemInHand : itemBySlot.copyAndClear();
+        ItemStack itemStack1 = itemInHand.copyAndClear();
+        player.setItemSlot(equipmentSlotForItem, itemStack1);
+        return InteractionResultHolder.sidedSuccess(itemStack, level.isClientSide());
+    } else {
+        return InteractionResultHolder.fail(itemInHand);
+    }
+}
+
+```
+
 More work than ever is being put into our tech for hard forking, and we are excited to be able to work off of some of the best tech developed for deobfuscation.
 
 ## Here's to a fantastic 2024!
