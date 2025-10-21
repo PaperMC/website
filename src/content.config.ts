@@ -9,6 +9,7 @@ const posts = defineCollection({
   loader: glob({ pattern: "**/*.mdx", base: "./src/content/posts" }),
   schema: rssSchema.extend({
     date: z.coerce.date(),
+    description: z.string().optional(),
     author: z.string().default(DEFAULT_AUTHOR),
     authorAvatar: z.string().url().default(DEFAULT_AVATAR),
     cover: z
