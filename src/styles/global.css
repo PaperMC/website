@@ -98,6 +98,16 @@
   }
 }
 
+@layer utilities {
+  .mask-fade-bottom {
+    --fade-size: 4rem;
+    mask-image: linear-gradient(to bottom, black calc(100% - var(--fade-size)), transparent);
+    -webkit-mask-image: linear-gradient(to bottom, black calc(100% - var(--fade-size)), transparent);
+    mask-mode: match-source;
+    -webkit-mask-mode: match-source;
+  }
+}
+
 html {
   @apply bg-background-light-10 dark:bg-background-dark-90 scroll-smooth dark:text-white;
   -webkit-tap-highlight-color: transparent;
