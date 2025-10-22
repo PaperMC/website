@@ -39,7 +39,7 @@ const { id, name, icon, description, type, eol } = Astro.props;
 
 <script>
   import { getProject } from "@/utils/fill";
-  import { latestVersionFrom } from "@/utils/versions";
+  import { getLatestVersion } from "@/utils/versions";
 
   class SoftwarePreview extends HTMLElement {
     async connectedCallback() {
@@ -62,7 +62,7 @@ const { id, name, icon, description, type, eol } = Astro.props;
           break;
         case "Javadocs":
           const { versions } = await getProject(software);
-          const latest = latestVersionFrom(versions);
+          const latest = getLatestVersion(versions);
           if (latest) {
             anchor.href = `https://jd.papermc.io/${software}/${latest}`;
           } else {

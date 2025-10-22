@@ -57,7 +57,7 @@ const { id, name, icon, github, eol } = Astro.props;
 
 <script>
   import { getProject } from "@/utils/fill";
-  import { latestVersionFrom } from "@/utils/versions";
+  import { getLatestVersion } from "@/utils/versions";
 
   class SoftwareHeader extends HTMLElement {
     async connectedCallback() {
@@ -72,11 +72,7 @@ const { id, name, icon, github, eol } = Astro.props;
       }
 
       const { versions } = await getProject(software);
-      let latest = latestVersionFrom(versions);
-
-      if (software === "velocity" && latest.endsWith("-SNAPSHOT")) {
-        latest = latest.replace(/-SNAPSHOT$/, "");
-      }
+      const latest = getLatestVersion(versions);
 
       button.setAttribute("href", `https://jd.papermc.io/${software}/${latest}`);
     }
