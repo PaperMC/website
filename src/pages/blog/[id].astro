@@ -20,7 +20,7 @@ const mins = minutesToRead(words);
 ---
 
 <Layout title={post.data.title!} description={post.data.title!} keywords={[]} canonical={`/blog/${post.id}`}>
-  <section class="mx-auto w-full max-w-5xl px-4 py-16 sm:px-6 lg:px-8">
+  <section class="mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
     <article class="overflow-hidden rounded-xl border border-gray-200/60 bg-white/70 backdrop-blur dark:border-white/10 dark:bg-black/10">
       <header class="px-6 pt-6 sm:px-8 sm:pt-8">
         <h1 class="text-4xl font-extrabold tracking-tight">
@@ -81,9 +81,11 @@ const mins = minutesToRead(words);
         )
       }
     </article>
-
-    <div class="mt-6 flex items-center justify-between">
-      <a href="/blog" class="text-sm text-gray-700 underline decoration-dotted underline-offset-4 dark:text-gray-300"> View all </a>
-    </div>
   </section>
 </Layout>
+
+<style scoped>
+  @view-transition {
+    navigation: auto;
+  }
+</style>

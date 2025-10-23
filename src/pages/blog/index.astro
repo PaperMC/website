@@ -23,26 +23,33 @@ const postsWithMeta = posts.map((p) => {
 ---
 
 <Layout title="Blog" description="" keywords={[]} canonical="/blog">
-  <div class="container mx-auto mt-10 max-w-4xl px-4 py-12">
+  <div class="container mx-auto mt-10 max-w-7xl px-4 py-12">
     <div class="flex flex-col gap-4">
       {
-        postsWithMeta.map((entry) => (
+        postsWithMeta.map((entry, idx) => (
           <a href={`/blog/${entry.id}`} class="group">
-            <div class="flex flex-col gap-6 rounded-xl border py-6 shadow-sm transition-all duration-200 hover:border-[#006911]/50 hover:bg-[#006911]/5">
+            <div class="flex flex-col gap-6 rounded-xl border border-neutral-600 py-6 shadow-sm transition-all duration-200 hover:border-[#006911]/50 hover:bg-[#006911]/10">
               <div class="flex flex-col gap-3 p-6">
-                <h2 class="text-foreground group-hover:text-primary text-xl leading-tight font-bold text-balance">{entry.data.title}</h2>
+                <div class="flex items-baseline justify-between gap-4">
+                  <h2 class="text-foreground group-hover:text-primary text-xl leading-tight font-bold text-balance">{entry.data.title}</h2>
+                  {idx === 0 ? (
+                    <span class="ml-4 inline-flex items-center rounded-full bg-[#006911]/10 px-2.5 py-0.5 text-xs font-semibold text-[#006911]">
+                      Latest
+                    </span>
+                  ) : null}
+                </div>
 
                 <div class="text-muted-foreground text-xs">
                   <div class="flex flex-row flex-wrap items-baseline gap-x-3 gap-y-1">
                     <span class="inline-flex items-baseline gap-1.5">
-                      <Icon name="icons/lucide/calendar" class="size-[14px] translate-y-[1px]" />
+                      <Icon name="icons/lucide/calendar" class="size-3.5 translate-y-px" />
                       <span>{formatDateLong(new Date(entry.data.date))}</span>
                     </span>
 
                     <span aria-hidden="true">·</span>
 
                     <span class="inline-flex items-baseline gap-1.5">
-                      <Icon name="icons/lucide/clock" class="size-[14px] translate-y-[1px]" />
+                      <Icon name="icons/lucide/clock" class="size-3.5 translate-y-px" />
                       <span>{entry.mins} min read</span>
                     </span>
                   </div>
@@ -59,3 +66,9 @@ const postsWithMeta = posts.map((p) => {
     </div>
   </div>
 </Layout>
+
+<style scoped>
+  @view-transition {
+    navigation: auto;
+  }
+</style>
