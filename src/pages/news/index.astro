@@ -2,17 +2,14 @@
 import Layout from "@/layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import { formatDateLong } from "@/utils/time";
-import { countWords, minutesToRead } from "@/utils/content";
+import { countWords, minutesToRead, truncateForPreview } from "@/utils/content";
 import { Icon } from "astro-icon/components";
 
 const posts = (await getCollection("posts")).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
 const postsWithMeta = posts.map((p) => {
   const words = countWords(p.body ?? "");
-  const excerpt = (p.body ?? "")
-    .replace(/[#>*`\n]/g, " ")
-    .trim()
-    .slice(0, 512);
+  const excerpt = truncateForPreview(p.body ?? "", 512);
   return {
     ...p,
     words,

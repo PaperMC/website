@@ -2,7 +2,7 @@
 import Layout from "@/layouts/Layout.astro";
 import { getCollection, render } from "astro:content";
 import { formatDateLong } from "@/utils/time";
-import { countWords, minutesToRead } from "@/utils/content";
+import { countWords, minutesToRead, truncateForPreview } from "@/utils/content";
 
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
@@ -17,9 +17,10 @@ const { Content } = await render(post);
 
 const words = countWords(post.body ?? "");
 const mins = minutesToRead(words);
+const excerpt = truncateForPreview(post.body ?? "", 120);
 ---
 
-<Layout title={post.data.title!} description={post.data.title!} keywords={[]} canonical={`/news/${post.id}`}>
+<Layout title={post.data.title!} description={excerpt} keywords={[]} canonical={`/news/${post.id}`}>
   <section class="mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
     <article class="overflow-hidden rounded-xl border border-gray-200/60 bg-white/70 backdrop-blur dark:border-white/10 dark:bg-black/10">
       <header class="px-6 pt-6 sm:px-8 sm:pt-8">
