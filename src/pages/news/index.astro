@@ -22,12 +22,12 @@ const postsWithMeta = posts.map((p) => {
 });
 ---
 
-<Layout title="Blog" description="" keywords={[]} canonical="/blog">
+<Layout title="News" description="News and updates from PaperMC" keywords={["blog", "news", "updates", "latest"]} canonical="/news">
   <div class="container mx-auto mt-10 max-w-7xl px-4 py-12">
     <div class="flex flex-col gap-4">
       {
         postsWithMeta.map((entry, idx) => (
-          <a href={`/blog/${entry.id}`} class="group">
+          <a href={`/news/${entry.id}`} class="group">
             <div class="flex flex-col gap-6 rounded-xl border border-neutral-600 py-6 shadow-sm transition-all duration-200 hover:border-[#006911]/50 hover:bg-[#006911]/10">
               <div class="flex flex-col gap-3 p-6">
                 <div class="flex items-baseline justify-between gap-4">

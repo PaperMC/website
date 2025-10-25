@@ -19,7 +19,7 @@ const words = countWords(post.body ?? "");
 const mins = minutesToRead(words);
 ---
 
-<Layout title={post.data.title!} description={post.data.title!} keywords={[]} canonical={`/blog/${post.id}`}>
+<Layout title={post.data.title!} description={post.data.title!} keywords={[]} canonical={`/news/${post.id}`}>
   <section class="mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
     <article class="overflow-hidden rounded-xl border border-gray-200/60 bg-white/70 backdrop-blur dark:border-white/10 dark:bg-black/10">
       <header class="px-6 pt-6 sm:px-8 sm:pt-8">

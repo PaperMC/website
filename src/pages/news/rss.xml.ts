@@ -12,13 +12,13 @@ export const GET: APIRoute = async ({ site }) => {
     return {
       title: data.title,
       pubDate,
-      link: `/blog/${post.id}`,
+      link: `/news/${post.id}`,
       author: data.author,
     };
   });
 
   return rss({
-    title: "PaperMC Blog",
+    title: "PaperMC News",
     description: "Updates and news from the PaperMC project",
     site: site?.toString() ?? "https://papermc.io",
     items,
