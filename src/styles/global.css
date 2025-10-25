@@ -133,15 +133,16 @@ button {
 :not(pre) > code {
   @apply rounded font-mono;
   padding: 1px 2px 1px 2px;
-  background: #e6e6e6;
-  color: #1f6ce0;
+  background: #f7f7f7;
+  color: #a85cff;
   font-weight: 500;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.08);
 }
 @variant dark {
   :not(pre) > code {
     background: color-mix(in oklab, var(--color-background-dark-90) 85%, white 15%);
-    color: #5799ff;
+    color: #bb80ff;
+    border: 1px solid rgba(255, 255, 255, 0.08);
   }
 }
 
