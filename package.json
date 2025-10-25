@@ -10,7 +10,7 @@
     "format": "prettier --write .",
     "lint:eslint": "eslint . --cache",
     "lint:prettier": "prettier --check .",
-    "check:types": "tsgo --noEmit",
+    "check:types": "astro sync && tsgo --noEmit",
     "lint": "bun run lint:eslint && bun run lint:prettier",
     "check": "bun run check:types",
     "check:all": "bun run check && bun run lint"
