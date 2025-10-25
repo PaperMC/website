@@ -157,6 +157,15 @@ button {
 .prose {
   --tw-prose-body: theme(colors.gray.800);
   --tw-prose-headings: theme(colors.gray.900);
+
+  a {
+    color: #1f6ce0;
+  }
+  @variant dark {
+    a {
+      color: #5d99f5;
+    }
+  }
 }
 
 @variant dark {

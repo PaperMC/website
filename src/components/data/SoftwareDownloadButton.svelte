@@ -90,7 +90,7 @@
             {project?.name ?? projectId}
             {version}
           </span>
-          <p class="text-gray-{build?.channel == "BETA" ? "600" : "100"}">{build ? `Build #${build.id}` : ""}</p>
+          <p class="text-gray-{build?.channel == 'BETA' ? '600' : '100'}">{build ? `Build #${build.id}` : ""}</p>
         {:else}
           <div class="mb-2 h-6 w-40 animate-pulse rounded bg-gray-200/40 dark:bg-gray-700/40"></div>
           <div class="h-5 w-20 animate-pulse rounded bg-gray-200/30 dark:bg-gray-700/30"></div>
