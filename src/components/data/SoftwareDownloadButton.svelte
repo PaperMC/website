@@ -57,7 +57,7 @@
   }
 </script>
 
-<div class="relative w-max" bind:this={rootEl}>
+<div class="relative flex w-full flex-row md:w-100" bind:this={rootEl}>
   <div
     class={`transition-color flex flex-row rounded-lg transition-shadow hover:shadow-lg
       ${!compact ? "w-full md:w-100" : ""}
@@ -90,7 +90,7 @@
             {project?.name ?? projectId}
             {version}
           </span>
-          <p class="text-gray-100">{build ? `Build #${build.id}` : ""}</p>
+          <p class="text-gray-{build?.channel == "BETA" ? "600" : "100"}">{build ? `Build #${build.id}` : ""}</p>
         {:else}
           <div class="mb-2 h-6 w-40 animate-pulse rounded bg-gray-200/40 dark:bg-gray-700/40"></div>
           <div class="h-5 w-20 animate-pulse rounded bg-gray-200/30 dark:bg-gray-700/30"></div>
@@ -111,7 +111,7 @@
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        class={`text-gray-200 ${compact ? "h-4 w-4" : "h-5 w-5"}`}
+        class={`text-gray-${build?.channel == "BETA" ? "600" : "100"} ${compact ? "h-4 w-4" : "h-5 w-5"}`}
         viewBox="0 0 20 20"
         fill="currentColor"
       >
