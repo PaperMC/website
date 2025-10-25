@@ -1,0 +1,95 @@
+---
+title: "1.21.3"
+date: "2024-11-24T17:45:00.000Z"
+author: "Paper Team"
+---
+
+## The 1.21.3 Update
+
+Paper and Velocity 1.21.3 builds are out of the experimental phase! As always, **backups are absolutely mandatory**. **After upgrading your world to 1.21.3, you cannot downgrade back to a lower version!**
+
+We would like to thank everyone that worked on this update:
+
+- [Gerrygames](https://github.com/Gerrygames) for his work on Velocity
+- [@electronicboy](https://github.com/sponsors/electronicboy)
+- [@jmp](https://github.com/sponsors/jpenilla)
+- [kennytv](https://github.com/kennytv)
+- [Lulu13022002](https://github.com/Lulu13022002)
+- [@lynxplay](https://github.com/lynxplay)
+- [@Machine Maker](https://github.com/sponsors/Machine-Maker)
+- [@Noah](https://github.com/sponsors/NoahvdAa)
+- [@Owen1212055](https://github.com/sponsors/Owen1212055)
+- [SpaceWalkerRS](https://github.com/SpaceWalkerRS)
+- [@Spottedleaf](https://www.patreon.com/Spottedleaf)
+
+If you'd like to support PaperMC as a whole, you can find more information at https://papermc.io/sponsors.
+
+## Timings removal
+
+After having added [spark](https://spark.lucko.me/) as our main profiler for diagnosing causes of lag in 1.21, Timings has been set to no-op mode. This means that it can no longer be enabled or used, though its API classes will remain until a later update. As a developer, please make sure you remove any custom `Timing` uses by then. You can see our [docs page](https://docs.papermc.io/paper/profiling) as well as the [GitHub Discussions page](https://github.com/PaperMC/Paper/discussions/10565) for more details and also provide feedback there.
+
+## Server pausing when empty (disabled by default)
+
+Vanilla added a server.properties option to pause world and entity ticking when no players are online after a while. **This behavior is disabled by default on Paper because it is incompatible with what plugins expect and might do with no players online.** You can enable it again by changing the value in the server.properties file, but we generally recommend against doing that unless you are 100% certain your plugins are compatible with server pausing **or you may run into crashes or save data issues** (they won't be able to properly work with entities and the world, or do other actions that would require "active" world ticking). Unlike the Bukkit schedulers, Folia's GlobalRegionScheduler will not be ticked while the server is paused.
+
+If you ran a Spigot 1.21.3 server before switching back to Paper, we recommend manually setting `pause-when-empty-seconds` to `-1` to disable it.
+
+## Configurable entity despawn time
+
+Under `entities.spawning.despawn-time`, you can now configure hard despawn times in ticks for when an entity should be forcefully despawned. An example usecase of this is preventing certain projectiles from being kept alive permanently. This patch was ported from Pufferfish with Kevin's go-ahead.
+
+## Option to use old enderpearl behavior
+
+We have added the `legacy-ender-pearl-behavior` config option to prevent ender pearls from being saved to the player and loading chunks, meaning they will behave like they did in 1.21.1 and before. Paper will default to the new vanilla behavior.
+
+## Invulnerability damage reduction
+
+We have fixed incorrect handling of damage reduction during invulnerable ticks after being hit to work like it does in Vanilla again.
+
+## String duplication fixed by Mojang
+
+Mojang fixed string disarming behavior and its dupe, so we have dropped our patch and configuration option.
+
+---
+
+## For developers
+
+In case you skipped the 1.20.5/6 update, make sure to read [its announcement on Mojang mappings use at runtime and our new Brigadier command API](https://forums.papermc.io/threads/paper-velocity-1-20-6.1152/).
+
+## Server pausing
+
+As mentioned in the above section, server pausing may have significant implications on your plugin's functionality. Please make sure to test your plugins on a paused server or to otherwise warn users against enabling the feature. If you are sure your plugin does not and cannot support server pausing, please use `Server#allowPausing(Plugin, Boolean)` to prevent accidental use of the feature by users. Similarly you can also check whether it is currently enabled by calling `Server#isPaused`.
+
+## Extensive Item DataComponent API
+
+We have finally merged API to add or edit (almost) all data components on items. Since 1.20.5, item data is no longer held in mostly arbitrary NBT, but in properly defined data structures, which have also seen a massive amount of new features that the current ItemMeta API is either missing or poorly representing. You can see the various data types under `DataComponentTypes`, although we will keep adding getter/setter helper methods to ItemStack or ItemMeta where appropriate.
+
+Here is an example:
+
+```java
+ItemStack itemStack = new ItemStack(Material.DIAMOND_HELMET);
+
+// Update parts of the already existing equippable data:
+// Use the netherrite helmet model when worn and change the equip sound
+Equippable.Builder equippable = itemStack.getData(DataComponentTypes.EQUIPPABLE).toBuilder()
+ .model(Material.NETHERITE_HELMET.getDefaultData(DataComponentTypes.EQUIPPABLE).model())
+ .equipSound(SoundEventKeys.ENTITY_GHAST_HURT);
+itemStack.setData(DataComponentTypes.EQUIPPABLE, equippable);
+
+// Create new food data
+FoodProperties.Builder food = FoodProperties.food()
+ .canAlwaysEat(true)
+ .nutrition(2)
+ .saturation(3.5f);
+itemStack.setData(DataComponentTypes.FOOD, food);
+```
+
+**NOTE:** This api is marked as `@Experimental` and follows similar API safety as the registry API. It may change dramatically between Minecraft versions without backwards compatiblity attempts.
+
+## Other API changes
+
+- Added `PlayerItemGroupCooldownEvent` to listen to cooldowns that may not be directly associated with using an item, since cooldowns are now added via cooldown groups rather than item types. The already existing `PlayerItemCooldownEvent` extends the new event.
+- Due to Vanilla changes to relative teleportation, `TeleportFlag.Relative` enum members have been deprecated. The new members with more appropriate names are: `VELOCITY_X`, `VELOCITY_Y`, `VELOCITY_Z`, and `VELOCITY_ROTATION`
+- `EntityDamageEvent` now has the `INVULNERABILITY_REDUCTION` cause
+- Our auto-generated Vanilla key classes (e.g. `SoundEventKeys`) now implement `Key`, so they can be used in API like the data componenents API directly
+- You can now create custom painting art via API and the new `RegistryEvents.PAINTING_VARIANT`. More are coming over time as well - see https://docs.papermc.io/paper/dev/registries for more info on how to use them

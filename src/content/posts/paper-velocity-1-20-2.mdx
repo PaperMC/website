@@ -1,0 +1,104 @@
+---
+title: "Paper & Velocity 1.20.2"
+date: "2023-10-10T10:00:00.000Z"
+author: "Paper Team"
+---
+
+## The 1.20.2 Update
+
+Stable Paper and Velocity 1.20.2 builds have been released! As always, **backups are absolutely mandatory**. **After upgrading your world to 1.20.2, you cannot downgrade back to a lower version!**
+
+We would like to thank everyone that worked on this update (a lot of people and work needed for a minor update!):
+
+- [Paul19988](https://github.com/Paul19988/), [Redned235](https://github.com/Redned235), and [Gerrygames](https://github.com/Gerrygames) for their work on Velocity
+- [@Machine Maker](https://github.com/sponsors/Machine-Maker)
+- [@Noah](https://github.com/sponsors/NoahvdAa)
+- [@lynxplay](https://github.com/lynxplay)
+- [@jmp](https://github.com/sponsors/jpenilla)
+- [Lulu13022002](https://github.com/Lulu13022002)
+- [@MiniDigger](https://github.com/sponsors/MiniDigger)
+- [@Owen1212055](https://github.com/sponsors/Owen1212055)
+- [@Spottedleaf](https://www.patreon.com/Spottedleaf)
+- [@kennytv](https://github.com/sponsors/kennytv)
+
+If you'd like to support PaperMC as a whole, you can find more information at https://papermc.io/sponsors.
+
+### Velocity & Waterfall
+
+Due to larger network changes and perfectly timed holidays of a few of our devs, it took a little longer to get Velocity ready for 1.20.2. **Plugins manually sending packets will need updating**. The most notable change in user behavior here is that on server switches, the Minecraft client will now drop its current resource pack, meaning it will have to be re-sent if you want to keep it across backend servers. Velocity will re-apply the pack you set via Velocity API, but if you send it on the Paper server, you will need to do so on more than just the hub. This is unavoidable at the moment, but we're hopeful that Mojang is going to address this in a future update.
+
+While Waterfall received support for 1.20.2 pretty early on as part of BungeeCord upstream updates, its support was pretty broken for the first few days and weeks after the release and still does not properly handle the new protocol changes in some places. In general, Waterfall is unlikely to receive our full attention given that Velocity is meant to be its more performant, stable, and secure successor. In similar fashion to us retiring Travertine a while ago, the same will happen to Waterfall in the future. For now though, we will continue providing you with upstream updates at the very least.
+
+## For Developers
+
+### **CraftBukkit package relocation**
+
+This is **very** important if you for whatever reason use reflection to either
+
+- parse the relocated package version.
+- call CB internals.
+
+**At some point in the future**, we will only provide jars **without relocation**, given it is a nonsensical practice resulting in unavoidably bad code design and unexpected incompatibilities in a large number of plugins. While we will be able to automagically remap both direct and reflective calls to the relocated package, **parsing the package version is not supported and WILL break at some point in the future**. The changes we have planned should make working with internals a lot easier, since we recognize that _sometimes_ (though not as often as some might think) there is no better alternative.
+
+**If you reflect on CB classes**
+Easy, just **don't try to parse the package version**. The following will work on servers with _and_ without CB relocation:
+
+```java
+private static final String CRAFTBUKKIT_PACKAGE = Bukkit.getServer().getClass().getPackage().getName();
+
+public static String cbClass(String clazz) {
+ return CRAFTBUKKIT_PACKAGE + "." + clazz);
+}
+
+Class.forName(cbClass("entity.CraftBee"))
+```
+
+**If you try to parse the server version**
+Do **NOT** do this:
+
+```java
+String craftBukkitPackage = Bukkit.getServer().getClass().getPackage().getName();
+// This is the _bad_ part, including any other parsing of the version
+String version = craftBukkitPackage.substring(craftBukkitPackage.lastIndexOf('.') + 1);
+if (version.equals("v1_20_R1")) {
+ // ...
+} else {
+ // Unsupported
+}
+```
+
+Instead, use **long-standing API**:
+
+```java
+// Paper method that was added in 2020
+// Example value: 1.20.1
+String minecraftVersion = Bukkit.getServer().getMinecraftVersion();
+
+// Bukkit method that was added in 2011
+// Example value: 1.20.1-R0.1-SNAPSHOT
+String bukkitVersion = Bukkit.getServer().getBukkitVersion();
+
+if (minecraftVersion.equals("1.20.1")) {
+ // ...
+} else {
+ // Assume latest still works, or error as unsupported
+ // Alternatively for extra compatibility, check if
+ // the latest package version is valid by catching
+ // ClassNotFoundException with: Class.forName("org.bukkit.craftbukkit.v1_20_R1.CraftServer")
+}
+```
+
+The Minecraft version strings you can parse and evaluate to your heart's content. Another (less recommended) alternative is getting the server protocol version from `Bukkit.getUnsafe`.
+
+### **Future changes regarding API enums**
+
+Enums such as Biome implementing the Keyed interface will be converted to classes with public static final objects at some point. While some backwards compatibility will be provided, **please try to avoid the use of switch statements, EnumMap and EnumSet on these, including the Material enum**.
+
+### **1.20.2 API changes**
+
+With the protocol changes comes the ability to send a resource pack before the player has even joined the world, making previously required precautions like resource pack servers unnecessary. Finally, it also sends its client settings (including the language) before this as well. Due to heavy work on the update itself, we haven't yet been able to add API for this, but we will let you know once it is added!
+
+### Hangar
+
+As per [the last big announcement](https://forums.papermc.io/threads/hangar-papermcs-plugin-repository.691/), we now have our own website for you to upload your Paper, Bungee, and Velocity plugins to: https://hangar.papermc.io/
+If you don't feel like manually uploading your builds to it, you can also check out our hangar publish gradle plugin: https://docs.papermc.io/misc/hangar-publishing

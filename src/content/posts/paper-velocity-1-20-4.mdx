@@ -1,0 +1,45 @@
+---
+title: "Paper & Velocity 1.20.4"
+date: "2023-12-25T11:00:00.000Z"
+author: "Paper Team"
+---
+
+## The 1.20.4 Update
+
+Stable Paper and Velocity 1.20.4 builds have been released! As always, **backups are absolutely mandatory**. **After upgrading your world to 1.20.4, you cannot downgrade back to a lower version!**
+
+We would like to thank everyone that worked on this update (a lot of people and work needed for a minor update, once again):
+
+- [Gerrygames](https://github.com/Gerrygames), [pkt77](https://github.com/pkt77), and [electroniccat](https://github.com/electronicboy) for their work on Velocity
+- [@Machine Maker](https://github.com/sponsors/Machine-Maker)
+- [@lynxplay](https://github.com/lynxplay)
+- [@jmp](https://github.com/sponsors/jpenilla)
+- [Lulu13022002](https://github.com/Lulu13022002)
+- [@Owen1212055](https://github.com/sponsors/Owen1212055)
+- [@Spottedleaf](https://www.patreon.com/Spottedleaf)
+- [@kennytv](https://github.com/sponsors/kennytv)
+
+If you'd like to support PaperMC as a whole, you can find more information at https://papermc.io/sponsors.
+
+## Discord Update Announcements
+
+From now on, instead of creating a new Discord channel for every update, we will post important milestone updates (such as the availability of experimental builds) into the new `update-announcements` channel and provide more small-stepped info in the forum channel below it. You might have to add these channels to your list via "Channels & Roles" at the top of the channel list first.
+
+## For Developers
+
+### New API
+
+With the new `sendResourcePacks` and `removeResourcePacks` methods, you can give each pack its own UUID to be individually added and removed later, which means that you can have multiple packs applied at once! The existing `setResourcePack` method will override all previous ones to retain expected behavior.
+
+### `Keyed` interface may be removed on some types
+
+`Keyed` provides a `NamespacedKey getKey()` to get keys for biomes, item and block types, sounds, etc. However, trim patterns and trim materials mark the first two registry based objects that do not require a key in all cases, hence the nonnull `getKey` method is not valid for these.
+
+To make your plugins future proof of such cases, please use the newly added `Registry#getKey(Object)`. While the `getKey` methods will be available until actually broken, using the method on `Registry` will make sure your plugin does not suddenly break later. Note that because of the possibility of no key existing, this method is nullable. If you are sure one will exist, you can also use the nonnull `Registry#getKeyOrThrow`.
+
+### Hangar login/signup via GitHub, Google, or Microsoft account
+
+As per [the last big announcement](https://forums.papermc.io/threads/hangar-papermcs-plugin-repository.691/), we now have our own website for you to upload your Paper, Bungee, and Velocity plugins to: https://hangar.papermc.io/
+If you don't feel like manually uploading your builds to it, you can also check out our hangar publish gradle plugin: https://docs.papermc.io/misc/hangar-publishing
+
+Additionally, we have prepared a little Christmas gift for all (current or future) Hangar users: You can now use your GitHub, Google or Microsoft account to login to Hangar. If you don't have an account yet, you can signup using one of these OAuth providers on [the signup page](https://hangar.papermc.io/auth/signup), if you want to link an OAuth account to your existing account you can do so in [the security settings](https://hangar.papermc.io/auth/settings/security). Note that this functionality, while thoroughly tested, is still a bit experimental and the UX of the flows and the design of the UI is still subject to change. Please send us your feedback on Discord or via [the issue tracker](https://github.com/HangarMC/Hangar/issues).

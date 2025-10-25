@@ -1,0 +1,58 @@
+---
+title: "Paper & Velocity 1.19.4"
+date: "2023-03-19T17:00:00.000Z"
+author: "Paper Team"
+---
+
+## The 1.19.4 Update
+
+Paper 1.19.4 and Velocity with 1.19.4 support are now available on our website! As always, we recommend that you make a backup of your server before upgrading. Remember that you cannot downgrade your Paper server after doing the update.
+
+Despite only being a minor version, once again, quite a bit of work has gone in the update. We would like to thank the following people for their work on the update process:
+
+- [@kennytv](https://github.com/sponsors/kennytv)
+- [@Machine Maker](https://github.com/sponsors/Machine-Maker)
+- [@Owen1212055](https://github.com/sponsors/Owen1212055)
+- [Gerrygames](https://github.com/Gerrygames) (for help with Velocity)
+
+## Experimental Channel for Builds
+
+**This is the last warning regarding the experimental channel on our downloads API before we will publish experimental builds of the next major Minecraft release (1.20) to the downloads API instead of as separate builds while still considered unstable.**
+
+For future updates, we will no longer provide any early experimental builds on Discord, instead using the experimental channel in our downloads API. **This means that you will need to distinguish between channels in your scripts to avoid getting highly experimental and potentially breaking versions. Please adjust your download scripts accordingly.** Experimental builds marked as such will be available to download on our homepage as well.
+
+## Website Overhaul
+
+Our new website is now live at https://papermc.io/! Cubxity has been working on this with us for a while, and we're happy to finally be able to replace our old site that has been an annoyance to maintain for quite some time. Feedback is of course appreciated, the same applies to code contributions: https://github.com/PaperMC/website
+
+## For Developers
+
+**API changes**
+
+- Experimental features have representation in API, but are marked as experimental and are subject to changes, as Mojang might still change them in major ways before they land in 1.20. See [here](https://www.minecraft.net/en-us/article/testing-new-minecraft-features/feature-toggles-java-edition) for more information on experimental features in general.
+- Using adventure's `ClickEvent.callback` methods, you can now easily register message click event callbacks without having to keep track of them yourself. This code for example will create a click event to open a book that can be used for up to 2 minutes and has 5 uses:
+
+```java
+ClickCallback.Options options = ClickCallback.Options.builder()
+ .lifetime(Duration.ofMinutes(2))
+ .uses(5)
+ .build();
+ClickEvent clickEvent = ClickEvent.callback(
+ audience -> audience.openBook(book),
+ options
+);
+player.sendMessage(Component.text().content("Click me!").clickEvent(clickEvent));
+```
+
+In these methods, you can also make sure only a certain player/players with a certain permission are allowed to use the callback.
+
+- `LivingEntity#setHurtDirection` throws an UnsupportedOperationException if called on a non-player
+- `HopperMinecart#setCooldown` and getCooldown throw UnsupportedOperationException
+
+**WIP registry modification API**
+Machine Maker has been working on API to be able to modify certain Minecraft registries, including damage events. Before merging it, we would like to gather a last round of community feedback on it: https://github.com/PaperMC/Paper/pull/8920
+
+Additionally there is a second pull request to add API for modifying tags, used by the client in a lot of different ways, including knowing which blocks are climbable and which tool you can use to faster dig a block: https://github.com/PaperMC/Paper/pull/9002
+
+**Future changes regarding API enums**
+Enums such as Biome implementing the Keyed interface will be converted to classes with public static final objects at some point. While some backwards compatibility will be provided, please try to avoid the use of switch statements, EnumMap and EnumSet on these.

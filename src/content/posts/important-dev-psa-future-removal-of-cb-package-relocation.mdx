@@ -1,0 +1,83 @@
+---
+title: "Important dev PSA: Future removal of CB package relocation"
+date: "2024-03-22T11:00:00.000Z"
+author: "Paper Team"
+---
+
+## Future removal of CB package relocation + moving away from obfuscation at runtime
+
+_If you are not a developer but a server owner, this might still be important for you. Check the bottom section on what action you might have to take._
+
+**Update: This change has been put into effect in 1.20.5, make sure you test with the latest Paper 1.20.5 builds.**
+
+As already announced before, at some point in the foreseeable future, **we will remove the CraftBukkit package relocation (e.g. `v1_20_R3`). This _may_ be as soon as 1.20.5**, as we expect almost every plugin using internals to break due to major changes in vanilla anyways.
+
+Note: This also includes testing of automated remapping of plugins to make them run on Mojang mapped servers, even if a plugin is compiled against the obfuscated class and method names (if you don't use any vanilla internals, this doesn't affect you). So even if you have already fixed CB package parsing, please check whether your plugins are able to run on this jar if they are using internals (or "nms").
+
+Once these changes are present in stable Paper builds, you can expect a much better experience when using the often dreaded internals by using our [userdev](https://docs.papermc.io/paper/dev/userdev) Gradle plugin. Most notably, small Minecraft updates will no longer unconditionally break your plugins.
+
+## How to make sure your plugin does not break
+
+**If you reflect on CB classes**
+Easy, just **don't try to parse the package version**. The following will work on servers with _and_ without CB relocation:
+
+```java
+private static final String CRAFTBUKKIT_PACKAGE = Bukkit.getServer().getClass().getPackage().getName();
+
+public static String cbClass(String className) {
+ return CRAFTBUKKIT_PACKAGE + "." + className;
+}
+
+Class.forName(cbClass("entity.CraftBee"))
+```
+
+**If you try to parse the server version**
+Do **NOT** do this:
+
+```java
+String craftBukkitPackage = Bukkit.getServer().getClass().getPackage().getName();
+// This is the _bad_ part, including any other parsing of the version
+String version = craftBukkitPackage.substring(craftBukkitPackage.lastIndexOf('.') + 1);
+if (version.equals("v1_20_R3")) {
+ // ...
+} else {
+ // Unsupported
+}
+```
+
+Instead, use **long-standing API**:
+
+```java
+// Paper method that was added in 2020
+// Example value: 1.20.4
+String minecraftVersion = Bukkit.getServer().getMinecraftVersion();
+
+// Bukkit method that was added in 2011
+// Example value: 1.20.4-R0.1-SNAPSHOT
+String bukkitVersion = Bukkit.getServer().getBukkitVersion();
+
+if (minecraftVersion.equals("1.20.4")) {
+ // ...
+} else {
+ // Assume latest still works, or error as unsupported
+ // Alternatively for extra compatibility, check if
+ // the latest package version is valid by catching
+ // ClassNotFoundException with: Class.forName("org.bukkit.craftbukkit.v1_20_R3.CraftServer")
+}
+```
+
+The Minecraft version strings you can parse and evaluate to your heart's content. Another (less recommended) alternative is getting the server protocol version from `Bukkit.getUnsafe`.
+
+## As a server owner
+
+If you are running a somewhat recent server version with up-to-date plugins (!), you should also test whether your plugins are able to run on the [test server jar](https://github.com/PaperMC/testing/releases/tag/no-relocation) also linked above. **Please make sure not to use the server jar on your main servers, but to copy your plugin setup to a separate test server.**
+
+The error that plugin developers need to fix will look something like this:
+
+> [11:46:19] [Server thread/ERROR]: Error occurred while enabling PLUGINNAME v1 (Is it up to date?)
+> java.lang.ArrayIndexOutOfBoundsException: Index 3 out of bounds for length 3
+> at ...
+
+Alternatively, they might log an error saying you are using an unknown or unsupported server version.
+
+If any of your plugins start printing new errors like these and you have made sure that they are already up-to-date, please report the error with a link to this announcement to the relevant plugin authors.

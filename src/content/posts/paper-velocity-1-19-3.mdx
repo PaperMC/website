@@ -1,0 +1,35 @@
+---
+title: "Paper & Velocity 1.19.3"
+date: "2022-12-11T17:00:00.000Z"
+author: "Paper Team"
+---
+
+## The 1.19.3 Update
+
+Paper 1.19.3 and Velocity with 1.19.3 support are now available on our website! Even though Paper is deemed stable, we still recommend that you make a backup of your server before upgrading. Remember that you cannot downgrade your Paper server after doing the update.
+
+Despite only being a minor version, quite a bit of work has gone in the update. We would like to thank the following people for their work on the update process:
+
+- [@kennytv](https://github.com/sponsors/kennytv)
+- [@Machine Maker](https://github.com/sponsors/Machine-Maker)
+- [@Owen1212055](https://github.com/sponsors/Owen1212055)
+- [@Noah](https://github.com/sponsors/NoahvdAa)
+- [@jmp](https://github.com/sponsors/jpenilla/)
+- [FiXed](https://github.com/CoreyShupe) (for his work on Velocity)
+- [@electronicboy](https://paypal.me/ShaneFreeder)
+
+## Experimental Features
+
+As explained in a [minecraft.net article](https://www.minecraft.net/en-us/article/testing-new-minecraft-features/feature-toggles-java-edition), Mojang now includes experimental feature previews of upcoming Minecraft versions. On servers, they can be enabled by adding `update_1_20` to the `initial-enabled-packs` option in the server properties file (with entries separated with a comma) and will be applied to newly generated worlds. **We do not recommend enabling these feature packs on production servers**, as the features that come with them (such as Camels and the new bamboo blocks) will not survive world upgrades and are still riddled with bugs.
+
+We do not provide support for these experimental features and will not fix any issues with them, unless the issue in question is caused by one of our patches and can affect other parts of the server as well.
+
+## For Developers
+
+**Removal of Chat Previews**
+As part of 1.19.3, Mojang have removed the chat preview functionality in its entirety. This means you cannot make players sign messages that have been changed by the server (unless only formatting of the message has been changed) and other players will be able to see the unmodified chat message if they hover over a modified one.
+
+However, this does not affect `AsyncChatDecorateEvent` and `AsyncChatCommandDecorateEvent`; going forward, we will mostly likely encourage changing a message's content through the decorate events, with changes to viewers and the chat type being done in `AsyncChatEvent`. Finalized changes to API regarding chat and signed chat will be held off until 1.20 so it is less likely to break again with Mojang still doing such major changes to the system.
+
+**Experimental features**
+Plugin developers can prepare their plugins for these features with prelimary API, but be aware that most of the API representations of the experimental features are likely to change before they are finalized by Mojang. These classes, fields, etc. will be marked with an @Experimental annotation.

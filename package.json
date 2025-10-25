@@ -10,13 +10,14 @@
     "format": "prettier --write .",
     "lint:eslint": "eslint . --cache",
     "lint:prettier": "prettier --check .",
-    "check:types": "tsgo --noEmit",
+    "check:types": "astro sync && tsgo --noEmit",
     "lint": "bun run lint:eslint && bun run lint:prettier",
     "check": "bun run check:types",
     "check:all": "bun run check && bun run lint"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^12.6.10",
+    "@astrojs/rss": "^4.0.12",
     "@astrojs/sitemap": "^3.6.0",
     "@astrojs/svelte": "^7.2.0",
     "@fontsource/poppins": "^5.2.7",
@@ -30,7 +31,9 @@
     "typescript": "^5.9.3"
   },
   "devDependencies": {
+    "@astrojs/mdx": "^4.3.7",
     "@cloudflare/workers-types": "^4.20251011.0",
+    "@tailwindcss/typography": "^0.5.19",
     "@types/node": "^24.8.1",
     "@typescript-eslint/eslint-plugin": "^8.46.1",
     "@typescript-eslint/parser": "^8.46.1",

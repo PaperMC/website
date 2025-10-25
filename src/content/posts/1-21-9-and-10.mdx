@@ -1,0 +1,54 @@
+---
+title: "1.21.9 & 1.21.10"
+date: "2025-10-25T19:31:42Z"
+author: "Paper Team"
+---
+
+## The 1.21.9/10 Update
+
+As always, **backups are absolutely mandatory**. **After upgrading your world to 1.21.10, you cannot downgrade back to a lower version!**
+
+We would like to thank everyone that worked on this update:
+
+- [@jmp](https://github.com/jpenilla) - https://github.com/sponsors/jpenilla
+- [@Lulu13022002](https://github.com/Lulu13022002)
+- [@lynxplay](https://github.com/lynxplay)
+- [@Spottedleaf](https://github.com/Spottedleaf) - https://www.patreon.com/Spottedleaf
+- [@Owen1212055](https://github.com/Owen1212055) - https://github.com/sponsors/Owen1212055
+
+If you'd like to support PaperMC as a whole, you can find more information at https://papermc.io/sponsors.
+
+## Refining the Update Process
+
+Before the hard fork, the Paper team had major crunch updating all of Paper in an attempt to get builds out for a new Minecraft release days or weeks after the Mojang release, as we had to wait for our former upstream to release their update before we could even start with ours. Since the hard fork, we have for the most part started updating no earlier than pre-releases, to avoid blocking the main branch for an extended period among other reasons. 1.21.9(/10) marks the first release where Paper was updated and ran on (almost) every snapshot in the cycle. This was an experiment led by [@jmp](https://github.com/sponsors/jpenilla) with the goal of streamlining the Paper development cycle, making possible hour 0 releases, and allowing developers to start updating their plugins early. The release of Paper 1.21.9-pre2 through rc1 and 1.21.9 itself has mostly proven the experiment successful (although not without identifying possible improvements to the process). Merging changes from the main branch into the development branch was less painful than anticipated, however we did delay applying feature patches until pre1. We may decide to publish our work earlier in the cycle in the future - but don't expect builds before feature patches get applied.
+
+## Changes for server owners
+
+In 1.21.9, Mojang removed `allow-nether` from the server.properties and replaced it with the `allowEnteringNetherUsingPortals` gamerule. If you wish to fully disable the nether dimension and not only the portals, a new config option has been added to paper-global.yml for this: `enable-nether`.
+Existing configurations from server.properties will be automatically migrated.
+
+---
+
+## For developers
+
+### Breaking change to Entity teleportation methods
+
+The teleport methods have been simplified to do what most developers would want them to do by default, which follows Vanilla logic by retaining passengers if you teleport a vehicle, but dismounting if you teleport a passenger on its own. This means that using `TeleportFlag.EntityState` no longer has any functionality. If you want to call this method in a backwards compatible way, simply call the [closeInventory](<https://jd.papermc.io/paper/1.21.10/org/bukkit/entity/HumanEntity.html#closeInventory()>) and [eject](<https://jd.papermc.io/paper/1.21.10/org/bukkit/entity/Entity.html#eject()>) methods before teleporting.
+
+### Breaking change to PlayerGameModeChangeEvent.Cause.COMMAND
+
+1.21.9 introduces the cause `GAMEMODE_SWITCHER` to the [PlayerGameModeChangeEvent](https://jd.papermc.io/paper/1.21.10/org/bukkit/event/player/PlayerGameModeChangeEvent.html), replacing the `COMMAND` cause for players switching their gamemode via the gamemode switcher. Players switching via the `/gamemode` command will continue to use the `COMMAND` cause. Plugins currently checking for the `COMMAND` cause to prevent player initiated game mode changes need to be expanded to the new cause to maintain 1.21.8 functionality.
+
+### Deprecation of PlayerSpawnLocationEvent
+
+1.21.9 moved the spawn location loading into the configuration stage of the player.
+The API promises of [PlayerSpawnLocationEvent](https://jd.papermc.io/paper/1.21.10/org/spigotmc/event/player/PlayerSpawnLocationEvent.html) like an existing Player instance and the execution on the main thread are no longer representative of Vanilla's behaviour.
+Plugins should migrate to the [AsyncPlayerSpawnLocationEvent](https://jd.papermc.io/paper/1.21.10/io/papermc/paper/event/player/AsyncPlayerSpawnLocationEvent.html) as soon as possible, as listening to the [PlayerSpawnLocationEvent](https://jd.papermc.io/paper/1.21.10/org/spigotmc/event/player/PlayerSpawnLocationEvent.html) has unintended side effects.
+
+### Deprecation of the Conversation API (for removal)
+
+This API has been unmaintained and largely unused for a long time. Over time, it has fallen behind in a lot of functionality, like not even supporting proper text components and is likely to fully break eventually. Hence, we have decided to deprecate it for removal.
+
+### Deprecation of the Metadata API
+
+The entity/block entity Metadatable API has been deprecated as it is generally inferior to the [PersistentDataContainer](https://jd.papermc.io/paper/1.21.10/org/bukkit/persistence/PersistentDataContainer.html) API and has often lead to memory leaks given its use isn't quite clear and intuitive. We recommend replacing its use with PersistentDataContainer or your own data caches.

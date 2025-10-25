@@ -1,0 +1,60 @@
+---
+title: "Paper & Velocity 1.20(.1)"
+date: "2023-06-11T18:00:00.000Z"
+author: "Paper Team"
+---
+
+## The 1.20(.1) Update
+
+We’re happy to announce that initial builds for Paper 1.20 have been released. As always, **backups are absolutely mandatory**. **After upgrading your world to 1.20, you cannot downgrade back to a lower version!**
+
+We would like to thank everyone that worked on this update:
+
+- [@Machine Maker](https://github.com/sponsors/Machine-Maker)
+- [@Spottedleaf](https://www.patreon.com/Spottedleaf)
+- [@Owen1212055](https://github.com/sponsors/Owen1212055)
+- [@lynxplay](https://github.com/lynxplay)
+- [@Noah](https://github.com/sponsors/NoahvdAa)
+- [@kennytv](https://github.com/sponsors/kennytv)
+
+Next to those people, you can find links to support them individually. If you'd like to support PaperMC as a whole, you can find more information at https://papermc.io/sponsors.
+
+## For Developers
+
+**Future changes regarding API enums**
+Enums such as Biome implementing the Keyed interface will be converted to classes with public static final objects at some point. While some backwards compatibility will be provided, **please try to avoid the use of switch statements, EnumMap and EnumSet on these, including the Material enum**.
+
+**1.20 API changes**
+With 1.20, there is of course new API for the new features. Some notable breaks are:
+
+- `SmithingRecipe` has been replaced with `SmithingTrimRecipe` and `SmithingTransformRecipe`
+- `InventoryType.SMITHING` now uses 1.20's new smithing table interface
+- `Sign#isEditable()` has been deprecated in favor of a new method called `isWaxed`, same for its setter
+
+**API scheduled for removal**
+A bunch of old API has been scheduled for removal in 1.21, so please make sure you remove usages of these in your plugins:
+
+- [AsyncChatDecorateEvent#isPreview()](<https://jd.papermc.io/paper/1.19/io/papermc/paper/event/player/AsyncChatDecorateEvent.html#isPreview()>)
+- [PlayerLocaleChangeEvent](https://jd.papermc.io/paper/1.19/com/destroystokyo/paper/event/player/PlayerLocaleChangeEvent.html)
+- [PlayerInitialSpawnEvent](https://jd.papermc.io/paper/1.19/com/destroystokyo/paper/event/player/PlayerInitialSpawnEvent.html)
+- [WorldBorder#isInBounds(Location)](<https://jd.papermc.io/paper/1.19/org/bukkit/WorldBorder.html#isInBounds(org.bukkit.Location)>)
+- [EntityTransformedEvent](https://jd.papermc.io/paper/1.19/com/destroystokyo/paper/event/entity/EntityTransformedEvent.html)
+- [ItemStackRecipeChoice](https://jd.papermc.io/paper/1.19/com/destroystokyo/paper/inventory/ItemStackRecipeChoice.html)
+- [HeightmapType](https://jd.papermc.io/paper/1.19/com/destroystokyo/paper/HeightmapType.html)
+- All associated methods in Location and World
+- All deprecated or removed GoalKeys in [VanillaGoal](https://jd.papermc.io/paper/1.19/com/destroystokyo/paper/entity/ai/VanillaGoal.html)
+- [StructureLocateEvent](https://jd.papermc.io/paper/1.19/io/papermc/paper/event/world/StructureLocateEvent.html) (not the new StructuresLocateEvent)
+- Duplicate Effects
+- World API
+  - [World#hasSkylight()](<https://jd.papermc.io/paper/1.19/org/bukkit/World.html#hasSkylight()>)
+  - [World#hasBedrockCeiling()](<https://jd.papermc.io/paper/1.19/org/bukkit/World.html#hasBedrockCeiling()>)
+  - [World#doesBedWork()](<https://jd.papermc.io/paper/1.19/org/bukkit/World.html#doesBedWork()>)
+  - [World#doesRespawnAnchorWork()](<https://jd.papermc.io/paper/1.19/org/bukkit/World.html#doesRespawnAnchorWork()>)
+
+## Hangar
+
+As per [the last big announcement](https://forums.papermc.io/threads/hangar-papermcs-plugin-repository.691/), we now have our own website for you to upload your Paper, Bungee, and Velocity plugins to. There have been little updates in the past few weeks due to us being busy with other projects, including Paper, but rest assured we'll keep working on it! https://hangar.papermc.io/
+
+## Experimental channel for builds
+
+Our downloads API has different channels to distinguish builds - right now between `experimental` and `default`. For future updates, we will no longer provide any early experimental builds on Discord, instead using the `experimental` channel in our downloads API. **This means that you will need to distinguish between channels in your scripts to avoid getting highly experimental and potentially breaking versions. Please adjust your download scripts accordingly.** Experimental builds marked as such will be available to download on our homepage as well.

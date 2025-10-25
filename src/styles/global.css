@@ -4,6 +4,8 @@
 @import "@fontsource/poppins/600.css";
 @import "@fontsource/poppins/700.css";
 
+@plugin "@tailwindcss/typography";
+
 @custom-variant dark (@media (prefers-color-scheme: dark));
 
 /* prettier-ignore */
@@ -96,12 +98,66 @@
   }
 }
 
+@layer utilities {
+  .mask-fade-bottom {
+    --fade-size: 4rem;
+    mask-image: linear-gradient(to bottom, black calc(100% - var(--fade-size)), transparent);
+    -webkit-mask-image: linear-gradient(to bottom, black calc(100% - var(--fade-size)), transparent);
+    mask-mode: match-source;
+    -webkit-mask-mode: match-source;
+  }
+}
+
 html {
   @apply bg-background-light-10 dark:bg-background-dark-90 scroll-smooth dark:text-white;
   -webkit-tap-highlight-color: transparent;
 }
 
+:root {
+  --fg-muted: oklch(35% 0 0 / 0.7);
+}
+@variant dark {
+  :root {
+    --fg-muted: color-mix(in oklab, white 70%, transparent);
+  }
+}
+.text-muted {
+  color: var(--fg-muted);
+}
+
 [role="button"],
 button {
   cursor: pointer;
+}
+
+:not(pre) > code {
+  @apply rounded px-1.5 py-0.5 font-mono text-sm;
+  background: color-mix(in oklab, var(--color-background-dark-90) 85%, white 15%);
+  color: #9ae6b4;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.prose code::before,
+.prose code::after {
+  content: none !important;
+}
+
+.prose :where(pre):not(:where([class~="not-prose"] *)) {
+  @apply bg-transparent;
+}
+
+.prose {
+  --tw-prose-body: theme(colors.gray.800);
+  --tw-prose-headings: theme(colors.gray.900);
+}
+
+@variant dark {
+  .prose {
+    --tw-prose-body: theme(colors.gray.200);
+    --tw-prose-headings: theme(colors.white);
+  }
+}
+
+.prose :where(pre):not(:where([class~="not-prose"] *)) {
+  @apply bg-transparent;
 }

@@ -41,3 +41,11 @@ export const formatISOFullTime = (date: Date): string => {
   const second = String(date.getSeconds()).padStart(2, "0");
   return `${hour}:${minute}:${second}`;
 };
+
+export const formatDateLong = (date: Date): string => {
+  return date.toLocaleDateString(undefined, {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
+};
