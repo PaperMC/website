@@ -1,4 +1,4 @@
-import { getProject, getVersionBuilds } from "@/utils/fill";
+import { getLatestBuild, getProject, getVersionBuilds } from "@/utils/fill";
 import { getHangarProjects } from "@/utils/hangar";
 import { type ProjectDescriptor, type Build } from "@/utils/types";
 
@@ -48,8 +48,8 @@ export async function getProjectDescriptor(id: string): Promise<ProjectDescripto
     // Check for stable builds
     for (let i = flattenedVersions.length - 1; i >= 0; i--) {
       try {
-        const builds = await getVersionBuilds(id, flattenedVersions[i], "STABLE");
-        if (builds.length > 0) {
+        const build = await getLatestBuild(id, flattenedVersions[i]);
+        if (build !== null && (build.channel === "STABLE" || build.channel === "RECOMMENDED")) {
           latestStableVersion = flattenedVersions[i];
           break;
         }
@@ -84,8 +84,8 @@ export async function getProjectDescriptorWithHangar(id: string): Promise<{ proj
     // Check for stable builds
     for (let i = flattenedVersions.length - 1; i >= 0; i--) {
       try {
-        const builds = await getVersionBuilds(id, flattenedVersions[i], "STABLE");
-        if (builds.length > 0) {
+        const build = await getLatestBuild(id, flattenedVersions[i]);
+        if (build !== null && (build.channel === "STABLE" || build.channel === "RECOMMENDED")) {
           latestStableVersion = flattenedVersions[i];
           break;
         }

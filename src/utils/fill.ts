@@ -32,6 +32,15 @@ export async function getVersionBuilds(project: string, version: string, channel
   return res.json() as Promise<Build[]>;
 }
 
+export async function getLatestBuild(project: string, version: string): Promise<Build | null> {
+  const url = `${API_ENDPOINT}/projects/${project}/versions/${version}/builds/latest`;
+  const res = await edgeFetch(url, 300);
+  if (!res.ok) {
+    throw new Error(`getLatestBuild(${project}, ${version}) failed: ${res.status}`);
+  }
+  return res.json() as Promise<Build>;
+}
+
 export async function getBStats(): Promise<{ servers: number; players: number }> {
   try {
     const res = await edgeFetch(BSTATS_URL, 300);
