@@ -131,10 +131,19 @@ button {
 }
 
 :not(pre) > code {
-  @apply rounded px-1.5 py-0.5 font-mono text-sm;
-  background: color-mix(in oklab, var(--color-background-dark-90) 85%, white 15%);
-  color: #9ae6b4;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  @apply rounded font-mono;
+  padding: 1px 2px 1px 2px;
+  background: #f7f7f7;
+  color: #a85cff;
+  font-weight: 500;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+@variant dark {
+  :not(pre) > code {
+    background: color-mix(in oklab, var(--color-background-dark-90) 85%, white 15%);
+    color: #bb80ff;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
 }
 
 .prose code::before,
@@ -149,6 +158,15 @@ button {
 .prose {
   --tw-prose-body: theme(colors.gray.800);
   --tw-prose-headings: theme(colors.gray.900);
+
+  a {
+    color: #1f6ce0;
+  }
+  @variant dark {
+    a {
+      color: #5d99f5;
+    }
+  }
 }
 
 @variant dark {
