@@ -1,0 +1,29 @@
+name: "🐛 Bug"
+description: Report issues related to unexpected behaviors.
+type: "Bug"
+labels:
+  - "type: bug"
+body:
+  - type: textarea
+    attributes:
+      label: Describe the bug.
+      description:
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Provide environment information.
+      description: |
+        Include information such Browser version, Operating System, and any other relevant information.
+    validations:
+      required: false
+
+  - type: textarea
+    attributes:
+      label: Other
+      description: |
+        Please include other helpful information below.
+        The more information we receive, the quicker and more effective we can be at finding the solution to the issue.
+    validations:
+      required: false

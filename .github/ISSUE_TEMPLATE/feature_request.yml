@@ -1,0 +1,18 @@
+name: "💡 New Feature"
+description: Propose a new idea for the Website.
+type: "Feature"
+labels:
+  - "type: feature"
+body:
+  - type: textarea
+    attributes:
+      label: Feature Description
+      description: A clear and concise description of what you want.
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        Before submitting this feature request, please search our issue tracker to ensure your feature has not
+        already been requested.
