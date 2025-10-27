@@ -38,9 +38,6 @@ const { id, name, icon, description, type, eol } = Astro.props;
 </software-preview>
 
 <script>
-  import { getProject } from "@/utils/fill";
-  import { getLatestVersion } from "@/utils/versions";
-
   class SoftwarePreview extends HTMLElement {
     async connectedCallback() {
       const { software, previewType } = this.dataset;
@@ -61,13 +58,7 @@ const { id, name, icon, description, type, eol } = Astro.props;
           anchor.href = `/downloads/${software}`;
           break;
         case "Javadocs":
-          const { versions } = await getProject(software);
-          const latest = getLatestVersion(versions);
-          if (latest) {
-            anchor.href = `https://jd.papermc.io/${software}/${latest}`;
-          } else {
-            anchor.href = `/software/${software}`;
-          }
+          anchor.href = `https://jd.papermc.io/${software}`;
           break;
       }
     }
