@@ -3,6 +3,7 @@ import Layout from "@/layouts/Layout.astro";
 import { getCollection, render } from "astro:content";
 import { formatDateLong } from "@/utils/time";
 import { countWords, minutesToRead, truncateForPreview } from "@/utils/content";
+import { components } from "@/mdx/components";
 
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
@@ -73,7 +74,7 @@ const excerpt = truncateForPreview(post.body ?? "", 120);
       </div>
 
       <div class="prose dark:prose-invert max-w-none px-6 pt-6 pb-8 sm:px-8 sm:pt-8 sm:pb-10">
-        <Content />
+        <Content components={components} />
       </div>
 
       {

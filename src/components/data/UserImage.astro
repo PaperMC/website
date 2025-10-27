@@ -5,15 +5,16 @@ interface Props {
   avatarUrl: string;
   name: string;
   link?: string;
+  class?: string;
 }
-const { avatarUrl, name, link } = Astro.props;
+const { avatarUrl, name, link, class: extra } = Astro.props;
 const Tag = link ? "a" : "div";
 const initial = (name?.trim?.()[0] ?? "?").toUpperCase();
 ---
 
 <Tag
   role={link ? "button" : undefined}
-  class="user-image relative flex aspect-square items-center justify-center overflow-hidden rounded-full bg-gray-600 font-bold text-white uppercase transition-transform hover:scale-105 hover:shadow-lg"
+  class={`user-image relative flex aspect-square items-center justify-center overflow-hidden rounded-full bg-gray-600 font-bold text-white uppercase transition-transform hover:scale-105 hover:shadow-lg ${extra ?? ""}`}
   href={link}
   rel={link && "noreferrer"}
   target={link && "_blank"}
