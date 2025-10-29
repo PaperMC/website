@@ -26,17 +26,19 @@ export async function fetchDownloadsPageData(projectId: string, kv?: KVNamespace
   }
 
   const projectResult = await getProjectDescriptorOrError(projectId);
-  let stableBuildsResult: ProjectBuildsOrError | null = null;
-  let experimentalBuildsResult: ProjectBuildsOrError | null = null;
+  let stableBuildsResultPromise: Promise<ProjectBuildsOrError> | null = null;
+  let experimentalBuildsResultPromise: Promise<ProjectBuildsOrError> | null = null;
   if (projectResult.value) {
-    stableBuildsResult = await fetchBuildsOrError(projectId, projectResult.value.latestStableVersion);
+    stableBuildsResultPromise = fetchBuildsOrError(projectId, projectResult.value.latestStableVersion);
     if (projectResult.value.latestExperimentalVersion) {
-      experimentalBuildsResult = await fetchBuildsOrError(projectId, projectResult.value.latestExperimentalVersion);
+      experimentalBuildsResultPromise = fetchBuildsOrError(projectId, projectResult.value.latestExperimentalVersion);
     }
   } else {
-    stableBuildsResult = { error: projectResult.error };
-    experimentalBuildsResult = { error: projectResult.error };
+    stableBuildsResultPromise = Promise.resolve({ error: projectResult.error });
+    experimentalBuildsResultPromise = Promise.resolve({ error: projectResult.error });
   }
+
+  const [stableBuildsResult, experimentalBuildsResult] = await Promise.all([stableBuildsResultPromise, experimentalBuildsResultPromise]);
 
   return { projectResult, stableBuildsResult, experimentalBuildsResult };
 }
