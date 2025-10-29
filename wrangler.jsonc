@@ -8,6 +8,15 @@
     "binding": "ASSETS",
     "directory": "./dist",
   },
+  "kv_namespaces": [
+    {
+      "binding": "DOWNLOADS_PAGE_CACHE",
+      "id": "YOUR_KV_NAMESPACE_ID_HERE",
+    },
+  ],
+  "triggers": {
+    "crons": ["*/5 * * * *"],
+  },
   "observability": {
     "enabled": true,
   },
