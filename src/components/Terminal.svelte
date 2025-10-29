@@ -1,7 +1,5 @@
 <script lang="ts">
   import { formatISOFullTime } from "@/utils/time";
-  import { getProject } from "@/utils/fill";
-  import { getLatestVersion } from "@/utils/versions";
 
   const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
   const getNaturalDelay = () => Math.floor(Math.random() * 80) + 40;
@@ -17,11 +15,9 @@
 
   $effect(() => {
     (async () => {
-      const { versions } = await getProject("paper");
-      const latest = getLatestVersion(versions);
-      if (latest) {
-        latestStableVersion = latest;
-      }
+      const response = await fetch("/internal-api/terminal");
+      const data: { version: string } = await response.json();
+      latestStableVersion = data.version;
     })();
   });
 

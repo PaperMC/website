@@ -1,11 +1,10 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import { getBStats } from "@/utils/fill";
 
   let { ttlMs = 12 * 60 * 1000 } = $props();
 
   type BStats = { servers: number; players: number };
-  const LS_KEY = "bstats:players:v1";
+  const LS_KEY = "bstats:players:v2";
 
   let players: number | null = $state(null);
   let loading = $state(true);
@@ -32,8 +31,11 @@
   }
 
   async function fetchFresh(): Promise<BStats> {
-    const res = await getBStats();
-    return res;
+    const res = await fetch("/internal-api/paper-playercount");
+    if (!res.ok) {
+      throw new Error(`Failed to fetch stats: ${res.status}`);
+    }
+    return await res.json();
   }
 
   async function swrLoad() {
@@ -55,7 +57,7 @@
       }
       error = null;
     } catch (e) {
-      error = "Failed to refresh bStats";
+      error = "Failed to refresh stats";
     } finally {
       loading = false;
     }
