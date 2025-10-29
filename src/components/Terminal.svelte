@@ -16,6 +16,10 @@
 
   onMount(async () => {
     const response = await fetch("/internal-api/terminal");
+    if (!response.ok) {
+      console.error("Failed to fetch terminal data");
+      return;
+    }
     const data: { version: string } = await response.json();
     latestStableVersion = data.version;
   });
