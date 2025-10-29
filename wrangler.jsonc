@@ -10,7 +10,7 @@
   },
   "kv_namespaces": [
     {
-      "binding": "DOWNLOADS_PAGE_CACHE",
+      "binding": "WEBSITE_CACHE",
       "id": "YOUR_KV_NAMESPACE_ID_HERE",
     },
   ],

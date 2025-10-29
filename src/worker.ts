@@ -24,7 +24,7 @@ async function updateDownloadsPageCache(env: Env) {
   for (const project of projects) {
     const data = await fetchDownloadsPageData(project);
     if (data.buildsResult.error === undefined && data.projectResult.error === undefined) {
-      await env.DOWNLOADS_PAGE_CACHE.put(project, JSON.stringify(data));
+      await env.WEBSITE_CACHE.put(project, JSON.stringify(data));
     }
   }
 }
