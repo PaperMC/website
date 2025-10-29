@@ -18,7 +18,10 @@ export async function fetchDownloadsPageData(projectId: string, kv?: KVNamespace
   if (kv) {
     const cachedString = await kv.get(downloadsPageDataKvKey(projectId));
     if (cachedString !== null) {
-      return JSON.parse(cachedString);
+      const data = JSON.parse(cachedString);
+      if (data.projectResult && data.stableBuildsResult) {
+        return data;
+      }
     }
   }
 
