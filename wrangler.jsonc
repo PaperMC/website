@@ -11,7 +11,7 @@
   "kv_namespaces": [
     {
       "binding": "WEBSITE_CACHE",
-      "id": "website-cache",
+      "id": "99e81ab8e2c74620b115ca861ebae59a",
     },
   ],
   "triggers": {
