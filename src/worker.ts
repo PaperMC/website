@@ -23,7 +23,11 @@ async function updateDownloadsPageCache(env: Env) {
 
   for (const project of projects) {
     const data = await fetchDownloadsPageData(project);
-    if (data.buildsResult.error === undefined && data.projectResult.error === undefined) {
+    if (
+      data.stableBuildsResult.error === undefined &&
+      data.experimentalBuildsResult?.error === undefined &&
+      data.projectResult.error === undefined
+    ) {
       await env.WEBSITE_CACHE.put(downloadsPageDataKvKey(project), JSON.stringify(data));
     }
   }

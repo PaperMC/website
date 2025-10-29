@@ -9,14 +9,13 @@
   import FoliaIconUrl from "@/assets/brand/folia.svg?url";
   import WaterfallIconUrl from "@/assets/brand/waterfall.svg?url";
   import type { Snippet } from "svelte";
-  import { fetchBuildsOrError, type ProjectBuildsOrError } from "@/utils/download";
-  import { watch } from "runed";
-  import { fade } from "svelte/transition";
+  import { type ProjectBuildsOrError } from "@/utils/download";
 
   interface Props {
     id: "paper" | "velocity" | "folia" | "waterfall" | (string & {});
     project: ProjectDescriptor;
-    builds: ProjectBuildsOrError;
+    stableBuilds: ProjectBuildsOrError;
+    experimentalBuilds: ProjectBuildsOrError | null;
     description?: string;
     Description?: Snippet;
     experimentalWarning?: string;
@@ -26,7 +25,8 @@
   let {
     id,
     project,
-    builds,
+    stableBuilds,
+    experimentalBuilds,
     description = undefined,
     Description = undefined,
     experimentalWarning = undefined,
@@ -54,23 +54,7 @@
     return `text-channel-${c}-primary`;
   }
 
-  let buildsLoading = $state(false);
-  let buildsPromise: Promise<[] | void> = Promise.resolve([]);
-  watch(
-    () => version,
-    (ver, oldVer) => {
-      // Only handle changes, not initial page load where builds are prerendered on server.
-      if (oldVer !== undefined && ver !== oldVer) {
-        buildsPromise = buildsPromise.then(async () => {
-          buildsLoading = true;
-          await fetchBuildsOrError({ value: project }, !isStable).then((result) => {
-            builds = result;
-            buildsLoading = false;
-          });
-        });
-      }
-    }
-  );
+  let builds = $derived(isStable ? stableBuilds : (experimentalBuilds ?? stableBuilds));
 </script>
 
 <header class="mx-auto flex max-w-7xl flex-row flex-wrap gap-16 px-4 pt-32 pb-16 lg:pt-48 lg:pb-26">
@@ -118,12 +102,12 @@
         build={builds.value?.latest}
         {version}
         eol={!!eol}
-        disabled={builds.value?.latest === null || builds.value?.latest === undefined || buildsLoading}
+        disabled={builds.value?.latest === null || builds.value?.latest === undefined}
       />
 
       {#if project.latestExperimentalVersion}
         <button
-          class={`transition-border flex w-full flex-row rounded-lg border py-3 pl-5 md:w-100 ${
+          class={`transition-border flex w-full flex-row rounded-lg border py-3 pl-5 transition-colors md:w-100 ${
             isStable
               ? "border-red-900 text-red-700 dark:border-red-500 dark:text-red-400"
               : "border-blue-900 text-blue-700 dark:border-blue-600 dark:text-blue-400"
@@ -149,14 +133,10 @@
         </span>
       </p>
 
-      {#if buildsLoading}
-        <div transition:fade class="text-center text-sm text-gray-400">Loading builds…</div>
-      {:else if builds.error}
-        <div transition:fade class="text-center text-sm text-red-500">{builds.error}</div>
+      {#if builds.error}
+        <div class="text-center text-sm text-red-500">{builds.error}</div>
       {:else if builds.value && builds.value.builds && builds.value.builds.length > 0}
-        <div transition:fade>
-          <SoftwareBuilds project={id} {version} builds={builds.value.builds} eol={!!eol} />
-        </div>
+        <SoftwareBuilds project={id} {version} builds={builds.value.builds} eol={!!eol} />
       {/if}
     </section>
 
