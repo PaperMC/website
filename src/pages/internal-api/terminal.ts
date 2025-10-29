@@ -2,14 +2,17 @@ import type { APIRoute } from "astro";
 import { downloadsPageDataKvKey, getProjectDescriptorOrError, type DownloadsPageData } from "@/utils/download";
 
 export const GET: APIRoute = async ({ locals }) => {
-  const kv = locals.runtime.env.WEBSITE_CACHE;
-  const cached = await kv.get(downloadsPageDataKvKey("paper"));
   let ver: string | null = null;
-  if (cached !== null) {
-    const pageData: DownloadsPageData = JSON.parse(cached);
-    const cachedVer = pageData.projectResult.value?.latestStableVersion;
-    if (cachedVer) {
-      ver = cachedVer;
+
+  const kv = locals.runtime.env.WEBSITE_CACHE;
+  if (kv) {
+    const cached = await kv.get(downloadsPageDataKvKey("paper"));
+    if (cached !== null) {
+      const pageData: DownloadsPageData = JSON.parse(cached);
+      const cachedVer = pageData.projectResult.value?.latestStableVersion;
+      if (cachedVer) {
+        ver = cachedVer;
+      }
     }
   }
   if (ver === null) {
