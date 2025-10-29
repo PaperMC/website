@@ -8,7 +8,17 @@ import eslintConfigPrettier from "eslint-config-prettier";
 export default [
   // Ignore patterns
   {
-    ignores: ["dist/**", "node_modules/**", ".astro/**", ".wrangler/**", "bun.lock", "*.config.js", "*.config.mjs", "*.config.ts"],
+    ignores: [
+      "dist/**",
+      "node_modules/**",
+      ".astro/**",
+      ".wrangler/**",
+      "bun.lock",
+      "*.config.js",
+      "*.config.mjs",
+      "*.config.ts",
+      "worker-configuration.d.ts",
+    ],
   },
 
   // Base TypeScript configuration

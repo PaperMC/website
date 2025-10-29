@@ -4,6 +4,25 @@ import { type ProjectDescriptor, type Build, type Project } from "@/utils/types"
 
 export type ProjectDescriptorOrError = { error?: string; value?: ProjectDescriptor };
 export type ProjectBuildsOrError = { error?: string; value?: { latest?: Build; builds: Build[] } };
+export type DownloadsPageData = { projectResult: ProjectDescriptorOrError; buildsResult: ProjectBuildsOrError };
+
+export function downloadsPageDataKvKey(projectId: string) {
+  return `downloads:${projectId}`;
+}
+
+export async function fetchDownloadsPageData(projectId: string, kv?: KVNamespace): Promise<DownloadsPageData> {
+  if (kv) {
+    const cachedString = await kv.get(downloadsPageDataKvKey(projectId));
+    if (cachedString !== null) {
+      return JSON.parse(cachedString);
+    }
+  }
+
+  const projectResult = await getProjectDescriptorOrError(projectId);
+  const buildsResult = await fetchBuildsOrError(projectResult, false);
+
+  return { projectResult, buildsResult };
+}
 
 export async function fetchBuildsOrError(project: ProjectDescriptorOrError, experimental: boolean): Promise<ProjectBuildsOrError> {
   const projectId = project.value?.id;

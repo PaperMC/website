@@ -8,6 +8,15 @@
     "binding": "ASSETS",
     "directory": "./dist",
   },
+  "kv_namespaces": [
+    {
+      "binding": "WEBSITE_CACHE",
+      "id": "99e81ab8e2c74620b115ca861ebae59a",
+    },
+  ],
+  "triggers": {
+    "crons": ["*/5 * * * *"],
+  },
   "observability": {
     "enabled": true,
   },

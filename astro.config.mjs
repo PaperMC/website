@@ -43,5 +43,13 @@ export default defineConfig({
     mdx(),
   ],
 
-  adapter: cloudflare(),
+  adapter: cloudflare({
+    platformProxy: {
+      enabled: true,
+      persist: true,
+    },
+    workerEntryPoint: {
+      path: "src/worker.ts",
+    },
+  }),
 });
