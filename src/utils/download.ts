@@ -4,7 +4,11 @@ import { type ProjectDescriptor, type Build, type Project } from "@/utils/types"
 
 export type ProjectDescriptorOrError = { error?: string; value?: ProjectDescriptor };
 export type ProjectBuildsOrError = { error?: string; value?: { latest?: Build; builds: Build[] } };
-export type DownloadsPageData = { projectResult: ProjectDescriptorOrError; buildsResult: ProjectBuildsOrError };
+export type DownloadsPageData = {
+  projectResult: ProjectDescriptorOrError;
+  stableBuildsResult: ProjectBuildsOrError;
+  experimentalBuildsResult: ProjectBuildsOrError | null;
+};
 
 export function downloadsPageDataKvKey(projectId: string) {
   return `downloads:${projectId}`;
@@ -14,28 +18,30 @@ export async function fetchDownloadsPageData(projectId: string, kv?: KVNamespace
   if (kv) {
     const cachedString = await kv.get(downloadsPageDataKvKey(projectId));
     if (cachedString !== null) {
-      return JSON.parse(cachedString);
+      const data = JSON.parse(cachedString);
+      if (data.projectResult && data.stableBuildsResult) {
+        return data;
+      }
     }
   }
 
   const projectResult = await getProjectDescriptorOrError(projectId);
-  const buildsResult = await fetchBuildsOrError(projectResult, false);
+  let stableBuildsResult: ProjectBuildsOrError | null = null;
+  let experimentalBuildsResult: ProjectBuildsOrError | null = null;
+  if (projectResult.value) {
+    stableBuildsResult = await fetchBuildsOrError(projectId, projectResult.value.latestStableVersion);
+    if (projectResult.value.latestExperimentalVersion) {
+      experimentalBuildsResult = await fetchBuildsOrError(projectId, projectResult.value.latestExperimentalVersion);
+    }
+  } else {
+    stableBuildsResult = { error: projectResult.error };
+    experimentalBuildsResult = { error: projectResult.error };
+  }
 
-  return { projectResult, buildsResult };
+  return { projectResult, stableBuildsResult, experimentalBuildsResult };
 }
 
-export async function fetchBuildsOrError(project: ProjectDescriptorOrError, experimental: boolean): Promise<ProjectBuildsOrError> {
-  const projectId = project.value?.id;
-  if (!projectId) {
-    return { error: `Project id not found` };
-  }
-  let versionId = project.value?.latestStableVersion ?? project.value?.latestExperimentalVersion;
-  if (experimental && project.value?.latestExperimentalVersion) {
-    versionId = project.value?.latestExperimentalVersion;
-  }
-  if (!versionId) {
-    return { error: `No versions found` };
-  }
+export async function fetchBuildsOrError(projectId: string, versionId: string): Promise<ProjectBuildsOrError> {
   try {
     const res = await getVersionBuilds(projectId, versionId);
     const builds = Array.isArray(res) ? res : [];

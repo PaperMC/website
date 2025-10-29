@@ -6,7 +6,7 @@ import { fetchDownloadsPageData } from "@/utils/download";
 
 Astro.response.headers.set("Cache-Control", "public, max-age=300, s-maxage=600, stale-while-revalidate=120");
 Astro.response.headers.set("CDN-Cache-Control", "public, max-age=600, stale-while-revalidate=120");
-const { projectResult, buildsResult } = await fetchDownloadsPageData("waterfall", Astro.locals.runtime.env.WEBSITE_CACHE);
+const data = await fetchDownloadsPageData("waterfall", Astro.locals.runtime.env.WEBSITE_CACHE);
 
 const descriptionHtml = `
   Waterfall has reached end of life. We recommend you transition to
@@ -32,12 +32,5 @@ const descriptionHtml = `
   keywords={["papermc", "minecraft", "performance", "bungeecord", "waterfall", "downloads", "jar"]}
   canonical="/downloads/waterfall"
 >
-  <SoftwareDownloadPage
-    id="waterfall"
-    description={descriptionHtml}
-    eol
-    client:load="svelte"
-    project={projectResult}
-    builds={buildsResult}
-  />
+  <SoftwareDownloadPage id="waterfall" description={descriptionHtml} eol client:load="svelte" {data} />
 </Layout>

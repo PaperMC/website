@@ -6,7 +6,7 @@ import { fetchDownloadsPageData } from "@/utils/download";
 
 Astro.response.headers.set("Cache-Control", "public, max-age=300, s-maxage=600, stale-while-revalidate=120");
 Astro.response.headers.set("CDN-Cache-Control", "public, max-age=600, stale-while-revalidate=120");
-const { projectResult, buildsResult } = await fetchDownloadsPageData("folia", Astro.locals.runtime.env.WEBSITE_CACHE);
+const data = await fetchDownloadsPageData("folia", Astro.locals.runtime.env.WEBSITE_CACHE);
 ---
 
 <Layout
@@ -20,7 +20,6 @@ const { projectResult, buildsResult } = await fetchDownloadsPageData("folia", As
     description="Download Folia, our new fork of Paper that adds regionized multithreading to the server"
     experimentalWarning="Download experimental builds of Folia, our new fork of Paper that adds regionized multithreading to the server. Proceed with caution!"
     client:load="svelte"
-    project={projectResult}
-    builds={buildsResult}
+    {data}
   />
 </Layout>

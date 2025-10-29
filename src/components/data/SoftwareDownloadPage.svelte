@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount, type Snippet } from "svelte";
   import SoftwareDownload from "@/components/data/SoftwareDownload.svelte";
-  import type { ProjectBuildsOrError, ProjectDescriptorOrError } from "@/utils/download";
+  import type { DownloadsPageData } from "@/utils/download";
 
   interface Props {
     id: string;
@@ -9,25 +9,25 @@
     experimentalWarning?: string;
     eol?: boolean;
     Description?: Snippet;
-    project: ProjectDescriptorOrError;
-    builds: ProjectBuildsOrError;
+    data: DownloadsPageData;
   }
 
-  let {
-    id,
-    description = undefined,
-    experimentalWarning = undefined,
-    eol = false,
-    Description = undefined,
-    project,
-    builds,
-  }: Props = $props();
+  let { id, description = undefined, experimentalWarning = undefined, eol = false, Description = undefined, data }: Props = $props();
 </script>
 
-{#if project.error}
+{#if data.projectResult.error}
   <header class="mx-auto max-w-7xl px-4 pt-32 pb-16 lg:pt-48 lg:pb-26">
-    <div class="font-semibold text-red-500">{project.error}</div>
+    <div class="font-semibold text-red-500">{data.projectResult.error}</div>
   </header>
-{:else if project.value}
-  <SoftwareDownload {id} project={project.value} {builds} {eol} {experimentalWarning} {Description} {description} />
+{:else if data.projectResult.value}
+  <SoftwareDownload
+    {id}
+    project={data.projectResult.value}
+    stableBuilds={data.stableBuildsResult}
+    experimentalBuilds={data.experimentalBuildsResult}
+    {eol}
+    {experimentalWarning}
+    {Description}
+    {description}
+  />
 {/if}
