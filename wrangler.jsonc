@@ -11,7 +11,7 @@
   "kv_namespaces": [
     {
       "binding": "WEBSITE_CACHE",
-      "id": "YOUR_KV_NAMESPACE_ID_HERE",
+      "id": "website-cache",
     },
   ],
   "triggers": {

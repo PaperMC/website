@@ -1,7 +1,7 @@
 import type { SSRManifest } from "astro";
 import { App } from "astro/app";
 import { handle } from "@astrojs/cloudflare/handler";
-import { fetchDownloadsPageData } from "./utils/download";
+import { downloadsPageDataKvKey, fetchDownloadsPageData } from "./utils/download";
 
 export function createExports(manifest: SSRManifest) {
   const app = new App(manifest);
@@ -24,7 +24,7 @@ async function updateDownloadsPageCache(env: Env) {
   for (const project of projects) {
     const data = await fetchDownloadsPageData(project);
     if (data.buildsResult.error === undefined && data.projectResult.error === undefined) {
-      await env.WEBSITE_CACHE.put(project, JSON.stringify(data));
+      await env.WEBSITE_CACHE.put(downloadsPageDataKvKey(project), JSON.stringify(data));
     }
   }
 }

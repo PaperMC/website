@@ -6,9 +6,13 @@ export type ProjectDescriptorOrError = { error?: string; value?: ProjectDescript
 export type ProjectBuildsOrError = { error?: string; value?: { latest?: Build; builds: Build[] } };
 export type DownloadsPageData = { projectResult: ProjectDescriptorOrError; buildsResult: ProjectBuildsOrError };
 
+export function downloadsPageDataKvKey(projectId: string) {
+  return `downloads:${projectId}`;
+}
+
 export async function fetchDownloadsPageData(projectId: string, kv?: KVNamespace): Promise<DownloadsPageData> {
   if (kv) {
-    const cachedString = await kv.get(projectId);
+    const cachedString = await kv.get(downloadsPageDataKvKey(projectId));
     if (cachedString !== null) {
       return JSON.parse(cachedString);
     }
