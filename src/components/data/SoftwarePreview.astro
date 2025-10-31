@@ -20,19 +20,19 @@ const { id, name, icon, description, type, eol } = Astro.props;
 ---
 
 <software-preview data-software={id} data-preview-type={type}>
-  <a href="#loading">
-    <article class="hover:bg-primary-300 h-full rounded-xl p-4 transition-all hover:shadow-lg md:p-8 dark:hover:bg-gray-800">
+  <a href="#loading" class="rounded-md">
+    <article class="btn btn-outline btn-gray h-full flex-col items-start justify-start rounded-md p-4 text-left">
       <div class="flex flex-row items-center gap-4">
         <div class="h-12 w-12 rounded-lg bg-gray-800 p-3">
           <Icon name={icon} class="h-full w-full" />
         </div>
-        <h3 class="flex flex-1 items-center gap-4 font-medium">
+        <h3 class="flex flex-1 items-center gap-4 text-lg font-medium">
           {name}
           {eol && <Icon name="icons/fontawesome/box-archive" class="h-6 fill-current" />}
         </h3>
       </div>
 
-      {description && <p class="mt-4 text-gray-800 dark:text-gray-200">{description}</p>}
+      {description && <p class="mt-4 font-normal">{description}</p>}
     </article>
   </a>
 </software-preview>

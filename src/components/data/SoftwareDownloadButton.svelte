@@ -38,13 +38,13 @@
   type DownloadEntry = [string, { name: string; checksums: { sha256: string }; size: number; url: string }];
   let downloadEntries = $derived(build ? (Object.entries(build.downloads) as DownloadEntry[]) : []);
 
-  async function copyUrl(evt: MouseEvent, entry: DownloadEntry) {
+  async function copySha256(evt: MouseEvent, entry: DownloadEntry) {
     evt.preventDefault();
     evt.stopPropagation();
     const [, d] = entry;
-    if (!d.url) return;
+    if (!d.checksums.sha256) return;
     try {
-      await navigator.clipboard.writeText(d.url);
+      await navigator.clipboard.writeText(d.checksums.sha256);
       copied[d.name] = true;
       copied = { ...copied };
       setTimeout(() => {
@@ -52,17 +52,16 @@
         copied = { ...copied };
       }, 2000);
     } catch (error) {
-      console.error("Failed to copy URL to clipboard:", error);
+      console.error("Failed to copy SHA256 checksum to clipboard:", error);
     }
   }
 </script>
 
 <div class="relative flex w-full flex-row md:w-100" bind:this={rootEl}>
   <div
-    class={`transition-color flex flex-row rounded-lg transition-shadow hover:shadow-lg
+    class={`btn transition-color flex flex-row rounded-md
       ${!compact ? "w-full md:w-100" : ""}
-      ${eol ? "bg-channel-eol-primary" : `bg-channel-${build?.channel?.toLowerCase()}-primary`}
-      ${eol ? "text-channel-eol-secondary" : `text-channel-${build?.channel?.toLowerCase()}-secondary`}
+      ${eol ? "btn-eol" : `btn-${build?.channel?.toLowerCase()}`}
       ${disabled ? "cursor-not-allowed opacity-60" : ""}`}
   >
     <a
@@ -134,7 +133,7 @@
         {#each downloadEntries as entry (entry[1].name)}
           <a
             class="block transition-colors hover:bg-blue-100 dark:hover:bg-gray-800"
-            href={build?.downloads["server:default"]?.url}
+            href={entry[1].url}
             target="_blank"
             role="menuitem"
             onclick={() => (open = false)}
@@ -146,7 +145,7 @@
                   <span class="rounded-full bg-yellow-200/80 px-2 py-0.5 text-xs text-yellow-800">Recommended</span>
                 {/if}
                 {#if copied[entry[1].name]}
-                  <span class="rounded-full bg-green-200/80 px-2 py-0.5 text-xs text-green-800">Copied</span>
+                  <span class="rounded-full bg-green-200/80 px-2 py-0.5 text-xs text-green-800">Copied SHA256 checksum</span>
                 {/if}
               </div>
 
@@ -154,8 +153,8 @@
                 <span class="truncate">{entry[1].checksums.sha256}</span>
                 <button
                   class="ml-2 inline-flex size-6 items-center justify-center rounded hover:bg-black/5 dark:hover:bg-white/5"
-                  onclick={(e) => copyUrl(e, entry)}
-                  title="Copy URL"
+                  onclick={(e) => copySha256(e, entry)}
+                  title="Copy SHA256 checksum"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 512 512" class="size-4">
                     <path

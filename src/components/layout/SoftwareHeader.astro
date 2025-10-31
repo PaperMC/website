@@ -17,7 +17,7 @@ const { id, name, icon, github, eol } = Astro.props;
   <header class="mx-auto flex max-w-7xl flex-row flex-wrap gap-16 px-4 pt-32 pb-26 lg:pt-28 lg:pb-14">
     {
       eol && (
-        <div class="-mt-6 w-full rounded-lg bg-red-400 px-4 py-8 text-center font-bold shadow-md dark:bg-red-500">
+        <div class="bg-danger -mt-6 w-full rounded-lg px-4 py-8 text-center font-bold text-white shadow-md">
           {name} has reached end of life! It is no longer maintained or supported.
         </div>
       )
@@ -39,12 +39,7 @@ const { id, name, icon, github, eol } = Astro.props;
         <slot name="description" />
       </div>
       <div class="mt-8 flex flex-row gap-4">
-        <Button
-          variant="filled"
-          href={github ?? `/downloads/${id}`}
-          external={Boolean(github)}
-          className={eol ? "!hover:bg-red-400 !bg-red-500" : ""}
-        >
+        <Button variant={eol ? "filled-danger" : "filled"} href={github ?? `/downloads/${id}`} external={Boolean(github)}>
           {github ? "GitHub" : "Downloads"}
         </Button>
         <Button variant="outlined" href={`https://docs.papermc.io/${id}`} external> Documentation </Button>

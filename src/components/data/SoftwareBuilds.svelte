@@ -12,15 +12,10 @@
 
   let { project, version, builds, eol = false }: Props = $props();
 
-  function channelBgClass(ch?: Build["channel"]): string {
-    if (eol) return "bg-channel-eol-primary";
+  function channelClass(ch?: Build["channel"]): string {
+    if (eol) return "btn-eol";
     const c = (ch ?? "").toLowerCase();
-    return `bg-channel-${c}-primary`;
-  }
-  function channelTextClass(ch?: Build["channel"]): string {
-    if (eol) return "text-channel-eol-secondary";
-    const c = (ch ?? "").toLowerCase();
-    return `text-channel-${c}-secondary`;
+    return `btn-${c}`;
   }
 </script>
 
@@ -29,12 +24,12 @@
     {#each builds.slice(0, 10) as build, idx (build.id)}
       {@const date = new Date(build.time)}
       <div>
-        <div class="flex flex-row items-center px-4 py-2 transition-colors hover:bg-blue-100 dark:hover:bg-gray-900">
+        <div class="flex flex-row items-center px-4 py-2 transition-colors hover:bg-gray-200 dark:hover:bg-gray-800">
           <a
             role="button"
             href={build.downloads?.["server:default"]?.url}
             target="_blank"
-            class={`mr-4 inline-flex min-w-16 items-center gap-1 rounded-full p-2 text-center text-sm font-medium ${channelBgClass(build.channel)} ${channelTextClass(build.channel)}`}
+            class={`btn mr-4 inline-flex min-w-16 items-center gap-1 rounded-sm p-2 text-center text-sm font-medium ${channelClass(build.channel)}`}
           >
             <svg xmlns="http://www.w3.org/2000/svg" class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path
