@@ -190,11 +190,12 @@ button {
 
 .btn {
   @layer components {
-    @apply border-1 transition-colors not-active:shadow;
+    @apply border-1 transition-colors not-active:shadow-sm;
 
     --btn-bg: var(--btn-color);
     --btn-border: var(--btn-color);
     --btn-fg-hover: var(--btn-fg);
+    --tw-shadow-color: color-mix(in oklab, var(--btn-color) 50%, transparent);
 
     background-color: var(--btn-bg);
     border-color: var(--btn-border);
@@ -202,8 +203,10 @@ button {
 
     &:hover {
       color: var(--btn-fg-hover);
+      --btn-bg: color-mix(in oklab, var(--btn-color), #000 7%);
     }
     &:active {
+      color: var(--btn-fg-hover);
       translate: 0 0.5px;
       --btn-bg: color-mix(in oklab, var(--btn-color), #000 5%);
       --btn-border: color-mix(in oklab, var(--btn-color), #000 7%);
@@ -212,12 +215,9 @@ button {
 }
 
 @utility btn-outline {
-  --btn-bg: transparent;
-
-  &:hover {
-    --btn-bg: var(--btn-color);
-    &:active {
-      --btn-bg: color-mix(in oklab, var(--btn-color), #000 5%);
+  &:not(:hover) {
+    &:not(:active) {
+      --btn-bg: transparent;
     }
   }
 }
