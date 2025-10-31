@@ -24,7 +24,7 @@
     {#each builds.slice(0, 10) as build, idx (build.id)}
       {@const date = new Date(build.time)}
       <div>
-        <div class="flex flex-row items-center px-4 py-2 transition-colors hover:bg-gray-200 dark:hover:bg-gray-800">
+        <div class="flex flex-row items-center rounded-md px-4 py-2 transition-colors hover:bg-gray-200 dark:hover:bg-gray-800">
           <a
             role="button"
             href={build.downloads?.["server:default"]?.url}
@@ -51,7 +51,7 @@
         </div>
 
         {#if idx < Math.min(builds.length, 10) - 1}
-          <hr class="m-0 border border-gray-300 dark:border-gray-700" />
+          <hr class="mx-0 my-0.5 bg-gray-300 dark:bg-gray-700" />
         {/if}
       </div>
     {/each}

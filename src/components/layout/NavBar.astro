@@ -56,8 +56,6 @@ import LogoMarkerLight from "@/assets/brand/logo-marker-light.svg";
   });
   window.addEventListener("scroll", () => {
     const wrapper = document.getElementById("nav-wrapper");
-    wrapper?.classList?.toggle("bg-background-light-10", window.scrollY > 64);
-    wrapper?.classList?.toggle("dark:bg-background-dark-90", window.scrollY > 64);
-    wrapper?.classList?.toggle("shadow-lg", window.scrollY > 64);
+    wrapper?.classList?.toggle("shadow-lg", window.scrollY > 1);
   });
 </script>
