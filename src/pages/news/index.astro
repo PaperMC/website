@@ -25,7 +25,7 @@ const postsWithMeta = posts.map((p) => {
       {
         postsWithMeta.map((entry, idx) => (
           <a href={`/news/${entry.id}`} class="group rounded-lg">
-            <div class="btn btn-outline btn-gray flex flex-col gap-6 rounded-lg py-6 transition-all duration-200">
+            <div class="btn btn-outline btn-gray flex flex-col gap-6 rounded-lg py-6 transition-colors duration-200">
               <div class="flex flex-col gap-3 p-6">
                 <div class="flex items-baseline justify-between gap-4">
                   <h2 class="text-foreground group-hover:text-primary text-xl leading-tight font-bold text-balance">{entry.data.title}</h2>
