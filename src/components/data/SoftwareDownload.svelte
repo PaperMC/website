@@ -107,11 +107,7 @@
 
       {#if project.latestExperimentalVersion}
         <button
-          class={`transition-border flex w-full flex-row rounded-lg border py-3 pl-5 transition-colors md:w-100 ${
-            isStable
-              ? "border-red-900 text-red-700 dark:border-red-500 dark:text-red-400"
-              : "border-blue-900 text-blue-700 dark:border-blue-600 dark:text-blue-400"
-          }`}
+          class={`transition-border btn btn-outline rounded-lg py-3 transition-colors md:w-100 ${isStable ? "btn-alpha" : "btn-stable"}`}
           onclick={toggleStable}
         >
           {#if isStable}

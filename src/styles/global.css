@@ -95,6 +95,10 @@
   ::backdrop,
   ::file-selector-button {
     border-color: var(--color-gray-200, currentcolor);
+    @variant dark {
+      border-color: var(--color-gray-800, currentcolor);
+      @apply shadow-gray-600/50;
+    }
   }
 }
 
@@ -178,4 +182,85 @@ button {
 
 .prose :where(pre):not(:where([class~="not-prose"] *)) {
   @apply bg-transparent;
+}
+
+.btn {
+  @layer components {
+    @apply border-1 transition-colors not-active:shadow;
+
+    --btn-bg: var(--btn-color);
+    --btn-border: var(--btn-color);
+
+    background-color: var(--btn-bg);
+    border-color: var(--btn-border);
+    color: var(--btn-fg);
+
+    &:active {
+      translate: 0 0.5px;
+      --btn-bg: color-mix(in oklab, var(--btn-color), #000 5%);
+      --btn-border: color-mix(in oklab, var(--btn-color), #000 7%);
+    }
+  }
+}
+
+@utility btn-outline {
+  --btn-bg: transparent;
+
+  &:hover {
+    --btn-bg: var(--btn-color);
+    &:active {
+      --btn-bg: color-mix(in oklab, var(--btn-color), #000 5%);
+    }
+  }
+}
+
+@utility btn-primary {
+  :not(.btn-outline) {
+    --btn-fg: var(--color-white);
+  }
+  --btn-color: var(--color-blue-500);
+}
+
+.btn-stable {
+  :not(.btn-outline) {
+    --btn-fg: var(--color-channel-stable-secondary);
+  }
+  --btn-color: var(--color-channel-stable-primary);
+}
+
+.btn-alpha {
+  :not(.btn-outline) {
+    --btn-fg: var(--color-channel-alpha-secondary);
+  }
+  --btn-color: var(--color-channel-alpha-primary);
+}
+
+.btn-beta {
+  :not(.btn-outline) {
+    --btn-fg: var(--color-channel-beta-secondary);
+  }
+  --btn-color: var(--color-channel-beta-primary);
+}
+
+.btn-recommended {
+  :not(.btn-outline) {
+    --btn-fg: var(--color-channel-recommended-secondary);
+  }
+  --btn-color: var(--color-channel-recommended-primary);
+}
+
+.btn-eol {
+  :not(.btn-outline) {
+    --btn-fg: var(--color-channel-eol-secondary);
+  }
+  --btn-color: var(--color-channel-eol-primary);
+}
+
+@utility btn-gray {
+  --btn-fg: var(--color-black);
+  --btn-color: var(--color-gray-300);
+  @variant dark {
+    --btn-fg: var(--color-white);
+    --btn-color: var(--color-gray-700);
+  }
 }

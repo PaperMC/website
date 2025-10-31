@@ -107,7 +107,7 @@
       aria-expanded={open}
       onclick={toggle}
       disabled={disabled || !build}
-      title="More downloads"
+      title="Show checksum"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
