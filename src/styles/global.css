@@ -45,6 +45,8 @@
   --color-background-light-10: #f8faff;
   --color-background-light-0: #ffffff;
 
+  --color-danger: var(--color-red-400);
+
   --list-style-type-alpha: lower-alpha;
 
   --aspect-auto: auto;
@@ -74,6 +76,8 @@
 
 @variant dark {
   :root {
+    --color-danger: var(--color-red-500);
+
     /* These colours come from Fill - changes must be synchronized. */
     --color-channel-alpha-primary: #e42e47;
     --color-channel-alpha-secondary: var(--color-white);
@@ -190,11 +194,15 @@ button {
 
     --btn-bg: var(--btn-color);
     --btn-border: var(--btn-color);
+    --btn-fg-hover: var(--btn-fg);
 
     background-color: var(--btn-bg);
     border-color: var(--btn-border);
     color: var(--btn-fg);
 
+    &:hover {
+      color: var(--btn-fg-hover);
+    }
     &:active {
       translate: 0 0.5px;
       --btn-bg: color-mix(in oklab, var(--btn-color), #000 5%);
@@ -215,43 +223,71 @@ button {
 }
 
 @utility btn-primary {
-  :not(.btn-outline) {
+  &:not(.btn-outline) {
     --btn-fg: var(--color-white);
+  }
+  &.btn-outline {
+    --btn-fg-hover: var(--color-white);
   }
   --btn-color: var(--color-blue-500);
 }
 
+@utility btn-danger {
+  &:not(.btn-outline) {
+    --btn-fg: var(--color-white);
+  }
+  &.btn-outline {
+    --btn-fg-hover: var(--color-white);
+  }
+  --btn-color: var(--color-danger);
+}
+
 .btn-stable {
-  :not(.btn-outline) {
+  &:not(.btn-outline) {
     --btn-fg: var(--color-channel-stable-secondary);
+  }
+  &.btn-outline {
+    --btn-fg-hover: var(--color-channel-stable-secondary);
   }
   --btn-color: var(--color-channel-stable-primary);
 }
 
 .btn-alpha {
-  :not(.btn-outline) {
+  &:not(.btn-outline) {
     --btn-fg: var(--color-channel-alpha-secondary);
+  }
+  &.btn-outline {
+    --btn-fg-hover: var(--color-channel-alpha-secondary);
   }
   --btn-color: var(--color-channel-alpha-primary);
 }
 
 .btn-beta {
-  :not(.btn-outline) {
+  &:not(.btn-outline) {
     --btn-fg: var(--color-channel-beta-secondary);
+  }
+  &.btn-outline {
+    --btn-fg-hover: var(--color-channel-beta-secondary);
   }
   --btn-color: var(--color-channel-beta-primary);
 }
 
 .btn-recommended {
-  :not(.btn-outline) {
+  &:not(.btn-outline) {
     --btn-fg: var(--color-channel-recommended-secondary);
+  }
+  &.btn-outline {
+    --btn-fg-hover: var(--color-channel-recommended-secondary);
   }
   --btn-color: var(--color-channel-recommended-primary);
 }
 
 .btn-eol {
-  :not(.btn-outline) {
+  &:not(.btn-outline) {
     --btn-fg: var(--color-channel-eol-secondary);
+  }
+  &.btn-outline {
+    --btn-fg-hover: var(--color-channel-eol-secondary);
   }
   --btn-color: var(--color-channel-eol-primary);
 }
