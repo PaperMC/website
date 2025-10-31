@@ -59,7 +59,7 @@
 
 <header class="mx-auto flex max-w-7xl flex-row flex-wrap gap-16 px-4 pt-32 pb-16 lg:pt-48 lg:pb-26">
   {#if eol}
-    <div class="bg-danger -mt-16 w-full rounded-lg px-4 py-8 text-center font-bold shadow-md">
+    <div class="bg-danger -mt-16 w-full rounded-lg px-4 py-8 text-center font-bold text-white shadow-md">
       {project.name} has reached end of life! It is no longer maintained or supported.
     </div>
   {/if}
