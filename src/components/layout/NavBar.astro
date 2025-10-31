@@ -16,8 +16,10 @@ import LogoMarkerLight from "@/assets/brand/logo-marker-light.svg";
       <Icon name="icons/heroicons/menu" class="size-6 fill-gray-500" />
     </button>
     <a href="/" class="leading-none" tabindex="-1" aria-hidden={true}>
-      <img src={LogoMarkerLight.src} alt="PaperMC" class="block h-12 cursor-pointer dark:hidden" />
-      <img src={LogoMarkerDark.src} alt="PaperMC" class="hidden h-12 cursor-pointer dark:block" />
+      <picture>
+        <source srcset={LogoMarkerDark.src} media="(prefers-color-scheme: dark)" />
+        <img src={LogoMarkerLight.src} alt="PaperMC" class="block h-12 cursor-pointer" />
+      </picture>
     </a>
     <div
       id="nav-menu"
