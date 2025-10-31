@@ -24,7 +24,7 @@
     {#each builds.slice(0, 10) as build, idx (build.id)}
       {@const date = new Date(build.time)}
       <div>
-        <div class="flex flex-row items-center px-4 py-2 transition-colors hover:bg-blue-100 dark:hover:bg-gray-900">
+        <div class="flex flex-row items-center px-4 py-2 transition-colors hover:bg-gray-200 dark:hover:bg-gray-800">
           <a
             role="button"
             href={build.downloads?.["server:default"]?.url}
