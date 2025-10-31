@@ -12,5 +12,8 @@
       "minimumReleaseAge": "3 days",
       "matchPackageNames": ["*"]
     }
-  ]
+  ],
+  "lockFileMaintenance": {
+    "enabled": true
+  }
 }
