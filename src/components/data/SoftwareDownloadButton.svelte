@@ -124,7 +124,7 @@
     </button>
 
     <div
-      class={`bg-background-light-10 dark:bg-background-dark-80 absolute z-40 mt-2 divide-y divide-gray-200 rounded-md border border-gray-200 shadow-lg dark:divide-gray-800 dark:border-gray-800
+      class={`bg-background-light-10 dark:bg-background-dark-80 absolute z-40 mt-2 divide-y divide-gray-200 rounded-md border border-gray-200 shadow-md dark:divide-gray-800 dark:border-gray-800
               ${compact ? "right-0 origin-top-right" : "left-0 w-full origin-top-left md:w-auto"}
               ${open ? "block opacity-100" : "hidden opacity-0"}`}
       role="menu"
