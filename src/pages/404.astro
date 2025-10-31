@@ -1,12 +1,12 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import { Image } from "astro:assets";
-import NotFoundImage from "@/assets/images/404.webp";
+import NotFoundImage from "@/assets/images/404.png";
 ---
 
 <Layout title="404 - Page Not Found" keywords={["404"]} description="The page you are looking for does not exist." canonical="/404">
   <section id="message" class="mt-20 text-center">
-    <Image src={NotFoundImage} alt={"Not Found Image"} class="max-h-32 place-self-center lg:max-h-none lg:max-w-[18rem]" />
+    <Image src={NotFoundImage} alt={"Not Found Image"} class="max-h-32 place-self-center lg:max-h-none lg:max-w-[12rem]" />
     <h2 class="text-4xl leading-normal font-medium lg:text-5xl lg:leading-normal">404</h2>
     <p class="mt-4 text-xl">
       Page not found. Check the URL or return to <a href="/" class="text-gray-700 underline dark:text-gray-400">home</a>.
