@@ -101,7 +101,7 @@
     border-color: var(--color-gray-200, currentcolor);
     @variant dark {
       border-color: var(--color-gray-800, currentcolor);
-      @apply shadow-gray-600/50;
+      @apply shadow-gray-700/20;
     }
   }
 }

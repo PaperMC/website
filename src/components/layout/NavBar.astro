@@ -21,7 +21,7 @@ import LogoMarkerLight from "@/assets/brand/logo-marker-light.svg";
     </a>
     <div
       id="nav-menu"
-      class="bg-background-light-10 dark:bg-background-dark-90 absolute top-full right-0 left-0 flex w-full flex-col gap-4 p-4 shadow-xl max-md:hidden! md:relative md:flex md:w-auto md:flex-row md:items-center md:gap-0 md:bg-transparent md:p-0 md:shadow-none"
+      class="bg-background-light-10 dark:bg-background-dark-90 absolute top-full right-0 left-0 flex w-full flex-col gap-4 p-4 shadow-lg max-md:hidden! md:relative md:flex md:w-auto md:flex-row md:items-center md:gap-0 md:bg-transparent md:p-0 md:shadow-none"
     >
       <NavDropDown label="Software">
         <NavDropDownLink href="/software/paper">Paper</NavDropDownLink>
@@ -58,6 +58,6 @@ import LogoMarkerLight from "@/assets/brand/logo-marker-light.svg";
     const wrapper = document.getElementById("nav-wrapper");
     wrapper?.classList?.toggle("bg-background-light-10", window.scrollY > 64);
     wrapper?.classList?.toggle("dark:bg-background-dark-90", window.scrollY > 64);
-    wrapper?.classList?.toggle("shadow-xl", window.scrollY > 64);
+    wrapper?.classList?.toggle("shadow-lg", window.scrollY > 64);
   });
 </script>
