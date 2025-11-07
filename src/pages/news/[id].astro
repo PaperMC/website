@@ -22,9 +22,10 @@ const excerpt = truncateForPreview(post.body ?? "", 120);
 ---
 
 <Layout title={post.data.title!} description={excerpt} keywords={[]} canonical={`/news/${post.id}`}>
-  <section class="mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+  <section class="container mx-auto mt-10 max-w-7xl px-4 py-12">
     <article>
-      <header class="px-6 pt-6 sm:px-8 sm:pt-8">
+      <header class="px-4">
+        <a href="/news" class="inline-block pb-2 font-light text-current/80 hover:text-current">&lt; Back to news index</a>
         <h1 class="text-4xl font-extrabold tracking-tight">
           {post.data.title}
         </h1>
@@ -44,7 +45,7 @@ const excerpt = truncateForPreview(post.body ?? "", 120);
         )
       }
 
-      <div class="px-6 sm:px-8">
+      <div class="px-4">
         <div class="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-gray-600 dark:text-white/70">
           <time>{formatDateLong(new Date(post.data.date))}</time>
           <span aria-hidden="true">·</span>
