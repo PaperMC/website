@@ -10,10 +10,14 @@ Paper 1.19.4 and Velocity with 1.19.4 support are now available on our website! 
 
 Despite only being a minor version, once again, quite a bit of work has gone in the update. We would like to thank the following people for their work on the update process:
 
-- [@kennytv](https://github.com/sponsors/kennytv)
-- [@Machine Maker](https://github.com/sponsors/Machine-Maker)
-- [@Owen1212055](https://github.com/sponsors/Owen1212055)
-- [Gerrygames](https://github.com/Gerrygames) (for help with Velocity)
+<Contributors
+  contributors={[
+    { username: "kennytv", sponsor: "https://github.com/sponsors/kennytv" },
+    { username: "Machine-Maker", sponsor: "https://github.com/sponsors/Machine-Maker" },
+    { username: "Owen1212055", sponsor: "https://github.com/sponsors/Owen1212055" },
+    { username: "Gerrygames" },
+  ]}
+/>
 
 ## Experimental Channel for Builds
 
@@ -56,3 +60,6 @@ Additionally there is a second pull request to add API for modifying tags, used 
 
 **Future changes regarding API enums**
 Enums such as Biome implementing the Keyed interface will be converted to classes with public static final objects at some point. While some backwards compatibility will be provided, please try to avoid the use of switch statements, EnumMap and EnumSet on these.
+
+<DownloadButton project="Paper" />
+<DownloadButton project="Velocity" />

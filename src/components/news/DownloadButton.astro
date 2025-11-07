@@ -1,0 +1,30 @@
+---
+import DocumentDownloadIcon from "@/assets/icons/heroicons/document-download.svg";
+
+interface Props {
+  project: string;
+}
+
+const { project } = Astro.props;
+
+const href = "/downloads/" + project.toLowerCase();
+const label = "Download " + project;
+---
+
+<a
+  href={href}
+  rel="noopener noreferrer"
+  target="_blank"
+  class="btn btn-primary group relative isolate mb-2 inline-flex w-full items-center justify-center gap-3 rounded-lg px-8 py-4 text-lg font-semibold sm:w-auto"
+>
+  <DocumentDownloadIcon />
+
+  <span>{label}</span>
+</a>
+
+<style>
+  a {
+    color: #ffffff;
+    text-decoration: none;
+  }
+</style>

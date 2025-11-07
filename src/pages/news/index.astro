@@ -4,6 +4,7 @@ import { getCollection } from "astro:content";
 import { formatDateLong } from "@/utils/time";
 import { countWords, minutesToRead, truncateForPreview } from "@/utils/content";
 import { Icon } from "astro-icon/components";
+import IconButton from "@/components/IconButton.astro";
 
 const posts = (await getCollection("posts")).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
@@ -21,6 +22,10 @@ const postsWithMeta = posts.map((p) => {
 
 <Layout title="News" description="News and updates from PaperMC" keywords={["blog", "news", "updates", "latest"]} canonical="/news">
   <div class="container mx-auto mt-10 max-w-7xl px-4 py-12">
+    <header class="flex justify-between">
+      <h1 class="text-4xl leading-normal font-medium lg:text-5xl lg:leading-normal">News</h1>
+      <IconButton className="my-auto" label="RSS" icon="icons/lucide/rss" href="/news/rss.xml" />
+    </header>
     <div class="flex flex-col gap-4">
       {
         postsWithMeta.map((entry, idx) => (

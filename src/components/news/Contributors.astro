@@ -1,0 +1,105 @@
+---
+import UserImage from "src/components/data/UserImage.astro";
+import GitHubIcon from "@/assets/icons/fontawesome/github-brands.svg";
+import PatreonIcon from "@/assets/icons/fontawesome/patreon-brands.svg";
+import PayPalIcon from "@/assets/icons/fontawesome/paypal-brands.svg";
+
+type Contributor = {
+  username: string;
+  sponsor?: string;
+};
+
+const { contributors = [] as Contributor[] } = Astro.props as {
+  contributors?: Contributor[];
+};
+
+const ghProfile = (u: string) => `https://github.com/${u}`;
+const ghAvatar = (u: string, size = 48) => `https://avatars.githubusercontent.com/${u}?size=${size}`;
+
+type SponsorKind = "ghs" | "patreon" | "paypal" | "other";
+const sponsorKind = (url: string): SponsorKind => {
+  if (url.includes("github.com/sponsors")) return "ghs";
+  if (url.includes("patreon.com")) return "patreon";
+  if (url.includes("paypal.me")) return "paypal";
+  return "other";
+};
+
+const sponsorMeta = (url: string) => {
+  const kind = sponsorKind(url);
+  const label = kind === "ghs" ? "GitHub Sponsors" : kind === "patreon" ? "Patreon" : kind === "paypal" ? "PayPal" : "Sponsor";
+  return { kind, label } as const;
+};
+---
+
+<ul
+  class="bg-background-light-10 dark:bg-background-dark-90 contributors m-0 grid list-none grid-cols-1 gap-x-6 gap-y-3 rounded-md border p-3.5 sm:grid-cols-2 lg:grid-cols-4"
+>
+  {
+    contributors.map((c) => {
+      const profile = ghProfile(c.username);
+      const avatar = ghAvatar(c.username);
+      const display = `@${c.username}`;
+
+      return (
+        <li class="flex items-center gap-3">
+          <UserImage avatarUrl={avatar} name={c.username} link={profile} class="size-11 sm:size-12" />
+
+          <div class="min-w-0">
+            <a
+              href={profile}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-sm font-medium text-slate-900 hover:underline dark:text-slate-100"
+            >
+              {display}
+            </a>
+
+            {c.sponsor && (
+              <div class="mt-0.5 flex items-center gap-1.5">
+                <span class="text-xs text-slate-500 dark:text-slate-400">Sponsor:</span>
+                {(() => {
+                  const { kind, label } = sponsorMeta(c.sponsor!);
+                  const baseClass = "size-4 fill-slate-500 dark:fill-slate-400";
+                  return (
+                    <a
+                      href={c.sponsor}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${label} for ${display}`}
+                      title={label}
+                      class="inline-flex items-center text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200"
+                    >
+                      {kind === "ghs" ? (
+                        <GitHubIcon class={baseClass} />
+                      ) : kind === "patreon" ? (
+                        <PatreonIcon class={baseClass} />
+                      ) : kind === "paypal" ? (
+                        <PayPalIcon class={baseClass} />
+                      ) : (
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                          <path
+                            d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20ZM2 12h20"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                        </svg>
+                      )}
+                    </a>
+                  );
+                })()}
+              </div>
+            )}
+          </div>
+        </li>
+      );
+    })
+  }
+</ul>
+
+<style>
+  .contributors li {
+    align-items: center;
+  }
+</style>

@@ -6,25 +6,30 @@ author: "Paper Team"
 
 ## The 1.21.5 / 1.21.6 / 1.21.7 Update
 
-It's been a hot minute since the last post, but here we are!  
-As always, **backups are absolutely mandatory**.  
-**After upgrading your world to 1.21.7, you cannot downgrade back to a lower version!**  
+It's been a hot minute since the last post, but here we are!
+
+<MandatoryBackups version="1.21.7" />
+
 We can also give you a pinky promise that it won't take this long to exit the experimental phase again, and we have already addressed this inflexibility in build channels — more on that below and on our Discord.
 
 We would like to thank everyone that worked on this update:
 
-- [Gerrygames](https://github.com/Gerrygames) for his work on Velocity
-- [@electronicboy](https://github.com/sponsors/electronicboy)
-- [@jmp](https://github.com/sponsors/jpenilla)
-- [kennytv](https://github.com/kennytv)
-- [Lulu13022002](https://github.com/Lulu13022002)
-- [@lynxplay](https://github.com/lynxplay)
-- [@Machine Maker](https://github.com/sponsors/Machine-Maker)
-- [@Noah](https://github.com/sponsors/NoahvdAa)
-- [@Owen1212055](https://github.com/sponsors/Owen1212055)
-- [@MiniDigger](https://github.com/sponsors/MiniDigger)
-- [SpaceWalkerRS](https://github.com/SpaceWalkerRS)
-- [@Spottedleaf](https://www.patreon.com/Spottedleaf)
+<Contributors
+  contributors={[
+    { username: "Gerrygames" },
+    { username: "electronicboy", sponsor: "https://github.com/sponsors/electronicboy" },
+    { username: "jpenilla", sponsor: "https://github.com/sponsors/jpenilla" },
+    { username: "kennytv" },
+    { username: "Lulu13022002" },
+    { username: "lynxplay" },
+    { username: "Machine-Maker", sponsor: "https://github.com/sponsors/Machine-Maker" },
+    { username: "NoahvdAa", sponsor: "https://github.com/sponsors/NoahvdAa" },
+    { username: "Owen1212055", sponsor: "https://github.com/sponsors/Owen1212055" },
+    { username: "MiniDigger", sponsor: "https://github.com/sponsors/MiniDigger" },
+    { username: "SpaceWalkerRS" },
+    { username: "Spottedleaf", sponsor: "https://www.patreon.com/Spottedleaf" },
+  ]}
+/>
 
 If you'd like to support PaperMC as a whole, you can find more information at [papermc.io/sponsors](https://papermc.io/sponsors).
 
@@ -43,21 +48,21 @@ Among other changes — and the new V3 of our [Downloads API](https://docs.paper
 
 ## `force-upgrade` Startup Param
 
-Time and time again, issues in old world upgrade code are found, with fairly important issues having been fixed by Mojang or Paper in recent versions.  
+Time and time again, issues in old world upgrade code are found, with fairly important issues having been fixed by Mojang or Paper in recent versions.
 If you use the `--forceUpgrade` startup flag, you lose out on fixes from future versions, since it forcefully loads and upgrades all worlds and entities.
 
-Only if you are updating from a version **before 1.13** should you use force-upgrade, as it can save some performance during expensive conversions.  
+Only if you are updating from a version **before 1.13** should you use force-upgrade, as it can save some performance during expensive conversions.
 In that case, the safer option is to force-upgrade on **Paper 1.21.7**, but you should **otherwise never force upgrade without a specific reason.**
 
 ---
 
 ## Reloading with `/reload`
 
-For many years, the Bukkit reload mechanic has been unofficially deprecated, with big warnings whenever someone triggers it via `/reload` or related API methods.  
+For many years, the Bukkit reload mechanic has been unofficially deprecated, with big warnings whenever someone triggers it via `/reload` or related API methods.
 We are **officially deprecating** it, to be removed at a later time.
 
-The `/reload` command will now point to `/minecraft:reload`, a reload mechanic that **is** and will stay supported, as it's a Vanilla mechanic.  
-Users should stop and start the server when making changes that require a restart.  
+The `/reload` command will now point to `/minecraft:reload`, a reload mechanic that **is** and will stay supported, as it's a Vanilla mechanic.
+Users should stop and start the server when making changes that require a restart.
 Developers should use hot reloading or full restarts instead. For guidance on hotswap, see the pinned messages in our `#paper-dev` Discord channel.
 
 ---
@@ -66,28 +71,28 @@ Developers should use hot reloading or full restarts instead. For guidance on ho
 
 ### Configuration Phase API & Deprecation of `PlayerLoginEvent`
 
-The use of `PlayerLoginEvent` is now deprecated.  
-This change has been made to allow us to start developing API for the **Configuration Phase** in Minecraft.  
-This phase most notably allows dialogs to be sent to the player before they join the game, or resource packs to be sent earlier.  
-This is an early warning: while `PlayerLoginEvent` will remain available for now, **breaking changes may be introduced in the future**.  
+The use of `PlayerLoginEvent` is now deprecated.
+This change has been made to allow us to start developing API for the **Configuration Phase** in Minecraft.
+This phase most notably allows dialogs to be sent to the player before they join the game, or resource packs to be sent earlier.
+This is an early warning: while `PlayerLoginEvent` will remain available for now, **breaking changes may be introduced in the future**.
 Plugins relying on this event should begin migrating as soon as possible.
 
 #### What You Should Use Instead
 
 Please migrate to the following events based on your needs:
 
-- `PlayerConnectionValidateLoginEvent`  
-  Use this when controlling whether a player should be able to join the game — i.e., logic that previously prevented login via `PlayerLoginEvent`.  
-  This event fires twice: once when logging in, and once when exiting the configuration phase.  
+- `PlayerConnectionValidateLoginEvent`
+  Use this when controlling whether a player should be able to join the game — i.e., logic that previously prevented login via `PlayerLoginEvent`.
+  This event fires twice: once when logging in, and once when exiting the configuration phase.
   You do **not** have access to a `Player` entity here, only a `PlayerProfile`.
 
-- `PlayerServerFullCheckEvent`  
+- `PlayerServerFullCheckEvent`
   Replaces the common `PlayerLoginEvent` use case that allowed players to join even if the server was full.
 
 #### Other Configuration Phase Related Events
 
-The configuration phase occurs **between logging into a server and fully joining a world**.  
-During this time, server data — including tags and custom registry elements — is sent to the client.  
+The configuration phase occurs **between logging into a server and fully joining a world**.
+During this time, server data — including tags and custom registry elements — is sent to the client.
 You can send custom data or apply a resource pack _before_ they exit the loading screen.
 
 You can also throw a player back into the configuration phase using:
@@ -105,23 +110,23 @@ New events include:
 
 ## Dialog API
 
-Dialog API will be merged into 1.21.7 soon — we’ll post a dev announcement once it’s in!  
+Dialog API will be merged into 1.21.7 soon — we’ll post a dev announcement once it’s in!
 You can see its current status here:
 
 - [Compare changes](https://github.com/PaperMC/Paper/compare/ab1b472c5663f4123632770db8ea509b9be49e20..11a1e0ffd25be0224c878ebaf629191863264861)
 - [Pull Request #12671](https://github.com/PaperMC/Paper/pull/12671)
 
-You will also be able to open dialogs via a new click event type using `ClickEvent.openDialog`.  
+You will also be able to open dialogs via a new click event type using `ClickEvent.openDialog`.
 For custom click actions, you may use `PlayerCustomClickEvent`, but the preferred option is to directly pass a callback in `DialogAction.customClick`, which will be run when the player clicks the specified element.
 
 ---
 
 ## ItemStack Config Serialization
 
-`ItemStack`s now use the **SNBT format** when written to configuration files.  
+`ItemStack`s now use the **SNBT format** when written to configuration files.
 This allows ItemStacks to run upgrades through Minecraft's data fixers for more reliable migrations.
 
-Direct serialization of `ItemMeta` (storing raw `ItemMeta` in a config) is now considered unsupported and may be removed in the future.  
+Direct serialization of `ItemMeta` (storing raw `ItemMeta` in a config) is now considered unsupported and may be removed in the future.
 If you want to serialize items to other formats, such as JSON or raw bytes, the `(de)serializeStack` methods on `UnsafeValues` may be of interest.
 
 ---
@@ -133,7 +138,7 @@ Cow inheritance has been adjusted to fit Vanilla:
 - `MushroomCow` no longer extends `Cow`, but the new `AbstractCow`
 - `Cow` now extends `AbstractCow`
 
-Additionally, the `potion` entity type has been split into **splash** and **lingering** potion entities.  
+Additionally, the `potion` entity type has been split into **splash** and **lingering** potion entities.
 You must now use those specific entity types and can no longer swap between them without creating a new entity.
 
 ---
@@ -157,3 +162,5 @@ A small selection of recent API additions that may be interesting:
   - `EntityAttemptSmashAttackEvent`
   - `PlayerClientLoadedWorldEvent`
   - `EntityEffectTickEvent`
+
+<DownloadButton project="Paper" />

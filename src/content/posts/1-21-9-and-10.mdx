@@ -6,15 +6,19 @@ author: "Paper Team"
 
 ## The 1.21.9/10 Update
 
-As always, **backups are absolutely mandatory**. **After upgrading your world to 1.21.10, you cannot downgrade back to a lower version!**
+<MandatoryBackups version="1.21.10" />
 
 We would like to thank everyone that worked on this update:
 
-- [@jmp](https://github.com/jpenilla) - https://github.com/sponsors/jpenilla
-- [@Lulu13022002](https://github.com/Lulu13022002)
-- [@lynxplay](https://github.com/lynxplay)
-- [@Spottedleaf](https://github.com/Spottedleaf) - https://www.patreon.com/Spottedleaf
-- [@Owen1212055](https://github.com/Owen1212055) - https://github.com/sponsors/Owen1212055
+<Contributors
+  contributors={[
+    { username: "jpenilla", sponsor: "https://github.com/sponsors/jpenilla" },
+    { username: "Lulu13022002" },
+    { username: "lynxplay" },
+    { username: "Spottedleaf", sponsor: "https://www.patreon.com/Spottedleaf" },
+    { username: "Owen1212055", sponsor: "https://github.com/sponsors/Owen1212055" },
+  ]}
+/>
 
 If you'd like to support PaperMC as a whole, you can find more information at https://papermc.io/sponsors.
 
@@ -52,3 +56,5 @@ This API has been unmaintained and largely unused for a long time. Over time, it
 ### Deprecation of the Metadata API
 
 The entity/block entity Metadatable API has been deprecated as it is generally inferior to the [PersistentDataContainer](https://jd.papermc.io/paper/1.21.10/org/bukkit/persistence/PersistentDataContainer.html) API and has often lead to memory leaks given its use isn't quite clear and intuitive. We recommend replacing its use with PersistentDataContainer or your own data caches.
+
+<DownloadButton project="Paper" />
