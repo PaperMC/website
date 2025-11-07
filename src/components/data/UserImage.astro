@@ -14,7 +14,7 @@ const initial = (name?.trim?.()[0] ?? "?").toUpperCase();
 
 <Tag
   role={link ? "button" : undefined}
-  class={`user-image relative flex aspect-square items-center justify-center overflow-hidden rounded-full bg-gray-600 font-bold text-white uppercase transition-transform hover:scale-105 hover:shadow-lg ${extra ?? ""}`}
+  class={`user-image relative flex aspect-square items-center justify-center overflow-hidden rounded-full bg-gray-600 font-bold text-white uppercase transition-transform hover:scale-103 active:translate-y-[0.5px] shadow-md active:shadow-none ${extra ?? ""}`}
   href={link}
   rel={link && "noreferrer"}
   target={link && "_blank"}

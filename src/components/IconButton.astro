@@ -6,9 +6,10 @@ export interface Props {
   label: string;
   href?: string;
   external?: boolean;
+  className?: string;
 }
 
-const { icon, label, href } = Astro.props;
+const { icon, label, href, className } = Astro.props;
 ---
 
 {
@@ -17,13 +18,13 @@ const { icon, label, href } = Astro.props;
       href={href}
       rel="noreferrer"
       target="_blank"
-      class="inline-block h-min w-min rounded-full p-2 leading-0 transition-colors hover:bg-gray-800/20 dark:hover:bg-gray-400/20"
+      class={`inline-block h-min w-min rounded-full p-2 leading-0 transition-colors hover:bg-gray-800/20 dark:hover:bg-gray-400/20 ${className}`}
       aria-label={label}
     >
       <Icon name={icon} class="size-6 text-gray-700 dark:text-gray-300" />
     </a>
   ) : (
-    <button class="h-min w-min rounded-full p-2 transition-colors hover:bg-gray-800/20" aria-label={label}>
+    <button class={`h-min w-min rounded-full p-2 transition-colors hover:bg-gray-800/20 ${className}`} aria-label={label}>
       <img src={icon} class="gray-700 h-6 w-6" alt="" />
     </button>
   )

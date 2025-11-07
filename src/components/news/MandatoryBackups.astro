@@ -1,0 +1,18 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  version: string;
+}
+
+const { version } = Astro.props;
+---
+
+<div class="border-danger bg-danger/30 flex gap-3.5 rounded-md border p-3.5">
+  <Icon name="icons/lucide/octagon-alert" class="text-danger size-6 shrink-0" />
+  <div>
+    As always, <span class="font-semibold">backups are absolutely mandatory</span>. <span class="font-semibold"
+      >After upgrading your world to {version}, you cannot downgrade back to a lower version!</span
+    >
+  </div>
+</div>

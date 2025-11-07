@@ -31,7 +31,9 @@ const sponsorMeta = (url: string) => {
 };
 ---
 
-<ul class="contributors m-0 grid list-none grid-cols-1 gap-x-6 gap-y-4 p-0 sm:grid-cols-2 lg:grid-cols-4">
+<ul
+  class="bg-background-light-10 dark:bg-background-dark-90 contributors m-0 grid list-none grid-cols-1 gap-x-6 gap-y-3 rounded-md border p-3.5 sm:grid-cols-2 lg:grid-cols-4"
+>
   {
     contributors.map((c) => {
       const profile = ghProfile(c.username);
