@@ -1,15 +1,21 @@
 ---
 import DocumentDownloadIcon from "@/assets/icons/heroicons/document-download.svg";
 
-const href = "/downloads/paper";
-const label = "Download Paper";
+interface Props {
+  project: string;
+}
+
+const { project } = Astro.props;
+
+const href = "/downloads/" + project.toLowerCase();
+const label = "Download " + project;
 ---
 
 <a
   href={href}
   rel="noopener noreferrer"
   target="_blank"
-  class="group relative isolate inline-flex w-full items-center justify-center gap-3 rounded-2xl bg-blue-600 px-8 py-4 text-lg font-semibold text-white shadow-md shadow-blue-600/25 transition-all duration-200 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-700/25 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 sm:w-auto"
+  class="btn btn-primary group relative isolate mb-2 inline-flex w-full items-center justify-center gap-3 rounded-lg px-8 py-4 text-lg font-semibold sm:w-auto"
 >
   <DocumentDownloadIcon />
 
@@ -18,26 +24,7 @@ const label = "Download Paper";
 
 <style>
   a {
-    background-color: #2563eb;
     color: #ffffff;
-    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.25);
-  }
-
-  a:hover {
-    background-color: #1d4ed8;
-    box-shadow: 0 10px 30px rgba(29, 78, 216, 0.35);
-  }
-
-  @media (prefers-color-scheme: dark) {
-    a {
-      background-color: #3b82f6;
-      color: #ffffff;
-      box-shadow: 0 8px 24px rgba(59, 130, 246, 0.25);
-    }
-
-    a:hover {
-      background-color: #60a5fa;
-      box-shadow: 0 10px 30px rgba(59, 130, 246, 0.35);
-    }
+    text-decoration: none;
   }
 </style>
