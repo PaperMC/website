@@ -22,7 +22,7 @@
     "@astrojs/svelte": "^7.2.1",
     "@fontsource/poppins": "^5.2.7",
     "@tailwindcss/vite": "^4.1.16",
-    "astro": "5.15.1",
+    "astro": "5.15.5",
     "astro-icon": "^1.1.5",
     "clsx": "^2.1.1",
     "remove-markdown": "^0.6.2",
