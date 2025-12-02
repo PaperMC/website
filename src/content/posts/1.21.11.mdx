@@ -32,7 +32,13 @@ lorem ipsum
 
 ## For developers
 
-lorem ipsum
+### Minecraft versioning changes
+
+Starting in 2026, [Mojang is changing their versioning scheme](https://www.minecraft.net/en-us/article/minecraft-new-version-numbering-system). In short, it will start with the current year, then the drop number within that year, possibly followed by patch and hotfix numbers. I.e. the first drop in 2026 will be `26.1` and its first hotfix would be `26.1.1`. If you do any sort of Minecraft version parsing that expects a version to start with `1.`, make sure to prepare for this change.
+
+### Unobfuscated server jars
+
+Starting with the first version after 1.21.11, Mojang will no longer provide obfuscated server jars and instead have them contain all class, method, field names etc. Now is a good time to make sure your plugins are able to run on server jars that are not obfuscated. You can do this by starting a 1.21.10 Paper server using the `-Dpaper.disablePluginRemapping=true` startup flag and removing the `reobfJar` step from your [paperweight-userdev config](https://docs.papermc.io/paper/dev/userdev/#compiling-to-mojang-mappings).
 
 ---
 
