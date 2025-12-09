@@ -38,7 +38,11 @@ Starting in 2026, [Mojang is changing their versioning scheme](https://www.minec
 
 ### Unobfuscated server jars
 
-Starting with the first version after 1.21.11, Mojang will no longer provide obfuscated server jars and instead have them contain all class, method, field names etc. Now is a good time to make sure your plugins are able to run on server jars that are not obfuscated. You can do this by starting a 1.21.10 Paper server using the `-Dpaper.disablePluginRemapping=true` startup flag and removing the `reobfJar` step from your [paperweight-userdev config](https://docs.papermc.io/paper/dev/userdev/#compiling-to-mojang-mappings).
+Starting with 26.1, Mojang will no longer provide obfuscated server jars and instead have them contain all class, method, field names etc.
+Now is a good time to make sure your plugins are able to run on server jars that are not obfuscated.
+You can do this by starting a 1.21.11 Paper server using the `-Dpaper.disablePluginRemapping=true` startup flag and removing the `reobfJar` step from your [paperweight-userdev config](https://docs.papermc.io/paper/dev/userdev/#compiling-to-mojang-mappings).
+As spigot is moving to unobfuscated server jars for 26.1 as well, we are **dropping** the spigot internal remapper in 26.1.
+If your plugin is still using spigot mappings, migrate immediately as your plugin will not be working on either spigot or paper 26.1.
 
 ---
 
