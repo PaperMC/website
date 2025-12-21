@@ -26,7 +26,7 @@ If you'd like to support PaperMC as a whole, you can find more information at ht
 
 ## Changes for server owners
 
-There's one notable behavior change in Vanilla we would like to highlight: Setting the explosion radius of creepers to -1 disable block breaking while keeping entity knockback is no longer possible (as per [MC-304798](https://mojira.dev/MC-304798)).
+There's one notable behavior change in Vanilla we would like to highlight: Setting the explosion radius of creepers to -1 to disable block breaking while keeping entity knockback is no longer possible (as per [MC-304798](https://mojira.dev/MC-304798)).
 
 ---
 
@@ -40,7 +40,7 @@ Starting in 2026, [Mojang is changing their versioning scheme](https://www.minec
 
 _This section only affects plugin devs using server internals, whether directly or through reflection._
 
-Starting with 26.1, Mojang will no longer provide obfuscated server jars and instead have them contain all class, method, field names etc. As Spigot is moving to unobfuscated server jars for 26.1 as well, we will **fully drop the internal remapper in 26.1**.
+Starting with 26.1, Mojang will no longer provide obfuscated server jars and instead have them contain all class, method, field names, etc. As Spigot is moving to unobfuscated server jars for 26.1 as well, we will **fully drop the internal remapper in 26.1**.
 
 **Hence, now is a good time to make sure your plugins are able to run on server jars that are not obfuscated.**
 You can do this by starting a 1.21.11 Paper server using the `-Dpaper.disablePluginRemapping=true` startup flag and removing the `reobfJar` step from your [paperweight-userdev config](https://docs.papermc.io/paper/dev/userdev/#compiling-to-mojang-mappings).
@@ -53,13 +53,13 @@ Gamerules have been turned into a registry in Vanilla, so their names were chang
 
 ### Bed event changes
 
-Beds had a few substantial changes in Vanilla, so our events were updated with their new functionality, too: The [BedEnterAction](https://jd.papermc.io/paper/1.21.11/io/papermc/paper/block/bed/BedEnterAction.html) via `enterAction` in `PlayerBedEnterEvent` and `PlayerBedFailEnterEvent#` contains more specific action context than the existing `failReason` getter.
+Beds had a few substantial changes in Vanilla, so our events were updated with their new functionality, too: The [BedEnterAction](https://jd.papermc.io/paper/1.21.11/io/papermc/paper/block/bed/BedEnterAction.html) via `enterAction` in `PlayerBedEnterEvent` and `PlayerBedFailEnterEvent` contains more specific action context than the existing `failReason` getter.
 
 ### Other additions and changes
 
-Beyond API for all the new 1.21.11 features, here is a small selection of other changes and additions we have made since the stable release of 1.21.10:
+Beyond the API for all the new 1.21.11 features, here is a small selection of other changes and additions we have made since the stable release of 1.21.10:
 
-- [WorldBorder](<https://jd.papermc.io/paper/1.21.11/org/bukkit/WorldBorder.html#changeSize(double,long)>) and [WorldBorderBoundsChangeEvent](<https://jd.papermc.io/paper/1.21.11/io/papermc/paper/event/world/border/WorldBorderBoundsChangeEvent.html#getDurationTicks()>) have had their methods returning/using millisecond durations deprecated and replaced with methods using tick durations isntead
+- [WorldBorder](<https://jd.papermc.io/paper/1.21.11/org/bukkit/WorldBorder.html#changeSize(double,long)>) and [WorldBorderBoundsChangeEvent](<https://jd.papermc.io/paper/1.21.11/io/papermc/paper/event/world/border/WorldBorderBoundsChangeEvent.html#getDurationTicks()>) have had their methods returning/using millisecond durations deprecated and replaced with methods using tick durations instead
 - Added API on `LivingEntity` to [change waypoint styling](<https://jd.papermc.io/paper/1.21.11/org/bukkit/entity/LivingEntity.html#setWaypointStyle(net.kyori.adventure.key.Key)>)
 - Added [wobble API](<https://jd.papermc.io/paper/1.21.11/org/bukkit/block/DecoratedPot.html#startWobble(org.bukkit.block.DecoratedPot.WobbleStyle)>) on `DecoratedPot`
 - Added [more data getters](<https://jd.papermc.io/paper/1.21.11/org/bukkit/JukeboxSong.html#getDescription()>) to `JukeboxSong`
