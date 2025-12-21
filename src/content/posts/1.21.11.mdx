@@ -24,12 +24,6 @@ We would like to thank everyone that worked on this update:
 
 If you'd like to support PaperMC as a whole, you can find more information at https://papermc.io/sponsors.
 
-## For server owners and admins
-
-lorem ipsum
-
----
-
 ## For developers
 
 ### Minecraft versioning changes
@@ -38,11 +32,33 @@ Starting in 2026, [Mojang is changing their versioning scheme](https://www.minec
 
 ### Unobfuscated server jars
 
-Starting with 26.1, Mojang will no longer provide obfuscated server jars and instead have them contain all class, method, field names etc.
-Now is a good time to make sure your plugins are able to run on server jars that are not obfuscated.
+_This section only affects plugin devs using server internals, whether directly or through reflection._
+
+Starting with 26.1, Mojang will no longer provide obfuscated server jars and instead have them contain all class, method, field names etc. As Spigot is moving to unobfuscated server jars for 26.1 as well, we will **fully drop the internal remapper in 26.1**.
+
+**Hence, now is a good time to make sure your plugins are able to run on server jars that are not obfuscated.**
 You can do this by starting a 1.21.11 Paper server using the `-Dpaper.disablePluginRemapping=true` startup flag and removing the `reobfJar` step from your [paperweight-userdev config](https://docs.papermc.io/paper/dev/userdev/#compiling-to-mojang-mappings).
-As spigot is moving to unobfuscated server jars for 26.1 as well, we are **dropping** the spigot internal remapper in 26.1.
-If your plugin is still using spigot mappings, migrate immediately as your plugin will not be working on either spigot or paper 26.1.
+
+If your plugin is still using Spigot-mapped internal names (such as obfuscated class/field/method names or Spigot names like `EntityHuman` and `PacketPlayIn...`), please prepare migration as soon as you can, as your plugin will not work on 26.1, no matter if you are using Paper or not. Ideally, use our [userdev plugin](https://docs.papermc.io/paper/dev/userdev/) if you aren't already.
+
+### Gamerule changes
+
+Gamerules have been turned into a registry in Vanilla, so their names were changed from camelCase to snake_case and some gamerules merged or changes. The `GameRule` class still contains the old names for now, but you should replace their use.
+
+### Bed event changes
+
+Beds had a few substantial changes in Vanilla, so our events were updated with their new functionality, too: The [BedEnterAction](https://jd.papermc.io/paper/1.21.11/io/papermc/paper/block/bed/BedEnterAction.html) via `enterAction` in `PlayerBedEnterEvent` and `PlayerBedFailEnterEvent#` contains more specific action context than the existing `failReason` getter.
+
+### Other additions and changes
+
+Here is a small selection of other changes and additions we have made since the stable release of 1.21.10:
+
+- Added API on `LivingEntity` to [change waypoint styling](<https://jd.papermc.io/paper/1.21.11/org/bukkit/entity/LivingEntity.html#setWaypointStyle(net.kyori.adventure.key.Key)>)
+- Added [wobble API](<https://jd.papermc.io/paper/1.21.11/org/bukkit/block/DecoratedPot.html#startWobble(org.bukkit.block.DecoratedPot.WobbleStyle)>) on `DecoratedPot`
+- Added [more data getters](<https://jd.papermc.io/paper/1.21.11/org/bukkit/JukeboxSong.html#getDescription()>) to `JukeboxSong`
+- Added `MapPalette.getNearestColor` to get the [closest color in the map palette to a given color](<https://jd.papermc.io/paper/1.21.11/org/bukkit/map/MapPalette.html#getNearestColor(java.awt.Color)>)
+- Added `fix-far-end-terrain-generation` config option to allow disabling our fix for MC-159283 to instead use Vanilla's end ring terrain
+- Setting the explosion radius of creepers to -1 disable block breaking while keeping entity knockback is no longer possible (as per [MC-304798](https://mojira.dev/MC-304798))
 
 ---
 
