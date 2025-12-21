@@ -24,6 +24,12 @@ We would like to thank everyone that worked on this update:
 
 If you'd like to support PaperMC as a whole, you can find more information at https://papermc.io/sponsors.
 
+## Changes for server owners
+
+There's one notable behavior change in Vanilla we would like to highlight: Setting the explosion radius of creepers to -1 disable block breaking while keeping entity knockback is no longer possible (as per [MC-304798](https://mojira.dev/MC-304798)).
+
+---
+
 ## For developers
 
 ### Minecraft versioning changes
@@ -39,7 +45,7 @@ Starting with 26.1, Mojang will no longer provide obfuscated server jars and ins
 **Hence, now is a good time to make sure your plugins are able to run on server jars that are not obfuscated.**
 You can do this by starting a 1.21.11 Paper server using the `-Dpaper.disablePluginRemapping=true` startup flag and removing the `reobfJar` step from your [paperweight-userdev config](https://docs.papermc.io/paper/dev/userdev/#compiling-to-mojang-mappings).
 
-If your plugin is still using Spigot-mapped internal names (such as obfuscated class/field/method names or Spigot names like `EntityHuman` and `PacketPlayIn...`), please prepare migration as soon as you can, as your plugin will not work on 26.1, no matter if you are using Paper or not. Ideally, use our [userdev plugin](https://docs.papermc.io/paper/dev/userdev/) if you aren't already.
+If your plugin is still using Spigot-mapped internal names (such as obfuscated class/field/method names or Spigot names like `EntityHuman` and `PacketPlayIn...`), please prepare migration as soon as you can, as your plugin will not work on 26.1, no matter if you are using Paper or not. Ideally, use our [userdev plugin](https://docs.papermc.io/paper/dev/userdev/) if you aren't already. If you aren't using Gradle for building your plugin, consider switching to it, as it _really_ makes the ordeal much simpler.
 
 ### Gamerule changes
 
@@ -59,7 +65,6 @@ Beyond API for all the new 1.21.11 features, here is a small selection of other 
 - Added [more data getters](<https://jd.papermc.io/paper/1.21.11/org/bukkit/JukeboxSong.html#getDescription()>) to `JukeboxSong`
 - Added `MapPalette.getNearestColor` to get the [closest color in the map palette to a given color](<https://jd.papermc.io/paper/1.21.11/org/bukkit/map/MapPalette.html#getNearestColor(java.awt.Color)>)
 - Added `fix-far-end-terrain-generation` config option to allow disabling our fix for MC-159283 to instead use Vanilla's end ring terrain
-- Setting the explosion radius of creepers to -1 disable block breaking while keeping entity knockback is no longer possible (as per [MC-304798](https://mojira.dev/MC-304798))
 
 ---
 
