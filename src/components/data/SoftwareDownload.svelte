@@ -55,6 +55,8 @@
   }
 
   let builds = $derived(isStable ? stableBuilds : (experimentalBuilds ?? stableBuilds));
+
+  let experimentalChannel = $derived(experimentalBuilds?.value?.latest?.channel.toLowerCase() ?? "experimental");
 </script>
 
 <header class="mx-auto flex max-w-7xl flex-row flex-wrap gap-16 px-4 pt-32 pb-16 lg:pt-48 lg:pb-26">
@@ -111,7 +113,7 @@
           onclick={toggleStable}
         >
           {#if isStable}
-            Toggle experimental builds for {project.latestExperimentalVersion}
+            Toggle {experimentalChannel} builds for {project.latestExperimentalVersion}
           {:else}
             Back to stable builds for {project.latestStableVersion}
           {/if}
