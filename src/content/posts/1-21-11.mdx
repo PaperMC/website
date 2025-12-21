@@ -1,0 +1,71 @@
+---
+title: "1.21.11"
+date: "2025-12-21T20:00:00Z"
+author: "Paper Team"
+---
+
+## The 1.21.11 Update
+
+<MandatoryBackups version="1.21.11" />
+
+We would like to thank everyone that worked on this update:
+
+<Contributors
+  contributors={[
+    { username: "jpenilla", sponsor: "https://github.com/sponsors/jpenilla" },
+    { username: "Lulu13022002" },
+    { username: "roro1506HD" },
+    { username: "Doc94", sponsor: "https://github.com/sponsors/Doc94" },
+    { username: "Owen1212055", sponsor: "https://github.com/sponsors/Owen1212055" },
+    { username: "Y2Kwastaken" },
+    { username: "lynxplay" },
+  ]}
+/>
+
+If you'd like to support PaperMC as a whole, you can find more information at https://papermc.io/sponsors.
+
+## Changes for server owners
+
+There's one notable behavior change in Vanilla we would like to highlight: Setting the explosion radius of creepers to -1 to disable block breaking while keeping entity knockback is no longer possible (as per [MC-304798](https://mojira.dev/MC-304798)).
+
+---
+
+## For developers
+
+### Minecraft versioning changes
+
+Starting in 2026, [Mojang is changing their versioning scheme](https://www.minecraft.net/en-us/article/minecraft-new-version-numbering-system). In short, it will start with the current year, then the drop number within that year, possibly followed by patch and hotfix numbers. I.e. the first drop in 2026 will be `26.1` and its first hotfix would be `26.1.1`. If you do any sort of Minecraft version parsing that expects a version to start with `1.`, make sure to prepare for this change.
+
+### Unobfuscated server jars
+
+_This section only affects plugin devs using server internals, whether directly or through reflection._
+
+Starting with 26.1, Mojang will no longer provide obfuscated server jars and instead have them contain all class, method, field names, etc. As Spigot is moving to unobfuscated server jars for 26.1 as well, we will **fully drop the internal remapper in 26.1**.
+
+**Hence, now is a good time to make sure your plugins are able to run on server jars that are not obfuscated.**
+You can do this by starting a 1.21.11 Paper server using the `-Dpaper.disablePluginRemapping=true` startup flag and removing the `reobfJar` step from your [paperweight-userdev config](https://docs.papermc.io/paper/dev/userdev/#compiling-to-mojang-mappings).
+
+If your plugin is still using Spigot-mapped internal names (such as obfuscated class/field/method names or Spigot names like `EntityHuman` and `PacketPlayIn...`), please prepare migration as soon as you can, as your plugin will not work on 26.1, no matter if you are using Paper or not. Ideally, use our [userdev plugin](https://docs.papermc.io/paper/dev/userdev/) if you aren't already. If you aren't using Gradle for building your plugin, consider switching to it, as it _really_ makes the ordeal much simpler.
+
+### Gamerule changes
+
+Gamerules have been turned into a registry in Vanilla, so their names were changed from camelCase to snake_case and some gamerules merged or changed. The `GameRule` class still contains the old names for now, but you should replace their use with [GameRules](https://jd.papermc.io/paper/1.21.11/org/bukkit/GameRules.html).
+
+### Bed event changes
+
+Beds had a few substantial changes in Vanilla, so our events were updated with their new functionality, too: The [BedEnterAction](https://jd.papermc.io/paper/1.21.11/io/papermc/paper/block/bed/BedEnterAction.html) via `enterAction` in `PlayerBedEnterEvent` and `PlayerBedFailEnterEvent` contains more specific action context than the existing `failReason` getter.
+
+### Other additions and changes
+
+Beyond the API for all the new 1.21.11 features, here is a small selection of other changes and additions we have made since the stable release of 1.21.10:
+
+- [WorldBorder](<https://jd.papermc.io/paper/1.21.11/org/bukkit/WorldBorder.html#changeSize(double,long)>) and [WorldBorderBoundsChangeEvent](<https://jd.papermc.io/paper/1.21.11/io/papermc/paper/event/world/border/WorldBorderBoundsChangeEvent.html#getDurationTicks()>) have had their methods returning/using millisecond durations deprecated and replaced with methods using tick durations instead
+- Added API on `LivingEntity` to [change waypoint styling](<https://jd.papermc.io/paper/1.21.11/org/bukkit/entity/LivingEntity.html#setWaypointStyle(net.kyori.adventure.key.Key)>)
+- Added [wobble API](<https://jd.papermc.io/paper/1.21.11/org/bukkit/block/DecoratedPot.html#startWobble(org.bukkit.block.DecoratedPot.WobbleStyle)>) on `DecoratedPot`
+- Added [more data getters](<https://jd.papermc.io/paper/1.21.11/org/bukkit/JukeboxSong.html#getDescription()>) to `JukeboxSong`
+- Added `MapPalette.getNearestColor` to get the [closest color in the map palette to a given color](<https://jd.papermc.io/paper/1.21.11/org/bukkit/map/MapPalette.html#getNearestColor(java.awt.Color)>)
+- Added `fix-far-end-terrain-generation` config option to allow disabling our fix for MC-159283 to instead use Vanilla's end ring terrain
+
+---
+
+<DownloadButton project="Paper" />
