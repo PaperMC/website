@@ -26,7 +26,7 @@
     "astro-icon": "^1.1.5",
     "clsx": "^2.1.1",
     "remove-markdown": "^0.6.2",
-    "runed": "^0.35.1",
+    "runed": "^0.37.0",
     "svelte": "^5.42.3",
     "tailwindcss": "^4.1.16",
     "typescript": "^5.9.3"
