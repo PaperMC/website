@@ -34,7 +34,7 @@
   "devDependencies": {
     "@astrojs/mdx": "^4.3.9",
     "@tailwindcss/typography": "^0.5.19",
-    "@types/node": "^24.9.2",
+    "@types/node": "^25.0.0",
     "@typescript-eslint/eslint-plugin": "^8.46.2",
     "@typescript-eslint/parser": "^8.46.2",
     "@typescript/native-preview": "^7.0.0-dev.20251027.1",
