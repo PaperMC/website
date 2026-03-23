@@ -38,7 +38,7 @@
     "@typescript-eslint/eslint-plugin": "^8.46.2",
     "@typescript-eslint/parser": "^8.46.2",
     "@typescript/native-preview": "^7.0.0-dev.20251027.1",
-    "eslint": "^9.38.0",
+    "eslint": "^10.0.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-astro": "^1.4.0",
     "eslint-plugin-svelte": "^3.12.5",
