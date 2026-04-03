@@ -68,9 +68,9 @@ world/
 │   └── stats/
 └── level.dat
 
-Instead of being in separate folders in the server root directory, dimensions are split into separate folders in the `world/dimensions/` directory. Paper-specific data and overrides are stored properly in their own data directories. Per-world `paper-world.yml` files have been moved to the dimension folders, too.
-
 ```
+
+Instead of being in separate folders in the server root directory, dimensions are split into separate folders in the `world/dimensions/` directory. Paper-specific data and overrides are stored properly in their own data directories. Per-world `paper-world.yml` files have been moved to the dimension folders, too.
 
 ---
 
@@ -90,7 +90,6 @@ To get similar behavior to `SNAPSHOT` versions in your build configuration files
 _This section only affects plugin devs using server internals, whether directly or through reflection._
 
 Mojang is no longer providing obfuscated server jars and instead have them contain all class, method, field names, etc. Due to this, we have fully dropped the internal remapper - obfuscated names no longer exist in the server jar.
-If you want to support versions of Minecraft still using obfuscation, you can use older versions of paperweight in separate modules.
 
 ---
 
