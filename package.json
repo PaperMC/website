@@ -16,10 +16,10 @@
     "check:all": "bun run check && bun run lint"
   },
   "dependencies": {
-    "@astrojs/cloudflare": "^12.6.10",
+    "@astrojs/cloudflare": "^13.0.0",
     "@astrojs/rss": "^4.0.13",
     "@astrojs/sitemap": "^3.6.0",
-    "@astrojs/svelte": "^7.2.1",
+    "@astrojs/svelte": "^8.0.0",
     "@fontsource/poppins": "^5.2.7",
     "@tailwindcss/vite": "^4.1.16",
     "astro": "5.15.1",
@@ -32,7 +32,7 @@
     "typescript": "^5.9.3"
   },
   "devDependencies": {
-    "@astrojs/mdx": "^4.3.9",
+    "@astrojs/mdx": "^5.0.0",
     "@tailwindcss/typography": "^0.5.19",
     "@types/node": "^24.9.2",
     "@typescript-eslint/eslint-plugin": "^8.46.2",
