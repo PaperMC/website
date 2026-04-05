@@ -1,5 +1,5 @@
 // @ts-ignore
-import { WEBSITE_CACHE } from 'astro:env/server';
+import { WEBSITE_CACHE } from "astro:env/server";
 import type { APIRoute } from "astro";
 import { downloadsPageDataKvKey, getProjectDescriptorOrError, type DownloadsPageData } from "@/utils/download";
 
