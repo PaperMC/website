@@ -48,6 +48,12 @@
     "prettier-plugin-svelte": "3.5.1",
     "prettier-plugin-tailwindcss": "0.7.2",
     "svelte-eslint-parser": "1.6.0",
-    "wrangler": "4.79.0"
+    "wrangler": "4.80.0"
+  },
+  "devEngines": {
+    "runtime": {
+      "name": "node",
+      "version": "25.8.1"
+    }
   }
 }
