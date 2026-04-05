@@ -7,7 +7,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "format": "prettier --write --list-different .",
+    "format": "prettier --end-of-line=auto --write --list-different .",
     "lint:eslint": "eslint . --cache",
     "lint:prettier": "prettier --check .",
     "check:types": "wrangler types && astro sync && tsgo --noEmit",
