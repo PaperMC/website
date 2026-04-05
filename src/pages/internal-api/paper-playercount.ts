@@ -1,3 +1,4 @@
+// @ts-ignore
 import { WEBSITE_CACHE } from 'astro:env/server';
 import type { APIRoute } from "astro";
 import { fetchPaperBstatsPlayerCount, PAPER_PLAYERCOUNT_KEY } from "@/utils/bstats";
