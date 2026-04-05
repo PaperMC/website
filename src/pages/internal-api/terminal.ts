@@ -2,7 +2,7 @@ import { WEBSITE_CACHE } from 'astro:env/server';
 import type { APIRoute } from "astro";
 import { downloadsPageDataKvKey, getProjectDescriptorOrError, type DownloadsPageData } from "@/utils/download";
 
-export const GET: APIRoute = async (context) => {
+export const GET: APIRoute = async () => {
   let ver: string | null = null;
 
   const kv = WEBSITE_CACHE;
