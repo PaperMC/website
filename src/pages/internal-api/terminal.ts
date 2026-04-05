@@ -1,10 +1,11 @@
+import { WEBSITE_CACHE } from 'astro:env/server';
 import type { APIRoute } from "astro";
 import { downloadsPageDataKvKey, getProjectDescriptorOrError, type DownloadsPageData } from "@/utils/download";
 
-export const GET: APIRoute = async ({ locals }) => {
+export const GET: APIRoute = async (context) => {
   let ver: string | null = null;
 
-  const kv = locals.runtime.env.WEBSITE_CACHE;
+  const kv = WEBSITE_CACHE;
   if (kv) {
     const cached = await kv.get(downloadsPageDataKvKey("paper"));
     if (cached !== null) {
