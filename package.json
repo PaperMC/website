@@ -53,7 +53,7 @@
   "devEngines": {
     "runtime": {
       "name": "node",
-      "version": "25.8.1"
+      "version": "24"
     }
   }
 }
