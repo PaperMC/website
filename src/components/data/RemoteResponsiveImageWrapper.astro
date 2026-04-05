@@ -6,7 +6,6 @@ type Props = LocalImageProps | RemoteImageProps;
 
 const { class: className, ...props } = Astro.props;
 
-import "node_modules/astro/components/image.css";
 ---
 
 {/* Applying class outside of the spread prevents it from applying unnecessary astro-* classes */}
