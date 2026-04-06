@@ -11,9 +11,9 @@
     "lint:eslint": "eslint . --cache",
     "lint:prettier": "prettier --check .",
     "check:types": "wrangler types && astro sync && tsgo --noEmit",
-    "lint": "pnpm run lint:eslint && pnpm run lint:prettier",
-    "check": "pnpm run check:types",
-    "check:all": "pnpm run check && pnpm run lint",
+    "lint": "bun run lint:eslint && bun run lint:prettier",
+    "check": "bun run check:types",
+    "check:all": "bun run check && bun run lint",
     "postinstall": "wrangler types"
   },
   "dependencies": {

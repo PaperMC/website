@@ -13,13 +13,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v5
 
-      - name: Setup Node and pnpm
-        uses: ./.github/actions/setup-node-pnpm
-        with:
-          build-cache: false
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
 
       - name: Install dependencies
-        run: pnpm install
+        run: bun install
 
       - name: Run linter
-        run: pnpm run check:all
+        run: bun run check:all

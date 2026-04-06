@@ -4,7 +4,6 @@
   "exclude": ["dist"],
   "compilerOptions": {
     "paths": {
-      //"*": ["./*"],
       "@/*": ["./src/*"]
     },
     "types": ["./worker-configuration.d.ts"],
