@@ -10,6 +10,7 @@ How to get the project running on your local machine for development.
 
 ### Prerequisites
 
+- [Node 24](https://nodejs.org)
 - [Bun](https://bun.com/)
 
 ### Local Development
