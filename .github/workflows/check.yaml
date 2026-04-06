@@ -7,8 +7,6 @@ on:
 
 jobs:
   lint:
-    # Only run on PRs if the source branch is on someone else's repo
-    if: ${{ github.event_name != 'pull_request' || github.repository != github.event.pull_request.head.repo.full_name }}
     runs-on: ubuntu-latest
 
     steps:
@@ -17,11 +15,9 @@ jobs:
 
       - name: Setup Node and pnpm
         uses: ./.github/actions/setup-node-pnpm
-        with:
-          build-cache: false
 
       - name: Install dependencies
         run: pnpm install
 
       - name: Run linter
-        run: pnpm  run check:all
+        run: pnpm run check:all
