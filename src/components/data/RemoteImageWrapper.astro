@@ -13,13 +13,15 @@ if (props.alt === undefined || props.alt === null) {
   throw new Error("Image is missing required 'alt' property.");
 }
 
-if (typeof props.width === "string") {
-  props.width = parseInt(props.width);
+function toOptionalNumber(value: number | `${number}` | undefined): number | undefined {
+  if (value === undefined) return undefined;
+  return typeof value === "string" ? Number.parseInt(value, 10) : value;
 }
 
-if (typeof props.height === "string") {
-  props.height = parseInt(props.height);
-}
+const width = toOptionalNumber(props.width);
+const height = toOptionalNumber(props.height);
+props.width = width;
+props.height = height;
 
 const additionalAttributes: HTMLAttributes<"img"> = {};
 try {
@@ -37,7 +39,8 @@ if (layout !== "none") {
   props.position ??= imageConfig.objectPosition ?? "center";
 }
 
-const image = await getImage(props as any);
+// getImage has a weird type signature, so this will cast it properly to the correct type
+const image = await getImage({ ...props, width, height });
 
 if (image.srcSet.values.length > 0) {
   additionalAttributes.srcset = image.srcSet.attribute;
