@@ -1,11 +1,8 @@
 ---
 import { getImage, imageConfig, type LocalImageProps, type RemoteImageProps } from "astro:assets";
-import type { UnresolvedImageTransform } from "node_modules/astro/dist/assets/types";
 import type { HTMLAttributes } from "astro/types";
 
 import fallbackImage from "@/assets/brand/paper.svg";
-import { AstroError } from "node_modules/astro/dist/core/errors/errors";
-import { AstroErrorData } from "node_modules/astro/dist/core/errors";
 import { inferRemoteSize } from "astro/assets/utils";
 
 type Props = LocalImageProps | RemoteImageProps;
@@ -13,7 +10,7 @@ type Props = LocalImageProps | RemoteImageProps;
 const props = Astro.props;
 
 if (props.alt === undefined || props.alt === null) {
-  throw new AstroError(AstroErrorData.ImageMissingAlt);
+  throw new Error("Image is missing required 'alt' property.");
 }
 
 if (typeof props.width === "string") {
@@ -40,7 +37,7 @@ if (layout !== "none") {
   props.position ??= imageConfig.objectPosition ?? "center";
 }
 
-const image = await getImage(props as UnresolvedImageTransform);
+const image = await getImage(props as any);
 
 if (image.srcSet.values.length > 0) {
   additionalAttributes.srcset = image.srcSet.attribute;
