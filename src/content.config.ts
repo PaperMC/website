@@ -1,4 +1,5 @@
-import { defineCollection, z } from "astro:content";
+import { defineCollection } from "astro:content";
+import { z } from "astro/zod";
 import { glob } from "astro/loaders";
 import { rssSchema } from "@astrojs/rss";
 
@@ -10,10 +11,10 @@ const posts = defineCollection({
   schema: rssSchema.extend({
     date: z.coerce.date(),
     author: z.string().default(DEFAULT_AUTHOR),
-    authorAvatar: z.string().url().default(DEFAULT_AVATAR),
+    authorAvatar: z.url().default(DEFAULT_AVATAR),
     cover: z
       .object({
-        src: z.string().url(),
+        src: z.url(),
         alt: z.string().optional(),
         credit: z.string().optional(),
       })

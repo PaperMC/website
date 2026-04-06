@@ -44,12 +44,7 @@ export default defineConfig({
   ],
 
   adapter: cloudflare({
-    platformProxy: {
-      enabled: true,
-      persist: true,
-    },
-    workerEntryPoint: {
-      path: "src/worker.ts",
-    },
+    prerenderEnvironment: "node",
+    imageService: "compile",
   }),
 });

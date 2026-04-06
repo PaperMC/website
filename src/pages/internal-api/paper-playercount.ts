@@ -1,8 +1,8 @@
 import type { APIRoute } from "astro";
 import { fetchPaperBstatsPlayerCount, PAPER_PLAYERCOUNT_KEY } from "@/utils/bstats";
 
-export const GET: APIRoute = async ({ locals }) => {
-  const kv = locals.runtime.env.WEBSITE_CACHE;
+export const GET: APIRoute = async (context) => {
+  const kv = context.locals.runtime?.env?.WEBSITE_CACHE;
   if (kv) {
     const cached = await kv.get(PAPER_PLAYERCOUNT_KEY);
     if (cached !== null) {
