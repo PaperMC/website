@@ -1,0 +1,8 @@
+# Documentation: https://www.git-scm.com/docs/gitattributes
+
+# Set default behavior to automatically normalize line endings.
+* text=auto eol=lf
+
+# Enforce CRLF line endings in Windows batch scripts to avoid issues.
+*.cmd text eol=crlf
+*.bat text eol=crlf

@@ -11,9 +11,9 @@
     "lint:eslint": "eslint . --cache",
     "lint:prettier": "prettier --check .",
     "check:types": "wrangler types && astro sync && tsgo --noEmit",
-    "lint": "bun run lint:eslint && bun run lint:prettier",
-    "check": "bun run check:types",
-    "check:all": "bun run check && bun run lint",
+    "lint": "pnpm run lint:eslint && pnpm run lint:prettier",
+    "check": "pnpm run check:types",
+    "check:all": "pnpm run check && pnpm run lint",
     "postinstall": "wrangler types"
   },
   "dependencies": {
@@ -48,6 +48,13 @@
     "prettier-plugin-svelte": "3.5.1",
     "prettier-plugin-tailwindcss": "0.7.2",
     "svelte-eslint-parser": "1.6.0",
-    "wrangler": "4.79.0"
-  }
+    "wrangler": "4.80.0"
+  },
+  "devEngines": {
+    "runtime": {
+      "name": "node",
+      "version": ">=22.x"
+    }
+  },
+  "packageManager": "pnpm@10.32.1+sha512.a706938f0e89ac1456b6563eab4edf1d1faf3368d1191fc5c59790e96dc918e4456ab2e67d613de1043d2e8c81f87303e6b40d4ffeca9df15ef1ad567348f2be"
 }

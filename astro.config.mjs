@@ -43,5 +43,8 @@ export default defineConfig({
     mdx(),
   ],
 
-  adapter: cloudflare(),
+  adapter: cloudflare({
+    prerenderEnvironment: "node",
+    imageService: "compile",
+  }),
 });
