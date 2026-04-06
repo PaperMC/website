@@ -1,6 +1,12 @@
 name: setup-node-pnpm
 description: Setup Node and PNPM
 
+inputs:
+  build-cache:
+    description: "Whether to cache build output (default: true)"
+    required: false
+    default: "true"
+
 runs:
   using: composite
   steps:
@@ -12,3 +18,13 @@ runs:
       with:
         cache: pnpm
         node-version: 24
+
+    - name: cache sharp output
+      uses: actions/cache@v4
+      if: ${{ inputs.build-cache == 'true' }}
+      with:
+        path: node_modules/.astro/assets
+        # presume that the image optimization configuration changed if the lockfile or config file changed
+        key: sharp-${{ hashFiles('/pnpm-lock.yaml', '/astro.config.ts', '/src/**/*.png', '/src/**/*.webp', '/src/**/*.gif') }}
+        restore-keys: |
+          sharp-
