@@ -48,16 +48,36 @@ export async function fetchContributors(maxPages = 15): Promise<Contributor[]> {
   return all;
 }
 
-export const getProjectRepository = (project: string, version: string): string => {
-  if (project !== "paper") return `https://github.com/PaperMC/${project}`;
-  if (project === "paper" && version === "1.7.10") return "https://github.com/PaperMC/Paper-1.7";
-
-  const baseVersion = [21, 4]; // 1.21.4 is after the hardfork
-  const isBelowBaseVersion = version
+const parseMinecraftVersion = (version: string): number[] => {
+  return version
     .replace(/^1\./, "")
     .split(".")
-    .map(Number)
-    .some((v, i) => v < (baseVersion[i] || 0));
+    .map((part) => Number.parseInt(part, 10))
+    .filter((part) => Number.isFinite(part));
+};
+
+const compareVersions = (a: string, b: string): number => {
+  const aParts = parseMinecraftVersion(a);
+  const bParts = parseMinecraftVersion(b);
+  const maxLength = Math.max(aParts.length, bParts.length);
+
+  for (let i = 0; i < maxLength; i++) {
+    const aPart = aParts[i] ?? 0;
+    const bPart = bParts[i] ?? 0;
+
+    if (aPart > bPart) return 1;
+    if (aPart < bPart) return -1;
+  }
+
+  return 0;
+};
+
+export const getProjectRepository = (project: string, version: string): string => {
+  if (project !== "paper") return `https://github.com/PaperMC/${project}`;
+  if (version === "1.7.10") return "https://github.com/PaperMC/Paper-1.7";
+
+  const baseVersion = "1.21.4";
+  const isBelowBaseVersion = compareVersions(version, baseVersion) < 0;
 
   return isBelowBaseVersion ? "https://github.com/PaperMC/Paper-Archive" : "https://github.com/PaperMC/Paper";
 };
