@@ -21,7 +21,7 @@ const { icon, label, href, className } = Astro.props;
       class={`inline-block h-min w-min rounded-full p-2 leading-0 transition-colors hover:bg-gray-800/20 dark:hover:bg-gray-400/20 ${className}`}
       aria-label={label}
     >
-      <Icon name={icon} class="size-6 text-gray-700 dark:text-gray-300" />
+      <Icon name={icon} class="size-6 text-gray-700 dark:text-gray-300" aria-hidden="true" />
     </a>
   ) : (
     <button class={`h-min w-min rounded-full p-2 transition-colors hover:bg-gray-800/20 ${className}`} aria-label={label}>
