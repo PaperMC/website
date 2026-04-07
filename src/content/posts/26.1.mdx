@@ -1,0 +1,96 @@
+---
+title: "26.1"
+date: "2026-03-04T20:00:00Z"
+author: "Paper Team"
+---
+
+## The 26.1 Update
+
+<MandatoryBackups version="26.1" />
+
+We would like to thank everyone that worked on this update:
+
+<Contributors
+  contributors={[
+    { username: "jpenilla", sponsor: "https://github.com/sponsors/jpenilla" },
+    { username: "Lulu13022002" },
+    { username: "lynxplay" },
+    { username: "spottedleaf" },
+    { username: "kennytv" },
+  ]}
+/>
+
+If you'd like to support PaperMC as a whole, you can find more information at https://papermc.io/sponsors.
+
+## Changes for server owners
+
+### World storage changes
+
+Vanilla changed the way world data and dimensions are stored. Paper previously inherited the decade-old Bukkit way of storing world data, which we finally changed to become closer to Vanilla (without losing features like per-world gamerules, spawn points, or other custom settings). This means the structure will look as follows now:
+
+```
+world/
+├── data/
+│   └── minecraft/
+│       ...
+├── datapacks/
+├── dimensions/
+│   └── minecraft/
+│       ├── overworld/
+│       │   ├── data/
+│       │   │   ├── minecraft/
+│       │   │   │   ├── weather.dat
+│       │   │   │   ├── ...
+│       │   │   │   └── world_gen_settings.dat
+│       │   │   └── paper/
+│       │   │       ├── level_overrides.dat
+│       │   │       ├── metadata.dat
+│       │   │       └── persistent_data_container.dat
+│       │   ├── entities/
+│       │   ├── poi/
+│       │   ├── region/
+│       │   └── paper-world.yml
+│       ├── the_nether/
+│       │   ├── data/...
+│       │   ├── entities/
+│       │   ├── poi/
+│       │   ├── region/
+│       │   └── paper-world.yml
+│       └── the_end/
+│           ├── data/...
+│           ├── entities/
+│           ├── poi/
+│           ├── region/
+│           └── paper-world.yml
+├── players/
+│   ├── advancements/
+│   ├── data/
+│   └── stats/
+└── level.dat
+
+```
+
+Instead of being in separate folders in the server root directory, dimensions are split into separate folders in the `world/dimensions/` directory. Paper-specific data and overrides are stored properly in their own data directories. Per-world `paper-world.yml` files have been moved to the dimension folders, too.
+
+---
+
+## For developers
+
+### Paper & Minecraft versioning changes
+
+[Mojang has changed their versioning scheme](https://www.minecraft.net/en-us/article/minecraft-new-version-numbering-system). Versions start with the current year, then the drop number within that year, possibly followed by patch and hotfix numbers; hence we got 26.1.1.
+
+We are also finally breaking with the long-lived tradition of having never-increasing `-R0.1-SNAPSHOT` versions and are moving to the following: `<mcversion>.build.<build>-<status>`, e.g.: `26.1.1.build.37-alpha`.
+This much more clearly indicates the status of the build as well as an increasing build number.
+
+To get similar behavior to `SNAPSHOT` versions in your build configuration files, you can use `26.1.1.build.+` to have Gradle automatically resolve the latest build for that version. Please make sure to keep the `build` in there, otherwise a version like `26.1.+` would resolve to a possibly breaking version like `26.1.1`.
+
+### Unobfuscated server jars
+
+_This section only affects plugin devs using server internals, whether directly or through reflection._
+
+Mojang is no longer providing obfuscated server jars and instead have them contain all class, method, field names, etc. Due to this, we have fully dropped the internal remapper - obfuscated names no longer exist in the server jar.
+
+---
+
+<DownloadButton project="Paper" />
