@@ -21,7 +21,7 @@ const mins = minutesToRead(words);
 const excerpt = truncateForPreview(post.body ?? "", 120);
 ---
 
-<Layout title={post.data.title!} description={excerpt} keywords={[]} canonical={`/news/${post.id}`}>
+<Layout title={post.data.title!} description={excerpt} keywords={post.data.tags ?? []} canonical={`/news/${post.id}`}>
   <section class="container mx-auto mt-10 max-w-7xl px-4 py-12">
     <article>
       <header class="px-4">
@@ -83,6 +83,21 @@ const excerpt = truncateForPreview(post.body ?? "", 120);
       {
         post.data.cover && typeof post.data.cover !== "string" && post.data.cover.credit && (
           <div class="px-6 pb-6 text-right text-xs text-gray-500 sm:px-8 dark:text-white/50">{post.data.cover.credit}</div>
+        )
+      }
+
+      {
+        post.data.tags && post.data.tags.length > 0 && (
+          <div class="mt-8 flex flex-wrap gap-2 px-4 pb-8">
+            {post.data.tags.map((tag: string) => (
+              <a
+                href={`/news/tags/${tag}`}
+                class="bg-gray-100 px-3 py-1 text-xs font-semibold text-gray-700 transition hover:bg-gray-200 dark:bg-white/10 dark:text-white/80 dark:hover:bg-white/20"
+              >
+                #{tag}
+              </a>
+            ))}
+          </div>
         )
       }
     </article>
