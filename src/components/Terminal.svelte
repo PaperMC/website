@@ -32,7 +32,7 @@
 
     switch (value) {
       case "help":
-        response = "Existing commands: help, downloads, plugins, docs, forums, team, contribute";
+        response = "Existing commands: help, downloads, plugins, docs, news, team, contribute";
         break;
       case "downloads":
         window.location.href = "/downloads";
@@ -46,8 +46,8 @@
         window.location.href = "https://docs.papermc.io";
         response = "Redirecting...";
         break;
-      case "forums":
-        window.location.href = "https://forums.papermc.io";
+      case "news":
+        window.location.href = "/news";
         response = "Redirecting...";
         break;
       case "team":
