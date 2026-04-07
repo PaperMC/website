@@ -30,30 +30,47 @@ const postsWithMeta = posts.map((p) => {
       {
         postsWithMeta.map((entry, idx) => (
           <a href={`/news/${entry.id}`} class="group rounded-lg">
-            <div class="btn btn-outline btn-gray flex flex-col gap-6 rounded-lg py-6 transition-colors duration-200">
+            <div class="btn btn-outline btn-gray flex flex-col gap-6 rounded-lg transition-colors duration-200">
               <div class="flex flex-col gap-3 p-6">
                 <div class="flex items-baseline justify-between gap-4">
                   <h2 class="text-foreground group-hover:text-primary text-xl leading-tight font-bold text-balance">{entry.data.title}</h2>
-                  {idx === 0 ? (
-                    <span class="bg-channel-stable-primary text-channel-stable-secondary shadow-channel-stable-primary/50 ml-4 inline-flex items-center rounded-sm px-2.5 py-0.5 text-xs font-semibold shadow-sm">
-                      Latest
-                    </span>
-                  ) : null}
+                  <div class="flex flex-wrap items-center gap-2">
+                    {idx === 0 ? (
+                      <span class="bg-channel-stable-primary text-channel-stable-secondary shadow-channel-stable-primary/50 ml-2 inline-flex items-center rounded-sm px-2.5 py-0.5 text-xs font-semibold shadow-sm">
+                        Latest
+                      </span>
+                    ) : null}
+                  </div>
                 </div>
 
                 <div class="text-muted-foreground text-xs">
-                  <div class="flex flex-row flex-wrap items-baseline gap-x-3 gap-y-1">
-                    <span class="inline-flex items-baseline gap-1.5">
-                      <Icon name="icons/lucide/calendar" class="size-3.5 translate-y-px" />
-                      <span>{formatDateLong(new Date(entry.data.date))}</span>
-                    </span>
+                  <div class="flex flex-col gap-2">
+                    <div class="flex flex-row flex-wrap items-baseline gap-x-3 gap-y-1">
+                      <span class="inline-flex items-baseline gap-1.5">
+                        <Icon name="icons/lucide/calendar" class="size-3.5 translate-y-px" />
+                        <span>{formatDateLong(new Date(entry.data.date))}</span>
+                      </span>
 
-                    <span aria-hidden="true">·</span>
+                      <span aria-hidden="true">·</span>
 
-                    <span class="inline-flex items-baseline gap-1.5">
-                      <Icon name="icons/lucide/clock" class="size-3.5 translate-y-px" />
-                      <span>{entry.mins} min read</span>
-                    </span>
+                      <span class="inline-flex items-baseline gap-1.5">
+                        <Icon name="icons/lucide/clock" class="size-3.5 translate-y-px" />
+                        <span>{entry.mins} min read</span>
+                      </span>
+                    </div>
+
+                    {entry.data.tags && entry.data.tags.length > 0 && (
+                      <div class="flex flex-wrap gap-1.5">
+                        {entry.data.tags.map((tag: string) => (
+                          <a
+                            href={`/news/tags/${tag}`}
+                            class="rounded-full border border-gray-300 bg-gray-200 px-2 py-0.5 text-[10px] font-medium tracking-wider text-gray-800 uppercase transition-colors hover:bg-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600"
+                          >
+                            {tag}
+                          </a>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 </div>
 
