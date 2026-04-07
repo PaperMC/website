@@ -1,0 +1,38 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { getCollection } from "astro:content";
+const allPosts = await getCollection("posts");
+const tags = [...new Set(allPosts.map((post: any) => post.data.tags).flat())];
+---
+
+<Layout title="Tag Index" description="Shows all the tags from news" keywords={["blog", "news", "updates", "latest"]} canonical="/tags">
+  <section class="container mx-auto mt-10 max-w-7xl px-4 py-12">
+    <header class="flex justify-between">
+      <h1 class="text-4xl leading-normal font-medium lg:text-5xl lg:leading-normal">News Tags</h1>
+    </header>
+    <div class="flex flex-col gap-4">
+      {
+        tags.map((tag) => (
+          <a href={`/news/tags/${tag}`} class="group rounded-lg">
+            <div class="btn btn-outline btn-gray flex flex-col gap-6 rounded-lg py-6 transition-colors duration-200">
+              <div class="flex flex-col gap-3 p-6">
+                <div class="flex items-baseline justify-between gap-4">
+                  <h2 class="text-foreground group-hover:text-primary text-xl leading-tight font-bold text-balance">{tag}</h2>
+                  <span class="bg-channel-stable-primary text-channel-stable-secondary shadow-channel-stable-primary/50 ml-4 inline-flex items-center rounded-sm px-2.5 py-0.5 text-xs font-semibold shadow-sm">
+                    Latest
+                  </span>
+                </div>
+              </div>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+</Layout>
+
+<style scoped>
+  @view-transition {
+    navigation: auto;
+  }
+</style>
