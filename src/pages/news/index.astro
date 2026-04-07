@@ -33,11 +33,21 @@ const postsWithMeta = posts.map((p) => {
               <div class="flex flex-col gap-3 p-6">
                 <div class="flex items-baseline justify-between gap-4">
                   <h2 class="text-foreground group-hover:text-primary text-xl leading-tight font-bold text-balance">{entry.data.title}</h2>
-                  {idx === 0 ? (
-                    <span class="bg-channel-stable-primary text-channel-stable-secondary shadow-channel-stable-primary/50 ml-4 inline-flex items-center rounded-sm px-2.5 py-0.5 text-xs font-semibold shadow-sm">
-                      Latest
-                    </span>
-                  ) : null}
+                  <div class="flex flex-wrap items-center gap-2">
+                    {entry.data.tags?.map((tag: string) => (
+                      <a href={`/tags/${tag}`}>
+                        <span class="rounded-full border border-gray-300 bg-gray-200 px-2 py-0.5 text-[10px] font-medium tracking-wider text-gray-800 uppercase transition-colors dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200">
+                          {tag}
+                        </span>
+                      </a>
+
+                    ))}
+                    {idx === 0 ? (
+                      <span class="bg-channel-stable-primary text-channel-stable-secondary shadow-channel-stable-primary/50 ml-2 inline-flex items-center rounded-sm px-2.5 py-0.5 text-xs font-semibold shadow-sm">
+                        Latest
+                      </span>
+                    ) : null}
+                  </div>
                 </div>
 
                 <div class="text-muted-foreground text-xs">
