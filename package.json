@@ -28,7 +28,7 @@
     "clsx": "2.1.1",
     "remove-markdown": "0.6.3",
     "runed": "0.37.1",
-    "svelte": "5.55.1",
+    "svelte": "5.55.2",
     "tailwindcss": "4.2.2",
     "typescript": "6.0.2"
   },
