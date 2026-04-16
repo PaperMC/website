@@ -21,12 +21,12 @@ const { id, name, icon, description, type, eol } = Astro.props;
 
 <software-preview data-software={id} data-preview-type={type}>
   <a href="#loading" class="rounded-md">
-    <article class="btn btn-outline btn-gray h-full flex-col items-start justify-start rounded-md p-4 text-left">
+    <article class="btn btn-outline btn-gray group h-full flex-col items-start justify-start rounded-md p-4 text-left">
       <div class="flex flex-row items-center gap-4">
         <div class="h-12 w-12 rounded-lg bg-gray-800 p-3">
-          <Icon name={icon} class="h-full w-full" />
+          <Icon name={icon} class:list={["h-full w-full", eol && "group-hover:stroke-red-400 group-hover:text-red-400"]} />
         </div>
-        <h3 class="flex flex-1 items-center gap-4 text-lg font-medium">
+        <h3 class:list={["flex flex-1 items-center gap-4 text-lg font-medium", eol && "group-hover:text-red-400"]}>
           {name}
           {eol && <Icon name="icons/fontawesome/box-archive" class="h-6 fill-current" />}
         </h3>
