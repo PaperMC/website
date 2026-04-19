@@ -7,10 +7,9 @@
   import PaperIconUrl from "@/assets/brand/paper.svg?url";
   import VelocityIconUrl from "@/assets/brand/velocity.svg?url";
   import FoliaIconUrl from "@/assets/brand/folia.svg?url";
-  import WaterfallIconUrl from "@/assets/brand/waterfall.svg?url";
+  import WaterfallIconUrl from "@/assets/brand/waterfall-white.svg?url";
   import type { Snippet } from "svelte";
   import { type ProjectBuildsOrError } from "@/utils/download";
-  import { Icon } from "astro-icon/components";
 
   interface Props {
     id: "paper" | "velocity" | "folia" | "waterfall" | (string & {});
@@ -67,7 +66,11 @@
 
   <div class="flex-1">
     <div class="mb-6 flex flex-row items-center gap-4">
-      <Icon name={`icons/${id}`} class="h-full w-full text-white" />
+      <div class="flex h-12 w-12 items-center justify-center rounded-lg bg-gray-800 p-3">
+        {#if ICONS[id]}
+          <img src={ICONS[id]!} alt={`${project.name} logo`} class="h-full w-full object-contain" />
+        {/if}
+      </div>
       <h1 class="text-xl font-medium">Downloads</h1>
     </div>
 
