@@ -1,10 +1,11 @@
 import type { APIRoute } from "astro";
 import { downloadsPageDataKvKey, getProjectDescriptorOrError, type DownloadsPageData } from "@/utils/download";
+import { env } from "cloudflare:workers";
 
-export const GET: APIRoute = async (context) => {
+export const GET: APIRoute = async () => {
   let ver: string | null = null;
 
-  const kv = context.locals.runtime?.env?.WEBSITE_CACHE;
+  const kv = env.WEBSITE_CACHE;
   if (kv) {
     const cached = await kv.get(downloadsPageDataKvKey("paper"));
     if (cached !== null) {
