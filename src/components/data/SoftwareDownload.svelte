@@ -7,7 +7,7 @@
   import PaperIconUrl from "@/assets/brand/paper.svg?url";
   import VelocityIconUrl from "@/assets/brand/velocity.svg?url";
   import FoliaIconUrl from "@/assets/brand/folia.svg?url";
-  import WaterfallIconUrl from "@/assets/brand/waterfall.svg?url";
+  import WaterfallIconUrl from "@/assets/brand/waterfall-white.svg?url";
   import type { Snippet } from "svelte";
   import { type ProjectBuildsOrError } from "@/utils/download";
 
