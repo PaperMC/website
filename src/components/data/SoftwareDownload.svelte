@@ -67,9 +67,7 @@
 
   <div class="flex-1">
     <div class="mb-6 flex flex-row items-center gap-4">
-      {#if ICONS[id]}
-        <Icon name={ICONS[id]} class="h-full w-full text-white" />
-      {/if}
+      <Icon name={`icons/${id}`} class="h-full w-full text-white" />
       <h1 class="text-xl font-medium">Downloads</h1>
     </div>
 
