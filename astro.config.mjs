@@ -9,11 +9,27 @@ import mdx from "@astrojs/mdx";
 
 const GIT_COMMIT_HASH = (process.env.GITHUB_SHA || "").trim().slice(0, 7) || execSync("git rev-parse --short HEAD").toString().trim();
 
+function noExternalPlugin() {
+  return {
+    name: "optimize-dependencies",
+    configEnvironment(environment) {
+      // We're only interested in server environments
+      if (environment !== "client") {
+        return {
+          optimizeDeps: {
+            include: ["postcss"],
+          },
+        };
+      }
+    },
+  };
+}
+
 export default defineConfig({
   site: "https://papermc.io",
 
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [tailwindcss(), noExternalPlugin()],
     define: {
       "import.meta.env.GIT_COMMIT_HASH": JSON.stringify(GIT_COMMIT_HASH),
     },
@@ -44,7 +60,7 @@ export default defineConfig({
   ],
 
   adapter: cloudflare({
-    prerenderEnvironment: "node",
+    prerenderEnvironment: "workerd",
     imageService: "compile",
   }),
 });
