@@ -68,7 +68,7 @@
     <div class="mb-6 flex flex-row items-center gap-4">
       <div class="flex h-12 w-12 items-center justify-center rounded-lg bg-gray-800 p-3">
         {#if ICONS[id]}
-          <img src={ICONS[id]!} alt={`${project.name} logo`} class="h-full w-full object-contain" />
+          <img src={ICONS[id]!} alt={`${project.name} logo`} class="h-full w-full object-contain text-white" />
         {/if}
       </div>
       <h1 class="text-xl font-medium">Downloads</h1>
