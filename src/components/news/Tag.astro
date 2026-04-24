@@ -17,7 +17,11 @@ const getTagColor = (t: string) => {
   const parts = lowerTag.split(/[ _:]/);
   const prefix = parts[0];
 
-  return DEFAULT_TAGS[prefix] || DEFAULT_TAGS[lowerTag] || "bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-300 border-gray-200 dark:border-gray-700";
+  return (
+    DEFAULT_TAGS[prefix] ||
+    DEFAULT_TAGS[lowerTag] ||
+    "bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-300 border-gray-200 dark:border-gray-700"
+  );
 };
 
 const colorClass = getTagColor(name);
@@ -29,17 +33,17 @@ const formatTag = (t: string) => {
   return t
     .split(/[ _:]/)
     .filter(Boolean)
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
-    .join(' ');
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .join(" ");
 };
 ---
 
 <a
   href={`/news/tags/${name}`}
   class:list={[
-    "inline-flex items-center rounded-full border px-2.5 py-0.5 text-[10px] font-medium tracking-wider uppercase transition-colors align-middle",
+    "inline-flex items-center rounded-full border px-2.5 py-0.5 align-middle text-[10px] font-medium tracking-wider uppercase transition-colors",
     colorClass,
-    className
+    className,
   ]}
 >
   {formatTag(name)}
