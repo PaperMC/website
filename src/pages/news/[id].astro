@@ -55,23 +55,36 @@ const excerpt = truncateForPreview(post.body ?? "", 120);
           <span>{words} words</span>
         </div>
 
-        <div class="mt-3 flex items-center gap-3">
+        <div class="mt-3 flex flex-wrap items-center justify-between gap-3">
+          <div class="flex items-center gap-3">
+            {
+              post.data.authorAvatar && (
+                <img
+                  src={post.data.authorAvatar}
+                  alt=""
+                  width="32"
+                  height="32"
+                  class="h-8 w-8 rounded-full border border-gray-200/60 object-cover dark:border-white/10"
+                  loading="lazy"
+                  decoding="async"
+                />
+              )
+            }
+            <div class="text-sm text-gray-900 dark:text-white/90">
+              {post.data.author}
+            </div>
+          </div>
+
           {
-            post.data.authorAvatar && (
-              <img
-                src={post.data.authorAvatar}
-                alt=""
-                width="32"
-                height="32"
-                class="h-8 w-8 rounded-full border border-gray-200/60 object-cover dark:border-white/10"
-                loading="lazy"
-                decoding="async"
-              />
+            post.data.tags && post.data.tags.length > 0 && (
+              <div class="flex flex-wrap items-center gap-2">
+                <span class="text-sm font-semibold text-gray-700 dark:text-white/80">Tags:</span>
+                {post.data.tags.map((tag: string) => (
+                  <Tag name={tag} />
+                ))}
+              </div>
             )
           }
-          <div class="text-sm text-gray-900 dark:text-white/90">
-            {post.data.author}
-          </div>
         </div>
       </div>
 
@@ -84,17 +97,6 @@ const excerpt = truncateForPreview(post.body ?? "", 120);
       {
         post.data.cover && typeof post.data.cover !== "string" && post.data.cover.credit && (
           <div class="px-6 pb-6 text-right text-xs text-gray-500 sm:px-8 dark:text-white/50">{post.data.cover.credit}</div>
-        )
-      }
-
-      {
-        post.data.tags && post.data.tags.length > 0 && (
-          <div class="mt-8 flex flex-wrap items-center gap-2 px-4 pb-8">
-            <span class="text-sm font-semibold text-gray-700 dark:text-white/80">Tags:</span>
-            {post.data.tags.map((tag: string) => (
-              <Tag name={tag} />
-            ))}
-          </div>
         )
       }
     </article>
