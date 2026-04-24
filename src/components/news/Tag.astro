@@ -1,0 +1,46 @@
+---
+interface Props {
+  name: string;
+  class?: string;
+}
+
+const { name, class: className } = Astro.props;
+
+const DEFAULT_TAGS: Record<string, string> = {
+  updates: "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300 border-green-200 dark:border-green-800",
+  project: "bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300 border-amber-200 dark:border-amber-800",
+  announcement: "bg-rose-100 text-rose-800 dark:bg-rose-900/30 dark:text-rose-300 border-rose-200 dark:border-rose-800",
+};
+
+const getTagColor = (t: string) => {
+  const lowerTag = t.toLowerCase();
+  const parts = lowerTag.split(/[ _:]/);
+  const prefix = parts[0];
+
+  return DEFAULT_TAGS[prefix] || DEFAULT_TAGS[lowerTag] || "bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-300 border-gray-200 dark:border-gray-700";
+};
+
+const colorClass = getTagColor(name);
+
+// Función para formatear el texto de la tag
+const formatTag = (t: string) => {
+  // Si es project_paper -> Project Paper
+  // Si es updates -> Updates
+  return t
+    .split(/[ _:]/)
+    .filter(Boolean)
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .join(' ');
+};
+---
+
+<a
+  href={`/news/tags/${name}`}
+  class:list={[
+    "inline-flex items-center rounded-full border px-2.5 py-0.5 text-[10px] font-medium tracking-wider uppercase transition-colors align-middle",
+    colorClass,
+    className
+  ]}
+>
+  {formatTag(name)}
+</a>

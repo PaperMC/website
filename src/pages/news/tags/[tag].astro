@@ -4,6 +4,7 @@ import { getCollection } from "astro:content";
 import { countWords, minutesToRead, truncateForPreview } from "@/utils/content";
 import { formatDateLong } from "@/utils/time.ts";
 import { Icon } from "astro-icon/components";
+import Tag from "@/components/news/Tag.astro";
 
 export async function getStaticPaths() {
   const allPosts = await getCollection("posts");
@@ -33,8 +34,11 @@ const { posts } = Astro.props;
 
 <Layout title={tag} description="news using the tag `{tag}`" keywords={["blog", "news", "updates", "latest"]} canonical="/tags">
   <div class="container mx-auto mt-10 max-w-7xl px-4 py-12">
-    <header class="flex justify-between">
-      <h1 class="text-4xl leading-normal font-medium lg:text-5xl lg:leading-normal">Posts with tag: {tag}</h1>
+    <header class="flex flex-col gap-4">
+      <a href="/news" class="text-sm font-light text-current/80 hover:text-current">&lt; Back to news index</a>
+      <h1 class="flex items-center gap-4 text-4xl leading-normal font-medium lg:text-5xl lg:leading-normal">
+        Posts with tag: <Tag name={tag} />
+      </h1>
     </header>
     <div class="flex flex-col gap-4">
       {

@@ -4,6 +4,7 @@ import { getCollection } from "astro:content";
 import { formatDateLong } from "@/utils/time";
 import { countWords, minutesToRead, truncateForPreview } from "@/utils/content";
 import { Icon } from "astro-icon/components";
+import Tag from "@/components/news/Tag.astro";
 import IconButton from "@/components/IconButton.astro";
 
 const posts = (await getCollection("posts")).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
@@ -61,12 +62,7 @@ const postsWithMeta = posts.map((p) => {
                     {entry.data.tags && entry.data.tags.length > 0 && (
                       <div class="flex flex-wrap gap-1.5">
                         {entry.data.tags.map((tag: string) => (
-                          <a
-                            href={`/news/tags/${tag}`}
-                            class="rounded-full border border-gray-300 bg-gray-200 px-2 py-0.5 text-[10px] font-medium tracking-wider text-gray-800 uppercase transition-colors hover:bg-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600"
-                          >
-                            {tag}
-                          </a>
+                          <Tag name={tag} />
                         ))}
                       </div>
                     )}
