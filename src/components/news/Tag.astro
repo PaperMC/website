@@ -7,8 +7,8 @@ interface Props {
 const { name, class: className } = Astro.props;
 
 const DEFAULT_TAGS: Record<string, string> = {
-  updates: "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300 border-green-200 dark:border-green-800",
   project: "bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300 border-amber-200 dark:border-amber-800",
+  updates: "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300 border-green-200 dark:border-green-800",
   announcement: "bg-rose-100 text-rose-800 dark:bg-rose-900/30 dark:text-rose-300 border-rose-200 dark:border-rose-800",
 };
 
@@ -26,10 +26,7 @@ const getTagColor = (t: string) => {
 
 const colorClass = getTagColor(name);
 
-// Función para formatear el texto de la tag
 const formatTag = (t: string) => {
-  // Si es project_paper -> Project Paper
-  // Si es updates -> Updates
   return t
     .split(/[ _:]/)
     .filter(Boolean)
