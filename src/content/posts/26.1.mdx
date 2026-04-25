@@ -72,6 +72,14 @@ world/
 
 Instead of being in separate folders in the server root directory, dimensions are split into separate folders in the `world/dimensions/` directory. Paper-specific data and overrides are stored properly in their own data directories. Per-world `paper-world.yml` files have been moved to the dimension folders, too.
 
+### Per-world time
+
+One notable exception to getting closer to Vanilla is per-world time. Due to clocks being registry-driven, which cannot be modified after startup, we make all clocks per-world by default to allow dynamic world creation with their own time as before. You can toggle this behavior via the new `time.affects-all-worlds` config option.
+
+### Compression format
+
+Paper's `unsupported-settings.compression-format` setting has been merged into Vanilla's server.properties `region-file-compression` entry, which has been modified to allow `gzip`.
+
 ---
 
 ## For developers
@@ -84,6 +92,14 @@ We are also finally breaking with the long-lived tradition of having never-incre
 This much more clearly indicates the status of the build as well as an increasing build number.
 
 To get similar behavior to `SNAPSHOT` versions in your build configuration files, you can use `26.1.1.build.+` to have Gradle automatically resolve the latest build for that version. Please make sure to keep the `build` in there, otherwise a version like `26.1.+` would resolve to a possibly breaking version like `26.1.1`.
+
+### World keys
+
+With the world storage changes, we started moving away from World names internally. `WorldInfo#getName` and related API has been marked as obsolete and may be deprecated in the future. Where possible, you should use its `getKey` methods instead.
+
+### ClockTimeSkipEvent
+
+With the `time.affects-all-worlds` config option comes a new parent event to the existing `TimeSkipEvent`. As of now, there is no API for getting clocks, but that's where it will be put at some point. Note that when the option is toggled to follow Vanilla behavior of clocks being server-wide, **only the new parent event is called for most command and API actions**.
 
 ### Unobfuscated server jars
 
