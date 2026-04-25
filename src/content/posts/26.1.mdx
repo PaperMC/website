@@ -86,12 +86,12 @@ Paper's `unsupported-settings.compression-format` setting has been merged into V
 
 ### Paper & Minecraft versioning changes
 
-[Mojang has changed their versioning scheme](https://www.minecraft.net/en-us/article/minecraft-new-version-numbering-system). Versions start with the current year, then the drop number within that year, possibly followed by patch and hotfix numbers; hence we got 26.1.1.
+[Mojang has changed their versioning scheme](https://www.minecraft.net/en-us/article/minecraft-new-version-numbering-system). Versions start with the current year, then the drop number within that year, possibly followed by patch and hotfix numbers; hence we got 26.1.2.
 
-We are also finally breaking with the long-lived tradition of having never-increasing `-R0.1-SNAPSHOT` versions and are moving to the following: `<mcversion>.build.<build>-<status>`, e.g.: `26.1.1.build.37-alpha`.
+We are also finally breaking with the long-lived tradition of having never-increasing `-R0.1-SNAPSHOT` versions and are moving to the following: `<mcversion>.build.<build>-<status>`, e.g.: `26.1.2.build.23-alpha`.
 This much more clearly indicates the status of the build as well as an increasing build number.
 
-To get similar behavior to `SNAPSHOT` versions in your build configuration files, you can use `26.1.1.build.+` to have Gradle automatically resolve the latest build for that version. Please make sure to keep the `build` in there, otherwise a version like `26.1.+` would resolve to a possibly breaking version like `26.1.1`.
+To get similar behavior to `SNAPSHOT` versions in your build configuration files, you can use `26.1.2.build.+` to have Gradle automatically resolve the latest build for that version. Please make sure to keep the `build` in there, otherwise a version like `26.1.+` would resolve to a possibly breaking version like `26.1.1`.
 
 ### World keys
 
@@ -106,6 +106,21 @@ With the `time.affects-all-worlds` config option comes a new parent event to the
 _This section only affects plugin devs using server internals, whether directly or through reflection._
 
 Mojang is no longer providing obfuscated server jars and instead have them contain all class, method, field names, etc. Due to this, we have fully dropped the internal remapper - obfuscated names no longer exist in the server jar.
+
+### Other changes and additions
+
+Here is a selection of other notable additions since the last major update post:
+- `EntityLungeEvent`, `PlayerToggleEntityAgeLockEvent`, `PlayerSwapWithEquipmentSlotEvent`, `ItemCraftedEvent`
+- `PlayerPurchaseEvent#getMerchant`
+- `FurnaceExtractEvent#getItemStack`
+- `GameRule#getDefaultValue`
+- `RecipeChoice.ItemTypeChoice`
+- `Mannequin.validPoses`
+- `Raid#setTotalWaves`
+- `PositionedRayTraceConfigurationBuilder#blockCollisionMode` for looking for block collisions
+- `add-plugin-dir` startup argument to load an additional plugin directory
+- Made the arrow despawn rate override configurable via `entities.spawning.max-arrow-despawn-invulnerability`
+- Allow `spam-limiter.incoming-packet-treshold` to be properly disabled by setting it to `-1`
 
 ---
 
