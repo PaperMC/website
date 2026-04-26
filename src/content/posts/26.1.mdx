@@ -1,6 +1,6 @@
 ---
 title: "26.1"
-date: "2026-03-04T20:00:00Z"
+date: "2026-04-26T20:00:00Z"
 author: "Paper Team"
 ---
 
@@ -16,6 +16,9 @@ We would like to thank everyone that worked on this update:
     { username: "Lulu13022002" },
     { username: "lynxplay" },
     { username: "spottedleaf" },
+    { username: "Warriorrrr" },
+    { username: "Doc94" },
+    { username: "Owen1212055" },
     { username: "kennytv" },
   ]}
 />
@@ -107,20 +110,33 @@ _This section only affects plugin devs using server internals, whether directly 
 
 Mojang is no longer providing obfuscated server jars and instead have them contain all class, method, field names, etc. Due to this, we have fully dropped the internal remapper - obfuscated names no longer exist in the server jar.
 
-### Other changes and additions
+---
+
+## Other changes and additions
 
 Here is a selection of other notable additions since the last major update post:
+
+### API
+
+- `World#locateNearestPoi` and `locateAllPoiInRange` to find nearby points of interest
+- `WorldCreator#forcedSpawnPosition` to skip spawn location search on world creation
+- `PositionedRayTraceConfigurationBuilder#blockCollisionMode` for looking for block collisions
 - `EntityLungeEvent`, `PlayerToggleEntityAgeLockEvent`, `PlayerSwapWithEquipmentSlotEvent`, `ItemCraftedEvent`
 - `PlayerPurchaseEvent#getMerchant`
 - `FurnaceExtractEvent#getItemStack`
-- `GameRule#getDefaultValue`
+- `VehicleDamage/DestroyEvent#getDamageSource`
 - `RecipeChoice.ItemTypeChoice`
 - `Mannequin.validPoses`
 - `Raid#setTotalWaves`
-- `PositionedRayTraceConfigurationBuilder#blockCollisionMode` for looking for block collisions
+- `GameRule#getDefaultValue`
+- `Damageable#kill`
+
+### Configuration
+
 - `add-plugin-dir` startup argument to load an additional plugin directory
 - Made the arrow despawn rate override configurable via `entities.spawning.max-arrow-despawn-invulnerability`
 - Allow `spam-limiter.incoming-packet-treshold` to be properly disabled by setting it to `-1`
+- Added `unsupported-settings.ticking.chunks` and `blockEntities` to allow disabling chunk and block entity ticking. This is useful for lobby servers that don't need chunk ticking (mob spawning, random block ticking, thunder, ice and snow) or block entity ticking (functionality of hoppers, furnaces, etc.)
 
 ---
 
