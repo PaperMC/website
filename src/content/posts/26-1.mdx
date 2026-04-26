@@ -116,6 +116,14 @@ Mojang is no longer providing obfuscated server jars and instead have them conta
 
 Here is a selection of other notable additions since the last major update post:
 
+### Configuration
+
+- `add-plugin-dir` startup argument to load an additional plugin directory
+- Along with a fix to a memory leak, we added `misc.max-tracking-combat-entries` to increase or reduce the number of combat tracker entries before they are discarded
+- Made the arrow despawn rate override configurable via `entities.spawning.max-arrow-despawn-invulnerability`
+- Allow `spam-limiter.incoming-packet-treshold` to be properly disabled by setting it to `-1`
+- Added `unsupported-settings.ticking.chunks` and `blockEntities` to allow disabling chunk and block entity ticking. This is useful for lobby servers that don't need chunk ticking (mob spawning, random block ticking, thunder, ice and snow) or block entity ticking (functionality of hoppers, furnaces, etc.)
+
 ### API
 
 - `World#locateNearestPoi` and `locateAllPoiInRange` to find nearby points of interest
@@ -130,13 +138,6 @@ Here is a selection of other notable additions since the last major update post:
 - `Raid#setTotalWaves`
 - `GameRule#getDefaultValue`
 - `Damageable#kill`
-
-### Configuration
-
-- `add-plugin-dir` startup argument to load an additional plugin directory
-- Made the arrow despawn rate override configurable via `entities.spawning.max-arrow-despawn-invulnerability`
-- Allow `spam-limiter.incoming-packet-treshold` to be properly disabled by setting it to `-1`
-- Added `unsupported-settings.ticking.chunks` and `blockEntities` to allow disabling chunk and block entity ticking. This is useful for lobby servers that don't need chunk ticking (mob spawning, random block ticking, thunder, ice and snow) or block entity ticking (functionality of hoppers, furnaces, etc.)
 
 ---
 
