@@ -12,6 +12,7 @@ const posts = defineCollection({
     date: z.coerce.date(),
     author: z.string().default(DEFAULT_AUTHOR),
     authorAvatar: z.url().default(DEFAULT_AVATAR),
+    tags: z.array(z.string()).default([]),
     cover: z
       .object({
         src: z.url(),
