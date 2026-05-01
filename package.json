@@ -52,7 +52,7 @@
   },
   "overrides": {
     "@iconify/tools": "5.0.11",
-    "@iconify/utils": "3.1.0"
+    "@iconify/utils": "3.1.1"
   },
   "devEngines": {
     "runtime": {
