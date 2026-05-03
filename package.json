@@ -48,7 +48,7 @@
     "prettier-plugin-svelte": "3.5.1",
     "prettier-plugin-tailwindcss": "0.8.0",
     "svelte-eslint-parser": "1.6.0",
-    "wrangler": "4.80.0"
+    "wrangler": "4.86.0"
   },
   "overrides": {
     "@iconify/tools": "5.0.11",
