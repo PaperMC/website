@@ -30,7 +30,7 @@
     "runed": "0.37.1",
     "svelte": "5.55.5",
     "tailwindcss": "4.2.2",
-    "typescript": "6.0.2"
+    "typescript": "6.0.3"
   },
   "devDependencies": {
     "@astrojs/mdx": "5.0.3",
