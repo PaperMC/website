@@ -33,7 +33,14 @@
             target="_blank"
             class={`btn mr-3 inline-flex min-w-14 shrink-0 items-center justify-center gap-1 rounded-sm p-2 text-center text-sm font-medium sm:mr-4 sm:min-w-16 ${channelClass(build.channel)}`}
           >
-            <svg xmlns="http://www.w3.org/2000/svg" class="size-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="size-4 shrink-0"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
               <path
                 stroke-linecap="round"
                 stroke-linejoin="round"

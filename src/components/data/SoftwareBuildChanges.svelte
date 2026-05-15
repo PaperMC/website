@@ -57,7 +57,7 @@
 
 {#if rows.length > 0}
   {#each rows as row (row.sha)}
-    <p class="commitMessage min-w-0 overflow-hidden break-words leading-relaxed [overflow-wrap:anywhere]">
+    <p class="commitMessage min-w-0 overflow-hidden leading-relaxed [overflow-wrap:anywhere] break-words">
       <a
         class="mr-1 font-mono text-blue-600 dark:text-blue-500"
         href={`${getProjectRepository(project, version)}/commit/${row.sha}`}
@@ -72,7 +72,9 @@
           {#if seg.kind === "text"}
             {seg.text}
           {:else}
-            <a class="text-blue-600 dark:text-blue-500 [overflow-wrap:anywhere]" href={seg.url} target="_blank" rel="noreferrer">{seg.text}</a>
+            <a class="[overflow-wrap:anywhere] text-blue-600 dark:text-blue-500" href={seg.url} target="_blank" rel="noreferrer"
+              >{seg.text}</a
+            >
           {/if}
         {/each}
       </span>
