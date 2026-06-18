@@ -45,7 +45,7 @@
     "eslint-plugin-svelte": "3.19.0",
     "prettier": "3.8.4",
     "prettier-plugin-astro": "0.14.1",
-    "prettier-plugin-svelte": "4.1.0",
+    "prettier-plugin-svelte": "4.1.1",
     "prettier-plugin-tailwindcss": "0.8.0",
     "svelte-eslint-parser": "1.8.0",
     "wrangler": "4.94.0"
