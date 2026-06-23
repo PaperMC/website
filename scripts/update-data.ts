@@ -40,6 +40,19 @@ type GitHubSponsorsData = {
   };
 };
 
+type GitHubSponsorsPageData = {
+  organization: {
+    sponsors: {
+      totalCount: number;
+      pageInfo: {
+        hasNextPage: boolean;
+        endCursor: string | null;
+      };
+      nodes: GitHubSponsor[];
+    };
+  };
+};
+
 type SponsorData = {
   ocData: OpenCollectiveData;
   ghData: GitHubSponsorsData;
@@ -108,8 +121,8 @@ function githubAvatar64(avatarUrl: string): string {
   return url.toString();
 }
 
-async function fetchSponsors(): Promise<SponsorData> {
-  const ocData = await graphQL<OpenCollectiveData>(
+async function fetchOpenCollectiveSponsorsPage(offset: number): Promise<OpenCollectiveData> {
+  return graphQL<OpenCollectiveData>(
     "https://api.opencollective.com/graphql/v2",
     `{
       collective(slug: "papermc") {
@@ -123,7 +136,7 @@ async function fetchSponsors(): Promise<SponsorData> {
             valueInCents
           }
         }
-        contributors(roles: BACKER, limit: 100) {
+        contributors(roles: BACKER, limit: 100, offset: ${offset}) {
           totalCount
           nodes {
             name
@@ -134,19 +147,46 @@ async function fetchSponsors(): Promise<SponsorData> {
       }
     }`
   );
+}
 
-  ocData.collective.contributors.nodes = ocData.collective.contributors.nodes
+async function fetchOpenCollectiveSponsors(): Promise<OpenCollectiveData> {
+  const firstPage = await fetchOpenCollectiveSponsorsPage(0);
+  const contributors = [...firstPage.collective.contributors.nodes];
+
+  console.log(`Fetched ${firstPage.collective.contributors.nodes.length} OpenCollective sponsors from offset 0`);
+
+  for (let offset = 100; offset < firstPage.collective.contributors.totalCount; offset += 100) {
+    const page = await fetchOpenCollectiveSponsorsPage(offset);
+
+    contributors.push(...page.collective.contributors.nodes);
+
+    console.log(`Fetched ${page.collective.contributors.nodes.length} OpenCollective sponsors from offset ${offset}`);
+
+    if (page.collective.contributors.nodes.length < 100) {
+      break;
+    }
+  }
+
+  firstPage.collective.contributors.nodes = contributors
     .filter((node) => node.name !== "GitHub Sponsors")
     .sort((a, b) => b.totalAmountDonated - a.totalAmountDonated);
 
-  const openCollectiveNames = new Set(ocData.collective.contributors.nodes.map((node) => node.name));
+  return firstPage;
+}
 
-  const ghData = await graphQL<GitHubSponsorsData>(
+async function fetchGitHubSponsorsPage(cursor: string | null): Promise<GitHubSponsorsPageData> {
+  const after = cursor ? `, after: ${JSON.stringify(cursor)}` : "";
+
+  return graphQL<GitHubSponsorsPageData>(
     "https://api.github.com/graphql",
     `{
       organization(login: "papermc") {
-        sponsors(first: 100) {
+        sponsors(first: 100${after}) {
           totalCount
+          pageInfo {
+            hasNextPage
+            endCursor
+          }
           nodes {
             ... on Actor {
               login
@@ -158,13 +198,55 @@ async function fetchSponsors(): Promise<SponsorData> {
     }`,
     `Bearer ${githubToken}`
   );
+}
 
-  ghData.organization.sponsors.nodes = ghData.organization.sponsors.nodes
-    .filter((node) => !openCollectiveNames.has(node.login))
-    .map((node) => ({
-      login: node.login,
-      avatarUrl: githubAvatar64(node.avatarUrl),
-    }));
+async function fetchGitHubSponsors(openCollectiveNames: Set<string>): Promise<GitHubSponsorsData> {
+  const sponsors: GitHubSponsor[] = [];
+  let totalCount = 0;
+  let cursor: string | null = null;
+
+  for (;;) {
+    const page = await fetchGitHubSponsorsPage(cursor);
+    const data = page.organization.sponsors;
+
+    totalCount = data.totalCount;
+
+    sponsors.push(
+      ...data.nodes
+        .filter((node) => !openCollectiveNames.has(node.login))
+        .map((node) => ({
+          login: node.login,
+          avatarUrl: githubAvatar64(node.avatarUrl),
+        }))
+    );
+
+    console.log(`Fetched ${data.nodes.length} GitHub sponsors`);
+
+    if (!data.pageInfo.hasNextPage) {
+      break;
+    }
+
+    cursor = data.pageInfo.endCursor;
+
+    if (!cursor) {
+      throw new Error("GitHub Sponsors pagination reported another page but did not return an endCursor");
+    }
+  }
+
+  return {
+    organization: {
+      sponsors: {
+        totalCount,
+        nodes: sponsors,
+      },
+    },
+  };
+}
+
+async function fetchSponsors(): Promise<SponsorData> {
+  const ocData = await fetchOpenCollectiveSponsors();
+  const openCollectiveNames = new Set(ocData.collective.contributors.nodes.map((node) => node.name));
+  const ghData = await fetchGitHubSponsors(openCollectiveNames);
 
   return { ocData, ghData };
 }
