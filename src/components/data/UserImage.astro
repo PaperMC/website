@@ -2,68 +2,124 @@
 import RemoteResponsiveImageWrapper from "@/components/data/RemoteResponsiveImageWrapper.astro";
 
 interface Props {
-  avatarUrl: string;
+  avatarUrl?: string | null;
   name: string;
   link?: string;
   class?: string;
 }
+
 const { avatarUrl, name, link, class: extra } = Astro.props;
 const Tag = link ? "a" : "div";
 const initial = (name?.trim?.()[0] ?? "?").toUpperCase();
+const hasAvatar = Boolean(avatarUrl?.trim());
 ---
 
 <Tag
   role={link ? "button" : undefined}
-  class={`user-image relative flex aspect-square items-center justify-center overflow-hidden rounded-full bg-gray-600 font-bold text-white uppercase transition-transform hover:scale-103 active:translate-y-[0.5px] shadow-md active:shadow-none ${extra ?? ""}`}
+  class={`user-image relative flex aspect-square items-center justify-center overflow-hidden rounded-full transition-transform hover:scale-103 active:translate-y-[0.5px] shadow-md active:shadow-none ${extra ?? ""}`}
   href={link}
-  rel={link && "noreferrer"}
-  target={link && "_blank"}
+  rel={link ? "noreferrer" : undefined}
+  target={link ? "_blank" : undefined}
   aria-label={name}
   title={name}
 >
-  <span class="initial pointer-events-none select-none">{initial}</span>
+  <span class={`initial pointer-events-none select-none ${hasAvatar ? "hidden" : ""}`}>
+    {initial}
+  </span>
 
   {
-    avatarUrl && (
+    hasAvatar && (
       <RemoteResponsiveImageWrapper
         alt={`${name}'s avatar`}
-        src={avatarUrl}
+        src={avatarUrl!}
         width={80}
         height={80}
         format="webp"
+        layout="none"
         loading="lazy"
         decoding="async"
-        class="pointer-events-none absolute h-full w-full object-cover"
+        class="pointer-events-none absolute inset-0 h-full w-full rounded-full object-cover"
       />
     )
   }
 </Tag>
 
 <style>
-  .user-image img.invalid,
-  .user-image img[data-fallback="true"] {
-    display: none !important;
-  }
-
   .user-image {
     will-change: transform;
     transform: translateZ(0);
     backface-visibility: hidden;
     contain: paint;
   }
+
+  .user-image .initial {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    background: #4b5563;
+    color: white;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .user-image .initial.hidden {
+    display: none;
+  }
+
   .user-image img {
     display: block;
     border-radius: 9999px;
   }
+
+  .user-image img.invalid,
+  .user-image img[data-fallback="true"] {
+    display: none !important;
+  }
 </style>
 
 <script>
-  const root = document.currentScript?.parentElement;
-  const img = root?.querySelector("img");
-  if (img) {
-    if (!img.complete || img.naturalWidth === 0) {
-      img.classList.add("invalid");
+  function showInitialFallback(root: Element): void {
+    const initial = root.querySelector(".initial");
+
+    if (initial instanceof HTMLElement) {
+      initial.classList.remove("hidden");
     }
-    img.addEventListener("error", () => img.classList.add("invalid"));
+  }
+
+  function hideInitialFallback(root: Element): void {
+    const initial = root.querySelector(".initial");
+
+    if (initial instanceof HTMLElement) {
+      initial.classList.add("hidden");
+    }
+  }
+
+  for (const root of document.querySelectorAll(".user-image")) {
+    const img = root.querySelector("img");
+
+    if (!(img instanceof HTMLImageElement)) {
+      continue;
+    }
+
+    const imageAlreadyFailed =
+      img.classList.contains("invalid") || img.dataset.fallback === "true" || (img.complete && img.naturalWidth === 0);
+
+    if (imageAlreadyFailed) {
+      showInitialFallback(root);
+    }
+
+    img.addEventListener("load", () => {
+      if (!img.classList.contains("invalid") && img.dataset.fallback !== "true" && img.naturalWidth > 0) {
+        hideInitialFallback(root);
+      }
+    });
+
+    img.addEventListener("error", () => {
+      img.classList.add("invalid");
+      showInitialFallback(root);
+    });
   }
 </script>
