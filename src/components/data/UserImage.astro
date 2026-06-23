@@ -16,7 +16,7 @@ const hasAvatar = Boolean(avatarUrl?.trim());
 
 <Tag
   role={link ? "button" : undefined}
-  class={`user-image relative flex aspect-square items-center justify-center overflow-hidden rounded-full transition-transform hover:scale-103 active:translate-y-[0.5px] shadow-md active:shadow-none ${extra ?? ""}`}
+  class={`not-prose user-image relative flex aspect-square items-center justify-center overflow-hidden rounded-full transition-transform hover:scale-103 active:translate-y-[0.5px] shadow-md active:shadow-none ${extra ?? ""}`}
   href={link}
   rel={link ? "noreferrer" : undefined}
   target={link ? "_blank" : undefined}
