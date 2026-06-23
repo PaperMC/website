@@ -14,6 +14,7 @@
     "lint": "bun run lint:eslint && bun run lint:prettier",
     "check": "bun run check:types",
     "check:all": "bun run check && bun run lint",
+    "data:update": "bun scripts/update-data.ts work",
     "postinstall": "wrangler types"
   },
   "dependencies": {
