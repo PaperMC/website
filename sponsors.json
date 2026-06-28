@@ -5,10 +5,10 @@
       "slug": "papermc",
       "stats": {
         "balance": {
-          "valueInCents": 1266080
+          "valueInCents": 1266840
         },
         "monthlySpending": {
-          "valueInCents": 113037
+          "valueInCents": 112566
         }
       },
       "contributors": {
@@ -155,13 +155,13 @@
             "totalAmountDonated": 16000
           },
           {
-            "name": "Tyzoid",
-            "image": "https://images.opencollective.com/tyzoid/avatar.png",
-            "totalAmountDonated": 15500
-          },
-          {
             "name": "CrazyHjonk",
             "image": "https://images.opencollective.com/crazyhjonk/avatar.png",
+            "totalAmountDonated": 16000
+          },
+          {
+            "name": "Tyzoid",
+            "image": "https://images.opencollective.com/tyzoid/avatar.png",
             "totalAmountDonated": 15500
           },
           {
@@ -420,6 +420,11 @@
             "totalAmountDonated": 4700
           },
           {
+            "name": "SpektrSoyuz",
+            "image": "https://images.opencollective.com/spektrsoyuz/avatar.png",
+            "totalAmountDonated": 4500
+          },
+          {
             "name": "Mitsui2k",
             "image": "https://images.opencollective.com/mitsui2k/avatar.png",
             "totalAmountDonated": 4000
@@ -432,11 +437,6 @@
           {
             "name": "MyPvP",
             "image": "https://images.opencollective.com/mypvp/7f744b6/logo.png",
-            "totalAmountDonated": 4000
-          },
-          {
-            "name": "SpektrSoyuz",
-            "image": "https://images.opencollective.com/spektrsoyuz/avatar.png",
             "totalAmountDonated": 4000
           },
           {
