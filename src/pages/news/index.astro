@@ -4,7 +4,6 @@ import { getCollection } from "astro:content";
 import { formatDateLong } from "@/utils/time";
 import { countWords, minutesToRead, truncateForPreview } from "@/utils/content";
 import { Icon } from "astro-icon/components";
-import IconButton from "@/components/IconButton.astro";
 
 const posts = (await getCollection("posts")).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
@@ -67,9 +66,3 @@ const postsWithMeta = posts.map((p) => {
     </div>
   </div>
 </Layout>
-
-<style scoped>
-  @view-transition {
-    navigation: auto;
-  }
-</style>

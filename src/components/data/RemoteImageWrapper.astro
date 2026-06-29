@@ -2,7 +2,7 @@
 import { getImage, imageConfig, type LocalImageProps, type RemoteImageProps } from "astro:assets";
 import type { HTMLAttributes } from "astro/types";
 
-import fallbackImage from "@/assets/brand/paper.svg";
+import fallbackImage from "@/assets/brand/paper.svg?url";
 import { inferRemoteSize } from "astro/assets/utils";
 
 type Props = LocalImageProps | RemoteImageProps;

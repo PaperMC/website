@@ -42,13 +42,14 @@ const contributors = await fetchContributors();
           {team.members.map((member) => (
             <article class="rounded-md border border-gray-300 p-4 transition-shadow hover:shadow-md dark:border-gray-700">
               <div class="flex flex-row gap-6">
-                <div class="relative h-20 w-20 overflow-clip rounded-md bg-gray-600">
+                <div class="relative h-20 w-20 overflow-clip rounded-md">
                   {member.avatar && (
                     <RemoteResponsiveImageWrapper
                       alt={`${member.name}'s avatar`}
                       src={member.avatar}
                       width={80}
                       height={80}
+                      format="webp"
                       class="object-cover"
                     />
                   )}
