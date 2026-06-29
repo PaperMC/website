@@ -26,3 +26,6 @@ pnpm-debug.log*
 .eslintcache
 
 .wrangler/
+
+# data branch checkout
+work/
