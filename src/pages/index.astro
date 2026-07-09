@@ -90,9 +90,9 @@ import SoftwarePreview, { SoftwarePreviewType } from "@/components/data/Software
       </div>
       <div class="flex-1">
         <h2 class="text-2xl font-semibold break-all md:text-4xl">
-          Powering
-          <PlayersCount client:load="svelte" ttlMs={12 * 60 * 1000} />
-          players
+          Powering <PlayersCount
+          client:load="svelte" ttlMs={12 * 60 * 1000}
+        /> players
         </h2>
         <p class="mt-3 text-gray-900 md:mt-6 md:text-xl dark:text-gray-100">
           PaperMC&apos;s software powers hundreds of thousands of Minecraft servers on a daily basis, from small single-servers setups to
