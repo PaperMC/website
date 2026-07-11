@@ -39,7 +39,7 @@
     "@types/node": "25.9.3",
     "@typescript-eslint/eslint-plugin": "8.63.0",
     "@typescript-eslint/parser": "8.63.0",
-    "@typescript/native-preview": "7.0.0-dev.20260615.1",
+    "@typescript/native-preview": "7.0.0-dev.20260707.2",
     "eslint": "10.6.0",
     "eslint-config-prettier": "10.1.8",
     "eslint-plugin-astro": "2.1.1",
