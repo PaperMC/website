@@ -1,0 +1,70 @@
+---
+title: "26.2"
+date: "2026-06-12T12:00:00Z"
+author: "Paper Team"
+---
+
+## The 26.2 Update
+
+<MandatoryBackups version="26.2" />
+
+We would like to thank everyone that worked on this update:
+
+<Contributors
+    contributors={[
+        { username: "Doc94" },
+        { username: "jpenilla", sponsor: "https://github.com/sponsors/jpenilla" },
+        { username: "Lulu13022002" },
+        { username: "lynxplay" },
+        { username: "Owen1212055" },
+        { username: "spottedleaf" },
+        { username: "Warriorrrr" },
+        { username: "kennytv" },
+    ]}
+/>
+
+If you'd like to support PaperMC as a whole, you can find more information at https://papermc.io/sponsors.
+
+## Changes for server owners
+
+Not too much beyond Vanilla changes! Although as per usual, we recommend updating to the latest version of Paper as we do not backport exploit fixes after a new version has been stable for a while.
+
+If you haven't seen the 26.1 announcement and its world storage format changes yet, you should give it a read: https://papermc.io/news/26-1/
+
+---
+
+## For developers
+
+### Beds are no longer block entities
+
+Beds are now regular blocks again, which means they lose the ability to hold a [PersistentDataContainer](https://docs.papermc.io/paper/dev/pdc/).
+If you had previously stored important data in a bed's PDC, you need to listen to the new [AsyncServerDataFixerRemoveBlockEntityEvent](https://jd.papermc.io/paper/26.2/io/papermc/paper/event/server/AsyncServerDataFixerRemoveBlockEntityEvent.html) to save this data elsewhere.
+
+
+### Adventure 5
+
+Paper 26.2 ships with Adventure 5, removing API that was previously deprecated. The two most important changes are to BookMeta, which no longer extends Adventure's Book interface (use its own pages methods instead of the removed builder),
+and the removal of deprecated ClickEvent/HoverEvent use.
+
+### Reminder: Versioning change
+
+We have replaced the old `-R0.1-SNAPSHOT` suffix with a much more informative versioning scheme. See [the 26.1 announcement](https://papermc.io/news/26-1/) for more information.
+
+---
+
+## Other changes and additions
+
+Here is a selection of other notable additions since the last major update post:
+
+### API
+
+- With the Sulfur Cube, cube mobs now share a common parent interface, [AbstractCubeMob](https://jd.papermc.io/paper/26.2/org/bukkit/entity/AbstractCubeMob.html). MagmaCube no longer extends Slime, and SlimeSplitEvent#getEntity now returns AbstractCubeMob.
+- [Vex#getSummoner](https://jd.papermc.io/paper/26.2/org/bukkit/entity/Vex.html#getSummoner()) is deprecated in favor of [getOwner](https://jd.papermc.io/paper/26.2/org/bukkit/entity/Vex.html#getOwner())
+- [World#setSpawnFlags](https://jd.papermc.io/paper/26.2/org/bukkit/World.html#setSpawnFlags(boolean,boolean))/getAllowAnimals (https://jd.papermc.io/paper/26.2/org/bukkit/World.html#getAllowAnimals()) are deprecated; vanilla no longer has an animal spawning toggle
+- [EntityIgniteEvent](https://jd.papermc.io/paper/26.2/io/papermc/paper/event/entity/EntityIgniteEvent.html) as parent of [CreeperIgniteEvent](https://jd.papermc.io/paper/26.2/com/destroystokyo/paper/event/entity/CreeperIgniteEvent.html), also fired for sulfur cubes
+- [PointedDripstone](https://jd.papermc.io/paper/26.2/org/bukkit/block/data/type/PointedDripstone.html) block data is deprecated in favor of the new [Speleothem](https://jd.papermc.io/paper/26.2/org/bukkit/block/data/type/Speleothem.html)
+- Registry API for trim materials and patterns via [RegistryEvents.TRIM_MATERIAL](https://jd.papermc.io/paper/26.2/io/papermc/paper/registry/event/RegistryEvents.html#TRIM_MATERIAL)/[TRIM_PATTERN](https://jd.papermc.io/paper/26.2/io/papermc/paper/registry/event/RegistryEvents.html#TRIM_PATTERN)
+- Client brand is now available on [PlayerCommonConnection](https://jd.papermc.io/paper/26.2/io/papermc/paper/connection/PlayerCommonConnection.html#getClientBrandName())
+---
+
+<DownloadButton project="Paper" />
