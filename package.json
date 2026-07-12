@@ -44,7 +44,7 @@
     "eslint-config-prettier": "10.1.8",
     "eslint-plugin-astro": "2.1.1",
     "eslint-plugin-svelte": "3.20.0",
-    "prettier": "3.9.4",
+    "prettier": "3.9.5",
     "prettier-plugin-astro": "0.14.1",
     "prettier-plugin-svelte": "4.1.1",
     "prettier-plugin-tailwindcss": "0.8.0",
