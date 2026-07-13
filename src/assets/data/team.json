@@ -92,12 +92,6 @@
         "github": "Lulu13022002"
       },
       {
-        "name": "Noah",
-        "avatar": "https://avatars.githubusercontent.com/u/44026893?v=4",
-        "discord": "noah.pm",
-        "github": "NoahvdAa"
-      },
-      {
         "name": "Owen",
         "avatar": "https://avatars.githubusercontent.com/u/23108066?v=4",
         "discord": "owen.zip",
@@ -123,12 +117,6 @@
         "github": "4drian3d"
       },
       {
-        "name": "CoreyShupe",
-        "avatar": "https://avatars.githubusercontent.com/u/37425956?v=4",
-        "discord": "fixed",
-        "github": "CoreyShupe"
-      },
-      {
         "name": "Gero",
         "avatar": "https://avatars.githubusercontent.com/u/11089941?v=4",
         "discord": "gerrygames",
@@ -139,6 +127,12 @@
         "avatar": "https://avatars.githubusercontent.com/u/16436212?v=4",
         "discord": "possiblytux",
         "github": "astei"
+      },
+      {
+        "name": "Wouter",
+        "avatar": "https://avatars.githubusercontent.com/u/13220320?v=4",
+        "discord": "wouter.g",
+        "github": "WouterGritter"
       }
     ]
   },
@@ -167,6 +161,12 @@
     "description": "Community Team members keeps our community a safe and vibrant space. By watching chat, helping newcomers with questions, and making sure everyone follows the community guidelines, PaperMC's community spaces are able to be as fantastic as they are!",
     "members": [
       {
+        "name": "_11",
+        "avatar": "https://avatars.githubusercontent.com/u/55677189?v=4",
+        "discord": "_11",
+        "github": "underscore11code"
+      },
+      {
         "name": "Amaranth",
         "avatar": "https://avatars.githubusercontent.com/u/341418?v=4",
         "discord": "amaranth",
@@ -177,12 +177,6 @@
         "avatar": "https://avatars.githubusercontent.com/u/71995692?v=4",
         "discord": "eternity._.",
         "github": "EterNityCH"
-      },
-      {
-        "name": "Glare",
-        "avatar": "https://avatars.githubusercontent.com/u/21014720?v=4",
-        "discord": "glare",
-        "github": "darbyjack"
       },
       {
         "name": "JRoy",
@@ -203,6 +197,12 @@
         "github": "clrxbl"
       },
       {
+        "name": "Noah",
+        "avatar": "https://avatars.githubusercontent.com/u/44026893?v=4",
+        "discord": "noah.pm",
+        "github": "NoahvdAa"
+      },
+      {
         "name": "NotMyFault",
         "avatar": "https://avatars.githubusercontent.com/u/13383509?v=4",
         "discord": "notmyfault",
@@ -213,12 +213,6 @@
         "avatar": "https://avatars.githubusercontent.com/u/482353?v=4",
         "discord": "ocelotpotpie",
         "github": "ocelotpotpie"
-      },
-      {
-        "name": "Puremin0rez",
-        "avatar": "https://avatars.githubusercontent.com/u/734478?v=4",
-        "discord": "puremin0rez",
-        "github": "Puremin0rez"
       },
       {
         "name": "stefvanschie",
@@ -232,18 +226,6 @@
     "name": "Triage Team",
     "description": "The Triage Team helps the project by reviewing, testing, and organizing our GitHub's issues and pull requests. With their efforts, developers and maintainers are able to most efficiently handle the most important tasks.",
     "members": [
-      {
-        "name": "_11",
-        "avatar": "https://avatars.githubusercontent.com/u/55677189?v=4",
-        "discord": "_11",
-        "github": "underscore11code"
-      },
-      {
-        "name": "Camotoy",
-        "avatar": "https://avatars.githubusercontent.com/u/20743703?v=4",
-        "discord": "camotoy",
-        "github": "camotoy"
-      },
       {
         "name": "Doc",
         "avatar": "https://avatars.githubusercontent.com/u/3602279?v=4",
@@ -281,6 +263,12 @@
     "name": "Docs Team",
     "description": "The Docs Team is responsible for maintaining and updating the PaperMC documentation. They ensure that the documentation is up-to-date and accurate, and that it's easy to understand for all users.",
     "members": [
+      {
+        "name": "Glare",
+        "avatar": "https://avatars.githubusercontent.com/u/21014720?v=4",
+        "discord": "glare",
+        "github": "darbyjack"
+      },
       {
         "name": "Strokkur24",
         "avatar": "https://avatars.githubusercontent.com/u/133226102?v=4",
