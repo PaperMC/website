@@ -42,7 +42,7 @@
     "@typescript/native-preview": "7.0.0-dev.20260707.2",
     "eslint": "10.7.0",
     "eslint-config-prettier": "10.1.8",
-    "eslint-plugin-astro": "3.0.0",
+    "eslint-plugin-astro": "3.0.1",
     "eslint-plugin-svelte": "3.20.0",
     "prettier": "3.9.5",
     "prettier-plugin-astro": "0.14.1",
