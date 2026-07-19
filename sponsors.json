@@ -5,14 +5,14 @@
       "slug": "papermc",
       "stats": {
         "balance": {
-          "valueInCents": 1322036
+          "valueInCents": 1323827
         },
         "monthlySpending": {
-          "valueInCents": 112739
+          "valueInCents": 112866
         }
       },
       "contributors": {
-        "totalCount": 229,
+        "totalCount": 230,
         "nodes": [
           {
             "name": "BisectHosting",
@@ -527,7 +527,7 @@
           {
             "name": "langua",
             "image": "https://images.opencollective.com/langua/avatar.png",
-            "totalAmountDonated": 2400
+            "totalAmountDonated": 2500
           },
           {
             "name": "Otter",
@@ -647,6 +647,11 @@
           {
             "name": "MrBear95",
             "image": "https://images.opencollective.com/mrbear95/a6a2cad/avatar.png",
+            "totalAmountDonated": 2000
+          },
+          {
+            "name": "Z750",
+            "image": "https://images.opencollective.com/guest-a867e80e/avatar.png",
             "totalAmountDonated": 2000
           },
           {
@@ -840,6 +845,11 @@
             "totalAmountDonated": 900
           },
           {
+            "name": "Florian Riedlinger",
+            "image": "https://images.opencollective.com/guest-58f493e6/avatar.png",
+            "totalAmountDonated": 900
+          },
+          {
             "name": "Evident#0420",
             "image": "https://images.opencollective.com/evident-0420/avatar.png",
             "totalAmountDonated": 800
@@ -847,11 +857,6 @@
           {
             "name": "Jokni",
             "image": "https://images.opencollective.com/jokni/73015e8/avatar.png",
-            "totalAmountDonated": 800
-          },
-          {
-            "name": "Florian Riedlinger",
-            "image": "https://images.opencollective.com/guest-58f493e6/avatar.png",
             "totalAmountDonated": 800
           },
           {
@@ -1035,8 +1040,13 @@
             "totalAmountDonated": 300
           },
           {
-            "name": "Serin",
-            "image": "https://images.opencollective.com/serinchan/390d18a/avatar.png",
+            "name": "PyroE",
+            "image": "https://images.opencollective.com/pyroe/efc9d02/avatar.png",
+            "totalAmountDonated": 300
+          },
+          {
+            "name": "nx",
+            "image": "https://images.opencollective.com/serinchan/2dd3345/avatar.png",
             "totalAmountDonated": 200
           },
           {
@@ -1072,11 +1082,6 @@
           {
             "name": "Beef Block",
             "image": "https://images.opencollective.com/beef-block/a0fea7b/avatar.png",
-            "totalAmountDonated": 200
-          },
-          {
-            "name": "PyroE",
-            "image": "https://images.opencollective.com/pyroe/efc9d02/avatar.png",
             "totalAmountDonated": 200
           },
           {
@@ -1161,7 +1166,7 @@
   "ghData": {
     "organization": {
       "sponsors": {
-        "totalCount": 52,
+        "totalCount": 51,
         "nodes": [
           {
             "login": "mbax",
@@ -1342,10 +1347,6 @@
           {
             "login": "Rockin21",
             "avatarUrl": "https://avatars.githubusercontent.com/u/110613392?size=64"
-          },
-          {
-            "login": "Etmis",
-            "avatarUrl": "https://avatars.githubusercontent.com/u/113193923?size=64"
           },
           {
             "login": "LilypadGG",
