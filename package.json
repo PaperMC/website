@@ -47,7 +47,7 @@
     "prettier": "3.9.5",
     "prettier-plugin-astro": "0.14.1",
     "prettier-plugin-svelte": "4.1.1",
-    "prettier-plugin-tailwindcss": "0.8.0",
+    "prettier-plugin-tailwindcss": "0.8.1",
     "svelte-eslint-parser": "1.8.0",
     "wrangler": "4.110.0"
   },
