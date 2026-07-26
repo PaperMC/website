@@ -5,10 +5,10 @@
       "slug": "papermc",
       "stats": {
         "balance": {
-          "valueInCents": 1323827
+          "valueInCents": 1324579
         },
         "monthlySpending": {
-          "valueInCents": 112866
+          "valueInCents": 83783
         }
       },
       "contributors": {
@@ -97,7 +97,7 @@
           {
             "name": "Chris Turrell",
             "image": "https://images.opencollective.com/user-e81971f1/avatar.png",
-            "totalAmountDonated": 27500
+            "totalAmountDonated": 28000
           },
           {
             "name": "serhatkotan",
@@ -180,13 +180,13 @@
             "totalAmountDonated": 13500
           },
           {
-            "name": "Oyot Onyenwe",
-            "image": "https://images.opencollective.com/oyot/a8bf375/avatar.png",
-            "totalAmountDonated": 12500
-          },
-          {
             "name": "lexiccn",
             "image": "https://images.opencollective.com/lexiccn/avatar.png",
+            "totalAmountDonated": 13000
+          },
+          {
+            "name": "Oyot Onyenwe",
+            "image": "https://images.opencollective.com/oyot/a8bf375/avatar.png",
             "totalAmountDonated": 12500
           },
           {
@@ -1185,10 +1185,6 @@
             "avatarUrl": "https://avatars.githubusercontent.com/u/647786?size=64"
           },
           {
-            "login": "jhuckaby",
-            "avatarUrl": "https://avatars.githubusercontent.com/u/700765?size=64"
-          },
-          {
             "login": "Henkoglobin",
             "avatarUrl": "https://avatars.githubusercontent.com/u/1849233?size=64"
           },
@@ -1199,10 +1195,6 @@
           {
             "login": "Techcable",
             "avatarUrl": "https://avatars.githubusercontent.com/u/4615889?size=64"
-          },
-          {
-            "login": "Floppy012",
-            "avatarUrl": "https://avatars.githubusercontent.com/u/7030787?size=64"
           },
           {
             "login": "sweepies",
@@ -1357,8 +1349,16 @@
             "avatarUrl": "https://avatars.githubusercontent.com/u/138109127?size=64"
           },
           {
+            "login": "mrrpmeowfurry",
+            "avatarUrl": "https://avatars.githubusercontent.com/u/151947705?size=64"
+          },
+          {
             "login": "andriidiakonov-dev",
             "avatarUrl": "https://avatars.githubusercontent.com/u/205514341?size=64"
+          },
+          {
+            "login": "Vanish-pixel",
+            "avatarUrl": "https://avatars.githubusercontent.com/u/256740334?size=64"
           }
         ]
       }
