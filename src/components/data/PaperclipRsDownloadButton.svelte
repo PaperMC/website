@@ -89,25 +89,3 @@
     </a>
   </div>
 </div>
-
-<style>
-  .size-4 {
-    width: 1rem;
-    height: 1rem;
-  }
-
-  .size-6 {
-    width: 1.5rem;
-    height: 1.5rem;
-  }
-
-  .size-8 {
-    width: 2rem;
-    height: 2rem;
-  }
-
-  [role="menu"] {
-    top: 100%;
-    transition: opacity 0.25s ease;
-  }
-</style>
