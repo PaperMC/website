@@ -51,10 +51,6 @@
     "svelte-eslint-parser": "1.8.0",
     "wrangler": "4.110.0"
   },
-  "overrides": {
-    "@iconify/tools": "5.0.12",
-    "@iconify/utils": "3.1.4"
-  },
   "devEngines": {
     "runtime": {
       "name": "node",
