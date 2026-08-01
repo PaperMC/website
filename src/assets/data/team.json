@@ -86,10 +86,22 @@
     "description": "Paper Developers help with writing code, reviewing PRs, and keeping the project lively. By contributing new features and helping to polish off old code, they make Paper run.",
     "members": [
       {
+        "name": "Doc",
+        "avatar": "https://avatars.githubusercontent.com/u/3602279?v=4",
+        "discord": "doc",
+        "github": "Doc94"
+      },
+      {
         "name": "Lulu",
         "avatar": "https://avatars.githubusercontent.com/u/41980282?v=4",
         "discord": "lulu13022002",
         "github": "Lulu13022002"
+      },
+      {
+        "name": "NonSwag",
+        "avatar": "https://avatars.githubusercontent.com/u/54660361?v=4",
+        "discord": "nonswag",
+        "github": "NonSwag"
       },
       {
         "name": "Owen",
@@ -220,12 +232,6 @@
     "name": "Triage Team",
     "description": "The Triage Team helps the project by reviewing, testing, and organizing our GitHub's issues and pull requests. With their efforts, developers and maintainers are able to most efficiently handle the most important tasks.",
     "members": [
-      {
-        "name": "Doc",
-        "avatar": "https://avatars.githubusercontent.com/u/3602279?v=4",
-        "discord": "doc",
-        "github": "Doc94"
-      },
       {
         "name": "Emily",
         "avatar": "https://avatars.githubusercontent.com/u/35617540?v=4",
