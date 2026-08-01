@@ -1,0 +1,32 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import SoftwareHeader from "@/components/layout/SoftwareHeader.astro";
+import FeatureCard from "@/components/data/FeatureCard.astro";
+import Button from "@/components/input/Button.astro";
+
+import HomeImage1 from "@/assets/images/home-1.png";
+import HomeImage3 from "@/assets/images/home-3.png";
+import CommunityImage from "@/assets/images/community.png";
+
+import { Image } from "astro:assets";
+
+import { getHangarProjects } from "@/utils/hangar";
+
+const { pagination } = await getHangarProjects("paper");
+---
+
+<Layout
+  title="Paperclip-rs"
+  description="Paperclip-rs is our AOT-ready Paper JAR launcher for reduced startup time."
+  keywords={["papermc", "minecraft", "performance", "paperclip-rs", "windows", "linux", "mac"]}
+  canonical="/software/paperclip-rs"
+>
+  <SoftwareHeader id="paperclip-rs" name="Paperclip-rs" icon="brand/paper">
+    <p slot="header">
+      Improved startup-time<br /><span class="text-blue-500">for Paper</span>
+    </p>
+    <p slot="description">
+      Paperclip-rs is our AOT-ready Paper JAR launcher for reduced startup time.
+    </p>
+  </SoftwareHeader>
+</Layout>
