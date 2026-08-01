@@ -1,0 +1,14 @@
+---
+export const prerender = false;
+import Layout from "@/layouts/Layout.astro";
+
+Astro.response.headers.set("Cache-Control", "public, max-age=300, s-maxage=600, stale-while-revalidate=120");
+Astro.response.headers.set("CDN-Cache-Control", "public, max-age=600, stale-while-revalidate=120");
+---
+
+<Layout
+  title="Paper"
+  description="Download Paper, our Minecraft server software offering unrivaled performance and stability."
+  keywords={["papermc", "minecraft", "performance", "paper", "downloads", "jar"]}
+  canonical="/downloads/paper"
+/>
