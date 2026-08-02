@@ -13,6 +13,7 @@
         "@iconify-json/flowbite": "^1.2.7",
         "@iconify-json/griddy-icons": "^1.2.0",
         "@iconify-json/mdi": "^1.2.3",
+        "@iconify-json/pinhead": "^1.2.13",
         "@iconify-json/tabler": "^1.2.38",
         "@iconify-json/wpf": "^1.2.0",
         "@tailwindcss/vite": "4.3.3",
@@ -237,6 +238,8 @@
     "@iconify-json/griddy-icons": ["@iconify-json/griddy-icons@1.2.0", "", { "dependencies": { "@iconify/types": "*" } }, "sha512-C3AdVCAC9WrUNFSmyljsiH59CuyOqUfALsanzD4dO0VOHt4Fz0sttDSeayiSap8u8uACeq8WMZ1KZAmMusuf9w=="],
 
     "@iconify-json/mdi": ["@iconify-json/mdi@1.2.3", "", { "dependencies": { "@iconify/types": "*" } }, "sha512-O3cLwbDOK7NNDf2ihaQOH5F9JglnulNDFV7WprU2dSoZu3h3cWH//h74uQAB87brHmvFVxIOkuBX2sZSzYhScg=="],
+
+    "@iconify-json/pinhead": ["@iconify-json/pinhead@1.2.13", "", { "dependencies": { "@iconify/types": "*" } }, "sha512-B6vLWzIN3bX4qhRriU1JkKx9UW9eS7prQDnplWYneqeHj0mqSfD/R/Qf+zs1y1/5TfipWgxrsBdVdSE2zErWWg=="],
 
     "@iconify-json/tabler": ["@iconify-json/tabler@1.2.38", "", { "dependencies": { "@iconify/types": "*" } }, "sha512-9v6ooRU/bKOK/Whv4w2aiK5gBnfCV9Ei+uD1iDDeLu2b+EnF3G3ZKkRKWEOOLG8bJyfKn6XEia6gUQ9oO7cF+Q=="],
 

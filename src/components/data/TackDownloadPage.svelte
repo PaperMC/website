@@ -60,7 +60,7 @@
   <div class="flex-1">
     <div class="mb-6 flex flex-row items-center gap-4">
       <div class="flex h-12 w-12 items-center justify-center rounded-lg bg-gray-800 p-3">
-        <Icon name="tabler:pin-filled" class="h-full w-full text-white" />
+        <Icon name="pinhead:flat-head-thumb-tack" class="h-full w-full text-white" />
       </div>
       <h1 class="text-xl font-medium">Downloads</h1>
     </div>

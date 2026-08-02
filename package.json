@@ -27,6 +27,7 @@
     "@iconify-json/flowbite": "^1.2.7",
     "@iconify-json/griddy-icons": "^1.2.0",
     "@iconify-json/mdi": "^1.2.3",
+    "@iconify-json/pinhead": "^1.2.13",
     "@iconify-json/tabler": "^1.2.38",
     "@iconify-json/wpf": "^1.2.0",
     "@tailwindcss/vite": "4.3.3",
