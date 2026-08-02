@@ -1,0 +1,17 @@
+---
+export const prerender = false;
+import TackDownloadPage from "@/components/data/TackDownloadPage.svelte";
+import Layout from "@/layouts/Layout.astro";
+
+Astro.response.headers.set("Cache-Control", "public, max-age=300, s-maxage=600, stale-while-revalidate=120");
+Astro.response.headers.set("CDN-Cache-Control", "public, max-age=600, stale-while-revalidate=120");
+---
+
+<Layout
+  title="Tack"
+  description="Download Tack, our AOT-ready Paper JAR launcher for reduced startup time."
+  keywords={["papermc", "minecraft", "performance", "tack", "downloads", "windows", "linux", "mac"]}
+  canonical="/downloads/tack"
+>
+  <TackDownloadPage client:load repository="PaperMC/Tack" />
+</Layout>

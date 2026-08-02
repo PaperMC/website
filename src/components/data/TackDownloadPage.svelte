@@ -1,7 +1,8 @@
 <script lang="ts">
-  import PaperclipRsDownloadButton from "@/components/data/PaperclipRsDownloadButton.svelte";
+  import TackDownloadButton from "@/components/data/TackDownloadButton.svelte";
   import { onMount } from "svelte";
   import DropdownSelect from "@/components/data/DropdownSelect.svelte";
+  import Icon from "astro-iconset/svelte";
 
   interface Props {
     description?: string;
@@ -59,15 +60,13 @@
   <div class="flex-1">
     <div class="mb-6 flex flex-row items-center gap-4">
       <div class="flex h-12 w-12 items-center justify-center rounded-lg bg-gray-800 p-3">
-        {#if icon}
-          <img src={icon!} alt="Paperclip-rs logo" class="h-full w-full object-contain" />
-        {/if}
+        <Icon name="tabler:pin-filled" class="h-full w-full text-white" />
       </div>
       <h1 class="text-xl font-medium">Downloads</h1>
     </div>
 
     <h2 class="text-4xl leading-normal font-medium lg:text-5xl lg:leading-normal">
-      Get Paperclip-rs
+      Get Tack
       <span class="stable">{version}</span>
     </h2>
 
@@ -81,7 +80,7 @@
     </div>
 
     <div class="mt-8 flex flex-col gap-4">
-      <PaperclipRsDownloadButton {repository} {version} asset="none" eol={!!eol} disabled={false} />
+      <TackDownloadButton {repository} {version} asset="none" eol={!!eol} disabled={false} />
     </div>
 
     <section id="builds" class="mt-20">
