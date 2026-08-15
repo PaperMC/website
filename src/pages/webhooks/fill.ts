@@ -2,6 +2,8 @@ import type { APIRoute } from "astro";
 import { env } from "cloudflare:workers";
 import { isDownloadProjectId, refreshDownloadsPageCache } from "@/utils/download";
 
+export const prerender = false;
+
 /** Receives Fill webhooks and refreshes the affected downloads cache. */
 
 const SUPPORTED_TYPES = new Set(["build.published", "build.promoted", "version.created", "version.updated"]);
