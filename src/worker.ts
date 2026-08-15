@@ -1,5 +1,5 @@
 import { handle } from "@astrojs/cloudflare/handler";
-import { refreshDownloadsPageCache } from "./utils/download";
+import { DOWNLOAD_PROJECT_IDS, refreshDownloadsPageCache } from "./utils/download";
 import { PAPER_PLAYERCOUNT_KEY, fetchPaperBstatsPlayerCount } from "./utils/bstats";
 
 const PLAYER_COUNT_CRON = "*/10 * * * *";
@@ -19,9 +19,7 @@ export default {
 } satisfies ExportedHandler<Env>;
 
 async function updateDownloadsPageCache(env: Env) {
-  const projects = ["paper", "velocity", "waterfall", "folia"];
-
-  for (const project of projects) {
+  for (const project of DOWNLOAD_PROJECT_IDS) {
     await refreshDownloadsPageCache(project, env.WEBSITE_CACHE);
   }
 }

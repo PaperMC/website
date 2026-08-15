@@ -1,10 +1,9 @@
 import type { APIRoute } from "astro";
 import { env } from "cloudflare:workers";
-import { refreshDownloadsPageCache } from "@/utils/download";
+import { isDownloadProjectId, refreshDownloadsPageCache } from "@/utils/download";
 
 /** Receives Fill webhooks and refreshes the affected downloads cache. */
 
-const SUPPORTED_PROJECTS = new Set(["paper", "velocity", "waterfall", "folia"]);
 const SUPPORTED_TYPES = new Set(["build.published", "build.promoted", "version.created", "version.updated"]);
 const TIMESTAMP_TOLERANCE_SECONDS = 300;
 
@@ -67,7 +66,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
   }
 
   const project = payload.data?.project?.key;
-  if (typeof project !== "string" || !SUPPORTED_PROJECTS.has(project)) {
+  if (!isDownloadProjectId(project)) {
     // Project not in the cached set: acknowledge and ignore.
     return new Response(null, { status: 202 });
   }
