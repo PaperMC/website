@@ -14,6 +14,17 @@ export function downloadsPageDataKvKey(projectId: string) {
   return `downloads:${projectId}`;
 }
 
+export async function refreshDownloadsPageCache(projectId: string, kv: KVNamespace): Promise<void> {
+  const data = await fetchDownloadsPageData(projectId);
+  if (
+    data.projectResult.error === undefined &&
+    data.stableBuildsResult.error === undefined &&
+    data.experimentalBuildsResult?.error === undefined
+  ) {
+    await kv.put(downloadsPageDataKvKey(projectId), JSON.stringify(data));
+  }
+}
+
 export async function fetchDownloadsPageData(projectId: string, kv?: KVNamespace): Promise<DownloadsPageData> {
   if (kv) {
     const cachedString = await kv.get(downloadsPageDataKvKey(projectId));
