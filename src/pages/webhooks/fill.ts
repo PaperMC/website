@@ -68,7 +68,8 @@ export const POST: APIRoute = async ({ request, locals }) => {
 
   const project = payload.data?.project?.key;
   if (typeof project !== "string" || !SUPPORTED_PROJECTS.has(project)) {
-    return jsonResponse({ error: `Unknown project: ${String(project)}` }, 400);
+    // Project not in the cached set: acknowledge and ignore.
+    return new Response(null, { status: 202 });
   }
 
   const refresh = refreshDownloadsPageCache(project, env.WEBSITE_CACHE);

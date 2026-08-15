@@ -125,7 +125,7 @@ export async function getProjectDescriptor(id: string): Promise<ProjectDescripto
 
 export async function getProjectDescriptorWithHangar(id: string): Promise<{ project: ProjectDescriptor; hangarCount: number } | null> {
   try {
-    const [projectData, hangarData] = await Promise.all([getProject(id), getHangarProjects(id).catch(() => null)]);
+    const [projectData, hangarData] = await Promise.all([getProject(id), getHangarProjects(id)]);
 
     const { latestStableVersion, latestExperimentalVersion } = await findStableAndExperimentalVersions(projectData);
 
