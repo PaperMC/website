@@ -15,10 +15,13 @@
     },
   ],
   "triggers": {
-    "crons": ["*/5 * * * *"],
+    "crons": ["*/10 * * * *", "0 * * * *"],
   },
   "observability": {
     "enabled": true,
   },
   "preview_urls": true,
+  "secrets": {
+    "required": ["FILL_WEBHOOK_SECRET"],
+  },
 }

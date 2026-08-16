@@ -2,6 +2,15 @@ import { getLatestBuild, getProject, getVersionBuilds } from "@/utils/fill";
 import { getHangarProjects } from "@/utils/hangar";
 import { type ProjectDescriptor, type Build, type Project } from "@/utils/types";
 
+export const DOWNLOAD_PROJECT_IDS = ["paper", "velocity", "waterfall", "folia"] as const;
+export type DownloadProjectId = (typeof DOWNLOAD_PROJECT_IDS)[number];
+
+const DOWNLOAD_PROJECT_ID_SET: ReadonlySet<string> = new Set(DOWNLOAD_PROJECT_IDS);
+
+export function isDownloadProjectId(value: unknown): value is DownloadProjectId {
+  return typeof value === "string" && DOWNLOAD_PROJECT_ID_SET.has(value);
+}
+
 export type ProjectDescriptorOrError = { error?: string; value?: ProjectDescriptor };
 export type ProjectBuildsOrError = { error?: string; value?: { latest?: Build; builds: Build[] } };
 export type DownloadsPageData = {
@@ -12,6 +21,17 @@ export type DownloadsPageData = {
 
 export function downloadsPageDataKvKey(projectId: string) {
   return `downloads:${projectId}`;
+}
+
+export async function refreshDownloadsPageCache(projectId: string, kv: KVNamespace): Promise<void> {
+  const data = await fetchDownloadsPageData(projectId);
+  if (
+    data.projectResult.error === undefined &&
+    data.stableBuildsResult.error === undefined &&
+    data.experimentalBuildsResult?.error === undefined
+  ) {
+    await kv.put(downloadsPageDataKvKey(projectId), JSON.stringify(data));
+  }
 }
 
 export async function fetchDownloadsPageData(projectId: string, kv?: KVNamespace): Promise<DownloadsPageData> {
@@ -114,7 +134,7 @@ export async function getProjectDescriptor(id: string): Promise<ProjectDescripto
 
 export async function getProjectDescriptorWithHangar(id: string): Promise<{ project: ProjectDescriptor; hangarCount: number } | null> {
   try {
-    const [projectData, hangarData] = await Promise.all([getProject(id), getHangarProjects(id).catch(() => null)]);
+    const [projectData, hangarData] = await Promise.all([getProject(id), getHangarProjects(id)]);
 
     const { latestStableVersion, latestExperimentalVersion } = await findStableAndExperimentalVersions(projectData);
 
