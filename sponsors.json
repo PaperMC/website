@@ -5,10 +5,10 @@
       "slug": "papermc",
       "stats": {
         "balance": {
-          "valueInCents": 1381012
+          "valueInCents": 1382681
         },
         "monthlySpending": {
-          "valueInCents": 9531
+          "valueInCents": 9699
         }
       },
       "contributors": {
@@ -132,12 +132,12 @@
           {
             "name": "Tyrriel",
             "image": "https://images.opencollective.com/tyrriel/avatar.png",
-            "totalAmountDonated": 20500
+            "totalAmountDonated": 21000
           },
           {
             "name": "TheMeinerLP",
             "image": "https://images.opencollective.com/themeinerlp/c508428/avatar.png",
-            "totalAmountDonated": 20500
+            "totalAmountDonated": 21000
           },
           {
             "name": "GrieferGames",
@@ -440,6 +440,11 @@
             "totalAmountDonated": 4100
           },
           {
+            "name": "ChromMob",
+            "image": "https://images.opencollective.com/chrommob/avatar.png",
+            "totalAmountDonated": 4100
+          },
+          {
             "name": "Mitsui2k",
             "image": "https://images.opencollective.com/mitsui2k/avatar.png",
             "totalAmountDonated": 4000
@@ -447,11 +452,6 @@
           {
             "name": "MyPvP",
             "image": "https://images.opencollective.com/mypvp/7f744b6/logo.png",
-            "totalAmountDonated": 4000
-          },
-          {
-            "name": "ChromMob",
-            "image": "https://images.opencollective.com/chrommob/avatar.png",
             "totalAmountDonated": 4000
           },
           {
@@ -500,9 +500,19 @@
             "totalAmountDonated": 3000
           },
           {
+            "name": "MrBear95",
+            "image": "https://images.opencollective.com/mrbear95/a6a2cad/avatar.png",
+            "totalAmountDonated": 3000
+          },
+          {
             "name": "Frozenbloo",
             "image": "https://images.opencollective.com/frozenbloo/avatar.png",
             "totalAmountDonated": 2900
+          },
+          {
+            "name": "langua",
+            "image": "https://images.opencollective.com/langua/avatar.png",
+            "totalAmountDonated": 2600
           },
           {
             "name": "Max Klug",
@@ -522,11 +532,6 @@
           {
             "name": "BangXi",
             "image": "https://images.opencollective.com/bangxi/5b3dd08/avatar.png",
-            "totalAmountDonated": 2500
-          },
-          {
-            "name": "langua",
-            "image": "https://images.opencollective.com/langua/avatar.png",
             "totalAmountDonated": 2500
           },
           {
@@ -642,11 +647,6 @@
           {
             "name": "Lauren",
             "image": "https://images.opencollective.com/guest-e92e3ff9/avatar.png",
-            "totalAmountDonated": 2000
-          },
-          {
-            "name": "MrBear95",
-            "image": "https://images.opencollective.com/mrbear95/a6a2cad/avatar.png",
             "totalAmountDonated": 2000
           },
           {
@@ -835,6 +835,11 @@
             "totalAmountDonated": 1000
           },
           {
+            "name": "Florian Riedlinger",
+            "image": "https://images.opencollective.com/guest-58f493e6/avatar.png",
+            "totalAmountDonated": 1000
+          },
+          {
             "name": "Void4x8",
             "image": "https://images.opencollective.com/void4x8/avatar.png",
             "totalAmountDonated": 900
@@ -842,11 +847,6 @@
           {
             "name": "Jack",
             "image": "https://images.opencollective.com/user-663c91ca/c2fdb8d/avatar.png",
-            "totalAmountDonated": 900
-          },
-          {
-            "name": "Florian Riedlinger",
-            "image": "https://images.opencollective.com/guest-58f493e6/avatar.png",
             "totalAmountDonated": 900
           },
           {
