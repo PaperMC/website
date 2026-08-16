@@ -4,11 +4,19 @@ import { type ProjectDescriptor, type Build, type Project } from "@/utils/types"
 
 export const DOWNLOAD_PROJECT_IDS = ["paper", "velocity", "waterfall", "folia"] as const;
 export type DownloadProjectId = (typeof DOWNLOAD_PROJECT_IDS)[number];
+export const DOWNLOAD_REGIONS = ["wnam", "weur", "apac"] as const;
+export type DownloadRegion = (typeof DOWNLOAD_REGIONS)[number];
 
 const DOWNLOAD_PROJECT_ID_SET: ReadonlySet<string> = new Set(DOWNLOAD_PROJECT_IDS);
 
 export function isDownloadProjectId(value: unknown): value is DownloadProjectId {
   return typeof value === "string" && DOWNLOAD_PROJECT_ID_SET.has(value);
+}
+
+export function downloadRegionForContinent(continent?: string): DownloadRegion {
+  if (continent === "EU" || continent === "AF") return "weur";
+  if (continent === "AS" || continent === "OC") return "apac";
+  return "wnam";
 }
 
 export type ProjectDescriptorOrError = { error?: string; value?: ProjectDescriptor };
@@ -19,32 +27,60 @@ export type DownloadsPageData = {
   experimentalBuildsResult: ProjectBuildsOrError | null;
 };
 
+export type DownloadsPageSnapshot = {
+  streamId: string;
+  generation: number;
+  revision: string;
+  data: DownloadsPageData;
+};
+
+export type DownloadsLiveStatus = "connecting" | "live" | "reconnecting" | "paused" | "offline";
+
 export function downloadsPageDataKvKey(projectId: string) {
   return `downloads:${projectId}`;
 }
 
-export async function refreshDownloadsPageCache(projectId: string, kv: KVNamespace): Promise<void> {
-  const data = await fetchDownloadsPageData(projectId);
-  if (
+export function isValidDownloadsPageData(data: DownloadsPageData): boolean {
+  return (
     data.projectResult.error === undefined &&
     data.stableBuildsResult.error === undefined &&
     data.experimentalBuildsResult?.error === undefined
-  ) {
-    await kv.put(downloadsPageDataKvKey(projectId), JSON.stringify(data));
-  }
+  );
 }
 
-export async function fetchDownloadsPageData(projectId: string, kv?: KVNamespace): Promise<DownloadsPageData> {
-  if (kv) {
-    const cachedString = await kv.get(downloadsPageDataKvKey(projectId));
-    if (cachedString !== null) {
-      const data = JSON.parse(cachedString);
-      if (data.projectResult && data.stableBuildsResult) {
-        return data;
+export async function downloadsPageDataRevision(data: DownloadsPageData): Promise<string> {
+  const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(canonicalJson(data)));
+  return `sha256:${Array.from(new Uint8Array(digest), (byte) => byte.toString(16).padStart(2, "0")).join("")}`;
+}
+
+export async function fetchDownloadsPageSnapshot(
+  projectId: string,
+  kv: KVNamespace,
+  coordinator?: () => DurableObjectStub
+): Promise<DownloadsPageSnapshot> {
+  const cachedString = await kv.get(downloadsPageDataKvKey(projectId));
+  if (cachedString !== null) {
+    try {
+      const cached: unknown = JSON.parse(cachedString);
+      if (isDownloadsPageSnapshot(cached)) return cached;
+
+      // Read snapshots written by deployments from before the envelope was introduced.
+      if (isDownloadsPageData(cached)) {
+        return { streamId: "uninitialized", generation: 0, revision: await downloadsPageDataRevision(cached), data: cached };
       }
+    } catch {
+      // Fall through to the coordinator or Fill if the cached value is malformed.
     }
   }
 
+  const coordinated = await fetchCoordinatorSnapshot(coordinator);
+  if (coordinated) return coordinated;
+
+  const data = await fetchDownloadsPageData(projectId);
+  return { streamId: "uninitialized", generation: 0, revision: await downloadsPageDataRevision(data), data };
+}
+
+export async function fetchDownloadsPageData(projectId: string): Promise<DownloadsPageData> {
   const projectResult = await getProjectDescriptorOrError(projectId);
   let stableBuildsResultPromise: Promise<ProjectBuildsOrError> | null = null;
   let experimentalBuildsResultPromise: Promise<ProjectBuildsOrError> | null = null;
@@ -61,6 +97,52 @@ export async function fetchDownloadsPageData(projectId: string, kv?: KVNamespace
   const [stableBuildsResult, experimentalBuildsResult] = await Promise.all([stableBuildsResultPromise, experimentalBuildsResultPromise]);
 
   return { projectResult, stableBuildsResult, experimentalBuildsResult };
+}
+
+function isDownloadsPageSnapshot(value: unknown): value is DownloadsPageSnapshot {
+  if (typeof value !== "object" || value === null) return false;
+  const candidate = value as Partial<DownloadsPageSnapshot>;
+  return (
+    typeof candidate.streamId === "string" &&
+    Number.isSafeInteger(candidate.generation) &&
+    (candidate.generation ?? -1) >= 0 &&
+    typeof candidate.revision === "string" &&
+    isDownloadsPageData(candidate.data)
+  );
+}
+
+async function fetchCoordinatorSnapshot(coordinator?: () => DurableObjectStub): Promise<DownloadsPageSnapshot | undefined> {
+  if (!coordinator) return undefined;
+  try {
+    const response = await coordinator().fetch("https://downloads.internal/snapshot");
+    if (!response.ok) return undefined;
+    const snapshot: unknown = await response.json();
+    return isDownloadsPageSnapshot(snapshot) ? snapshot : undefined;
+  } catch {
+    return undefined;
+  }
+}
+
+function isDownloadsPageData(value: unknown): value is DownloadsPageData {
+  if (typeof value !== "object" || value === null) return false;
+  const candidate = value as Partial<DownloadsPageData>;
+  return candidate.projectResult !== undefined && candidate.stableBuildsResult !== undefined;
+}
+
+function canonicalJson(value: unknown): string {
+  return JSON.stringify(sortJsonValue(value));
+}
+
+function sortJsonValue(value: unknown): unknown {
+  if (value === null || typeof value !== "object") return value;
+  if (Array.isArray(value)) return value.map(sortJsonValue);
+
+  const record = value as Record<string, unknown>;
+  return Object.fromEntries(
+    Object.keys(record)
+      .sort()
+      .map((key) => [key, sortJsonValue(record[key])])
+  );
 }
 
 export async function fetchBuildsOrError(projectId: string, versionId: string): Promise<ProjectBuildsOrError> {

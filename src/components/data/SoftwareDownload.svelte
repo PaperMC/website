@@ -3,13 +3,15 @@
 
   import SoftwareDownloadButton from "@/components/data/SoftwareDownloadButton.svelte";
   import SoftwareBuilds from "@/components/data/SoftwareBuilds.svelte";
+  import DownloadsLiveStatusBadge from "@/components/data/DownloadsLiveStatusBadge.svelte";
+  import DownloadsUpdateToast from "@/components/data/DownloadsUpdateToast.svelte";
 
   import PaperIconUrl from "@/assets/brand/paper.svg?url";
   import VelocityIconUrl from "@/assets/brand/velocity.svg?url";
   import FoliaIconUrl from "@/assets/brand/folia.svg?url";
   import WaterfallIconUrl from "@/assets/brand/waterfall-white.svg?url";
-  import type { Snippet } from "svelte";
-  import { type ProjectBuildsOrError } from "@/utils/download";
+  import { onDestroy, untrack, type Snippet } from "svelte";
+  import { type DownloadsLiveStatus, type ProjectBuildsOrError } from "@/utils/download";
 
   interface Props {
     id: "paper" | "velocity" | "folia" | "waterfall" | (string & {});
@@ -20,6 +22,8 @@
     Description?: Snippet;
     experimentalWarning?: string;
     eol?: boolean;
+    liveStatus: DownloadsLiveStatus;
+    updateNotification: number;
   }
 
   let {
@@ -31,6 +35,8 @@
     Description = undefined,
     experimentalWarning = undefined,
     eol = false,
+    liveStatus,
+    updateNotification,
   }: Props = $props();
 
   const ICONS: Record<string, string | undefined> = {
@@ -55,6 +61,59 @@
   }
 
   let builds = $derived(isStable ? stableBuilds : (experimentalBuilds ?? stableBuilds));
+  const TOAST_DURATION_MS = 15_000;
+  let toasts = $state<Array<{ id: number; projectName: string; channel?: string; paused: boolean }>>([]);
+  // eslint-disable-next-line svelte/prefer-svelte-reactivity -- Imperative timer registry; mutations never drive rendering.
+  const toastTimers = new Map<number, { timer: ReturnType<typeof setTimeout>; remainingMs: number; startedAt: number }>();
+  let nextToastId = 0;
+
+  function dismissToast(toastId: number) {
+    const state = toastTimers.get(toastId);
+    if (state) clearTimeout(state.timer);
+    toastTimers.delete(toastId);
+    toasts = toasts.filter((toast) => toast.id !== toastId);
+  }
+
+  function showUpdateToast(projectName = project.name, channel = builds?.value?.latest?.channel) {
+    const toast = { id: ++nextToastId, projectName, channel, paused: false };
+    toasts = [...toasts, toast];
+    toastTimers.set(toast.id, {
+      timer: setTimeout(() => dismissToast(toast.id), TOAST_DURATION_MS),
+      remainingMs: TOAST_DURATION_MS,
+      startedAt: performance.now(),
+    });
+  }
+
+  function pauseToast(toastId: number) {
+    const state = toastTimers.get(toastId);
+    if (!state || toasts.find((toast) => toast.id === toastId)?.paused) return;
+    clearTimeout(state.timer);
+    state.remainingMs = Math.max(0, state.remainingMs - (performance.now() - state.startedAt));
+    toasts = toasts.map((toast) => (toast.id === toastId ? { ...toast, paused: true } : toast));
+  }
+
+  function resumeToast(toastId: number) {
+    const state = toastTimers.get(toastId);
+    if (!state || !toasts.find((toast) => toast.id === toastId)?.paused) return;
+    state.startedAt = performance.now();
+    state.timer = setTimeout(() => dismissToast(toastId), state.remainingMs);
+    toasts = toasts.map((toast) => (toast.id === toastId ? { ...toast, paused: false } : toast));
+  }
+
+  function showRandomTestToast() {
+    const variants = ["recommended", "beta", "alpha", undefined];
+    const channel = variants[Math.floor(Math.random() * variants.length)];
+    showUpdateToast(project.name, channel);
+  }
+
+  $effect(() => {
+    if (updateNotification > 0) untrack(showUpdateToast);
+  });
+
+  onDestroy(() => {
+    for (const state of toastTimers.values()) clearTimeout(state.timer);
+    toastTimers.clear();
+  });
 </script>
 
 <header class="mx-auto flex max-w-7xl flex-row flex-wrap gap-16 px-4 pt-32 pb-16 lg:pt-48 lg:pb-26">
@@ -72,6 +131,8 @@
         {/if}
       </div>
       <h1 class="text-xl font-medium">Downloads</h1>
+      <DownloadsLiveStatusBadge id="downloads-live-status" status={liveStatus} />
+      <button type="button" class="btn btn-primary rounded-md px-2 py-1 text-xs" onclick={showRandomTestToast}>Test random toast</button>
     </div>
 
     <h2 class="text-4xl leading-normal font-medium lg:text-5xl lg:leading-normal">
@@ -139,3 +200,5 @@
     <div class="hidden"></div>
   </div>
 </header>
+
+<DownloadsUpdateToast {toasts} durationMs={TOAST_DURATION_MS} ondismiss={dismissToast} onpause={pauseToast} onresume={resumeToast} />
