@@ -2,6 +2,10 @@
 node_modules/
 bun.lock
 
+# Vendored skills listed in skills-lock.json
+.agents/skills/svelte-code-writer/
+.agents/skills/svelte-core-bestpractices/
+
 # Build outputs
 dist/
 .astro/
