@@ -1,5 +1,5 @@
 import type { APIRoute } from "astro";
-import { downloadsPageDataKvKey, getProjectDescriptorOrError, type DownloadsPageData } from "@/utils/download";
+import { downloadsPageDataKvKey, getProjectDescriptorOrError, type DownloadsPageData, type DownloadsPageSnapshot } from "@/utils/download";
 import { env } from "cloudflare:workers";
 
 export const GET: APIRoute = async () => {
@@ -9,7 +9,8 @@ export const GET: APIRoute = async () => {
   if (kv) {
     const cached = await kv.get(downloadsPageDataKvKey("paper"));
     if (cached !== null) {
-      const pageData: DownloadsPageData = JSON.parse(cached);
+      const cachedData = JSON.parse(cached) as DownloadsPageData | DownloadsPageSnapshot;
+      const pageData = "data" in cachedData ? cachedData.data : cachedData;
       const cachedVer = pageData.projectResult.value?.latestStableVersion;
       if (cachedVer) {
         ver = cachedVer;
