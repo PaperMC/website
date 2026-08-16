@@ -1,6 +1,9 @@
 import { handle } from "@astrojs/cloudflare/handler";
 import { DOWNLOAD_PROJECT_IDS, refreshDownloadsPageCache } from "./utils/download";
 import { PAPER_PLAYERCOUNT_KEY, fetchPaperBstatsPlayerCount } from "./utils/bstats";
+import { DownloadsUpdateCoordinator, DownloadsWebSocketShard } from "./downloads-live";
+
+export { DownloadsUpdateCoordinator, DownloadsWebSocketShard };
 
 const PLAYER_COUNT_CRON = "*/10 * * * *";
 const DOWNLOADS_RECONCILIATION_CRON = "0 * * * *";
