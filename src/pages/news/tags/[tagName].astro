@@ -1,0 +1,84 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import { countWords, minutesToRead, truncateForPreview } from "@/utils/content";
+import { formatDateLong } from "@/utils/time.ts";
+import { Icon } from "astro-icon/components";
+import Tag from "@/components/news/Tag.astro";
+
+export async function getStaticPaths() {
+  const allPosts = await getCollection("posts");
+
+  const uniqueTags = [...new Set(allPosts.map((post: any) => post.data.tags).flat())];
+  return uniqueTags.map((uniqueTag) => {
+    const filteredPosts = allPosts.filter((post: any) => post.data.tags.includes(uniqueTag));
+    const postsWithMeta = filteredPosts.map((p) => {
+      const words = countWords(p.body ?? "");
+      const excerpt = truncateForPreview(p.body ?? "", 700);
+      return {
+        ...p,
+        words,
+        mins: minutesToRead(words),
+        excerpt,
+      };
+    });
+    return {
+      params: { tagName: uniqueTag },
+      props: { posts: postsWithMeta },
+    };
+  });
+}
+const { tagName } = Astro.params;
+const { posts } = Astro.props;
+---
+
+<Layout title={tagName} description="news using the tag `{tagName}`" keywords={["blog", "news", "updates", "latest"]} canonical="/tags">
+  <div class="container mx-auto mt-10 max-w-7xl px-4 py-12">
+    <header class="flex flex-col gap-4">
+      <a href="/news" class="text-sm font-light text-current/80 hover:text-current">&lt; Back to news index</a>
+      <h1 class="flex items-center gap-4 text-2xl font-semibold lg:text-3xl">
+        Posts with tag: <Tag name={tagName} />
+      </h1>
+    </header>
+    <div class="flex flex-col gap-4">
+      {
+        posts.map((entry, idx) => (
+          <a href={`/news/${entry.id}`} class="group rounded-lg">
+            <div class="btn btn-outline btn-gray flex flex-col gap-6 rounded-lg py-6 transition-colors duration-200">
+              <div class="flex flex-col gap-3 p-6">
+                <div class="flex items-baseline justify-between gap-4">
+                  <h2 class="text-foreground group-hover:text-primary text-xl leading-tight font-bold text-balance">{entry.data.title}</h2>
+                  {idx === 0 ? (
+                    <span class="bg-channel-stable-primary text-channel-stable-secondary shadow-channel-stable-primary/50 ml-4 inline-flex items-center rounded-sm px-2.5 py-0.5 text-xs font-semibold shadow-sm">
+                      Latest
+                    </span>
+                  ) : null}
+                </div>
+
+                <div class="text-muted-foreground text-xs">
+                  <div class="flex flex-row flex-wrap items-baseline gap-x-3 gap-y-1">
+                    <span class="inline-flex items-baseline gap-1.5">
+                      <Icon name="icons/lucide/calendar" class="size-3.5 translate-y-px" />
+                      <span>{formatDateLong(new Date(entry.data.date))}</span>
+                    </span>
+
+                    <span aria-hidden="true">·</span>
+
+                    <span class="inline-flex items-baseline gap-1.5">
+                      <Icon name="icons/lucide/clock" class="size-3.5 translate-y-px" />
+                      <span>{entry.mins} min read</span>
+                    </span>
+                  </div>
+                </div>
+
+                <p class="text-muted-foreground mask-fade-bottom max-h-28 overflow-hidden text-sm leading-relaxed [--fade-size:2.5rem]">
+                  {entry.excerpt}
+                </p>
+              </div>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</Layout>
