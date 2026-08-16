@@ -3,10 +3,11 @@ export const prerender = false;
 import { env } from "cloudflare:workers";
 import Layout from "@/layouts/Layout.astro";
 import SoftwareDownloadPage from "@/components/data/SoftwareDownloadPage.svelte";
-import { fetchDownloadsPageData } from "@/utils/download";
+import { fetchDownloadsPageSnapshot } from "@/utils/download";
+import { coordinatorStub } from "@/downloads-live";
 
 Astro.response.headers.set("Cache-Control", "private, max-age=60");
-const data = await fetchDownloadsPageData("velocity", env.WEBSITE_CACHE);
+const snapshot = await fetchDownloadsPageSnapshot("velocity", env.WEBSITE_CACHE, () => coordinatorStub(env, "velocity"));
 ---
 
 <Layout
@@ -15,5 +16,10 @@ const data = await fetchDownloadsPageData("velocity", env.WEBSITE_CACHE);
   keywords={["papermc", "minecraft", "performance", "velocity", "downloads", "jar"]}
   canonical="/downloads/velocity"
 >
-  <SoftwareDownloadPage id="velocity" description="Download Velocity, our high-performance Minecraft proxy." client:load="svelte" {data} />
+  <SoftwareDownloadPage
+    id="velocity"
+    description="Download Velocity, our high-performance Minecraft proxy."
+    client:load="svelte"
+    {snapshot}
+  />
 </Layout>
