@@ -4,11 +4,19 @@ import { type ProjectDescriptor, type Build, type Project } from "@/utils/types"
 
 export const DOWNLOAD_PROJECT_IDS = ["paper", "velocity", "waterfall", "folia"] as const;
 export type DownloadProjectId = (typeof DOWNLOAD_PROJECT_IDS)[number];
+export const DOWNLOAD_REGIONS = ["wnam", "weur", "apac"] as const;
+export type DownloadRegion = (typeof DOWNLOAD_REGIONS)[number];
 
 const DOWNLOAD_PROJECT_ID_SET: ReadonlySet<string> = new Set(DOWNLOAD_PROJECT_IDS);
 
 export function isDownloadProjectId(value: unknown): value is DownloadProjectId {
   return typeof value === "string" && DOWNLOAD_PROJECT_ID_SET.has(value);
+}
+
+export function downloadRegionForContinent(continent?: string): DownloadRegion {
+  if (continent === "EU" || continent === "AF") return "weur";
+  if (continent === "AS" || continent === "OC") return "apac";
+  return "wnam";
 }
 
 export type ProjectDescriptorOrError = { error?: string; value?: ProjectDescriptor };
@@ -19,19 +27,53 @@ export type DownloadsPageData = {
   experimentalBuildsResult: ProjectBuildsOrError | null;
 };
 
+export type DownloadsPageSnapshot = {
+  streamId: string;
+  generation: number;
+  revision: string;
+  data: DownloadsPageData;
+};
+
+export type DownloadsLiveStatus = "connecting" | "live" | "reconnecting" | "paused" | "offline";
+
 export function downloadsPageDataKvKey(projectId: string) {
   return `downloads:${projectId}`;
 }
 
-export async function refreshDownloadsPageCache(projectId: string, kv: KVNamespace): Promise<void> {
-  const data = await fetchDownloadsPageData(projectId);
-  if (
+export function isValidDownloadsPageData(data: DownloadsPageData): boolean {
+  return (
     data.projectResult.error === undefined &&
     data.stableBuildsResult.error === undefined &&
     data.experimentalBuildsResult?.error === undefined
-  ) {
+  );
+}
+
+export async function downloadsPageDataRevision(data: DownloadsPageData): Promise<string> {
+  const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(canonicalJson(data)));
+  return `sha256:${Array.from(new Uint8Array(digest), (byte) => byte.toString(16).padStart(2, "0")).join("")}`;
+}
+
+export async function refreshDownloadsPageCache(projectId: string, kv: KVNamespace): Promise<void> {
+  const data = await fetchDownloadsPageData(projectId);
+  if (isValidDownloadsPageData(data)) {
     await kv.put(downloadsPageDataKvKey(projectId), JSON.stringify(data));
   }
+}
+
+function canonicalJson(value: unknown): string {
+  return JSON.stringify(sortJsonValue(value));
+}
+
+function sortJsonValue(value: unknown): unknown {
+  if (value === null || typeof value !== "object") return value;
+  if (Array.isArray(value)) return value.map(sortJsonValue);
+
+  const record = value as Record<string, unknown>;
+  return Object.fromEntries(
+    Object.keys(record)
+      .sort()
+      .map((key) => [key, sortJsonValue(record[key])])
+  );
 }
 
 export async function fetchDownloadsPageData(projectId: string, kv?: KVNamespace): Promise<DownloadsPageData> {
