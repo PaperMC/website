@@ -100,12 +100,6 @@
     toasts = toasts.map((toast) => (toast.id === toastId ? { ...toast, paused: false } : toast));
   }
 
-  function showRandomTestToast() {
-    const variants = ["recommended", "beta", "alpha", undefined];
-    const channel = variants[Math.floor(Math.random() * variants.length)];
-    showUpdateToast(project.name, channel);
-  }
-
   $effect(() => {
     if (updateNotification > 0) untrack(showUpdateToast);
   });
@@ -132,7 +126,6 @@
       </div>
       <h1 class="text-xl font-medium">Downloads</h1>
       <DownloadsLiveStatusBadge id="downloads-live-status" status={liveStatus} />
-      <button type="button" class="btn btn-primary rounded-md px-2 py-1 text-xs" onclick={showRandomTestToast}>Test random toast</button>
     </div>
 
     <h2 class="text-4xl leading-normal font-medium lg:text-5xl lg:leading-normal">
