@@ -3,10 +3,11 @@ export const prerender = false;
 import { env } from "cloudflare:workers";
 import Layout from "@/layouts/Layout.astro";
 import SoftwareDownloadPage from "@/components/data/SoftwareDownloadPage.svelte";
-import { fetchDownloadsPageSnapshot } from "@/utils/download";
+import { downloadsPageCacheTag, fetchDownloadsPageSnapshot } from "@/utils/download";
 import { coordinatorStub } from "@/downloads-live";
 
-Astro.response.headers.set("Cache-Control", "private, max-age=60");
+Astro.response.headers.set("Cache-Control", "public, max-age=300, s-maxage=600, stale-while-revalidate=120");
+Astro.response.headers.set("Cache-Tag", downloadsPageCacheTag("waterfall"));
 const snapshot = await fetchDownloadsPageSnapshot("waterfall", env.WEBSITE_CACHE, () => coordinatorStub(env, "waterfall"));
 
 const descriptionHtml = `
