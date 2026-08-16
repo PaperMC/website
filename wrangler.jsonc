@@ -4,6 +4,23 @@
   "main": "./src/worker.ts",
   "compatibility_date": "2026-02-19",
   "compatibility_flags": ["nodejs_compat", "disable_nodejs_process_v2"],
+  "cache": {
+    "enabled": true,
+  },
+  "exports": {
+    "default": {
+      "type": "worker",
+      "cache": {
+        "enabled": false,
+      },
+    },
+    "DownloadsPages": {
+      "type": "worker",
+      "cache": {
+        "enabled": true,
+      },
+    },
+  },
   "assets": {
     "binding": "ASSETS",
     "directory": "./dist",
