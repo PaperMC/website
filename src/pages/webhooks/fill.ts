@@ -1,6 +1,6 @@
 import type { APIRoute } from "astro";
 import { env } from "cloudflare:workers";
-import { isDownloadProjectId, refreshDownloadsPageCache } from "@/utils/download";
+import { DOWNLOAD_PROJECT_IDS, isDownloadProjectId, refreshDownloadsPageCache } from "@/utils/download";
 
 export const prerender = false;
 
@@ -18,6 +18,7 @@ function acknowledge(): Response {
 export const POST: APIRoute = async ({ request, locals }) => {
   const secret = env.FILL_WEBHOOK_SECRET;
   if (!secret) {
+    console.warn("Received Fill webhook but FILL_WEBHOOK_SECRET is not configured");
     return Response.json({ error: "Fill webhooks are not configured on this deployment" }, { status: 503 });
   }
 
@@ -26,12 +27,16 @@ export const POST: APIRoute = async ({ request, locals }) => {
   const signature = request.headers.get("webhook-signature");
 
   if (!deliveryId || !timestamp || !signature) {
+    console.warn(
+      `Received Fill webhook with missing Standard Webhooks headers: deliveryId=${deliveryId ?? "missing"} timestamp=${timestamp ?? "missing"} hasSignature=${Boolean(signature)}`
+    );
     return Response.json({ error: "Missing Standard Webhooks headers" }, { status: 400 });
   }
 
   const nowSeconds = Math.floor(Date.now() / 1000);
   const timestampSeconds = Number(timestamp);
   if (!Number.isInteger(timestampSeconds) || Math.abs(nowSeconds - timestampSeconds) > TIMESTAMP_TOLERANCE_SECONDS) {
+    console.warn(`Received Fill webhook ${deliveryId} with timestamp outside tolerance: timestamp=${timestamp} now=${nowSeconds}`);
     return Response.json({ error: "Webhook timestamp outside tolerance" }, { status: 401 });
   }
 
@@ -40,11 +45,13 @@ export const POST: APIRoute = async ({ request, locals }) => {
   let signatureMatches: boolean;
   try {
     signatureMatches = await verifySignature(secret, `${deliveryId}.${timestamp}.${body}`, signature);
-  } catch {
+  } catch (error) {
+    console.error(`Failed to verify Fill webhook ${deliveryId}: invalid secret configuration`, error);
     return Response.json({ error: "Fill webhooks are not configured with a valid secret" }, { status: 503 });
   }
 
   if (!signatureMatches) {
+    console.warn(`Received Fill webhook ${deliveryId} with invalid signature`);
     return Response.json({ error: "Invalid webhook signature" }, { status: 401 });
   }
 
@@ -52,21 +59,29 @@ export const POST: APIRoute = async ({ request, locals }) => {
   try {
     payload = JSON.parse(body);
   } catch {
+    console.warn(`Received Fill webhook ${deliveryId} with invalid JSON body`);
     return Response.json({ error: "Invalid JSON body" }, { status: 400 });
   }
 
   if (typeof payload.type !== "string" || !SUPPORTED_TYPES.has(payload.type)) {
-    // Unknown event type: acknowledge and ignore.
+    console.log(`Ignoring Fill webhook ${deliveryId}: unsupported type ${JSON.stringify(payload.type)}`);
     return acknowledge();
   }
 
   const project = payload.data?.project?.key;
+
   if (!isDownloadProjectId(project)) {
-    // Project not in the cached set: acknowledge and ignore.
+    console.log(
+      `Ignoring Fill webhook ${deliveryId} (${payload.type}): project ${JSON.stringify(project)} not in cached set [${DOWNLOAD_PROJECT_IDS.join(", ")}]`
+    );
     return acknowledge();
   }
 
-  const refresh = refreshDownloadsPageCache(project, env.WEBSITE_CACHE);
+  console.log(`Fill webhook ${deliveryId} (${payload.type}): refreshing downloads cache for ${project}`);
+
+  const refresh = refreshDownloadsPageCache({ projectId: project, kv: env.WEBSITE_CACHE, logUnchanged: true }).catch((error) => {
+    console.error(`Failed to refresh downloads cache for ${project} after webhook ${deliveryId}:`, error);
+  });
   if (locals.cfContext) {
     locals.cfContext.waitUntil(refresh);
   } else {
