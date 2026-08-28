@@ -3,10 +3,11 @@ export const prerender = false;
 import { env } from "cloudflare:workers";
 import Layout from "@/layouts/Layout.astro";
 import SoftwareDownloadPage from "@/components/data/SoftwareDownloadPage.svelte";
-import { fetchDownloadsPageData } from "@/utils/download";
+import { fetchDownloadsPageSnapshot } from "@/utils/download";
+import { coordinatorStub } from "@/downloads-live";
 
 Astro.response.headers.set("Cache-Control", "private, max-age=60");
-const data = await fetchDownloadsPageData("paper", env.WEBSITE_CACHE);
+const snapshot = await fetchDownloadsPageSnapshot("paper", env.WEBSITE_CACHE, () => coordinatorStub(env, "paper"));
 ---
 
 <Layout
@@ -20,6 +21,6 @@ const data = await fetchDownloadsPageData("paper", env.WEBSITE_CACHE);
     description="Download Paper, our Minecraft server software offering unrivaled performance and stability."
     experimentalWarning="Download experimental builds of Paper, our Minecraft server software offering unrivaled performance and stability. Proceed with caution!"
     client:load="svelte"
-    {data}
+    {snapshot}
   />
 </Layout>
