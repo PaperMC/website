@@ -14,6 +14,24 @@
       "id": "99e81ab8e2c74620b115ca861ebae59a",
     },
   ],
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "DOWNLOAD_UPDATES",
+        "class_name": "DownloadsUpdateCoordinator",
+      },
+      {
+        "name": "DOWNLOAD_CLIENTS",
+        "class_name": "DownloadsWebSocketShard",
+      },
+    ],
+  },
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": ["DownloadsUpdateCoordinator", "DownloadsWebSocketShard"],
+    },
+  ],
   "triggers": {
     "crons": ["*/10 * * * *", "0 * * * *"],
   },
