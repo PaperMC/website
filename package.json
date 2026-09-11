@@ -34,7 +34,7 @@
     "typescript": "6.0.3"
   },
   "devDependencies": {
-    "@astrojs/mdx": "7.0.7",
+    "@astrojs/mdx": "8.0.1",
     "@tailwindcss/typography": "0.5.20",
     "@types/node": "25.9.5",
     "@typescript-eslint/eslint-plugin": "8.67.0",
