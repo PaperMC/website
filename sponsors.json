@@ -5,10 +5,10 @@
       "slug": "papermc",
       "stats": {
         "balance": {
-          "valueInCents": 1444726
+          "valueInCents": 1446699
         },
         "monthlySpending": {
-          "valueInCents": 9799
+          "valueInCents": 9864
         }
       },
       "contributors": {
@@ -125,18 +125,18 @@
             "totalAmountDonated": 22500
           },
           {
-            "name": "Crumbs",
-            "image": "https://images.opencollective.com/user-81aac38d/avatar.png",
-            "totalAmountDonated": 21000
-          },
-          {
             "name": "Tyrriel",
             "image": "https://images.opencollective.com/tyrriel/avatar.png",
-            "totalAmountDonated": 21000
+            "totalAmountDonated": 21500
           },
           {
             "name": "TheMeinerLP",
             "image": "https://images.opencollective.com/themeinerlp/c508428/avatar.png",
+            "totalAmountDonated": 21500
+          },
+          {
+            "name": "Crumbs",
+            "image": "https://images.opencollective.com/user-81aac38d/avatar.png",
             "totalAmountDonated": 21000
           },
           {
@@ -275,6 +275,11 @@
             "totalAmountDonated": 9000
           },
           {
+            "name": "blue_dev",
+            "image": "https://images.opencollective.com/blue_dev/avatar.png",
+            "totalAmountDonated": 9000
+          },
+          {
             "name": "TheRealLemon",
             "image": "https://images.opencollective.com/thereallemon/b23bfd0/avatar.png",
             "totalAmountDonated": 8700
@@ -282,11 +287,6 @@
           {
             "name": "P529",
             "image": "https://images.opencollective.com/p529/avatar.png",
-            "totalAmountDonated": 8500
-          },
-          {
-            "name": "blue_dev",
-            "image": "https://images.opencollective.com/blue_dev/avatar.png",
             "totalAmountDonated": 8500
           },
           {
@@ -442,7 +442,7 @@
           {
             "name": "ChromMob",
             "image": "https://images.opencollective.com/chrommob/avatar.png",
-            "totalAmountDonated": 4100
+            "totalAmountDonated": 4200
           },
           {
             "name": "Mitsui2k",
@@ -452,6 +452,11 @@
           {
             "name": "MyPvP",
             "image": "https://images.opencollective.com/mypvp/7f744b6/logo.png",
+            "totalAmountDonated": 4000
+          },
+          {
+            "name": "MrBear95",
+            "image": "https://images.opencollective.com/mrbear95/a6a2cad/avatar.png",
             "totalAmountDonated": 4000
           },
           {
@@ -497,11 +502,6 @@
           {
             "name": "karmuss",
             "image": "https://images.opencollective.com/tofik1/avatar.png",
-            "totalAmountDonated": 3000
-          },
-          {
-            "name": "MrBear95",
-            "image": "https://images.opencollective.com/mrbear95/a6a2cad/avatar.png",
             "totalAmountDonated": 3000
           },
           {
@@ -1171,7 +1171,7 @@
   "ghData": {
     "organization": {
       "sponsors": {
-        "totalCount": 50,
+        "totalCount": 47,
         "nodes": [
           {
             "login": "mbax",
@@ -1228,10 +1228,6 @@
           {
             "login": "Taranchul",
             "avatarUrl": "https://avatars.githubusercontent.com/u/22596638?size=64"
-          },
-          {
-            "login": "DiscowZombie",
-            "avatarUrl": "https://avatars.githubusercontent.com/u/25774021?size=64"
           },
           {
             "login": "voidpls",
@@ -1322,10 +1318,6 @@
             "avatarUrl": "https://avatars.githubusercontent.com/u/68199735?size=64"
           },
           {
-            "login": "Bloom-host",
-            "avatarUrl": "https://avatars.githubusercontent.com/u/74978753?size=64"
-          },
-          {
             "login": "Fanfaryy",
             "avatarUrl": "https://avatars.githubusercontent.com/u/78618405?size=64"
           },
@@ -1352,10 +1344,6 @@
           {
             "login": "LilypadGG",
             "avatarUrl": "https://avatars.githubusercontent.com/u/131988708?size=64"
-          },
-          {
-            "login": "mrrpmeowfurry",
-            "avatarUrl": "https://avatars.githubusercontent.com/u/151947705?size=64"
           },
           {
             "login": "WakfuYT",
