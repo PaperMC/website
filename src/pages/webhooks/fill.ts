@@ -1,5 +1,5 @@
 import type { APIRoute } from "astro";
-import { env } from "cloudflare:workers";
+import { env, exports } from "cloudflare:workers";
 import { isDownloadProjectId } from "@/utils/download";
 import { requestDownloadsRefresh } from "@/downloads-live";
 
@@ -67,7 +67,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
     return acknowledge();
   }
 
-  const refresh = requestDownloadsRefresh(env, project, deliveryId);
+  const refresh = requestDownloadsRefresh(env, project, deliveryId).then(() => exports.DownloadsPages.invalidate(project));
   if (locals.cfContext) {
     locals.cfContext.waitUntil(refresh);
   } else {
