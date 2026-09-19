@@ -53,40 +53,34 @@ export async function downloadsPageDataRevision(data: DownloadsPageData): Promis
   return `sha256:${Array.from(new Uint8Array(digest), (byte) => byte.toString(16).padStart(2, "0")).join("")}`;
 }
 
-export async function refreshDownloadsPageCache(projectId: string, kv: KVNamespace): Promise<void> {
-  const data = await fetchDownloadsPageData(projectId);
-  if (isValidDownloadsPageData(data)) {
-    await kv.put(downloadsPageDataKvKey(projectId), JSON.stringify(data));
-  }
-}
+export async function fetchDownloadsPageSnapshot(
+  projectId: string,
+  kv: KVNamespace,
+  coordinator?: () => DurableObjectStub
+): Promise<DownloadsPageSnapshot> {
+  const cachedString = await kv.get(downloadsPageDataKvKey(projectId));
+  if (cachedString !== null) {
+    try {
+      const cached: unknown = JSON.parse(cachedString);
+      if (isDownloadsPageSnapshot(cached)) return cached;
 
-function canonicalJson(value: unknown): string {
-  return JSON.stringify(sortJsonValue(value));
-}
-
-function sortJsonValue(value: unknown): unknown {
-  if (value === null || typeof value !== "object") return value;
-  if (Array.isArray(value)) return value.map(sortJsonValue);
-
-  const record = value as Record<string, unknown>;
-  return Object.fromEntries(
-    Object.keys(record)
-      .sort()
-      .map((key) => [key, sortJsonValue(record[key])])
-  );
-}
-
-export async function fetchDownloadsPageData(projectId: string, kv?: KVNamespace): Promise<DownloadsPageData> {
-  if (kv) {
-    const cachedString = await kv.get(downloadsPageDataKvKey(projectId));
-    if (cachedString !== null) {
-      const data = JSON.parse(cachedString);
-      if (data.projectResult && data.stableBuildsResult) {
-        return data;
+      // Read snapshots written by deployments from before the envelope was introduced.
+      if (isDownloadsPageData(cached)) {
+        return { streamId: "uninitialized", generation: 0, revision: await downloadsPageDataRevision(cached), data: cached };
       }
+    } catch {
+      // Fall through to the coordinator or Fill if the cached value is malformed.
     }
   }
 
+  const coordinated = await fetchCoordinatorSnapshot(coordinator);
+  if (coordinated) return coordinated;
+
+  const data = await fetchDownloadsPageData(projectId);
+  return { streamId: "uninitialized", generation: 0, revision: await downloadsPageDataRevision(data), data };
+}
+
+export async function fetchDownloadsPageData(projectId: string): Promise<DownloadsPageData> {
   const projectResult = await getProjectDescriptorOrError(projectId);
   let stableBuildsResultPromise: Promise<ProjectBuildsOrError> | null = null;
   let experimentalBuildsResultPromise: Promise<ProjectBuildsOrError> | null = null;
@@ -103,6 +97,52 @@ export async function fetchDownloadsPageData(projectId: string, kv?: KVNamespace
   const [stableBuildsResult, experimentalBuildsResult] = await Promise.all([stableBuildsResultPromise, experimentalBuildsResultPromise]);
 
   return { projectResult, stableBuildsResult, experimentalBuildsResult };
+}
+
+function isDownloadsPageSnapshot(value: unknown): value is DownloadsPageSnapshot {
+  if (typeof value !== "object" || value === null) return false;
+  const candidate = value as Partial<DownloadsPageSnapshot>;
+  return (
+    typeof candidate.streamId === "string" &&
+    Number.isSafeInteger(candidate.generation) &&
+    (candidate.generation ?? -1) >= 0 &&
+    typeof candidate.revision === "string" &&
+    isDownloadsPageData(candidate.data)
+  );
+}
+
+async function fetchCoordinatorSnapshot(coordinator?: () => DurableObjectStub): Promise<DownloadsPageSnapshot | undefined> {
+  if (!coordinator) return undefined;
+  try {
+    const response = await coordinator().fetch("https://downloads.internal/snapshot");
+    if (!response.ok) return undefined;
+    const snapshot: unknown = await response.json();
+    return isDownloadsPageSnapshot(snapshot) ? snapshot : undefined;
+  } catch {
+    return undefined;
+  }
+}
+
+function isDownloadsPageData(value: unknown): value is DownloadsPageData {
+  if (typeof value !== "object" || value === null) return false;
+  const candidate = value as Partial<DownloadsPageData>;
+  return candidate.projectResult !== undefined && candidate.stableBuildsResult !== undefined;
+}
+
+function canonicalJson(value: unknown): string {
+  return JSON.stringify(sortJsonValue(value));
+}
+
+function sortJsonValue(value: unknown): unknown {
+  if (value === null || typeof value !== "object") return value;
+  if (Array.isArray(value)) return value.map(sortJsonValue);
+
+  const record = value as Record<string, unknown>;
+  return Object.fromEntries(
+    Object.keys(record)
+      .sort()
+      .map((key) => [key, sortJsonValue(record[key])])
+  );
 }
 
 export async function fetchBuildsOrError(projectId: string, versionId: string): Promise<ProjectBuildsOrError> {
