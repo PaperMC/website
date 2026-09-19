@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: namespacelabs/nscloud-checkout-action@9
+        uses: namespacelabs/nscloud-checkout-action@v9
 
       - name: Set up cache
         uses: namespacelabs/nscloud-cache-action@v1

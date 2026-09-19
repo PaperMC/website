@@ -14,10 +14,10 @@ jobs:
 
     steps:
       - name: Checkout source
-        uses: namespacelabs/nscloud-checkout-action@9
+        uses: namespacelabs/nscloud-checkout-action@v9
 
       - name: Checkout data branch
-        uses: namespacelabs/nscloud-checkout-action@9
+        uses: namespacelabs/nscloud-checkout-action@v9
         with:
           ref: data
           path: work
