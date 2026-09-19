@@ -11,7 +11,12 @@ export default {
   },
   async scheduled(controller, env, _ctx) {
     if (controller.cron === PLAYER_COUNT_CRON) {
-      await updateStatsCache(env);
+      try {
+        await updateStatsCache(env);
+      } catch (error) {
+        console.error("Scheduled player count cache update failed:", error);
+        throw error;
+      }
     } else if (controller.cron === DOWNLOADS_RECONCILIATION_CRON) {
       await updateDownloadsPageCache(env);
     }
@@ -20,13 +25,20 @@ export default {
 
 async function updateDownloadsPageCache(env: Env) {
   for (const project of DOWNLOAD_PROJECT_IDS) {
-    await refreshDownloadsPageCache(project, env.WEBSITE_CACHE);
+    try {
+      await refreshDownloadsPageCache({ projectId: project, kv: env.WEBSITE_CACHE });
+    } catch (error) {
+      console.error(`Failed to refresh downloads page cache for ${project}:`, error);
+    }
   }
 }
 
 async function updateStatsCache(env: Env) {
   const { players, error } = await fetchPaperBstatsPlayerCount();
-  if (!error) {
-    await env.WEBSITE_CACHE.put(PAPER_PLAYERCOUNT_KEY, JSON.stringify({ players }));
+  if (error) {
+    console.warn(`Not updating player count cache: ${error}`);
+    return;
   }
+
+  await env.WEBSITE_CACHE.put(PAPER_PLAYERCOUNT_KEY, JSON.stringify({ players }));
 }
