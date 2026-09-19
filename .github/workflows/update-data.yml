@@ -10,17 +10,22 @@ permissions:
 
 jobs:
   update-data:
-    runs-on: ubuntu-latest
+    runs-on: namespace-profile-linux-default
 
     steps:
       - name: Checkout source
-        uses: actions/checkout@v7
+        uses: namespacelabs/nscloud-checkout-action@9
 
       - name: Checkout data branch
-        uses: actions/checkout@v7
+        uses: namespacelabs/nscloud-checkout-action@9
         with:
           ref: data
           path: work
+
+      - name: Set up cache
+        uses: namespacelabs/nscloud-cache-action@v1
+        with:
+          cache: "bun"
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2

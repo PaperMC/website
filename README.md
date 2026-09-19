@@ -117,3 +117,5 @@ The supporting code is
 
 The PaperMC logomark is subject to its [own terms](https://docs.papermc.io/misc/assets) and does not
 inherit a license from any of the projects it represents.
+
+<img src="https://papermc.io/assets/misc/namespace-oss-badge.svg?project=website" alt="CI powered by namespace badge" />

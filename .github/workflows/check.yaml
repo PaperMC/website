@@ -7,11 +7,16 @@ on:
 
 jobs:
   lint:
-    runs-on: ubuntu-latest
+    runs-on: namespace-profile-linux-default
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v7
+        uses: namespacelabs/nscloud-checkout-action@9
+
+      - name: Set up cache
+        uses: namespacelabs/nscloud-cache-action@v1
+        with:
+          cache: "bun"
 
       - name: Setup Node
         uses: actions/setup-node@v7
