@@ -13,11 +13,6 @@ jobs:
       - name: Checkout repository
         uses: namespacelabs/nscloud-checkout-action@v9
 
-      - name: Set up cache
-        uses: namespacelabs/nscloud-cache-action@v1
-        with:
-          cache: "bun"
-
       - name: Setup Node
         uses: actions/setup-node@v7
         with:
@@ -25,6 +20,11 @@ jobs:
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
+
+      - name: Set up cache
+        uses: namespacelabs/nscloud-cache-action@v1
+        with:
+          cache: "bun"
 
       - name: Install dependencies
         run: bun install

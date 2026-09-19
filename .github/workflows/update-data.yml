@@ -22,13 +22,13 @@ jobs:
           ref: data
           path: work
 
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+
       - name: Set up cache
         uses: namespacelabs/nscloud-cache-action@v1
         with:
           cache: "bun"
-
-      - name: Setup Bun
-        uses: oven-sh/setup-bun@v2
 
       - name: Clear data branch
         run: find work -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
