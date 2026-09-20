@@ -5,10 +5,10 @@
       "slug": "papermc",
       "stats": {
         "balance": {
-          "valueInCents": 1446699
+          "valueInCents": 1446809
         },
         "monthlySpending": {
-          "valueInCents": 9864
+          "valueInCents": 9844
         }
       },
       "contributors": {
@@ -512,7 +512,7 @@
           {
             "name": "langua",
             "image": "https://images.opencollective.com/langua/avatar.png",
-            "totalAmountDonated": 2600
+            "totalAmountDonated": 2700
           },
           {
             "name": "Max Klug",
@@ -730,6 +730,11 @@
             "totalAmountDonated": 1200
           },
           {
+            "name": "Florian Riedlinger",
+            "image": "https://images.opencollective.com/guest-58f493e6/avatar.png",
+            "totalAmountDonated": 1100
+          },
+          {
             "name": "Josh Taylor",
             "image": "https://images.opencollective.com/josh-taylor/avatar.png",
             "totalAmountDonated": 1000
@@ -832,11 +837,6 @@
           {
             "name": "Don Vuckovic",
             "image": "https://images.opencollective.com/don-vuckovic/586bc23/avatar.png",
-            "totalAmountDonated": 1000
-          },
-          {
-            "name": "Florian Riedlinger",
-            "image": "https://images.opencollective.com/guest-58f493e6/avatar.png",
             "totalAmountDonated": 1000
           },
           {
@@ -975,6 +975,11 @@
             "totalAmountDonated": 500
           },
           {
+            "name": "PyroE",
+            "image": "https://images.opencollective.com/pyroe/efc9d02/avatar.png",
+            "totalAmountDonated": 500
+          },
+          {
             "name": "Emily",
             "image": "https://images.opencollective.com/emilyy_dev/5701545/avatar.png",
             "totalAmountDonated": 450
@@ -1007,11 +1012,6 @@
           {
             "name": "Jesse",
             "image": "https://images.opencollective.com/jesse17/avatar.png",
-            "totalAmountDonated": 400
-          },
-          {
-            "name": "PyroE",
-            "image": "https://images.opencollective.com/pyroe/efc9d02/avatar.png",
             "totalAmountDonated": 400
           },
           {
