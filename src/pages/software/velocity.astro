@@ -24,10 +24,10 @@ const pluginCount = hangarProjects?.pagination.count;
 >
   <SoftwareHeader id="velocity" name="Velocity" icon="brand/velocity">
     <span slot="header">Next generation speed and capability</span>
-    <span slot="description"
-      >Velocity is the modern, high-performance proxy. Designed with performance and stability in mind, it’s a full alternative to Waterfall
-      with its own plugin ecosystem.</span
-    >
+    <span slot="description">
+      Velocity is the modern, high-performance proxy. Designed with performance and stability in mind, it’s a full alternative to Waterfall
+      with its own plugin ecosystem.
+    </span>
   </SoftwareHeader>
   <section id="why" class="bg-background-light-0 dark:bg-background-dark-80 w-full border-y pt-10 pb-5">
     <div class="mx-auto max-w-7xl">
@@ -59,16 +59,18 @@ const pluginCount = hangarProjects?.pagination.count;
       <div class="flex-1">
         <h2 class="text-2xl font-semibold md:text-4xl">A diverse plugin ecosystem</h2>
         <div class="mt-3 text-gray-900 md:mt-6 md:text-xl dark:text-gray-100">
-          Crafted by the PaperMC team & contributors, Hangar is our own dedicated plugin repository, now in open beta! Browse{
-            pluginCount !== undefined && (
-              <>
-                &nbsp;<span class="text-blue-500">{pluginCount}</span>
-              </>
-            )
-          } plugins built for Velocity, or list your own with a very streamlined creation process.
+          Crafted by the PaperMC team & contributors, Hangar is our own dedicated plugin repository, now in open beta! Browse
+          {pluginCount !== undefined && (
+            <>
+              &nbsp;<span class="text-blue-500">{pluginCount}</span>
+            </>
+          )}{" "}
+          plugins built for Velocity, or list your own with a very streamlined creation process.
         </div>
         <div class="mt-8 flex flex-row gap-4">
-          <Button variant="filled" href="https://hangar.papermc.io/" external dense> Check out Hangar </Button>
+          <Button variant="filled" href="https://hangar.papermc.io/" external dense>
+            Check out Hangar
+          </Button>
         </div>
       </div>
     </div>
@@ -83,8 +85,12 @@ const pluginCount = hangarProjects?.pagination.count;
           ready, take a look at our extensive documentation.
         </p>
         <div class="mt-8 flex flex-row gap-4">
-          <Button variant="filled" href="/downloads/velocity" dense> Downloads </Button>
-          <Button variant="outlined" href="https://docs.papermc.io/velocity/getting-started" external dense> Documentation </Button>
+          <Button variant="filled" href="/downloads/velocity" dense>
+            Downloads
+          </Button>
+          <Button variant="outlined" href="https://docs.papermc.io/velocity/getting-started" external dense>
+            Documentation
+          </Button>
         </div>
       </div>
     </div>
@@ -99,7 +105,9 @@ const pluginCount = hangarProjects?.pagination.count;
           friendly community are always around to lend a hand.
         </p>
         <div class="mt-8 flex flex-row gap-4">
-          <Button variant="filled" href="https://discord.gg/papermc" external dense> Join our Discord </Button>
+          <Button variant="filled" href="https://discord.gg/papermc" external dense>
+            Join our Discord
+          </Button>
         </div>
       </div>
     </div>
