@@ -13,6 +13,14 @@ export function isDownloadProjectId(value: unknown): value is DownloadProjectId 
   return typeof value === "string" && DOWNLOAD_PROJECT_ID_SET.has(value);
 }
 
+export function downloadsPagePath(project: DownloadProjectId): `/downloads/${DownloadProjectId}` {
+  return `/downloads/${project}`;
+}
+
+export function downloadsPageCacheTag(project: DownloadProjectId): `downloads:${DownloadProjectId}` {
+  return `downloads:${project}`;
+}
+
 export function downloadRegionForContinent(continent?: string): DownloadRegion {
   if (continent === "EU" || continent === "AF") return "weur";
   if (continent === "AS" || continent === "OC") return "apac";
