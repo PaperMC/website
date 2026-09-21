@@ -43,35 +43,9 @@ const { id, name, icon, github, eol } = Astro.props;
           {github ? "GitHub" : "Downloads"}
         </Button>
         <Button variant="outlined" href={`https://docs.papermc.io/${id}`} external> Documentation </Button>
-        <Button variant="outlined" href="#loading" className="jd-link-btn hidden md:block" external> Javadoc </Button>
+        <Button variant="outlined" href={`https://jd.papermc.io/${id}`} className="hidden md:block" external> Javadoc </Button>
       </div>
     </div>
     <div class="hidden flex-1 justify-end lg:flex"></div>
   </header>
 </software-header>
-
-<script>
-  import { getProject } from "@/utils/fill";
-  import { getLatestVersion } from "@/utils/versions";
-
-  class SoftwareHeader extends HTMLElement {
-    async connectedCallback() {
-      const { software } = this.dataset;
-      if (!software) {
-        return;
-      }
-
-      const button = this.querySelector(".jd-link-btn");
-      if (!button) {
-        return;
-      }
-
-      const { versions } = await getProject(software);
-      const latest = getLatestVersion(versions);
-
-      button.setAttribute("href", `https://jd.papermc.io/${software}/${latest}`);
-    }
-  }
-
-  customElements.define("software-header", SoftwareHeader);
-</script>
