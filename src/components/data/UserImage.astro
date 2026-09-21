@@ -23,25 +23,21 @@ const hasAvatar = Boolean(avatarUrl?.trim());
   aria-label={name}
   title={name}
 >
-  <span class={`initial pointer-events-none select-none ${hasAvatar ? "hidden" : ""}`}>
-    {initial}
-  </span>
+  <span class={`initial pointer-events-none select-none ${hasAvatar ? "hidden" : ""}`}>{initial}</span>
 
-  {
-    hasAvatar && (
-      <RemoteResponsiveImageWrapper
-        alt={`${name}'s avatar`}
-        src={avatarUrl!}
-        width={80}
-        height={80}
-        format="webp"
-        layout="none"
-        loading="lazy"
-        decoding="async"
-        class="pointer-events-none absolute inset-0 h-full w-full rounded-full object-cover"
-      />
-    )
-  }
+  {hasAvatar && (
+    <RemoteResponsiveImageWrapper
+      alt={`${name}'s avatar`}
+      src={avatarUrl!}
+      width={80}
+      height={80}
+      format="webp"
+      layout="none"
+      loading="lazy"
+      decoding="async"
+      class="pointer-events-none absolute inset-0 h-full w-full rounded-full object-cover"
+    />
+  )}
 </Tag>
 
 <style>
