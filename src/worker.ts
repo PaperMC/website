@@ -1,7 +1,14 @@
 import { handle } from "@astrojs/cloudflare/handler";
-import { DOWNLOAD_PROJECT_IDS, refreshDownloadsPageCache } from "./utils/download";
+import { DOWNLOAD_PROJECT_IDS, isDownloadProjectId } from "./utils/download";
 import { PAPER_PLAYERCOUNT_KEY, fetchPaperBstatsPlayerCount } from "./utils/bstats";
-import { DownloadsUpdateCoordinator, DownloadsWebSocketShard } from "./downloads-live";
+import { DOWNLOADS_LIVE_PATH } from "./utils/downloads-live-path";
+import {
+  DownloadsUpdateCoordinator,
+  DownloadsWebSocketShard,
+  downloadRegionForRequest,
+  downloadShardStub,
+  requestDownloadsRefresh,
+} from "./downloads-live";
 
 export { DownloadsUpdateCoordinator, DownloadsWebSocketShard };
 
@@ -10,6 +17,14 @@ const DOWNLOADS_RECONCILIATION_CRON = "0 * * * *";
 
 export default {
   async fetch(request, env, ctx) {
+    const url = new URL(request.url);
+    if (url.pathname === DOWNLOADS_LIVE_PATH) {
+      const project = url.searchParams.get("project");
+      if (!isDownloadProjectId(project)) return new Response("Invalid project", { status: 400 });
+      const region = downloadRegionForRequest(request);
+      url.searchParams.set("region", region);
+      return downloadShardStub(env, project, region).fetch(new Request(url, request));
+    }
     return handle(request, env, ctx);
   },
   async scheduled(controller, env, _ctx) {
@@ -23,7 +38,17 @@ export default {
 
 async function updateDownloadsPageCache(env: Env) {
   for (const project of DOWNLOAD_PROJECT_IDS) {
-    await refreshDownloadsPageCache(project, env.WEBSITE_CACHE);
+    try {
+      await requestDownloadsRefresh(env, project);
+    } catch (error) {
+      console.error(
+        JSON.stringify({
+          event: "downloads_reconciliation_failed",
+          project,
+          error: error instanceof Error ? error.message : String(error),
+        })
+      );
+    }
   }
 }
 
