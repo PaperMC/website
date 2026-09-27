@@ -38,17 +38,26 @@ With the switch, deployment of builds, API, and dev bundles has become significa
 
 In the future, we also plan on making produced jars more tamper-proof, e.g. by signing them. The pull request workflows will also be made faster later.
 
+Next to the above, we have also decreased the distributed Jar size by about 10mb!
+
 ---
 
-## Other changes and additions
+## For developers
 
 A lot of API that was previous marked as experimental, including most of the data component API, have had their experimental annotations removed!
+
+### Events for working with cushions
+
+We introduced [EntityBreakEvent](https://jd.papermc.io/paper/26.3/io/papermc/paper/event/entity/EntityBreakEvent.html) and [EntityBreakByEntityEvent](https://jd.papermc.io/paper/26.3/io/papermc/paper/event/entity/EntityBreakByEntityEvent.html), similar to the existing hanging break events. Next to that, you can use the pre-existing [EntityPlaceEvent](https://jd.papermc.io/paper/26.3/org/bukkit/event/entity/EntityPlaceEvent.html).
+
+## Other changes and additions
 
 Here is a selection of other notable additions since the last major update post:
 
 ### API
 
 - Player post-processing effects can be viewed and modified via [Player#postEffects](<https://jd.papermc.io/paper/26.3/org/bukkit/entity/Player.html#postEffects()>)
+- [Mob#setDespawnInPeacefulOverride](<https://jd.papermc.io/paper/26.3/org/bukkit/entity/Mob.html#setDespawnInPeacefulOverride(net.kyori.adventure.util.TriState)>) is no longer deprecated and functions again
 - [EntityConstructEvent](https://jd.papermc.io/paper/26.3/io/papermc/paper/event/entity/EntityConstructEvent.html) is fired when entities such as golems or the Wither are created from block patterns
 - [EntityCollideWithEntityEvent](https://jd.papermc.io/paper/26.3/io/papermc/paper/event/entity/EntityCollideWithEntityEvent.html) allows controlling entity pushing
 - Sulfur Cube item swallowing can now be controlled via [SulfurCube#swallow](https://jd.papermc.io/paper/26.3/org/bukkit/entity/SulfurCube.html) and [SulfurCubeSwallowItemEvent](https://jd.papermc.io/paper/26.3/io/papermc/paper/event/entity/SulfurCubeSwallowItemEvent.html)
