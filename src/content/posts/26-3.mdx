@@ -12,13 +12,13 @@ We would like to thank everyone that worked on this update:
 
 <Contributors
   contributors={[
-    { username: "Doc94" },
+    { username: "Doc94", sponsor: "https://github.com/sponsors/Doc94" },
     { username: "jpenilla", sponsor: "https://github.com/sponsors/jpenilla" },
     { username: "Lulu13022002" },
     { username: "lynxplay" },
-    { username: "NonSwag" },
-    { username: "Owen1212055" },
-    { username: "spottedleaf" },
+    { username: "NonSwag", sponsor: "https://github.com/sponsors/NonSwag" },
+    { username: "Owen1212055", sponsor: "https://github.com/sponsors/Owen1212055" },
+    { username: "spottedleaf", sponsor: "https://github.com/sponsors/Spottedleaf" },
     { username: "kennytv" },
   ]}
 />
@@ -63,10 +63,13 @@ Here is a selection of other notable additions since the last major update post:
 - Sulfur Cube item swallowing can now be controlled via [SulfurCube#swallow](https://jd.papermc.io/paper/26.3/org/bukkit/entity/SulfurCube.html) and [SulfurCubeSwallowItemEvent](https://jd.papermc.io/paper/26.3/io/papermc/paper/event/entity/SulfurCubeSwallowItemEvent.html)
 - [CreakingHeart](https://jd.papermc.io/paper/26.3/org/bukkit/block/CreakingHeart.html) now contains its Creaking entity and allows setting or spawning its protector
 - [PlayerCodeOfConductSendEvent](https://jd.papermc.io/paper/26.3/io/papermc/paper/event/connection/configuration/PlayerCodeOfConductSendEvent.html) allows modifying the Code of Conduct sent to individual players
-- The reason an entity was removed can now be queried via [Entity#getRemovalReason](<https://jd.papermc.io/paper/26.3/org/bukkit/entity/Entity.html#getRemovalReason()>) and [RemovalReason](https://jd.papermc.io/paper/26.3/io/papermc/paper/entity/RemovalReason.html)
-- [PlayerAnimationEvent](https://jd.papermc.io/paper/26.3/org/bukkit/event/player/PlayerAnimationEvent.html) is deprecated in favor of [PlayerArmSwingEvent](https://jd.papermc.io/paper/26.3/io/papermc/paper/event/player/PlayerArmSwingEvent.html)
-- [PotionEffectTypeCategory](https://jd.papermc.io/paper/26.3/org/bukkit/potion/PotionEffectTypeCategory.html) is deprecated in favor of [PotionEffectType.Category](https://jd.papermc.io/paper/26.3/org/bukkit/potion/PotionEffectType.Category.html)
-- [PotionBrewer](https://jd.papermc.io/paper/26.3/org/bukkit/potion/PotionBrewer.html) are now deprecated given they have been data-driven
+- The Vanilla reason an entity was removed can now be queried via [Entity#getRemovalReason](<https://jd.papermc.io/paper/26.3/org/bukkit/entity/Entity.html#getRemovalReason()>) and [RemovalReason](https://jd.papermc.io/paper/26.3/io/papermc/paper/entity/RemovalReason.html)
+
+#### Deprecations
+
+- [PlayerAnimationEvent](https://jd.papermc.io/paper/26.3/org/bukkit/event/player/PlayerAnimationEvent.html) has been deprecated in favor of [PlayerArmSwingEvent](https://jd.papermc.io/paper/26.3/io/papermc/paper/event/player/PlayerArmSwingEvent.html)
+- [PotionEffectTypeCategory](https://jd.papermc.io/paper/26.3/org/bukkit/potion/PotionEffectTypeCategory.html) has been deprecated in favor of [PotionEffectType.Category](https://jd.papermc.io/paper/26.3/org/bukkit/potion/PotionEffectType.Category.html)
+- [PotionBrewer](https://jd.papermc.io/paper/26.3/org/bukkit/potion/PotionBrewer.html) have been now deprecated given they have been data-driven, see [BrewingRecipe](https://jd.papermc.io/paper/26.3/org/bukkit/inventory/BrewingRecipe.html)
 
 ### Reminder: Versioning change
 
