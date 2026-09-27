@@ -5,10 +5,10 @@
       "slug": "papermc",
       "stats": {
         "balance": {
-          "valueInCents": 1446809
+          "valueInCents": 1447682
         },
         "monthlySpending": {
-          "valueInCents": 9844
+          "valueInCents": 9811
         }
       },
       "contributors": {
@@ -97,7 +97,7 @@
           {
             "name": "Chris Turrell",
             "image": "https://images.opencollective.com/user-e81971f1/avatar.png",
-            "totalAmountDonated": 28500
+            "totalAmountDonated": 29000
           },
           {
             "name": "serhatkotan",
@@ -175,13 +175,13 @@
             "totalAmountDonated": 14500
           },
           {
-            "name": "CybrHare",
-            "image": "https://images.opencollective.com/brian-st-james/69f3162/avatar.png",
-            "totalAmountDonated": 13500
-          },
-          {
             "name": "lexiccn",
             "image": "https://images.opencollective.com/lexiccn/avatar.png",
+            "totalAmountDonated": 14000
+          },
+          {
+            "name": "CybrHare",
+            "image": "https://images.opencollective.com/brian-st-james/69f3162/avatar.png",
             "totalAmountDonated": 13500
           },
           {
@@ -875,6 +875,11 @@
             "totalAmountDonated": 600
           },
           {
+            "name": "Karl - J",
+            "image": "https://images.opencollective.com/karl-j-bb862aff/avatar.png",
+            "totalAmountDonated": 600
+          },
+          {
             "name": "Velnias75",
             "image": "https://images.opencollective.com/guest-2a86fc3c/avatar.png",
             "totalAmountDonated": 551
@@ -1012,11 +1017,6 @@
           {
             "name": "Jesse",
             "image": "https://images.opencollective.com/jesse17/avatar.png",
-            "totalAmountDonated": 400
-          },
-          {
-            "name": "Karl - J",
-            "image": "https://images.opencollective.com/karl-j-bb862aff/avatar.png",
             "totalAmountDonated": 400
           },
           {
@@ -1238,6 +1238,10 @@
             "avatarUrl": "https://avatars.githubusercontent.com/u/28657673?size=64"
           },
           {
+            "login": "smonolo",
+            "avatarUrl": "https://avatars.githubusercontent.com/u/29622224?size=64"
+          },
+          {
             "login": "WiIIiam278",
             "avatarUrl": "https://avatars.githubusercontent.com/u/31187453?size=64"
           },
@@ -1344,10 +1348,6 @@
           {
             "login": "LilypadGG",
             "avatarUrl": "https://avatars.githubusercontent.com/u/131988708?size=64"
-          },
-          {
-            "login": "WakfuYT",
-            "avatarUrl": "https://avatars.githubusercontent.com/u/186349078?size=64"
           }
         ]
       }
