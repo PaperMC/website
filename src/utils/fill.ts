@@ -4,7 +4,10 @@ const API_ENDPOINT = "https://fill.papermc.io/v3";
 const USER_AGENT = "PaperMC/website (+https://papermc.io)";
 
 export async function getProject(project: string): Promise<Project> {
-  const res = await fetch(`${API_ENDPOINT}/projects/${project}`, { headers: { "User-Agent": USER_AGENT } });
+  const res = await fetch(`${API_ENDPOINT}/projects/${project}`, {
+    headers: { "User-Agent": USER_AGENT },
+    cache: "no-store",
+  });
   if (!res.ok) {
     throw new Error(`getProject(${project}) failed: ${res.status}`);
   }
@@ -16,7 +19,10 @@ export async function getVersionBuilds(project: string, version: string, channel
   if (channel) {
     url += `?channel=${encodeURIComponent(channel)}`;
   }
-  const res = await fetch(url, { headers: { "User-Agent": USER_AGENT } });
+  const res = await fetch(url, {
+    headers: { "User-Agent": USER_AGENT },
+    cache: "no-store",
+  });
   if (!res.ok) {
     throw new Error(`getVersionBuilds(${project}, ${version}, ${channel}) failed: ${res.status}`);
   }
@@ -25,9 +31,15 @@ export async function getVersionBuilds(project: string, version: string, channel
 
 export async function getLatestBuild(project: string, version: string): Promise<Build | null> {
   const url = `${API_ENDPOINT}/projects/${project}/versions/${version}/builds/latest`;
-  const res = await fetch(url, { headers: { "User-Agent": USER_AGENT } });
+  const res = await fetch(url, {
+    headers: { "User-Agent": USER_AGENT },
+    cache: "no-store",
+  });
   if (!res.ok) {
     throw new Error(`getLatestBuild(${project}, ${version}) failed: ${res.status}`);
   }
-  return res.json() as Promise<Build>;
+  if (res.status === 204) {
+    return null;
+  }
+  return res.json() as Promise<Build | null>;
 }
