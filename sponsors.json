@@ -5,10 +5,10 @@
       "slug": "papermc",
       "stats": {
         "balance": {
-          "valueInCents": 1498401
+          "valueInCents": 1498473
         },
         "monthlySpending": {
-          "valueInCents": 9634
+          "valueInCents": 9507
         }
       },
       "contributors": {
@@ -512,7 +512,7 @@
           {
             "name": "langua",
             "image": "https://images.opencollective.com/langua/avatar.png",
-            "totalAmountDonated": 2700
+            "totalAmountDonated": 2800
           },
           {
             "name": "Max Klug",
@@ -732,7 +732,7 @@
           {
             "name": "Florian Riedlinger",
             "image": "https://images.opencollective.com/guest-58f493e6/avatar.png",
-            "totalAmountDonated": 1100
+            "totalAmountDonated": 1200
           },
           {
             "name": "Josh Taylor",
