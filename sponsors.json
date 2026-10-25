@@ -5,10 +5,10 @@
       "slug": "papermc",
       "stats": {
         "balance": {
-          "valueInCents": 1498473
+          "valueInCents": 1499225
         },
         "monthlySpending": {
-          "valueInCents": 9507
+          "valueInCents": 9439
         }
       },
       "contributors": {
@@ -90,13 +90,13 @@
             "totalAmountDonated": 29500
           },
           {
-            "name": "Matt Artist",
-            "image": "https://images.opencollective.com/mja00/dc55d88/avatar.png",
-            "totalAmountDonated": 29000
-          },
-          {
             "name": "Chris Turrell",
             "image": "https://images.opencollective.com/user-e81971f1/avatar.png",
+            "totalAmountDonated": 29500
+          },
+          {
+            "name": "Matt Artist",
+            "image": "https://images.opencollective.com/mja00/dc55d88/avatar.png",
             "totalAmountDonated": 29000
           },
           {
@@ -177,7 +177,7 @@
           {
             "name": "lexiccn",
             "image": "https://images.opencollective.com/lexiccn/avatar.png",
-            "totalAmountDonated": 14000
+            "totalAmountDonated": 14500
           },
           {
             "name": "CybrHare",
@@ -1171,7 +1171,7 @@
   "ghData": {
     "organization": {
       "sponsors": {
-        "totalCount": 47,
+        "totalCount": 46,
         "nodes": [
           {
             "login": "mbax",
@@ -1236,10 +1236,6 @@
           {
             "login": "tech-6",
             "avatarUrl": "https://avatars.githubusercontent.com/u/28657673?size=64"
-          },
-          {
-            "login": "smonolo",
-            "avatarUrl": "https://avatars.githubusercontent.com/u/29622224?size=64"
           },
           {
             "login": "WiIIiam278",
