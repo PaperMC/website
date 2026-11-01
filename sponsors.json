@@ -5,19 +5,19 @@
       "slug": "papermc",
       "stats": {
         "balance": {
-          "valueInCents": 1499225
+          "valueInCents": 1543298
         },
         "monthlySpending": {
-          "valueInCents": 9439
+          "valueInCents": 8845
         }
       },
       "contributors": {
-        "totalCount": 231,
+        "totalCount": 232,
         "nodes": [
           {
             "name": "BisectHosting",
             "image": "https://images.opencollective.com/bisecthosting/0e9c27d/logo.png",
-            "totalAmountDonated": 1200000
+            "totalAmountDonated": 1220000
           },
           {
             "name": "ManaCube",
@@ -27,7 +27,7 @@
           {
             "name": "Kyle Wood",
             "image": "https://images.opencollective.com/kyle-wood/57ef452/avatar.png",
-            "totalAmountDonated": 182000
+            "totalAmountDonated": 184000
           },
           {
             "name": "Duske Technologies GmbH",
@@ -77,7 +77,7 @@
           {
             "name": "Paper Chan",
             "image": "https://images.opencollective.com/paper-chan/21d649c/avatar.png",
-            "totalAmountDonated": 39599
+            "totalAmountDonated": 39699
           },
           {
             "name": "Andrew Steinborn",
@@ -122,7 +122,7 @@
           {
             "name": "Gigadrive",
             "image": "https://images.opencollective.com/gigadrive/8d2b953/logo.png",
-            "totalAmountDonated": 23000
+            "totalAmountDonated": 23500
           },
           {
             "name": "Tyrriel",
@@ -215,6 +215,11 @@
             "totalAmountDonated": 10500
           },
           {
+            "name": "Brant Andrew",
+            "image": "https://images.opencollective.com/brant-andrew1/avatar.png",
+            "totalAmountDonated": 10500
+          },
+          {
             "name": "_tomcraft#5950",
             "image": "https://images.opencollective.com/guest-3e3c8d01/avatar.png",
             "totalAmountDonated": 10330
@@ -275,19 +280,14 @@
             "totalAmountDonated": 9500
           },
           {
-            "name": "Brant Andrew",
-            "image": "https://images.opencollective.com/brant-andrew1/avatar.png",
-            "totalAmountDonated": 9500
+            "name": "TheRealLemon",
+            "image": "https://images.opencollective.com/thereallemon/b23bfd0/avatar.png",
+            "totalAmountDonated": 9000
           },
           {
             "name": "Boiscljo",
             "image": "https://images.opencollective.com/boiscljo/df452a2/avatar.png",
             "totalAmountDonated": 9000
-          },
-          {
-            "name": "TheRealLemon",
-            "image": "https://images.opencollective.com/thereallemon/b23bfd0/avatar.png",
-            "totalAmountDonated": 8850
           },
           {
             "name": "P529",
@@ -340,14 +340,14 @@
             "totalAmountDonated": 6600
           },
           {
+            "name": "SpektrSoyuz",
+            "image": "https://images.opencollective.com/spektrsoyuz/avatar.png",
+            "totalAmountDonated": 6500
+          },
+          {
             "name": "AoElite",
             "image": "https://images.opencollective.com/user-2d471226/avatar.png",
             "totalAmountDonated": 6200
-          },
-          {
-            "name": "SpektrSoyuz",
-            "image": "https://images.opencollective.com/spektrsoyuz/avatar.png",
-            "totalAmountDonated": 6000
           },
           {
             "name": "Incognito",
@@ -435,13 +435,13 @@
             "totalAmountDonated": 4700
           },
           {
-            "name": "HyperSilence#0001",
-            "image": "https://images.opencollective.com/hypersilence-0001/avatar.png",
-            "totalAmountDonated": 4300
-          },
-          {
             "name": "TechnicallyCoded",
             "image": "https://images.opencollective.com/technicallycoded/84902a5/avatar.png",
+            "totalAmountDonated": 4400
+          },
+          {
+            "name": "HyperSilence#0001",
+            "image": "https://images.opencollective.com/hypersilence-0001/avatar.png",
             "totalAmountDonated": 4300
           },
           {
@@ -735,6 +735,11 @@
             "totalAmountDonated": 1200
           },
           {
+            "name": "Guest",
+            "image": "https://images.opencollective.com/guest-c3771f52/avatar.png",
+            "totalAmountDonated": 1200
+          },
+          {
             "name": "Josh Taylor",
             "image": "https://images.opencollective.com/josh-taylor/avatar.png",
             "totalAmountDonated": 1000
@@ -860,6 +865,11 @@
             "totalAmountDonated": 800
           },
           {
+            "name": "Karl - J",
+            "image": "https://images.opencollective.com/karl-j-bb862aff/avatar.png",
+            "totalAmountDonated": 800
+          },
+          {
             "name": "JustPlayerDE",
             "image": "https://images.opencollective.com/justplayerde/avatar.png",
             "totalAmountDonated": 700
@@ -877,11 +887,6 @@
           {
             "name": "Leonidesu",
             "image": "https://images.opencollective.com/leonidesu-16578fc1/avatar.png",
-            "totalAmountDonated": 600
-          },
-          {
-            "name": "Karl - J",
-            "image": "https://images.opencollective.com/karl-j-bb862aff/avatar.png",
             "totalAmountDonated": 600
           },
           {
@@ -1171,7 +1176,7 @@
   "ghData": {
     "organization": {
       "sponsors": {
-        "totalCount": 46,
+        "totalCount": 47,
         "nodes": [
           {
             "login": "mbax",
@@ -1312,6 +1317,10 @@
           {
             "login": "GalaxyCaramel",
             "avatarUrl": "https://avatars.githubusercontent.com/u/62718316?size=64"
+          },
+          {
+            "login": "Gabimolia",
+            "avatarUrl": "https://avatars.githubusercontent.com/u/65309548?size=64"
           },
           {
             "login": "atlasgong",
