@@ -1,0 +1,4 @@
+# Copy to .dev.vars and set the secret used to verify Fill webhook deliveries
+# (see src/pages/webhooks/fill.ts). In production this is set with:
+#   npx wrangler secret put FILL_WEBHOOK_SECRET
+FILL_WEBHOOK_SECRET=whsec_<base64-encoded-secret>

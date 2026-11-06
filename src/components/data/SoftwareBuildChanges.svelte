@@ -57,7 +57,7 @@
 
 {#if rows.length > 0}
   {#each rows as row (row.sha)}
-    <p class="commitMessage overflow-hidden break-words" style="word-wrap: break-word; hyphens: auto;">
+    <p class="commitMessage min-w-0 overflow-hidden leading-relaxed [overflow-wrap:anywhere] break-words">
       <a
         class="mr-1 font-mono text-blue-600 dark:text-blue-500"
         href={`${getProjectRepository(project, version)}/commit/${row.sha}`}
@@ -67,12 +67,14 @@
         {row.sha.slice(0, 7)}
       </a>
 
-      <span title={row.fullMessage}>
+      <span class="min-w-0 [overflow-wrap:anywhere]" title={row.fullMessage}>
         {#each row.segments as seg, i (i)}
           {#if seg.kind === "text"}
             {seg.text}
           {:else}
-            <a class="text-blue-600 dark:text-blue-500" href={seg.url} target="_blank" rel="noreferrer">{seg.text}</a>
+            <a class="[overflow-wrap:anywhere] text-blue-600 dark:text-blue-500" href={seg.url} target="_blank" rel="noreferrer"
+              >{seg.text}</a
+            >
           {/if}
         {/each}
       </span>

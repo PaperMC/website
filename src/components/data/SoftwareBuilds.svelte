@@ -19,19 +19,28 @@
   }
 </script>
 
-<div class="flex flex-col">
+<div class="flex min-w-0 flex-col overflow-hidden">
   {#if builds}
     {#each builds.slice(0, 10) as build, idx (build.id)}
       {@const date = new Date(build.time)}
-      <div>
-        <div class="flex flex-row items-center rounded-md px-4 py-2 transition-colors hover:bg-gray-200 dark:hover:bg-gray-800">
+      <div class="min-w-0">
+        <div
+          class="flex min-w-0 flex-row items-start rounded-md px-0 py-2 transition-colors hover:bg-gray-200 sm:px-4 dark:hover:bg-gray-800"
+        >
           <a
             role="button"
             href={build.downloads?.["server:default"]?.url}
             target="_blank"
-            class={`btn mr-4 inline-flex min-w-16 items-center gap-1 rounded-sm p-2 text-center text-sm font-medium ${channelClass(build.channel)}`}
+            class={`btn mr-3 inline-flex min-w-14 shrink-0 items-center justify-center gap-1 rounded-sm p-2 text-center text-sm font-medium sm:mr-4 sm:min-w-16 ${channelClass(build.channel)}`}
           >
-            <svg xmlns="http://www.w3.org/2000/svg" class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="size-4 shrink-0"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
               <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -41,11 +50,11 @@
             #{build.id}
           </a>
 
-          <div class="flex min-w-0 flex-1 flex-col text-gray-900 dark:text-gray-200">
+          <div class="min-w-0 flex-1 overflow-hidden text-gray-900 dark:text-gray-200">
             <SoftwareBuildChanges {project} {build} {version} />
           </div>
 
-          <div class="mt-1 ml-2 hidden text-gray-500 md:block dark:text-gray-300" title={formatISODateTime(date)}>
+          <div class="mt-1 ml-2 hidden shrink-0 text-gray-500 md:block dark:text-gray-300" title={formatISODateTime(date)}>
             {formatRelativeDate(date)}
           </div>
         </div>

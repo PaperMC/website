@@ -1,15 +1,10 @@
-export interface SponsorData {
-  ocData: OpenCollectiveData;
-  ghData: GitHubSponsorsData;
-}
-
-export interface OpenCollectiveContributor {
+export type OpenCollectiveContributor = {
   name: string;
   image: string;
   totalAmountDonated: number;
-}
+};
 
-export interface OpenCollectiveData {
+export type OpenCollectiveData = {
   collective: {
     name: string;
     slug: string;
@@ -26,26 +21,35 @@ export interface OpenCollectiveData {
       nodes: OpenCollectiveContributor[];
     };
   };
-}
+};
 
-export interface GithubSponsorNode {
+export type GitHubSponsor = {
   login: string;
   avatarUrl: string;
-}
+};
 
-export interface GitHubSponsorsData {
+export type GitHubSponsorsData = {
   organization: {
     sponsors: {
       totalCount: number;
-      nodes: GithubSponsorNode[];
+      nodes: GitHubSponsor[];
     };
   };
-}
+};
+
+export type SponsorData = {
+  ocData: OpenCollectiveData;
+  ghData: GitHubSponsorsData;
+};
+
+const SPONSORS_DATA_URL = "https://raw.githubusercontent.com/PaperMC/website/data/sponsors.json";
 
 export async function fetchAllSponsors(): Promise<SponsorData> {
-  const response = await fetch("https://raw.githubusercontent.com/PaperMC/papermc.io/data/sponsors.json");
+  const response = await fetch(SPONSORS_DATA_URL);
+
   if (!response.ok) {
-    throw new Error(`Failed to fetch sponsors: ${response.statusText}`);
+    throw new Error(`Failed to fetch sponsors: ${response.status} ${response.statusText}`);
   }
+
   return response.json() as Promise<SponsorData>;
 }

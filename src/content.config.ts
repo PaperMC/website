@@ -8,7 +8,8 @@ const DEFAULT_AVATAR = "https://assets.papermc.io/brand/papermc_logo.min.svg";
 
 const posts = defineCollection({
   loader: glob({ pattern: "**/*.mdx", base: "./src/content/posts" }),
-  schema: rssSchema.extend({
+  schema: z.object({
+    ...rssSchema.shape,
     date: z.coerce.date(),
     author: z.string().default(DEFAULT_AUTHOR),
     authorAvatar: z.url().default(DEFAULT_AVATAR),
