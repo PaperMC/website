@@ -23,14 +23,14 @@
     "@astrojs/sitemap": "3.7.4",
     "@astrojs/svelte": "9.1.2",
     "@fontsource/poppins": "5.3.0",
-    "@tailwindcss/vite": "4.3.4",
+    "@tailwindcss/vite": "4.3.5",
     "astro": "7.4.7",
     "astro-iconset": "^0.0.6",
     "clsx": "2.1.1",
     "remove-markdown": "0.8.0",
     "runed": "0.38.0",
     "svelte": "5.57.3",
-    "tailwindcss": "4.3.4",
+    "tailwindcss": "4.3.5",
     "typescript": "6.0.3"
   },
   "devDependencies": {
