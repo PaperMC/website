@@ -43,7 +43,7 @@
     "eslint": "10.14.0",
     "eslint-config-prettier": "10.1.8",
     "eslint-plugin-astro": "3.2.1",
-    "eslint-plugin-svelte": "3.24.0",
+    "eslint-plugin-svelte": "3.24.1",
     "prettier": "3.9.10",
     "prettier-plugin-astro": "1.1.2",
     "prettier-plugin-svelte": "4.1.1",
