@@ -5,10 +5,10 @@
       "slug": "papermc",
       "stats": {
         "balance": {
-          "valueInCents": 1551320
+          "valueInCents": 1552188
         },
         "monthlySpending": {
-          "valueInCents": 9236
+          "valueInCents": 9276
         }
       },
       "contributors": {
@@ -127,12 +127,12 @@
           {
             "name": "Tyrriel",
             "image": "https://images.opencollective.com/tyrriel/avatar.png",
-            "totalAmountDonated": 22000
+            "totalAmountDonated": 22500
           },
           {
             "name": "TheMeinerLP",
             "image": "https://images.opencollective.com/themeinerlp/c508428/avatar.png",
-            "totalAmountDonated": 22000
+            "totalAmountDonated": 22500
           },
           {
             "name": "Crumbs",
@@ -447,7 +447,7 @@
           {
             "name": "ChromMob",
             "image": "https://images.opencollective.com/chrommob/avatar.png",
-            "totalAmountDonated": 4300
+            "totalAmountDonated": 4400
           },
           {
             "name": "Mitsui2k",
@@ -512,7 +512,7 @@
           {
             "name": "langua",
             "image": "https://images.opencollective.com/langua/avatar.png",
-            "totalAmountDonated": 2800
+            "totalAmountDonated": 2900
           },
           {
             "name": "Max Klug",
@@ -720,6 +720,11 @@
             "totalAmountDonated": 1300
           },
           {
+            "name": "Florian Riedlinger",
+            "image": "https://images.opencollective.com/guest-58f493e6/avatar.png",
+            "totalAmountDonated": 1300
+          },
+          {
             "name": "BurningCube",
             "image": "https://images.opencollective.com/user-5810396a/avatar.png",
             "totalAmountDonated": 1200
@@ -727,11 +732,6 @@
           {
             "name": "MAGARITY",
             "image": "https://images.opencollective.com/guest-ab100a7b/avatar.png",
-            "totalAmountDonated": 1200
-          },
-          {
-            "name": "Florian Riedlinger",
-            "image": "https://images.opencollective.com/guest-58f493e6/avatar.png",
             "totalAmountDonated": 1200
           },
           {
