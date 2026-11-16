@@ -38,7 +38,7 @@ export async function getLatestBuild(project: string, version: string): Promise<
   if (!res.ok) {
     throw new Error(`getLatestBuild(${project}, ${version}) failed: ${res.status}`);
   }
-  if (res.status === 204) {
+  if (res.status === 404) {
     return null;
   }
   return res.json() as Promise<Build | null>;
