@@ -5,10 +5,10 @@
       "slug": "papermc",
       "stats": {
         "balance": {
-          "valueInCents": 1552188
+          "valueInCents": 1552564
         },
         "monthlySpending": {
-          "valueInCents": 9276
+          "valueInCents": 9234
         }
       },
       "contributors": {
@@ -170,13 +170,13 @@
             "totalAmountDonated": 15000
           },
           {
-            "name": "Dashiell",
-            "image": "https://images.opencollective.com/dashiell/avatar.png",
-            "totalAmountDonated": 14500
-          },
-          {
             "name": "lexiccn",
             "image": "https://images.opencollective.com/lexiccn/avatar.png",
+            "totalAmountDonated": 15000
+          },
+          {
+            "name": "Dashiell",
+            "image": "https://images.opencollective.com/dashiell/avatar.png",
             "totalAmountDonated": 14500
           },
           {
@@ -1176,7 +1176,7 @@
   "ghData": {
     "organization": {
       "sponsors": {
-        "totalCount": 49,
+        "totalCount": 48,
         "nodes": [
           {
             "login": "mbax",
@@ -1301,10 +1301,6 @@
           {
             "login": "kiriDevs",
             "avatarUrl": "https://avatars.githubusercontent.com/u/56218513?size=64"
-          },
-          {
-            "login": "AndyReckt",
-            "avatarUrl": "https://avatars.githubusercontent.com/u/57576217?size=64"
           },
           {
             "login": "MCHalfAssed",
