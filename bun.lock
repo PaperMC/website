@@ -14,7 +14,7 @@
         "astro": "7.4.13",
         "astro-iconset": "^0.0.6",
         "clsx": "2.1.1",
-        "remove-markdown": "0.8.0",
+        "remove-markdown": "0.8.1",
         "runed": "0.38.0",
         "svelte": "5.59.1",
         "tailwindcss": "4.3.5",
@@ -951,7 +951,7 @@
 
     "regex-utilities": ["regex-utilities@2.3.0", "", {}, "sha512-8VhliFJAWRaUiVvREIiW2NXXTmHs4vMNnSzuJVhscgmGav3g9VDxLrQndI3dZZVVdp0ZO/5v0xmX516/7M9cng=="],
 
-    "remove-markdown": ["remove-markdown@0.8.0", "", {}, "sha512-VP1v6BYAa6VlLPHzr3JpVDV+f2IHqLKBauXZm08alrB9rJC4mQ1IoePsWOzpJx8GTfFwF+j6fmCtI8DLh1qIdA=="],
+    "remove-markdown": ["remove-markdown@0.8.1", "", {}, "sha512-vMYUaV+6fFY0IbO7sig/ZaZM3Kj/jZV8/TEqan/dR/U25AGGPKnM6j0SwljWH9uN0ph+F5w8DJ91IQOyKqb1yw=="],
 
     "resolve-pkg-maps": ["resolve-pkg-maps@1.0.0", "", {}, "sha512-seS2Tj26TBVOC2NIc2rOe2y2ZO7efxITtLZcGSOnHHNOQ7CkiUBfw0Iw2ck6xkIhPwLhKNLS8BO+hEpngQlqzw=="],
 
