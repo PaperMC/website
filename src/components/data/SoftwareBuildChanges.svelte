@@ -72,9 +72,9 @@
           {#if seg.kind === "text"}
             {seg.text}
           {:else}
-            <a class="[overflow-wrap:anywhere] text-blue-600 dark:text-blue-500" href={seg.url} target="_blank" rel="noreferrer"
-              >{seg.text}</a
-            >
+            <a class="[overflow-wrap:anywhere] text-blue-600 dark:text-blue-500" href={seg.url} target="_blank" rel="noreferrer">
+              {seg.text}
+            </a>
           {/if}
         {/each}
       </span>
