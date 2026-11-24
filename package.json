@@ -27,7 +27,7 @@
     "astro": "7.4.13",
     "astro-iconset": "^0.0.6",
     "clsx": "2.1.1",
-    "remove-markdown": "0.8.0",
+    "remove-markdown": "0.8.1",
     "runed": "0.38.0",
     "svelte": "5.59.1",
     "tailwindcss": "4.3.5",
