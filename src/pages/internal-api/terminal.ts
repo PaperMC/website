@@ -21,6 +21,8 @@ export const GET: APIRoute = async () => {
     const foundVer = projectDescriptor.value?.latestStableVersion;
     if (foundVer) {
       ver = foundVer;
+    } else {
+      console.warn("Failed to determine the Paper version for the terminal endpoint:", projectDescriptor.error);
     }
   }
 
